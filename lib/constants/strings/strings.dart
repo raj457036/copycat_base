@@ -1,5 +1,3 @@
-export 'failure_code_constants.dart';
-
 const kLocalUserId = "local_user";
 const klocalAuthKey = "auth__user_local_signed_in";
 
