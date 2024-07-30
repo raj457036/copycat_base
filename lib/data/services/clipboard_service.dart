@@ -286,8 +286,6 @@ class ClipboardFormatProcessor {
     }
     final text = cleanText(utf8.decode(binary, allowMalformed: true));
 
-    // TODO check file name if it ends with anything other then txt or "blank"
-    // Todo: then its a file.
     if (text.length <= 1024) {
       return ClipItem.text(text: text);
     }

@@ -47,7 +47,10 @@ mixin _$Subscription {
   @DateTimeConverter()
   DateTime? get activeTill => throw _privateConstructorUsedError;
   @JsonKey(name: "devices")
-  int get maxSyncDevices => throw _privateConstructorUsedError;
+  int get maxSyncDevices => throw _privateConstructorUsedError; // local state
+  @ignore
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get managementUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,7 +81,10 @@ abstract class $SubscriptionCopyWith<$Res> {
       bool edit,
       bool encrypt,
       @DateTimeConverter() DateTime? activeTill,
-      @JsonKey(name: "devices") int maxSyncDevices});
+      @JsonKey(name: "devices") int maxSyncDevices,
+      @ignore
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? managementUrl});
 }
 
 /// @nodoc
@@ -111,6 +117,7 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? encrypt = null,
     Object? activeTill = freezed,
     Object? maxSyncDevices = null,
+    Object? managementUrl = freezed,
   }) {
     return _then(_value.copyWith(
       serverId: freezed == serverId
@@ -181,6 +188,10 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.maxSyncDevices
           : maxSyncDevices // ignore: cast_nullable_to_non_nullable
               as int,
+      managementUrl: freezed == managementUrl
+          ? _value.managementUrl
+          : managementUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -210,7 +221,10 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
       bool edit,
       bool encrypt,
       @DateTimeConverter() DateTime? activeTill,
-      @JsonKey(name: "devices") int maxSyncDevices});
+      @JsonKey(name: "devices") int maxSyncDevices,
+      @ignore
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? managementUrl});
 }
 
 /// @nodoc
@@ -241,6 +255,7 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? encrypt = null,
     Object? activeTill = freezed,
     Object? maxSyncDevices = null,
+    Object? managementUrl = freezed,
   }) {
     return _then(_$SubscriptionImpl(
       serverId: freezed == serverId
@@ -311,6 +326,10 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.maxSyncDevices
           : maxSyncDevices // ignore: cast_nullable_to_non_nullable
               as int,
+      managementUrl: freezed == managementUrl
+          ? _value.managementUrl
+          : managementUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -335,7 +354,10 @@ class _$SubscriptionImpl extends _Subscription {
       this.edit = false,
       this.encrypt = false,
       @DateTimeConverter() this.activeTill,
-      @JsonKey(name: "devices") this.maxSyncDevices = 3})
+      @JsonKey(name: "devices") this.maxSyncDevices = 3,
+      @ignore
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.managementUrl})
       : super._();
 
   factory _$SubscriptionImpl.fromJson(Map<String, dynamic> json) =>
@@ -390,10 +412,15 @@ class _$SubscriptionImpl extends _Subscription {
   @override
   @JsonKey(name: "devices")
   final int maxSyncDevices;
+// local state
+  @override
+  @ignore
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final String? managementUrl;
 
   @override
   String toString() {
-    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices)';
+    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, managementUrl: $managementUrl)';
   }
 
   @override
@@ -427,7 +454,9 @@ class _$SubscriptionImpl extends _Subscription {
             (identical(other.activeTill, activeTill) ||
                 other.activeTill == activeTill) &&
             (identical(other.maxSyncDevices, maxSyncDevices) ||
-                other.maxSyncDevices == maxSyncDevices));
+                other.maxSyncDevices == maxSyncDevices) &&
+            (identical(other.managementUrl, managementUrl) ||
+                other.managementUrl == managementUrl));
   }
 
   @JsonKey(ignore: true)
@@ -450,7 +479,8 @@ class _$SubscriptionImpl extends _Subscription {
       edit,
       encrypt,
       activeTill,
-      maxSyncDevices);
+      maxSyncDevices,
+      managementUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -488,7 +518,10 @@ abstract class _Subscription extends Subscription {
       final bool edit,
       final bool encrypt,
       @DateTimeConverter() final DateTime? activeTill,
-      @JsonKey(name: "devices") final int maxSyncDevices}) = _$SubscriptionImpl;
+      @JsonKey(name: "devices") final int maxSyncDevices,
+      @ignore
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final String? managementUrl}) = _$SubscriptionImpl;
   _Subscription._() : super._();
 
   factory _Subscription.fromJson(Map<String, dynamic> json) =
@@ -539,6 +572,10 @@ abstract class _Subscription extends Subscription {
   @override
   @JsonKey(name: "devices")
   int get maxSyncDevices;
+  @override // local state
+  @ignore
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get managementUrl;
   @override
   @JsonKey(ignore: true)
   _$$SubscriptionImplCopyWith<_$SubscriptionImpl> get copyWith =>

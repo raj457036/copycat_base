@@ -22,7 +22,6 @@ dependencies:
   timeago: ^3.7.0
   dartz: ^0.10.1
   googleapis: ^13.1.0
-  purchases_flutter: ^6.30.2
   super_clipboard: ^0.8.17
   clipboard_watcher: ^0.2.1
   window_manager: ^0.3.9
@@ -37,6 +36,9 @@ dependencies:
   logger: ^2.4.0
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
+  mime: ^1.0.5
+  http: ^1.2.2
+  intl: ^0.19.0
   
 
 dev_dependencies:

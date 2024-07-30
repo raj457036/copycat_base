@@ -76,3 +76,6 @@ Future<void> clearPersistedRootDir() async {
     logger.e(e);
   }
 }
+
+bool get isAnalyticsSupported =>
+    Platform.isAndroid || Platform.isIOS || Platform.isMacOS;

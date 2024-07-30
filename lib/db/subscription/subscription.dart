@@ -31,6 +31,11 @@ class Subscription with _$Subscription, IsarIdMixin {
     @Default(false) bool encrypt,
     @DateTimeConverter() DateTime? activeTill,
     @JsonKey(name: "devices") @Default(3) int maxSyncDevices,
+
+    // local state
+    @ignore
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    String? managementUrl,
   }) = _Subscription;
 
   static Subscription free(String userId) {
@@ -44,8 +49,12 @@ class Subscription with _$Subscription, IsarIdMixin {
     );
   }
 
-  static Subscription pro(String userId, DateTime activeTill,
-      [bool isPromo = false]) {
+  static Subscription pro(
+    String userId,
+    DateTime activeTill, [
+    bool isPromo = false,
+    String? managementUrl,
+  ]) {
     return Subscription(
       created: now(),
       modified: now(),
@@ -61,6 +70,7 @@ class Subscription with _$Subscription, IsarIdMixin {
       maxSyncDevices: 5,
       encrypt: true,
       edit: true,
+      managementUrl: managementUrl,
     );
   }
 
