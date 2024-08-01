@@ -229,8 +229,29 @@ class ClipboardFormatProcessor {
     }
   }
 
+  Future<T?> readValue<T extends Object>(
+    DataReader reader,
+    ValueFormat<T> format,
+  ) async {
+    final canProvide = reader.canProvide(format);
+    if (!canProvide) return null;
+    final completer = Completer<T?>();
+    reader.getValue<T>(format, (value) {
+      if (value != null) {
+        completer.complete(value);
+      }
+      completer.complete(null);
+    }, onError: (error) {
+      completer.completeError(error);
+    });
+
+    return completer.future;
+  }
+
   Future<(String?, Uint8List?)> readFile(
-      ClipboardDataReader reader, FileFormat format) async {
+    DataReader reader,
+    FileFormat format,
+  ) async {
     final c = Completer<(String?, Uint8List?)>();
     final progress = reader.getFile(format, (file) async {
       try {
@@ -243,17 +264,18 @@ class ClipboardFormatProcessor {
     }, onError: (e) {
       c.completeError(e);
     });
+
     if (progress == null) {
       c.complete((null, null));
     }
     return await c.future;
   }
 
-  Future<ClipItem?> _getPlainText(ClipboardDataReader reader) async {
+  Future<ClipItem?> _getPlainText(DataReader reader) async {
     String? text;
 
     try {
-      text = await reader.readValue(Formats.plainText);
+      text = await readValue(reader, Formats.plainText);
     } catch (e) {
       final data = await service.Clipboard.getData("text/plain");
 
@@ -277,7 +299,7 @@ class ClipboardFormatProcessor {
     }
   }
 
-  Future<ClipItem?> _getPlainTextFile(ClipboardDataReader reader) async {
+  Future<ClipItem?> _getPlainTextFile(DataReader reader) async {
     final (fileName, binary) = await readFile(reader, Formats.plainTextFile);
 
     if (binary == null) {
@@ -309,39 +331,43 @@ class ClipboardFormatProcessor {
   }
 
   Future<ClipItem?> getImage(
-    ClipboardDataReader reader,
+    DataReader reader,
     String ext,
     DataFormat format,
   ) async {
-    final (fileName, binary) = await readFile(
-      reader,
-      format as FileFormat,
-    );
+    try {
+      final (fileName, binary) = await readFile(
+        reader,
+        format as FileFormat,
+      );
 
-    if (binary == null) {
-      logger.w("Couldn't read content of image file with format $format");
+      if (binary == null) {
+        logger.w("Couldn't read content of image file with format $format");
+        return null;
+      }
+
+      final (file, mimeType, size) = await writeToClipboardCacheFile(
+        folder: "medias",
+        ext: ext,
+        fileName: fileName,
+        content: binary,
+      );
+
+      if (file == null) return null;
+
+      return ClipItem.imageFile(
+        file: file,
+        mimeType: mimeType ?? "application/octet-stream",
+        fileName: fileName,
+        fileSize: size,
+      );
+    } catch (e) {
       return null;
     }
-
-    final (file, mimeType, size) = await writeToClipboardCacheFile(
-      folder: "medias",
-      ext: ext,
-      fileName: fileName,
-      content: binary,
-    );
-
-    if (file == null) return null;
-
-    return ClipItem.imageFile(
-      file: file,
-      mimeType: mimeType ?? "application/octet-stream",
-      fileName: fileName,
-      fileSize: size,
-    );
   }
 
   Future<ClipItem?> getFile(
-    ClipboardDataReader reader,
+    DataReader reader,
     Uri uri,
   ) async {
     File file;
@@ -379,7 +405,7 @@ class ClipboardFormatProcessor {
     );
   }
 
-  Future<ClipItem> getUrl(ClipboardDataReader reader, NamedUri uri) async {
+  Future<ClipItem> getUrl(DataReader reader, NamedUri uri) async {
     final schema = uri.uri.scheme;
     final isSupported = supportedUriSchemas.contains(schema);
     if (isSupported) {
@@ -390,10 +416,10 @@ class ClipboardFormatProcessor {
     }
   }
 
-  Future<ClipItem?> processUri(ClipboardDataReader reader) async {
+  Future<ClipItem?> processUri(DataReader reader) async {
     // Make sure to request both values before awaiting
-    final fileUriFuture = reader.readValue(Formats.fileUri);
-    final uriFuture = reader.readValue(Formats.uri);
+    final fileUriFuture = readValue(reader, Formats.fileUri);
+    final uriFuture = readValue(reader, Formats.uri);
 
     // try file first and if it fails try regular URI
     final fileUri = await fileUriFuture;
@@ -420,7 +446,7 @@ class ClipboardFormatProcessor {
   }
 
   Future<ClipItem?> process(
-    ClipboardDataReader reader,
+    DataReader reader,
     DataFormat format,
   ) async {
     switch (format) {

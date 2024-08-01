@@ -79,3 +79,15 @@ Future<void> clearPersistedRootDir() async {
 
 bool get isAnalyticsSupported =>
     Platform.isAndroid || Platform.isIOS || Platform.isMacOS;
+
+String formatBytes(int sizeInBytes, {bool precise = true}) {
+  const mb = 1024 * 1024;
+  const gb = mb * 1024;
+  if (sizeInBytes < 1024) {
+    return '$sizeInBytes bytes';
+  } else if (sizeInBytes < gb) {
+    return '${(sizeInBytes / mb).toStringAsFixed(precise ? 2 : 0)} MB';
+  } else {
+    return '${(sizeInBytes / gb).toStringAsFixed(precise ? 2 : 0)} GB';
+  }
+}
