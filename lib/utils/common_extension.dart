@@ -99,5 +99,6 @@ extension DateTimeExtension on DateTime {
     return isSameDate(DateTime.now());
   }
 
-  String ago([String? locale]) => timeago.format(this, locale: locale);
+  String ago([String? locale]) =>
+      timeago.format(this, locale: "${locale}_short");
 }

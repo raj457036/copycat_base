@@ -22,8 +22,13 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   FailureOr<ClipboardItem> create(ClipboardItem item) async {
     try {
       item = item.copyWith(modified: now())..applyId(item);
-      final result = await remote.create(item);
-      return Right(result);
+      final encrypted = await item.encrypt();
+      final result = await remote.create(encrypted);
+      final clip = item.copyWith(
+        serverId: result.serverId,
+        lastSynced: result.lastSynced,
+      )..applyId(result);
+      return Right(clip);
     } catch (e) {
       return Left(Failure.fromException(e));
     }
@@ -51,8 +56,18 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
         types: types,
         category: category,
       );
+      final decryptedItems = await Future.wait(
+        result.results.map(
+          (e) => e.decrypt(),
+        ),
+      );
 
-      return Right(result);
+      return Right(
+        PaginatedResult(
+          results: decryptedItems,
+          hasMore: result.hasMore,
+        ),
+      );
     } catch (e) {
       return Left(Failure.fromException(e));
     }
@@ -62,8 +77,12 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   FailureOr<ClipboardItem> update(ClipboardItem item) async {
     try {
       item = item.copyWith(modified: now())..applyId(item);
-      final result = await remote.update(item);
-      return Right(result);
+      final encrypted = await item.encrypt();
+      final result = await remote.update(encrypted);
+      final clip = item.copyWith(
+        lastSynced: now(),
+      )..applyId(result);
+      return Right(clip);
     } catch (e) {
       return Left(Failure.fromException(e));
     }
@@ -89,7 +108,8 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   FailureOr<ClipboardItem?> get({int? id, String? serverId}) async {
     try {
       final result = await remote.get(serverId: serverId);
-      return Right(result);
+      final decrypted = await result?.decrypt();
+      return Right(decrypted);
     } catch (e) {
       return Left(Failure.fromException(e));
     }

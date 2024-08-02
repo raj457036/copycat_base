@@ -29,7 +29,19 @@ class SyncRepositoryImpl implements SyncRepository {
         excludeDeviceId: excludeDeviceId,
         lastSynced: lastSynced,
       );
-      return Right(result);
+
+      final decryptedItems = await Future.wait(
+        result.results.map(
+          (e) => e.decrypt(),
+        ),
+      );
+
+      return Right(
+        PaginatedResult(
+          results: decryptedItems,
+          hasMore: result.hasMore,
+        ),
+      );
     } catch (e) {
       return Left(Failure.fromException(e));
     }

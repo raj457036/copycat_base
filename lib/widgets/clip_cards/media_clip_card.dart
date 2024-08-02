@@ -23,7 +23,7 @@ class MediaClipCard extends StatelessWidget {
             policy: ResizeImagePolicy.fit,
           ),
           gaplessPlayback: true,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         );
       }
       if (item.imgBlurHash == null) {

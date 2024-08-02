@@ -256,26 +256,41 @@ class ClipboardFormatProcessor {
     return completer.future;
   }
 
+  Future<Uint8List> streamToUint8List(Stream<Uint8List> stream) async {
+    List<int> bytes = [];
+
+    await for (Uint8List chunk in stream) {
+      bytes.addAll(chunk);
+    }
+
+    return Uint8List.fromList(bytes);
+  }
+
   Future<(String?, Uint8List?)> readFile(
     DataReader reader,
     FileFormat format,
   ) async {
     final c = Completer<(String?, Uint8List?)>();
-    final progress = reader.getFile(format, (file) async {
-      try {
-        final name = file.fileName;
-        final content = await file.readAll();
-        c.complete((name, content));
-      } catch (e) {
+    final progress = reader.getFile(
+      format,
+      (file) async {
+        try {
+          final name = file.fileName;
+          final content = await streamToUint8List(file.getStream());
+          c.complete((name, content));
+        } catch (e) {
+          c.completeError(e);
+        }
+      },
+      onError: (e) {
         c.completeError(e);
-      }
-    }, onError: (e) {
-      c.completeError(e);
-    });
+      },
+      allowVirtualFiles: false,
+    );
     if (progress == null) {
       c.complete((null, null));
     }
-    return c.future;
+    return c.future.timeout(const Duration(seconds: 10));
   }
 
   Future<ClipItem?> _getPlainText(DataReader reader) async {
@@ -462,6 +477,8 @@ class ClipboardFormatProcessor {
       case Formats.plainTextFile:
         return await _getPlainTextFile(reader);
       // Images
+      case avif:
+        return await getImage(reader, "avif", format);
       case Formats.png:
         return await getImage(reader, "png", format);
       case Formats.jpeg:
@@ -487,13 +504,26 @@ class ClipboardFormatProcessor {
   }
 }
 
+const avif = SimpleFileFormat(
+  uniformTypeIdentifiers: ['public.avif'],
+  windowsFormats: ['AVIF'],
+  mimeTypes: ['image/avif'],
+);
+
+final allSupportedFormats = [
+  ...Formats.standardFormats,
+  avif,
+];
+
 const _clipTypePriority = [
+  avif,
   Formats.png,
   Formats.jpeg,
   Formats.gif,
   Formats.tiff,
   Formats.webp,
   Formats.heic,
+  Formats.bmp,
   Formats.svg,
   Formats.fileUri,
   Formats.uri,
@@ -590,8 +620,9 @@ class ClipboardService with ClipboardListener {
   }
 
   (DataFormat<Object>?, int) filterOutByPriority(
-      List<DataFormat<Object>> itemFormats,
-      {int prefScore = -1}) {
+    List<DataFormat<Object>> itemFormats, {
+    int prefScore = -1,
+  }) {
     DataFormat? selectedFormat;
     for (final format in itemFormats) {
       if (selectedFormat == null) {
@@ -684,7 +715,7 @@ class CopyToClipboard {
   Future<bool> fileContent(File file, {String? mimeType}) async {
     FutureOr<EncodedData>? format;
 
-    for (final f in Formats.standardFormats) {
+    for (final f in allSupportedFormats) {
       if (f is SimpleFileFormat) {
         final mime_ = mimeType ?? mime.lookupMimeType(file.path);
         final isThis = f.mimeTypes?.contains(mime_);
