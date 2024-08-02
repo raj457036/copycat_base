@@ -4,7 +4,7 @@ import 'app_localizations.dart';
 
 /// The translations for German (`de`).
 class AppLocalizationsDe extends AppLocalizations {
-  AppLocalizationsDe([super.locale = 'de']);
+  AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
   String get appName => 'CopyCat';
@@ -270,14 +270,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String isPausedDesc(String isPaused, String till) {
-    String temp0 = intl.Intl.selectLogic(
+    String _temp0 = intl.Intl.selectLogic(
       isPaused,
       {
         'true': 'Automatisches Kopieren ist nicht pausiert',
         'other': 'Automatisches Kopieren ist bis $till pausiert',
       },
     );
-    return temp0;
+    return '$_temp0';
   }
 
   @override
@@ -936,4 +936,12 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get useLocallyDesc =>
       'Keine Synchronisierung. Alle Daten bleiben auf deinem Gerät.';
+
+  @override
+  String maxDroppableItem(int count) {
+    return 'Maximal $count Elemente auf einmal erlaubt.';
+  }
+
+  @override
+  String get dropHere => 'Lass deine Dateien, Bilder oder Texte hier fallen';
 }

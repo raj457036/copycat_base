@@ -1766,6 +1766,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No syncing. All data stays on your device.'**
   String get useLocallyDesc;
+
+  /// No description provided for @maxDroppableItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum {count} drop items are allowed at once.'**
+  String maxDroppableItem(int count);
+
+  /// No description provided for @dropHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop your files, images or text here'**
+  String get dropHere;
 }
 
 class _AppLocalizationsDelegate

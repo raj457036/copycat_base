@@ -379,5 +379,14 @@
     "useCollectionProTip": "Um sicherzustellen, dass deine wichtigen Clips unabhängig von der Zeit auf all deinen Geräten immer verfügbar sind, speichere sie in einer Sammlung!",
     "syncConfigNotAvailable": "Synchronisierungsbezogene Konfigurationen nicht verfügbar.",
     "useLocally": "Lokal verwenden",
-    "useLocallyDesc": "Keine Synchronisierung. Alle Daten bleiben auf deinem Gerät."
+    "useLocallyDesc": "Keine Synchronisierung. Alle Daten bleiben auf deinem Gerät.",
+    "maxDroppableItem": "Maximal {count} Elemente auf einmal erlaubt.",
+    "@maxDroppableItem": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "dropHere": "Lass deine Dateien, Bilder oder Texte hier fallen"
 }

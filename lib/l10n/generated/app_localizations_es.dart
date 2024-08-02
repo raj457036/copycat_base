@@ -4,7 +4,7 @@ import 'app_localizations.dart';
 
 /// The translations for Spanish Castilian (`es`).
 class AppLocalizationsEs extends AppLocalizations {
-  AppLocalizationsEs([super.locale = 'es']);
+  AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
   String get appName => 'CopyCat';
@@ -273,14 +273,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String isPausedDesc(String isPaused, String till) {
-    String temp0 = intl.Intl.selectLogic(
+    String _temp0 = intl.Intl.selectLogic(
       isPaused,
       {
         'true': 'La copia automática no está pausada',
         'other': 'La copia automática está pausada hasta $till',
       },
     );
-    return temp0;
+    return '$_temp0';
   }
 
   @override
@@ -938,4 +938,12 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get useLocallyDesc =>
       'Sin sincronización. Todos los datos permanecen en tu dispositivo.';
+
+  @override
+  String maxDroppableItem(int count) {
+    return 'Se permiten un máximo de $count elementos a la vez.';
+  }
+
+  @override
+  String get dropHere => 'Suelta tus archivos, imágenes o texto aquí';
 }

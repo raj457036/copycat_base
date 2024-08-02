@@ -382,5 +382,14 @@
     "useCollectionProTip": "To ensure your important clips are always available regardless of time, across all your devices, save them in a collection!",
     "syncConfigNotAvailable": "Sync related configurations not available.",
     "useLocally": "Use Locally",
-    "useLocallyDesc": "No syncing. All data stays on your device."
+    "useLocallyDesc": "No syncing. All data stays on your device.",
+    "maxDroppableItem": "Maximum {count} drop items are allowed at once.",
+    "@maxDroppableItem": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "dropHere":  "Drop your files, images or text here"
 }
