@@ -190,25 +190,6 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
     return copied;
   }
 
-  bool _foundDuplicate(ClipboardItem item) {
-    if (_latestItem == null) {
-      return false;
-    }
-
-    if (item.type == ClipItemType.text) {
-      logger.i("Found Duplicate Text");
-      return _latestItem!.text == item.text;
-    }
-
-    if (item.type == ClipItemType.url) {
-      logger.i("Found Duplicate URL");
-      return _latestItem!.url == item.url;
-    }
-
-    // other type not supported yet.
-    return false;
-  }
-
   Future<ClipboardItem> _convertToClipboardItem(ClipItem clip) async {
     final userId = auth.userId;
 
@@ -281,18 +262,14 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
       }
 
       final item = await _convertToClipboardItem(clip);
-      final isDuplicate = _foundDuplicate(item);
 
       _latestItem = item;
 
       if (manualPaste) {
         final userItem = item.copyWith(userIntent: manualPaste)..applyId(item);
         await persist(userItem);
-        return;
+        continue;
       }
-
-      if (isDuplicate) return;
-
       await persist(item);
     }
   }

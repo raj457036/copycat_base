@@ -24,6 +24,7 @@ class Subscription with _$Subscription, IsarIdMixin {
     @DateTimeConverter() DateTime? trialStart,
     @DateTimeConverter() DateTime? trialEnd,
     @Default(3) int collections,
+    @Default(50) int itemsPerCollection,
     @JsonKey(name: "syncHr") @Default(24) int syncHours,
     @Default(true) bool ads,
     @JsonKey(name: "syncInt") @Default($45S) int syncInterval,
@@ -37,42 +38,6 @@ class Subscription with _$Subscription, IsarIdMixin {
     @JsonKey(includeFromJson: false, includeToJson: false)
     String? managementUrl,
   }) = _Subscription;
-
-  static Subscription free(String userId) {
-    return Subscription(
-      created: now(),
-      modified: now(),
-      userId: userId,
-      planName: "Free",
-      subId: "",
-      source: "",
-    );
-  }
-
-  static Subscription pro(
-    String userId,
-    DateTime activeTill, [
-    bool isPromo = false,
-    String? managementUrl,
-  ]) {
-    return Subscription(
-      created: now(),
-      modified: now(),
-      userId: userId,
-      planName: "PRO ✨",
-      subId: "",
-      source: isPromo ? "PROMO" : "",
-      activeTill: activeTill,
-      ads: false,
-      collections: 50,
-      syncHours: 720,
-      syncInterval: 5,
-      maxSyncDevices: 5,
-      encrypt: true,
-      edit: true,
-      managementUrl: managementUrl,
-    );
-  }
 
   @ignore
   bool get isTrial {

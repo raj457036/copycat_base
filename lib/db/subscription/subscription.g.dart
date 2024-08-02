@@ -52,58 +52,63 @@ const SubscriptionSchema = CollectionSchema(
       name: r'isPersisted',
       type: IsarType.bool,
     ),
-    r'maxSyncDevices': PropertySchema(
+    r'itemsPerCollection': PropertySchema(
       id: 7,
+      name: r'itemsPerCollection',
+      type: IsarType.long,
+    ),
+    r'maxSyncDevices': PropertySchema(
+      id: 8,
       name: r'maxSyncDevices',
       type: IsarType.long,
     ),
     r'modified': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'modified',
       type: IsarType.dateTime,
     ),
     r'planName': PropertySchema(
-      id: 9,
+      id: 10,
       name: r'planName',
       type: IsarType.string,
     ),
     r'serverId': PropertySchema(
-      id: 10,
+      id: 11,
       name: r'serverId',
       type: IsarType.long,
     ),
     r'source': PropertySchema(
-      id: 11,
+      id: 12,
       name: r'source',
       type: IsarType.string,
     ),
     r'subId': PropertySchema(
-      id: 12,
+      id: 13,
       name: r'subId',
       type: IsarType.string,
     ),
     r'syncHours': PropertySchema(
-      id: 13,
+      id: 14,
       name: r'syncHours',
       type: IsarType.long,
     ),
     r'syncInterval': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'syncInterval',
       type: IsarType.long,
     ),
     r'trialEnd': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'trialEnd',
       type: IsarType.dateTime,
     ),
     r'trialStart': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'trialStart',
       type: IsarType.dateTime,
     ),
     r'userId': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'userId',
       type: IsarType.string,
     )
@@ -148,17 +153,18 @@ void _subscriptionSerialize(
   writer.writeBool(offsets[4], object.edit);
   writer.writeBool(offsets[5], object.encrypt);
   writer.writeBool(offsets[6], object.isPersisted);
-  writer.writeLong(offsets[7], object.maxSyncDevices);
-  writer.writeDateTime(offsets[8], object.modified);
-  writer.writeString(offsets[9], object.planName);
-  writer.writeLong(offsets[10], object.serverId);
-  writer.writeString(offsets[11], object.source);
-  writer.writeString(offsets[12], object.subId);
-  writer.writeLong(offsets[13], object.syncHours);
-  writer.writeLong(offsets[14], object.syncInterval);
-  writer.writeDateTime(offsets[15], object.trialEnd);
-  writer.writeDateTime(offsets[16], object.trialStart);
-  writer.writeString(offsets[17], object.userId);
+  writer.writeLong(offsets[7], object.itemsPerCollection);
+  writer.writeLong(offsets[8], object.maxSyncDevices);
+  writer.writeDateTime(offsets[9], object.modified);
+  writer.writeString(offsets[10], object.planName);
+  writer.writeLong(offsets[11], object.serverId);
+  writer.writeString(offsets[12], object.source);
+  writer.writeString(offsets[13], object.subId);
+  writer.writeLong(offsets[14], object.syncHours);
+  writer.writeLong(offsets[15], object.syncInterval);
+  writer.writeDateTime(offsets[16], object.trialEnd);
+  writer.writeDateTime(offsets[17], object.trialStart);
+  writer.writeString(offsets[18], object.userId);
 }
 
 Subscription _subscriptionDeserialize(
@@ -174,17 +180,18 @@ Subscription _subscriptionDeserialize(
     created: reader.readDateTime(offsets[3]),
     edit: reader.readBool(offsets[4]),
     encrypt: reader.readBool(offsets[5]),
-    maxSyncDevices: reader.readLong(offsets[7]),
-    modified: reader.readDateTime(offsets[8]),
-    planName: reader.readString(offsets[9]),
-    serverId: reader.readLongOrNull(offsets[10]),
-    source: reader.readString(offsets[11]),
-    subId: reader.readString(offsets[12]),
-    syncHours: reader.readLong(offsets[13]),
-    syncInterval: reader.readLong(offsets[14]),
-    trialEnd: reader.readDateTimeOrNull(offsets[15]),
-    trialStart: reader.readDateTimeOrNull(offsets[16]),
-    userId: reader.readString(offsets[17]),
+    itemsPerCollection: reader.readLong(offsets[7]),
+    maxSyncDevices: reader.readLong(offsets[8]),
+    modified: reader.readDateTime(offsets[9]),
+    planName: reader.readString(offsets[10]),
+    serverId: reader.readLongOrNull(offsets[11]),
+    source: reader.readString(offsets[12]),
+    subId: reader.readString(offsets[13]),
+    syncHours: reader.readLong(offsets[14]),
+    syncInterval: reader.readLong(offsets[15]),
+    trialEnd: reader.readDateTimeOrNull(offsets[16]),
+    trialStart: reader.readDateTimeOrNull(offsets[17]),
+    userId: reader.readString(offsets[18]),
   );
   object.id = id;
   return object;
@@ -214,24 +221,26 @@ P _subscriptionDeserializeProp<P>(
     case 7:
       return (reader.readLong(offset)) as P;
     case 8:
-      return (reader.readDateTime(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 9:
-      return (reader.readString(offset)) as P;
+      return (reader.readDateTime(offset)) as P;
     case 10:
-      return (reader.readLongOrNull(offset)) as P;
-    case 11:
       return (reader.readString(offset)) as P;
+    case 11:
+      return (reader.readLongOrNull(offset)) as P;
     case 12:
       return (reader.readString(offset)) as P;
     case 13:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 14:
       return (reader.readLong(offset)) as P;
     case 15:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 16:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 17:
+      return (reader.readDateTimeOrNull(offset)) as P;
+    case 18:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -607,6 +616,62 @@ extension SubscriptionQueryFilter
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'isPersisted',
         value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      itemsPerCollectionEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'itemsPerCollection',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      itemsPerCollectionGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'itemsPerCollection',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      itemsPerCollectionLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'itemsPerCollection',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      itemsPerCollectionBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'itemsPerCollection',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -1694,6 +1759,20 @@ extension SubscriptionQuerySortBy
   }
 
   QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      sortByItemsPerCollection() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'itemsPerCollection', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      sortByItemsPerCollectionDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'itemsPerCollection', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
       sortByMaxSyncDevices() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'maxSyncDevices', Sort.asc);
@@ -1932,6 +2011,20 @@ extension SubscriptionQuerySortThenBy
   }
 
   QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      thenByItemsPerCollection() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'itemsPerCollection', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      thenByItemsPerCollectionDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'itemsPerCollection', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
       thenByMaxSyncDevices() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'maxSyncDevices', Sort.asc);
@@ -2113,6 +2206,13 @@ extension SubscriptionQueryWhereDistinct
   }
 
   QueryBuilder<Subscription, Subscription, QDistinct>
+      distinctByItemsPerCollection() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'itemsPerCollection');
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QDistinct>
       distinctByMaxSyncDevices() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'maxSyncDevices');
@@ -2234,6 +2334,13 @@ extension SubscriptionQueryProperty
     });
   }
 
+  QueryBuilder<Subscription, int, QQueryOperations>
+      itemsPerCollectionProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'itemsPerCollection');
+    });
+  }
+
   QueryBuilder<Subscription, int, QQueryOperations> maxSyncDevicesProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'maxSyncDevices');
@@ -2319,6 +2426,7 @@ _$SubscriptionImpl _$$SubscriptionImplFromJson(Map<String, dynamic> json) =>
       trialEnd: _$JsonConverterFromJson<String, DateTime>(
           json['trialEnd'], const DateTimeConverter().fromJson),
       collections: (json['collections'] as num?)?.toInt() ?? 3,
+      itemsPerCollection: (json['itemsPerCollection'] as num?)?.toInt() ?? 50,
       syncHours: (json['syncHr'] as num?)?.toInt() ?? 24,
       ads: json['ads'] as bool? ?? true,
       syncInterval: (json['syncInt'] as num?)?.toInt() ?? $45S,
@@ -2342,6 +2450,7 @@ Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
       'trialEnd': _$JsonConverterToJson<String, DateTime>(
           instance.trialEnd, const DateTimeConverter().toJson),
       'collections': instance.collections,
+      'itemsPerCollection': instance.itemsPerCollection,
       'syncHr': instance.syncHours,
       'ads': instance.ads,
       'syncInt': instance.syncInterval,
