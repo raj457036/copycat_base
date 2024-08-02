@@ -38,6 +38,7 @@ mixin _$Subscription {
   DateTime? get trialEnd => throw _privateConstructorUsedError;
   int get collections => throw _privateConstructorUsedError;
   int get itemsPerCollection => throw _privateConstructorUsedError;
+  bool get dragNdrop => throw _privateConstructorUsedError;
   @JsonKey(name: "syncHr")
   int get syncHours => throw _privateConstructorUsedError;
   bool get ads => throw _privateConstructorUsedError;
@@ -77,6 +78,7 @@ abstract class $SubscriptionCopyWith<$Res> {
       @DateTimeConverter() DateTime? trialEnd,
       int collections,
       int itemsPerCollection,
+      bool dragNdrop,
       @JsonKey(name: "syncHr") int syncHours,
       bool ads,
       @JsonKey(name: "syncInt") int syncInterval,
@@ -113,6 +115,7 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? trialEnd = freezed,
     Object? collections = null,
     Object? itemsPerCollection = null,
+    Object? dragNdrop = null,
     Object? syncHours = null,
     Object? ads = null,
     Object? syncInterval = null,
@@ -167,6 +170,10 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.itemsPerCollection
           : itemsPerCollection // ignore: cast_nullable_to_non_nullable
               as int,
+      dragNdrop: null == dragNdrop
+          ? _value.dragNdrop
+          : dragNdrop // ignore: cast_nullable_to_non_nullable
+              as bool,
       syncHours: null == syncHours
           ? _value.syncHours
           : syncHours // ignore: cast_nullable_to_non_nullable
@@ -223,6 +230,7 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
       @DateTimeConverter() DateTime? trialEnd,
       int collections,
       int itemsPerCollection,
+      bool dragNdrop,
       @JsonKey(name: "syncHr") int syncHours,
       bool ads,
       @JsonKey(name: "syncInt") int syncInterval,
@@ -257,6 +265,7 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? trialEnd = freezed,
     Object? collections = null,
     Object? itemsPerCollection = null,
+    Object? dragNdrop = null,
     Object? syncHours = null,
     Object? ads = null,
     Object? syncInterval = null,
@@ -311,6 +320,10 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.itemsPerCollection
           : itemsPerCollection // ignore: cast_nullable_to_non_nullable
               as int,
+      dragNdrop: null == dragNdrop
+          ? _value.dragNdrop
+          : dragNdrop // ignore: cast_nullable_to_non_nullable
+              as bool,
       syncHours: null == syncHours
           ? _value.syncHours
           : syncHours // ignore: cast_nullable_to_non_nullable
@@ -362,6 +375,7 @@ class _$SubscriptionImpl extends _Subscription {
       @DateTimeConverter() this.trialEnd,
       this.collections = 3,
       this.itemsPerCollection = 50,
+      this.dragNdrop = false,
       @JsonKey(name: "syncHr") this.syncHours = 24,
       this.ads = true,
       @JsonKey(name: "syncInt") this.syncInterval = $45S,
@@ -409,6 +423,9 @@ class _$SubscriptionImpl extends _Subscription {
   @JsonKey()
   final int itemsPerCollection;
   @override
+  @JsonKey()
+  final bool dragNdrop;
+  @override
   @JsonKey(name: "syncHr")
   final int syncHours;
   @override
@@ -437,7 +454,7 @@ class _$SubscriptionImpl extends _Subscription {
 
   @override
   String toString() {
-    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, managementUrl: $managementUrl)';
+    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, managementUrl: $managementUrl)';
   }
 
   @override
@@ -463,6 +480,8 @@ class _$SubscriptionImpl extends _Subscription {
                 other.collections == collections) &&
             (identical(other.itemsPerCollection, itemsPerCollection) ||
                 other.itemsPerCollection == itemsPerCollection) &&
+            (identical(other.dragNdrop, dragNdrop) ||
+                other.dragNdrop == dragNdrop) &&
             (identical(other.syncHours, syncHours) ||
                 other.syncHours == syncHours) &&
             (identical(other.ads, ads) || other.ads == ads) &&
@@ -493,6 +512,7 @@ class _$SubscriptionImpl extends _Subscription {
         trialEnd,
         collections,
         itemsPerCollection,
+        dragNdrop,
         syncHours,
         ads,
         syncInterval,
@@ -534,6 +554,7 @@ abstract class _Subscription extends Subscription {
       @DateTimeConverter() final DateTime? trialEnd,
       final int collections,
       final int itemsPerCollection,
+      final bool dragNdrop,
       @JsonKey(name: "syncHr") final int syncHours,
       final bool ads,
       @JsonKey(name: "syncInt") final int syncInterval,
@@ -578,6 +599,8 @@ abstract class _Subscription extends Subscription {
   int get collections;
   @override
   int get itemsPerCollection;
+  @override
+  bool get dragNdrop;
   @override
   @JsonKey(name: "syncHr")
   int get syncHours;

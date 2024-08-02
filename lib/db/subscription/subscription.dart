@@ -25,6 +25,7 @@ class Subscription with _$Subscription, IsarIdMixin {
     @DateTimeConverter() DateTime? trialEnd,
     @Default(3) int collections,
     @Default(50) int itemsPerCollection,
+    @Default(false) bool dragNdrop,
     @JsonKey(name: "syncHr") @Default(24) int syncHours,
     @Default(true) bool ads,
     @JsonKey(name: "syncInt") @Default($45S) int syncInterval,
