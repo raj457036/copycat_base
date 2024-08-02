@@ -4,7 +4,7 @@ import 'app_localizations.dart';
 
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
-  AppLocalizationsEn([String locale = 'en']) : super(locale);
+  AppLocalizationsEn([super.locale = 'en']);
 
   @override
   String get appName => 'CopyCat';
@@ -269,14 +269,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String isPausedDesc(String isPaused, String till) {
-    String _temp0 = intl.Intl.selectLogic(
+    String temp0 = intl.Intl.selectLogic(
       isPaused,
       {
         'true': 'Auto copy is not paused',
         'other': 'Auto Copy is paused until $till',
       },
     );
-    return '$_temp0';
+    return temp0;
   }
 
   @override

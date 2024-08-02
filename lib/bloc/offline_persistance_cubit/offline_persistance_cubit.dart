@@ -20,8 +20,6 @@ import "package:universal_io/io.dart";
 part 'offline_persistance_cubit.freezed.dart';
 part 'offline_persistance_state.dart';
 
-ClipboardItem? _latestItem;
-
 @lazySingleton
 class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
   final AuthCubit auth;
@@ -82,7 +80,6 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
   Future<void> startListners() async {
     if (_listening) return;
-    _latestItem = await _getLatestClipboardItem();
     clipboard.start(onCaptureClipboard);
     copySub = clipboard.onCopy?.listen(onClips);
     _listening = true;
@@ -94,17 +91,6 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
     copySub?.cancel();
     copySub = null;
     _listening = false;
-  }
-
-  Future<ClipboardItem?> _getLatestClipboardItem() async {
-    final result = await repo.getLatest();
-    final item = result.fold((l) {
-      logger.e(l);
-      return null;
-    }, (r) {
-      return r;
-    });
-    return item;
   }
 
   Future<void> paste() async {
@@ -262,8 +248,6 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
       }
 
       final item = await _convertToClipboardItem(clip);
-
-      _latestItem = item;
 
       if (manualPaste) {
         final userItem = item.copyWith(userIntent: manualPaste)..applyId(item);

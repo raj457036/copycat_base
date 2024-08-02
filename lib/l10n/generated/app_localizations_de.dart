@@ -4,7 +4,7 @@ import 'app_localizations.dart';
 
 /// The translations for German (`de`).
 class AppLocalizationsDe extends AppLocalizations {
-  AppLocalizationsDe([String locale = 'de']) : super(locale);
+  AppLocalizationsDe([super.locale = 'de']);
 
   @override
   String get appName => 'CopyCat';
@@ -270,14 +270,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String isPausedDesc(String isPaused, String till) {
-    String _temp0 = intl.Intl.selectLogic(
+    String temp0 = intl.Intl.selectLogic(
       isPaused,
       {
         'true': 'Automatisches Kopieren ist nicht pausiert',
         'other': 'Automatisches Kopieren ist bis $till pausiert',
       },
     );
-    return '$_temp0';
+    return temp0;
   }
 
   @override

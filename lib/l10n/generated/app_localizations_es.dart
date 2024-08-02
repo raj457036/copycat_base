@@ -4,7 +4,7 @@ import 'app_localizations.dart';
 
 /// The translations for Spanish Castilian (`es`).
 class AppLocalizationsEs extends AppLocalizations {
-  AppLocalizationsEs([String locale = 'es']) : super(locale);
+  AppLocalizationsEs([super.locale = 'es']);
 
   @override
   String get appName => 'CopyCat';
@@ -273,14 +273,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String isPausedDesc(String isPaused, String till) {
-    String _temp0 = intl.Intl.selectLogic(
+    String temp0 = intl.Intl.selectLogic(
       isPaused,
       {
         'true': 'La copia automática no está pausada',
         'other': 'La copia automática está pausada hasta $till',
       },
     );
-    return '$_temp0';
+    return temp0;
   }
 
   @override
