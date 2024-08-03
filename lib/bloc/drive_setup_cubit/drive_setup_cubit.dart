@@ -13,11 +13,33 @@ part 'drive_setup_state.dart';
 
 @lazySingleton
 class DriveSetupCubit extends Cubit<DriveSetupState> {
+  Completer? readyState;
   final DriveCredentialRepository repo;
 
   Timer? timer;
 
   DriveSetupCubit(this.repo) : super(const DriveSetupState.unknown());
+
+  void _readyNow() {
+    if (readyState != null) {
+      if (!readyState!.isCompleted) {
+        readyState!.complete();
+        readyState = null;
+      }
+    }
+  }
+
+  Future<void> waitIfNotReady() async {
+    switch (state) {
+      case DriveSetupDone():
+        return;
+      case DriveSetupUnknown(waiting: true) ||
+            DriveSetupFetching() ||
+            DriveSetupRefreshingToken():
+        readyState = Completer();
+        return readyState!.future;
+    }
+  }
 
   Future<void> startResetTimer() async {
     timer = Timer(
@@ -52,39 +74,46 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
 
   void reset() {
     emit(const DriveSetupState.unknown());
+    _readyNow();
   }
 
   Future<bool> fetch() async {
-    emit(const DriveSetupState.fetching());
-    final response = await repo.getDriveCredentials();
-    final result = await response.fold(
-      (l) async => l,
-      (r) async {
-        if (r.isExpired) {
-          final refreshed = await repo.refreshAccessToken();
+    try {
+      emit(const DriveSetupState.fetching());
+      final response = await repo.getDriveCredentials();
+      final result = await response.fold(
+        (l) async => l,
+        (r) async {
+          if (r.isExpired) {
+            final refreshed = await repo.refreshAccessToken();
 
-          return refreshed.fold(
-            (l) => l,
-            (r) => r,
-          );
-        }
-        return DriveSetupState.setupDone(token: r);
-      },
-    );
+            return refreshed.fold(
+              (l) => l,
+              (r) => r,
+            );
+          }
 
-    if (result is Failure) {
-      emit(DriveSetupState.setupError(failure: result));
-      return false;
-    } else if (result is DriveAccessToken) {
-      if (result.isExpired) {
-        emit(const DriveSetupState.setupError(failure: frequentSyncing));
+          return DriveSetupState.setupDone(token: r);
+        },
+      );
+
+      if (result is Failure) {
+        emit(DriveSetupState.setupError(failure: result));
         return false;
+      } else if (result is DriveAccessToken) {
+        if (result.isExpired) {
+          emit(const DriveSetupState.setupError(failure: frequentSyncing));
+          return false;
+        } else {
+          emit(DriveSetupState.setupDone(token: result));
+
+          return true;
+        }
       } else {
-        emit(DriveSetupState.setupDone(token: result));
-        return true;
+        return false;
       }
-    } else {
-      return false;
+    } finally {
+      _readyNow();
     }
   }
 
@@ -103,32 +132,37 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
   }
 
   Future<void> verifyAuthCodeAndSetup(String code, List<String> scopes) async {
-    if (!scopes.contains(DriveApi.driveAppdataScope)) {
-      emit(
-        const DriveSetupState.setupError(
-          failure: Failure(
-            message: "Permission not granted!",
-            code: "drive-perm-not-granted",
+    try {
+      if (!scopes.contains(DriveApi.driveAppdataScope)) {
+        emit(
+          const DriveSetupState.setupError(
+            failure: Failure(
+              message: "Permission not granted!",
+              code: "drive-perm-not-granted",
+            ),
           ),
-        ),
+        );
+        return;
+      }
+
+      emit(DriveSetupState.verifyingCode(code: code, scopes: scopes));
+
+      final result = await repo.setupDrive(code);
+      stopResetTimer();
+      final newState = result.fold(
+        (l) => DriveSetupState.setupError(failure: l),
+        (r) => DriveSetupState.setupDone(token: r),
       );
-      return;
+      emit(newState);
+    } finally {
+      _readyNow();
     }
-
-    emit(DriveSetupState.verifyingCode(code: code, scopes: scopes));
-
-    final result = await repo.setupDrive(code);
-    stopResetTimer();
-    emit(result.fold(
-      (l) => DriveSetupState.setupError(failure: l),
-      (r) => DriveSetupState.setupDone(token: r),
-    ));
   }
 
   Future<DriveAccessToken?> refreshAccess() async {
     emit(const DriveSetupState.refreshingToken());
     final result = await repo.refreshAccessToken();
-    return result.fold(
+    result.fold(
       (l) {
         emit(DriveSetupState.setupError(failure: l));
         return null;
@@ -138,6 +172,8 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
         return r;
       },
     );
+    _readyNow();
+    return null;
   }
 
   void setupError(String code) async {
@@ -146,5 +182,6 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
         failure: Failure(code: code, message: "Failed to setup drive."),
       ),
     );
+    _readyNow();
   }
 }

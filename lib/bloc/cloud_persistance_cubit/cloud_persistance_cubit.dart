@@ -172,6 +172,8 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
       return;
     }
 
+    await driveCubit.waitIfNotReady();
+
     final accessToken = await driveCubit.accessToken;
 
     if (accessToken == null) {
