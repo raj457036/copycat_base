@@ -3,7 +3,6 @@ import "package:copycat_base/db/clip_collection/clipcollection.dart";
 import "package:copycat_base/db/clipboard_item/clipboard_item.dart";
 import "package:copycat_base/db/subscription/subscription.dart";
 import "package:copycat_base/db/sync_status/syncstatus.dart";
-import "package:firebase_analytics/firebase_analytics.dart";
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:isar/isar.dart";
@@ -43,9 +42,6 @@ abstract class RegisterModule {
     );
     return isar;
   }
-
-  @singleton
-  FirebaseAnalytics get analytics => FirebaseAnalytics.instance;
 
   @preResolve
   @Named("device_id")

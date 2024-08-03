@@ -50,7 +50,6 @@ import 'package:copycat_base/domain/repositories/sync_clipboard.dart' as _i106;
 import 'package:copycat_base/domain/sources/clip_collection.dart' as _i569;
 import 'package:copycat_base/domain/sources/clipboard.dart' as _i191;
 import 'package:copycat_base/domain/sources/sync_clipboard.dart' as _i903;
-import 'package:firebase_analytics/firebase_analytics.dart' as _i398;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:isar/isar.dart' as _i338;
 import 'package:tiny_storage/tiny_storage.dart' as _i829;
@@ -61,7 +60,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
   _i687.FutureOr<void> init(_i526.GetItHelper gh) async {
     final registerModule = _$RegisterModule();
     gh.factory<_i617.WindowActionCubit>(() => _i617.WindowActionCubit());
-    gh.singleton<_i398.FirebaseAnalytics>(() => registerModule.analytics);
     await gh.singletonAsync<_i829.TinyStorage>(
       () => registerModule.localCache(),
       preResolve: true,
@@ -104,8 +102,8 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i191.ClipboardSource>(instanceName: 'local')),
       instanceName: 'offline',
     );
-    gh.lazySingleton<_i860.AnalyticsRepository>(() =>
-        _i55.AnalyticsRepositoryImpl(client: gh<_i398.FirebaseAnalytics>()));
+    gh.lazySingleton<_i860.AnalyticsRepository>(
+        () => _i55.AnalyticsRepositoryImpl());
     gh.lazySingleton<_i72.ClipboardRepository>(
       () => _i122.ClipboardRepositoryCloudImpl(
           gh<_i191.ClipboardSource>(instanceName: 'remote')),

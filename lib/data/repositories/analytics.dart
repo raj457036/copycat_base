@@ -6,9 +6,12 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AnalyticsRepository)
 class AnalyticsRepositoryImpl implements AnalyticsRepository {
-  final FirebaseAnalytics client;
+  const AnalyticsRepositoryImpl();
 
-  AnalyticsRepositoryImpl({required this.client});
+  FirebaseAnalytics? get client {
+    if (isAnalyticsSupported) return FirebaseAnalytics.instance;
+    return null;
+  }
 
   @override
   Future<void> logAnalyticsEvent({
@@ -16,7 +19,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    await client.logEvent(
+    await client?.logEvent(
       name: name,
       parameters: parameters,
     );
@@ -28,7 +31,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     Map<String, dynamic>? parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    await client.logEvent(name: "copycat_feature_used", parameters: {
+    await client?.logEvent(name: "copycat_feature_used", parameters: {
       "feature": feature,
       ...?parameters,
     });
@@ -40,7 +43,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    client.logLogin(
+    client?.logLogin(
       loginMethod: loginMethod,
       parameters: parameters,
     );
@@ -52,7 +55,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    client.logSignUp(
+    client?.logSignUp(
       signUpMethod: signUpMethod,
       parameters: parameters,
     );
@@ -62,11 +65,11 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
   Future<void> setAnalyticUser(AuthUser user) async {
     if (!isAnalyticsSupported) return;
 
-    await client.setUserId(id: user.userId);
-    await client.setUserProperty(
+    await client?.setUserId(id: user.userId);
+    await client?.setUserProperty(
       name: "email",
       value: user.email,
     );
-    await client.logAppOpen();
+    await client?.logAppOpen();
   }
 }
