@@ -544,14 +544,14 @@ class ClipboardService with ClipboardListener {
   Future<ClipboardReader?> getReader() async =>
       await SystemClipboard.instance?.read();
 
-  void setWriting(bool writing) {
+  void setWriting([bool writing = false]) {
     _writing = writing;
   }
 
   Future<void> write(Iterable<DataWriterItem> items) async {
     setWriting(true);
     await SystemClipboard.instance?.write(items);
-    await Future.delayed(Durations.short3, () => setWriting(false));
+    Future.delayed(Durations.short2, setWriting);
   }
 
   Future<void> start([void Function()? onRead]) async {
@@ -587,7 +587,7 @@ class ClipboardService with ClipboardListener {
 
   Future<List<ClipItem?>?> readClipboard({bool manual = false}) async {
     logger.i("Reading clipboard");
-    await Future.delayed(Durations.short4);
+    await Future.delayed(Durations.short2);
     final reader = await getReader();
 
     if (reader == null) {
@@ -615,8 +615,12 @@ class ClipboardService with ClipboardListener {
       }
     }
 
-    await processSingleReaderDataFormat(reader, res, manual: manual);
-    return null;
+    final clips = await processSingleReaderDataFormat(
+      reader,
+      res,
+      manual: manual,
+    );
+    return clips;
   }
 
   (DataFormat<Object>?, int) filterOutByPriority(

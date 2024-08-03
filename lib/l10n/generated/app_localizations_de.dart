@@ -928,7 +928,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get syncConfigNotAvailable =>
-      'Synchronisierungsbezogene Konfigurationen nicht verfügbar.';
+      'Synchronisierungsbezogene Konfigurationen sind nicht verfügbar, wenn das lokale Clipboard verwendet wird.';
 
   @override
   String get useLocally => 'Lokal verwenden';

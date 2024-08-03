@@ -930,7 +930,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get syncConfigNotAvailable =>
-      'Configuraciones relacionadas con la sincronización no disponibles.';
+      'Las configuraciones relacionadas con la sincronización no están disponibles mientras se usa el portapapeles local.';
 
   @override
   String get useLocally => 'Usar Localmente';

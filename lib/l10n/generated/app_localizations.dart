@@ -1752,7 +1752,7 @@ abstract class AppLocalizations {
   /// No description provided for @syncConfigNotAvailable.
   ///
   /// In en, this message translates to:
-  /// **'Sync related configurations not available.'**
+  /// **'Sync-related configurations are not available while using the local clipboard.'**
   String get syncConfigNotAvailable;
 
   /// No description provided for @useLocally.

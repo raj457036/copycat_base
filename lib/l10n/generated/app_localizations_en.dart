@@ -919,7 +919,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get syncConfigNotAvailable =>
-      'Sync related configurations not available.';
+      'Sync-related configurations are not available while using the local clipboard.';
 
   @override
   String get useLocally => 'Use Locally';

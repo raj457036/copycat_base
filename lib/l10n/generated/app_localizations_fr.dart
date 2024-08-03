@@ -933,7 +933,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get syncConfigNotAvailable =>
-      'Configurations de synchronisation non disponibles.';
+      'Les configurations de synchronisation ne sont pas disponibles lors de l\'utilisation du presse-papiers local.';
 
   @override
   String get useLocally => 'Utiliser Localement';

@@ -377,7 +377,7 @@
     "rebuildingDB": "⏱️ Reconstruction de la Base de Données\nVeuillez patienter...",
     "proTip": "Astuce Pro",
     "useCollectionProTip": "Pour vous assurer que vos clips importants sont toujours disponibles, quel que soit le moment, sur tous vos appareils, enregistrez-les dans une collection !",
-    "syncConfigNotAvailable": "Configurations de synchronisation non disponibles.",
+    "syncConfigNotAvailable": "Les configurations de synchronisation ne sont pas disponibles lors de l'utilisation du presse-papiers local.",
     "useLocally": "Utiliser Localement",
     "useLocallyDesc": "Pas de synchronisation. Toutes les données restent sur votre appareil.",
     "maxDroppableItem": "Un maximum de {count} éléments est autorisé à la fois.",
