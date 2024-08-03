@@ -64,10 +64,6 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
 
     await client.setUserId(id: user.userId);
     await client.setUserProperty(
-      name: "name",
-      value: user.displayName,
-    );
-    await client.setUserProperty(
       name: "email",
       value: user.email,
     );
