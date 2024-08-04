@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:http/http.dart' as http;
@@ -8,11 +9,11 @@ import 'package:rxdart/rxdart.dart';
 abstract class DriveService {
   String? accessToken;
 
-  Future<ClipboardItem> upload(
+  FailureOr<ClipboardItem> upload(
     ClipboardItem item, {
     void Function(int, int)? onProgress,
   });
-  Future<ClipboardItem> download(
+  FailureOr<ClipboardItem> download(
     ClipboardItem item, {
     void Function(int, int)? onProgress,
   });

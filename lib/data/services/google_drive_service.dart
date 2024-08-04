@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:io' as io;
 
+import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/numbers/file_sizes.dart';
 import 'package:copycat_base/data/services/google_services.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/utils/utility.dart';
+import 'package:dartz/dartz.dart';
 import 'package:googleapis/drive/v3.dart';
 import 'package:googleapis/oauth2/v2.dart' as oauth2;
 import 'package:http/http.dart' as http;
@@ -49,11 +51,13 @@ class GoogleDriveService implements DriveService {
   DriveApi getDrive([http.Client? client]) => DriveApi(client ?? authClient);
 
   @override
-  Future<ClipboardItem> download(
+  FailureOr<ClipboardItem> download(
     ClipboardItem item, {
     void Function(int, int)? onProgress,
   }) async {
-    if (item.driveFileId == null || item.rootDir == null) return item;
+    if (item.driveFileId == null || item.rootDir == null) {
+      return const Left(driveFailure);
+    }
 
     final client = authClient;
     StreamSubscription? subscription;
@@ -84,10 +88,10 @@ class GoogleDriveService implements DriveService {
       final file = io.File(filePath).openWrite();
 
       await file.addStream(media.stream);
-      return item.copyWith(localPath: filePath)..applyId(item);
+      return Right(item.copyWith(localPath: filePath)..applyId(item));
     } catch (e) {
       logger.e(e, error: e);
-      return item;
+      return Left(Failure.fromException(e));
     } finally {
       subscription?.cancel();
       client.close();
@@ -96,7 +100,7 @@ class GoogleDriveService implements DriveService {
   }
 
   @override
-  Future<ClipboardItem> upload(
+  FailureOr<ClipboardItem> upload(
     ClipboardItem item, {
     void Function(int, int)? onProgress,
   }) async {
@@ -133,7 +137,7 @@ class GoogleDriveService implements DriveService {
         gfile,
         uploadMedia: media,
         uploadOptions: ResumableUploadOptions(
-          chunkSize: length < $10MB ? $2MB : $10MB,
+          chunkSize: $10MB,
         ),
       );
 
@@ -141,10 +145,10 @@ class GoogleDriveService implements DriveService {
         driveFileId: result.id,
       )..applyId(item);
       logger.i("File uploaded successfully!");
-      return item;
+      return Right(item);
     } catch (e) {
       logger.e(e, error: e);
-      return item;
+      return Left(Failure.fromException(e));
     } finally {
       subscription?.cancel();
       client.close();

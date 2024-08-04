@@ -11,6 +11,7 @@ import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/utils/blur_hash.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import "package:universal_io/io.dart";
@@ -126,8 +127,9 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
   Future<String?> _getBlurHashIfNeeded(ClipboardItem item) async {
     if (item.fileMimeType == null ||
         !item.fileMimeType!.startsWith("image/") ||
-        item.imgBlurHash != null ||
         item.localPath == null) return null;
+
+    if (item.imgBlurHash != null) return item.imgBlurHash;
 
     final blurHash = await getBlurHash(item.localPath!);
     return blurHash;
@@ -205,17 +207,26 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
       _getBlurHashIfNeeded(item)
     ]);
 
-    ClipboardItem updatedItem = results[0] as ClipboardItem;
+    final result = results[0] as Either<Failure, ClipboardItem>;
     final blurhash = results[1] as String?;
 
-    if (blurhash != null) {
-      updatedItem = updatedItem.copyWith(imgBlurHash: blurhash)
-        ..applyId(updatedItem);
-    }
+    result.fold(
+      (failure) {
+        item = item.copyWith(imgBlurHash: blurhash)..applyId(item);
+        emit(
+          CloudPersistanceState.error(failure, item, FailedAction.upload),
+        );
+      },
+      (updatedItem) async {
+        updatedItem = updatedItem.copyWith(imgBlurHash: blurhash)
+          ..applyId(updatedItem);
+        if (updatedItem.driveFileId != null) {
+          await _create(updatedItem, retryCount: retryCount);
+        }
+      },
+    );
 
-    if (updatedItem.driveFileId != null) {
-      await _create(updatedItem, retryCount: retryCount);
-    }
+    if (blurhash != null) {}
   }
 
   Future<void> delete(ClipboardItem item, {int retryCount = 0}) async {
@@ -228,7 +239,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
         emit(CloudPersistanceState.error(
           frequentSyncing,
           item.syncDone(frequentSyncing),
-          FailedAction.upload,
+          FailedAction.delete,
           retryCount: -1,
         ));
         return;
@@ -312,9 +323,17 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     }
 
     drive.accessToken = accessToken;
-    final updatedItem = await drive.download(
+    final result = await drive.download(
       item.assignUserId(userId),
     );
-    await persist(updatedItem);
+
+    result.fold(
+      (failure) {
+        emit(
+          CloudPersistanceState.error(failure, item, FailedAction.download),
+        );
+      },
+      persist,
+    );
   }
 }

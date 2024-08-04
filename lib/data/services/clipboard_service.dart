@@ -510,7 +510,7 @@ const avif = SimpleFileFormat(
   mimeTypes: ['image/avif'],
 );
 
-final allSupportedFormats = [
+final allSupportedClipFormats = [
   ...Formats.standardFormats,
   avif,
 ];
@@ -605,7 +605,7 @@ class ClipboardService with ClipboardListener {
 
     for (final item in reader.items) {
       DataFormat? selectedFormat;
-      final itemFormats = item.getFormats(Formats.standardFormats);
+      final itemFormats = item.getFormats(allSupportedClipFormats);
       (selectedFormat, selectedPref) = filterOutByPriority(
         itemFormats,
         prefScore: selectedPref,
@@ -719,7 +719,7 @@ class CopyToClipboard {
   Future<bool> fileContent(File file, {String? mimeType}) async {
     FutureOr<EncodedData>? format;
 
-    for (final f in allSupportedFormats) {
+    for (final f in allSupportedClipFormats) {
       if (f is SimpleFileFormat) {
         final mime_ = mimeType ?? mime.lookupMimeType(file.path);
         final isThis = f.mimeTypes?.contains(mime_);
