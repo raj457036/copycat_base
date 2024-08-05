@@ -133,6 +133,20 @@ void _encryptorEntryPoint(
   }
 }
 
+class DecryptionException implements Exception {
+  final String code;
+  final String message;
+
+  DecryptionException(this.message, {this.code = "not-active"});
+}
+
+class EncryptionException implements Exception {
+  final String code;
+  final String message;
+
+  EncryptionException(this.message, {this.code = "not-active"});
+}
+
 class EncrypterWorker {
   Completer? _completer;
   bool _isRunning = false;
@@ -199,13 +213,13 @@ class EncrypterWorker {
 
   Future<String> encrypt(String content) async {
     if (secret == null) {
-      throw Exception("Secret is not set");
+      throw EncryptionException("Secret is not set", code: "invalid-secret");
     }
     if (_encryptor == null) {
-      throw Exception("Encryptor is not running");
+      throw EncryptionException("Encryptor is not running");
     }
     if (!_encryption) {
-      throw Exception("Encryption is not active");
+      throw EncryptionException("Encryption is not active");
     }
     final id = const Uuid().v4();
     final completer = Completer<String>();
@@ -218,13 +232,13 @@ class EncrypterWorker {
 
   Future<String> decrypt(String content) async {
     if (secret == null) {
-      throw Exception("Secret is not set");
+      throw DecryptionException("Secret is not set", code: "invalid-secret");
     }
     if (_encryptor == null) {
-      throw Exception("Encryptor is not running");
+      throw DecryptionException("Encryptor is not running");
     }
     if (!_decryption) {
-      throw Exception("Decryption is not active");
+      throw DecryptionException("Decryption is not active");
     }
     final id = const Uuid().v4();
     final completer = Completer<String>();

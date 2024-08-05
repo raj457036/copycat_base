@@ -21,8 +21,13 @@ part 'sync_manager_cubit.freezed.dart';
 part 'sync_manager_state.dart';
 
 Future<void> syncChanges(BuildContext context) async {
-  showTextSnackbar(context.locale.syncing("..."),
-      isLoading: true, closePrevious: true);
+  if (!context.mounted) return;
+
+  showTextSnackbar(
+    context.locale.syncing("..."),
+    isLoading: true,
+    closePrevious: true,
+  );
   await context.read<SyncManagerCubit>().syncChanges(force: true);
   if (context.mounted) {
     showTextSnackbar(context.locale.done, closePrevious: true);
