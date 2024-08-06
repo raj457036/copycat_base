@@ -19,6 +19,8 @@ import 'package:copycat_base/bloc/collection_clips_cubit/collection_clips_cubit.
     as _i1054;
 import 'package:copycat_base/bloc/drive_setup_cubit/drive_setup_cubit.dart'
     as _i746;
+import 'package:copycat_base/bloc/focused_clipitem_cubit/focused_clipitem_cubit.dart'
+    as _i232;
 import 'package:copycat_base/bloc/offline_persistance_cubit/offline_persistance_cubit.dart'
     as _i768;
 import 'package:copycat_base/bloc/search_cubit/search_cubit.dart' as _i776;
@@ -72,8 +74,12 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     );
     gh.lazySingleton<_i872.GoogleOAuth2Service>(
         () => _i872.GoogleOAuth2Service());
+    gh.lazySingleton<_i232.FocusedClipitemCubit>(
+        () => _i232.FocusedClipitemCubit());
     gh.lazySingleton<_i854.AppConfigRepository>(
         () => _i228.AppConfigRepositoryImpl(gh<_i338.Isar>()));
+    gh.lazySingleton<_i860.AnalyticsRepository>(
+        () => const _i55.AnalyticsRepositoryImpl());
     gh.lazySingleton<_i746.DriveSetupCubit>(
         () => _i746.DriveSetupCubit(gh<_i447.DriveCredentialRepository>()));
     gh.lazySingleton<_i106.SyncRepository>(() => _i421.SyncRepositoryImpl(
@@ -102,8 +108,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i191.ClipboardSource>(instanceName: 'local')),
       instanceName: 'offline',
     );
-    gh.lazySingleton<_i860.AnalyticsRepository>(
-        () => _i55.AnalyticsRepositoryImpl());
     gh.lazySingleton<_i72.ClipboardRepository>(
       () => _i122.ClipboardRepositoryCloudImpl(
           gh<_i191.ClipboardSource>(instanceName: 'remote')),
