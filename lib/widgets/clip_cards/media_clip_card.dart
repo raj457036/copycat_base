@@ -4,9 +4,12 @@ import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:copycat_base/constants/strings/asset_constants.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
+import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import "package:universal_io/io.dart";
+
+final mediaMimeRegex = RegExp("video|image|audio");
 
 class MediaClipCard extends StatelessWidget {
   final ClipboardItem item;
@@ -53,37 +56,18 @@ class MediaClipCard extends StatelessWidget {
     );
   }
 
-  Widget getIcon() {
+  Widget getIcon(BuildContext context) {
     if (item.fileMimeType != null) {
-      if (item.fileMimeType!.startsWith("image")) {
-        return const Icon(
-          Icons.image,
-          color: Colors.white,
-        );
-      }
-      if (item.fileMimeType!.startsWith("video")) {
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              item.fileMimeType!,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            width8,
-            const Icon(
-              Icons.ondemand_video_rounded,
-              color: Colors.white,
-            ),
-            width2,
-          ],
-        );
-      }
-      if (item.fileMimeType!.startsWith("audio")) {
-        return const Icon(
-          Icons.audiotrack,
-          color: Colors.white,
+      if (item.fileMimeType!.startsWith(mediaMimeRegex)) {
+        final label = "${item.fileMimeType!} • ${formatBytes(item.fileSize!)}";
+        return Chip(
+          label: Text(
+            label,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          side: BorderSide.none,
         );
       }
     }
@@ -98,26 +82,16 @@ class MediaClipCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: radiusBottom12,
       child: SizedBox.expand(
-          child: Stack(
-        children: [
-          Positioned.fill(child: getPreview()),
-          Align(
-            alignment: const Alignment(0.95, 0.95),
-            child: getIcon(),
-          ),
-        ],
-      )
-
-          // DecoratedBox(
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       image: getPreview(),
-          //       fit: BoxFit.cover,
-          //     ),
-          //   ),
-          //   child:
-          // ),
-          ),
+        child: Stack(
+          children: [
+            Positioned.fill(child: getPreview()),
+            Align(
+              alignment: const Alignment(0.0, 0.95),
+              child: getIcon(context),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

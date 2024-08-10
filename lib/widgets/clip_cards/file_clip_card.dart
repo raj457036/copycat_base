@@ -13,39 +13,38 @@ class FileClipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final textTheme = context.textTheme;
+    final label = "${item.fileMimeType!} • ${formatBytes(item.fileSize!)}";
+
+    final metaChip = Chip(
+      label: Text(
+        label,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+      // side: BorderSide.none,
+    );
 
     return SizedBox.expand(
       child: Padding(
         padding: const EdgeInsets.all(padding8),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Center(
-            child: Text.rich(
-              TextSpan(text: item.fileName?.sub(end: 10), children: [
-                if (item.fileMimeType != null)
-                  TextSpan(
-                    text: "\n(${item.fileMimeType})",
-                    style: textTheme.labelMedium?.copyWith(
-                      color: colors.onTertiaryContainer,
-                    ),
-                  ),
-                if (item.fileSize != null)
-                  TextSpan(
-                    text: "\n${formatBytes(item.fileSize!)}",
-                    style: textTheme.labelSmall?.copyWith(
-                      color: colors.onTertiaryContainer,
-                    ),
-                  )
-              ]),
+        child: Stack(
+          children: [
+            Text(
+              item.fileName?.sub(end: 25) ?? "No Name",
               overflow: TextOverflow.fade,
               maxLines: 5,
               textAlign: TextAlign.center,
-              style: textTheme.titleMedium?.copyWith(
+              style: textTheme.bodySmall?.copyWith(
                 color: colors.onTertiaryContainer,
                 height: 1.8,
               ),
             ),
-          ),
+            Align(
+              alignment: const Alignment(0.0, 0.95),
+              child: metaChip,
+            ),
+          ],
         ),
       ),
     );

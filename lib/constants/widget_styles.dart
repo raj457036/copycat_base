@@ -48,17 +48,19 @@ const radiusBottom12 = BorderRadius.vertical(
 );
 
 // edge insets
-const insetLRB16 = EdgeInsets.only(
+const insetLR8BT12 = EdgeInsets.only(
   left: padding8,
   right: padding8,
-  bottom: padding16,
-);
-
-const insetRTB12 = EdgeInsets.only(
-  right: padding12,
   bottom: padding12,
   top: padding12,
 );
+
+const insetTB8 = EdgeInsets.only(
+  top: padding8,
+  bottom: padding8,
+);
+
+const inset12 = EdgeInsets.all(padding12);
 
 const insetTRB16 = EdgeInsets.only(
   top: padding12,

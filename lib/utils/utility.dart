@@ -84,7 +84,7 @@ String formatBytes(int sizeInBytes, {bool precise = true}) {
   const mb = 1024 * 1024;
   const gb = mb * 1024;
   if (sizeInBytes < 1024) {
-    return '$sizeInBytes bytes';
+    return '$sizeInBytes b';
   } else if (sizeInBytes < gb) {
     return '${(sizeInBytes / mb).toStringAsFixed(precise ? 2 : 0)} MB';
   } else {
