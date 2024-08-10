@@ -54,9 +54,10 @@ const insetLRB16 = EdgeInsets.only(
   bottom: padding16,
 );
 
-const insetRB16 = EdgeInsets.only(
-  right: padding8,
-  bottom: padding16,
+const insetRTB12 = EdgeInsets.only(
+  right: padding12,
+  bottom: padding12,
+  top: padding12,
 );
 
 const insetTRB16 = EdgeInsets.only(
@@ -68,5 +69,5 @@ const insetTRB16 = EdgeInsets.only(
 const insetAll16 = EdgeInsets.all(padding16);
 
 const initialWindowSize = Size(1280, 720);
-const minimumWindowSize = Size(365, 550);
+const minimumWindowSize = Size(365, 600);
 const compactWindowSize = Size(365, 780);
