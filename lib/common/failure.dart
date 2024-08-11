@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:universal_io/io.dart';
 
 class Failure {
   final String message;
@@ -11,6 +12,7 @@ class Failure {
 
   factory Failure.fromException(dynamic e) {
     if (e is Failure) return e;
+    if (e is SocketException) return noInternetConnectionFailure;
     try {
       return Failure(
         message: e.message,
