@@ -1,25 +1,45 @@
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:universal_io/io.dart';
 import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
 part 'window_action_state.dart';
 
+const compactWindowPosition = Offset(1, 0);
+
 @injectable
 class WindowActionCubit extends Cubit<WindowActionState> {
-  WindowActionCubit() : super(const WindowActionState.loaded());
+  late final Size screenSize;
+  late final Size compactWindowSize;
+  WindowActionCubit() : super(const WindowActionState.loaded()) {
+    final view = PlatformDispatcher.instance.views.first;
+    screenSize = view.display.size / view.devicePixelRatio;
+    final int platformDiff;
+    if (Platform.isMacOS) {
+      platformDiff = 25;
+    } else {
+      platformDiff = 0;
+    }
+    compactWindowSize = Size(368.0, screenSize.height - platformDiff);
+  }
+
+  Future<bool> isCompactMode() async {
+    final size = await windowManager.getSize();
+    return size == compactWindowSize;
+  }
 
   Future<void> fetch() async {
     final isPinned = await windowManager.isAlwaysOnTop();
-    final compactMode = (await windowManager.getSize()) == compactWindowSize;
-
+    final isCompactMode_ = await isCompactMode();
     emit(
       WindowActionState.loaded(
         pinned: isPinned,
-        compact: compactMode,
+        compact: isCompactMode_,
         loading: false,
       ),
     );
@@ -37,15 +57,16 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   }
 
   Future<void> toggleCompact({bool reset = false}) async {
-    final compactMode =
-        reset ? true : (await windowManager.getSize()) == compactWindowSize;
+    final compactMode = reset ? true : await isCompactMode();
+
     await windowManager.setSize(
       compactMode ? initialWindowSize : compactWindowSize,
+      // animate: true,
     );
     if (!compactMode) {
       final position = await calcWindowPosition(
         compactWindowSize,
-        const Alignment(0.98, 0.0),
+        Alignment.centerRight,
       );
       await windowManager.setPosition(position, animate: true);
     } else {
