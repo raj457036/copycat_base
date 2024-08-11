@@ -24,6 +24,8 @@ class SearchCubit extends Cubit<SearchState> {
     String? searchQuery, {
     List<String>? textClipCategories,
     List<ClipItemType>? clipTypes,
+    DateTime? from,
+    DateTime? to,
   }) async {
     analyticsRepo.logFeatureUsed(feature: "search");
     switch (state) {
