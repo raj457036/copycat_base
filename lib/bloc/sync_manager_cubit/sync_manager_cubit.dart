@@ -49,6 +49,7 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
   bool syncing = false;
   Timer? autoSyncTimer;
   DateTime? lastManualSyncTS;
+  bool rebuilding = false;
 
   SyncManagerCubit(
     this.db,
@@ -135,16 +136,18 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     }
   }
 
-  Future<int> syncDeletedClipCollections(SyncStatus? lastSync) async {
-    if (lastSync == null) return 0;
+  Future<(int, Failure?)> syncDeletedClipCollections(
+      SyncStatus? lastSync) async {
+    if (lastSync == null) return (0, null);
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
     int deleted = 0;
+    Failure? failure;
 
     /// when the app can show the clips to the user.
     while (hasMore) {
-      emit(const SyncManagerState.checking());
+      emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getDeletedClipCollections(
         userId: auth.userId!,
         lastSynced: lastSync.lastSync,
@@ -152,7 +155,10 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         excludeDeviceId: deviceId,
       );
 
-      await result.fold((l) async => logger.e(l), (r) async {
+      await result.fold((l) async {
+        failure = l;
+        emit(SyncManagerState.failed(l));
+      }, (r) async {
         hasMore = r.hasMore;
         offset += r.results.length;
         // Apply changes to local db
@@ -177,10 +183,10 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       if (result.isLeft()) break;
     }
     logger.i("Deleted clip collection count: $deleted");
-    return deleted;
+    return (deleted, failure);
   }
 
-  Future<bool> syncClipCollections(
+  Future<(bool, Failure?)> syncClipCollections(
     SyncStatus? syncInfo, {
     bool silent = false,
   }) async {
@@ -190,10 +196,11 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     bool partlySynced = false;
     int added = 0;
     int updated = 0;
+    Failure? failure;
 
     /// when the app can show the clips to the user.
     while (hasMore) {
-      emit(const SyncManagerState.checking());
+      emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getLatestClipCollections(
         userId: auth.userId!,
         lastSynced: syncInfo?.lastSync,
@@ -201,8 +208,10 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         excludeDeviceId: syncInfo?.lastSync != null ? deviceId : null,
       );
 
-      await result.fold((l) async => emit(SyncManagerState.failed(l)),
-          (r) async {
+      await result.fold((l) async {
+        emit(SyncManagerState.failed(l));
+        failure = l;
+      }, (r) async {
         hasMore = r.hasMore;
         offset += r.results.length;
         // Apply changes to local db
@@ -244,7 +253,7 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       if (result.isLeft()) break;
     }
 
-    final deleted = await syncDeletedClipCollections(syncInfo);
+    final (deleted, deleteFailure) = await syncDeletedClipCollections(syncInfo);
 
     if (added > 0 || updated > 0 || deleted > 0) {
       emit(
@@ -255,21 +264,23 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
           updated: updated,
         ),
       );
-      return true;
+      return (true, failure);
     }
-    return false;
+    return (false, failure ?? deleteFailure);
   }
 
-  Future<int> syncDeletedClipboardItems(SyncStatus? syncInfo) async {
-    if (syncInfo == null) return 0;
+  Future<(int, Failure?)> syncDeletedClipboardItems(
+      SyncStatus? syncInfo) async {
+    if (syncInfo == null) return (0, null);
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
     int deleted = 0;
+    Failure? failure;
 
     /// when the app can show the clips to the user.
     while (hasMore) {
-      emit(const SyncManagerState.checking());
+      emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getDeletedClipboardItems(
         limit: 1000,
         userId: auth.userId!,
@@ -278,7 +289,10 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         excludeDeviceId: deviceId,
       );
 
-      await result.fold((l) async => logger.e(l), (r) async {
+      await result.fold((l) async {
+        emit(SyncManagerState.failed(l));
+        failure = l;
+      }, (r) async {
         hasMore = r.hasMore;
         offset += r.results.length;
         // Apply changes to local db
@@ -313,10 +327,10 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     }
 
     logger.i("Deleted clipboard items count: $deleted");
-    return deleted;
+    return (deleted, failure);
   }
 
-  Future<bool> syncClipboardItems(
+  Future<(bool, Failure?)> syncClipboardItems(
     SyncStatus? lastSync, {
     bool silent = false,
   }) async {
@@ -325,11 +339,12 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     int offset = 0;
     int added = 0;
     int updated = 0;
+    Failure? failure;
 
     /// when the app can show the clips to the user.
     bool partlySynced = false;
     while (hasMore) {
-      emit(const SyncManagerState.checking());
+      emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getLatestClipboardItems(
         limit: 1000,
         userId: auth.userId!,
@@ -338,8 +353,10 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         excludeDeviceId: lastSync?.lastSync != null ? deviceId : null,
       );
 
-      await result.fold((l) async => emit(SyncManagerState.failed(l)),
-          (r) async {
+      await result.fold((l) async {
+        emit(SyncManagerState.failed(l));
+        failure = l;
+      }, (r) async {
         hasMore = r.hasMore;
         offset += r.results.length;
         // Apply changes to local db
@@ -382,7 +399,7 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       if (result.isLeft()) break;
     }
 
-    final deleted = await syncDeletedClipboardItems(lastSync);
+    final (deleted, deleteFailure) = await syncDeletedClipboardItems(lastSync);
 
     if (added > 0 || updated > 0 || deleted > 0) {
       emit(SyncManagerState.clipboardSynced(
@@ -391,9 +408,9 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         deleted: deleted,
         updated: updated,
       ));
-      return true;
+      return (true, null);
     }
-    return false;
+    return (false, failure ?? deleteFailure);
   }
 
   Future<Failure?> syncChanges({
@@ -416,9 +433,9 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     syncing = true;
     try {
       final syncInfo = await getSyncInfo();
-      final needRebuilding = syncInfo == null;
+      rebuilding = syncInfo == null;
       emit(SyncManagerState.checking(
-        needDbRebuilding: needRebuilding,
+        needDbRebuilding: rebuilding,
       ));
 
       final results = await Future.wait([
@@ -431,13 +448,20 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         await repairLocalClipboardAndCollectionRelations();
       }
 
-      final hasUpdate = results.any((element) => element);
-      await updateSyncTime(refreshLocalCache: !silent, hasUpdate: hasUpdate);
+      final hasUpdate = results.any((element) => element.$1);
+      final hasFailure = results.any((element) => element.$2 != null);
+
+      await updateSyncTime(
+        refreshLocalCache: !silent,
+        hasUpdate: hasUpdate || (rebuilding && !hasFailure),
+      );
+
       if (!auto) {
         lastManualSyncTS = now();
       }
     } finally {
       syncing = false;
+      rebuilding = false;
     }
     return null;
   }

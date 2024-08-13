@@ -57,7 +57,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
   Future<void> decryptAllClipboardItems() async {
     emit(const OfflinePersistanceState.decrypting());
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 3));
     await repo.decryptPending();
     emit(const OfflinePersistanceState.decrypted());
   }
