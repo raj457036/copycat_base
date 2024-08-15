@@ -204,7 +204,7 @@ Future<(File?, String?, int)> writeToClipboardCacheFile({
   final directory = p.join(appDirPath, folder);
   await createDirectoryIfNotExists(directory);
   final path = p.join(directory, "${getId()}_${fileName ?? ''}.$ext");
-  final file_ = File(path);
+  final file_ = File(Uri.parse(path).toFilePath(windows: Platform.isWindows));
 
   if (file != null) {
     // await copyFile(file.path, path);
