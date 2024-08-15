@@ -12,6 +12,8 @@ import 'package:isar/isar.dart';
 part 'appconfig.freezed.dart';
 part 'appconfig.g.dart';
 
+const int defaultThemeColor = 0xFF7469B6;
+
 @freezed
 @Collection(ignore: {"copyWith"})
 class AppConfig with _$AppConfig, IsarIdMixin {
@@ -47,6 +49,10 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default("en") String locale,
     String? enc2,
     @Default(false) bool autoEncrypt,
+    @Default(defaultThemeColor) int themeColor,
+    @Default(DynamicSchemeVariant.tonalSpot)
+    @Enumerated(EnumType.name)
+    DynamicSchemeVariant themeVariant,
 
     //? Local App States
     /// last focus window id
@@ -66,4 +72,21 @@ class AppConfig with _$AppConfig, IsarIdMixin {
   @ignore
   HotKey? get getToggleHotkey =>
       toggleHotkey != null ? HotKey.fromJson(jsonDecode(toggleHotkey!)) : null;
+
+  @ignore
+  ColorScheme get lightThemeColorScheme {
+    return ColorScheme.fromSeed(
+      seedColor: Color(themeColor.isNegative ? defaultThemeColor : themeColor),
+      dynamicSchemeVariant: themeVariant,
+    );
+  }
+
+  @ignore
+  ColorScheme get darkThemeColorScheme {
+    return ColorScheme.fromSeed(
+      seedColor: Color(themeColor.isNegative ? defaultThemeColor : themeColor),
+      brightness: Brightness.dark,
+      dynamicSchemeVariant: themeVariant,
+    );
+  }
 }

@@ -144,6 +144,20 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
+  Future<void> setThemeColor(Color color) async {
+    final newConfig = state.config.copyWith(themeColor: color.value)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+  }
+
+  Future<void> setThemeColorVariant(DynamicSchemeVariant variant) async {
+    final newConfig = state.config.copyWith(themeVariant: variant)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+  }
+
   Future<void> changeAutoSyncDuration(int seconds) async {
     final newConfig = state.config.copyWith(autoSyncInterval: seconds)
       ..applyId(state.config);

@@ -77,14 +77,25 @@ const AppConfigSchema = CollectionSchema(
       name: r'smartPaste',
       type: IsarType.bool,
     ),
-    r'themeMode': PropertySchema(
+    r'themeColor': PropertySchema(
       id: 12,
+      name: r'themeColor',
+      type: IsarType.long,
+    ),
+    r'themeMode': PropertySchema(
+      id: 13,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
+    r'themeVariant': PropertySchema(
+      id: 14,
+      name: r'themeVariant',
+      type: IsarType.string,
+      enumMap: _AppConfigthemeVariantEnumValueMap,
+    ),
     r'toggleHotkey': PropertySchema(
-      id: 13,
+      id: 15,
       name: r'toggleHotkey',
       type: IsarType.string,
     )
@@ -117,6 +128,7 @@ int _appConfigEstimateSize(
   }
   bytesCount += 3 + object.locale.length * 3;
   bytesCount += 3 + object.themeMode.name.length * 3;
+  bytesCount += 3 + object.themeVariant.name.length * 3;
   {
     final value = object.toggleHotkey;
     if (value != null) {
@@ -144,8 +156,10 @@ void _appConfigSerialize(
   writer.writeString(offsets[9], object.locale);
   writer.writeDateTime(offsets[10], object.pausedTill);
   writer.writeBool(offsets[11], object.smartPaste);
-  writer.writeString(offsets[12], object.themeMode.name);
-  writer.writeString(offsets[13], object.toggleHotkey);
+  writer.writeLong(offsets[12], object.themeColor);
+  writer.writeString(offsets[13], object.themeMode.name);
+  writer.writeString(offsets[14], object.themeVariant.name);
+  writer.writeString(offsets[15], object.toggleHotkey);
 }
 
 AppConfig _appConfigDeserialize(
@@ -166,10 +180,14 @@ AppConfig _appConfigDeserialize(
     locale: reader.readString(offsets[9]),
     pausedTill: reader.readDateTimeOrNull(offsets[10]),
     smartPaste: reader.readBool(offsets[11]),
+    themeColor: reader.readLong(offsets[12]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[12])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[13])] ??
             ThemeMode.system,
-    toggleHotkey: reader.readStringOrNull(offsets[13]),
+    themeVariant: _AppConfigthemeVariantValueEnumMap[
+            reader.readStringOrNull(offsets[14])] ??
+        DynamicSchemeVariant.tonalSpot,
+    toggleHotkey: reader.readStringOrNull(offsets[15]),
   );
   object.id = id;
   return object;
@@ -207,10 +225,16 @@ P _appConfigDeserializeProp<P>(
     case 11:
       return (reader.readBool(offset)) as P;
     case 12:
+      return (reader.readLong(offset)) as P;
+    case 13:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 13:
+    case 14:
+      return (_AppConfigthemeVariantValueEnumMap[
+              reader.readStringOrNull(offset)] ??
+          DynamicSchemeVariant.tonalSpot) as P;
+    case 15:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -226,6 +250,28 @@ const _AppConfigthemeModeValueEnumMap = {
   r'system': ThemeMode.system,
   r'light': ThemeMode.light,
   r'dark': ThemeMode.dark,
+};
+const _AppConfigthemeVariantEnumValueMap = {
+  r'tonalSpot': r'tonalSpot',
+  r'fidelity': r'fidelity',
+  r'monochrome': r'monochrome',
+  r'neutral': r'neutral',
+  r'vibrant': r'vibrant',
+  r'expressive': r'expressive',
+  r'content': r'content',
+  r'rainbow': r'rainbow',
+  r'fruitSalad': r'fruitSalad',
+};
+const _AppConfigthemeVariantValueEnumMap = {
+  r'tonalSpot': DynamicSchemeVariant.tonalSpot,
+  r'fidelity': DynamicSchemeVariant.fidelity,
+  r'monochrome': DynamicSchemeVariant.monochrome,
+  r'neutral': DynamicSchemeVariant.neutral,
+  r'vibrant': DynamicSchemeVariant.vibrant,
+  r'expressive': DynamicSchemeVariant.expressive,
+  r'content': DynamicSchemeVariant.content,
+  r'rainbow': DynamicSchemeVariant.rainbow,
+  r'fruitSalad': DynamicSchemeVariant.fruitSalad,
 };
 
 Id _appConfigGetId(AppConfig object) {
@@ -946,6 +992,60 @@ extension AppConfigQueryFilter
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeColorEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'themeColor',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeColorGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'themeColor',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeColorLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'themeColor',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeColorBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'themeColor',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeModeEqualTo(
     ThemeMode value, {
     bool caseSensitive = true,
@@ -1073,6 +1173,141 @@ extension AppConfigQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'themeMode',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeVariantEqualTo(
+    DynamicSchemeVariant value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'themeVariant',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantGreaterThan(
+    DynamicSchemeVariant value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'themeVariant',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantLessThan(
+    DynamicSchemeVariant value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'themeVariant',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeVariantBetween(
+    DynamicSchemeVariant lower,
+    DynamicSchemeVariant upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'themeVariant',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'themeVariant',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'themeVariant',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'themeVariant',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> themeVariantMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'themeVariant',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'themeVariant',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      themeVariantIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'themeVariant',
         value: '',
       ));
     });
@@ -1384,6 +1619,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeColor() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeColor', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeColorDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeColor', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeMode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'themeMode', Sort.asc);
@@ -1393,6 +1640,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeModeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'themeMode', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeVariant() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeVariant', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeVariantDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeVariant', Sort.desc);
     });
   }
 
@@ -1568,6 +1827,18 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeColor() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeColor', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeColorDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeColor', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeMode() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'themeMode', Sort.asc);
@@ -1577,6 +1848,18 @@ extension AppConfigQuerySortThenBy
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeModeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'themeMode', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeVariant() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeVariant', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeVariantDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'themeVariant', Sort.desc);
     });
   }
 
@@ -1669,10 +1952,23 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByThemeColor() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'themeColor');
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByThemeMode(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'themeMode', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByThemeVariant(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'themeVariant', caseSensitive: caseSensitive);
     });
   }
 
@@ -1764,9 +2060,22 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, int, QQueryOperations> themeColorProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'themeColor');
+    });
+  }
+
   QueryBuilder<AppConfig, ThemeMode, QQueryOperations> themeModeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'themeMode');
+    });
+  }
+
+  QueryBuilder<AppConfig, DynamicSchemeVariant, QQueryOperations>
+      themeVariantProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'themeVariant');
     });
   }
 
@@ -1799,6 +2108,10 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       locale: json['locale'] as String? ?? "en",
       enc2: json['enc2'] as String?,
       autoEncrypt: json['autoEncrypt'] as bool? ?? false,
+      themeColor: (json['themeColor'] as num?)?.toInt() ?? defaultThemeColor,
+      themeVariant: $enumDecodeNullable(
+              _$DynamicSchemeVariantEnumMap, json['themeVariant']) ??
+          DynamicSchemeVariant.tonalSpot,
       clockUnSynced: json['clockUnSynced'] as bool? ?? false,
     );
 
@@ -1817,6 +2130,8 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'locale': instance.locale,
       'enc2': instance.enc2,
       'autoEncrypt': instance.autoEncrypt,
+      'themeColor': instance.themeColor,
+      'themeVariant': _$DynamicSchemeVariantEnumMap[instance.themeVariant]!,
       'clockUnSynced': instance.clockUnSynced,
     };
 
@@ -1824,4 +2139,16 @@ const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
+};
+
+const _$DynamicSchemeVariantEnumMap = {
+  DynamicSchemeVariant.tonalSpot: 'tonalSpot',
+  DynamicSchemeVariant.fidelity: 'fidelity',
+  DynamicSchemeVariant.monochrome: 'monochrome',
+  DynamicSchemeVariant.neutral: 'neutral',
+  DynamicSchemeVariant.vibrant: 'vibrant',
+  DynamicSchemeVariant.expressive: 'expressive',
+  DynamicSchemeVariant.content: 'content',
+  DynamicSchemeVariant.rainbow: 'rainbow',
+  DynamicSchemeVariant.fruitSalad: 'fruitSalad',
 };

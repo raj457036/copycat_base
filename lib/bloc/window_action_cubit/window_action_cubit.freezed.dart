@@ -145,7 +145,9 @@ class __$$WindowActionLoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WindowActionLoadedImpl implements WindowActionLoaded {
+class _$WindowActionLoadedImpl
+    with DiagnosticableTreeMixin
+    implements WindowActionLoaded {
   const _$WindowActionLoadedImpl(
       {this.pinned = false, this.compact = false, this.loading = true});
 
@@ -160,8 +162,18 @@ class _$WindowActionLoadedImpl implements WindowActionLoaded {
   final bool loading;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'WindowActionState.loaded(pinned: $pinned, compact: $compact, loading: $loading)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WindowActionState.loaded'))
+      ..add(DiagnosticsProperty('pinned', pinned))
+      ..add(DiagnosticsProperty('compact', compact))
+      ..add(DiagnosticsProperty('loading', loading));
   }
 
   @override
