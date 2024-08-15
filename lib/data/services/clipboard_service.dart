@@ -394,7 +394,7 @@ class ClipboardFormatProcessor {
   ) async {
     File file;
     try {
-      final filePath = Uri.decodeFull(uri.path);
+      final filePath = uri.toFilePath(windows: Platform.isWindows);
       file = File(filePath);
     } catch (e) {
       logger.e(e);
