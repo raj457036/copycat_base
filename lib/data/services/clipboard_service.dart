@@ -203,18 +203,23 @@ Future<(File?, String?, int)> writeToClipboardCacheFile({
 
   final directory = p.join(appDirPath, folder);
   await createDirectoryIfNotExists(directory);
-  final path = p.join(directory, "${getId()}_${fileName ?? ''}.$ext");
-  final file_ = File(Uri.parse(path).toFilePath(windows: Platform.isWindows));
+  var path = p.join(directory, "${getId()}_${fileName ?? ''}.$ext");
+  final file_ = File(path);
 
   if (file != null) {
     // await copyFile(file.path, path);
-    await EasyWorker.compute(copyFile, (file.path, path), name: "Copy File");
+    await EasyWorker.compute(
+      copyFile,
+      (file.uri.toFilePath(windows: Platform.isWindows), path),
+      name: "Copy File",
+    );
+
     return (file_, mime.lookupMimeType(file.path), await file.length());
   } else if (textContent != null) {
     await file_.writeAsString(textContent);
     return (file_, "text/plain", textContent.length);
   } else if (content != null) {
-    await file_.writeAsBytes(content);
+    await file_.writeAsBytes(content, flush: true);
     return (
       file_,
       mime.lookupMimeType(
@@ -270,14 +275,16 @@ class ClipboardFormatProcessor {
     DataReader reader,
     FileFormat format,
   ) async {
-    final c = Completer<(String?, Uint8List?)>();
+    Uint8List? content;
+    String? name;
+    final c = Completer<void>();
     final progress = reader.getFile(
       format,
       (file) async {
         try {
-          final name = file.fileName;
-          final content = await streamToUint8List(file.getStream());
-          c.complete((name, content));
+          name = p.basenameWithoutExtension(file.fileName ?? "");
+          content = await streamToUint8List(file.getStream());
+          c.complete();
         } catch (e) {
           c.completeError(e);
         }
@@ -285,12 +292,13 @@ class ClipboardFormatProcessor {
       onError: (e) {
         c.completeError(e);
       },
-      allowVirtualFiles: false,
+      allowVirtualFiles: true,
     );
     if (progress == null) {
-      c.complete((null, null));
+      c.complete();
     }
-    return c.future.timeout(const Duration(seconds: 10));
+    await c.future;
+    return (name, content);
   }
 
   Future<ClipItem?> _getPlainText(DataReader reader) async {
