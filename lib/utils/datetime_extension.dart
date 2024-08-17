@@ -12,6 +12,7 @@ extension DateStartAndEndExtension on DateTime {
   }
 }
 
-DateFormat dateFormatter([String? locale]) => DateFormat("d MMM yy", locale);
+DateFormat getLocaleDateFormatter([String? locale]) =>
+    DateFormat("d MMM yy", locale);
 DateFormat dateTimeFormatter([String? locale]) =>
     DateFormat.yMMMd(locale).add_jm();

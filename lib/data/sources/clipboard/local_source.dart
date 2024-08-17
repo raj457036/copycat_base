@@ -28,8 +28,8 @@ class LocalClipboardSource implements ClipboardSource {
     int limit = 50,
     int offset = 0,
     String? search,
-    List<String>? category,
-    List<ClipItemType>? types,
+    Set<TextCategory>? textCategories,
+    Set<ClipItemType>? types,
     int? collectionId,
     ClipboardSortKey? sortBy,
     SortOrder order = SortOrder.desc,
@@ -41,16 +41,16 @@ class LocalClipboardSource implements ClipboardSource {
     if (search == null && collectionId == null) {
       resultsQuery = db.clipboardItems.filter();
     } else {
-      var filter = db.clipboardItems.filter();
+      resultsQuery = db.clipboardItems.filter();
 
       if (collectionId != null) {
-        filter = filter.collectionIdEqualTo(collectionId);
+        resultsQuery = resultsQuery.collectionIdEqualTo(collectionId);
       } else {
-        filter = filter.encryptedEqualTo(false);
+        resultsQuery = resultsQuery.encryptedEqualTo(false);
       }
 
       for (final word in Isar.splitWords(search ?? "")) {
-        filter = filter
+        resultsQuery = resultsQuery.group((q) => q
             .titleWordsElementContains(word, caseSensitive: false)
             .or()
             .titleWordsElementStartsWith(word, caseSensitive: false)
@@ -75,19 +75,15 @@ class LocalClipboardSource implements ClipboardSource {
             .or()
             .textContains(word, caseSensitive: false)
             .or()
-            .mimetypeWordContains(word, caseSensitive: false)
-            .or()
-            .textCategoryContains(word, caseSensitive: false)
-            .or()
-            .typeWordContains(word, caseSensitive: false);
+            .mimetypeWordContains(word, caseSensitive: false));
       }
-
-      resultsQuery = filter;
     }
+
     if (types != null) {
-      for (final type in types) {
-        resultsQuery = resultsQuery.typeEqualTo(type);
-      }
+      resultsQuery = resultsQuery.anyOf(
+        types,
+        (q, type) => q.typeEqualTo(type),
+      );
     }
 
     if (from != null && to != null) {
@@ -98,10 +94,11 @@ class LocalClipboardSource implements ClipboardSource {
       resultsQuery = resultsQuery.createdLessThan(to, include: true);
     }
 
-    if (category != null) {
-      for (final category in category) {
-        resultsQuery = resultsQuery.textCategoryContains(category);
-      }
+    if (textCategories != null) {
+      resultsQuery = resultsQuery.anyOf(
+        textCategories,
+        (q, category) => q.textCategoryEqualTo(category),
+      );
     }
 
     var query = resultsQuery.deletedAtIsNull();

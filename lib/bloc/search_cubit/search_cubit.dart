@@ -25,12 +25,14 @@ class SearchCubit extends Cubit<SearchState> {
 
   Future<void> search(
     String? query, {
-    List<String>? textCategories,
-    List<ClipItemType>? clipTypes,
+    Set<TextCategory>? textCategories,
+    Set<ClipItemType>? clipTypes,
     ClipboardSortKey? sortBy,
     SortOrder? order,
     DateTime? from,
     DateTime? to,
+    bool force = false,
+    bool keepStateFilters = true,
   }) async {
     analyticsRepo.logFeatureUsed(feature: "search");
     switch (state) {
@@ -39,7 +41,7 @@ class SearchCubit extends Cubit<SearchState> {
           if (query == null) return;
           emit(
             SearchState.searching(
-              query: query,
+              search: query,
               textCategories: textCategories,
               types: clipTypes,
               sortBy: sortBy,
@@ -66,7 +68,7 @@ class SearchCubit extends Cubit<SearchState> {
                 failure: l,
               ),
               (r) => SearchState.results(
-                query: query,
+                search: query,
                 isLoading: false,
                 results: r.results,
                 offset: r.results.length,
@@ -85,29 +87,39 @@ class SearchCubit extends Cubit<SearchState> {
       case SearchResultState():
         {
           final state_ = state as SearchResultState;
-          final newQuery = query != null && state_.query != query;
+          final newQuery = (query != null && state_.search != query) || force;
           if (!state_.hasMore && !newQuery) return;
+          final search_ =
+              (newQuery ? query : (keepStateFilters ? state_.search : "")) ??
+                  "";
+          final types_ = clipTypes ?? (keepStateFilters ? state_.types : null);
+          final category_ = textCategories ??
+              (keepStateFilters ? state_.textCategories : null);
+          final from_ = from ?? (keepStateFilters ? state_.from : null);
+          final to_ = to ?? (keepStateFilters ? state_.to : null);
+          final order_ = order ?? state_.order ?? SortOrder.desc;
+          final sortBy_ = sortBy ?? (keepStateFilters ? state_.sortBy : null);
           emit(
             SearchState.searching(
-              query: query ?? state_.query,
-              types: clipTypes ?? state_.types,
-              textCategories: textCategories ?? state_.textCategories,
-              from: from ?? state_.from,
-              to: to ?? state_.to,
-              order: order ?? state_.order,
-              sortBy: sortBy ?? state_.sortBy,
+              search: search_,
+              types: types_,
+              textCategories: category_,
+              from: from_,
+              to: to_,
+              order: order_,
+              sortBy: sortBy_,
             ),
           );
           final items = await repo.getList(
             limit: 50,
             offset: newQuery ? 0 : state_.offset,
-            search: query ?? state_.query,
-            types: clipTypes ?? state_.types,
-            category: textCategories ?? state_.textCategories,
-            from: from ?? state_.from,
-            to: to ?? state_.to,
-            order: order ?? state_.order ?? SortOrder.desc,
-            sortBy: sortBy ?? state_.sortBy,
+            search: search_,
+            types: types_,
+            category: category_,
+            from: from_,
+            to: to_,
+            order: order_,
+            sortBy: sortBy_,
           );
 
           final nextState = items.fold(
@@ -115,16 +127,16 @@ class SearchCubit extends Cubit<SearchState> {
               failure: l,
             ),
             (r) => SearchState.results(
-              query: query ?? state_.query,
               results: newQuery ? r.results : [...state_.results, ...r.results],
               offset: r.results.length + (newQuery ? 0 : state_.offset),
               hasMore: r.hasMore,
-              types: clipTypes ?? state_.types,
-              textCategories: textCategories ?? state_.textCategories,
-              from: from ?? state_.from,
-              to: to ?? state_.to,
-              order: order ?? state_.order ?? SortOrder.desc,
-              sortBy: sortBy ?? state_.sortBy,
+              search: search_,
+              types: types_,
+              textCategories: category_,
+              from: from_,
+              to: to_,
+              order: order_,
+              sortBy: sortBy_,
             ),
           );
           emit(nextState);

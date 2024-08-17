@@ -4,18 +4,18 @@ part of 'search_cubit.dart';
 sealed class SearchState with _$SearchState {
   const factory SearchState.initial() = InitialSearchState;
   const factory SearchState.searching({
-    required String query,
-    List<String>? textCategories,
-    List<ClipItemType>? types,
+    required String search,
+    Set<TextCategory>? textCategories,
+    Set<ClipItemType>? types,
     ClipboardSortKey? sortBy,
     SortOrder? order,
     DateTime? from,
     DateTime? to,
   }) = SearchingState;
   const factory SearchState.results({
-    required String query,
-    List<String>? textCategories,
-    List<ClipItemType>? types,
+    required String search,
+    Set<TextCategory>? textCategories,
+    Set<ClipItemType>? types,
     ClipboardSortKey? sortBy,
     SortOrder? order,
     DateTime? from,
