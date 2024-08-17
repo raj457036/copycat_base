@@ -44,6 +44,8 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
     int? collectionId,
     ClipboardSortKey? sortBy,
     SortOrder order = SortOrder.desc,
+    DateTime? from,
+    DateTime? to,
   }) async {
     try {
       final result = await remote.getList(
@@ -55,6 +57,8 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
         search: search,
         types: types,
         category: category,
+        from: from,
+        to: to,
       );
       final decryptedItems = await Future.wait(
         result.results.map(
@@ -155,6 +159,8 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
     int? collectionId,
     ClipboardSortKey? sortBy,
     SortOrder order = SortOrder.desc,
+    DateTime? from,
+    DateTime? to,
   }) async {
     try {
       final result = await local.getList(
@@ -166,6 +172,8 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
         collectionId: collectionId,
         sortBy: sortBy,
         order: order,
+        from: from,
+        to: to,
       );
 
       return Right(result);

@@ -19,13 +19,23 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)
+    required TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)
         searching,
     required TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -37,13 +47,23 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult? Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult? Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -55,13 +75,23 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -155,13 +185,23 @@ class _$InitialSearchStateImpl implements InitialSearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)
+    required TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)
         searching,
     required TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -176,13 +216,23 @@ class _$InitialSearchStateImpl implements InitialSearchState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult? Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult? Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -197,13 +247,23 @@ class _$InitialSearchStateImpl implements InitialSearchState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -267,7 +327,13 @@ abstract class _$$SearchingStateImplCopyWith<$Res> {
       __$$SearchingStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String query, List<String>? textCategories, List<ClipItemType>? types});
+      {String query,
+      List<String>? textCategories,
+      List<ClipItemType>? types,
+      ClipboardSortKey? sortBy,
+      SortOrder? order,
+      DateTime? from,
+      DateTime? to});
 }
 
 /// @nodoc
@@ -284,6 +350,10 @@ class __$$SearchingStateImplCopyWithImpl<$Res>
     Object? query = null,
     Object? textCategories = freezed,
     Object? types = freezed,
+    Object? sortBy = freezed,
+    Object? order = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$SearchingStateImpl(
       query: null == query
@@ -298,6 +368,22 @@ class __$$SearchingStateImplCopyWithImpl<$Res>
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
               as List<ClipItemType>?,
+      sortBy: freezed == sortBy
+          ? _value.sortBy
+          : sortBy // ignore: cast_nullable_to_non_nullable
+              as ClipboardSortKey?,
+      order: freezed == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as SortOrder?,
+      from: freezed == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      to: freezed == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -308,7 +394,11 @@ class _$SearchingStateImpl implements SearchingState {
   const _$SearchingStateImpl(
       {required this.query,
       final List<String>? textCategories,
-      final List<ClipItemType>? types})
+      final List<ClipItemType>? types,
+      this.sortBy,
+      this.order,
+      this.from,
+      this.to})
       : _textCategories = textCategories,
         _types = types;
 
@@ -335,8 +425,17 @@ class _$SearchingStateImpl implements SearchingState {
   }
 
   @override
+  final ClipboardSortKey? sortBy;
+  @override
+  final SortOrder? order;
+  @override
+  final DateTime? from;
+  @override
+  final DateTime? to;
+
+  @override
   String toString() {
-    return 'SearchState.searching(query: $query, textCategories: $textCategories, types: $types)';
+    return 'SearchState.searching(query: $query, textCategories: $textCategories, types: $types, sortBy: $sortBy, order: $order, from: $from, to: $to)';
   }
 
   @override
@@ -347,7 +446,11 @@ class _$SearchingStateImpl implements SearchingState {
             (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality()
                 .equals(other._textCategories, _textCategories) &&
-            const DeepCollectionEquality().equals(other._types, _types));
+            const DeepCollectionEquality().equals(other._types, _types) &&
+            (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
+            (identical(other.order, order) || other.order == order) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to));
   }
 
   @override
@@ -355,7 +458,11 @@ class _$SearchingStateImpl implements SearchingState {
       runtimeType,
       query,
       const DeepCollectionEquality().hash(_textCategories),
-      const DeepCollectionEquality().hash(_types));
+      const DeepCollectionEquality().hash(_types),
+      sortBy,
+      order,
+      from,
+      to);
 
   @JsonKey(ignore: true)
   @override
@@ -368,13 +475,23 @@ class _$SearchingStateImpl implements SearchingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)
+    required TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)
         searching,
     required TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -382,20 +499,30 @@ class _$SearchingStateImpl implements SearchingState {
         results,
     required TResult Function(Failure failure) error,
   }) {
-    return searching(query, textCategories, types);
+    return searching(query, textCategories, types, sortBy, order, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult? Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult? Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -403,20 +530,31 @@ class _$SearchingStateImpl implements SearchingState {
         results,
     TResult? Function(Failure failure)? error,
   }) {
-    return searching?.call(query, textCategories, types);
+    return searching?.call(
+        query, textCategories, types, sortBy, order, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -426,7 +564,7 @@ class _$SearchingStateImpl implements SearchingState {
     required TResult orElse(),
   }) {
     if (searching != null) {
-      return searching(query, textCategories, types);
+      return searching(query, textCategories, types, sortBy, order, from, to);
     }
     return orElse();
   }
@@ -473,11 +611,19 @@ abstract class SearchingState implements SearchState {
   const factory SearchingState(
       {required final String query,
       final List<String>? textCategories,
-      final List<ClipItemType>? types}) = _$SearchingStateImpl;
+      final List<ClipItemType>? types,
+      final ClipboardSortKey? sortBy,
+      final SortOrder? order,
+      final DateTime? from,
+      final DateTime? to}) = _$SearchingStateImpl;
 
   String get query;
   List<String>? get textCategories;
   List<ClipItemType>? get types;
+  ClipboardSortKey? get sortBy;
+  SortOrder? get order;
+  DateTime? get from;
+  DateTime? get to;
   @JsonKey(ignore: true)
   _$$SearchingStateImplCopyWith<_$SearchingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -493,6 +639,10 @@ abstract class _$$SearchResultStateImplCopyWith<$Res> {
       {String query,
       List<String>? textCategories,
       List<ClipItemType>? types,
+      ClipboardSortKey? sortBy,
+      SortOrder? order,
+      DateTime? from,
+      DateTime? to,
       List<ClipboardItem> results,
       bool hasMore,
       bool isLoading,
@@ -513,6 +663,10 @@ class __$$SearchResultStateImplCopyWithImpl<$Res>
     Object? query = null,
     Object? textCategories = freezed,
     Object? types = freezed,
+    Object? sortBy = freezed,
+    Object? order = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
     Object? results = null,
     Object? hasMore = null,
     Object? isLoading = null,
@@ -531,6 +685,22 @@ class __$$SearchResultStateImplCopyWithImpl<$Res>
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
               as List<ClipItemType>?,
+      sortBy: freezed == sortBy
+          ? _value.sortBy
+          : sortBy // ignore: cast_nullable_to_non_nullable
+              as ClipboardSortKey?,
+      order: freezed == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as SortOrder?,
+      from: freezed == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      to: freezed == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -558,6 +728,10 @@ class _$SearchResultStateImpl implements SearchResultState {
       {required this.query,
       final List<String>? textCategories,
       final List<ClipItemType>? types,
+      this.sortBy,
+      this.order,
+      this.from,
+      this.to,
       required final List<ClipboardItem> results,
       this.hasMore = false,
       this.isLoading = false,
@@ -588,6 +762,14 @@ class _$SearchResultStateImpl implements SearchResultState {
     return EqualUnmodifiableListView(value);
   }
 
+  @override
+  final ClipboardSortKey? sortBy;
+  @override
+  final SortOrder? order;
+  @override
+  final DateTime? from;
+  @override
+  final DateTime? to;
   final List<ClipboardItem> _results;
   @override
   List<ClipboardItem> get results {
@@ -608,7 +790,7 @@ class _$SearchResultStateImpl implements SearchResultState {
 
   @override
   String toString() {
-    return 'SearchState.results(query: $query, textCategories: $textCategories, types: $types, results: $results, hasMore: $hasMore, isLoading: $isLoading, offset: $offset)';
+    return 'SearchState.results(query: $query, textCategories: $textCategories, types: $types, sortBy: $sortBy, order: $order, from: $from, to: $to, results: $results, hasMore: $hasMore, isLoading: $isLoading, offset: $offset)';
   }
 
   @override
@@ -620,6 +802,10 @@ class _$SearchResultStateImpl implements SearchResultState {
             const DeepCollectionEquality()
                 .equals(other._textCategories, _textCategories) &&
             const DeepCollectionEquality().equals(other._types, _types) &&
+            (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
+            (identical(other.order, order) || other.order == order) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
             const DeepCollectionEquality().equals(other._results, _results) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
             (identical(other.isLoading, isLoading) ||
@@ -633,6 +819,10 @@ class _$SearchResultStateImpl implements SearchResultState {
       query,
       const DeepCollectionEquality().hash(_textCategories),
       const DeepCollectionEquality().hash(_types),
+      sortBy,
+      order,
+      from,
+      to,
       const DeepCollectionEquality().hash(_results),
       hasMore,
       isLoading,
@@ -649,13 +839,23 @@ class _$SearchResultStateImpl implements SearchResultState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)
+    required TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)
         searching,
     required TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -663,21 +863,31 @@ class _$SearchResultStateImpl implements SearchResultState {
         results,
     required TResult Function(Failure failure) error,
   }) {
-    return results(
-        query, textCategories, types, this.results, hasMore, isLoading, offset);
+    return results(query, textCategories, types, sortBy, order, from, to,
+        this.results, hasMore, isLoading, offset);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult? Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult? Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -685,21 +895,31 @@ class _$SearchResultStateImpl implements SearchResultState {
         results,
     TResult? Function(Failure failure)? error,
   }) {
-    return results?.call(
-        query, textCategories, types, this.results, hasMore, isLoading, offset);
+    return results?.call(query, textCategories, types, sortBy, order, from, to,
+        this.results, hasMore, isLoading, offset);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -709,8 +929,8 @@ class _$SearchResultStateImpl implements SearchResultState {
     required TResult orElse(),
   }) {
     if (results != null) {
-      return results(query, textCategories, types, this.results, hasMore,
-          isLoading, offset);
+      return results(query, textCategories, types, sortBy, order, from, to,
+          this.results, hasMore, isLoading, offset);
     }
     return orElse();
   }
@@ -758,6 +978,10 @@ abstract class SearchResultState implements SearchState {
       {required final String query,
       final List<String>? textCategories,
       final List<ClipItemType>? types,
+      final ClipboardSortKey? sortBy,
+      final SortOrder? order,
+      final DateTime? from,
+      final DateTime? to,
       required final List<ClipboardItem> results,
       final bool hasMore,
       final bool isLoading,
@@ -766,6 +990,10 @@ abstract class SearchResultState implements SearchState {
   String get query;
   List<String>? get textCategories;
   List<ClipItemType>? get types;
+  ClipboardSortKey? get sortBy;
+  SortOrder? get order;
+  DateTime? get from;
+  DateTime? get to;
   List<ClipboardItem> get results;
   bool get hasMore;
   bool get isLoading;
@@ -841,13 +1069,23 @@ class _$SearchErrorStateImpl implements SearchErrorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)
+    required TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)
         searching,
     required TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -862,13 +1100,23 @@ class _$SearchErrorStateImpl implements SearchErrorState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult? Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult? Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,
@@ -883,13 +1131,23 @@ class _$SearchErrorStateImpl implements SearchErrorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String query, List<String>? textCategories,
-            List<ClipItemType>? types)?
+    TResult Function(
+            String query,
+            List<String>? textCategories,
+            List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to)?
         searching,
     TResult Function(
             String query,
             List<String>? textCategories,
             List<ClipItemType>? types,
+            ClipboardSortKey? sortBy,
+            SortOrder? order,
+            DateTime? from,
+            DateTime? to,
             List<ClipboardItem> results,
             bool hasMore,
             bool isLoading,

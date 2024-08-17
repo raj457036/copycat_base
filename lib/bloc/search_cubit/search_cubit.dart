@@ -3,7 +3,9 @@ import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/repositories/analytics.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
+import 'package:copycat_base/domain/sources/clipboard.dart';
 import 'package:copycat_base/enums/clip_type.dart';
+import 'package:copycat_base/enums/sort.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -15,15 +17,18 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   final AnalyticsRepository analyticsRepo;
   final ClipboardRepository repo;
+
   SearchCubit(
     @Named("offline") this.repo,
     this.analyticsRepo,
   ) : super(const SearchState.initial());
 
   Future<void> search(
-    String? searchQuery, {
-    List<String>? textClipCategories,
+    String? query, {
+    List<String>? textCategories,
     List<ClipItemType>? clipTypes,
+    ClipboardSortKey? sortBy,
+    SortOrder? order,
     DateTime? from,
     DateTime? to,
   }) async {
@@ -31,20 +36,28 @@ class SearchCubit extends Cubit<SearchState> {
     switch (state) {
       case InitialSearchState() || SearchErrorState():
         {
-          if (searchQuery == null) return;
+          if (query == null) return;
           emit(
             SearchState.searching(
-              query: searchQuery,
+              query: query,
+              textCategories: textCategories,
               types: clipTypes,
-              textCategories: textClipCategories,
+              sortBy: sortBy,
+              order: order,
+              from: from,
+              to: to,
             ),
           );
 
           final items = await repo.getList(
             limit: 50,
-            search: searchQuery,
+            search: query,
             types: clipTypes,
-            category: textClipCategories,
+            category: textCategories,
+            from: from,
+            to: to,
+            order: order ?? SortOrder.desc,
+            sortBy: sortBy,
           );
 
           emit(
@@ -53,42 +66,48 @@ class SearchCubit extends Cubit<SearchState> {
                 failure: l,
               ),
               (r) => SearchState.results(
-                query: searchQuery,
+                query: query,
                 isLoading: false,
                 results: r.results,
                 offset: r.results.length,
                 hasMore: r.hasMore,
                 types: clipTypes,
-                textCategories: textClipCategories,
+                textCategories: textCategories,
+                from: from,
+                to: to,
+                order: order,
+                sortBy: sortBy,
               ),
             ),
           );
         }
         break;
-      case SearchResultState(
-          :final query,
-          :final results,
-          :final offset,
-          :final hasMore,
-          :final types,
-          :final textCategories,
-        ):
+      case SearchResultState():
         {
-          final newQuery = searchQuery != null && query != searchQuery;
-          if (!hasMore && !newQuery) return;
+          final state_ = state as SearchResultState;
+          final newQuery = query != null && state_.query != query;
+          if (!state_.hasMore && !newQuery) return;
           emit(
             SearchState.searching(
-              query: searchQuery ?? query,
-              types: clipTypes ?? types,
-              textCategories: textClipCategories ?? textCategories,
+              query: query ?? state_.query,
+              types: clipTypes ?? state_.types,
+              textCategories: textCategories ?? state_.textCategories,
+              from: from ?? state_.from,
+              to: to ?? state_.to,
+              order: order ?? state_.order,
+              sortBy: sortBy ?? state_.sortBy,
             ),
           );
           final items = await repo.getList(
             limit: 50,
-            offset: newQuery ? 0 : offset,
-            search: searchQuery ?? query,
-            types: clipTypes ?? types,
-            category: textClipCategories ?? textCategories,
+            offset: newQuery ? 0 : state_.offset,
+            search: query ?? state_.query,
+            types: clipTypes ?? state_.types,
+            category: textCategories ?? state_.textCategories,
+            from: from ?? state_.from,
+            to: to ?? state_.to,
+            order: order ?? state_.order ?? SortOrder.desc,
+            sortBy: sortBy ?? state_.sortBy,
           );
 
           final nextState = items.fold(
@@ -96,12 +115,16 @@ class SearchCubit extends Cubit<SearchState> {
               failure: l,
             ),
             (r) => SearchState.results(
-              query: searchQuery ?? query,
-              results: newQuery ? r.results : [...results, ...r.results],
-              offset: r.results.length + (newQuery ? 0 : offset),
+              query: query ?? state_.query,
+              results: newQuery ? r.results : [...state_.results, ...r.results],
+              offset: r.results.length + (newQuery ? 0 : state_.offset),
               hasMore: r.hasMore,
-              types: clipTypes ?? types,
-              textCategories: textClipCategories ?? textCategories,
+              types: clipTypes ?? state_.types,
+              textCategories: textCategories ?? state_.textCategories,
+              from: from ?? state_.from,
+              to: to ?? state_.to,
+              order: order ?? state_.order ?? SortOrder.desc,
+              sortBy: sortBy ?? state_.sortBy,
             ),
           );
           emit(nextState);
@@ -112,7 +135,10 @@ class SearchCubit extends Cubit<SearchState> {
 
   void put(ClipboardItem item) {
     state.mapOrNull(results: (result) {
-      final items = result.results.replaceWhere((it) => it.id == item.id, item);
+      final items = result.results.replaceWhere(
+        (it) => it.id == item.id,
+        item,
+      );
       emit(
         result.copyWith(results: items),
       );
@@ -121,7 +147,11 @@ class SearchCubit extends Cubit<SearchState> {
 
   Future<void> deleteItem(ClipboardItem item) async {
     state.mapOrNull(results: (result) {
-      final items = result.results.where((it) => it.id != item.id).toList();
+      final items = result.results
+          .where(
+            (it) => it.id != item.id,
+          )
+          .toList();
       final isDeleted = items.length < result.results.length;
       emit(
         result.copyWith(

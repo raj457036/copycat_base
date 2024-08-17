@@ -18,6 +18,8 @@ abstract class ClipboardRepository {
     int? collectionId,
     ClipboardSortKey? sortBy,
     SortOrder order = SortOrder.desc,
+    DateTime? from,
+    DateTime? to,
   });
 
   FailureOr<ClipboardItem> update(ClipboardItem item);

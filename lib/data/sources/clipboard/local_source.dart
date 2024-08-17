@@ -33,6 +33,8 @@ class LocalClipboardSource implements ClipboardSource {
     int? collectionId,
     ClipboardSortKey? sortBy,
     SortOrder order = SortOrder.desc,
+    DateTime? from,
+    DateTime? to,
   }) async {
     QueryBuilder<ClipboardItem, ClipboardItem, QFilterCondition> resultsQuery;
 
@@ -86,6 +88,14 @@ class LocalClipboardSource implements ClipboardSource {
       for (final type in types) {
         resultsQuery = resultsQuery.typeEqualTo(type);
       }
+    }
+
+    if (from != null && to != null) {
+      resultsQuery = resultsQuery.createdBetween(from, to);
+    } else if (from != null) {
+      resultsQuery = resultsQuery.createdGreaterThan(from, include: true);
+    } else if (to != null) {
+      resultsQuery = resultsQuery.createdLessThan(to, include: true);
     }
 
     if (category != null) {
