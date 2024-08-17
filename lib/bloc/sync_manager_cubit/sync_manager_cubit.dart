@@ -93,7 +93,8 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       }
     }
 
-    return now().subtract(Duration(hours: syncHours!));
+    final pastDate = now().subtract(Duration(hours: syncHours!));
+    return pastDate;
   }
 
   Future<SyncStatus?> getSyncInfo() async {

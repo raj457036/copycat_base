@@ -169,19 +169,20 @@ class LocalClipboardSource implements ClipboardSource {
   @override
   Future<void> decryptPending() async {
     await db.writeTxn(() async {
-      final q = db.clipboardItems.filter().encryptedEqualTo(true);
-      int offset = 0;
+      const limit = 50;
 
       while (true) {
-        const limit = 50;
-        final items = await q.offset(offset).limit(limit).findAll();
+        final items = await db.clipboardItems
+            .filter()
+            .encryptedEqualTo(true)
+            .limit(limit)
+            .findAll();
         if (items.isEmpty) break;
         final decrypted = await Future.wait(
           items.map((item) => item.decrypt()),
         );
         await db.clipboardItems.putAll(decrypted);
         if (items.length < limit) break;
-        offset += limit;
       }
     });
   }

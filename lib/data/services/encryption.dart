@@ -97,6 +97,7 @@ EncryptionSecret? _encSecret;
 enum EncDecType {
   encrypt,
   decrypt,
+  ping,
 }
 
 typedef EncryptionPayload = (
@@ -113,13 +114,15 @@ void _encryptorEntryPoint(
   final (id, content, secret, action) = payload;
   if (id == "") return;
 
-  _encSecret ??= EncryptionSecret.deserilize(secret);
-  _aesEncrypter ??= Encrypter(
-    AES(
-      _encSecret!.key,
-      mode: AESMode.cfb64,
-    ),
-  );
+  if (id != "PING") {
+    _encSecret ??= EncryptionSecret.deserilize(secret);
+    _aesEncrypter ??= Encrypter(
+      AES(
+        _encSecret!.key,
+        mode: AESMode.cfb64,
+      ),
+    );
+  }
 
   switch (action) {
     case EncDecType.encrypt:
@@ -129,6 +132,9 @@ void _encryptorEntryPoint(
     case EncDecType.decrypt:
       final decrypted = _aesEncrypter!.decrypt64(content, iv: _encSecret!.iv);
       send((id, decrypted));
+      break;
+    case EncDecType.ping:
+      send(("PING", "PONG"));
       break;
   }
 }
@@ -199,10 +205,10 @@ class EncrypterWorker {
     await _encryptor?.waitUntilReady();
     _subscription = _encryptor?.onMessage((p0) {
       final (id, content) = p0;
-      _tasks[id]?.complete(content);
-      _tasks.remove(id);
+      _tasks.remove(id)?.complete(content);
+      if (id == "PING" && content == "PONG") _completer?.complete();
     });
-    _completer?.complete();
+    await _encryptor?.send(("PING", "PING", "PING", EncDecType.ping));
     _isRunning = true;
   }
 
