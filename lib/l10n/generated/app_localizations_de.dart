@@ -944,4 +944,117 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get dropHere => 'Lass deine Dateien, Bilder oder Texte hier fallen';
+
+  @override
+  String get searchFilters => 'Suchfilter';
+
+  @override
+  String get from => 'Von';
+
+  @override
+  String get to => 'Bis';
+
+  @override
+  String get now => 'Jetzt';
+
+  @override
+  String get including => 'Einschließlich';
+
+  @override
+  String get text => 'Text';
+
+  @override
+  String get url => 'URL';
+
+  @override
+  String get media => 'Medien';
+
+  @override
+  String get docs => 'Dokumente';
+
+  @override
+  String get textCategories => 'Textkategorien';
+
+  @override
+  String get exclusive => '( Exklusiv )';
+
+  @override
+  String get phone => 'Telefon';
+
+  @override
+  String get color => 'Farbe';
+
+  @override
+  String get sortBy => 'Sortieren Nach';
+
+  @override
+  String get select => 'Auswählen';
+
+  @override
+  String get lastModified => 'Zuletzt Geändert';
+
+  @override
+  String get created => 'Erstellt';
+
+  @override
+  String get copyCount => 'Anzahl der Kopien';
+
+  @override
+  String get lastCopied => 'Zuletzt Kopiert';
+
+  @override
+  String get sortOrder => 'Sortierreihenfolge';
+
+  @override
+  String get asc => 'Auf';
+
+  @override
+  String get desc => 'Ab';
+
+  @override
+  String get applyFilter => 'Filter Anwenden';
+
+  @override
+  String get themeColor => 'Themenfarbe';
+
+  @override
+  String get themeColorDesc =>
+      'Diese Farbe beeinflusst das allgemeine Erscheinungsbild der App.';
+
+  @override
+  String get change => 'Ändern';
+
+  @override
+  String get colorMode => 'Farbmodus';
+
+  @override
+  String get colorModeDesc =>
+      'Wählen Sie den Farbmodus, um das Erscheinungsbild der App anzupassen. Die Standardoption ist Tonal Spot.';
+
+  @override
+  String get tonalSpot => 'Tonal Spot';
+
+  @override
+  String get content => 'Inhalt';
+
+  @override
+  String get expressive => 'Ausdrucksvoll';
+
+  @override
+  String get fidility => 'Fidelity';
+
+  @override
+  String get fruitSalad => 'Fruchtsalat';
+
+  @override
+  String get monochrome => 'Monochrom';
+
+  @override
+  String get neutral => 'Neutral';
+
+  @override
+  String get rainbow => 'Regenbogen';
+
+  @override
+  String get vibrant => 'Lebendig';
 }

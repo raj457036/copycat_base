@@ -1778,6 +1778,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Drop your files, images or text here'**
   String get dropHere;
+
+  /// No description provided for @searchFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Filters'**
+  String get searchFilters;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
+
+  /// No description provided for @now.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get now;
+
+  /// No description provided for @including.
+  ///
+  /// In en, this message translates to:
+  /// **'Including'**
+  String get including;
+
+  /// No description provided for @text.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get text;
+
+  /// No description provided for @url.
+  ///
+  /// In en, this message translates to:
+  /// **'URL'**
+  String get url;
+
+  /// No description provided for @media.
+  ///
+  /// In en, this message translates to:
+  /// **'Media'**
+  String get media;
+
+  /// No description provided for @docs.
+  ///
+  /// In en, this message translates to:
+  /// **'Docs'**
+  String get docs;
+
+  /// No description provided for @textCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Categories'**
+  String get textCategories;
+
+  /// No description provided for @exclusive.
+  ///
+  /// In en, this message translates to:
+  /// **'( Exclusive )'**
+  String get exclusive;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @color.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get color;
+
+  /// No description provided for @sortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort By'**
+  String get sortBy;
+
+  /// No description provided for @select.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get select;
+
+  /// No description provided for @lastModified.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Modified'**
+  String get lastModified;
+
+  /// No description provided for @created.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get created;
+
+  /// No description provided for @copyCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Count'**
+  String get copyCount;
+
+  /// No description provided for @lastCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Copied'**
+  String get lastCopied;
+
+  /// No description provided for @sortOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Order'**
+  String get sortOrder;
+
+  /// No description provided for @asc.
+  ///
+  /// In en, this message translates to:
+  /// **'Asc'**
+  String get asc;
+
+  /// No description provided for @desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Desc'**
+  String get desc;
+
+  /// No description provided for @applyFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filter'**
+  String get applyFilter;
+
+  /// No description provided for @themeColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Color'**
+  String get themeColor;
+
+  /// No description provided for @themeColorDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'This color will influence the overall look and feel of the app.'**
+  String get themeColorDesc;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
+
+  /// No description provided for @colorMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Mode'**
+  String get colorMode;
+
+  /// No description provided for @colorModeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the color mode to customize the appearance of the app. The default option is Tonal Spot.'**
+  String get colorModeDesc;
+
+  /// No description provided for @tonalSpot.
+  ///
+  /// In en, this message translates to:
+  /// **'Tonal Spot'**
+  String get tonalSpot;
+
+  /// No description provided for @content.
+  ///
+  /// In en, this message translates to:
+  /// **'Content'**
+  String get content;
+
+  /// No description provided for @expressive.
+  ///
+  /// In en, this message translates to:
+  /// **'Expressive'**
+  String get expressive;
+
+  /// No description provided for @fidility.
+  ///
+  /// In en, this message translates to:
+  /// **'Fidility'**
+  String get fidility;
+
+  /// No description provided for @fruitSalad.
+  ///
+  /// In en, this message translates to:
+  /// **'Fruit Salad'**
+  String get fruitSalad;
+
+  /// No description provided for @monochrome.
+  ///
+  /// In en, this message translates to:
+  /// **'Monochrome'**
+  String get monochrome;
+
+  /// No description provided for @neutral.
+  ///
+  /// In en, this message translates to:
+  /// **'Neutral'**
+  String get neutral;
+
+  /// No description provided for @rainbow.
+  ///
+  /// In en, this message translates to:
+  /// **'Rainbow'**
+  String get rainbow;
+
+  /// No description provided for @vibrant.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrant'**
+  String get vibrant;
 }
 
 class _AppLocalizationsDelegate
