@@ -1779,6 +1779,30 @@ abstract class AppLocalizations {
   /// **'Drop your files, images or text here'**
   String get dropHere;
 
+  /// No description provided for @general.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get general;
+
+  /// No description provided for @customization.
+  ///
+  /// In en, this message translates to:
+  /// **'Customization'**
+  String get customization;
+
+  /// No description provided for @syncingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing'**
+  String get syncingLabel;
+
+  /// No description provided for @encryption.
+  ///
+  /// In en, this message translates to:
+  /// **'Encryption'**
+  String get encryption;
+
   /// No description provided for @searchFilters.
   ///
   /// In en, this message translates to:

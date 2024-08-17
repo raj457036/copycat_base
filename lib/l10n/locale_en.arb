@@ -392,6 +392,11 @@
         }
     },
     "dropHere":  "Drop your files, images or text here",
+
+    "general": "General",
+    "customization": "Customization",
+    "syncingLabel": "Syncing",
+    "encryption": "Encryption",
     
     "searchFilters": "Search Filters",
     "from": "From",

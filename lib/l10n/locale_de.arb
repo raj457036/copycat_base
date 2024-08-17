@@ -390,6 +390,11 @@
     },
     "dropHere": "Lass deine Dateien, Bilder oder Texte hier fallen",
 
+    "general": "Allgemein",
+    "customization": "Anpassung",
+    "syncingLabel": "Synchronisieren",
+    "encryption": "Verschlüsselung",
+
     "searchFilters": "Suchfilter",
     "from": "Von",
     "to": "Bis",

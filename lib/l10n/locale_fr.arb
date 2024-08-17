@@ -390,6 +390,11 @@
     },
     "dropHere": "Déposez vos fichiers, images ou textes ici",
 
+    "general": "Général",
+    "customization": "Personnalisation",
+    "syncingLabel": "Synchronisation",
+    "encryption": "Chiffrement",
+
     "searchFilters": "Filtres de Recherche",
     "from": "De",
     "to": "À",

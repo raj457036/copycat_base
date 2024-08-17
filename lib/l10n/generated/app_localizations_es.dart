@@ -948,6 +948,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dropHere => 'Suelta tus archivos, imágenes o texto aquí';
 
   @override
+  String get general => 'General';
+
+  @override
+  String get customization => 'Personalización';
+
+  @override
+  String get syncingLabel => 'Sincronizando';
+
+  @override
+  String get encryption => 'Cifrado';
+
+  @override
   String get searchFilters => 'Filtros de Búsqueda';
 
   @override

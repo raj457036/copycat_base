@@ -390,6 +390,11 @@
     },
     "dropHere": "Suelta tus archivos, imágenes o texto aquí",
 
+    "general": "General",
+    "customization": "Personalización",
+    "syncingLabel": "Sincronizando",
+    "encryption": "Cifrado",
+
     "searchFilters": "Filtros de Búsqueda",
     "from": "Desde",
     "to": "Hasta",

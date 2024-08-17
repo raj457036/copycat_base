@@ -946,6 +946,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get dropHere => 'Lass deine Dateien, Bilder oder Texte hier fallen';
 
   @override
+  String get general => 'Allgemein';
+
+  @override
+  String get customization => 'Anpassung';
+
+  @override
+  String get syncingLabel => 'Synchronisieren';
+
+  @override
+  String get encryption => 'Verschlüsselung';
+
+  @override
   String get searchFilters => 'Suchfilter';
 
   @override
