@@ -57,7 +57,7 @@ dependencies:
       url: https://github.com/raj457036/platform_device_id.git
       ref: master
       path: "platform_device_id"
-  shimmer: ^3.0.0
+  flutter_svg: ^2.0.10+1
   
 
 dev_dependencies:

@@ -518,9 +518,19 @@ const avif = SimpleFileFormat(
   mimeTypes: ['image/avif'],
 );
 
+const svg = SimpleFileFormat(
+  uniformTypeIdentifiers: ['public.svg-image'],
+  mimeTypes: [
+    'public.svg-image',
+    "image/svg+xml",
+    "image/svg",
+  ],
+);
+
 final allSupportedClipFormats = [
   ...Formats.standardFormats,
   avif,
+  svg,
 ];
 
 const _clipTypePriority = [
@@ -532,7 +542,7 @@ const _clipTypePriority = [
   Formats.webp,
   Formats.heic,
   Formats.bmp,
-  Formats.svg,
+  svg,
   Formats.fileUri,
   Formats.uri,
   Formats.plainTextFile,
