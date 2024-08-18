@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:easy_worker/easy_worker.dart';
@@ -54,4 +56,22 @@ Future<String?> getBlurHash(String path) async {
     name: "BlurHash",
   );
   return result;
+}
+
+void decodeBlurHash(String blurHash, Sender send) {
+  final image_ = BlurHash.decode(blurHash).toImage(35, 20);
+  final bin = Uint8List.fromList(img.encodeJpg(image_));
+  send(bin);
+}
+
+final blurHashWorker = EasyCompute<Uint8List, String>(
+  ComputeEntrypoint(decodeBlurHash),
+  workerName: "blurHashDecoder",
+);
+
+Future<Uint8List?> getImageFromBlurHash(String blurHash) async {
+  await blurHashWorker.waitUntilReady();
+  final bin = await blurHashWorker.compute(blurHash);
+
+  return bin;
 }

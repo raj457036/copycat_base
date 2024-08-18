@@ -1,13 +1,11 @@
-import 'dart:typed_data';
-
-import 'package:blurhash_dart/blurhash_dart.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/constants/widgets.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
+import 'package:copycat_base/utils/blur_hash.dart';
 import 'package:copycat_base/utils/utility.dart';
+import 'package:copycat_base/widgets/clipcard_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image/image.dart' as img;
 import "package:universal_io/io.dart";
 
 final mediaMimeRegex = RegExp("video|image|audio");
@@ -45,13 +43,22 @@ class MediaClipCard extends StatelessWidget {
     }
 
     try {
-      final image_ = BlurHash.decode(item.imgBlurHash!).toImage(35, 20);
-      final bin = Uint8List.fromList(img.encodeJpg(image_));
-      return Image.memory(
-        bin,
-        gaplessPlayback: true,
-        fit: BoxFit.cover,
-      );
+      return FutureBuilder(
+          future: getImageFromBlurHash(item.imgBlurHash!),
+          builder: (context, ss) {
+            if (ss.hasError) {
+              return const Center(
+                child: Text("Something went wrong"),
+              );
+            }
+            if (!ss.hasData) return loadingCard;
+
+            return Image.memory(
+              ss.data!,
+              gaplessPlayback: true,
+              fit: BoxFit.cover,
+            );
+          });
     } catch (e) {
       return placeholderImage;
     }
