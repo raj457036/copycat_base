@@ -7,7 +7,7 @@ import 'package:image/image.dart' as img;
 import 'package:mime/mime.dart' as mime;
 import 'package:universal_io/io.dart';
 
-void calculateBlurHash(String path, Sender send) {
+String? calculateBlurHash(String path) {
   try {
     final bin = File(path).readAsBytesSync();
     final mimeType =
@@ -35,43 +35,48 @@ void calculateBlurHash(String path, Sender send) {
     }
 
     if (image == null) {
-      send(null);
-      return;
+      return null;
     }
     final result = BlurHash.encode(image, numCompX: 4, numCompY: 3).hash;
-    send(result);
+    return result;
   } catch (e) {
     logger.e(
       "Couldn't get blur hash from the image!",
       error: e,
     );
-    send(null);
+    return null;
   }
 }
 
-Future<String?> getBlurHash(String path) async {
-  final result = await EasyWorker.compute<String?, String>(
-    calculateBlurHash,
-    path,
-    name: "BlurHash",
-  );
-  return result;
+void processBlurHash((String, String) payload, Sender send) {
+  final (type, input) = payload;
+
+  if (type == "encode") {
+    // input is path
+    final result = calculateBlurHash(input);
+    send((null, result));
+  } else if (type == "decode") {
+    // input is blurHash
+    final image_ = BlurHash.decode(input).toImage(35, 20);
+    final bin = Uint8List.fromList(img.encodeJpg(image_));
+    send((bin, null));
+  }
 }
 
-void decodeBlurHash(String blurHash, Sender send) {
-  final image_ = BlurHash.decode(blurHash).toImage(35, 20);
-  final bin = Uint8List.fromList(img.encodeJpg(image_));
-  send(bin);
-}
-
-final blurHashWorker = EasyCompute<Uint8List, String>(
-  ComputeEntrypoint(decodeBlurHash),
-  workerName: "blurHashDecoder",
+final blurHashWorker = EasyCompute<(Uint8List?, String?), (String, String)>(
+  ComputeEntrypoint(processBlurHash),
+  workerName: "BlurHash Enc/Dec",
 );
+
+Future<String?> getBlurHash(String path) async {
+  await blurHashWorker.waitUntilReady();
+  final (_, blurHash) = await blurHashWorker.compute(("encode", path));
+
+  return blurHash;
+}
 
 Future<Uint8List?> getImageFromBlurHash(String blurHash) async {
   await blurHashWorker.waitUntilReady();
-  final bin = await blurHashWorker.compute(blurHash);
-
+  final (bin, _) = await blurHashWorker.compute(("decode", blurHash));
   return bin;
 }
