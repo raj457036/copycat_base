@@ -1,12 +1,10 @@
-import 'dart:async';
-
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:easy_worker/easy_worker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
-Future<void> syncingClips(
+void syncingClips(
   List<ClipboardItem> items,
   Sender send,
 ) async {
@@ -16,7 +14,7 @@ Future<void> syncingClips(
     db = instance;
   } else {
     final dir = await getApplicationDocumentsDirectory();
-    db = await Isar.open(
+    db = Isar.openSync(
       [ClipboardItemSchema],
       directory: dir.path,
       relaxedDurability: true,
@@ -25,13 +23,15 @@ Future<void> syncingClips(
     );
   }
 
-  final foundedCount = await db.txn(() async {
-    final foundCollections = await db.clipboardItems
+  int foundedCount = 0;
+
+  db.writeTxnSync(() {
+    final foundItems = db.clipboardItems
         .filter()
         .anyOf(items, (q, _) => q.serverIdEqualTo(_.serverId))
-        .findAll();
+        .findAllSync();
 
-    for (var found in foundCollections) {
+    for (var found in foundItems) {
       final index = items.indexWhere((item) => item.serverId == found.serverId);
       if (index != -1) {
         items[index] = items[index].copyWith(
@@ -40,11 +40,8 @@ Future<void> syncingClips(
         )..applyId(found);
       }
     }
-    return foundCollections.length;
-  });
-
-  await db.writeTxn(() async {
-    await db.clipboardItems.putAll(items);
+    db.clipboardItems.putAllSync(items);
+    foundedCount = foundItems.length;
   });
 
   send(foundedCount);
