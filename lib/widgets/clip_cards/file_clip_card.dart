@@ -36,7 +36,7 @@ class FileClipCard extends StatelessWidget {
               maxLines: 5,
               textAlign: TextAlign.center,
               style: textTheme.bodySmall?.copyWith(
-                color: colors.onTertiaryContainer,
+                color: colors.onSurface,
                 height: 1.8,
               ),
             ),

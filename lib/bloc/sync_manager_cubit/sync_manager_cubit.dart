@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:copycat_base/bloc/auth_cubit/auth_cubit.dart';
+import 'package:copycat_base/bloc/sync_manager_cubit/isolate.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/db/clip_collection/clipcollection.dart';
@@ -11,7 +12,9 @@ import 'package:copycat_base/domain/repositories/sync_clipboard.dart';
 import 'package:copycat_base/l10n/l10n.dart';
 import 'package:copycat_base/utils/snackbar.dart';
 import 'package:copycat_base/utils/utility.dart';
+import 'package:easy_worker/easy_worker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -50,6 +53,7 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
   Timer? autoSyncTimer;
   DateTime? lastManualSyncTS;
   bool rebuilding = false;
+  late EasyCompute<int, List<ClipboardItem>> syncWorker;
 
   SyncManagerCubit(
     this.db,
@@ -57,7 +61,25 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     this.syncRepo,
     this.clipCollectionRepository,
     @Named("device_id") this.deviceId,
-  ) : super(const SyncManagerState.unknown());
+  ) : super(const SyncManagerState.unknown()) {
+    syncWorker = EasyCompute<int, List<ClipboardItem>>(
+      ComputeEntrypoint(
+        syncingClips,
+        initData: {
+          "token": ServicesBinding.rootIsolateToken,
+        },
+        onInit: (payload) async {
+          if (payload is Map) {
+            final token = payload["token"];
+            if (token != null) {
+              BackgroundIsolateBinaryMessenger.ensureInitialized(token);
+            }
+          }
+        },
+      ),
+      workerName: "SyncWorker",
+    );
+  }
 
   @override
   void emit(SyncManagerState state) {
@@ -364,32 +386,13 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         final items = r.results;
 
         if (items.isEmpty) return;
-
-        final foundedCount = await db.txn(() async {
-          final foundCollections = await db.clipboardItems
-              .filter()
-              .anyOf(items, (q, _) => q.serverIdEqualTo(_.serverId))
-              .findAll();
-
-          for (var found in foundCollections) {
-            final index =
-                items.indexWhere((item) => item.serverId == found.serverId);
-            if (index != -1) {
-              items[index] = items[index].copyWith(
-                lastSynced: found.lastSynced,
-                localPath: found.localPath,
-              )..applyId(found);
-            }
-          }
-          return foundCollections.length;
-        });
+        await syncWorker.waitUntilReady();
+        final foundedCount = await syncWorker.compute(
+          items,
+        );
 
         added += r.results.length - foundedCount;
         updated += foundedCount;
-
-        await db.writeTxn(() async {
-          await db.clipboardItems.putAll(items);
-        });
 
         if (!silent && !partlySynced) {
           emit(const SyncManagerState.partlySynced(clipboard: true));
