@@ -551,12 +551,12 @@ class AppLocalizationsFr extends AppLocalizations {
       'Organisez les éléments de votre presse-papiers en jusqu\'à 3 collections, offrant une catégorisation simple pour une meilleure gestion du flux de travail.';
 
   @override
-  String get autoSyncEvery60Seconds =>
-      'Synchronisation Automatique Toutes les 60 Secondes';
+  String get autoSyncEvery45Seconds =>
+      'Synchronisation Automatique Toutes les 45 Secondes';
 
   @override
-  String get autoSyncEvery60SecondsDesc =>
-      'Profitez de la synchronisation automatique des éléments du presse-papiers toutes les 60 secondes, gardant vos appareils à jour sans intervention manuelle.';
+  String get autoSyncEvery45SecondsDesc =>
+      'Profitez de la synchronisation automatique des éléments du presse-papiers toutes les 45 secondes, gardant vos appareils à jour sans intervention manuelle.';
 
   @override
   String get withPro => 'Avec PRO ✨';
@@ -667,19 +667,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get $60Sec => 'Décontracté';
 
   @override
-  String get $5MB => 'Petit (5 MB)';
+  String get $5MB => '5 MB';
 
   @override
-  String get $10MB => 'Standard (10 MB)';
+  String get $10MB => '10 MB';
 
   @override
-  String get $20MB => 'Moyen (20 MB)';
+  String get $20MB => '20 MB';
 
   @override
-  String get $50MB => 'Grand (50 MB)';
+  String get $50MB => '50 MB';
 
   @override
-  String get $100MB => 'Très Grand (100 MB)';
+  String get $100MB => '100 MB';
 
   @override
   String get e2eeNotSetup => 'E2EE n\'est pas encore configuré.';
@@ -1074,4 +1074,32 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get vibrant => 'Vibrant';
+
+  @override
+  String get dragNDropFeature => 'Glisser & Déposer';
+
+  @override
+  String get dragNDropFeatureDesc =>
+      'Déplacez les éléments sans effort dans toutes les directions sur vos appareils de bureau et tablettes.';
+
+  @override
+  String get experimentalLabel => 'Expérimental';
+
+  @override
+  String get dragNdrop => 'Glisser & Déposer';
+
+  @override
+  String get dragNdropDesc =>
+      'Permet de déplacer librement les éléments dans les deux directions au sein de l\'application.';
+
+  @override
+  String get featureNotSupported =>
+      'Désolé, cette fonctionnalité n\'est pas disponible sur votre plateforme pour le moment.';
+
+  @override
+  String get themingFeature => 'Thématisation';
+
+  @override
+  String get themingFeatureDesc =>
+      'Personnalisez l\'apparence et le ressenti de l\'application selon vos préférences.';
 }

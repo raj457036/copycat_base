@@ -102,18 +102,23 @@ const SubscriptionSchema = CollectionSchema(
       name: r'syncInterval',
       type: IsarType.long,
     ),
-    r'trialEnd': PropertySchema(
+    r'theming': PropertySchema(
       id: 17,
+      name: r'theming',
+      type: IsarType.bool,
+    ),
+    r'trialEnd': PropertySchema(
+      id: 18,
       name: r'trialEnd',
       type: IsarType.dateTime,
     ),
     r'trialStart': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'trialStart',
       type: IsarType.dateTime,
     ),
     r'userId': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'userId',
       type: IsarType.string,
     )
@@ -168,9 +173,10 @@ void _subscriptionSerialize(
   writer.writeString(offsets[14], object.subId);
   writer.writeLong(offsets[15], object.syncHours);
   writer.writeLong(offsets[16], object.syncInterval);
-  writer.writeDateTime(offsets[17], object.trialEnd);
-  writer.writeDateTime(offsets[18], object.trialStart);
-  writer.writeString(offsets[19], object.userId);
+  writer.writeBool(offsets[17], object.theming);
+  writer.writeDateTime(offsets[18], object.trialEnd);
+  writer.writeDateTime(offsets[19], object.trialStart);
+  writer.writeString(offsets[20], object.userId);
 }
 
 Subscription _subscriptionDeserialize(
@@ -196,9 +202,10 @@ Subscription _subscriptionDeserialize(
     subId: reader.readString(offsets[14]),
     syncHours: reader.readLong(offsets[15]),
     syncInterval: reader.readLong(offsets[16]),
-    trialEnd: reader.readDateTimeOrNull(offsets[17]),
-    trialStart: reader.readDateTimeOrNull(offsets[18]),
-    userId: reader.readString(offsets[19]),
+    theming: reader.readBool(offsets[17]),
+    trialEnd: reader.readDateTimeOrNull(offsets[18]),
+    trialStart: reader.readDateTimeOrNull(offsets[19]),
+    userId: reader.readString(offsets[20]),
   );
   object.id = id;
   return object;
@@ -246,10 +253,12 @@ P _subscriptionDeserializeProp<P>(
     case 16:
       return (reader.readLong(offset)) as P;
     case 17:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 18:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 19:
+      return (reader.readDateTimeOrNull(offset)) as P;
+    case 20:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1399,6 +1408,16 @@ extension SubscriptionQueryFilter
   }
 
   QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      themingEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'theming',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
       trialEndIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -1902,6 +1921,18 @@ extension SubscriptionQuerySortBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByTheming() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'theming', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByThemingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'theming', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByTrialEnd() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'trialEnd', Sort.asc);
@@ -2166,6 +2197,18 @@ extension SubscriptionQuerySortThenBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByTheming() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'theming', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByThemingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'theming', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByTrialEnd() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'trialEnd', Sort.asc);
@@ -2313,6 +2356,12 @@ extension SubscriptionQueryWhereDistinct
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QDistinct> distinctByTheming() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'theming');
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QDistinct> distinctByTrialEnd() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'trialEnd');
@@ -2444,6 +2493,12 @@ extension SubscriptionQueryProperty
     });
   }
 
+  QueryBuilder<Subscription, bool, QQueryOperations> themingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'theming');
+    });
+  }
+
   QueryBuilder<Subscription, DateTime?, QQueryOperations> trialEndProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'trialEnd');
@@ -2483,6 +2538,7 @@ _$SubscriptionImpl _$$SubscriptionImplFromJson(Map<String, dynamic> json) =>
       collections: (json['collections'] as num?)?.toInt() ?? 3,
       itemsPerCollection: (json['itemsPerCollection'] as num?)?.toInt() ?? 50,
       dragNdrop: json['dragNdrop'] as bool? ?? false,
+      theming: json['theming'] as bool? ?? false,
       syncHours: (json['syncHr'] as num?)?.toInt() ?? 24,
       ads: json['ads'] as bool? ?? true,
       syncInterval: (json['syncInt'] as num?)?.toInt() ?? $45S,
@@ -2508,6 +2564,7 @@ Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
       'collections': instance.collections,
       'itemsPerCollection': instance.itemsPerCollection,
       'dragNdrop': instance.dragNdrop,
+      'theming': instance.theming,
       'syncHr': instance.syncHours,
       'ads': instance.ads,
       'syncInt': instance.syncInterval,

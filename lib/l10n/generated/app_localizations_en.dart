@@ -543,11 +543,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.';
 
   @override
-  String get autoSyncEvery60Seconds => 'Auto-Sync Every 60 Seconds';
+  String get autoSyncEvery45Seconds => 'Auto-Sync Every 45 Seconds';
 
   @override
-  String get autoSyncEvery60SecondsDesc =>
-      'Enjoy automatic syncing of clipboard items every 60 seconds, keeping your devices up-to-date without manual intervention.';
+  String get autoSyncEvery45SecondsDesc =>
+      'Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.';
 
   @override
   String get withPro => 'With PRO ✨';
@@ -656,19 +656,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get $60Sec => 'Casual';
 
   @override
-  String get $5MB => 'Small (5 MB)';
+  String get $5MB => '5 MB';
 
   @override
-  String get $10MB => 'Standard (10 MB)';
+  String get $10MB => '10 MB';
 
   @override
-  String get $20MB => 'Medium (20 MB)';
+  String get $20MB => '20 MB';
 
   @override
-  String get $50MB => 'Large (50 MB)';
+  String get $50MB => '50 MB';
 
   @override
-  String get $100MB => 'Extra Large (100 MB)';
+  String get $100MB => '100 MB';
 
   @override
   String get e2eeNotSetup => 'E2EE not setup yet.';
@@ -1059,4 +1059,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vibrant => 'Vibrant';
+
+  @override
+  String get dragNDropFeature => 'Drag & Drop';
+
+  @override
+  String get dragNDropFeatureDesc =>
+      'Seamlessly move items in any direction on your Desktop and Tablet devices.';
+
+  @override
+  String get experimentalLabel => 'Experimental';
+
+  @override
+  String get dragNdrop => 'Drag & Drop';
+
+  @override
+  String get dragNdropDesc =>
+      'Allow items to be moved freely in both directions within the app.';
+
+  @override
+  String get featureNotSupported =>
+      'Sorry, this feature isn\'t available on your platform right now.';
+
+  @override
+  String get themingFeature => 'Theming';
+
+  @override
+  String get themingFeatureDesc =>
+      'Customize the entire look and feel of the app to match your preferences.';
 }

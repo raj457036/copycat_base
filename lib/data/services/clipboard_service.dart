@@ -1,4 +1,4 @@
-import 'dart:async' show Completer;
+import 'dart:async' show Completer, TimeoutException;
 import 'dart:async' show FutureOr;
 import 'dart:convert' show utf8;
 
@@ -273,8 +273,9 @@ class ClipboardFormatProcessor {
 
   Future<(String?, Uint8List?)> readFile(
     DataReader reader,
-    FileFormat format,
-  ) async {
+    FileFormat format, {
+    bool virtual = true,
+  }) async {
     Uint8List? content;
     String? name;
     final c = Completer<void>();
@@ -292,7 +293,7 @@ class ClipboardFormatProcessor {
       onError: (e) {
         c.completeError(e);
       },
-      allowVirtualFiles: true,
+      allowVirtualFiles: virtual,
     );
     if (progress == null) {
       c.complete();
@@ -366,10 +367,29 @@ class ClipboardFormatProcessor {
     DataFormat format,
   ) async {
     try {
-      final (fileName, binary) = await readFile(
-        reader,
-        format as FileFormat,
-      );
+      (String?, Uint8List?) result;
+
+      final tryVirtualFirst = Platform.isWindows;
+
+      try {
+        result = await readFile(
+          reader,
+          format as FileFormat,
+          virtual: tryVirtualFirst,
+        ).timeout(const Duration(seconds: 3));
+      } on TimeoutException catch (e) {
+        logger.e(e);
+        result = await readFile(
+          reader,
+          format as FileFormat,
+          virtual: !tryVirtualFirst,
+        ).timeout(const Duration(seconds: 10));
+      } catch (e) {
+        logger.e(e);
+        return null;
+      }
+
+      final (fileName, binary) = result;
 
       if (binary == null) {
         logger.w("Couldn't read content of image file with format $format");
@@ -499,7 +519,7 @@ class ClipboardFormatProcessor {
         return await getImage(reader, "webp", format);
       case Formats.heic:
         return await getImage(reader, "heic", format);
-      case Formats.svg:
+      case svg:
         return await getImage(reader, "svg", format);
 
       // Files or Url

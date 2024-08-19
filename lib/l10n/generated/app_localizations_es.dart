@@ -551,12 +551,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Organiza los elementos de tu portapapeles en hasta 3 colecciones, proporcionando una categorización simple para una mejor gestión del flujo de trabajo.';
 
   @override
-  String get autoSyncEvery60Seconds =>
-      'Sincronización Automática Cada 60 Segundos';
+  String get autoSyncEvery45Seconds =>
+      'Sincronización Automática Cada 45 Segundos';
 
   @override
-  String get autoSyncEvery60SecondsDesc =>
-      'Disfruta de la sincronización automática de los elementos del portapapeles cada 60 segundos, manteniendo tus dispositivos actualizados sin intervención manual.';
+  String get autoSyncEvery45SecondsDesc =>
+      'Disfruta de la sincronización automática de los elementos del portapapeles cada 45 segundos, manteniendo tus dispositivos actualizados sin intervención manual.';
 
   @override
   String get withPro => 'Con PRO ✨';
@@ -665,19 +665,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get $60Sec => 'Casual';
 
   @override
-  String get $5MB => 'Pequeño (5 MB)';
+  String get $5MB => '5 MB';
 
   @override
-  String get $10MB => 'Estándar (10 MB)';
+  String get $10MB => '10 MB';
 
   @override
-  String get $20MB => 'Mediano (20 MB)';
+  String get $20MB => '20 MB';
 
   @override
-  String get $50MB => 'Grande (50 MB)';
+  String get $50MB => '50 MB';
 
   @override
-  String get $100MB => 'Extra Grande (100 MB)';
+  String get $100MB => '100 MB';
 
   @override
   String get e2eeNotSetup => 'E2EE no está configurado aún.';
@@ -1071,4 +1071,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get vibrant => 'Vibrante';
+
+  @override
+  String get dragNDropFeature => 'Arrastrar y Soltar';
+
+  @override
+  String get dragNDropFeatureDesc =>
+      'Mueve elementos sin problemas en cualquier dirección en tus dispositivos de escritorio y tabletas.';
+
+  @override
+  String get experimentalLabel => 'Experimental';
+
+  @override
+  String get dragNdrop => 'Arrastrar y Soltar';
+
+  @override
+  String get dragNdropDesc =>
+      'Permite que los elementos se muevan libremente en ambas direcciones dentro de la aplicación.';
+
+  @override
+  String get featureNotSupported =>
+      'Lo sentimos, esta función no está disponible en tu plataforma en este momento.';
+
+  @override
+  String get themingFeature => 'Temas';
+
+  @override
+  String get themingFeatureDesc =>
+      'Personaliza el aspecto y la sensación de la aplicación para que coincida con tus preferencias.';
 }

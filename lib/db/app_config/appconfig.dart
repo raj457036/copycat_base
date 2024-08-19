@@ -49,10 +49,15 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default("en") String locale,
     String? enc2,
     @Default(false) bool autoEncrypt,
+
+    // Customization
     @Default(defaultThemeColor) int themeColor,
     @Default(DynamicSchemeVariant.tonalSpot)
     @Enumerated(EnumType.name)
     DynamicSchemeVariant themeVariant,
+
+    // Exprimental
+    @Default(false) bool enableDragNDrop,
 
     //? Local App States
     /// last focus window id

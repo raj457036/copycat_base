@@ -39,6 +39,7 @@ mixin _$Subscription {
   int get collections => throw _privateConstructorUsedError;
   int get itemsPerCollection => throw _privateConstructorUsedError;
   bool get dragNdrop => throw _privateConstructorUsedError;
+  bool get theming => throw _privateConstructorUsedError;
   @JsonKey(name: "syncHr")
   int get syncHours => throw _privateConstructorUsedError;
   bool get ads => throw _privateConstructorUsedError;
@@ -79,6 +80,7 @@ abstract class $SubscriptionCopyWith<$Res> {
       int collections,
       int itemsPerCollection,
       bool dragNdrop,
+      bool theming,
       @JsonKey(name: "syncHr") int syncHours,
       bool ads,
       @JsonKey(name: "syncInt") int syncInterval,
@@ -116,6 +118,7 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? collections = null,
     Object? itemsPerCollection = null,
     Object? dragNdrop = null,
+    Object? theming = null,
     Object? syncHours = null,
     Object? ads = null,
     Object? syncInterval = null,
@@ -174,6 +177,10 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.dragNdrop
           : dragNdrop // ignore: cast_nullable_to_non_nullable
               as bool,
+      theming: null == theming
+          ? _value.theming
+          : theming // ignore: cast_nullable_to_non_nullable
+              as bool,
       syncHours: null == syncHours
           ? _value.syncHours
           : syncHours // ignore: cast_nullable_to_non_nullable
@@ -231,6 +238,7 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
       int collections,
       int itemsPerCollection,
       bool dragNdrop,
+      bool theming,
       @JsonKey(name: "syncHr") int syncHours,
       bool ads,
       @JsonKey(name: "syncInt") int syncInterval,
@@ -266,6 +274,7 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? collections = null,
     Object? itemsPerCollection = null,
     Object? dragNdrop = null,
+    Object? theming = null,
     Object? syncHours = null,
     Object? ads = null,
     Object? syncInterval = null,
@@ -324,6 +333,10 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.dragNdrop
           : dragNdrop // ignore: cast_nullable_to_non_nullable
               as bool,
+      theming: null == theming
+          ? _value.theming
+          : theming // ignore: cast_nullable_to_non_nullable
+              as bool,
       syncHours: null == syncHours
           ? _value.syncHours
           : syncHours // ignore: cast_nullable_to_non_nullable
@@ -376,6 +389,7 @@ class _$SubscriptionImpl extends _Subscription {
       this.collections = 3,
       this.itemsPerCollection = 50,
       this.dragNdrop = false,
+      this.theming = false,
       @JsonKey(name: "syncHr") this.syncHours = 24,
       this.ads = true,
       @JsonKey(name: "syncInt") this.syncInterval = $45S,
@@ -426,6 +440,9 @@ class _$SubscriptionImpl extends _Subscription {
   @JsonKey()
   final bool dragNdrop;
   @override
+  @JsonKey()
+  final bool theming;
+  @override
   @JsonKey(name: "syncHr")
   final int syncHours;
   @override
@@ -454,7 +471,7 @@ class _$SubscriptionImpl extends _Subscription {
 
   @override
   String toString() {
-    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, managementUrl: $managementUrl)';
+    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, theming: $theming, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, managementUrl: $managementUrl)';
   }
 
   @override
@@ -482,6 +499,7 @@ class _$SubscriptionImpl extends _Subscription {
                 other.itemsPerCollection == itemsPerCollection) &&
             (identical(other.dragNdrop, dragNdrop) ||
                 other.dragNdrop == dragNdrop) &&
+            (identical(other.theming, theming) || other.theming == theming) &&
             (identical(other.syncHours, syncHours) ||
                 other.syncHours == syncHours) &&
             (identical(other.ads, ads) || other.ads == ads) &&
@@ -513,6 +531,7 @@ class _$SubscriptionImpl extends _Subscription {
         collections,
         itemsPerCollection,
         dragNdrop,
+        theming,
         syncHours,
         ads,
         syncInterval,
@@ -555,6 +574,7 @@ abstract class _Subscription extends Subscription {
       final int collections,
       final int itemsPerCollection,
       final bool dragNdrop,
+      final bool theming,
       @JsonKey(name: "syncHr") final int syncHours,
       final bool ads,
       @JsonKey(name: "syncInt") final int syncInterval,
@@ -601,6 +621,8 @@ abstract class _Subscription extends Subscription {
   int get itemsPerCollection;
   @override
   bool get dragNdrop;
+  @override
+  bool get theming;
   @override
   @JsonKey(name: "syncHr")
   int get syncHours;

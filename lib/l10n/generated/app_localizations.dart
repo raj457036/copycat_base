@@ -1071,17 +1071,17 @@ abstract class AppLocalizations {
   /// **'Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.'**
   String get upTo3CollectionsDesc;
 
-  /// No description provided for @autoSyncEvery60Seconds.
+  /// No description provided for @autoSyncEvery45Seconds.
   ///
   /// In en, this message translates to:
-  /// **'Auto-Sync Every 60 Seconds'**
-  String get autoSyncEvery60Seconds;
+  /// **'Auto-Sync Every 45 Seconds'**
+  String get autoSyncEvery45Seconds;
 
-  /// No description provided for @autoSyncEvery60SecondsDesc.
+  /// No description provided for @autoSyncEvery45SecondsDesc.
   ///
   /// In en, this message translates to:
-  /// **'Enjoy automatic syncing of clipboard items every 60 seconds, keeping your devices up-to-date without manual intervention.'**
-  String get autoSyncEvery60SecondsDesc;
+  /// **'Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.'**
+  String get autoSyncEvery45SecondsDesc;
 
   /// No description provided for @withPro.
   ///
@@ -1284,31 +1284,31 @@ abstract class AppLocalizations {
   /// No description provided for @$5MB.
   ///
   /// In en, this message translates to:
-  /// **'Small (5 MB)'**
+  /// **'5 MB'**
   String get $5MB;
 
   /// No description provided for @$10MB.
   ///
   /// In en, this message translates to:
-  /// **'Standard (10 MB)'**
+  /// **'10 MB'**
   String get $10MB;
 
   /// No description provided for @$20MB.
   ///
   /// In en, this message translates to:
-  /// **'Medium (20 MB)'**
+  /// **'20 MB'**
   String get $20MB;
 
   /// No description provided for @$50MB.
   ///
   /// In en, this message translates to:
-  /// **'Large (50 MB)'**
+  /// **'50 MB'**
   String get $50MB;
 
   /// No description provided for @$100MB.
   ///
   /// In en, this message translates to:
-  /// **'Extra Large (100 MB)'**
+  /// **'100 MB'**
   String get $100MB;
 
   /// No description provided for @e2eeNotSetup.
@@ -2024,6 +2024,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Vibrant'**
   String get vibrant;
+
+  /// No description provided for @dragNDropFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag & Drop'**
+  String get dragNDropFeature;
+
+  /// No description provided for @dragNDropFeatureDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Seamlessly move items in any direction on your Desktop and Tablet devices.'**
+  String get dragNDropFeatureDesc;
+
+  /// No description provided for @experimentalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Experimental'**
+  String get experimentalLabel;
+
+  /// No description provided for @dragNdrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag & Drop'**
+  String get dragNdrop;
+
+  /// No description provided for @dragNdropDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow items to be moved freely in both directions within the app.'**
+  String get dragNdropDesc;
+
+  /// No description provided for @featureNotSupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, this feature isn\'t available on your platform right now.'**
+  String get featureNotSupported;
+
+  /// No description provided for @themingFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Theming'**
+  String get themingFeature;
+
+  /// No description provided for @themingFeatureDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize the entire look and feel of the app to match your preferences.'**
+  String get themingFeatureDesc;
 }
 
 class _AppLocalizationsDelegate

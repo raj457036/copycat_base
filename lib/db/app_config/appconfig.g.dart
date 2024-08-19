@@ -37,65 +37,70 @@ const AppConfigSchema = CollectionSchema(
       name: r'dontUploadOver',
       type: IsarType.long,
     ),
-    r'enableFileSync': PropertySchema(
+    r'enableDragNDrop': PropertySchema(
       id: 4,
+      name: r'enableDragNDrop',
+      type: IsarType.bool,
+    ),
+    r'enableFileSync': PropertySchema(
+      id: 5,
       name: r'enableFileSync',
       type: IsarType.bool,
     ),
     r'enableSync': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'enableSync',
       type: IsarType.bool,
     ),
     r'enc2': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'enc2',
       type: IsarType.string,
     ),
     r'isPersisted': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'isPersisted',
       type: IsarType.bool,
     ),
     r'launchAtStartup': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'launchAtStartup',
       type: IsarType.bool,
     ),
     r'locale': PropertySchema(
-      id: 9,
+      id: 10,
       name: r'locale',
       type: IsarType.string,
     ),
     r'pausedTill': PropertySchema(
-      id: 10,
+      id: 11,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'smartPaste': PropertySchema(
-      id: 11,
+      id: 12,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'themeColor': PropertySchema(
-      id: 12,
+      id: 13,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 13,
+      id: 14,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'toggleHotkey',
       type: IsarType.string,
     )
@@ -148,18 +153,19 @@ void _appConfigSerialize(
   writer.writeLong(offsets[1], object.autoSyncInterval);
   writer.writeLong(offsets[2], object.dontCopyOver);
   writer.writeLong(offsets[3], object.dontUploadOver);
-  writer.writeBool(offsets[4], object.enableFileSync);
-  writer.writeBool(offsets[5], object.enableSync);
-  writer.writeString(offsets[6], object.enc2);
-  writer.writeBool(offsets[7], object.isPersisted);
-  writer.writeBool(offsets[8], object.launchAtStartup);
-  writer.writeString(offsets[9], object.locale);
-  writer.writeDateTime(offsets[10], object.pausedTill);
-  writer.writeBool(offsets[11], object.smartPaste);
-  writer.writeLong(offsets[12], object.themeColor);
-  writer.writeString(offsets[13], object.themeMode.name);
-  writer.writeString(offsets[14], object.themeVariant.name);
-  writer.writeString(offsets[15], object.toggleHotkey);
+  writer.writeBool(offsets[4], object.enableDragNDrop);
+  writer.writeBool(offsets[5], object.enableFileSync);
+  writer.writeBool(offsets[6], object.enableSync);
+  writer.writeString(offsets[7], object.enc2);
+  writer.writeBool(offsets[8], object.isPersisted);
+  writer.writeBool(offsets[9], object.launchAtStartup);
+  writer.writeString(offsets[10], object.locale);
+  writer.writeDateTime(offsets[11], object.pausedTill);
+  writer.writeBool(offsets[12], object.smartPaste);
+  writer.writeLong(offsets[13], object.themeColor);
+  writer.writeString(offsets[14], object.themeMode.name);
+  writer.writeString(offsets[15], object.themeVariant.name);
+  writer.writeString(offsets[16], object.toggleHotkey);
 }
 
 AppConfig _appConfigDeserialize(
@@ -173,21 +179,22 @@ AppConfig _appConfigDeserialize(
     autoSyncInterval: reader.readLong(offsets[1]),
     dontCopyOver: reader.readLong(offsets[2]),
     dontUploadOver: reader.readLong(offsets[3]),
-    enableFileSync: reader.readBool(offsets[4]),
-    enableSync: reader.readBool(offsets[5]),
-    enc2: reader.readStringOrNull(offsets[6]),
-    launchAtStartup: reader.readBool(offsets[8]),
-    locale: reader.readString(offsets[9]),
-    pausedTill: reader.readDateTimeOrNull(offsets[10]),
-    smartPaste: reader.readBool(offsets[11]),
-    themeColor: reader.readLong(offsets[12]),
+    enableDragNDrop: reader.readBool(offsets[4]),
+    enableFileSync: reader.readBool(offsets[5]),
+    enableSync: reader.readBool(offsets[6]),
+    enc2: reader.readStringOrNull(offsets[7]),
+    launchAtStartup: reader.readBool(offsets[9]),
+    locale: reader.readString(offsets[10]),
+    pausedTill: reader.readDateTimeOrNull(offsets[11]),
+    smartPaste: reader.readBool(offsets[12]),
+    themeColor: reader.readLong(offsets[13]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[13])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[14])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[14])] ??
+            reader.readStringOrNull(offsets[15])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[15]),
+    toggleHotkey: reader.readStringOrNull(offsets[16]),
   );
   object.id = id;
   return object;
@@ -213,28 +220,30 @@ P _appConfigDeserializeProp<P>(
     case 5:
       return (reader.readBool(offset)) as P;
     case 6:
-      return (reader.readStringOrNull(offset)) as P;
-    case 7:
       return (reader.readBool(offset)) as P;
+    case 7:
+      return (reader.readStringOrNull(offset)) as P;
     case 8:
       return (reader.readBool(offset)) as P;
     case 9:
-      return (reader.readString(offset)) as P;
-    case 10:
-      return (reader.readDateTimeOrNull(offset)) as P;
-    case 11:
       return (reader.readBool(offset)) as P;
+    case 10:
+      return (reader.readString(offset)) as P;
+    case 11:
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 12:
-      return (reader.readLong(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 13:
+      return (reader.readLong(offset)) as P;
+    case 14:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 14:
+    case 15:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 15:
+    case 16:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -538,6 +547,16 @@ extension AppConfigQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      enableDragNDropEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'enableDragNDrop',
+        value: value,
       ));
     });
   }
@@ -1523,6 +1542,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnableDragNDrop() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enableDragNDrop', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnableDragNDropDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enableDragNDrop', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnableFileSync() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enableFileSync', Sort.asc);
@@ -1719,6 +1750,18 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnableDragNDrop() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enableDragNDrop', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnableDragNDropDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enableDragNDrop', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnableFileSync() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enableFileSync', Sort.asc);
@@ -1902,6 +1945,12 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByEnableDragNDrop() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'enableDragNDrop');
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByEnableFileSync() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'enableFileSync');
@@ -2012,6 +2061,12 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, bool, QQueryOperations> enableDragNDropProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'enableDragNDrop');
+    });
+  }
+
   QueryBuilder<AppConfig, bool, QQueryOperations> enableFileSyncProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'enableFileSync');
@@ -2112,6 +2167,7 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       themeVariant: $enumDecodeNullable(
               _$DynamicSchemeVariantEnumMap, json['themeVariant']) ??
           DynamicSchemeVariant.tonalSpot,
+      enableDragNDrop: json['enableDragNDrop'] as bool? ?? false,
       clockUnSynced: json['clockUnSynced'] as bool? ?? false,
     );
 
@@ -2132,6 +2188,7 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'autoEncrypt': instance.autoEncrypt,
       'themeColor': instance.themeColor,
       'themeVariant': _$DynamicSchemeVariantEnumMap[instance.themeVariant]!,
+      'enableDragNDrop': instance.enableDragNDrop,
       'clockUnSynced': instance.clockUnSynced,
     };
 

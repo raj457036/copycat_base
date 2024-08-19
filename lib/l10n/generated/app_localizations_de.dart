@@ -548,12 +548,12 @@ class AppLocalizationsDe extends AppLocalizations {
       'Organisieren Sie Ihre Zwischenablage-Elemente in bis zu 3 Sammlungen, um eine einfache Kategorisierung für ein besseres Workflow-Management zu ermöglichen.';
 
   @override
-  String get autoSyncEvery60Seconds =>
-      'Automatische Synchronisierung alle 60 Sekunden';
+  String get autoSyncEvery45Seconds =>
+      'Automatische Synchronisierung alle 45 Sekunden';
 
   @override
-  String get autoSyncEvery60SecondsDesc =>
-      'Genießen Sie die automatische Synchronisierung der Zwischenablage-Elemente alle 60 Sekunden, um Ihre Geräte ohne manuelles Eingreifen auf dem neuesten Stand zu halten.';
+  String get autoSyncEvery45SecondsDesc =>
+      'Genießen Sie die automatische Synchronisierung der Zwischenablage-Elemente alle 45 Sekunden, um Ihre Geräte ohne manuelles Eingreifen auf dem neuesten Stand zu halten.';
 
   @override
   String get withPro => 'Mit PRO ✨';
@@ -663,19 +663,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get $60Sec => 'Locker';
 
   @override
-  String get $5MB => 'Klein (5 MB)';
+  String get $5MB => '5 MB';
 
   @override
-  String get $10MB => 'Standard (10 MB)';
+  String get $10MB => '10 MB';
 
   @override
-  String get $20MB => 'Mittel (20 MB)';
+  String get $20MB => '20 MB';
 
   @override
-  String get $50MB => 'Groß (50 MB)';
+  String get $50MB => '50 MB';
 
   @override
-  String get $100MB => 'Extra Groß (100 MB)';
+  String get $100MB => '100 MB';
 
   @override
   String get e2eeNotSetup => 'E2EE noch nicht eingerichtet.';
@@ -1069,4 +1069,32 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get vibrant => 'Lebendig';
+
+  @override
+  String get dragNDropFeature => 'Ziehen & Ablegen';
+
+  @override
+  String get dragNDropFeatureDesc =>
+      'Bewege Elemente nahtlos in jede Richtung auf deinen Desktop- und Tablet-Geräten.';
+
+  @override
+  String get experimentalLabel => 'Experimentell';
+
+  @override
+  String get dragNdrop => 'Ziehen & Ablegen';
+
+  @override
+  String get dragNdropDesc =>
+      'Erlaube es, Elemente innerhalb der App in beide Richtungen frei zu bewegen.';
+
+  @override
+  String get featureNotSupported =>
+      'Entschuldigung, diese Funktion ist auf deiner Plattform derzeit nicht verfügbar.';
+
+  @override
+  String get themingFeature => 'Themen';
+
+  @override
+  String get themingFeatureDesc =>
+      'Passen Sie das gesamte Aussehen und Gefühl der App an Ihre Vorlieben an.';
 }

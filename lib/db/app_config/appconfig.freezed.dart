@@ -47,10 +47,12 @@ mixin _$AppConfig {
   bool get launchAtStartup => throw _privateConstructorUsedError;
   String get locale => throw _privateConstructorUsedError;
   String? get enc2 => throw _privateConstructorUsedError;
-  bool get autoEncrypt => throw _privateConstructorUsedError;
+  bool get autoEncrypt => throw _privateConstructorUsedError; // Customization
   int get themeColor => throw _privateConstructorUsedError;
   @Enumerated(EnumType.name)
   DynamicSchemeVariant get themeVariant =>
+      throw _privateConstructorUsedError; // Exprimental
+  bool get enableDragNDrop =>
       throw _privateConstructorUsedError; //? Local App States
   /// last focus window id
   @ignore
@@ -86,6 +88,7 @@ abstract class $AppConfigCopyWith<$Res> {
       bool autoEncrypt,
       int themeColor,
       @Enumerated(EnumType.name) DynamicSchemeVariant themeVariant,
+      bool enableDragNDrop,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
@@ -120,6 +123,7 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? autoEncrypt = null,
     Object? themeColor = null,
     Object? themeVariant = null,
+    Object? enableDragNDrop = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -184,6 +188,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.themeVariant
           : themeVariant // ignore: cast_nullable_to_non_nullable
               as DynamicSchemeVariant,
+      enableDragNDrop: null == enableDragNDrop
+          ? _value.enableDragNDrop
+          : enableDragNDrop // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -220,6 +228,7 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       bool autoEncrypt,
       int themeColor,
       @Enumerated(EnumType.name) DynamicSchemeVariant themeVariant,
+      bool enableDragNDrop,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
@@ -252,6 +261,7 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? autoEncrypt = null,
     Object? themeColor = null,
     Object? themeVariant = null,
+    Object? enableDragNDrop = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -316,6 +326,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.themeVariant
           : themeVariant // ignore: cast_nullable_to_non_nullable
               as DynamicSchemeVariant,
+      enableDragNDrop: null == enableDragNDrop
+          ? _value.enableDragNDrop
+          : enableDragNDrop // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -348,6 +362,7 @@ class _$AppConfigImpl extends _AppConfig {
       this.themeColor = defaultThemeColor,
       @Enumerated(EnumType.name)
       this.themeVariant = DynamicSchemeVariant.tonalSpot,
+      this.enableDragNDrop = false,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.lastFocusedWindowId,
@@ -408,6 +423,7 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final bool autoEncrypt;
+// Customization
   @override
   @JsonKey()
   final int themeColor;
@@ -415,6 +431,10 @@ class _$AppConfigImpl extends _AppConfig {
   @JsonKey()
   @Enumerated(EnumType.name)
   final DynamicSchemeVariant themeVariant;
+// Exprimental
+  @override
+  @JsonKey()
+  final bool enableDragNDrop;
 //? Local App States
   /// last focus window id
   @override
@@ -428,7 +448,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, themeColor: $themeColor, themeVariant: $themeVariant, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -464,6 +484,8 @@ class _$AppConfigImpl extends _AppConfig {
                 other.themeColor == themeColor) &&
             (identical(other.themeVariant, themeVariant) ||
                 other.themeVariant == themeVariant) &&
+            (identical(other.enableDragNDrop, enableDragNDrop) ||
+                other.enableDragNDrop == enableDragNDrop) &&
             (identical(other.lastFocusedWindowId, lastFocusedWindowId) ||
                 other.lastFocusedWindowId == lastFocusedWindowId) &&
             (identical(other.clockUnSynced, clockUnSynced) ||
@@ -489,6 +511,7 @@ class _$AppConfigImpl extends _AppConfig {
       autoEncrypt,
       themeColor,
       themeVariant,
+      enableDragNDrop,
       lastFocusedWindowId,
       clockUnSynced);
 
@@ -523,6 +546,7 @@ abstract class _AppConfig extends AppConfig {
       final bool autoEncrypt,
       final int themeColor,
       @Enumerated(EnumType.name) final DynamicSchemeVariant themeVariant,
+      final bool enableDragNDrop,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       final int? lastFocusedWindowId,
@@ -571,11 +595,13 @@ abstract class _AppConfig extends AppConfig {
   String? get enc2;
   @override
   bool get autoEncrypt;
-  @override
+  @override // Customization
   int get themeColor;
   @override
   @Enumerated(EnumType.name)
   DynamicSchemeVariant get themeVariant;
+  @override // Exprimental
+  bool get enableDragNDrop;
   @override //? Local App States
   /// last focus window id
   @ignore
