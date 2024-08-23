@@ -25,23 +25,28 @@ void syncingClips(
 
   int foundedCount = 0;
 
-  db.writeTxnSync(() {
-    final foundItems = db.clipboardItems
-        .filter()
-        .anyOf(items, (q, _) => q.serverIdEqualTo(_.serverId))
-        .findAllSync();
+  await db.txn(() async {
+    for (var index = 0; index < items.length; index++) {
+      final item = items[index];
+      final found = await db.clipboardItems
+          .filter()
+          .serverIdEqualTo(item.serverId)
+          .findFirst();
 
-    for (var found in foundItems) {
-      final index = items.indexWhere((item) => item.serverId == found.serverId);
-      if (index != -1) {
-        items[index] = items[index].copyWith(
-          lastSynced: found.lastSynced,
-          localPath: found.localPath,
-        )..applyId(found);
+      if (found == null) {
+        continue;
       }
+
+      foundedCount++;
+      items[index] = item.copyWith(
+        lastSynced: found.lastSynced,
+        localPath: found.localPath,
+      )..applyId(found);
     }
-    db.clipboardItems.putAllSync(items);
-    foundedCount = foundItems.length;
+  });
+
+  await db.writeTxn(() async {
+    await db.clipboardItems.putAll(items);
   });
 
   send(foundedCount);

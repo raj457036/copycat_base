@@ -35,16 +35,20 @@ mixin _$ClipboardItem {
   DateTime get modified => throw _privateConstructorUsedError;
   String? get deviceId => throw _privateConstructorUsedError;
   @Enumerated(EnumType.name)
+  @Index()
   ClipItemType get type => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   @DateTimeConverter()
+  @Index()
   DateTime? get deletedAt => throw _privateConstructorUsedError;
+  @Index()
   bool get encrypted => throw _privateConstructorUsedError; // Text related
   String? get text => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   @Enumerated(EnumType.name)
+  @Index()
   TextCategory? get textCategory =>
       throw _privateConstructorUsedError; // Files related
   String? get fileName => throw _privateConstructorUsedError;
@@ -60,8 +64,10 @@ mixin _$ClipboardItem {
   @Enumerated(EnumType.name)
   PlatformOS get os => throw _privateConstructorUsedError; // Collection
   @JsonKey(name: "collectionId")
+  @Index()
   int? get serverCollectionId => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @Index()
   int? get collectionId => throw _privateConstructorUsedError; // local only
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool get localOnly => throw _privateConstructorUsedError; // Stats
@@ -110,15 +116,15 @@ abstract class $ClipboardItemCopyWith<$Res> {
       @JsonKey(name: "created") @DateTimeConverter() DateTime created,
       @JsonKey(name: "modified") @DateTimeConverter() DateTime modified,
       String? deviceId,
-      @Enumerated(EnumType.name) ClipItemType type,
+      @Enumerated(EnumType.name) @Index() ClipItemType type,
       String userId,
       String? title,
       String? description,
-      @DateTimeConverter() DateTime? deletedAt,
-      bool encrypted,
+      @DateTimeConverter() @Index() DateTime? deletedAt,
+      @Index() bool encrypted,
       String? text,
       String? url,
-      @Enumerated(EnumType.name) TextCategory? textCategory,
+      @Enumerated(EnumType.name) @Index() TextCategory? textCategory,
       String? fileName,
       String? fileMimeType,
       String? fileExtension,
@@ -128,8 +134,10 @@ abstract class $ClipboardItemCopyWith<$Res> {
       String? sourceUrl,
       String? sourceApp,
       @Enumerated(EnumType.name) PlatformOS os,
-      @JsonKey(name: "collectionId") int? serverCollectionId,
-      @JsonKey(includeFromJson: false, includeToJson: false) int? collectionId,
+      @JsonKey(name: "collectionId") @Index() int? serverCollectionId,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      @Index()
+      int? collectionId,
       @JsonKey(includeFromJson: false, includeToJson: false) bool localOnly,
       int copiedCount,
       @DateTimeConverter() DateTime? lastCopied,
@@ -363,15 +371,15 @@ abstract class _$$ClipboardItemImplCopyWith<$Res>
       @JsonKey(name: "created") @DateTimeConverter() DateTime created,
       @JsonKey(name: "modified") @DateTimeConverter() DateTime modified,
       String? deviceId,
-      @Enumerated(EnumType.name) ClipItemType type,
+      @Enumerated(EnumType.name) @Index() ClipItemType type,
       String userId,
       String? title,
       String? description,
-      @DateTimeConverter() DateTime? deletedAt,
-      bool encrypted,
+      @DateTimeConverter() @Index() DateTime? deletedAt,
+      @Index() bool encrypted,
       String? text,
       String? url,
-      @Enumerated(EnumType.name) TextCategory? textCategory,
+      @Enumerated(EnumType.name) @Index() TextCategory? textCategory,
       String? fileName,
       String? fileMimeType,
       String? fileExtension,
@@ -381,8 +389,10 @@ abstract class _$$ClipboardItemImplCopyWith<$Res>
       String? sourceUrl,
       String? sourceApp,
       @Enumerated(EnumType.name) PlatformOS os,
-      @JsonKey(name: "collectionId") int? serverCollectionId,
-      @JsonKey(includeFromJson: false, includeToJson: false) int? collectionId,
+      @JsonKey(name: "collectionId") @Index() int? serverCollectionId,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      @Index()
+      int? collectionId,
       @JsonKey(includeFromJson: false, includeToJson: false) bool localOnly,
       int copiedCount,
       @DateTimeConverter() DateTime? lastCopied,
@@ -608,15 +618,15 @@ class _$ClipboardItemImpl extends _ClipboardItem {
       @JsonKey(name: "created") @DateTimeConverter() required this.created,
       @JsonKey(name: "modified") @DateTimeConverter() required this.modified,
       this.deviceId,
-      @Enumerated(EnumType.name) required this.type,
+      @Enumerated(EnumType.name) @Index() required this.type,
       this.userId = kLocalUserId,
       this.title,
       this.description,
-      @DateTimeConverter() this.deletedAt,
-      this.encrypted = false,
+      @DateTimeConverter() @Index() this.deletedAt,
+      @Index() this.encrypted = false,
       this.text,
       this.url,
-      @Enumerated(EnumType.name) this.textCategory,
+      @Enumerated(EnumType.name) @Index() this.textCategory,
       this.fileName,
       this.fileMimeType,
       this.fileExtension,
@@ -626,8 +636,10 @@ class _$ClipboardItemImpl extends _ClipboardItem {
       this.sourceUrl,
       this.sourceApp,
       @Enumerated(EnumType.name) required this.os,
-      @JsonKey(name: "collectionId") this.serverCollectionId,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.collectionId,
+      @JsonKey(name: "collectionId") @Index() this.serverCollectionId,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      @Index()
+      this.collectionId,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.localOnly = false,
       this.copiedCount = 0,
@@ -677,6 +689,7 @@ class _$ClipboardItemImpl extends _ClipboardItem {
   final String? deviceId;
   @override
   @Enumerated(EnumType.name)
+  @Index()
   final ClipItemType type;
   @override
   @JsonKey()
@@ -687,9 +700,11 @@ class _$ClipboardItemImpl extends _ClipboardItem {
   final String? description;
   @override
   @DateTimeConverter()
+  @Index()
   final DateTime? deletedAt;
   @override
   @JsonKey()
+  @Index()
   final bool encrypted;
 // Text related
   @override
@@ -698,6 +713,7 @@ class _$ClipboardItemImpl extends _ClipboardItem {
   final String? url;
   @override
   @Enumerated(EnumType.name)
+  @Index()
   final TextCategory? textCategory;
 // Files related
   @override
@@ -725,9 +741,11 @@ class _$ClipboardItemImpl extends _ClipboardItem {
 // Collection
   @override
   @JsonKey(name: "collectionId")
+  @Index()
   final int? serverCollectionId;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @Index()
   final int? collectionId;
 // local only
   @override
@@ -911,15 +929,15 @@ abstract class _ClipboardItem extends ClipboardItem {
       @DateTimeConverter()
       required final DateTime modified,
       final String? deviceId,
-      @Enumerated(EnumType.name) required final ClipItemType type,
+      @Enumerated(EnumType.name) @Index() required final ClipItemType type,
       final String userId,
       final String? title,
       final String? description,
-      @DateTimeConverter() final DateTime? deletedAt,
-      final bool encrypted,
+      @DateTimeConverter() @Index() final DateTime? deletedAt,
+      @Index() final bool encrypted,
       final String? text,
       final String? url,
-      @Enumerated(EnumType.name) final TextCategory? textCategory,
+      @Enumerated(EnumType.name) @Index() final TextCategory? textCategory,
       final String? fileName,
       final String? fileMimeType,
       final String? fileExtension,
@@ -929,8 +947,9 @@ abstract class _ClipboardItem extends ClipboardItem {
       final String? sourceUrl,
       final String? sourceApp,
       @Enumerated(EnumType.name) required final PlatformOS os,
-      @JsonKey(name: "collectionId") final int? serverCollectionId,
+      @JsonKey(name: "collectionId") @Index() final int? serverCollectionId,
       @JsonKey(includeFromJson: false, includeToJson: false)
+      @Index()
       final int? collectionId,
       @JsonKey(includeFromJson: false, includeToJson: false)
       final bool localOnly,
@@ -981,6 +1000,7 @@ abstract class _ClipboardItem extends ClipboardItem {
   String? get deviceId;
   @override
   @Enumerated(EnumType.name)
+  @Index()
   ClipItemType get type;
   @override
   String get userId;
@@ -990,8 +1010,10 @@ abstract class _ClipboardItem extends ClipboardItem {
   String? get description;
   @override
   @DateTimeConverter()
+  @Index()
   DateTime? get deletedAt;
   @override
+  @Index()
   bool get encrypted;
   @override // Text related
   String? get text;
@@ -999,6 +1021,7 @@ abstract class _ClipboardItem extends ClipboardItem {
   String? get url;
   @override
   @Enumerated(EnumType.name)
+  @Index()
   TextCategory? get textCategory;
   @override // Files related
   String? get fileName;
@@ -1022,9 +1045,11 @@ abstract class _ClipboardItem extends ClipboardItem {
   PlatformOS get os;
   @override // Collection
   @JsonKey(name: "collectionId")
+  @Index()
   int? get serverCollectionId;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @Index()
   int? get collectionId;
   @override // local only
   @JsonKey(includeFromJson: false, includeToJson: false)

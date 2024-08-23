@@ -29,16 +29,16 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
     @JsonKey(name: "created") @DateTimeConverter() required DateTime created,
     @JsonKey(name: "modified") @DateTimeConverter() required DateTime modified,
     String? deviceId,
-    @Enumerated(EnumType.name) required ClipItemType type,
+    @Enumerated(EnumType.name) @Index() required ClipItemType type,
     @Default(kLocalUserId) String userId,
     String? title,
     String? description,
-    @DateTimeConverter() DateTime? deletedAt,
-    @Default(false) bool encrypted,
+    @DateTimeConverter() @Index() DateTime? deletedAt,
+    @Default(false) @Index() bool encrypted,
     // Text related
     String? text,
     String? url,
-    @Enumerated(EnumType.name) TextCategory? textCategory,
+    @Enumerated(EnumType.name) @Index() TextCategory? textCategory,
     // Files related
     String? fileName,
     String? fileMimeType,
@@ -53,8 +53,10 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
     @Enumerated(EnumType.name) required PlatformOS os,
 
     // Collection
-    @JsonKey(name: "collectionId") int? serverCollectionId,
-    @JsonKey(includeFromJson: false, includeToJson: false) int? collectionId,
+    @JsonKey(name: "collectionId") @Index() int? serverCollectionId,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Index()
+    int? collectionId,
 
     // local only
     @JsonKey(includeFromJson: false, includeToJson: false)
@@ -93,31 +95,6 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
 
   factory ClipboardItem.fromJson(Map<String, dynamic> json) =>
       _$ClipboardItemFromJson(json);
-
-  @Index(type: IndexType.value, caseSensitive: false)
-  List<String> get titleWords =>
-      Isar.splitWords((title ?? '').replaceAll(specialSymbols, " "));
-
-  @Index(type: IndexType.value, caseSensitive: false)
-  List<String> get descriptionWords =>
-      Isar.splitWords((description ?? '').replaceAll(specialSymbols, " "));
-
-  @Index(type: IndexType.value, caseSensitive: false)
-  List<String> get urlWords =>
-      Isar.splitWords((url ?? '').replaceAll(specialSymbols, " "));
-
-  @Index(type: IndexType.value, caseSensitive: false)
-  List<String> get textWord =>
-      Isar.splitWords((text ?? '').replaceAll(specialSymbols, " "));
-
-  @Index()
-  String get textCategoryWord => textCategory?.name ?? "";
-
-  @Index()
-  String get typeWord => type.name;
-
-  @Index()
-  String get mimetypeWord => fileMimeType ?? 'text';
 
   factory ClipboardItem.fromText(
     String text, {

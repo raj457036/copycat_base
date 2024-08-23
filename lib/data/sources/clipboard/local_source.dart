@@ -51,31 +51,15 @@ class LocalClipboardSource implements ClipboardSource {
 
       for (final word in Isar.splitWords(search ?? "")) {
         resultsQuery = resultsQuery.group((q) => q
-            .titleWordsElementContains(word, caseSensitive: false)
-            .or()
-            .titleWordsElementStartsWith(word, caseSensitive: false)
-            .or()
             .titleContains(word, caseSensitive: false)
-            .or()
-            .descriptionWordsElementContains(word, caseSensitive: false)
-            .or()
-            .descriptionWordsElementStartsWith(word, caseSensitive: false)
             .or()
             .descriptionContains(word, caseSensitive: false)
             .or()
-            .urlWordsElementContains(word, caseSensitive: false)
-            .or()
-            .urlWordsElementStartsWith(word, caseSensitive: false)
-            .or()
             .urlContains(word, caseSensitive: false)
-            .or()
-            .textWordElementContains(word, caseSensitive: false)
-            .or()
-            .textWordElementStartsWith(word, caseSensitive: false)
             .or()
             .textContains(word, caseSensitive: false)
             .or()
-            .mimetypeWordContains(word, caseSensitive: false));
+            .fileMimeTypeContains(word, caseSensitive: false));
       }
     }
 

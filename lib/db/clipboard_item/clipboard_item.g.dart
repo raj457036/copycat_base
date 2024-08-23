@@ -42,166 +42,131 @@ const ClipboardItemSchema = CollectionSchema(
       name: r'description',
       type: IsarType.string,
     ),
-    r'descriptionWords': PropertySchema(
-      id: 5,
-      name: r'descriptionWords',
-      type: IsarType.stringList,
-    ),
     r'deviceId': PropertySchema(
-      id: 6,
+      id: 5,
       name: r'deviceId',
       type: IsarType.string,
     ),
     r'driveFileId': PropertySchema(
-      id: 7,
+      id: 6,
       name: r'driveFileId',
       type: IsarType.string,
     ),
     r'encrypted': PropertySchema(
-      id: 8,
+      id: 7,
       name: r'encrypted',
       type: IsarType.bool,
     ),
     r'fileExtension': PropertySchema(
-      id: 9,
+      id: 8,
       name: r'fileExtension',
       type: IsarType.string,
     ),
     r'fileMimeType': PropertySchema(
-      id: 10,
+      id: 9,
       name: r'fileMimeType',
       type: IsarType.string,
     ),
     r'fileName': PropertySchema(
-      id: 11,
+      id: 10,
       name: r'fileName',
       type: IsarType.string,
     ),
     r'fileSize': PropertySchema(
-      id: 12,
+      id: 11,
       name: r'fileSize',
       type: IsarType.long,
     ),
     r'imgBlurHash': PropertySchema(
-      id: 13,
+      id: 12,
       name: r'imgBlurHash',
       type: IsarType.string,
     ),
     r'isPersisted': PropertySchema(
-      id: 14,
+      id: 13,
       name: r'isPersisted',
       type: IsarType.bool,
     ),
     r'lastCopied': PropertySchema(
-      id: 15,
+      id: 14,
       name: r'lastCopied',
       type: IsarType.dateTime,
     ),
     r'lastSynced': PropertySchema(
-      id: 16,
+      id: 15,
       name: r'lastSynced',
       type: IsarType.dateTime,
     ),
     r'localOnly': PropertySchema(
-      id: 17,
+      id: 16,
       name: r'localOnly',
       type: IsarType.bool,
     ),
     r'localPath': PropertySchema(
-      id: 18,
+      id: 17,
       name: r'localPath',
       type: IsarType.string,
     ),
-    r'mimetypeWord': PropertySchema(
-      id: 19,
-      name: r'mimetypeWord',
-      type: IsarType.string,
-    ),
     r'modified': PropertySchema(
-      id: 20,
+      id: 18,
       name: r'modified',
       type: IsarType.dateTime,
     ),
     r'os': PropertySchema(
-      id: 21,
+      id: 19,
       name: r'os',
       type: IsarType.string,
       enumMap: _ClipboardItemosEnumValueMap,
     ),
     r'serverCollectionId': PropertySchema(
-      id: 22,
+      id: 20,
       name: r'serverCollectionId',
       type: IsarType.long,
     ),
     r'serverId': PropertySchema(
-      id: 23,
+      id: 21,
       name: r'serverId',
       type: IsarType.long,
     ),
     r'sourceApp': PropertySchema(
-      id: 24,
+      id: 22,
       name: r'sourceApp',
       type: IsarType.string,
     ),
     r'sourceUrl': PropertySchema(
-      id: 25,
+      id: 23,
       name: r'sourceUrl',
       type: IsarType.string,
     ),
     r'text': PropertySchema(
-      id: 26,
+      id: 24,
       name: r'text',
       type: IsarType.string,
     ),
     r'textCategory': PropertySchema(
-      id: 27,
+      id: 25,
       name: r'textCategory',
       type: IsarType.string,
       enumMap: _ClipboardItemtextCategoryEnumValueMap,
     ),
-    r'textCategoryWord': PropertySchema(
-      id: 28,
-      name: r'textCategoryWord',
-      type: IsarType.string,
-    ),
-    r'textWord': PropertySchema(
-      id: 29,
-      name: r'textWord',
-      type: IsarType.stringList,
-    ),
     r'title': PropertySchema(
-      id: 30,
+      id: 26,
       name: r'title',
       type: IsarType.string,
     ),
-    r'titleWords': PropertySchema(
-      id: 31,
-      name: r'titleWords',
-      type: IsarType.stringList,
-    ),
     r'type': PropertySchema(
-      id: 32,
+      id: 27,
       name: r'type',
       type: IsarType.string,
       enumMap: _ClipboardItemtypeEnumValueMap,
     ),
-    r'typeWord': PropertySchema(
-      id: 33,
-      name: r'typeWord',
-      type: IsarType.string,
-    ),
     r'url': PropertySchema(
-      id: 34,
+      id: 28,
       name: r'url',
       type: IsarType.string,
     ),
-    r'urlWords': PropertySchema(
-      id: 35,
-      name: r'urlWords',
-      type: IsarType.stringList,
-    ),
     r'userId': PropertySchema(
-      id: 36,
+      id: 29,
       name: r'userId',
       type: IsarType.string,
     )
@@ -212,97 +177,6 @@ const ClipboardItemSchema = CollectionSchema(
   deserializeProp: _clipboardItemDeserializeProp,
   idName: r'id',
   indexes: {
-    r'titleWords': IndexSchema(
-      id: 80481505061976672,
-      name: r'titleWords',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'titleWords',
-          type: IndexType.value,
-          caseSensitive: false,
-        )
-      ],
-    ),
-    r'descriptionWords': IndexSchema(
-      id: 4013375675557855679,
-      name: r'descriptionWords',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'descriptionWords',
-          type: IndexType.value,
-          caseSensitive: false,
-        )
-      ],
-    ),
-    r'urlWords': IndexSchema(
-      id: 8245875118838891415,
-      name: r'urlWords',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'urlWords',
-          type: IndexType.value,
-          caseSensitive: false,
-        )
-      ],
-    ),
-    r'textWord': IndexSchema(
-      id: 2232701985111320152,
-      name: r'textWord',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'textWord',
-          type: IndexType.value,
-          caseSensitive: false,
-        )
-      ],
-    ),
-    r'textCategoryWord': IndexSchema(
-      id: -7120102408244436039,
-      name: r'textCategoryWord',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'textCategoryWord',
-          type: IndexType.hash,
-          caseSensitive: true,
-        )
-      ],
-    ),
-    r'typeWord': IndexSchema(
-      id: -4087530792576011872,
-      name: r'typeWord',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'typeWord',
-          type: IndexType.hash,
-          caseSensitive: true,
-        )
-      ],
-    ),
-    r'mimetypeWord': IndexSchema(
-      id: -8755781823862921620,
-      name: r'mimetypeWord',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'mimetypeWord',
-          type: IndexType.hash,
-          caseSensitive: true,
-        )
-      ],
-    ),
     r'serverId': IndexSchema(
       id: -7950187970872907662,
       name: r'serverId',
@@ -311,6 +185,84 @@ const ClipboardItemSchema = CollectionSchema(
       properties: [
         IndexPropertySchema(
           name: r'serverId',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    ),
+    r'type': IndexSchema(
+      id: 5117122708147080838,
+      name: r'type',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'type',
+          type: IndexType.hash,
+          caseSensitive: true,
+        )
+      ],
+    ),
+    r'deletedAt': IndexSchema(
+      id: -8969437169173379604,
+      name: r'deletedAt',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'deletedAt',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    ),
+    r'encrypted': IndexSchema(
+      id: -5171473955020626441,
+      name: r'encrypted',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'encrypted',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    ),
+    r'textCategory': IndexSchema(
+      id: -1046666033776057913,
+      name: r'textCategory',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'textCategory',
+          type: IndexType.hash,
+          caseSensitive: true,
+        )
+      ],
+    ),
+    r'serverCollectionId': IndexSchema(
+      id: -546079356141212449,
+      name: r'serverCollectionId',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'serverCollectionId',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    ),
+    r'collectionId': IndexSchema(
+      id: -7489395134515229581,
+      name: r'collectionId',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'collectionId',
           type: IndexType.value,
           caseSensitive: false,
         )
@@ -335,13 +287,6 @@ int _clipboardItemEstimateSize(
     final value = object.description;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
-    }
-  }
-  bytesCount += 3 + object.descriptionWords.length * 3;
-  {
-    for (var i = 0; i < object.descriptionWords.length; i++) {
-      final value = object.descriptionWords[i];
-      bytesCount += value.length * 3;
     }
   }
   {
@@ -386,7 +331,6 @@ int _clipboardItemEstimateSize(
       bytesCount += 3 + value.length * 3;
     }
   }
-  bytesCount += 3 + object.mimetypeWord.length * 3;
   bytesCount += 3 + object.os.name.length * 3;
   {
     final value = object.sourceApp;
@@ -412,40 +356,17 @@ int _clipboardItemEstimateSize(
       bytesCount += 3 + value.name.length * 3;
     }
   }
-  bytesCount += 3 + object.textCategoryWord.length * 3;
-  bytesCount += 3 + object.textWord.length * 3;
-  {
-    for (var i = 0; i < object.textWord.length; i++) {
-      final value = object.textWord[i];
-      bytesCount += value.length * 3;
-    }
-  }
   {
     final value = object.title;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
     }
   }
-  bytesCount += 3 + object.titleWords.length * 3;
-  {
-    for (var i = 0; i < object.titleWords.length; i++) {
-      final value = object.titleWords[i];
-      bytesCount += value.length * 3;
-    }
-  }
   bytesCount += 3 + object.type.name.length * 3;
-  bytesCount += 3 + object.typeWord.length * 3;
   {
     final value = object.url;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
-    }
-  }
-  bytesCount += 3 + object.urlWords.length * 3;
-  {
-    for (var i = 0; i < object.urlWords.length; i++) {
-      final value = object.urlWords[i];
-      bytesCount += value.length * 3;
     }
   }
   bytesCount += 3 + object.userId.length * 3;
@@ -463,38 +384,31 @@ void _clipboardItemSerialize(
   writer.writeDateTime(offsets[2], object.created);
   writer.writeDateTime(offsets[3], object.deletedAt);
   writer.writeString(offsets[4], object.description);
-  writer.writeStringList(offsets[5], object.descriptionWords);
-  writer.writeString(offsets[6], object.deviceId);
-  writer.writeString(offsets[7], object.driveFileId);
-  writer.writeBool(offsets[8], object.encrypted);
-  writer.writeString(offsets[9], object.fileExtension);
-  writer.writeString(offsets[10], object.fileMimeType);
-  writer.writeString(offsets[11], object.fileName);
-  writer.writeLong(offsets[12], object.fileSize);
-  writer.writeString(offsets[13], object.imgBlurHash);
-  writer.writeBool(offsets[14], object.isPersisted);
-  writer.writeDateTime(offsets[15], object.lastCopied);
-  writer.writeDateTime(offsets[16], object.lastSynced);
-  writer.writeBool(offsets[17], object.localOnly);
-  writer.writeString(offsets[18], object.localPath);
-  writer.writeString(offsets[19], object.mimetypeWord);
-  writer.writeDateTime(offsets[20], object.modified);
-  writer.writeString(offsets[21], object.os.name);
-  writer.writeLong(offsets[22], object.serverCollectionId);
-  writer.writeLong(offsets[23], object.serverId);
-  writer.writeString(offsets[24], object.sourceApp);
-  writer.writeString(offsets[25], object.sourceUrl);
-  writer.writeString(offsets[26], object.text);
-  writer.writeString(offsets[27], object.textCategory?.name);
-  writer.writeString(offsets[28], object.textCategoryWord);
-  writer.writeStringList(offsets[29], object.textWord);
-  writer.writeString(offsets[30], object.title);
-  writer.writeStringList(offsets[31], object.titleWords);
-  writer.writeString(offsets[32], object.type.name);
-  writer.writeString(offsets[33], object.typeWord);
-  writer.writeString(offsets[34], object.url);
-  writer.writeStringList(offsets[35], object.urlWords);
-  writer.writeString(offsets[36], object.userId);
+  writer.writeString(offsets[5], object.deviceId);
+  writer.writeString(offsets[6], object.driveFileId);
+  writer.writeBool(offsets[7], object.encrypted);
+  writer.writeString(offsets[8], object.fileExtension);
+  writer.writeString(offsets[9], object.fileMimeType);
+  writer.writeString(offsets[10], object.fileName);
+  writer.writeLong(offsets[11], object.fileSize);
+  writer.writeString(offsets[12], object.imgBlurHash);
+  writer.writeBool(offsets[13], object.isPersisted);
+  writer.writeDateTime(offsets[14], object.lastCopied);
+  writer.writeDateTime(offsets[15], object.lastSynced);
+  writer.writeBool(offsets[16], object.localOnly);
+  writer.writeString(offsets[17], object.localPath);
+  writer.writeDateTime(offsets[18], object.modified);
+  writer.writeString(offsets[19], object.os.name);
+  writer.writeLong(offsets[20], object.serverCollectionId);
+  writer.writeLong(offsets[21], object.serverId);
+  writer.writeString(offsets[22], object.sourceApp);
+  writer.writeString(offsets[23], object.sourceUrl);
+  writer.writeString(offsets[24], object.text);
+  writer.writeString(offsets[25], object.textCategory?.name);
+  writer.writeString(offsets[26], object.title);
+  writer.writeString(offsets[27], object.type.name);
+  writer.writeString(offsets[28], object.url);
+  writer.writeString(offsets[29], object.userId);
 }
 
 ClipboardItem _clipboardItemDeserialize(
@@ -509,34 +423,34 @@ ClipboardItem _clipboardItemDeserialize(
     created: reader.readDateTime(offsets[2]),
     deletedAt: reader.readDateTimeOrNull(offsets[3]),
     description: reader.readStringOrNull(offsets[4]),
-    deviceId: reader.readStringOrNull(offsets[6]),
-    driveFileId: reader.readStringOrNull(offsets[7]),
-    encrypted: reader.readBool(offsets[8]),
-    fileExtension: reader.readStringOrNull(offsets[9]),
-    fileMimeType: reader.readStringOrNull(offsets[10]),
-    fileName: reader.readStringOrNull(offsets[11]),
-    fileSize: reader.readLongOrNull(offsets[12]),
-    imgBlurHash: reader.readStringOrNull(offsets[13]),
-    lastCopied: reader.readDateTimeOrNull(offsets[15]),
-    lastSynced: reader.readDateTimeOrNull(offsets[16]),
-    localOnly: reader.readBool(offsets[17]),
-    localPath: reader.readStringOrNull(offsets[18]),
-    modified: reader.readDateTime(offsets[20]),
-    os: _ClipboardItemosValueEnumMap[reader.readStringOrNull(offsets[21])] ??
+    deviceId: reader.readStringOrNull(offsets[5]),
+    driveFileId: reader.readStringOrNull(offsets[6]),
+    encrypted: reader.readBool(offsets[7]),
+    fileExtension: reader.readStringOrNull(offsets[8]),
+    fileMimeType: reader.readStringOrNull(offsets[9]),
+    fileName: reader.readStringOrNull(offsets[10]),
+    fileSize: reader.readLongOrNull(offsets[11]),
+    imgBlurHash: reader.readStringOrNull(offsets[12]),
+    lastCopied: reader.readDateTimeOrNull(offsets[14]),
+    lastSynced: reader.readDateTimeOrNull(offsets[15]),
+    localOnly: reader.readBool(offsets[16]),
+    localPath: reader.readStringOrNull(offsets[17]),
+    modified: reader.readDateTime(offsets[18]),
+    os: _ClipboardItemosValueEnumMap[reader.readStringOrNull(offsets[19])] ??
         PlatformOS.android,
-    serverCollectionId: reader.readLongOrNull(offsets[22]),
-    serverId: reader.readLongOrNull(offsets[23]),
-    sourceApp: reader.readStringOrNull(offsets[24]),
-    sourceUrl: reader.readStringOrNull(offsets[25]),
-    text: reader.readStringOrNull(offsets[26]),
+    serverCollectionId: reader.readLongOrNull(offsets[20]),
+    serverId: reader.readLongOrNull(offsets[21]),
+    sourceApp: reader.readStringOrNull(offsets[22]),
+    sourceUrl: reader.readStringOrNull(offsets[23]),
+    text: reader.readStringOrNull(offsets[24]),
     textCategory: _ClipboardItemtextCategoryValueEnumMap[
-        reader.readStringOrNull(offsets[27])],
-    title: reader.readStringOrNull(offsets[30]),
+        reader.readStringOrNull(offsets[25])],
+    title: reader.readStringOrNull(offsets[26]),
     type:
-        _ClipboardItemtypeValueEnumMap[reader.readStringOrNull(offsets[32])] ??
+        _ClipboardItemtypeValueEnumMap[reader.readStringOrNull(offsets[27])] ??
             ClipItemType.text,
-    url: reader.readStringOrNull(offsets[34]),
-    userId: reader.readString(offsets[36]),
+    url: reader.readStringOrNull(offsets[28]),
+    userId: reader.readString(offsets[29]),
   );
   object.id = id;
   return object;
@@ -560,71 +474,57 @@ P _clipboardItemDeserializeProp<P>(
     case 4:
       return (reader.readStringOrNull(offset)) as P;
     case 5:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 6:
       return (reader.readStringOrNull(offset)) as P;
     case 7:
-      return (reader.readStringOrNull(offset)) as P;
-    case 8:
       return (reader.readBool(offset)) as P;
+    case 8:
+      return (reader.readStringOrNull(offset)) as P;
     case 9:
       return (reader.readStringOrNull(offset)) as P;
     case 10:
       return (reader.readStringOrNull(offset)) as P;
     case 11:
-      return (reader.readStringOrNull(offset)) as P;
-    case 12:
       return (reader.readLongOrNull(offset)) as P;
-    case 13:
+    case 12:
       return (reader.readStringOrNull(offset)) as P;
-    case 14:
+    case 13:
       return (reader.readBool(offset)) as P;
+    case 14:
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 15:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 16:
-      return (reader.readDateTimeOrNull(offset)) as P;
-    case 17:
       return (reader.readBool(offset)) as P;
-    case 18:
+    case 17:
       return (reader.readStringOrNull(offset)) as P;
-    case 19:
-      return (reader.readString(offset)) as P;
-    case 20:
+    case 18:
       return (reader.readDateTime(offset)) as P;
-    case 21:
+    case 19:
       return (_ClipboardItemosValueEnumMap[reader.readStringOrNull(offset)] ??
           PlatformOS.android) as P;
+    case 20:
+      return (reader.readLongOrNull(offset)) as P;
+    case 21:
+      return (reader.readLongOrNull(offset)) as P;
     case 22:
-      return (reader.readLongOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 23:
-      return (reader.readLongOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 24:
       return (reader.readStringOrNull(offset)) as P;
     case 25:
-      return (reader.readStringOrNull(offset)) as P;
+      return (_ClipboardItemtextCategoryValueEnumMap[
+          reader.readStringOrNull(offset)]) as P;
     case 26:
       return (reader.readStringOrNull(offset)) as P;
     case 27:
-      return (_ClipboardItemtextCategoryValueEnumMap[
-          reader.readStringOrNull(offset)]) as P;
-    case 28:
-      return (reader.readString(offset)) as P;
-    case 29:
-      return (reader.readStringList(offset) ?? []) as P;
-    case 30:
-      return (reader.readStringOrNull(offset)) as P;
-    case 31:
-      return (reader.readStringList(offset) ?? []) as P;
-    case 32:
       return (_ClipboardItemtypeValueEnumMap[reader.readStringOrNull(offset)] ??
           ClipItemType.text) as P;
-    case 33:
-      return (reader.readString(offset)) as P;
-    case 34:
+    case 28:
       return (reader.readStringOrNull(offset)) as P;
-    case 35:
-      return (reader.readStringList(offset) ?? []) as P;
-    case 36:
+    case 29:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -689,44 +589,43 @@ extension ClipboardItemQueryWhereSort
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere>
-      anyTitleWordsElement() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(
-        const IndexWhereClause.any(indexName: r'titleWords'),
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere>
-      anyDescriptionWordsElement() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(
-        const IndexWhereClause.any(indexName: r'descriptionWords'),
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere> anyUrlWordsElement() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(
-        const IndexWhereClause.any(indexName: r'urlWords'),
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere> anyTextWordElement() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(
-        const IndexWhereClause.any(indexName: r'textWord'),
-      );
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere> anyServerId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'serverId'),
+      );
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere> anyDeletedAt() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'deletedAt'),
+      );
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere> anyEncrypted() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'encrypted'),
+      );
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere>
+      anyServerCollectionId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'serverCollectionId'),
+      );
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhere> anyCollectionId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'collectionId'),
       );
     });
   }
@@ -800,705 +699,6 @@ extension ClipboardItemQueryWhere
         upper: upperId,
         includeUpper: includeUpper,
       ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementEqualTo(String titleWordsElement) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'titleWords',
-        value: [titleWordsElement],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementNotEqualTo(String titleWordsElement) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'titleWords',
-              lower: [],
-              upper: [titleWordsElement],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'titleWords',
-              lower: [titleWordsElement],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'titleWords',
-              lower: [titleWordsElement],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'titleWords',
-              lower: [],
-              upper: [titleWordsElement],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementGreaterThan(
-    String titleWordsElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'titleWords',
-        lower: [titleWordsElement],
-        includeLower: include,
-        upper: [],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementLessThan(
-    String titleWordsElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'titleWords',
-        lower: [],
-        upper: [titleWordsElement],
-        includeUpper: include,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementBetween(
-    String lowerTitleWordsElement,
-    String upperTitleWordsElement, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'titleWords',
-        lower: [lowerTitleWordsElement],
-        includeLower: includeLower,
-        upper: [upperTitleWordsElement],
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementStartsWith(String TitleWordsElementPrefix) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'titleWords',
-        lower: [TitleWordsElementPrefix],
-        upper: ['$TitleWordsElementPrefix\u{FFFFF}'],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'titleWords',
-        value: [''],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      titleWordsElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'titleWords',
-              upper: [''],
-            ))
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'titleWords',
-              lower: [''],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'titleWords',
-              lower: [''],
-            ))
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'titleWords',
-              upper: [''],
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementEqualTo(String descriptionWordsElement) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'descriptionWords',
-        value: [descriptionWordsElement],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementNotEqualTo(String descriptionWordsElement) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'descriptionWords',
-              lower: [],
-              upper: [descriptionWordsElement],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'descriptionWords',
-              lower: [descriptionWordsElement],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'descriptionWords',
-              lower: [descriptionWordsElement],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'descriptionWords',
-              lower: [],
-              upper: [descriptionWordsElement],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementGreaterThan(
-    String descriptionWordsElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'descriptionWords',
-        lower: [descriptionWordsElement],
-        includeLower: include,
-        upper: [],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementLessThan(
-    String descriptionWordsElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'descriptionWords',
-        lower: [],
-        upper: [descriptionWordsElement],
-        includeUpper: include,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementBetween(
-    String lowerDescriptionWordsElement,
-    String upperDescriptionWordsElement, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'descriptionWords',
-        lower: [lowerDescriptionWordsElement],
-        includeLower: includeLower,
-        upper: [upperDescriptionWordsElement],
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementStartsWith(String DescriptionWordsElementPrefix) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'descriptionWords',
-        lower: [DescriptionWordsElementPrefix],
-        upper: ['$DescriptionWordsElementPrefix\u{FFFFF}'],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'descriptionWords',
-        value: [''],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      descriptionWordsElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'descriptionWords',
-              upper: [''],
-            ))
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'descriptionWords',
-              lower: [''],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'descriptionWords',
-              lower: [''],
-            ))
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'descriptionWords',
-              upper: [''],
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementEqualTo(String urlWordsElement) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'urlWords',
-        value: [urlWordsElement],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementNotEqualTo(String urlWordsElement) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'urlWords',
-              lower: [],
-              upper: [urlWordsElement],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'urlWords',
-              lower: [urlWordsElement],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'urlWords',
-              lower: [urlWordsElement],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'urlWords',
-              lower: [],
-              upper: [urlWordsElement],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementGreaterThan(
-    String urlWordsElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'urlWords',
-        lower: [urlWordsElement],
-        includeLower: include,
-        upper: [],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementLessThan(
-    String urlWordsElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'urlWords',
-        lower: [],
-        upper: [urlWordsElement],
-        includeUpper: include,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementBetween(
-    String lowerUrlWordsElement,
-    String upperUrlWordsElement, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'urlWords',
-        lower: [lowerUrlWordsElement],
-        includeLower: includeLower,
-        upper: [upperUrlWordsElement],
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementStartsWith(String UrlWordsElementPrefix) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'urlWords',
-        lower: [UrlWordsElementPrefix],
-        upper: ['$UrlWordsElementPrefix\u{FFFFF}'],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'urlWords',
-        value: [''],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      urlWordsElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'urlWords',
-              upper: [''],
-            ))
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'urlWords',
-              lower: [''],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'urlWords',
-              lower: [''],
-            ))
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'urlWords',
-              upper: [''],
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementEqualTo(String textWordElement) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'textWord',
-        value: [textWordElement],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementNotEqualTo(String textWordElement) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textWord',
-              lower: [],
-              upper: [textWordElement],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textWord',
-              lower: [textWordElement],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textWord',
-              lower: [textWordElement],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textWord',
-              lower: [],
-              upper: [textWordElement],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementGreaterThan(
-    String textWordElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'textWord',
-        lower: [textWordElement],
-        includeLower: include,
-        upper: [],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementLessThan(
-    String textWordElement, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'textWord',
-        lower: [],
-        upper: [textWordElement],
-        includeUpper: include,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementBetween(
-    String lowerTextWordElement,
-    String upperTextWordElement, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'textWord',
-        lower: [lowerTextWordElement],
-        includeLower: includeLower,
-        upper: [upperTextWordElement],
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementStartsWith(String TextWordElementPrefix) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'textWord',
-        lower: [TextWordElementPrefix],
-        upper: ['$TextWordElementPrefix\u{FFFFF}'],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'textWord',
-        value: [''],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textWordElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'textWord',
-              upper: [''],
-            ))
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'textWord',
-              lower: [''],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.greaterThan(
-              indexName: r'textWord',
-              lower: [''],
-            ))
-            .addWhereClause(IndexWhereClause.lessThan(
-              indexName: r'textWord',
-              upper: [''],
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textCategoryWordEqualTo(String textCategoryWord) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'textCategoryWord',
-        value: [textCategoryWord],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      textCategoryWordNotEqualTo(String textCategoryWord) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textCategoryWord',
-              lower: [],
-              upper: [textCategoryWord],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textCategoryWord',
-              lower: [textCategoryWord],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textCategoryWord',
-              lower: [textCategoryWord],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'textCategoryWord',
-              lower: [],
-              upper: [textCategoryWord],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause> typeWordEqualTo(
-      String typeWord) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'typeWord',
-        value: [typeWord],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      typeWordNotEqualTo(String typeWord) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'typeWord',
-              lower: [],
-              upper: [typeWord],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'typeWord',
-              lower: [typeWord],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'typeWord',
-              lower: [typeWord],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'typeWord',
-              lower: [],
-              upper: [typeWord],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      mimetypeWordEqualTo(String mimetypeWord) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'mimetypeWord',
-        value: [mimetypeWord],
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
-      mimetypeWordNotEqualTo(String mimetypeWord) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'mimetypeWord',
-              lower: [],
-              upper: [mimetypeWord],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'mimetypeWord',
-              lower: [mimetypeWord],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'mimetypeWord',
-              lower: [mimetypeWord],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'mimetypeWord',
-              lower: [],
-              upper: [mimetypeWord],
-              includeUpper: false,
-            ));
-      }
     });
   }
 
@@ -1611,6 +811,508 @@ extension ClipboardItemQueryWhere
         lower: [lowerServerId],
         includeLower: includeLower,
         upper: [upperServerId],
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause> typeEqualTo(
+      ClipItemType type) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'type',
+        value: [type],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause> typeNotEqualTo(
+      ClipItemType type) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'type',
+              lower: [],
+              upper: [type],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'type',
+              lower: [type],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'type',
+              lower: [type],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'type',
+              lower: [],
+              upper: [type],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'deletedAt',
+        value: [null],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'deletedAt',
+        lower: [null],
+        includeLower: false,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtEqualTo(DateTime? deletedAt) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'deletedAt',
+        value: [deletedAt],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtNotEqualTo(DateTime? deletedAt) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'deletedAt',
+              lower: [],
+              upper: [deletedAt],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'deletedAt',
+              lower: [deletedAt],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'deletedAt',
+              lower: [deletedAt],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'deletedAt',
+              lower: [],
+              upper: [deletedAt],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtGreaterThan(
+    DateTime? deletedAt, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'deletedAt',
+        lower: [deletedAt],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtLessThan(
+    DateTime? deletedAt, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'deletedAt',
+        lower: [],
+        upper: [deletedAt],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      deletedAtBetween(
+    DateTime? lowerDeletedAt,
+    DateTime? upperDeletedAt, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'deletedAt',
+        lower: [lowerDeletedAt],
+        includeLower: includeLower,
+        upper: [upperDeletedAt],
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      encryptedEqualTo(bool encrypted) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'encrypted',
+        value: [encrypted],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      encryptedNotEqualTo(bool encrypted) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'encrypted',
+              lower: [],
+              upper: [encrypted],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'encrypted',
+              lower: [encrypted],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'encrypted',
+              lower: [encrypted],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'encrypted',
+              lower: [],
+              upper: [encrypted],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      textCategoryIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'textCategory',
+        value: [null],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      textCategoryIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'textCategory',
+        lower: [null],
+        includeLower: false,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      textCategoryEqualTo(TextCategory? textCategory) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'textCategory',
+        value: [textCategory],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      textCategoryNotEqualTo(TextCategory? textCategory) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'textCategory',
+              lower: [],
+              upper: [textCategory],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'textCategory',
+              lower: [textCategory],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'textCategory',
+              lower: [textCategory],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'textCategory',
+              lower: [],
+              upper: [textCategory],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'serverCollectionId',
+        value: [null],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'serverCollectionId',
+        lower: [null],
+        includeLower: false,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdEqualTo(int? serverCollectionId) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'serverCollectionId',
+        value: [serverCollectionId],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdNotEqualTo(int? serverCollectionId) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'serverCollectionId',
+              lower: [],
+              upper: [serverCollectionId],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'serverCollectionId',
+              lower: [serverCollectionId],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'serverCollectionId',
+              lower: [serverCollectionId],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'serverCollectionId',
+              lower: [],
+              upper: [serverCollectionId],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdGreaterThan(
+    int? serverCollectionId, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'serverCollectionId',
+        lower: [serverCollectionId],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdLessThan(
+    int? serverCollectionId, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'serverCollectionId',
+        lower: [],
+        upper: [serverCollectionId],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      serverCollectionIdBetween(
+    int? lowerServerCollectionId,
+    int? upperServerCollectionId, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'serverCollectionId',
+        lower: [lowerServerCollectionId],
+        includeLower: includeLower,
+        upper: [upperServerCollectionId],
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'collectionId',
+        value: [null],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'collectionId',
+        lower: [null],
+        includeLower: false,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdEqualTo(int? collectionId) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'collectionId',
+        value: [collectionId],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdNotEqualTo(int? collectionId) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'collectionId',
+              lower: [],
+              upper: [collectionId],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'collectionId',
+              lower: [collectionId],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'collectionId',
+              lower: [collectionId],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'collectionId',
+              lower: [],
+              upper: [collectionId],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdGreaterThan(
+    int? collectionId, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'collectionId',
+        lower: [collectionId],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdLessThan(
+    int? collectionId, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'collectionId',
+        lower: [],
+        upper: [collectionId],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<ClipboardItem, ClipboardItem, QAfterWhereClause>
+      collectionIdBetween(
+    int? lowerCollectionId,
+    int? upperCollectionId, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'collectionId',
+        lower: [lowerCollectionId],
+        includeLower: includeLower,
+        upper: [upperCollectionId],
         includeUpper: includeUpper,
       ));
     });
@@ -2030,233 +1732,6 @@ extension ClipboardItemQueryFilter
         property: r'description',
         value: '',
       ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'descriptionWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'descriptionWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'descriptionWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'descriptionWords',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'descriptionWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'descriptionWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementContains(String value,
-          {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'descriptionWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementMatches(String pattern,
-          {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'descriptionWords',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'descriptionWords',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'descriptionWords',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsLengthEqualTo(int length) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'descriptionWords',
-        length,
-        true,
-        length,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'descriptionWords',
-        0,
-        true,
-        0,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'descriptionWords',
-        0,
-        false,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsLengthLessThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'descriptionWords',
-        0,
-        true,
-        length,
-        include,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsLengthGreaterThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'descriptionWords',
-        length,
-        include,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      descriptionWordsLengthBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'descriptionWords',
-        lower,
-        includeLower,
-        upper,
-        includeUpper,
-      );
     });
   }
 
@@ -3645,142 +3120,6 @@ extension ClipboardItemQueryFilter
   }
 
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'mimetypeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'mimetypeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'mimetypeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'mimetypeWord',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'mimetypeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'mimetypeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'mimetypeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'mimetypeWord',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'mimetypeWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      mimetypeWordIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'mimetypeWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
       modifiedEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -4734,367 +4073,6 @@ extension ClipboardItemQueryFilter
   }
 
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'textCategoryWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'textCategoryWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'textCategoryWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'textCategoryWord',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'textCategoryWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'textCategoryWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'textCategoryWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'textCategoryWord',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'textCategoryWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textCategoryWordIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'textCategoryWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'textWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'textWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'textWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'textWord',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'textWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'textWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'textWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'textWord',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'textWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'textWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordLengthEqualTo(int length) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'textWord',
-        length,
-        true,
-        length,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'textWord',
-        0,
-        true,
-        0,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'textWord',
-        0,
-        false,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordLengthLessThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'textWord',
-        0,
-        true,
-        length,
-        include,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordLengthGreaterThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'textWord',
-        length,
-        include,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      textWordLengthBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'textWord',
-        lower,
-        includeLower,
-        upper,
-        includeUpper,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
       titleIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -5248,231 +4226,6 @@ extension ClipboardItemQueryFilter
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'titleWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'titleWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'titleWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'titleWords',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'titleWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'titleWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'titleWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'titleWords',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'titleWords',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'titleWords',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsLengthEqualTo(int length) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'titleWords',
-        length,
-        true,
-        length,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'titleWords',
-        0,
-        true,
-        0,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'titleWords',
-        0,
-        false,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsLengthLessThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'titleWords',
-        0,
-        true,
-        length,
-        include,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsLengthGreaterThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'titleWords',
-        length,
-        include,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      titleWordsLengthBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'titleWords',
-        lower,
-        includeLower,
-        upper,
-        includeUpper,
-      );
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition> typeEqualTo(
     ClipItemType value, {
     bool caseSensitive = true,
@@ -5603,142 +4356,6 @@ extension ClipboardItemQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'type',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'typeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'typeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'typeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'typeWord',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'typeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'typeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'typeWord',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'typeWord',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'typeWord',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      typeWordIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'typeWord',
         value: '',
       ));
     });
@@ -5893,231 +4510,6 @@ extension ClipboardItemQueryFilter
         property: r'url',
         value: '',
       ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementEqualTo(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'urlWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementGreaterThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'urlWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementLessThan(
-    String value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'urlWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementBetween(
-    String lower,
-    String upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'urlWords',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'urlWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'urlWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'urlWords',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'urlWords',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'urlWords',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsElementIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'urlWords',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsLengthEqualTo(int length) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'urlWords',
-        length,
-        true,
-        length,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'urlWords',
-        0,
-        true,
-        0,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'urlWords',
-        0,
-        false,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsLengthLessThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'urlWords',
-        0,
-        true,
-        length,
-        include,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsLengthGreaterThan(
-    int length, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'urlWords',
-        length,
-        include,
-        999999,
-        true,
-      );
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      urlWordsLengthBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.listLength(
-        r'urlWords',
-        lower,
-        includeLower,
-        upper,
-        includeUpper,
-      );
     });
   }
 
@@ -6502,20 +4894,6 @@ extension ClipboardItemQuerySortBy
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      sortByMimetypeWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mimetypeWord', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      sortByMimetypeWordDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mimetypeWord', Sort.desc);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> sortByModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'modified', Sort.asc);
@@ -6620,20 +4998,6 @@ extension ClipboardItemQuerySortBy
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      sortByTextCategoryWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'textCategoryWord', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      sortByTextCategoryWordDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'textCategoryWord', Sort.desc);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> sortByTitle() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'title', Sort.asc);
@@ -6655,19 +5019,6 @@ extension ClipboardItemQuerySortBy
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> sortByTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> sortByTypeWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'typeWord', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      sortByTypeWordDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'typeWord', Sort.desc);
     });
   }
 
@@ -6946,20 +5297,6 @@ extension ClipboardItemQuerySortThenBy
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      thenByMimetypeWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mimetypeWord', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      thenByMimetypeWordDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mimetypeWord', Sort.desc);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> thenByModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'modified', Sort.asc);
@@ -7064,20 +5401,6 @@ extension ClipboardItemQuerySortThenBy
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      thenByTextCategoryWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'textCategoryWord', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      thenByTextCategoryWordDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'textCategoryWord', Sort.desc);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> thenByTitle() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'title', Sort.asc);
@@ -7099,19 +5422,6 @@ extension ClipboardItemQuerySortThenBy
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> thenByTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> thenByTypeWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'typeWord', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      thenByTypeWordDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'typeWord', Sort.desc);
     });
   }
 
@@ -7172,13 +5482,6 @@ extension ClipboardItemQueryWhereDistinct
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'description', caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct>
-      distinctByDescriptionWords() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'descriptionWords');
     });
   }
 
@@ -7269,13 +5572,6 @@ extension ClipboardItemQueryWhereDistinct
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByMimetypeWord(
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'mimetypeWord', caseSensitive: caseSensitive);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByModified() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'modified');
@@ -7330,30 +5626,10 @@ extension ClipboardItemQueryWhereDistinct
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct>
-      distinctByTextCategoryWord({bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'textCategoryWord',
-          caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByTextWord() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'textWord');
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByTitle(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'title', caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByTitleWords() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'titleWords');
     });
   }
 
@@ -7364,23 +5640,10 @@ extension ClipboardItemQueryWhereDistinct
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByTypeWord(
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'typeWord', caseSensitive: caseSensitive);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByUrl(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'url', caseSensitive: caseSensitive);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByUrlWords() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'urlWords');
     });
   }
 
@@ -7427,13 +5690,6 @@ extension ClipboardItemQueryProperty
   QueryBuilder<ClipboardItem, String?, QQueryOperations> descriptionProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'description');
-    });
-  }
-
-  QueryBuilder<ClipboardItem, List<String>, QQueryOperations>
-      descriptionWordsProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'descriptionWords');
     });
   }
 
@@ -7519,12 +5775,6 @@ extension ClipboardItemQueryProperty
     });
   }
 
-  QueryBuilder<ClipboardItem, String, QQueryOperations> mimetypeWordProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'mimetypeWord');
-    });
-  }
-
   QueryBuilder<ClipboardItem, DateTime, QQueryOperations> modifiedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'modified');
@@ -7575,30 +5825,9 @@ extension ClipboardItemQueryProperty
     });
   }
 
-  QueryBuilder<ClipboardItem, String, QQueryOperations>
-      textCategoryWordProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'textCategoryWord');
-    });
-  }
-
-  QueryBuilder<ClipboardItem, List<String>, QQueryOperations>
-      textWordProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'textWord');
-    });
-  }
-
   QueryBuilder<ClipboardItem, String?, QQueryOperations> titleProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'title');
-    });
-  }
-
-  QueryBuilder<ClipboardItem, List<String>, QQueryOperations>
-      titleWordsProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'titleWords');
     });
   }
 
@@ -7608,22 +5837,9 @@ extension ClipboardItemQueryProperty
     });
   }
 
-  QueryBuilder<ClipboardItem, String, QQueryOperations> typeWordProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'typeWord');
-    });
-  }
-
   QueryBuilder<ClipboardItem, String?, QQueryOperations> urlProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'url');
-    });
-  }
-
-  QueryBuilder<ClipboardItem, List<String>, QQueryOperations>
-      urlWordsProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'urlWords');
     });
   }
 
