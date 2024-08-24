@@ -18,14 +18,20 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   late final Size compactWindowSize;
   WindowActionCubit() : super(const WindowActionState.loaded()) {
     final view = PlatformDispatcher.instance.views.first;
-    screenSize = view.display.size / view.devicePixelRatio;
+    var size = view.display.size;
+    if (size.isEmpty) {
+      size = view.physicalSize;
+    }
+
+    screenSize = size / view.devicePixelRatio;
     final int platformDiff;
     if (Platform.isMacOS) {
       platformDiff = 25;
     } else {
       platformDiff = 0;
     }
-    compactWindowSize = Size(368.0, screenSize.height - platformDiff);
+    final height = screenSize.height - platformDiff;
+    compactWindowSize = Size(368.0, height > 0 ? height : 600.0);
   }
 
   Future<bool> isCompactMode() async {
