@@ -387,9 +387,7 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
 
         if (items.isEmpty) return;
         await syncWorker.waitUntilReady();
-        final foundedCount = await syncWorker.compute(
-          items,
-        );
+        final foundedCount = await syncWorker.compute(items);
 
         added += r.results.length - foundedCount;
         updated += foundedCount;
@@ -432,8 +430,14 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         return frequentSyncing;
       }
     }
-    if (syncing || syncHours == null) return null;
-    if (auth.state is! AuthenticatedAuthState) return null;
+    if (syncing || syncHours == null) {
+      emit(const SyncManagerState.syncing(progress: 0, total: 0));
+      return null;
+    }
+    if (auth.state is! AuthenticatedAuthState) {
+      emit(const SyncManagerState.unknown());
+      return null;
+    }
     syncing = true;
     try {
       final syncInfo = await getSyncInfo();
