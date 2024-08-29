@@ -180,8 +180,8 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
 
     if (accessToken == null) {
       emit(CloudPersistanceState.error(
-        frequentSyncing,
-        item.syncDone(frequentSyncing),
+        driveFailure,
+        item.syncDone(driveFailure),
         FailedAction.upload,
         retryCount: -1,
       ));
@@ -237,8 +237,8 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
 
       if (accessToken == null) {
         emit(CloudPersistanceState.error(
-          frequentSyncing,
-          item.syncDone(frequentSyncing),
+          driveFailure,
+          item.syncDone(driveFailure),
           FailedAction.delete,
           retryCount: -1,
         ));
@@ -314,8 +314,8 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
 
     if (accessToken == null) {
       emit(CloudPersistanceState.error(
-        frequentSyncing,
-        item.syncDone(frequentSyncing),
+        driveFailure,
+        item.syncDone(driveFailure),
         FailedAction.download,
         retryCount: -1,
       ));
