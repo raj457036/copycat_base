@@ -62,7 +62,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
     emit(const OfflinePersistanceState.decrypted());
   }
 
-  onCaptureClipboard() {
+  Future<void> onCaptureClipboard() async {
     emit(const OfflinePersistanceState.initial());
     if (appConfig.isCopyingPaused) {
       logger.i("Copying is paused!");
@@ -76,7 +76,10 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
       );
       return;
     }
-    clipboard.readClipboard();
+
+    if (await appConfig.isCopyingAllowed()) {
+      await clipboard.readClipboard();
+    }
   }
 
   Future<void> startListners() async {

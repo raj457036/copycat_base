@@ -9,6 +9,7 @@ import 'package:copycat_base/db/subscription/subscription.dart';
 import 'package:copycat_base/domain/repositories/app_config.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/material.dart';
+import 'package:focus_window/focus_window.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:injectable/injectable.dart';
@@ -21,6 +22,8 @@ part 'app_config_state.dart';
 @singleton
 class AppConfigCubit extends Cubit<AppConfigState> {
   final AppConfigRepository repo;
+  final FocusWindow focusWindow = FocusWindow();
+
   AppConfigCubit(this.repo)
       : super(
           AppConfigState.loaded(
@@ -252,5 +255,12 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     final newConfig = state.config.copyWith(lastFocusedWindowId: value)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
+  }
+
+  Future<bool> isCopyingAllowed() async {
+    final activity = await focusWindow.getActivity();
+
+    logger.w(activity);
+    return false;
   }
 }

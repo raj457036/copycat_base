@@ -58,6 +58,8 @@ dependencies:
       ref: master
       path: "platform_device_id"
   flutter_svg: ^2.0.10+1
+  focus_window:
+    path: ../../plugins/focus_window
   
 
 dev_dependencies:
@@ -75,4 +77,4 @@ dependency_overrides:
   analyzer: ^6.4.1
   firebase_core_platform_interface: ^5.1.0
 
-flutter:
+# flutter:
