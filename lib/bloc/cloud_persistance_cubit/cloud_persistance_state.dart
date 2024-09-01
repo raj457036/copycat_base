@@ -1,13 +1,5 @@
 part of 'cloud_persistance_cubit.dart';
 
-enum FailedAction {
-  create,
-  update,
-  delete,
-  upload,
-  download,
-}
-
 @freezed
 class CloudPersistanceState with _$CloudPersistanceState {
   const factory CloudPersistanceState.initial() = CloudPersistanceInitial;
@@ -28,7 +20,5 @@ class CloudPersistanceState with _$CloudPersistanceState {
   const factory CloudPersistanceState.error(
     Failure failure,
     ClipboardItem item,
-    FailedAction failedAction, {
-    @Default(0) int retryCount,
-  }) = CloudPersistanceError;
+  ) = CloudPersistanceError;
 }

@@ -27,7 +27,7 @@ Future<void> syncChanges(BuildContext context) async {
   if (!context.mounted) return;
 
   showTextSnackbar(
-    context.locale.syncing("..."),
+    context.locale.syncing,
     isLoading: true,
     closePrevious: true,
   );
@@ -431,7 +431,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       }
     }
     if (syncing || syncHours == null) {
-      emit(const SyncManagerState.syncing(progress: 0, total: 0));
       return null;
     }
     if (auth.state is! AuthenticatedAuthState) {

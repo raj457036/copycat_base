@@ -846,8 +846,8 @@ abstract class AppLocalizations {
   /// No description provided for @syncing.
   ///
   /// In en, this message translates to:
-  /// **'Syncing {progress}'**
-  String syncing(String progress);
+  /// **'Syncing'**
+  String get syncing;
 
   /// No description provided for @syncingCheckFailed.
   ///

@@ -7,10 +7,6 @@ class SyncManagerState with _$SyncManagerState {
     @Default(false) bool needDbRebuilding,
   }) = CheckingSyncState;
   const factory SyncManagerState.failed(Failure failure) = SyncCheckFailedState;
-  const factory SyncManagerState.syncing({
-    required int progress,
-    required int total,
-  }) = SyncingState;
 
   const factory SyncManagerState.partlySynced({
     @Default(false) bool clipboard,

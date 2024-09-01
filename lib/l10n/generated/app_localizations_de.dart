@@ -414,9 +414,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get sync => 'Synchronisieren';
 
   @override
-  String syncing(String progress) {
-    return 'Synchronisieren $progress';
-  }
+  String get syncing => 'Synchronisieren';
 
   @override
   String syncingCheckFailed(String message) {

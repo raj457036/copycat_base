@@ -21,7 +21,6 @@ mixin _$SyncManagerState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -37,7 +36,6 @@ mixin _$SyncManagerState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -53,7 +51,6 @@ mixin _$SyncManagerState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -70,7 +67,6 @@ mixin _$SyncManagerState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -83,7 +79,6 @@ mixin _$SyncManagerState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -95,7 +90,6 @@ mixin _$SyncManagerState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -164,7 +158,6 @@ class _$UnknownSyncStateImpl implements UnknownSyncState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -183,7 +176,6 @@ class _$UnknownSyncStateImpl implements UnknownSyncState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -202,7 +194,6 @@ class _$UnknownSyncStateImpl implements UnknownSyncState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -225,7 +216,6 @@ class _$UnknownSyncStateImpl implements UnknownSyncState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -241,7 +231,6 @@ class _$UnknownSyncStateImpl implements UnknownSyncState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -256,7 +245,6 @@ class _$UnknownSyncStateImpl implements UnknownSyncState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -344,7 +332,6 @@ class _$CheckingSyncStateImpl implements CheckingSyncState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -363,7 +350,6 @@ class _$CheckingSyncStateImpl implements CheckingSyncState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -382,7 +368,6 @@ class _$CheckingSyncStateImpl implements CheckingSyncState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -405,7 +390,6 @@ class _$CheckingSyncStateImpl implements CheckingSyncState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -421,7 +405,6 @@ class _$CheckingSyncStateImpl implements CheckingSyncState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -436,7 +419,6 @@ class _$CheckingSyncStateImpl implements CheckingSyncState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -529,7 +511,6 @@ class _$SyncCheckFailedStateImpl implements SyncCheckFailedState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -548,7 +529,6 @@ class _$SyncCheckFailedStateImpl implements SyncCheckFailedState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -567,7 +547,6 @@ class _$SyncCheckFailedStateImpl implements SyncCheckFailedState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -590,7 +569,6 @@ class _$SyncCheckFailedStateImpl implements SyncCheckFailedState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -606,7 +584,6 @@ class _$SyncCheckFailedStateImpl implements SyncCheckFailedState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -621,7 +598,6 @@ class _$SyncCheckFailedStateImpl implements SyncCheckFailedState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -643,200 +619,6 @@ abstract class SyncCheckFailedState implements SyncManagerState {
   @JsonKey(ignore: true)
   _$$SyncCheckFailedStateImplCopyWith<_$SyncCheckFailedStateImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SyncingStateImplCopyWith<$Res> {
-  factory _$$SyncingStateImplCopyWith(
-          _$SyncingStateImpl value, $Res Function(_$SyncingStateImpl) then) =
-      __$$SyncingStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int progress, int total});
-}
-
-/// @nodoc
-class __$$SyncingStateImplCopyWithImpl<$Res>
-    extends _$SyncManagerStateCopyWithImpl<$Res, _$SyncingStateImpl>
-    implements _$$SyncingStateImplCopyWith<$Res> {
-  __$$SyncingStateImplCopyWithImpl(
-      _$SyncingStateImpl _value, $Res Function(_$SyncingStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? progress = null,
-    Object? total = null,
-  }) {
-    return _then(_$SyncingStateImpl(
-      progress: null == progress
-          ? _value.progress
-          : progress // ignore: cast_nullable_to_non_nullable
-              as int,
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SyncingStateImpl implements SyncingState {
-  const _$SyncingStateImpl({required this.progress, required this.total});
-
-  @override
-  final int progress;
-  @override
-  final int total;
-
-  @override
-  String toString() {
-    return 'SyncManagerState.syncing(progress: $progress, total: $total)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SyncingStateImpl &&
-            (identical(other.progress, progress) ||
-                other.progress == progress) &&
-            (identical(other.total, total) || other.total == total));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, progress, total);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SyncingStateImplCopyWith<_$SyncingStateImpl> get copyWith =>
-      __$$SyncingStateImplCopyWithImpl<_$SyncingStateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() unknown,
-    required TResult Function(bool needDbRebuilding) checking,
-    required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
-    required TResult Function(bool clipboard, bool collections) partlySynced,
-    required TResult Function(int added, int updated, int deleted, bool silent)
-        clipboardSynced,
-    required TResult Function(int added, int updated, int deleted, bool silent)
-        collectionSynced,
-    required TResult Function(
-            DateTime lastSynced, bool refreshLocalCache, bool firstBuild)
-        synced,
-  }) {
-    return syncing(progress, total);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unknown,
-    TResult? Function(bool needDbRebuilding)? checking,
-    TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
-    TResult? Function(bool clipboard, bool collections)? partlySynced,
-    TResult? Function(int added, int updated, int deleted, bool silent)?
-        clipboardSynced,
-    TResult? Function(int added, int updated, int deleted, bool silent)?
-        collectionSynced,
-    TResult? Function(
-            DateTime lastSynced, bool refreshLocalCache, bool firstBuild)?
-        synced,
-  }) {
-    return syncing?.call(progress, total);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unknown,
-    TResult Function(bool needDbRebuilding)? checking,
-    TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
-    TResult Function(bool clipboard, bool collections)? partlySynced,
-    TResult Function(int added, int updated, int deleted, bool silent)?
-        clipboardSynced,
-    TResult Function(int added, int updated, int deleted, bool silent)?
-        collectionSynced,
-    TResult Function(
-            DateTime lastSynced, bool refreshLocalCache, bool firstBuild)?
-        synced,
-    required TResult orElse(),
-  }) {
-    if (syncing != null) {
-      return syncing(progress, total);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UnknownSyncState value) unknown,
-    required TResult Function(CheckingSyncState value) checking,
-    required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
-    required TResult Function(PartlySyncedSyncState value) partlySynced,
-    required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
-    required TResult Function(ClipCollectionSyncedSyncState value)
-        collectionSynced,
-    required TResult Function(SyncedState value) synced,
-  }) {
-    return syncing(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UnknownSyncState value)? unknown,
-    TResult? Function(CheckingSyncState value)? checking,
-    TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
-    TResult? Function(PartlySyncedSyncState value)? partlySynced,
-    TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
-    TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
-    TResult? Function(SyncedState value)? synced,
-  }) {
-    return syncing?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownSyncState value)? unknown,
-    TResult Function(CheckingSyncState value)? checking,
-    TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
-    TResult Function(PartlySyncedSyncState value)? partlySynced,
-    TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
-    TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
-    TResult Function(SyncedState value)? synced,
-    required TResult orElse(),
-  }) {
-    if (syncing != null) {
-      return syncing(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SyncingState implements SyncManagerState {
-  const factory SyncingState(
-      {required final int progress,
-      required final int total}) = _$SyncingStateImpl;
-
-  int get progress;
-  int get total;
-  @JsonKey(ignore: true)
-  _$$SyncingStateImplCopyWith<_$SyncingStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -921,7 +703,6 @@ class _$PartlySyncedSyncStateImpl implements PartlySyncedSyncState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -940,7 +721,6 @@ class _$PartlySyncedSyncStateImpl implements PartlySyncedSyncState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -959,7 +739,6 @@ class _$PartlySyncedSyncStateImpl implements PartlySyncedSyncState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -982,7 +761,6 @@ class _$PartlySyncedSyncStateImpl implements PartlySyncedSyncState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -998,7 +776,6 @@ class _$PartlySyncedSyncStateImpl implements PartlySyncedSyncState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1013,7 +790,6 @@ class _$PartlySyncedSyncStateImpl implements PartlySyncedSyncState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1141,7 +917,6 @@ class _$ClipboardSyncedSyncStateImpl implements ClipboardSyncedSyncState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -1160,7 +935,6 @@ class _$ClipboardSyncedSyncStateImpl implements ClipboardSyncedSyncState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -1179,7 +953,6 @@ class _$ClipboardSyncedSyncStateImpl implements ClipboardSyncedSyncState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -1202,7 +975,6 @@ class _$ClipboardSyncedSyncStateImpl implements ClipboardSyncedSyncState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -1218,7 +990,6 @@ class _$ClipboardSyncedSyncStateImpl implements ClipboardSyncedSyncState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1233,7 +1004,6 @@ class _$ClipboardSyncedSyncStateImpl implements ClipboardSyncedSyncState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1368,7 +1138,6 @@ class _$ClipCollectionSyncedSyncStateImpl
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -1387,7 +1156,6 @@ class _$ClipCollectionSyncedSyncStateImpl
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -1406,7 +1174,6 @@ class _$ClipCollectionSyncedSyncStateImpl
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -1429,7 +1196,6 @@ class _$ClipCollectionSyncedSyncStateImpl
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -1445,7 +1211,6 @@ class _$ClipCollectionSyncedSyncStateImpl
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1460,7 +1225,6 @@ class _$ClipCollectionSyncedSyncStateImpl
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1582,7 +1346,6 @@ class _$SyncedStateImpl implements SyncedState {
     required TResult Function() unknown,
     required TResult Function(bool needDbRebuilding) checking,
     required TResult Function(Failure failure) failed,
-    required TResult Function(int progress, int total) syncing,
     required TResult Function(bool clipboard, bool collections) partlySynced,
     required TResult Function(int added, int updated, int deleted, bool silent)
         clipboardSynced,
@@ -1601,7 +1364,6 @@ class _$SyncedStateImpl implements SyncedState {
     TResult? Function()? unknown,
     TResult? Function(bool needDbRebuilding)? checking,
     TResult? Function(Failure failure)? failed,
-    TResult? Function(int progress, int total)? syncing,
     TResult? Function(bool clipboard, bool collections)? partlySynced,
     TResult? Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -1620,7 +1382,6 @@ class _$SyncedStateImpl implements SyncedState {
     TResult Function()? unknown,
     TResult Function(bool needDbRebuilding)? checking,
     TResult Function(Failure failure)? failed,
-    TResult Function(int progress, int total)? syncing,
     TResult Function(bool clipboard, bool collections)? partlySynced,
     TResult Function(int added, int updated, int deleted, bool silent)?
         clipboardSynced,
@@ -1643,7 +1404,6 @@ class _$SyncedStateImpl implements SyncedState {
     required TResult Function(UnknownSyncState value) unknown,
     required TResult Function(CheckingSyncState value) checking,
     required TResult Function(SyncCheckFailedState value) failed,
-    required TResult Function(SyncingState value) syncing,
     required TResult Function(PartlySyncedSyncState value) partlySynced,
     required TResult Function(ClipboardSyncedSyncState value) clipboardSynced,
     required TResult Function(ClipCollectionSyncedSyncState value)
@@ -1659,7 +1419,6 @@ class _$SyncedStateImpl implements SyncedState {
     TResult? Function(UnknownSyncState value)? unknown,
     TResult? Function(CheckingSyncState value)? checking,
     TResult? Function(SyncCheckFailedState value)? failed,
-    TResult? Function(SyncingState value)? syncing,
     TResult? Function(PartlySyncedSyncState value)? partlySynced,
     TResult? Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult? Function(ClipCollectionSyncedSyncState value)? collectionSynced,
@@ -1674,7 +1433,6 @@ class _$SyncedStateImpl implements SyncedState {
     TResult Function(UnknownSyncState value)? unknown,
     TResult Function(CheckingSyncState value)? checking,
     TResult Function(SyncCheckFailedState value)? failed,
-    TResult Function(SyncingState value)? syncing,
     TResult Function(PartlySyncedSyncState value)? partlySynced,
     TResult Function(ClipboardSyncedSyncState value)? clipboardSynced,
     TResult Function(ClipCollectionSyncedSyncState value)? collectionSynced,

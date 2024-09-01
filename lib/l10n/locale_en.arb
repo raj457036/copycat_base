@@ -183,14 +183,7 @@
     "syncNotAvailable": "Sync Not Available",
     "checkingForRecord": "Checking for Records",
     "sync": "Sync",
-    "syncing": "Syncing {progress}",
-    "@syncing": {
-        "placeholders": {
-            "progress": {
-                "type": "String"
-            }
-        }
-    },
+    "syncing": "Syncing",
     "syncingCheckFailed": "Syncing Check Failed: {message}",
     "@syncingCheckFailed": {
         "placeholders": {

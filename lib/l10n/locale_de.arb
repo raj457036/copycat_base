@@ -183,14 +183,7 @@
     "syncNotAvailable": "Synchronisierung nicht verfügbar",
     "checkingForRecord": "Überprüfen der Aufzeichnungen",
     "sync": "Synchronisieren",
-    "syncing": "Synchronisieren {progress}",
-    "@syncing": {
-        "placeholders": {
-            "progress": {
-                "type": "String"
-            }
-        }
-    },
+    "syncing": "Synchronisieren",
     "syncingCheckFailed": "Synchronisierungsüberprüfung fehlgeschlagen: {message}",
     "@syncingCheckFailed": {
         "placeholders": {

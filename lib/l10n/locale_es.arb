@@ -183,14 +183,7 @@
     "syncNotAvailable": "Sincronización No Disponible",
     "checkingForRecord": "Buscando Registros",
     "sync": "Sincronizar",
-    "syncing": "Sincronizando {progress}",
-    "@syncing": {
-        "placeholders": {
-            "progress": {
-                "type": "String"
-            }
-        }
-    },
+    "syncing": "Sincronizando",
     "syncingCheckFailed": "Error en la Comprobación de Sincronización: {message}",
     "@syncingCheckFailed": {
         "placeholders": {
