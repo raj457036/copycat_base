@@ -297,4 +297,11 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
 
   @ignore
   bool get isSyncing => (uploading || downloading) && driveFileId == null;
+
+  @ignore
+  String? get displayTitle {
+    if (title != null && title!.isNotEmpty) return title;
+    if (fileName != null && fileName!.isNotEmpty) return fileName;
+    return null;
+  }
 }

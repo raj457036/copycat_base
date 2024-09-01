@@ -63,7 +63,7 @@ class GoogleAuthClient with http.BaseClient {
     final totalBytes = contentLength ?? 1;
     int currentLength = 0;
 
-    // "range" -> "bytes=0-5505023"
+    // "range" -> "bytes=0-5505023" // upload
     final range = response.headers["range"];
     if (range != null) {
       final start = int.parse(range.split("=")[1].split("-")[0]);

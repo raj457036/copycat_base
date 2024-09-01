@@ -211,7 +211,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     if (blurhash != null) {}
   }
 
-  Future<void> delete(ClipboardItem item, {int retryCount = 0}) async {
+  Future<void> delete(ClipboardItem item) async {
     emit(CloudPersistanceState.deletingItem(item));
     drive.cancelOperation(item);
     if (item.driveFileId != null) {
@@ -259,10 +259,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     );
   }
 
-  Future<void> download(
-    ClipboardItem item, {
-    int retryCount = 0,
-  }) async {
+  Future<void> download(ClipboardItem item) async {
     final isDownloading = drive.isDownloading(item);
     if (isDownloading) return;
 
@@ -299,6 +296,15 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     drive.accessToken = accessToken;
     final result = await drive.download(
       item.assignUserId(userId),
+      // onProgress: (downloaded, total) {
+      //   emit(CloudPersistanceState.downloadingFile(
+      //     item.copyWith(
+      //       downloading: true,
+      //       downloadProgress: downloaded / total,
+      //     )..applyId(item),
+      //    ),
+      //   );
+      // }
     );
 
     result.fold(

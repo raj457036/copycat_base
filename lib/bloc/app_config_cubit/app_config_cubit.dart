@@ -44,7 +44,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
       final currentTime = DateTime.now();
 
       final notInSameMoment =
-          currentInternetTime.difference(currentTime).inSeconds.abs() > 2;
+          currentInternetTime.difference(currentTime).inSeconds.abs() > 5;
       if (notInSameMoment) {
         emit(
           state.copyWith(
