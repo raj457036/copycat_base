@@ -80,7 +80,6 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     if (subscription.isFree || !subscription.isActive) {
       config = config.copyWith(
         autoSyncInterval: $45S,
-        autoEncrypt: false,
       )..applyId(config);
       return (config, true);
     }
