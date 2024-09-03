@@ -6,6 +6,7 @@ import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/db/clip_collection/clipcollection.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
+import 'package:copycat_base/db/subscription/subscription.dart';
 import 'package:copycat_base/db/sync_status/syncstatus.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
 import 'package:copycat_base/domain/repositories/sync_clipboard.dart';
@@ -31,11 +32,14 @@ Future<void> syncChanges(BuildContext context) async {
     isLoading: true,
     closePrevious: true,
   );
-  await context.read<SyncManagerCubit>().syncChanges(force: true);
+  final failure = await context.read<SyncManagerCubit>().syncChanges();
   if (context.mounted) {
+    if (failure != null) {
+      showFailureSnackbar(failure);
+      return;
+    }
     showTextSnackbar(context.locale.done, closePrevious: true);
   }
-  closeSnackbar();
 }
 
 const _syncId = 1;
@@ -48,6 +52,7 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
   final ClipCollectionRepository clipCollectionRepository;
   final String deviceId;
 
+  int manualSyncDuration = 15;
   int? syncHours;
   bool syncing = false;
   Timer? autoSyncTimer;
@@ -79,6 +84,12 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       ),
       workerName: "SyncWorker",
     );
+  }
+
+  void loadSub(Subscription subscription) {
+    if (!subscription.isFree && subscription.isActive) {
+      manualSyncDuration = subscription.syncInterval;
+    }
   }
 
   @override
@@ -423,19 +434,27 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     bool force = false,
     bool auto = false,
   }) async {
-    if (!auto && lastManualSyncTS != null) {
-      final diff = now().difference(lastManualSyncTS!).inSeconds;
-      if (diff < 3) {
-        emit(const SyncManagerState.failed(frequentSyncing));
-        return frequentSyncing;
-      }
-    }
     if (syncing || syncHours == null) {
       return null;
     }
+
     if (auth.state is! AuthenticatedAuthState) {
       emit(const SyncManagerState.unknown());
       return null;
+    }
+    if (!auto) {
+      final int diff;
+      if (lastManualSyncTS != null) {
+        diff = now().difference(lastManualSyncTS!).inSeconds;
+      } else {
+        diff = 20; // random higher value
+      }
+      if (diff < manualSyncDuration) {
+        final failure = frequentSyncing(manualSyncDuration - diff);
+        emit(SyncManagerState.failed(failure));
+        return failure;
+      }
+      lastManualSyncTS = now();
     }
     syncing = true;
     try {
@@ -462,10 +481,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
         refreshLocalCache: !silent,
         hasUpdate: hasUpdate || (rebuilding && !hasFailure),
       );
-
-      if (!auto) {
-        lastManualSyncTS = now();
-      }
     } finally {
       syncing = false;
       rebuilding = false;

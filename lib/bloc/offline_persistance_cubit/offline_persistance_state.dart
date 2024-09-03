@@ -15,6 +15,7 @@ class OfflinePersistanceState with _$OfflinePersistanceState {
     ClipboardItem item, {
     @Default(false) bool created,
     @Default(false) bool synced,
+    List<String>? updatedFields,
   }) = OfflinePersistanceSaved;
   const factory OfflinePersistanceState.decrypting() =
       OfflinePersistanceDecryptingState;

@@ -174,6 +174,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
           copiedCount: item.copiedCount + 1,
           lastCopied: now(),
         )..applyId(item),
+        updatedFields: ["copiedCount"],
       );
     }
 
@@ -262,7 +263,11 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
     }
   }
 
-  Future<void> persist(ClipboardItem item, {bool synced = false}) async {
+  Future<void> persist(
+    ClipboardItem item, {
+    bool synced = false,
+    List<String>? updatedFields,
+  }) async {
     item = item.copyWith(deviceId: deviceId)..applyId(item);
 
     if (!item.isPersisted) {
@@ -276,6 +281,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
             r,
             created: true,
             synced: synced,
+            updatedFields: updatedFields,
           ),
         ),
       );
@@ -289,6 +295,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
           (r) => OfflinePersistanceState.saved(
             r,
             synced: synced,
+            updatedFields: updatedFields,
           ),
         ),
       );

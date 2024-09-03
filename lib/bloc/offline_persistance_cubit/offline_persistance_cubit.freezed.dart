@@ -23,7 +23,8 @@ mixin _$OfflinePersistanceState {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -37,7 +38,9 @@ mixin _$OfflinePersistanceState {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -50,7 +53,9 @@ mixin _$OfflinePersistanceState {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -166,7 +171,8 @@ class _$OfflinePersistanceInitialImpl implements OfflinePersistanceInitial {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -183,7 +189,9 @@ class _$OfflinePersistanceInitialImpl implements OfflinePersistanceInitial {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -199,7 +207,9 @@ class _$OfflinePersistanceInitialImpl implements OfflinePersistanceInitial {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -352,7 +362,8 @@ class _$OfflinePersistanceCreatingImpl implements OfflinePersistanceCreating {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -369,7 +380,9 @@ class _$OfflinePersistanceCreatingImpl implements OfflinePersistanceCreating {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -385,7 +398,9 @@ class _$OfflinePersistanceCreatingImpl implements OfflinePersistanceCreating {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -544,7 +559,8 @@ class _$OfflinePersistanceUpdatingImpl implements OfflinePersistanceUpdating {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -561,7 +577,9 @@ class _$OfflinePersistanceUpdatingImpl implements OfflinePersistanceUpdating {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -577,7 +595,9 @@ class _$OfflinePersistanceUpdatingImpl implements OfflinePersistanceUpdating {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -736,7 +756,8 @@ class _$OfflinePersistanceDeletingImpl implements OfflinePersistanceDeleting {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -753,7 +774,9 @@ class _$OfflinePersistanceDeletingImpl implements OfflinePersistanceDeleting {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -769,7 +792,9 @@ class _$OfflinePersistanceDeletingImpl implements OfflinePersistanceDeleting {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -928,7 +953,8 @@ class _$OfflinePersistanceDeletedImpl implements OfflinePersistanceDeleted {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -945,7 +971,9 @@ class _$OfflinePersistanceDeletedImpl implements OfflinePersistanceDeleted {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -961,7 +989,9 @@ class _$OfflinePersistanceDeletedImpl implements OfflinePersistanceDeleted {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -1044,7 +1074,11 @@ abstract class _$$OfflinePersistanceSavedImplCopyWith<$Res> {
           $Res Function(_$OfflinePersistanceSavedImpl) then) =
       __$$OfflinePersistanceSavedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ClipboardItem item, bool created, bool synced});
+  $Res call(
+      {ClipboardItem item,
+      bool created,
+      bool synced,
+      List<String>? updatedFields});
 
   $ClipboardItemCopyWith<$Res> get item;
 }
@@ -1065,6 +1099,7 @@ class __$$OfflinePersistanceSavedImplCopyWithImpl<$Res>
     Object? item = null,
     Object? created = null,
     Object? synced = null,
+    Object? updatedFields = freezed,
   }) {
     return _then(_$OfflinePersistanceSavedImpl(
       null == item
@@ -1079,6 +1114,10 @@ class __$$OfflinePersistanceSavedImplCopyWithImpl<$Res>
           ? _value.synced
           : synced // ignore: cast_nullable_to_non_nullable
               as bool,
+      updatedFields: freezed == updatedFields
+          ? _value._updatedFields
+          : updatedFields // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 
@@ -1095,7 +1134,10 @@ class __$$OfflinePersistanceSavedImplCopyWithImpl<$Res>
 
 class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
   const _$OfflinePersistanceSavedImpl(this.item,
-      {this.created = false, this.synced = false});
+      {this.created = false,
+      this.synced = false,
+      final List<String>? updatedFields})
+      : _updatedFields = updatedFields;
 
   @override
   final ClipboardItem item;
@@ -1105,10 +1147,19 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
   @override
   @JsonKey()
   final bool synced;
+  final List<String>? _updatedFields;
+  @override
+  List<String>? get updatedFields {
+    final value = _updatedFields;
+    if (value == null) return null;
+    if (_updatedFields is EqualUnmodifiableListView) return _updatedFields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'OfflinePersistanceState.saved(item: $item, created: $created, synced: $synced)';
+    return 'OfflinePersistanceState.saved(item: $item, created: $created, synced: $synced, updatedFields: $updatedFields)';
   }
 
   @override
@@ -1118,11 +1169,14 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
             other is _$OfflinePersistanceSavedImpl &&
             (identical(other.item, item) || other.item == item) &&
             (identical(other.created, created) || other.created == created) &&
-            (identical(other.synced, synced) || other.synced == synced));
+            (identical(other.synced, synced) || other.synced == synced) &&
+            const DeepCollectionEquality()
+                .equals(other._updatedFields, _updatedFields));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item, created, synced);
+  int get hashCode => Object.hash(runtimeType, item, created, synced,
+      const DeepCollectionEquality().hash(_updatedFields));
 
   @JsonKey(ignore: true)
   @override
@@ -1139,13 +1193,14 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
     required TResult Function(Failure failure, ClipboardItem? item) error,
   }) {
-    return saved(item, created, synced);
+    return saved(item, created, synced, updatedFields);
   }
 
   @override
@@ -1156,12 +1211,14 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
   }) {
-    return saved?.call(item, created, synced);
+    return saved?.call(item, created, synced, updatedFields);
   }
 
   @override
@@ -1172,14 +1229,16 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
     required TResult orElse(),
   }) {
     if (saved != null) {
-      return saved(item, created, synced);
+      return saved(item, created, synced, updatedFields);
     }
     return orElse();
   }
@@ -1240,11 +1299,14 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
 
 abstract class OfflinePersistanceSaved implements OfflinePersistanceState {
   const factory OfflinePersistanceSaved(final ClipboardItem item,
-      {final bool created, final bool synced}) = _$OfflinePersistanceSavedImpl;
+      {final bool created,
+      final bool synced,
+      final List<String>? updatedFields}) = _$OfflinePersistanceSavedImpl;
 
   ClipboardItem get item;
   bool get created;
   bool get synced;
+  List<String>? get updatedFields;
   @JsonKey(ignore: true)
   _$$OfflinePersistanceSavedImplCopyWith<_$OfflinePersistanceSavedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1298,7 +1360,8 @@ class _$OfflinePersistanceDecryptingStateImpl
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -1315,7 +1378,9 @@ class _$OfflinePersistanceDecryptingStateImpl
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -1331,7 +1396,9 @@ class _$OfflinePersistanceDecryptingStateImpl
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -1451,7 +1518,8 @@ class _$OfflinePersistanceDecryptedStateImpl
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -1468,7 +1536,9 @@ class _$OfflinePersistanceDecryptedStateImpl
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -1484,7 +1554,9 @@ class _$OfflinePersistanceDecryptedStateImpl
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
@@ -1651,7 +1723,8 @@ class _$OfflinePersistanceErrorImpl implements OfflinePersistanceError {
     required TResult Function(ClipboardItem item) updatingItem,
     required TResult Function(ClipboardItem item) deletingItem,
     required TResult Function(ClipboardItem item) deletedItem,
-    required TResult Function(ClipboardItem item, bool created, bool synced)
+    required TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)
         saved,
     required TResult Function() decrypting,
     required TResult Function() decrypted,
@@ -1668,7 +1741,9 @@ class _$OfflinePersistanceErrorImpl implements OfflinePersistanceError {
     TResult? Function(ClipboardItem item)? updatingItem,
     TResult? Function(ClipboardItem item)? deletingItem,
     TResult? Function(ClipboardItem item)? deletedItem,
-    TResult? Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult? Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult? Function()? decrypting,
     TResult? Function()? decrypted,
     TResult? Function(Failure failure, ClipboardItem? item)? error,
@@ -1684,7 +1759,9 @@ class _$OfflinePersistanceErrorImpl implements OfflinePersistanceError {
     TResult Function(ClipboardItem item)? updatingItem,
     TResult Function(ClipboardItem item)? deletingItem,
     TResult Function(ClipboardItem item)? deletedItem,
-    TResult Function(ClipboardItem item, bool created, bool synced)? saved,
+    TResult Function(ClipboardItem item, bool created, bool synced,
+            List<String>? updatedFields)?
+        saved,
     TResult Function()? decrypting,
     TResult Function()? decrypted,
     TResult Function(Failure failure, ClipboardItem? item)? error,
