@@ -183,8 +183,9 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
     String? sourceUrl,
     String? sourceApp,
   }) {
+    final url = Uri.decodeFull(cleanUpString(uri.toString())!);
     return ClipboardItem(
-      url: Uri.decodeFull(uri.toString()),
+      url: url,
       created: now(),
       modified: now(),
       title: title,
@@ -243,12 +244,12 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
       return this;
     }
 
-    if (type == ClipItemType.text && text != null) {
+    if (type == ClipItemType.text && text != null && text!.trim().isNotEmpty) {
       final encText = await encrypter.encrypt(text!);
       return copyWith(encrypted: true, text: encText)..applyId(this);
     }
 
-    if (type == ClipItemType.url && url != null) {
+    if (type == ClipItemType.url && url != null && url!.trim().isNotEmpty) {
       final encUrl = await encrypter.encrypt(url!);
       return copyWith(encrypted: true, url: encUrl)..applyId(this);
     }

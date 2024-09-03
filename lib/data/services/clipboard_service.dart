@@ -235,9 +235,9 @@ Future<(File?, String?, int)> writeToClipboardCacheFile({
 class ClipboardFormatProcessor {
   String cleanText(String text) {
     try {
-      return Uri.decodeComponent(text);
+      return Uri.decodeComponent(cleanUpString(text) ?? '');
     } catch (e) {
-      return text;
+      return cleanUpString(text) ?? '';
     }
   }
 
@@ -319,9 +319,9 @@ class ClipboardFormatProcessor {
       logger.w("Text is null");
       return null;
     } else {
+      text = cleanText(text);
       if (text.trim().isEmpty) return null;
       text = text.replaceAll(RegExp('\r[\n]?'), '\n');
-      text = cleanText(text);
       final (textCategory, parsedText) = getTextCategory(text);
       return ClipItem.text(
         text: parsedText,
@@ -339,7 +339,7 @@ class ClipboardFormatProcessor {
     }
     final text = cleanText(utf8.decode(binary, allowMalformed: true));
 
-    if (text.length <= 1024) {
+    if (text.isNotEmpty && text.length <= 1024) {
       return ClipItem.text(text: text);
     }
 

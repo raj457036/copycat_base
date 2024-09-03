@@ -91,3 +91,29 @@ String formatBytes(int sizeInBytes, {bool precise = true}) {
     return '${(sizeInBytes / gb).toStringAsFixed(precise ? 2 : 0)} GB';
   }
 }
+
+// Text cleanup
+String? cleanUpString(String? input) {
+  if (input == null) return null;
+  // Problematic characters to be replaced them with an empty string
+
+  final problematicCharacters = [
+    '\u0000', // Null character
+    '\uFFFD', // Replacement character
+    '\uFEFF', // Byte Order Mark (BOM)
+    '\u00A0', // Non-breaking space
+    '\u00AD', // Soft hyphen
+    '\u200B', // Zero width space
+  ];
+
+  String cleanedString = input;
+
+  for (var char in problematicCharacters) {
+    cleanedString = cleanedString.replaceAll(char, '');
+  }
+
+  // Remove other control characters (U+0001 to U+001F, U+007F)
+  cleanedString = cleanedString.replaceAll(RegExp(r'[\x00-\x1F\x7F]'), '');
+
+  return cleanedString;
+}

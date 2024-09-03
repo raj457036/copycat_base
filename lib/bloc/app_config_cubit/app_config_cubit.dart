@@ -260,6 +260,6 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     final activity = await focusWindow.getActivity();
 
     logger.w(activity);
-    return false;
+    return true;
   }
 }
