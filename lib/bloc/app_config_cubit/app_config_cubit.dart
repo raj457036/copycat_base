@@ -257,9 +257,9 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   }
 
   Future<bool> isCopyingAllowed() async {
-    final activity = await focusWindow.getActivity();
+    // final activity = await focusWindow.getActivity();
 
-    logger.w(activity);
+    // logger.w(activity);
     return true;
   }
 }
