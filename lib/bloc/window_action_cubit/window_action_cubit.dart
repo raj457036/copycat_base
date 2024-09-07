@@ -45,6 +45,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
 
   Future<void> setupScreenInfo() async {
     primaryDisplay = await screenRetriever.getPrimaryDisplay();
+    isFocused = await windowManager.isFocused();
   }
 
   Future<void> fetch() async {
@@ -97,28 +98,30 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     }
   }
 
-  Future<void> hide() async {
+  Future<void> hide({bool animated = true}) async {
     if (viewMode == ViewMode.floating) {
-      if (primaryDisplay == null) return;
-      final currentPosition = await windowManager.getPosition();
-      await windowManager.setPosition(
-        Offset(
-          currentPosition.dx,
-          primaryDisplay?.size.height ?? 600,
-        ),
-        animate: true,
-      );
+      if (animated && primaryDisplay != null) {
+        final currentPosition = await windowManager.getPosition();
+        await windowManager.setPosition(
+          Offset(
+            currentPosition.dx,
+            primaryDisplay?.size.height ?? 600,
+          ),
+          animate: true,
+        );
 
-      await Future.delayed(const Duration(milliseconds: 150));
+        await Future.delayed(const Duration(milliseconds: 150));
+      }
+
       await windowManager.hide();
       isFocused = false;
     }
   }
 
-  Future<void> show() async {
+  Future<void> show({bool animated = true}) async {
     if (viewMode == ViewMode.floating) {
       windowManager.show();
-      windowManager.center(animate: true);
+      windowManager.center(animate: animated);
       isFocused = true;
     }
   }
