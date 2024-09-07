@@ -788,7 +788,7 @@ class CopyToClipboard {
       lockParentWindow: true,
     );
 
-    if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+    if (isDesktopPlatform) {
       windowManager.show();
     }
 

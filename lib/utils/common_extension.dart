@@ -1,7 +1,9 @@
 import 'dart:math' show min;
 
+import 'package:copycat_base/bloc/window_action_cubit/window_action_cubit.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 extension WidgetStateExtension<T> on T {
@@ -26,6 +28,7 @@ extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   ColorScheme get colors => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
+  WindowActionCubit? get windowAction => read<WindowActionCubit?>();
   bool get isDarkMode => theme.brightness == Brightness.dark;
 }
 

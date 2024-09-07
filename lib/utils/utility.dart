@@ -117,3 +117,10 @@ String? cleanUpString(String? input) {
 
   return cleanedString;
 }
+
+final isDesktopPlatform =
+    Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+
+final isApplePlatform = Platform.isIOS || Platform.isMacOS;
+
+final isMobilePlatform = Platform.isIOS || Platform.isAndroid;

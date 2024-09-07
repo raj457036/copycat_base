@@ -12,10 +12,18 @@ part 'window_action_state.dart';
 
 const compactWindowPosition = Offset(1, 0);
 
+enum ViewMode {
+  docked,
+  floating,
+}
+
 @injectable
 class WindowActionCubit extends Cubit<WindowActionState> {
   late final Size screenSize;
   late final Size compactWindowSize;
+
+  ViewMode viewMode = ViewMode.floating;
+
   WindowActionCubit() : super(const WindowActionState.loaded()) {
     final view = PlatformDispatcher.instance.views.first;
     var size = view.display.size;
@@ -79,5 +87,17 @@ class WindowActionCubit extends Cubit<WindowActionState> {
       await windowManager.center(animate: true);
     }
     emit(state.copyWith(compact: !compactMode));
+  }
+
+  Future<void> hide() async {
+    if (viewMode == ViewMode.floating) {
+      windowManager.hide();
+    }
+  }
+
+  Future<void> show() async {
+    if (viewMode == ViewMode.docked) {
+      windowManager.show();
+    }
   }
 }

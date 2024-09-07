@@ -27,7 +27,7 @@ dependencies:
   googleapis: ^13.1.0
   super_clipboard: ^0.8.18
   clipboard_watcher: ^0.2.1
-  window_manager: ^0.3.9
+  window_manager: ^0.4.2
   rxdart: ^0.27.5
   file_picker: ^8.0.5
   encrypt: ^5.0.3
@@ -58,6 +58,7 @@ dependencies:
       ref: master
       path: "platform_device_id"
   flutter_svg: ^2.0.10+1
+  screen_retriever: ^0.2.0
   focus_window:
     path: ../../plugins/focus_window
   
@@ -76,5 +77,6 @@ dependency_overrides:
   intl: ^0.19.0
   analyzer: ^6.4.1
   firebase_core_platform_interface: ^5.1.0
+  screen_retriever: ^0.2.0
 
 # flutter:
