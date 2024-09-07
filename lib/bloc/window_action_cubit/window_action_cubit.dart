@@ -4,56 +4,55 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:universal_io/io.dart';
+import 'package:screen_retriever/screen_retriever.dart';
 import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
 part 'window_action_state.dart';
 
-const compactWindowPosition = Offset(1, 0);
+const compactViewWidth = 368.0;
+const compactViewMinHeight = 600.0;
 
 enum ViewMode {
   docked,
   floating,
 }
 
+enum DockedPosition {
+  none,
+  top,
+  bottom,
+}
+
 @injectable
 class WindowActionCubit extends Cubit<WindowActionState> {
-  late final Size screenSize;
-  late final Size compactWindowSize;
-
+  Display? primaryDisplay;
   ViewMode viewMode = ViewMode.floating;
+  bool isCompactMode = false;
+  bool isFocused = false;
+  DockedPosition dockedPosition = DockedPosition.none;
 
   WindowActionCubit() : super(const WindowActionState.loaded()) {
-    final view = PlatformDispatcher.instance.views.first;
-    var size = view.display.size;
-    if (size.isEmpty) {
-      size = view.physicalSize;
-    }
-
-    screenSize = size / view.devicePixelRatio;
-    final int platformDiff;
-    if (Platform.isMacOS) {
-      platformDiff = 25;
-    } else {
-      platformDiff = 0;
-    }
-    final height = screenSize.height - platformDiff;
-    compactWindowSize = Size(368.0, height > 0 ? height : 600.0);
+    setupScreenInfo();
   }
 
-  Future<bool> isCompactMode() async {
-    final size = await windowManager.getSize();
-    return size == compactWindowSize;
+  Size get compactWindowSize {
+    return Size(
+      compactViewWidth,
+      primaryDisplay?.size.height ?? compactViewMinHeight,
+    );
+  }
+
+  Future<void> setupScreenInfo() async {
+    primaryDisplay = await screenRetriever.getPrimaryDisplay();
   }
 
   Future<void> fetch() async {
     final isPinned = await windowManager.isAlwaysOnTop();
-    final isCompactMode_ = await isCompactMode();
     emit(
       WindowActionState.loaded(
         pinned: isPinned,
-        compact: isCompactMode_,
+        compact: isCompactMode,
         loading: false,
       ),
     );
@@ -70,34 +69,57 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     emit(state.copyWith(pinned: !isPinned));
   }
 
-  Future<void> toggleCompact({bool reset = false}) async {
-    final compactMode = reset ? true : await isCompactMode();
-
-    await windowManager.setSize(
-      compactMode ? initialWindowSize : compactWindowSize,
-      // animate: true,
+  Future<void> compactView() async {
+    if (viewMode != ViewMode.floating) return;
+    await windowManager.setSize(compactWindowSize);
+    final position = await calcWindowPosition(
+      compactWindowSize,
+      Alignment.centerRight,
     );
-    if (!compactMode) {
-      final position = await calcWindowPosition(
-        compactWindowSize,
-        Alignment.centerRight,
-      );
-      await windowManager.setPosition(position, animate: true);
+    await windowManager.setPosition(position, animate: true);
+    isCompactMode = true;
+    emit(state.copyWith(compact: isCompactMode));
+  }
+
+  Future<void> windowedView() async {
+    if (viewMode != ViewMode.floating) return;
+    await windowManager.setSize(initialWindowSize);
+    await windowManager.center(animate: true);
+    isCompactMode = false;
+    emit(state.copyWith(compact: isCompactMode));
+  }
+
+  Future<void> toggleCompact({bool reset = false}) async {
+    if (isCompactMode || reset) {
+      await windowedView();
     } else {
-      await windowManager.center(animate: true);
+      await compactView();
     }
-    emit(state.copyWith(compact: !compactMode));
   }
 
   Future<void> hide() async {
     if (viewMode == ViewMode.floating) {
-      windowManager.hide();
+      if (primaryDisplay == null) return;
+      final currentPosition = await windowManager.getPosition();
+      await windowManager.setPosition(
+        Offset(
+          currentPosition.dx,
+          primaryDisplay?.size.height ?? 600,
+        ),
+        animate: true,
+      );
+
+      await Future.delayed(const Duration(milliseconds: 150));
+      await windowManager.hide();
+      isFocused = false;
     }
   }
 
   Future<void> show() async {
-    if (viewMode == ViewMode.docked) {
+    if (viewMode == ViewMode.floating) {
       windowManager.show();
+      windowManager.center(animate: true);
+      isFocused = true;
     }
   }
 }
