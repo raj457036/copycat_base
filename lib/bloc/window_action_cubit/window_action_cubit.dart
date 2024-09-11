@@ -102,7 +102,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     if (viewMode == ViewMode.floating) {
       if (animated && primaryDisplay != null) {
         final currentPosition = await windowManager.getPosition();
-        await windowManager.setPosition(
+        windowManager.setPosition(
           Offset(
             currentPosition.dx,
             primaryDisplay?.size.height ?? 600,
@@ -110,7 +110,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
           animate: true,
         );
 
-        await Future.delayed(const Duration(milliseconds: 150));
+        await Future.delayed(const Duration(milliseconds: 200));
       }
 
       await windowManager.hide();
