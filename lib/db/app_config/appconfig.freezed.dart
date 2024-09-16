@@ -45,14 +45,19 @@ mixin _$AppConfig {
 
   /// If enabled, the application will automatically start at startup.
   bool get launchAtStartup => throw _privateConstructorUsedError;
-  String get locale => throw _privateConstructorUsedError;
+  String get locale => throw _privateConstructorUsedError; // Security
   String? get enc2 => throw _privateConstructorUsedError;
-  bool get autoEncrypt => throw _privateConstructorUsedError; // Customization
+  bool get autoEncrypt => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ExclusionRules? get exclusionRules =>
+      throw _privateConstructorUsedError; // Customization
   int get themeColor => throw _privateConstructorUsedError;
   @Enumerated(EnumType.name)
   DynamicSchemeVariant get themeVariant =>
       throw _privateConstructorUsedError; // Exprimental
-  bool get enableDragNDrop =>
+  bool get enableDragNDrop => throw _privateConstructorUsedError;
+  bool get hideWhenDragging => throw _privateConstructorUsedError;
+  bool get enablePasteStack =>
       throw _privateConstructorUsedError; //? Local App States
   /// last focus window id
   @ignore
@@ -86,13 +91,19 @@ abstract class $AppConfigCopyWith<$Res> {
       String locale,
       String? enc2,
       bool autoEncrypt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      ExclusionRules? exclusionRules,
       int themeColor,
       @Enumerated(EnumType.name) DynamicSchemeVariant themeVariant,
       bool enableDragNDrop,
+      bool hideWhenDragging,
+      bool enablePasteStack,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
       @ignore bool clockUnSynced});
+
+  $ExclusionRulesCopyWith<$Res>? get exclusionRules;
 }
 
 /// @nodoc
@@ -121,9 +132,12 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? locale = null,
     Object? enc2 = freezed,
     Object? autoEncrypt = null,
+    Object? exclusionRules = freezed,
     Object? themeColor = null,
     Object? themeVariant = null,
     Object? enableDragNDrop = null,
+    Object? hideWhenDragging = null,
+    Object? enablePasteStack = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -180,6 +194,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.autoEncrypt
           : autoEncrypt // ignore: cast_nullable_to_non_nullable
               as bool,
+      exclusionRules: freezed == exclusionRules
+          ? _value.exclusionRules
+          : exclusionRules // ignore: cast_nullable_to_non_nullable
+              as ExclusionRules?,
       themeColor: null == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -192,6 +210,14 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.enableDragNDrop
           : enableDragNDrop // ignore: cast_nullable_to_non_nullable
               as bool,
+      hideWhenDragging: null == hideWhenDragging
+          ? _value.hideWhenDragging
+          : hideWhenDragging // ignore: cast_nullable_to_non_nullable
+              as bool,
+      enablePasteStack: null == enablePasteStack
+          ? _value.enablePasteStack
+          : enablePasteStack // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -201,6 +227,18 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           : clockUnSynced // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExclusionRulesCopyWith<$Res>? get exclusionRules {
+    if (_value.exclusionRules == null) {
+      return null;
+    }
+
+    return $ExclusionRulesCopyWith<$Res>(_value.exclusionRules!, (value) {
+      return _then(_value.copyWith(exclusionRules: value) as $Val);
+    });
   }
 }
 
@@ -226,13 +264,20 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       String locale,
       String? enc2,
       bool autoEncrypt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      ExclusionRules? exclusionRules,
       int themeColor,
       @Enumerated(EnumType.name) DynamicSchemeVariant themeVariant,
       bool enableDragNDrop,
+      bool hideWhenDragging,
+      bool enablePasteStack,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
       @ignore bool clockUnSynced});
+
+  @override
+  $ExclusionRulesCopyWith<$Res>? get exclusionRules;
 }
 
 /// @nodoc
@@ -259,9 +304,12 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? locale = null,
     Object? enc2 = freezed,
     Object? autoEncrypt = null,
+    Object? exclusionRules = freezed,
     Object? themeColor = null,
     Object? themeVariant = null,
     Object? enableDragNDrop = null,
+    Object? hideWhenDragging = null,
+    Object? enablePasteStack = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -318,6 +366,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.autoEncrypt
           : autoEncrypt // ignore: cast_nullable_to_non_nullable
               as bool,
+      exclusionRules: freezed == exclusionRules
+          ? _value.exclusionRules
+          : exclusionRules // ignore: cast_nullable_to_non_nullable
+              as ExclusionRules?,
       themeColor: null == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -329,6 +381,14 @@ class __$$AppConfigImplCopyWithImpl<$Res>
       enableDragNDrop: null == enableDragNDrop
           ? _value.enableDragNDrop
           : enableDragNDrop // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hideWhenDragging: null == hideWhenDragging
+          ? _value.hideWhenDragging
+          : hideWhenDragging // ignore: cast_nullable_to_non_nullable
+              as bool,
+      enablePasteStack: null == enablePasteStack
+          ? _value.enablePasteStack
+          : enablePasteStack // ignore: cast_nullable_to_non_nullable
               as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
@@ -359,10 +419,14 @@ class _$AppConfigImpl extends _AppConfig {
       this.locale = "en",
       this.enc2,
       this.autoEncrypt = false,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.exclusionRules,
       this.themeColor = defaultThemeColor,
       @Enumerated(EnumType.name)
       this.themeVariant = DynamicSchemeVariant.tonalSpot,
       this.enableDragNDrop = false,
+      this.hideWhenDragging = false,
+      this.enablePasteStack = false,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.lastFocusedWindowId,
@@ -418,11 +482,15 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final String locale;
+// Security
   @override
   final String? enc2;
   @override
   @JsonKey()
   final bool autoEncrypt;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final ExclusionRules? exclusionRules;
 // Customization
   @override
   @JsonKey()
@@ -435,6 +503,12 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final bool enableDragNDrop;
+  @override
+  @JsonKey()
+  final bool hideWhenDragging;
+  @override
+  @JsonKey()
+  final bool enablePasteStack;
 //? Local App States
   /// last focus window id
   @override
@@ -448,7 +522,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, hideWhenDragging: $hideWhenDragging, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -480,12 +554,18 @@ class _$AppConfigImpl extends _AppConfig {
             (identical(other.enc2, enc2) || other.enc2 == enc2) &&
             (identical(other.autoEncrypt, autoEncrypt) ||
                 other.autoEncrypt == autoEncrypt) &&
+            (identical(other.exclusionRules, exclusionRules) ||
+                other.exclusionRules == exclusionRules) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
             (identical(other.themeVariant, themeVariant) ||
                 other.themeVariant == themeVariant) &&
             (identical(other.enableDragNDrop, enableDragNDrop) ||
                 other.enableDragNDrop == enableDragNDrop) &&
+            (identical(other.hideWhenDragging, hideWhenDragging) ||
+                other.hideWhenDragging == hideWhenDragging) &&
+            (identical(other.enablePasteStack, enablePasteStack) ||
+                other.enablePasteStack == enablePasteStack) &&
             (identical(other.lastFocusedWindowId, lastFocusedWindowId) ||
                 other.lastFocusedWindowId == lastFocusedWindowId) &&
             (identical(other.clockUnSynced, clockUnSynced) ||
@@ -494,26 +574,30 @@ class _$AppConfigImpl extends _AppConfig {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      themeMode,
-      enableSync,
-      enableFileSync,
-      dontUploadOver,
-      dontCopyOver,
-      pausedTill,
-      autoSyncInterval,
-      toggleHotkey,
-      smartPaste,
-      launchAtStartup,
-      locale,
-      enc2,
-      autoEncrypt,
-      themeColor,
-      themeVariant,
-      enableDragNDrop,
-      lastFocusedWindowId,
-      clockUnSynced);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        themeMode,
+        enableSync,
+        enableFileSync,
+        dontUploadOver,
+        dontCopyOver,
+        pausedTill,
+        autoSyncInterval,
+        toggleHotkey,
+        smartPaste,
+        launchAtStartup,
+        locale,
+        enc2,
+        autoEncrypt,
+        exclusionRules,
+        themeColor,
+        themeVariant,
+        enableDragNDrop,
+        hideWhenDragging,
+        enablePasteStack,
+        lastFocusedWindowId,
+        clockUnSynced
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -544,9 +628,13 @@ abstract class _AppConfig extends AppConfig {
       final String locale,
       final String? enc2,
       final bool autoEncrypt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final ExclusionRules? exclusionRules,
       final int themeColor,
       @Enumerated(EnumType.name) final DynamicSchemeVariant themeVariant,
       final bool enableDragNDrop,
+      final bool hideWhenDragging,
+      final bool enablePasteStack,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       final int? lastFocusedWindowId,
@@ -591,10 +679,13 @@ abstract class _AppConfig extends AppConfig {
   bool get launchAtStartup;
   @override
   String get locale;
-  @override
+  @override // Security
   String? get enc2;
   @override
   bool get autoEncrypt;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ExclusionRules? get exclusionRules;
   @override // Customization
   int get themeColor;
   @override
@@ -602,6 +693,10 @@ abstract class _AppConfig extends AppConfig {
   DynamicSchemeVariant get themeVariant;
   @override // Exprimental
   bool get enableDragNDrop;
+  @override
+  bool get hideWhenDragging;
+  @override
+  bool get enablePasteStack;
   @override //? Local App States
   /// last focus window id
   @ignore

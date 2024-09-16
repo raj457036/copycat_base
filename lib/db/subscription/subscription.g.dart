@@ -37,19 +37,19 @@ const SubscriptionSchema = CollectionSchema(
       name: r'created',
       type: IsarType.dateTime,
     ),
-    r'dragNdrop': PropertySchema(
+    r'customExclusionRules': PropertySchema(
       id: 4,
+      name: r'customExclusionRules',
+      type: IsarType.bool,
+    ),
+    r'dragNdrop': PropertySchema(
+      id: 5,
       name: r'dragNdrop',
       type: IsarType.bool,
     ),
     r'edit': PropertySchema(
-      id: 5,
-      name: r'edit',
-      type: IsarType.bool,
-    ),
-    r'encrypt': PropertySchema(
       id: 6,
-      name: r'encrypt',
+      name: r'edit',
       type: IsarType.bool,
     ),
     r'isPersisted': PropertySchema(
@@ -160,9 +160,9 @@ void _subscriptionSerialize(
   writer.writeBool(offsets[1], object.ads);
   writer.writeLong(offsets[2], object.collections);
   writer.writeDateTime(offsets[3], object.created);
-  writer.writeBool(offsets[4], object.dragNdrop);
-  writer.writeBool(offsets[5], object.edit);
-  writer.writeBool(offsets[6], object.encrypt);
+  writer.writeBool(offsets[4], object.customExclusionRules);
+  writer.writeBool(offsets[5], object.dragNdrop);
+  writer.writeBool(offsets[6], object.edit);
   writer.writeBool(offsets[7], object.isPersisted);
   writer.writeLong(offsets[8], object.itemsPerCollection);
   writer.writeLong(offsets[9], object.maxSyncDevices);
@@ -190,9 +190,9 @@ Subscription _subscriptionDeserialize(
     ads: reader.readBool(offsets[1]),
     collections: reader.readLong(offsets[2]),
     created: reader.readDateTime(offsets[3]),
-    dragNdrop: reader.readBool(offsets[4]),
-    edit: reader.readBool(offsets[5]),
-    encrypt: reader.readBool(offsets[6]),
+    customExclusionRules: reader.readBool(offsets[4]),
+    dragNdrop: reader.readBool(offsets[5]),
+    edit: reader.readBool(offsets[6]),
     itemsPerCollection: reader.readLong(offsets[8]),
     maxSyncDevices: reader.readLong(offsets[9]),
     modified: reader.readDateTime(offsets[10]),
@@ -556,6 +556,16 @@ extension SubscriptionQueryFilter
   }
 
   QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      customExclusionRulesEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'customExclusionRules',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
       dragNdropEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -570,16 +580,6 @@ extension SubscriptionQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'edit',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
-      encryptEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'encrypt',
         value: value,
       ));
     });
@@ -1759,6 +1759,20 @@ extension SubscriptionQuerySortBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      sortByCustomExclusionRules() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'customExclusionRules', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      sortByCustomExclusionRulesDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'customExclusionRules', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByDragNdrop() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dragNdrop', Sort.asc);
@@ -1780,18 +1794,6 @@ extension SubscriptionQuerySortBy
   QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByEditDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'edit', Sort.desc);
-    });
-  }
-
-  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByEncrypt() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'encrypt', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByEncryptDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'encrypt', Sort.desc);
     });
   }
 
@@ -2023,6 +2025,20 @@ extension SubscriptionQuerySortThenBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      thenByCustomExclusionRules() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'customExclusionRules', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy>
+      thenByCustomExclusionRulesDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'customExclusionRules', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByDragNdrop() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dragNdrop', Sort.asc);
@@ -2044,18 +2060,6 @@ extension SubscriptionQuerySortThenBy
   QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByEditDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'edit', Sort.desc);
-    });
-  }
-
-  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByEncrypt() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'encrypt', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByEncryptDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'encrypt', Sort.desc);
     });
   }
 
@@ -2273,6 +2277,13 @@ extension SubscriptionQueryWhereDistinct
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QDistinct>
+      distinctByCustomExclusionRules() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'customExclusionRules');
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QDistinct> distinctByDragNdrop() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dragNdrop');
@@ -2282,12 +2293,6 @@ extension SubscriptionQueryWhereDistinct
   QueryBuilder<Subscription, Subscription, QDistinct> distinctByEdit() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'edit');
-    });
-  }
-
-  QueryBuilder<Subscription, Subscription, QDistinct> distinctByEncrypt() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'encrypt');
     });
   }
 
@@ -2414,6 +2419,13 @@ extension SubscriptionQueryProperty
     });
   }
 
+  QueryBuilder<Subscription, bool, QQueryOperations>
+      customExclusionRulesProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'customExclusionRules');
+    });
+  }
+
   QueryBuilder<Subscription, bool, QQueryOperations> dragNdropProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dragNdrop');
@@ -2423,12 +2435,6 @@ extension SubscriptionQueryProperty
   QueryBuilder<Subscription, bool, QQueryOperations> editProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'edit');
-    });
-  }
-
-  QueryBuilder<Subscription, bool, QQueryOperations> encryptProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'encrypt');
     });
   }
 
@@ -2543,10 +2549,10 @@ _$SubscriptionImpl _$$SubscriptionImplFromJson(Map<String, dynamic> json) =>
       ads: json['ads'] as bool? ?? true,
       syncInterval: (json['syncInt'] as num?)?.toInt() ?? $45S,
       edit: json['edit'] as bool? ?? false,
-      encrypt: json['encrypt'] as bool? ?? false,
       activeTill: _$JsonConverterFromJson<String, DateTime>(
           json['activeTill'], const DateTimeConverter().fromJson),
       maxSyncDevices: (json['devices'] as num?)?.toInt() ?? 3,
+      customExclusionRules: json['cers'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
@@ -2569,10 +2575,10 @@ Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
       'ads': instance.ads,
       'syncInt': instance.syncInterval,
       'edit': instance.edit,
-      'encrypt': instance.encrypt,
       'activeTill': _$JsonConverterToJson<String, DateTime>(
           instance.activeTill, const DateTimeConverter().toJson),
       'devices': instance.maxSyncDevices,
+      'cers': instance.customExclusionRules,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

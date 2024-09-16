@@ -46,11 +46,13 @@ mixin _$Subscription {
   @JsonKey(name: "syncInt")
   int get syncInterval => throw _privateConstructorUsedError;
   bool get edit => throw _privateConstructorUsedError;
-  bool get encrypt => throw _privateConstructorUsedError;
   @DateTimeConverter()
   DateTime? get activeTill => throw _privateConstructorUsedError;
   @JsonKey(name: "devices")
-  int get maxSyncDevices => throw _privateConstructorUsedError; // local state
+  int get maxSyncDevices => throw _privateConstructorUsedError;
+  @JsonKey(name: "cers")
+  bool get customExclusionRules =>
+      throw _privateConstructorUsedError; // local state
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get managementUrl => throw _privateConstructorUsedError;
@@ -85,9 +87,9 @@ abstract class $SubscriptionCopyWith<$Res> {
       bool ads,
       @JsonKey(name: "syncInt") int syncInterval,
       bool edit,
-      bool encrypt,
       @DateTimeConverter() DateTime? activeTill,
       @JsonKey(name: "devices") int maxSyncDevices,
+      @JsonKey(name: "cers") bool customExclusionRules,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? managementUrl});
@@ -123,9 +125,9 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? ads = null,
     Object? syncInterval = null,
     Object? edit = null,
-    Object? encrypt = null,
     Object? activeTill = freezed,
     Object? maxSyncDevices = null,
+    Object? customExclusionRules = null,
     Object? managementUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -197,10 +199,6 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.edit
           : edit // ignore: cast_nullable_to_non_nullable
               as bool,
-      encrypt: null == encrypt
-          ? _value.encrypt
-          : encrypt // ignore: cast_nullable_to_non_nullable
-              as bool,
       activeTill: freezed == activeTill
           ? _value.activeTill
           : activeTill // ignore: cast_nullable_to_non_nullable
@@ -209,6 +207,10 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.maxSyncDevices
           : maxSyncDevices // ignore: cast_nullable_to_non_nullable
               as int,
+      customExclusionRules: null == customExclusionRules
+          ? _value.customExclusionRules
+          : customExclusionRules // ignore: cast_nullable_to_non_nullable
+              as bool,
       managementUrl: freezed == managementUrl
           ? _value.managementUrl
           : managementUrl // ignore: cast_nullable_to_non_nullable
@@ -243,9 +245,9 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
       bool ads,
       @JsonKey(name: "syncInt") int syncInterval,
       bool edit,
-      bool encrypt,
       @DateTimeConverter() DateTime? activeTill,
       @JsonKey(name: "devices") int maxSyncDevices,
+      @JsonKey(name: "cers") bool customExclusionRules,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? managementUrl});
@@ -279,9 +281,9 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? ads = null,
     Object? syncInterval = null,
     Object? edit = null,
-    Object? encrypt = null,
     Object? activeTill = freezed,
     Object? maxSyncDevices = null,
+    Object? customExclusionRules = null,
     Object? managementUrl = freezed,
   }) {
     return _then(_$SubscriptionImpl(
@@ -353,10 +355,6 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.edit
           : edit // ignore: cast_nullable_to_non_nullable
               as bool,
-      encrypt: null == encrypt
-          ? _value.encrypt
-          : encrypt // ignore: cast_nullable_to_non_nullable
-              as bool,
       activeTill: freezed == activeTill
           ? _value.activeTill
           : activeTill // ignore: cast_nullable_to_non_nullable
@@ -365,6 +363,10 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.maxSyncDevices
           : maxSyncDevices // ignore: cast_nullable_to_non_nullable
               as int,
+      customExclusionRules: null == customExclusionRules
+          ? _value.customExclusionRules
+          : customExclusionRules // ignore: cast_nullable_to_non_nullable
+              as bool,
       managementUrl: freezed == managementUrl
           ? _value.managementUrl
           : managementUrl // ignore: cast_nullable_to_non_nullable
@@ -394,9 +396,9 @@ class _$SubscriptionImpl extends _Subscription {
       this.ads = true,
       @JsonKey(name: "syncInt") this.syncInterval = $45S,
       this.edit = false,
-      this.encrypt = false,
       @DateTimeConverter() this.activeTill,
       @JsonKey(name: "devices") this.maxSyncDevices = 3,
+      @JsonKey(name: "cers") this.customExclusionRules = false,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.managementUrl})
@@ -455,14 +457,14 @@ class _$SubscriptionImpl extends _Subscription {
   @JsonKey()
   final bool edit;
   @override
-  @JsonKey()
-  final bool encrypt;
-  @override
   @DateTimeConverter()
   final DateTime? activeTill;
   @override
   @JsonKey(name: "devices")
   final int maxSyncDevices;
+  @override
+  @JsonKey(name: "cers")
+  final bool customExclusionRules;
 // local state
   @override
   @ignore
@@ -471,7 +473,7 @@ class _$SubscriptionImpl extends _Subscription {
 
   @override
   String toString() {
-    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, theming: $theming, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, encrypt: $encrypt, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, managementUrl: $managementUrl)';
+    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, theming: $theming, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, customExclusionRules: $customExclusionRules, managementUrl: $managementUrl)';
   }
 
   @override
@@ -506,11 +508,12 @@ class _$SubscriptionImpl extends _Subscription {
             (identical(other.syncInterval, syncInterval) ||
                 other.syncInterval == syncInterval) &&
             (identical(other.edit, edit) || other.edit == edit) &&
-            (identical(other.encrypt, encrypt) || other.encrypt == encrypt) &&
             (identical(other.activeTill, activeTill) ||
                 other.activeTill == activeTill) &&
             (identical(other.maxSyncDevices, maxSyncDevices) ||
                 other.maxSyncDevices == maxSyncDevices) &&
+            (identical(other.customExclusionRules, customExclusionRules) ||
+                other.customExclusionRules == customExclusionRules) &&
             (identical(other.managementUrl, managementUrl) ||
                 other.managementUrl == managementUrl));
   }
@@ -536,9 +539,9 @@ class _$SubscriptionImpl extends _Subscription {
         ads,
         syncInterval,
         edit,
-        encrypt,
         activeTill,
         maxSyncDevices,
+        customExclusionRules,
         managementUrl
       ]);
 
@@ -579,9 +582,9 @@ abstract class _Subscription extends Subscription {
       final bool ads,
       @JsonKey(name: "syncInt") final int syncInterval,
       final bool edit,
-      final bool encrypt,
       @DateTimeConverter() final DateTime? activeTill,
       @JsonKey(name: "devices") final int maxSyncDevices,
+      @JsonKey(name: "cers") final bool customExclusionRules,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       final String? managementUrl}) = _$SubscriptionImpl;
@@ -634,13 +637,14 @@ abstract class _Subscription extends Subscription {
   @override
   bool get edit;
   @override
-  bool get encrypt;
-  @override
   @DateTimeConverter()
   DateTime? get activeTill;
   @override
   @JsonKey(name: "devices")
   int get maxSyncDevices;
+  @override
+  @JsonKey(name: "cers")
+  bool get customExclusionRules;
   @override // local state
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)

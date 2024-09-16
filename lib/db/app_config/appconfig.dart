@@ -4,6 +4,7 @@ import 'package:copycat_base/constants/numbers/duration.dart';
 import 'package:copycat_base/constants/numbers/file_sizes.dart';
 import 'package:copycat_base/data/services/encryption.dart';
 import 'package:copycat_base/db/base.dart';
+import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
@@ -47,8 +48,12 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     /// If enabled, the application will automatically start at startup.
     @Default(false) bool launchAtStartup,
     @Default("en") String locale,
+
+    // Security
     String? enc2,
     @Default(false) bool autoEncrypt,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ExclusionRules? exclusionRules,
 
     // Customization
     @Default(defaultThemeColor) int themeColor,
@@ -58,6 +63,8 @@ class AppConfig with _$AppConfig, IsarIdMixin {
 
     // Exprimental
     @Default(false) bool enableDragNDrop,
+    @Default(false) bool hideWhenDragging,
+    @Default(false) bool enablePasteStack,
 
     //? Local App States
     /// last focus window id
@@ -69,6 +76,10 @@ class AppConfig with _$AppConfig, IsarIdMixin {
 
   factory AppConfig.fromJson(Map<String, dynamic> json) =>
       _$AppConfigFromJson(json);
+
+  @ignore
+  ExclusionRules get copyExclusionRules =>
+      exclusionRules ?? ExclusionRules(sensitiveInfo: true);
 
   @ignore
   EncryptionSecret? get enc2Key =>

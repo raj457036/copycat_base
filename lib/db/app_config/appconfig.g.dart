@@ -47,60 +47,76 @@ const AppConfigSchema = CollectionSchema(
       name: r'enableFileSync',
       type: IsarType.bool,
     ),
-    r'enableSync': PropertySchema(
+    r'enablePasteStack': PropertySchema(
       id: 6,
+      name: r'enablePasteStack',
+      type: IsarType.bool,
+    ),
+    r'enableSync': PropertySchema(
+      id: 7,
       name: r'enableSync',
       type: IsarType.bool,
     ),
     r'enc2': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'enc2',
       type: IsarType.string,
     ),
+    r'exclusionRules': PropertySchema(
+      id: 9,
+      name: r'exclusionRules',
+      type: IsarType.object,
+      target: r'ExclusionRules',
+    ),
+    r'hideWhenDragging': PropertySchema(
+      id: 10,
+      name: r'hideWhenDragging',
+      type: IsarType.bool,
+    ),
     r'isPersisted': PropertySchema(
-      id: 8,
+      id: 11,
       name: r'isPersisted',
       type: IsarType.bool,
     ),
     r'launchAtStartup': PropertySchema(
-      id: 9,
+      id: 12,
       name: r'launchAtStartup',
       type: IsarType.bool,
     ),
     r'locale': PropertySchema(
-      id: 10,
+      id: 13,
       name: r'locale',
       type: IsarType.string,
     ),
     r'pausedTill': PropertySchema(
-      id: 11,
+      id: 14,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'smartPaste': PropertySchema(
-      id: 12,
+      id: 15,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'themeColor': PropertySchema(
-      id: 13,
+      id: 16,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 14,
+      id: 17,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 15,
+      id: 18,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 16,
+      id: 19,
       name: r'toggleHotkey',
       type: IsarType.string,
     )
@@ -112,7 +128,10 @@ const AppConfigSchema = CollectionSchema(
   idName: r'id',
   indexes: {},
   links: {},
-  embeddedSchemas: {},
+  embeddedSchemas: {
+    r'ExclusionRules': ExclusionRulesSchema,
+    r'AppInfo': AppInfoSchema
+  },
   getId: _appConfigGetId,
   getLinks: _appConfigGetLinks,
   attach: _appConfigAttach,
@@ -129,6 +148,14 @@ int _appConfigEstimateSize(
     final value = object.enc2;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.exclusionRules;
+    if (value != null) {
+      bytesCount += 3 +
+          ExclusionRulesSchema.estimateSize(
+              value, allOffsets[ExclusionRules]!, allOffsets);
     }
   }
   bytesCount += 3 + object.locale.length * 3;
@@ -155,17 +182,25 @@ void _appConfigSerialize(
   writer.writeLong(offsets[3], object.dontUploadOver);
   writer.writeBool(offsets[4], object.enableDragNDrop);
   writer.writeBool(offsets[5], object.enableFileSync);
-  writer.writeBool(offsets[6], object.enableSync);
-  writer.writeString(offsets[7], object.enc2);
-  writer.writeBool(offsets[8], object.isPersisted);
-  writer.writeBool(offsets[9], object.launchAtStartup);
-  writer.writeString(offsets[10], object.locale);
-  writer.writeDateTime(offsets[11], object.pausedTill);
-  writer.writeBool(offsets[12], object.smartPaste);
-  writer.writeLong(offsets[13], object.themeColor);
-  writer.writeString(offsets[14], object.themeMode.name);
-  writer.writeString(offsets[15], object.themeVariant.name);
-  writer.writeString(offsets[16], object.toggleHotkey);
+  writer.writeBool(offsets[6], object.enablePasteStack);
+  writer.writeBool(offsets[7], object.enableSync);
+  writer.writeString(offsets[8], object.enc2);
+  writer.writeObject<ExclusionRules>(
+    offsets[9],
+    allOffsets,
+    ExclusionRulesSchema.serialize,
+    object.exclusionRules,
+  );
+  writer.writeBool(offsets[10], object.hideWhenDragging);
+  writer.writeBool(offsets[11], object.isPersisted);
+  writer.writeBool(offsets[12], object.launchAtStartup);
+  writer.writeString(offsets[13], object.locale);
+  writer.writeDateTime(offsets[14], object.pausedTill);
+  writer.writeBool(offsets[15], object.smartPaste);
+  writer.writeLong(offsets[16], object.themeColor);
+  writer.writeString(offsets[17], object.themeMode.name);
+  writer.writeString(offsets[18], object.themeVariant.name);
+  writer.writeString(offsets[19], object.toggleHotkey);
 }
 
 AppConfig _appConfigDeserialize(
@@ -181,20 +216,27 @@ AppConfig _appConfigDeserialize(
     dontUploadOver: reader.readLong(offsets[3]),
     enableDragNDrop: reader.readBool(offsets[4]),
     enableFileSync: reader.readBool(offsets[5]),
-    enableSync: reader.readBool(offsets[6]),
-    enc2: reader.readStringOrNull(offsets[7]),
-    launchAtStartup: reader.readBool(offsets[9]),
-    locale: reader.readString(offsets[10]),
-    pausedTill: reader.readDateTimeOrNull(offsets[11]),
-    smartPaste: reader.readBool(offsets[12]),
-    themeColor: reader.readLong(offsets[13]),
+    enablePasteStack: reader.readBool(offsets[6]),
+    enableSync: reader.readBool(offsets[7]),
+    enc2: reader.readStringOrNull(offsets[8]),
+    exclusionRules: reader.readObjectOrNull<ExclusionRules>(
+      offsets[9],
+      ExclusionRulesSchema.deserialize,
+      allOffsets,
+    ),
+    hideWhenDragging: reader.readBool(offsets[10]),
+    launchAtStartup: reader.readBool(offsets[12]),
+    locale: reader.readString(offsets[13]),
+    pausedTill: reader.readDateTimeOrNull(offsets[14]),
+    smartPaste: reader.readBool(offsets[15]),
+    themeColor: reader.readLong(offsets[16]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[14])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[17])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[15])] ??
+            reader.readStringOrNull(offsets[18])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[16]),
+    toggleHotkey: reader.readStringOrNull(offsets[19]),
   );
   object.id = id;
   return object;
@@ -222,28 +264,38 @@ P _appConfigDeserializeProp<P>(
     case 6:
       return (reader.readBool(offset)) as P;
     case 7:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 8:
-      return (reader.readBool(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 9:
-      return (reader.readBool(offset)) as P;
+      return (reader.readObjectOrNull<ExclusionRules>(
+        offset,
+        ExclusionRulesSchema.deserialize,
+        allOffsets,
+      )) as P;
     case 10:
-      return (reader.readString(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 11:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 12:
       return (reader.readBool(offset)) as P;
     case 13:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 14:
+      return (reader.readDateTimeOrNull(offset)) as P;
+    case 15:
+      return (reader.readBool(offset)) as P;
+    case 16:
+      return (reader.readLong(offset)) as P;
+    case 17:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 15:
+    case 18:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 16:
+    case 19:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -571,6 +623,16 @@ extension AppConfigQueryFilter
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      enablePasteStackEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'enablePasteStack',
+        value: value,
+      ));
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> enableSyncEqualTo(
       bool value) {
     return QueryBuilder.apply(this, (query) {
@@ -723,6 +785,34 @@ extension AppConfigQueryFilter
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'enc2',
         value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      exclusionRulesIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'exclusionRules',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      exclusionRulesIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'exclusionRules',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      hideWhenDraggingEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'hideWhenDragging',
+        value: value,
       ));
     });
   }
@@ -1487,7 +1577,14 @@ extension AppConfigQueryFilter
 }
 
 extension AppConfigQueryObject
-    on QueryBuilder<AppConfig, AppConfig, QFilterCondition> {}
+    on QueryBuilder<AppConfig, AppConfig, QFilterCondition> {
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> exclusionRules(
+      FilterQuery<ExclusionRules> q) {
+    return QueryBuilder.apply(this, (query) {
+      return query.object(q, r'exclusionRules');
+    });
+  }
+}
 
 extension AppConfigQueryLinks
     on QueryBuilder<AppConfig, AppConfig, QFilterCondition> {}
@@ -1566,6 +1663,19 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnablePasteStack() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enablePasteStack', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
+      sortByEnablePasteStackDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enablePasteStack', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnableSync() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enableSync', Sort.asc);
@@ -1587,6 +1697,19 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnc2Desc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enc2', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByHideWhenDragging() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'hideWhenDragging', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
+      sortByHideWhenDraggingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'hideWhenDragging', Sort.desc);
     });
   }
 
@@ -1774,6 +1897,19 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnablePasteStack() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enablePasteStack', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
+      thenByEnablePasteStackDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'enablePasteStack', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnableSync() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enableSync', Sort.asc);
@@ -1795,6 +1931,19 @@ extension AppConfigQuerySortThenBy
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnc2Desc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enc2', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByHideWhenDragging() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'hideWhenDragging', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
+      thenByHideWhenDraggingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'hideWhenDragging', Sort.desc);
     });
   }
 
@@ -1957,6 +2106,12 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByEnablePasteStack() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'enablePasteStack');
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByEnableSync() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'enableSync');
@@ -1967,6 +2122,12 @@ extension AppConfigQueryWhereDistinct
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'enc2', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByHideWhenDragging() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'hideWhenDragging');
     });
   }
 
@@ -2073,6 +2234,12 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, bool, QQueryOperations> enablePasteStackProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'enablePasteStack');
+    });
+  }
+
   QueryBuilder<AppConfig, bool, QQueryOperations> enableSyncProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'enableSync');
@@ -2082,6 +2249,19 @@ extension AppConfigQueryProperty
   QueryBuilder<AppConfig, String?, QQueryOperations> enc2Property() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'enc2');
+    });
+  }
+
+  QueryBuilder<AppConfig, ExclusionRules?, QQueryOperations>
+      exclusionRulesProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'exclusionRules');
+    });
+  }
+
+  QueryBuilder<AppConfig, bool, QQueryOperations> hideWhenDraggingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'hideWhenDragging');
     });
   }
 
@@ -2168,6 +2348,8 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
               _$DynamicSchemeVariantEnumMap, json['themeVariant']) ??
           DynamicSchemeVariant.tonalSpot,
       enableDragNDrop: json['enableDragNDrop'] as bool? ?? false,
+      hideWhenDragging: json['hideWhenDragging'] as bool? ?? false,
+      enablePasteStack: json['enablePasteStack'] as bool? ?? false,
       clockUnSynced: json['clockUnSynced'] as bool? ?? false,
     );
 
@@ -2189,6 +2371,8 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'themeColor': instance.themeColor,
       'themeVariant': _$DynamicSchemeVariantEnumMap[instance.themeVariant]!,
       'enableDragNDrop': instance.enableDragNDrop,
+      'hideWhenDragging': instance.hideWhenDragging,
+      'enablePasteStack': instance.enablePasteStack,
       'clockUnSynced': instance.clockUnSynced,
     };
 

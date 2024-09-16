@@ -31,9 +31,9 @@ class Subscription with _$Subscription, IsarIdMixin {
     @Default(true) bool ads,
     @JsonKey(name: "syncInt") @Default($45S) int syncInterval,
     @Default(false) bool edit,
-    @Default(false) bool encrypt,
     @DateTimeConverter() DateTime? activeTill,
     @JsonKey(name: "devices") @Default(3) int maxSyncDevices,
+    @JsonKey(name: "cers") @Default(false) bool customExclusionRules,
 
     // local state
     @ignore

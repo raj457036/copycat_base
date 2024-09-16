@@ -51,6 +51,8 @@ class ClipItem {
   bool get isText => type == ClipItemType.text;
   bool get isUri => type == ClipItemType.url;
   bool get isFile => type == ClipItemType.file;
+  bool get isTextSubType =>
+      type == ClipItemType.text || type == ClipItemType.url;
 
   Future<void> cleanup() async {
     if (file != null && await file!.exists()) {

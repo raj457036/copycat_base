@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert' show jsonEncode;
 
 import 'package:bloc/bloc.dart';
@@ -5,6 +6,8 @@ import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/numbers/duration.dart';
 import 'package:copycat_base/db/app_config/appconfig.dart';
+import 'package:copycat_base/db/exclusion_rules/exclusion_checker.dart';
+import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
 import 'package:copycat_base/db/subscription/subscription.dart';
 import 'package:copycat_base/domain/repositories/app_config.dart';
 import 'package:copycat_base/utils/utility.dart';
@@ -18,6 +21,8 @@ import 'package:ntp/ntp.dart';
 
 part 'app_config_cubit.freezed.dart';
 part 'app_config_state.dart';
+
+ExclusionChecker? exclusionChecker;
 
 @singleton
 class AppConfigCubit extends Cubit<AppConfigState> {
@@ -36,6 +41,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   void emit(AppConfigState state) {
     if (isClosed) return;
     super.emit(state);
+  }
+
+  void initializeExclusionChecker() {
+    exclusionChecker = ExclusionChecker(
+      rules: exclusionRules,
+      includeDefaults: exclusionRules.sensitiveInfo,
+    );
   }
 
   Future<bool?> syncClocks() async {
@@ -107,6 +119,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
         }
       },
     );
+    initializeExclusionChecker();
   }
 
   bool get isCopyingPaused =>
@@ -125,6 +138,8 @@ class AppConfigCubit extends Cubit<AppConfigState> {
 
   bool get isFileSyncEnabled =>
       state.config.enableSync && state.config.enableFileSync;
+
+  ExclusionRules get exclusionRules => state.config.copyExclusionRules;
 
   Future<void> changePausedTill(DateTime? pausedTill) async {
     final newConfig = state.config.copyWith(pausedTill: pausedTill)
@@ -217,6 +232,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
+  Future<void> toggleHideWhenDragging(bool value) async {
+    final newConfig = state.config.copyWith(hideWhenDragging: value)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+  }
+
   Future<void> toggleAutoEncrypt(bool value) async {
     final newConfig = state.config.copyWith(autoEncrypt: value)
       ..applyId(state.config);
@@ -257,10 +279,28 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     emit(state.copyWith(config: newConfig));
   }
 
-  Future<bool> isCopyingAllowed() async {
-    // final activity = await focusWindow.getActivity();
+  Future<void> updateExclusionRule(ExclusionRules exclusionRule) async {
+    final newConfig = state.config.copyWith(exclusionRules: exclusionRule)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+    initializeExclusionChecker();
+  }
 
-    // logger.w(activity);
-    return true;
+  Future<bool> isCopyingAllowedByActivity() async {
+    try {
+      final t1 = DateTime.now();
+      final activity =
+          await focusWindow.getActivity().timeout(Durations.short4);
+      logger.w(DateTime.now().difference(t1).inMilliseconds);
+      logger.w(activity);
+      final allowed = exclusionChecker?.isActivityAllowed(activity) ?? true;
+      return allowed;
+    } on TimeoutException {
+      logger.e("TIMEOUT");
+      return true;
+    } catch (e) {
+      return true;
+    }
   }
 }

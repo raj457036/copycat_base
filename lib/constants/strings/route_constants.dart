@@ -7,6 +7,7 @@ class RouteConstants {
   static const String createEditCollection = "create-edit-collection";
   static const String collectionDetail = "collection-detail";
   static const String settings = "settings";
+  static const String customExclusionRules = "cers-settings";
   static const String driveConnect = "drive-connect";
   static const String preview = "preview";
   static const String resetPassword = "reset-password";

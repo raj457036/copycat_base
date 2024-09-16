@@ -77,7 +77,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
       return;
     }
 
-    if (await appConfig.isCopyingAllowed()) {
+    if (await appConfig.isCopyingAllowedByActivity()) {
       await clipboard.readClipboard();
     }
   }
@@ -234,6 +234,12 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
     for (final clip in clips) {
       if (clip == null) continue;
+      if (exclusionChecker != null && clip.isTextSubType) {
+        final content = clip.text ?? clip.uri?.toString();
+        if (content != null && !exclusionChecker!.isContentAllowed(content)) {
+          continue;
+        }
+      }
 
       if (!manualPaste &&
           clip.fileSize != null &&
