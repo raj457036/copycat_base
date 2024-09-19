@@ -71,4 +71,9 @@ const insetTRB16 = EdgeInsets.only(
 const insetAll16 = EdgeInsets.all(padding16);
 
 const initialWindowSize = Size(1280, 720);
-const minimumWindowSize = Size(365, 600);
+const minimumWindowSize = Size(195, 180);
+
+const dockedLRMaxWidth = 330.0;
+const dockedLRMinWidth = 195.0;
+const dockedTBMaxHeight = 290.0;
+const dockedTBMinHeight = 180.0;

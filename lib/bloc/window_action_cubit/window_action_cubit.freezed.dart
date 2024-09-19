@@ -16,22 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WindowActionState {
-  bool get pinned => throw _privateConstructorUsedError;
-  bool get compact => throw _privateConstructorUsedError;
+  AppView get view => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool pinned, bool compact, bool loading) loaded,
+    required TResult Function(AppView view, bool loading) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool pinned, bool compact, bool loading)? loaded,
+    TResult? Function(AppView view, bool loading)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool pinned, bool compact, bool loading)? loaded,
+    TResult Function(AppView view, bool loading)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +62,7 @@ abstract class $WindowActionStateCopyWith<$Res> {
           WindowActionState value, $Res Function(WindowActionState) then) =
       _$WindowActionStateCopyWithImpl<$Res, WindowActionState>;
   @useResult
-  $Res call({bool pinned, bool compact, bool loading});
+  $Res call({AppView view, bool loading});
 }
 
 /// @nodoc
@@ -79,19 +78,14 @@ class _$WindowActionStateCopyWithImpl<$Res, $Val extends WindowActionState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pinned = null,
-    Object? compact = null,
+    Object? view = null,
     Object? loading = null,
   }) {
     return _then(_value.copyWith(
-      pinned: null == pinned
-          ? _value.pinned
-          : pinned // ignore: cast_nullable_to_non_nullable
-              as bool,
-      compact: null == compact
-          ? _value.compact
-          : compact // ignore: cast_nullable_to_non_nullable
-              as bool,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as AppView,
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
@@ -108,7 +102,7 @@ abstract class _$$WindowActionLoadedImplCopyWith<$Res>
       __$$WindowActionLoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool pinned, bool compact, bool loading});
+  $Res call({AppView view, bool loading});
 }
 
 /// @nodoc
@@ -122,19 +116,14 @@ class __$$WindowActionLoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pinned = null,
-    Object? compact = null,
+    Object? view = null,
     Object? loading = null,
   }) {
     return _then(_$WindowActionLoadedImpl(
-      pinned: null == pinned
-          ? _value.pinned
-          : pinned // ignore: cast_nullable_to_non_nullable
-              as bool,
-      compact: null == compact
-          ? _value.compact
-          : compact // ignore: cast_nullable_to_non_nullable
-              as bool,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as AppView,
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
@@ -149,21 +138,18 @@ class _$WindowActionLoadedImpl
     with DiagnosticableTreeMixin
     implements WindowActionLoaded {
   const _$WindowActionLoadedImpl(
-      {this.pinned = false, this.compact = false, this.loading = true});
+      {this.view = AppView.windowed, this.loading = true});
 
   @override
   @JsonKey()
-  final bool pinned;
-  @override
-  @JsonKey()
-  final bool compact;
+  final AppView view;
   @override
   @JsonKey()
   final bool loading;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WindowActionState.loaded(pinned: $pinned, compact: $compact, loading: $loading)';
+    return 'WindowActionState.loaded(view: $view, loading: $loading)';
   }
 
   @override
@@ -171,8 +157,7 @@ class _$WindowActionLoadedImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'WindowActionState.loaded'))
-      ..add(DiagnosticsProperty('pinned', pinned))
-      ..add(DiagnosticsProperty('compact', compact))
+      ..add(DiagnosticsProperty('view', view))
       ..add(DiagnosticsProperty('loading', loading));
   }
 
@@ -181,13 +166,12 @@ class _$WindowActionLoadedImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WindowActionLoadedImpl &&
-            (identical(other.pinned, pinned) || other.pinned == pinned) &&
-            (identical(other.compact, compact) || other.compact == compact) &&
+            (identical(other.view, view) || other.view == view) &&
             (identical(other.loading, loading) || other.loading == loading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pinned, compact, loading);
+  int get hashCode => Object.hash(runtimeType, view, loading);
 
   @JsonKey(ignore: true)
   @override
@@ -199,27 +183,27 @@ class _$WindowActionLoadedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool pinned, bool compact, bool loading) loaded,
+    required TResult Function(AppView view, bool loading) loaded,
   }) {
-    return loaded(pinned, compact, loading);
+    return loaded(view, loading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool pinned, bool compact, bool loading)? loaded,
+    TResult? Function(AppView view, bool loading)? loaded,
   }) {
-    return loaded?.call(pinned, compact, loading);
+    return loaded?.call(view, loading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool pinned, bool compact, bool loading)? loaded,
+    TResult Function(AppView view, bool loading)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(pinned, compact, loading);
+      return loaded(view, loading);
     }
     return orElse();
   }
@@ -254,15 +238,11 @@ class _$WindowActionLoadedImpl
 }
 
 abstract class WindowActionLoaded implements WindowActionState {
-  const factory WindowActionLoaded(
-      {final bool pinned,
-      final bool compact,
-      final bool loading}) = _$WindowActionLoadedImpl;
+  const factory WindowActionLoaded({final AppView view, final bool loading}) =
+      _$WindowActionLoadedImpl;
 
   @override
-  bool get pinned;
-  @override
-  bool get compact;
+  AppView get view;
   @override
   bool get loading;
   @override

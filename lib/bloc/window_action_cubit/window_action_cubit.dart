@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:screen_retriever/screen_retriever.dart';
+import 'package:universal_io/io.dart';
 import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
@@ -12,94 +13,110 @@ part 'window_action_state.dart';
 
 const compactViewWidth = 368.0;
 const compactViewMinHeight = 600.0;
+final heightOffset = Platform.isWindows ? 0 : 24.0;
 
-enum ViewMode {
-  docked,
-  floating,
-}
-
-enum DockedPosition {
-  none,
-  top,
-  bottom,
+enum AppView {
+  topDocked,
+  bottomDocked,
+  leftDocked,
+  rightDocked,
+  windowed,
 }
 
 @injectable
 class WindowActionCubit extends Cubit<WindowActionState> {
   Display? primaryDisplay;
-  ViewMode viewMode = ViewMode.floating;
   bool isCompactMode = false;
   bool isFocused = false;
-  DockedPosition dockedPosition = DockedPosition.none;
 
-  WindowActionCubit() : super(const WindowActionState.loaded()) {
-    setupScreenInfo();
+  WindowActionCubit() : super(const WindowActionState.loaded());
+
+  double get displayHeight {
+    if (primaryDisplay != null) {
+      final height = primaryDisplay?.visibleSize?.height ??
+          primaryDisplay!.size.height -
+              (primaryDisplay?.visiblePosition?.dy ?? 0);
+      return height;
+    }
+    return initialWindowSize.height;
   }
 
-  Size get compactWindowSize {
-    return Size(
-      compactViewWidth,
-      primaryDisplay?.size.height ?? compactViewMinHeight,
-    );
+  double get displayWidth {
+    if (primaryDisplay != null) {
+      final width = primaryDisplay?.visibleSize?.width ??
+          primaryDisplay!.size.width -
+              (primaryDisplay?.visiblePosition?.dx ?? 0);
+      return width;
+    }
+    return initialWindowSize.width;
+  }
+
+  Future<void> fetch() async {
+    await setupScreenInfo();
   }
 
   Future<void> setupScreenInfo() async {
     primaryDisplay = await screenRetriever.getPrimaryDisplay();
     isFocused = await windowManager.isFocused();
-  }
-
-  Future<void> fetch() async {
-    final isPinned = await windowManager.isAlwaysOnTop();
     emit(
-      WindowActionState.loaded(
-        pinned: isPinned,
-        compact: isCompactMode,
-        loading: false,
-      ),
+      const WindowActionState.loaded(loading: false),
     );
   }
 
-  Future<void> reset() async {
-    toggleCompact(reset: true);
-    togglePinned(reset: true);
-  }
+  Future<void> setDockedView(AppView view) async {
+    assert(view != AppView.windowed, "Only docked views allowed");
 
-  Future<void> togglePinned({bool reset = false}) async {
-    final isPinned = reset ? true : await windowManager.isAlwaysOnTop();
-    await windowManager.setAlwaysOnTop(!isPinned);
-    emit(state.copyWith(pinned: !isPinned));
-  }
+    final Alignment alignment = switch (view) {
+      AppView.leftDocked => Alignment.centerLeft,
+      AppView.rightDocked => Alignment.topRight,
+      AppView.topDocked => Alignment.topCenter,
+      AppView.bottomDocked => Alignment.bottomCenter,
+      _ => Alignment.center,
+    };
 
-  Future<void> compactView() async {
-    if (viewMode != ViewMode.floating) return;
-    await windowManager.setSize(compactWindowSize);
-    final position = await calcWindowPosition(
-      compactWindowSize,
-      Alignment.centerRight,
-    );
+    final Size dockedMaxSize = switch (view) {
+      AppView.leftDocked || AppView.rightDocked => Size(
+          dockedLRMaxWidth,
+          displayHeight,
+        ),
+      AppView.topDocked ||
+      AppView.bottomDocked =>
+        Size(displayWidth, dockedTBMaxHeight),
+      _ => initialWindowSize,
+    };
+
+    final Size dockedMinSize = switch (view) {
+      AppView.leftDocked || AppView.rightDocked => Size(
+          dockedLRMinWidth,
+          displayHeight,
+        ),
+      AppView.topDocked ||
+      AppView.bottomDocked =>
+        Size(displayWidth, dockedTBMinHeight),
+      _ => initialWindowSize,
+    };
+
+    final position = await calcWindowPosition(dockedMaxSize, alignment);
+    await windowManager.setSize(dockedMaxSize);
     await windowManager.setPosition(position, animate: true);
-    isCompactMode = true;
-    emit(state.copyWith(compact: isCompactMode));
+    windowManager.setMinimumSize(dockedMinSize);
+    windowManager.setMaximumSize(dockedMaxSize);
+    windowManager.setMovable(false);
+    windowManager.setAsFrameless();
+    emit(state.copyWith(view: view));
   }
 
-  Future<void> windowedView() async {
-    if (viewMode != ViewMode.floating) return;
+  Future<void> setWindowdView() async {
     await windowManager.setSize(initialWindowSize);
     await windowManager.center(animate: true);
-    isCompactMode = false;
-    emit(state.copyWith(compact: isCompactMode));
+    await windowManager.setMinimumSize(minimumWindowSize);
+    await windowManager.setMovable(true);
+    windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+    emit(state.copyWith(view: AppView.windowed));
   }
 
-  Future<void> toggleCompact({bool reset = false}) async {
-    if (isCompactMode || reset) {
-      await windowedView();
-    } else {
-      await compactView();
-    }
-  }
-
-  Future<void> hide({bool animated = true}) async {
-    if (viewMode == ViewMode.floating) {
+  Future<void> hide({bool animated = false}) async {
+    if (state.view == AppView.windowed) {
       if (animated && primaryDisplay != null) {
         final currentPosition = await windowManager.getPosition();
         windowManager.setPosition(
@@ -112,17 +129,14 @@ class WindowActionCubit extends Cubit<WindowActionState> {
 
         await Future.delayed(const Duration(milliseconds: 200));
       }
-
-      await windowManager.hide();
-      isFocused = false;
     }
+    await windowManager.hide();
+    isFocused = false;
   }
 
-  Future<void> show({bool animated = true}) async {
-    if (viewMode == ViewMode.floating) {
-      windowManager.show();
-      windowManager.center(animate: animated);
-      isFocused = true;
-    }
+  Future<void> show({bool animated = false}) async {
+    if (state.view == AppView.windowed) {}
+    windowManager.show();
+    isFocused = true;
   }
 }
