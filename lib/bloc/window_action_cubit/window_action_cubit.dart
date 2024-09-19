@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:screen_retriever/screen_retriever.dart';
-import 'package:universal_io/io.dart';
 import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
@@ -13,7 +12,6 @@ part 'window_action_state.dart';
 
 const compactViewWidth = 368.0;
 const compactViewMinHeight = 600.0;
-final heightOffset = Platform.isWindows ? 0 : 24.0;
 
 enum AppView {
   topDocked,
@@ -53,6 +51,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
 
   Future<void> fetch() async {
     await setupScreenInfo();
+    await setWindowdView();
   }
 
   Future<void> setupScreenInfo() async {
@@ -103,6 +102,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     windowManager.setMaximumSize(dockedMaxSize);
     windowManager.setMovable(false);
     windowManager.setAsFrameless();
+    windowManager.setAlwaysOnTop(true);
     emit(state.copyWith(view: view));
   }
 
@@ -112,6 +112,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     await windowManager.setMinimumSize(minimumWindowSize);
     await windowManager.setMovable(true);
     windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+    windowManager.setAlwaysOnTop(false);
     emit(state.copyWith(view: AppView.windowed));
   }
 
@@ -136,7 +137,8 @@ class WindowActionCubit extends Cubit<WindowActionState> {
 
   Future<void> show({bool animated = false}) async {
     if (state.view == AppView.windowed) {}
-    windowManager.show();
+    await windowManager.show();
+    await windowManager.focus();
     isFocused = true;
   }
 }
