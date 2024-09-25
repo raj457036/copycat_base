@@ -27,7 +27,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showFailureSnackbar(
   Failure failure,
 ) {
   final context = scaffoldMessengerKey.currentContext!;
-  final mq = MediaQuery.of(context);
+  final mq = context.mq;
   final colors = context.colors;
   final isMobile = Breakpoints.isMobile(mq.size.width);
   return showSnackbar(
@@ -72,7 +72,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
   SnackBarAction? action,
 }) {
   final context = scaffoldMessengerKey.currentContext!;
-  final mq = MediaQuery.of(context);
+  final mq = context.mq;
   final isMobile = Breakpoints.isMobile(mq.size.width);
 
   Color? bg;

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
+import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -9,9 +10,6 @@ import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
 part 'window_action_state.dart';
-
-const compactViewWidth = 368.0;
-const compactViewMinHeight = 600.0;
 
 enum AppView {
   topDocked,
@@ -50,6 +48,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   }
 
   Future<void> fetch() async {
+    if (!isDesktopPlatform) return;
     await setupScreenInfo();
     await setWindowdView();
   }
@@ -140,5 +139,12 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     await windowManager.show();
     await windowManager.focus();
     isFocused = true;
+    requestFocus();
+  }
+
+  Future<void> requestFocus() async {
+    final pf = FocusManager.instance.primaryFocus;
+    if (pf == null) return;
+    pf.requestFocus();
   }
 }

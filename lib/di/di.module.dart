@@ -23,7 +23,6 @@ import 'package:copycat_base/bloc/focused_clipitem_cubit/focused_clipitem_cubit.
     as _i232;
 import 'package:copycat_base/bloc/offline_persistance_cubit/offline_persistance_cubit.dart'
     as _i768;
-import 'package:copycat_base/bloc/search_cubit/search_cubit.dart' as _i776;
 import 'package:copycat_base/bloc/sync_manager_cubit/sync_manager_cubit.dart'
     as _i11;
 import 'package:copycat_base/bloc/window_action_cubit/window_action_cubit.dart'
@@ -147,10 +146,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
           gh<_i72.ClipboardRepository>(instanceName: 'offline'),
           gh<_i338.Isar>(),
-        ));
-    gh.factory<_i776.SearchCubit>(() => _i776.SearchCubit(
-          gh<_i72.ClipboardRepository>(instanceName: 'offline'),
-          gh<_i860.AnalyticsRepository>(),
         ));
     gh.lazySingleton<_i691.CloudPersistanceCubit>(
         () => _i691.CloudPersistanceCubit(

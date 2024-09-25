@@ -93,6 +93,7 @@ String formatBytes(int sizeInBytes, {bool precise = true}) {
 }
 
 // Text cleanup
+final cleanUpStringRegex = RegExp(r'[\x00-\x09\x0B-\x0C\x0E-\x1F\x7F]');
 String? cleanUpString(String? input) {
   if (input == null) return null;
   // Problematic characters to be replaced them with an empty string
@@ -112,8 +113,8 @@ String? cleanUpString(String? input) {
     cleanedString = cleanedString.replaceAll(char, '');
   }
 
-  // Remove other control characters (U+0001 to U+001F, U+007F)
-  cleanedString = cleanedString.replaceAll(RegExp(r'[\x00-\x1F\x7F]'), '');
+  // Remove other control characters (U+0001 to U+001F, U+007F), but allow newlines (\n) and carriage returns (\r)
+  cleanedString = cleanedString.replaceAll(cleanUpStringRegex, '');
 
   return cleanedString;
 }

@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/common/failure.dart';
-import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
+import 'package:copycat_base/domain/repositories/clipboard.dart';
+import 'package:copycat_base/domain/sources/clipboard.dart';
+import 'package:copycat_base/enums/clip_type.dart';
+import 'package:copycat_base/enums/sort.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,11 +24,6 @@ class ClipboardCubit extends Cubit<ClipboardState> {
     @Named("offline") this.repo,
     this.db,
   ) : super(const ClipboardState.loaded(items: []));
-
-  Future<void> fixDatabase() async {
-    // await db
-    //     .writeTxn(() async => await .deleteAll([77, 87, 79]));
-  }
 
   void reset() {
     emit(const ClipboardState.loaded(items: []));
@@ -50,8 +48,16 @@ class ClipboardCubit extends Cubit<ClipboardState> {
     return false;
   }
 
-  Future<void> fetch({bool fromTop = false}) async {
-    await fixDatabase();
+  Future<void> fetch({
+    bool fromTop = false,
+    String? query,
+    Set<TextCategory>? textCategories,
+    Set<ClipItemType>? clipTypes,
+    ClipboardSortKey? sortBy,
+    SortOrder? order,
+    DateTime? from,
+    DateTime? to,
+  }) async {
     emit(
       state.copyWith(
         loading: true,
@@ -62,8 +68,13 @@ class ClipboardCubit extends Cubit<ClipboardState> {
     final items = await repo.getList(
       limit: state.limit,
       offset: fromTop ? 0 : state.offset,
-      // sortBy: ClipboardSortKey.modified,
-      // order: SortOrder.desc,
+      search: query,
+      types: clipTypes,
+      category: textCategories,
+      from: from,
+      to: to,
+      order: order ?? SortOrder.desc,
+      sortBy: sortBy,
     );
 
     emit(
