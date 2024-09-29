@@ -108,8 +108,11 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   Future<void> setWindowdView() async {
     await windowManager.setSize(initialWindowSize);
     await windowManager.center(animate: true);
-    await windowManager.setMinimumSize(minimumWindowSize);
-    await windowManager.setMovable(true);
+    windowManager.setMinimumSize(minimumWindowSize);
+    if (primaryDisplay != null) {
+      windowManager.setMaximumSize(primaryDisplay!.size);
+    }
+    windowManager.setMovable(true);
     windowManager.setTitleBarStyle(TitleBarStyle.hidden);
     windowManager.setAlwaysOnTop(false);
     emit(state.copyWith(view: AppView.windowed));
