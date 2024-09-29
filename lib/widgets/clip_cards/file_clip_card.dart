@@ -1,13 +1,19 @@
 import 'package:copycat_base/constants/widget_styles.dart';
+import 'package:copycat_base/db/app_config/appconfig.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/material.dart';
 
 class FileClipCard extends StatelessWidget {
+  final AppLayout layout;
   final ClipboardItem item;
 
-  const FileClipCard({super.key, required this.item});
+  const FileClipCard({
+    super.key,
+    required this.item,
+    required this.layout,
+  });
 
   @override
   Widget build(BuildContext context) {

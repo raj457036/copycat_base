@@ -18,19 +18,19 @@ String? calculateBlurHash(String path) {
     switch (mimeType) {
       case "image/gif":
         image = img.decodeGif(bin);
-        break;
+
       case "image/jpeg" || "image/jpg":
         image = img.decodeJpg(bin);
-        break;
+
       case "image/png":
         image = img.decodePng(bin);
-        break;
+
       case "image/webp":
         image = img.decodeWebP(bin);
-        break;
+
       case "image/tiff":
         image = img.decodeTiff(bin);
-        break;
+
       case _:
     }
 

@@ -128,14 +128,13 @@ void _encryptorEntryPoint(
     case EncDecType.encrypt:
       final encrypted = _aesEncrypter!.encrypt(content, iv: _encSecret!.iv);
       send((id, encrypted.base64));
-      break;
+
     case EncDecType.decrypt:
       final decrypted = _aesEncrypter!.decrypt64(content, iv: _encSecret!.iv);
       send((id, decrypted));
-      break;
+
     case EncDecType.ping:
       send(("PING", "PONG"));
-      break;
   }
 }
 

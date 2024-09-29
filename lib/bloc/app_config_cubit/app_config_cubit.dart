@@ -148,6 +148,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
+  Future<void> changeAppLayout(AppLayout layout) async {
+    final newConfig = state.config.copyWith(layout: layout)
+      ..applyId(state.config);
+    emit(AppConfigState.loaded(config: newConfig));
+    await repo.update(newConfig);
+  }
+
   Future<void> setClipboardToggleHotkey(HotKey? key) async {
     final newConfig = state.config
         .copyWith(toggleHotkey: key != null ? jsonEncode(key.toJson()) : null)

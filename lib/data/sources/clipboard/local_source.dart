@@ -93,22 +93,21 @@ class LocalClipboardSource implements ClipboardSource {
       case ClipboardSortKey.modified:
         sortedQuery =
             order.isDesc ? query.sortByModifiedDesc() : query.sortByModified();
-        break;
+
       case ClipboardSortKey.lastCopied:
         sortedQuery = order.isDesc
             ? query.sortByLastCopiedDesc()
             : query.sortByLastCopied();
-        break;
+
       case ClipboardSortKey.copyCount:
         sortedQuery = order.isDesc
             ? query.sortByCopiedCountDesc()
             : query.sortByCopiedCount();
-        break;
+
       case ClipboardSortKey.created:
       case _:
         sortedQuery =
             order.isDesc ? query.sortByCreatedDesc() : query.sortByCreated();
-        break;
     }
 
     var paginatedQuery = sortedQuery.offset(offset).limit(limit).findAll();

@@ -15,6 +15,8 @@ part 'appconfig.g.dart';
 
 const int defaultThemeColor = 0xFF7469B6;
 
+enum AppLayout { grid, list }
+
 @freezed
 @Collection(ignore: {"copyWith"})
 class AppConfig with _$AppConfig, IsarIdMixin {
@@ -24,6 +26,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default(ThemeMode.system) @Enumerated(EnumType.name) ThemeMode themeMode,
     @Default(true) bool enableSync,
     @Default(true) bool enableFileSync,
+    @Default(AppLayout.grid) @Enumerated(EnumType.name) AppLayout layout,
 
     /// will prevent auto upload for files over 10 MB
     @Default($10MB) int dontUploadOver,

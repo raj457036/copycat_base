@@ -18,6 +18,7 @@ const width2 = SizedBox(width: 2);
 const width4 = SizedBox(width: 4);
 const width6 = SizedBox(width: 6);
 const width8 = SizedBox(width: 8);
+const width10 = SizedBox(width: 10);
 const width12 = SizedBox(width: 12);
 const width16 = SizedBox(width: 16);
 
@@ -45,6 +46,9 @@ const radius12 = BorderRadius.all(
 
 const radiusBottom12 = BorderRadius.vertical(
   bottom: Radius.circular(12),
+);
+const radiusBottom8 = BorderRadius.vertical(
+  bottom: Radius.circular(8),
 );
 
 // edge insets

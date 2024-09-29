@@ -83,40 +83,46 @@ const AppConfigSchema = CollectionSchema(
       name: r'launchAtStartup',
       type: IsarType.bool,
     ),
-    r'locale': PropertySchema(
+    r'layout': PropertySchema(
       id: 13,
+      name: r'layout',
+      type: IsarType.string,
+      enumMap: _AppConfiglayoutEnumValueMap,
+    ),
+    r'locale': PropertySchema(
+      id: 14,
       name: r'locale',
       type: IsarType.string,
     ),
     r'pausedTill': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'smartPaste': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'themeColor': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'toggleHotkey',
       type: IsarType.string,
     )
@@ -158,6 +164,7 @@ int _appConfigEstimateSize(
               value, allOffsets[ExclusionRules]!, allOffsets);
     }
   }
+  bytesCount += 3 + object.layout.name.length * 3;
   bytesCount += 3 + object.locale.length * 3;
   bytesCount += 3 + object.themeMode.name.length * 3;
   bytesCount += 3 + object.themeVariant.name.length * 3;
@@ -194,13 +201,14 @@ void _appConfigSerialize(
   writer.writeBool(offsets[10], object.hideWhenDragging);
   writer.writeBool(offsets[11], object.isPersisted);
   writer.writeBool(offsets[12], object.launchAtStartup);
-  writer.writeString(offsets[13], object.locale);
-  writer.writeDateTime(offsets[14], object.pausedTill);
-  writer.writeBool(offsets[15], object.smartPaste);
-  writer.writeLong(offsets[16], object.themeColor);
-  writer.writeString(offsets[17], object.themeMode.name);
-  writer.writeString(offsets[18], object.themeVariant.name);
-  writer.writeString(offsets[19], object.toggleHotkey);
+  writer.writeString(offsets[13], object.layout.name);
+  writer.writeString(offsets[14], object.locale);
+  writer.writeDateTime(offsets[15], object.pausedTill);
+  writer.writeBool(offsets[16], object.smartPaste);
+  writer.writeLong(offsets[17], object.themeColor);
+  writer.writeString(offsets[18], object.themeMode.name);
+  writer.writeString(offsets[19], object.themeVariant.name);
+  writer.writeString(offsets[20], object.toggleHotkey);
 }
 
 AppConfig _appConfigDeserialize(
@@ -226,17 +234,20 @@ AppConfig _appConfigDeserialize(
     ),
     hideWhenDragging: reader.readBool(offsets[10]),
     launchAtStartup: reader.readBool(offsets[12]),
-    locale: reader.readString(offsets[13]),
-    pausedTill: reader.readDateTimeOrNull(offsets[14]),
-    smartPaste: reader.readBool(offsets[15]),
-    themeColor: reader.readLong(offsets[16]),
+    layout:
+        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[13])] ??
+            AppLayout.grid,
+    locale: reader.readString(offsets[14]),
+    pausedTill: reader.readDateTimeOrNull(offsets[15]),
+    smartPaste: reader.readBool(offsets[16]),
+    themeColor: reader.readLong(offsets[17]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[17])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[18])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[18])] ??
+            reader.readStringOrNull(offsets[19])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[19]),
+    toggleHotkey: reader.readStringOrNull(offsets[20]),
   );
   object.id = id;
   return object;
@@ -280,28 +291,39 @@ P _appConfigDeserializeProp<P>(
     case 12:
       return (reader.readBool(offset)) as P;
     case 13:
-      return (reader.readString(offset)) as P;
+      return (_AppConfiglayoutValueEnumMap[reader.readStringOrNull(offset)] ??
+          AppLayout.grid) as P;
     case 14:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 15:
-      return (reader.readBool(offset)) as P;
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 16:
-      return (reader.readLong(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 17:
+      return (reader.readLong(offset)) as P;
+    case 18:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 18:
+    case 19:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 19:
+    case 20:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
+const _AppConfiglayoutEnumValueMap = {
+  r'grid': r'grid',
+  r'list': r'list',
+};
+const _AppConfiglayoutValueEnumMap = {
+  r'grid': AppLayout.grid,
+  r'list': AppLayout.list,
+};
 const _AppConfigthemeModeEnumValueMap = {
   r'system': r'system',
   r'light': r'light',
@@ -886,6 +908,136 @@ extension AppConfigQueryFilter
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'launchAtStartup',
         value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutEqualTo(
+    AppLayout value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'layout',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutGreaterThan(
+    AppLayout value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'layout',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutLessThan(
+    AppLayout value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'layout',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutBetween(
+    AppLayout lower,
+    AppLayout upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'layout',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'layout',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'layout',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'layout',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'layout',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'layout',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> layoutIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'layout',
+        value: '',
       ));
     });
   }
@@ -1737,6 +1889,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByLayout() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'layout', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByLayoutDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'layout', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByLocale() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'locale', Sort.asc);
@@ -1983,6 +2147,18 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByLayout() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'layout', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByLayoutDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'layout', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByLocale() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'locale', Sort.asc);
@@ -2143,6 +2319,13 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByLayout(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'layout', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByLocale(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2277,6 +2460,12 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, AppLayout, QQueryOperations> layoutProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'layout');
+    });
+  }
+
   QueryBuilder<AppConfig, String, QQueryOperations> localeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'locale');
@@ -2331,6 +2520,8 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
           ThemeMode.system,
       enableSync: json['enableSync'] as bool? ?? true,
       enableFileSync: json['enableFileSync'] as bool? ?? true,
+      layout: $enumDecodeNullable(_$AppLayoutEnumMap, json['layout']) ??
+          AppLayout.grid,
       dontUploadOver: (json['dontUploadOver'] as num?)?.toInt() ?? $10MB,
       dontCopyOver: (json['dontCopyOver'] as num?)?.toInt() ?? $10MB,
       pausedTill: json['pausedTill'] == null
@@ -2358,6 +2549,7 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
       'enableSync': instance.enableSync,
       'enableFileSync': instance.enableFileSync,
+      'layout': _$AppLayoutEnumMap[instance.layout]!,
       'dontUploadOver': instance.dontUploadOver,
       'dontCopyOver': instance.dontCopyOver,
       'pausedTill': instance.pausedTill?.toIso8601String(),
@@ -2380,6 +2572,11 @@ const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
+};
+
+const _$AppLayoutEnumMap = {
+  AppLayout.grid: 'grid',
+  AppLayout.list: 'list',
 };
 
 const _$DynamicSchemeVariantEnumMap = {

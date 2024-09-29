@@ -1,5 +1,6 @@
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/constants/widgets.dart';
+import 'package:copycat_base/db/app_config/appconfig.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/utils/blur_hash.dart';
 import 'package:copycat_base/utils/utility.dart';
@@ -10,12 +11,15 @@ import "package:universal_io/io.dart";
 
 final mediaMimeRegex = RegExp("video|image|audio");
 
-class MediaClipCard extends StatelessWidget {
+class MediaPreview extends StatelessWidget {
   final ClipboardItem item;
+  const MediaPreview({
+    super.key,
+    required this.item,
+  });
 
-  const MediaClipCard({super.key, required this.item});
-
-  Widget getPreview() {
+  @override
+  Widget build(BuildContext context) {
     final isImage = item.fileMimeType!.startsWith("image");
     if (!isImage) {
       return placeholderImage;
@@ -44,25 +48,37 @@ class MediaClipCard extends StatelessWidget {
 
     try {
       return FutureBuilder(
-          future: getImageFromBlurHash(item.imgBlurHash!),
-          builder: (context, ss) {
-            if (ss.hasError) {
-              return const Center(
-                child: Text("Something went wrong"),
-              );
-            }
-            if (!ss.hasData) return loadingCard;
-
-            return Image.memory(
-              ss.data!,
-              gaplessPlayback: true,
-              fit: BoxFit.cover,
+        future: getImageFromBlurHash(item.imgBlurHash!),
+        builder: (context, ss) {
+          if (ss.hasError) {
+            return const Center(
+              child: Text("Something went wrong"),
             );
-          });
+          }
+          if (!ss.hasData) return loadingCard;
+
+          return Image.memory(
+            ss.data!,
+            gaplessPlayback: true,
+            fit: BoxFit.cover,
+          );
+        },
+      );
     } catch (e) {
       return placeholderImage;
     }
   }
+}
+
+class MediaClipCard extends StatelessWidget {
+  final AppLayout layout;
+  final ClipboardItem item;
+
+  const MediaClipCard({
+    super.key,
+    required this.item,
+    required this.layout,
+  });
 
   Widget getIcon(BuildContext context) {
     if (item.fileMimeType != null) {
@@ -87,19 +103,28 @@ class MediaClipCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: radiusBottom12,
-      child: SizedBox.expand(
-        child: Stack(
-          children: [
-            Positioned.fill(child: getPreview()),
-            Align(
-              alignment: const Alignment(0.0, 0.95),
-              child: getIcon(context),
-            ),
-          ],
-        ),
-      ),
+    final isGrid = AppLayout.grid == layout;
+    final preview = MediaPreview(item: item);
+    final child = SizedBox.expand(
+      child: isGrid
+          ? Stack(
+              children: [
+                Positioned.fill(child: preview),
+                Align(
+                  alignment: const Alignment(0.0, 0.95),
+                  child: getIcon(context),
+                ),
+              ],
+            )
+          : preview,
     );
+
+    if (item.isSynced) {
+      return ClipRRect(
+        borderRadius: isGrid ? radiusBottom12 : radiusBottom8,
+        child: child,
+      );
+    }
+    return child;
   }
 }

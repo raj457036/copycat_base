@@ -24,6 +24,8 @@ mixin _$AppConfig {
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   bool get enableSync => throw _privateConstructorUsedError;
   bool get enableFileSync => throw _privateConstructorUsedError;
+  @Enumerated(EnumType.name)
+  AppLayout get layout => throw _privateConstructorUsedError;
 
   /// will prevent auto upload for files over 10 MB
   int get dontUploadOver => throw _privateConstructorUsedError;
@@ -81,6 +83,7 @@ abstract class $AppConfigCopyWith<$Res> {
       {@Enumerated(EnumType.name) ThemeMode themeMode,
       bool enableSync,
       bool enableFileSync,
+      @Enumerated(EnumType.name) AppLayout layout,
       int dontUploadOver,
       int dontCopyOver,
       DateTime? pausedTill,
@@ -122,6 +125,7 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? themeMode = null,
     Object? enableSync = null,
     Object? enableFileSync = null,
+    Object? layout = null,
     Object? dontUploadOver = null,
     Object? dontCopyOver = null,
     Object? pausedTill = freezed,
@@ -154,6 +158,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.enableFileSync
           : enableFileSync // ignore: cast_nullable_to_non_nullable
               as bool,
+      layout: null == layout
+          ? _value.layout
+          : layout // ignore: cast_nullable_to_non_nullable
+              as AppLayout,
       dontUploadOver: null == dontUploadOver
           ? _value.dontUploadOver
           : dontUploadOver // ignore: cast_nullable_to_non_nullable
@@ -254,6 +262,7 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       {@Enumerated(EnumType.name) ThemeMode themeMode,
       bool enableSync,
       bool enableFileSync,
+      @Enumerated(EnumType.name) AppLayout layout,
       int dontUploadOver,
       int dontCopyOver,
       DateTime? pausedTill,
@@ -294,6 +303,7 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? themeMode = null,
     Object? enableSync = null,
     Object? enableFileSync = null,
+    Object? layout = null,
     Object? dontUploadOver = null,
     Object? dontCopyOver = null,
     Object? pausedTill = freezed,
@@ -326,6 +336,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.enableFileSync
           : enableFileSync // ignore: cast_nullable_to_non_nullable
               as bool,
+      layout: null == layout
+          ? _value.layout
+          : layout // ignore: cast_nullable_to_non_nullable
+              as AppLayout,
       dontUploadOver: null == dontUploadOver
           ? _value.dontUploadOver
           : dontUploadOver // ignore: cast_nullable_to_non_nullable
@@ -409,6 +423,7 @@ class _$AppConfigImpl extends _AppConfig {
       {@Enumerated(EnumType.name) this.themeMode = ThemeMode.system,
       this.enableSync = true,
       this.enableFileSync = true,
+      @Enumerated(EnumType.name) this.layout = AppLayout.grid,
       this.dontUploadOver = $10MB,
       this.dontCopyOver = $10MB,
       this.pausedTill,
@@ -446,6 +461,10 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final bool enableFileSync;
+  @override
+  @JsonKey()
+  @Enumerated(EnumType.name)
+  final AppLayout layout;
 
   /// will prevent auto upload for files over 10 MB
   @override
@@ -522,7 +541,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, hideWhenDragging: $hideWhenDragging, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, hideWhenDragging: $hideWhenDragging, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -536,6 +555,7 @@ class _$AppConfigImpl extends _AppConfig {
                 other.enableSync == enableSync) &&
             (identical(other.enableFileSync, enableFileSync) ||
                 other.enableFileSync == enableFileSync) &&
+            (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.dontUploadOver, dontUploadOver) ||
                 other.dontUploadOver == dontUploadOver) &&
             (identical(other.dontCopyOver, dontCopyOver) ||
@@ -579,6 +599,7 @@ class _$AppConfigImpl extends _AppConfig {
         themeMode,
         enableSync,
         enableFileSync,
+        layout,
         dontUploadOver,
         dontCopyOver,
         pausedTill,
@@ -618,6 +639,7 @@ abstract class _AppConfig extends AppConfig {
       {@Enumerated(EnumType.name) final ThemeMode themeMode,
       final bool enableSync,
       final bool enableFileSync,
+      @Enumerated(EnumType.name) final AppLayout layout,
       final int dontUploadOver,
       final int dontCopyOver,
       final DateTime? pausedTill,
@@ -651,6 +673,9 @@ abstract class _AppConfig extends AppConfig {
   bool get enableSync;
   @override
   bool get enableFileSync;
+  @override
+  @Enumerated(EnumType.name)
+  AppLayout get layout;
   @override
 
   /// will prevent auto upload for files over 10 MB

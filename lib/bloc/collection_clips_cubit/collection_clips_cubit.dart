@@ -48,7 +48,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
             ),
           );
         }
-        break;
+
       case CollectionClipsResultsState(
           :final query,
           :final results,
