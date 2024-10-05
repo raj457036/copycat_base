@@ -26,6 +26,10 @@ mixin _$AppConfig {
   bool get enableFileSync => throw _privateConstructorUsedError;
   @Enumerated(EnumType.name)
   AppLayout get layout => throw _privateConstructorUsedError;
+  @Enumerated(EnumType.name)
+  AppView get view => throw _privateConstructorUsedError;
+  double get windowWidth => throw _privateConstructorUsedError;
+  double get windowHeight => throw _privateConstructorUsedError;
 
   /// will prevent auto upload for files over 10 MB
   int get dontUploadOver => throw _privateConstructorUsedError;
@@ -84,6 +88,9 @@ abstract class $AppConfigCopyWith<$Res> {
       bool enableSync,
       bool enableFileSync,
       @Enumerated(EnumType.name) AppLayout layout,
+      @Enumerated(EnumType.name) AppView view,
+      double windowWidth,
+      double windowHeight,
       int dontUploadOver,
       int dontCopyOver,
       DateTime? pausedTill,
@@ -126,6 +133,9 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? enableSync = null,
     Object? enableFileSync = null,
     Object? layout = null,
+    Object? view = null,
+    Object? windowWidth = null,
+    Object? windowHeight = null,
     Object? dontUploadOver = null,
     Object? dontCopyOver = null,
     Object? pausedTill = freezed,
@@ -162,6 +172,18 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.layout
           : layout // ignore: cast_nullable_to_non_nullable
               as AppLayout,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as AppView,
+      windowWidth: null == windowWidth
+          ? _value.windowWidth
+          : windowWidth // ignore: cast_nullable_to_non_nullable
+              as double,
+      windowHeight: null == windowHeight
+          ? _value.windowHeight
+          : windowHeight // ignore: cast_nullable_to_non_nullable
+              as double,
       dontUploadOver: null == dontUploadOver
           ? _value.dontUploadOver
           : dontUploadOver // ignore: cast_nullable_to_non_nullable
@@ -263,6 +285,9 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       bool enableSync,
       bool enableFileSync,
       @Enumerated(EnumType.name) AppLayout layout,
+      @Enumerated(EnumType.name) AppView view,
+      double windowWidth,
+      double windowHeight,
       int dontUploadOver,
       int dontCopyOver,
       DateTime? pausedTill,
@@ -304,6 +329,9 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? enableSync = null,
     Object? enableFileSync = null,
     Object? layout = null,
+    Object? view = null,
+    Object? windowWidth = null,
+    Object? windowHeight = null,
     Object? dontUploadOver = null,
     Object? dontCopyOver = null,
     Object? pausedTill = freezed,
@@ -340,6 +368,18 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.layout
           : layout // ignore: cast_nullable_to_non_nullable
               as AppLayout,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as AppView,
+      windowWidth: null == windowWidth
+          ? _value.windowWidth
+          : windowWidth // ignore: cast_nullable_to_non_nullable
+              as double,
+      windowHeight: null == windowHeight
+          ? _value.windowHeight
+          : windowHeight // ignore: cast_nullable_to_non_nullable
+              as double,
       dontUploadOver: null == dontUploadOver
           ? _value.dontUploadOver
           : dontUploadOver // ignore: cast_nullable_to_non_nullable
@@ -424,6 +464,9 @@ class _$AppConfigImpl extends _AppConfig {
       this.enableSync = true,
       this.enableFileSync = true,
       @Enumerated(EnumType.name) this.layout = AppLayout.grid,
+      @Enumerated(EnumType.name) this.view = AppView.windowed,
+      this.windowWidth = initialWindowWidth,
+      this.windowHeight = initialWindowHeight,
       this.dontUploadOver = $10MB,
       this.dontCopyOver = $10MB,
       this.pausedTill,
@@ -465,6 +508,16 @@ class _$AppConfigImpl extends _AppConfig {
   @JsonKey()
   @Enumerated(EnumType.name)
   final AppLayout layout;
+  @override
+  @JsonKey()
+  @Enumerated(EnumType.name)
+  final AppView view;
+  @override
+  @JsonKey()
+  final double windowWidth;
+  @override
+  @JsonKey()
+  final double windowHeight;
 
   /// will prevent auto upload for files over 10 MB
   @override
@@ -541,7 +594,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, hideWhenDragging: $hideWhenDragging, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, hideWhenDragging: $hideWhenDragging, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -556,6 +609,11 @@ class _$AppConfigImpl extends _AppConfig {
             (identical(other.enableFileSync, enableFileSync) ||
                 other.enableFileSync == enableFileSync) &&
             (identical(other.layout, layout) || other.layout == layout) &&
+            (identical(other.view, view) || other.view == view) &&
+            (identical(other.windowWidth, windowWidth) ||
+                other.windowWidth == windowWidth) &&
+            (identical(other.windowHeight, windowHeight) ||
+                other.windowHeight == windowHeight) &&
             (identical(other.dontUploadOver, dontUploadOver) ||
                 other.dontUploadOver == dontUploadOver) &&
             (identical(other.dontCopyOver, dontCopyOver) ||
@@ -600,6 +658,9 @@ class _$AppConfigImpl extends _AppConfig {
         enableSync,
         enableFileSync,
         layout,
+        view,
+        windowWidth,
+        windowHeight,
         dontUploadOver,
         dontCopyOver,
         pausedTill,
@@ -640,6 +701,9 @@ abstract class _AppConfig extends AppConfig {
       final bool enableSync,
       final bool enableFileSync,
       @Enumerated(EnumType.name) final AppLayout layout,
+      @Enumerated(EnumType.name) final AppView view,
+      final double windowWidth,
+      final double windowHeight,
       final int dontUploadOver,
       final int dontCopyOver,
       final DateTime? pausedTill,
@@ -676,6 +740,13 @@ abstract class _AppConfig extends AppConfig {
   @override
   @Enumerated(EnumType.name)
   AppLayout get layout;
+  @override
+  @Enumerated(EnumType.name)
+  AppView get view;
+  @override
+  double get windowWidth;
+  @override
+  double get windowHeight;
   @override
 
   /// will prevent auto upload for files over 10 MB

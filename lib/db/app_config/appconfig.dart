@@ -2,6 +2,7 @@ import 'dart:convert' show jsonDecode;
 
 import 'package:copycat_base/constants/numbers/duration.dart';
 import 'package:copycat_base/constants/numbers/file_sizes.dart';
+import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/data/services/encryption.dart';
 import 'package:copycat_base/db/base.dart';
 import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
@@ -17,6 +18,14 @@ const int defaultThemeColor = 0xFF7469B6;
 
 enum AppLayout { grid, list }
 
+enum AppView {
+  topDocked,
+  bottomDocked,
+  leftDocked,
+  rightDocked,
+  windowed,
+}
+
 @freezed
 @Collection(ignore: {"copyWith"})
 class AppConfig with _$AppConfig, IsarIdMixin {
@@ -27,6 +36,9 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default(true) bool enableSync,
     @Default(true) bool enableFileSync,
     @Default(AppLayout.grid) @Enumerated(EnumType.name) AppLayout layout,
+    @Default(AppView.windowed) @Enumerated(EnumType.name) AppView view,
+    @Default(initialWindowWidth) double windowWidth,
+    @Default(initialWindowHeight) double windowHeight,
 
     /// will prevent auto upload for files over 10 MB
     @Default($10MB) int dontUploadOver,
@@ -79,6 +91,17 @@ class AppConfig with _$AppConfig, IsarIdMixin {
 
   factory AppConfig.fromJson(Map<String, dynamic> json) =>
       _$AppConfigFromJson(json);
+
+  @ignore
+  Size get windowSize {
+    final width = windowWidth.isNaN || windowWidth.isNegative
+        ? initialWindowWidth
+        : windowWidth;
+    final height = windowHeight.isNaN || windowHeight.isNegative
+        ? initialWindowHeight
+        : windowHeight;
+    return Size(width, height);
+  }
 
   @ignore
   ExclusionRules get copyExclusionRules =>

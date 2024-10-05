@@ -125,3 +125,10 @@ final isDesktopPlatform =
 final isApplePlatform = Platform.isIOS || Platform.isMacOS;
 
 final isMobilePlatform = Platform.isIOS || Platform.isAndroid;
+
+/// Simple wrapper around [Future.delayed] to wait for few seconds.
+///
+/// Default: 2 seconds
+Future<void> wait([int milliSeconds = 2000]) async {
+  await Future.delayed(Duration(milliseconds: milliSeconds));
+}

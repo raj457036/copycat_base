@@ -99,27 +99,38 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     return (config, false);
   }
 
-  Future<void> load([Subscription? subscription]) async {
+  Future<AppConfigState> load([Subscription? subscription]) async {
     emit(state.copyWith(isLoading: true));
     final appConfig = await repo.get();
 
-    await appConfig.fold(
-      (l) async => emit(state.copyWith(failure: l, isLoading: false)),
+    final next = await appConfig.fold(
+      (l) async {
+        final newState = state.copyWith(failure: l, isLoading: false);
+        emit(newState);
+        return newState;
+      },
       (r) async {
         if (subscription != null) {
           final (config, changed) = applyForSubscription(r, subscription);
           if (changed) {
-            emit(state.copyWith(config: config, isLoading: false));
+            final newState = state.copyWith(config: config, isLoading: false);
+            emit(newState);
             await repo.update(config);
+            return newState;
           } else {
-            emit(state.copyWith(config: r, isLoading: false));
+            final newState = state.copyWith(config: r, isLoading: false);
+            emit(newState);
+            return newState;
           }
         } else {
-          emit(state.copyWith(config: r, isLoading: false));
+          final newState = state.copyWith(config: r, isLoading: false);
+          emit(newState);
+          return newState;
         }
       },
     );
     initializeExclusionChecker();
+    return next;
   }
 
   bool get isCopyingPaused =>
@@ -151,6 +162,22 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   Future<void> changeAppLayout(AppLayout layout) async {
     final newConfig = state.config.copyWith(layout: layout)
       ..applyId(state.config);
+    emit(AppConfigState.loaded(config: newConfig));
+    await repo.update(newConfig);
+  }
+
+  Future<void> changeAppView(AppView view) async {
+    final newConfig = state.config.copyWith(view: view)..applyId(state.config);
+    emit(AppConfigState.loaded(config: newConfig));
+    await repo.update(newConfig);
+  }
+
+  Future<void> changeWindowSize({double? width, double? height}) async {
+    final config = state.config;
+    final newConfig = config.copyWith(
+      windowWidth: width ?? config.windowWidth,
+      windowHeight: height ?? config.windowHeight,
+    )..applyId(config);
     emit(AppConfigState.loaded(config: newConfig));
     await repo.update(newConfig);
   }

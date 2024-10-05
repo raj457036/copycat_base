@@ -1,5 +1,8 @@
+import 'dart:math' show min;
+
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
+import 'package:copycat_base/db/app_config/appconfig.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -10,14 +13,6 @@ import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
 part 'window_action_state.dart';
-
-enum AppView {
-  topDocked,
-  bottomDocked,
-  leftDocked,
-  rightDocked,
-  windowed,
-}
 
 @injectable
 class WindowActionCubit extends Cubit<WindowActionState> {
@@ -47,12 +42,6 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     return initialWindowSize.width;
   }
 
-  Future<void> fetch() async {
-    if (!isDesktopPlatform) return;
-    await setupScreenInfo();
-    await setWindowdView();
-  }
-
   Future<void> setupScreenInfo() async {
     primaryDisplay = await screenRetriever.getPrimaryDisplay();
     isFocused = await windowManager.isFocused();
@@ -61,7 +50,21 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     );
   }
 
-  Future<void> setDockedView(AppView view) async {
+  Future<void> setup(AppView view, [Size? size]) async {
+    if (!isDesktopPlatform) return;
+    await setupScreenInfo();
+    await changeView(view, size);
+  }
+
+  Future<void> changeView(AppView view, [Size? size]) async {
+    if (view == AppView.windowed) {
+      await setWindowdView(size);
+    } else {
+      await setDockedView(view, size);
+    }
+  }
+
+  Future<void> setDockedView(AppView view, [Size? size]) async {
     assert(view != AppView.windowed, "Only docked views allowed");
 
     final Alignment alignment = switch (view) {
@@ -74,12 +77,11 @@ class WindowActionCubit extends Cubit<WindowActionState> {
 
     final Size dockedMaxSize = switch (view) {
       AppView.leftDocked || AppView.rightDocked => Size(
-          dockedLRMaxWidth,
+          min(dockedLRMaxWidth, size?.width ?? dockedLRMaxWidth),
           displayHeight,
         ),
-      AppView.topDocked ||
-      AppView.bottomDocked =>
-        Size(displayWidth, dockedTBMaxHeight),
+      AppView.topDocked || AppView.bottomDocked => Size(displayWidth,
+          min(dockedTBMaxHeight, size?.height ?? dockedTBMaxHeight)),
       _ => initialWindowSize,
     };
 
@@ -105,16 +107,17 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     emit(state.copyWith(view: view));
   }
 
-  Future<void> setWindowdView() async {
-    await windowManager.setSize(initialWindowSize);
-    await windowManager.center(animate: true);
+  Future<void> setWindowdView([Size? size]) async {
     windowManager.setMinimumSize(minimumWindowSize);
     if (primaryDisplay != null) {
       windowManager.setMaximumSize(primaryDisplay!.size);
     }
     windowManager.setMovable(true);
-    windowManager.setTitleBarStyle(TitleBarStyle.hidden);
     windowManager.setAlwaysOnTop(false);
+    windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+    await wait(250);
+    windowManager.setSize(size ?? initialWindowSize);
+    windowManager.center(animate: true);
     emit(state.copyWith(view: AppView.windowed));
   }
 

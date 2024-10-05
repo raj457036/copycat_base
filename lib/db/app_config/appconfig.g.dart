@@ -125,6 +125,22 @@ const AppConfigSchema = CollectionSchema(
       id: 20,
       name: r'toggleHotkey',
       type: IsarType.string,
+    ),
+    r'view': PropertySchema(
+      id: 21,
+      name: r'view',
+      type: IsarType.string,
+      enumMap: _AppConfigviewEnumValueMap,
+    ),
+    r'windowHeight': PropertySchema(
+      id: 22,
+      name: r'windowHeight',
+      type: IsarType.double,
+    ),
+    r'windowWidth': PropertySchema(
+      id: 23,
+      name: r'windowWidth',
+      type: IsarType.double,
     )
   },
   estimateSize: _appConfigEstimateSize,
@@ -174,6 +190,7 @@ int _appConfigEstimateSize(
       bytesCount += 3 + value.length * 3;
     }
   }
+  bytesCount += 3 + object.view.name.length * 3;
   return bytesCount;
 }
 
@@ -209,6 +226,9 @@ void _appConfigSerialize(
   writer.writeString(offsets[18], object.themeMode.name);
   writer.writeString(offsets[19], object.themeVariant.name);
   writer.writeString(offsets[20], object.toggleHotkey);
+  writer.writeString(offsets[21], object.view.name);
+  writer.writeDouble(offsets[22], object.windowHeight);
+  writer.writeDouble(offsets[23], object.windowWidth);
 }
 
 AppConfig _appConfigDeserialize(
@@ -248,6 +268,10 @@ AppConfig _appConfigDeserialize(
             reader.readStringOrNull(offsets[19])] ??
         DynamicSchemeVariant.tonalSpot,
     toggleHotkey: reader.readStringOrNull(offsets[20]),
+    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[21])] ??
+        AppView.topDocked,
+    windowHeight: reader.readDouble(offsets[22]),
+    windowWidth: reader.readDouble(offsets[23]),
   );
   object.id = id;
   return object;
@@ -311,6 +335,13 @@ P _appConfigDeserializeProp<P>(
           DynamicSchemeVariant.tonalSpot) as P;
     case 20:
       return (reader.readStringOrNull(offset)) as P;
+    case 21:
+      return (_AppConfigviewValueEnumMap[reader.readStringOrNull(offset)] ??
+          AppView.topDocked) as P;
+    case 22:
+      return (reader.readDouble(offset)) as P;
+    case 23:
+      return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -355,6 +386,20 @@ const _AppConfigthemeVariantValueEnumMap = {
   r'content': DynamicSchemeVariant.content,
   r'rainbow': DynamicSchemeVariant.rainbow,
   r'fruitSalad': DynamicSchemeVariant.fruitSalad,
+};
+const _AppConfigviewEnumValueMap = {
+  r'topDocked': r'topDocked',
+  r'bottomDocked': r'bottomDocked',
+  r'leftDocked': r'leftDocked',
+  r'rightDocked': r'rightDocked',
+  r'windowed': r'windowed',
+};
+const _AppConfigviewValueEnumMap = {
+  r'topDocked': AppView.topDocked,
+  r'bottomDocked': AppView.bottomDocked,
+  r'leftDocked': AppView.leftDocked,
+  r'rightDocked': AppView.rightDocked,
+  r'windowed': AppView.windowed,
 };
 
 Id _appConfigGetId(AppConfig object) {
@@ -1726,6 +1771,263 @@ extension AppConfigQueryFilter
       ));
     });
   }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewEqualTo(
+    AppView value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'view',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewGreaterThan(
+    AppView value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'view',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewLessThan(
+    AppView value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'view',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewBetween(
+    AppView lower,
+    AppView upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'view',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'view',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'view',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'view',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'view',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'view',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> viewIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'view',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> windowHeightEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'windowHeight',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      windowHeightGreaterThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'windowHeight',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      windowHeightLessThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'windowHeight',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> windowHeightBetween(
+    double lower,
+    double upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'windowHeight',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> windowWidthEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'windowWidth',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      windowWidthGreaterThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'windowWidth',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> windowWidthLessThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'windowWidth',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> windowWidthBetween(
+    double lower,
+    double upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'windowWidth',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
 }
 
 extension AppConfigQueryObject
@@ -1982,6 +2284,42 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByToggleHotkeyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'toggleHotkey', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByView() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'view', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByViewDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'view', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByWindowHeight() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowHeight', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByWindowHeightDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowHeight', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByWindowWidth() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowWidth', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByWindowWidthDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowWidth', Sort.desc);
     });
   }
 }
@@ -2242,6 +2580,42 @@ extension AppConfigQuerySortThenBy
       return query.addSortBy(r'toggleHotkey', Sort.desc);
     });
   }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByView() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'view', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByViewDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'view', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByWindowHeight() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowHeight', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByWindowHeightDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowHeight', Sort.desc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByWindowWidth() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowWidth', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByWindowWidthDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'windowWidth', Sort.desc);
+    });
+  }
 }
 
 extension AppConfigQueryWhereDistinct
@@ -2369,6 +2743,25 @@ extension AppConfigQueryWhereDistinct
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'toggleHotkey', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByView(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'view', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByWindowHeight() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'windowHeight');
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByWindowWidth() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'windowWidth');
     });
   }
 }
@@ -2508,6 +2901,24 @@ extension AppConfigQueryProperty
       return query.addPropertyName(r'toggleHotkey');
     });
   }
+
+  QueryBuilder<AppConfig, AppView, QQueryOperations> viewProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'view');
+    });
+  }
+
+  QueryBuilder<AppConfig, double, QQueryOperations> windowHeightProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'windowHeight');
+    });
+  }
+
+  QueryBuilder<AppConfig, double, QQueryOperations> windowWidthProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'windowWidth');
+    });
+  }
 }
 
 // **************************************************************************
@@ -2522,6 +2933,12 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       enableFileSync: json['enableFileSync'] as bool? ?? true,
       layout: $enumDecodeNullable(_$AppLayoutEnumMap, json['layout']) ??
           AppLayout.grid,
+      view: $enumDecodeNullable(_$AppViewEnumMap, json['view']) ??
+          AppView.windowed,
+      windowWidth:
+          (json['windowWidth'] as num?)?.toDouble() ?? initialWindowWidth,
+      windowHeight:
+          (json['windowHeight'] as num?)?.toDouble() ?? initialWindowHeight,
       dontUploadOver: (json['dontUploadOver'] as num?)?.toInt() ?? $10MB,
       dontCopyOver: (json['dontCopyOver'] as num?)?.toInt() ?? $10MB,
       pausedTill: json['pausedTill'] == null
@@ -2550,6 +2967,9 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'enableSync': instance.enableSync,
       'enableFileSync': instance.enableFileSync,
       'layout': _$AppLayoutEnumMap[instance.layout]!,
+      'view': _$AppViewEnumMap[instance.view]!,
+      'windowWidth': instance.windowWidth,
+      'windowHeight': instance.windowHeight,
       'dontUploadOver': instance.dontUploadOver,
       'dontCopyOver': instance.dontCopyOver,
       'pausedTill': instance.pausedTill?.toIso8601String(),
@@ -2577,6 +2997,14 @@ const _$ThemeModeEnumMap = {
 const _$AppLayoutEnumMap = {
   AppLayout.grid: 'grid',
   AppLayout.list: 'list',
+};
+
+const _$AppViewEnumMap = {
+  AppView.topDocked: 'topDocked',
+  AppView.bottomDocked: 'bottomDocked',
+  AppView.leftDocked: 'leftDocked',
+  AppView.rightDocked: 'rightDocked',
+  AppView.windowed: 'windowed',
 };
 
 const _$DynamicSchemeVariantEnumMap = {
