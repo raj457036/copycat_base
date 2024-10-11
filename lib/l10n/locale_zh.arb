@@ -1,0 +1,435 @@
+{
+    "@@locale": "zh",
+    "@@author": "Raj Singh",
+    "appName": "CopyCat",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+	"zh": "简体中文",
+	"zh_cn": "简体中文",
+    "language": "语言",
+    "enterEmail": "请输入你的邮箱",
+    "validEmailError": "请输入有效的电子邮件地址",
+    "enterPassword": "输入您的密码",
+    "passwordLengthError": "请输入至少6个字符的密码",
+    "signIn": "登录",
+    "signUp": "注册",
+    "forgotPassword": "忘记密码了？",
+    "dontHaveAccount": "没有账户？注册",
+    "haveAccount": "已经有帐户？登录",
+    "sendPasswordReset": "发送密码重置邮箱",
+    "backToSignIn": "返回登录",
+    "updatePassword": "更新密码",
+    "unexpectedError": "发生了意外错误",
+    "passwordResetSent": "密码重置电子邮件已发送",
+    "collections": "收藏",
+    "collection": "收藏",
+    "createCollection": "创建集合",
+    "editCollection": "编辑集合",
+    "cancel": "取消",
+    "save": "保存",
+    "edit": "编辑",
+    "description": "描述",
+    "noDescription": "无描述",
+    "noResultsWereFound": "没有找到结果",
+    "driveSetupDone": "驱动安装完成 🥳",
+    "pleaseWaitWhileWeSetupSyncing": "请稍候，我们正在设置同步",
+    "driveSetupMayTakeFewMin": "这可能需要大约一分钟才能完成。\n（请不要关闭应用）",
+    "refreshNow": "立即刷新",
+    "newUpdates": "可用的更改：\n {added} 已添加， {updated} 已更新和 {deleted} 已删除",
+    "@newUpdates": {
+        "placeholders": {
+            "added": {
+                "type": "int"
+            },
+            "updated": {
+                "type": "int"
+            },
+            "deleted": {
+                "type": "int"
+            }
+        }
+    },
+    "itemDeleted": "项目已删除",
+    "deletingFromCloud": "从云端删除",
+    "emptyClipboard": "你的剪贴板为空",
+    "loadMore": "加载更多",
+    "clipboard": "剪贴板",
+    "search": "搜索",
+    "share": "分享",
+    "export": "出口",
+    "searchClipboard": "搜索剪贴板",
+    "settings": "设置",
+    "copyCatClipboard": "CopyCat剪贴板",
+    "oneClipboardLimitlessPosibility": "一个剪贴板，无限可能",
+    "fullName": "全名",
+    "preview": "预览",
+    "editDetails": "编辑详情",
+    "title": "标题",
+    "nothingHere": "这里什么都没有",
+    "downloading": "下载中",
+    "downloadForOffline": "下载供离线使用",
+    "copyToClipboard": "复制到剪贴板",
+    "delete": "删除",
+    "resetYourPassword": "重设您的密码",
+    "passwordResetSuccess": "密码重置成功",
+    "findWhateverYouLooking": "找到你想找的任何东西...",
+    "noResults": "没有找到结果。",
+    "searchInClipboard": "在剪贴板中搜索",
+    "basicLocal": "基本 • 本地",
+    "localSettingsDesc": "这些设置仅适用于此设备。",
+    "theme": "主题",
+    "syncLocal": "同步 • 本地",
+    "dontAutoCopyOver": "不要自动复制粘贴",
+    "dontAutoCopyOverDesc": "超出一定大小 ({size}) 的文件和媒体不会自动复制。",
+    "@dontAutoCopyOverDesc": {
+        "placeholders": {
+            "size": {
+                "type": "String"
+            }
+        }
+    },
+    "dontAutoUploadOver": "不自动上传结束",
+    "dontAutoUploadOverDesc": "超过一定大小 ({size}) 的文件和媒体不会自动上传。",
+    "@dontAutoUploadOverDesc": {
+        "placeholders": {
+            "size": {
+                "type": "String"
+            }
+        }
+    },
+    "enableSync": "启用同步",
+    "enableSyncDesc": "跨设备同步您的剪辑",
+    "syncFiles": "同步文件和媒体",
+    "syncFilesDesc": "在各个设备上使您的文件和媒体项目保持更新。",
+    "connected": "已连接",
+    "loading": "加载中...",
+    "authorizing": "正在授权...",
+    "connectNow": "立即连接",
+    "tips": "小提示",
+    "cloudStorageInfoDefault": "Google 云盘未连接，文件和媒体同步已禁用。",
+    "cloudStorageInfo": "{info}您的文件和媒体通过Google Drive安全地跨设备同步，以保护您的隐私。",
+    "@cloudStorageInfo": {
+        "placeholders": {
+            "info": {
+                "type": "String"
+            }
+        }
+    },
+    "attentionNeeded": "⚠ 需要注意！",
+    "isPaused": "是否暂停？",
+    "isPausedDesc": "{isPaused, select, true{Auto copy is not paused} other{Auto Copy is paused until {till}}}",
+    "@isPausedDesc": {
+        "placeholders": {
+            "isPaused": {
+                "type": "String"
+            },
+            "till": {
+                "type": "String"
+            }
+        }
+    },
+    "paste": "粘贴",
+    "copy": "复制",
+    "previewEdit": "预览和编辑",
+    "pastingTheSharedContent": "將共享內容粘貼到剪貼簿",
+    "smartPaste": "智能粘贴",
+    "smartPasteDesc": "启用直接将剪贴板内容粘贴到上一个焦点窗口的功能。",
+    "launchAtStartup": "启动时运行",
+    "launchAtStartupDesc": "启用后，可在您的设备启动时自动启动该应用。",
+    "autoSyncInterval": "自动同步间隔",
+    "autoSyncIntervalDesc": "剪贴板将自动同步",
+    "clipboardShortcut": "剪贴板快捷方式",
+    "clipboardShortcutDesc": "轻松在任何地方访问剪贴板",
+    "clipboardShortcutPreview": "当前快捷键：{key}",
+    "@clipboardShortcutPreview": {
+        "placeholders": {
+            "key": {
+                "type": "String"
+            }
+        }
+    },
+    "unassigned": "未分配",
+    "system": "系统",
+    "light": "光",
+    "dark": "黑暗",
+    "local": "本地的",
+    "uploading": "上传中...",
+    "pleaseWait": "请稍候...",
+    "open": "打开",
+    "noCollection": "无收藏",
+    "chooseCollection": "选择收藏",
+    "changeCollection": "改变集合",
+    "removeFromCollection": "从收藏夹中移除",
+    "compactMode": "紧凑模式",
+    "createACollection": "创建新集合 ( {left} 剩余 )",
+    "@createACollection": {
+        "placeholders": {
+            "left": {
+                "type": "String"
+            }
+        }
+    },
+    "logout": "退出登录",
+    "logoutMessage": "⚠️ 警告 ⚠️\n\n注销将会删除本地数据库中未同步的更改。您确定要继续吗？",
+    "loggingYouOut": "正在登出！请稍等...",
+    "logoutSuccess": "退出成功",
+    "internetConnected": "联网连接",
+    "internetDisconnected": "互联网连接已断开",
+    "noCollectionFound": "未找到集合",
+    "pinToTop": "固定在顶部",
+    "done": "完成",
+    "failed": "失败",
+    "syncNow": "立即同步",
+    "syncNotAvailable": "同步不可用",
+    "checkingForRecord": "检查记录",
+    "sync": "同步",
+    "syncing": "同步中",
+    "syncingCheckFailed": "同步检查失败：{message}",
+    "@syncingCheckFailed": {
+        "placeholders": {
+            "message": {
+                "type": "String"
+            }
+        }
+    },
+    "synced": "✅ 更改同步",
+    "showWindow": "显示窗口",
+    "hideWindow": "隐藏窗口",
+    "hideWindowDesc": "提示：使用键盘快捷键显示剪贴板。",
+    "quit": "退出",
+    "quitDesc": "您确定要退出吗？",
+    "yes": "是的",
+    "no": "没有",
+    "openInBrowser": "在浏览器中打开",
+    "makePhoneCall": "打电话",
+    "selectCollection": "选择一个集合",
+    "confirm": "确认",
+    "recordKeyboardShortcut": "记录键盘快捷键。",
+    "recordKeyboardShortcutDesc": "使用键盘输入您的快捷键并点击",
+    "subscription": "订阅",
+    "beta": "公开测试版",
+    "featureListDetail": "CopyCat 剪贴板目前处于Beta阶段。虽然我们努力提供无缝的体验，但您可能会遇到偶尔的错误。敬请关注即将推出的功能和增强功能。",
+    "currentPlan": "当前计划",
+    "currentPlanLabel": "当前计划 • {label}",
+    "@currentPlanLabel": {
+        "placeholders": {
+            "label": {
+                "type": "String"
+            }
+        }
+    },
+    "included": "包含",
+    "unlimitedClipboardItems": "无限剪贴板项目",
+    "unlimitedClipboardItemsDesc": "永远不会因为空间不足而有任何限制，无限的剪贴板项，确保你始终可以访问最近复制的内容。",
+    "supportAllMajorPlatforms": "支持所有主要平台",
+    "supportAllMajorPlatformsDesc": "在所有主要平台（Android、iOS、Windows、macOS、Linux）之间无缝同步，以确保在任何地方不间断地工作效率。",
+    "supportsAppleUniversalClipboard": "支持Apple通用剪贴板",
+    "supportsAppleUniversalClipboardDesc": "轻松在您的苹果设备之间传输剪贴板内容，支持苹果通用剪贴板。",
+    "onDeviceStorage": "设备存储",
+    "onDeviceStorageDesc": "通过设备存储保持您的数据安全，确保您的剪贴板项目始终在您触手可及的范围内，并且处于您的控制之下。",
+    "googleDriveIntegration": "Google 云盘集成",
+    "googleDriveIntegrationDesc": "在Google Drive上安全存储文件和媒体，与CopyCat剪贴板无缝集成，以增强数据管理。",
+    "instantSearch": "立即搜索",
+    "instantSearchDesc": "通过强大的即时搜索功能，即刻找到您所需的内容，使剪贴板项目的检索快速高效。",
+    "syncingUpToLast24Hours": "同步至前 24 小时",
+    "syncingUpToLast24HoursDesc": "在所有设备上访问和同步过去 24 小时内的剪贴板历史记录。这样可以确保您永远不会丢失重要的复制项，使您的工作流顺畅高效。",
+    "upTo3Collections": "最多 3 个集合",
+    "upTo3CollectionsDesc": "将您的剪贴板条目组织成最多 3 个集合，从而提供简单的分类以更好地管理工作流程。",
+    "autoSyncEvery45Seconds": "自动同步 每45秒钟",
+    "autoSyncEvery45SecondsDesc": "享受剪贴板项目每45秒自动同步的功能，无需手动干预即可保持您的设备处于最新状态。",
+    "withPro": "与 PRO ✨",
+    "withProDesc": "包含免费版中的所有内容 +",
+    "supportE2EE": "支持端到端加密",
+    "supportE2EEDesc": "E2EE 将使一切都加密，从而提供卓越的隐私保护。",
+    "upto50Collection": "最多 50 个集合",
+    "upto50CollectionDesc": "将剪贴板条目组织到最多 50 个集合中，以实现最终管理。",
+    "syncLast720Hr": "同步至过去 30 天",
+    "syncLast720HrDesc": "剪贴板历史记录会在您所有设备上同步最近 30 天内创建的剪贴内容。这意味着您可以访问过去一个月内复制的任何剪贴内容，无论您使用哪个设备。",
+    "realtimeSync": "实时同步",
+    "realtimeSyncDesc": "体验闪电般快速的同步。",
+    "prioritySupport": "更快和优先的支持",
+    "prioritySupportDesc": "作为PRO用户，获得及时和优先的支持。",
+    "earlyAccessToNewFeature": "新功能的早期访问",
+    "earlyAccessToNewFeatureDesc": "成为第一个尝试新功能和更新的人。",
+    "termsAgreeP1": "继续即表示您同意以下内容",
+    "privacyPolicies": "隐私政策",
+    "and": "和",
+    "termsOfService": "服务条款",
+    "termsAgreeP2": "看起来你并没有提供英文文本，请提供文本以便我为您翻译成中文。",
+    "backToApp": "返回应用程序",
+    "experimental": "🧪",
+    "experimentalDescription": "该功能是实验性的，可能无法按照预期工作。",
+    "selectAnOption": "选择一个选项",
+    "advanceSecurity": "先进安全性",
+    "endToEndVault": "端到端加密库",
+    "accessE2eeVault": "访问您的端到端加密保险箱设置",
+    "encryptClipboard": "加密剪贴板",
+    "encryptClipboardDesc": "在与云端同步之前加密剪贴板。",
+    "$5Sec": "即时",
+    "$10Sec": "快速的",
+    "$20Sec": "迅速",
+    "$45Sec": "平衡的",
+    "$60Sec": "休闲",
+    "$5MB": "5 MB",
+    "$10MB": "10 MB",
+    "$20MB": "20 MB",
+    "$50MB": "50 MB",
+    "$100MB": "100 MB",
+    "e2eeNotSetup": "尚未设置端到端加密。",
+    "settingE2eeVault": "设置 E2EE 保险库",
+    "e2eeSetupWarning": "如果您丢失了您的 E2EE 密钥且没有备份，您的加密数据将永久无法访问。请确保您的密钥安全并备份。",
+    "e2eeSetupDesc": "生成您的 E2EE 保管库密钥并将其保存在安全的位置。您将需要此密钥来设置其他设备以访问您的加密信息。",
+    "generating": "生成中...",
+    "generateKey": "生成 E2EE 保险箱密钥",
+    "importE2eeKey": "导入 E2EE 保管库密钥",
+    "importE2eeInvalidKey": "⚠️ 导入的密钥无效！",
+    "importE2eeDesc": "在下方导入您的E2EE保险柜密钥，以启用对您在此设备上加密信息的访问。请确保密钥安全存储并且不与任何人共享。",
+    "importing": "导入中...",
+    "importKey": "导入 E2EE 保管库密钥",
+    "e2eeVault": "E2EE保险库",
+    "e2eeExportNote": "恭喜，您已成功配置了端到端加密。",
+    "e2eeExportDesc": "点击下面的按钮导出您的E2EE保险库密钥。\n请将密钥存储在安全的位置，以确保您能够在其他设备上设置访问加密信息。",
+    "exportKey": "导出 E2EE 保险箱密钥",
+    "exportSuccess": "✅ 导出成功",
+    "copySuccess": "✅ 已成功复制到剪贴板",
+    "whatsNew": "有什么新鲜事？",
+    "feature1": "智能跨平台剪贴板",
+    "feature1Desc": "无缝同步你的剪贴板内容至所有设备。不论是文本、图片还是文件，在任何地方都能访问你的剪贴板历史记录。",
+    "feature2": "无限历史记录，搭配即时搜索",
+    "feature2Desc": "永远不再丢失复制的条目。我们的无限历史功能确保您可以即时搜索和检索任何过去的剪贴板条目。",
+    "feature3": "智能粘贴",
+    "feature3Desc": "使用智能粘贴功能，并根据上下文提供建议。通过快速访问当前任务所需内容来节省时间。",
+    "feature4": "收藏",
+    "feature4Desc": "将剪贴板内容整理成集合，便于快速访问和管理。非常适合项目、研究等用途。",
+    "gettingStarted": "开始使用",
+    "howToUse": "如何使用",
+    "howToUseDesc": "如何使用CopyCat？ 阅读我们的文档以开始使用。",
+    "tutorials": "视频教程",
+    "tutorialsDesc": "通过我们的逐步视频教程，学习如何充分利用 CopyCat。",
+    "learnAboutFeatures": "了解 CopyCat 所提供的所有功能。",
+    "learn": "学习",
+    "upgrade": "升级",
+    "trialTill": "试用到期 {till}",
+    "@trialTill": {
+        "placeholders": {
+            "till": {
+                "type": "String"
+            }
+        }
+    },
+    "expiredPlan": "{planName} • 已过期",
+    "@expiredPlan": {
+        "placeholders": {
+            "planName": {
+                "type": "String"
+            }
+        }
+    },
+    "displayName": "显示名称",
+    "email": "电子邮件",
+    "accountSettings": "帐户设置",
+    "dangerZone": "危险区域",
+    "requestAccountDeletion": "请求删除账户",
+    "myAccount": "我的账户",
+    "accountDeleteDialogTitle": "帐户删除请求",
+    "accountDeleteDialogDesc": "您将被重定向至账户删除请求表格，您确定吗？",
+    "unlockPremiumFeatures": "解锁 CopyCat PRO",
+    "upgradeToPro": "享受超过 30 天的同步历史记录、超过 50 个收藏夹、端到端加密、实时同步、访问最新功能等更多内容。",
+    "tryAgain": "请再试一次",
+    "continue_": "继续",
+    "year": "年份",
+    "month": "月份",
+    "manageSubscriptions": "管理订阅",
+    "promoSub": "您目前正在使用促销订阅，有效期至 {till}",
+    "@promoSub": {
+        "placeholders": {
+            "till": {
+                "type": "String"
+            }
+        }
+    },
+    "subscriptionUpdated": "订阅已更新",
+    "grantedEntitlement": "已授予的权利",
+    "grantedEntitlementDesc": "已授予权限代码与特定个人共享，用于自定义权限。您可以通过查看邀请是否仍然可用来进行检查",
+    "clickingHere": "点击这里。",
+    "enterCodeSubmit": "输入验证码并点击提交",
+    "submit": "提交",
+    "subscribeInSupportedPlatform": "要在Copycat Clipboard上访问高级功能，请通过Play Store或Apple App Store订阅。您的订阅将在所有设备（包括Linux和Windows）上同步。",
+    "timeSyncWarning": "⚠️ 时间同步警告",
+    "timeSyncWarningNote1": "检测到设备时间不一致",
+    "timeSyncWarningNote2": "要确保剪贴板同步的准确性，请检查并纠正您的设备时间设置。",
+    "timeSyncWarningNote3": "时间设置不一致可能会导致同步问题。",
+    "checkAgain": "重新检查",
+    "shareYourFeedback": "分享您的反馈",
+    "shareYourFeedbackDesc": "我們重視您的想法！無論是建議、錯誤報告，還是只是打個招呼，您的意見對我們都無比寶貴。",
+    "joinDiscord": "加入我们的 Discord 社区",
+    "joinDiscordDesc": "与其他用户建立联系，分享想法，获取更新，并与我们直接聊天。",
+    "joinGoogleGroup": "加入我们的谷歌群组",
+    "joinGoogleGroupDesc": "在我们的Google小组中获取资讯并与其他用户合作",
+    "rebuildingDB": "重建数据库中，请稍候...",
+    "proTip": "专业提示",
+    "useCollectionProTip": "为了确保您的重要剪辑无论何时都可以访问，在所有您的设备上，请将它们保存在一个集合中！",
+    "syncConfigNotAvailable": "使用本地剪贴板时，同步相关的配置不可用。",
+    "useLocally": "本地使用",
+    "useLocallyDesc": "不进行同步。所有数据都保留在您的设备上。",
+    "maxDroppableItem": "一次最多允许丢弃{count}件物品。",
+    "@maxDroppableItem": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "dropHere": "在这里拖放您的文件、图片或文本",
+    "general": "一般",
+    "customization": "定制",
+    "syncingLabel": "同步",
+    "encryption": "加密",
+    "searchFilters": "搜索过滤器",
+    "from": "来自",
+    "to": "至／到",
+    "now": "现在",
+    "including": "包括",
+    "text": "文本",
+    "url": "统一资源定位符",
+    "media": "媒体",
+    "docs": "文档",
+    "textCategories": "文本类别",
+    "exclusive": "（独家）",
+    "phone": "电话",
+    "color": "颜色",
+    "sortBy": "排序方式",
+    "select": "选择",
+    "lastModified": "最后修改时间",
+    "created": "创建",
+    "copyCount": "复制计数",
+    "lastCopied": "最近复制的",
+    "sortOrder": "排序顺序",
+    "asc": "升",
+    "desc": "描述",
+    "applyFilter": "应用过滤器",
+    "themeColor": "主题颜色",
+    "themeColorDesc": "这个颜色将会影响应用程序的整体外观和体验。",
+    "change": "改变",
+    "colorMode": "颜色模式",
+    "colorModeDesc": "选择颜色模式来定制应用的外观。默认选项是色调斑点。",
+    "tonalSpot": "色调斑点",
+    "content": "内容",
+    "expressive": "富有表现力的",
+    "fidility": "保真度",
+    "fruitSalad": "水果沙拉",
+    "monochrome": "单色",
+    "neutral": "中立的",
+    "rainbow": "彩虹",
+    "vibrant": "鲜艳的",
+    "dragNDropFeature": "拖拽",
+    "dragNDropFeatureDesc": "在您的桌面和平板设备上无缝地移动项目。",
+    "experimentalLabel": "实验性的",
+    "dragNdrop": "拖放",
+    "dragNdropDesc": "允许项目在应用程序内双向自由移动。",
+    "featureNotSupported": "抱歉，這個功能目前在您的平台上不可用。",
+    "themingFeature": "主题化",
+    "themingFeatureDesc": "自定义整个应用程序的外观和感觉，以符合您的偏好。"
+}

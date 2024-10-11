@@ -6,6 +6,8 @@
     "es": "Spanish",
     "fr": "French",
     "de": "German",
+    "zh": "Chinese",
+	"zh_cn": "Simplified Chinese",
     "language": "Language",
     "enterEmail": "Enter your email",
     "validEmailError": "Please enter a valid email address",

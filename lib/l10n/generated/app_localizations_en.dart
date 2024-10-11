@@ -22,6 +22,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get de => 'German';
 
   @override
+  String get zh => 'Chinese';
+
+  @override
+  String get zh_cn => 'Simplified Chinese';
+
+  @override
   String get language => 'Language';
 
   @override

@@ -22,6 +22,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get de => 'Allemand';
 
   @override
+  String get zh => 'Chinois';
+
+  @override
+  String get zh_cn => 'Chinois simplifié';
+
+  @override
   String get language => 'Langue';
 
   @override

@@ -1,11 +1,12 @@
 {
-    "@@locale": "zh-cn",
+    "@@locale": "zh_CN",
     "@@author": "Raj Singh",
     "appName": "CopyCat",
     "en": "English",
     "es": "Spanish",
     "fr": "French",
     "de": "German",
+	"zh": "简体中文",
 	"zh_cn": "简体中文",
     "language": "语言",
     "enterEmail": "请输入你的邮箱",
@@ -162,7 +163,7 @@
     "changeCollection": "改变集合",
     "removeFromCollection": "从收藏夹中移除",
     "compactMode": "紧凑模式",
-    "createACollection": "创建新集合 ( {左} 剩余 )",
+    "createACollection": "创建新集合 ( {left} 剩余 )",
     "@createACollection": {
         "placeholders": {
             "left": {

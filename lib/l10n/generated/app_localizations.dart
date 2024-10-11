@@ -8,6 +8,7 @@ import 'app_localizations_de.dart' deferred as app_localizations_de;
 import 'app_localizations_en.dart' deferred as app_localizations_en;
 import 'app_localizations_es.dart' deferred as app_localizations_es;
 import 'app_localizations_fr.dart' deferred as app_localizations_fr;
+import 'app_localizations_zh.dart' deferred as app_localizations_zh;
 
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
@@ -96,7 +97,9 @@ abstract class AppLocalizations {
     Locale('de'),
     Locale('en'),
     Locale('es'),
-    Locale('fr')
+    Locale('fr'),
+    Locale('zh'),
+    Locale('zh', 'CN')
   ];
 
   /// No description provided for @appName.
@@ -128,6 +131,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'German'**
   String get de;
+
+  /// No description provided for @zh.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese'**
+  String get zh;
+
+  /// No description provided for @zh_cn.
+  ///
+  /// In en, this message translates to:
+  /// **'Simplified Chinese'**
+  String get zh_cn;
 
   /// No description provided for @language.
   ///
@@ -2085,13 +2100,26 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['de', 'en', 'es', 'fr'].contains(locale.languageCode);
+      <String>['de', 'en', 'es', 'fr', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 Future<AppLocalizations> lookupAppLocalizations(Locale locale) {
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh':
+      {
+        switch (locale.countryCode) {
+          case 'CN':
+            return app_localizations_zh.loadLibrary().then(
+                (dynamic _) => app_localizations_zh.AppLocalizationsZhCn());
+        }
+        break;
+      }
+  }
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'de':
@@ -2110,6 +2138,10 @@ Future<AppLocalizations> lookupAppLocalizations(Locale locale) {
       return app_localizations_fr
           .loadLibrary()
           .then((dynamic _) => app_localizations_fr.AppLocalizationsFr());
+    case 'zh':
+      return app_localizations_zh
+          .loadLibrary()
+          .then((dynamic _) => app_localizations_zh.AppLocalizationsZh());
   }
 
   throw FlutterError(
