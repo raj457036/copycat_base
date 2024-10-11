@@ -3,10 +3,7 @@
 import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
 import 'package:universal_io/io.dart';
 
-final defaultExcludedPatterns = [
-  RegExp(r'\b\d{4} \d{4} \d{4} \d{4}\b'),
-];
-final defaultExcludedApps = [
+final sensitiveExcludedApps = [
   // Password Managers
   AppInfo(name: "1Password", identifier: 'com.agilebits.onepassword'),
   AppInfo(name: "LastPass", identifier: 'com.lastpass.LastPass'),
@@ -42,8 +39,10 @@ final defaultExcludedApps = [
     ), // Windows Credential Manager
 ];
 
-const defaultExcludedTitles = [
+const sensitiveTitlesKeywords = [
   "login",
+  "sign in",
+  "create account",
   "register",
   "signup",
   "signin",
@@ -88,7 +87,7 @@ const defaultExcludedTitles = [
   "submit",
   "billing"
 ];
-const defaultExcludedUrl = [
+const sensitiveUrlKeywords = [
   "login",
   "auth",
   "authenticate",
@@ -112,6 +111,8 @@ const defaultExcludedUrl = [
   "change-password",
   "update-password",
   "password-recovery",
+  "password-reset",
+  "reset-password",
   "checkout",
   "payment",
   "billing",
@@ -139,5 +140,8 @@ const defaultExcludedUrl = [
   "account",
   "settings",
   "manage",
-  "preferences"
+  "preferences",
+  "netbanking",
+  "securepayment",
+  "paymentgateway",
 ];

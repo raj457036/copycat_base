@@ -11,7 +11,7 @@ import 'package:copycat_base/domain/repositories/analytics.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/utils/utility.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:share_plus/share_plus.dart';
@@ -76,7 +76,6 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
       );
       return;
     }
-
     if (await appConfig.isCopyingAllowedByActivity()) {
       await clipboard.readClipboard();
     }
@@ -232,11 +231,14 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
   }) async {
     if (clips.isEmpty) return;
 
+    final activity = appConfig.lastActivity;
+
     for (final clip in clips) {
       if (clip == null) continue;
       if (exclusionChecker != null && clip.isTextSubType) {
         final content = clip.text ?? clip.uri?.toString();
-        if (content != null && !exclusionChecker!.isContentAllowed(content)) {
+        if (content != null &&
+            !exclusionChecker!.isClipAllowed(clip, activity)) {
           continue;
         }
       }

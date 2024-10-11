@@ -541,23 +541,63 @@ const ExclusionRulesSchema = Schema(
       type: IsarType.objectList,
       target: r'AppInfo',
     ),
-    r'patterns': PropertySchema(
+    r'bankAccount': PropertySchema(
       id: 1,
+      name: r'bankAccount',
+      type: IsarType.bool,
+    ),
+    r'creditCard': PropertySchema(
+      id: 2,
+      name: r'creditCard',
+      type: IsarType.bool,
+    ),
+    r'email': PropertySchema(
+      id: 3,
+      name: r'email',
+      type: IsarType.bool,
+    ),
+    r'enable': PropertySchema(
+      id: 4,
+      name: r'enable',
+      type: IsarType.bool,
+    ),
+    r'passwordManager': PropertySchema(
+      id: 5,
+      name: r'passwordManager',
+      type: IsarType.bool,
+    ),
+    r'passwords': PropertySchema(
+      id: 6,
+      name: r'passwords',
+      type: IsarType.bool,
+    ),
+    r'patterns': PropertySchema(
+      id: 7,
       name: r'patterns',
       type: IsarType.stringList,
     ),
-    r'sensitiveInfo': PropertySchema(
-      id: 2,
-      name: r'sensitiveInfo',
+    r'personalInfo': PropertySchema(
+      id: 8,
+      name: r'personalInfo',
+      type: IsarType.bool,
+    ),
+    r'phone': PropertySchema(
+      id: 9,
+      name: r'phone',
+      type: IsarType.bool,
+    ),
+    r'sensitiveUrls': PropertySchema(
+      id: 10,
+      name: r'sensitiveUrls',
       type: IsarType.bool,
     ),
     r'titles': PropertySchema(
-      id: 3,
+      id: 11,
       name: r'titles',
       type: IsarType.stringList,
     ),
     r'urls': PropertySchema(
-      id: 4,
+      id: 12,
       name: r'urls',
       type: IsarType.stringList,
     )
@@ -618,10 +658,18 @@ void _exclusionRulesSerialize(
     AppInfoSchema.serialize,
     object.apps,
   );
-  writer.writeStringList(offsets[1], object.patterns);
-  writer.writeBool(offsets[2], object.sensitiveInfo);
-  writer.writeStringList(offsets[3], object.titles);
-  writer.writeStringList(offsets[4], object.urls);
+  writer.writeBool(offsets[1], object.bankAccount);
+  writer.writeBool(offsets[2], object.creditCard);
+  writer.writeBool(offsets[3], object.email);
+  writer.writeBool(offsets[4], object.enable);
+  writer.writeBool(offsets[5], object.passwordManager);
+  writer.writeBool(offsets[6], object.passwords);
+  writer.writeStringList(offsets[7], object.patterns);
+  writer.writeBool(offsets[8], object.personalInfo);
+  writer.writeBool(offsets[9], object.phone);
+  writer.writeBool(offsets[10], object.sensitiveUrls);
+  writer.writeStringList(offsets[11], object.titles);
+  writer.writeStringList(offsets[12], object.urls);
 }
 
 ExclusionRules _exclusionRulesDeserialize(
@@ -638,10 +686,18 @@ ExclusionRules _exclusionRulesDeserialize(
           AppInfo(),
         ) ??
         [],
-    patterns: reader.readStringList(offsets[1]) ?? [],
-    sensitiveInfo: reader.readBool(offsets[2]),
-    titles: reader.readStringList(offsets[3]) ?? [],
-    urls: reader.readStringList(offsets[4]) ?? [],
+    bankAccount: reader.readBool(offsets[1]),
+    creditCard: reader.readBool(offsets[2]),
+    email: reader.readBool(offsets[3]),
+    enable: reader.readBool(offsets[4]),
+    passwordManager: reader.readBool(offsets[5]),
+    passwords: reader.readBool(offsets[6]),
+    patterns: reader.readStringList(offsets[7]) ?? [],
+    personalInfo: reader.readBool(offsets[8]),
+    phone: reader.readBool(offsets[9]),
+    sensitiveUrls: reader.readBool(offsets[10]),
+    titles: reader.readStringList(offsets[11]) ?? [],
+    urls: reader.readStringList(offsets[12]) ?? [],
   );
   return object;
 }
@@ -662,12 +718,28 @@ P _exclusionRulesDeserializeProp<P>(
           ) ??
           []) as P;
     case 1:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readBool(offset)) as P;
     case 2:
       return (reader.readBool(offset)) as P;
     case 3:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readBool(offset)) as P;
     case 4:
+      return (reader.readBool(offset)) as P;
+    case 5:
+      return (reader.readBool(offset)) as P;
+    case 6:
+      return (reader.readBool(offset)) as P;
+    case 7:
+      return (reader.readStringList(offset) ?? []) as P;
+    case 8:
+      return (reader.readBool(offset)) as P;
+    case 9:
+      return (reader.readBool(offset)) as P;
+    case 10:
+      return (reader.readBool(offset)) as P;
+    case 11:
+      return (reader.readStringList(offset) ?? []) as P;
+    case 12:
       return (reader.readStringList(offset) ?? []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -762,6 +834,66 @@ extension ExclusionRulesQueryFilter
         upper,
         includeUpper,
       );
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      bankAccountEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'bankAccount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      creditCardEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'creditCard',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      emailEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'email',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      enableEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'enable',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      passwordManagerEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'passwordManager',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      passwordsEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'passwords',
+        value: value,
+      ));
     });
   }
 
@@ -991,10 +1123,30 @@ extension ExclusionRulesQueryFilter
   }
 
   QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
-      sensitiveInfoEqualTo(bool value) {
+      personalInfoEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'sensitiveInfo',
+        property: r'personalInfo',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      phoneEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'phone',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
+      sensitiveUrlsEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'sensitiveUrls',
         value: value,
       ));
     });

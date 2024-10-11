@@ -13,6 +13,7 @@ import 'package:copycat_base/domain/repositories/app_config.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:focus_window/focus_window.dart';
+import 'package:focus_window/platform/activity_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:injectable/injectable.dart';
@@ -26,6 +27,7 @@ ExclusionChecker? exclusionChecker;
 
 @singleton
 class AppConfigCubit extends Cubit<AppConfigState> {
+  ActivityInfo? lastActivity;
   final AppConfigRepository repo;
   final FocusWindow focusWindow = FocusWindow();
 
@@ -44,10 +46,11 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   }
 
   void initializeExclusionChecker() {
-    exclusionChecker = ExclusionChecker(
-      rules: exclusionRules,
-      includeDefaults: exclusionRules.sensitiveInfo,
-    );
+    if (exclusionRules.enable) {
+      exclusionChecker = ExclusionChecker(exclusionRules);
+    } else {
+      exclusionChecker = null;
+    }
   }
 
   Future<bool?> syncClocks() async {
@@ -323,17 +326,18 @@ class AppConfigCubit extends Cubit<AppConfigState> {
 
   Future<bool> isCopyingAllowedByActivity() async {
     try {
-      final t1 = DateTime.now();
       final activity =
-          await focusWindow.getActivity().timeout(Durations.short4);
-      logger.w(DateTime.now().difference(t1).inMilliseconds);
+          await focusWindow.getActivity().timeout(Durations.extralong4);
       logger.w(activity);
+      lastActivity = activity;
       final allowed = exclusionChecker?.isActivityAllowed(activity) ?? true;
       return allowed;
     } on TimeoutException {
       logger.e("TIMEOUT");
+      lastActivity = null;
       return true;
     } catch (e) {
+      lastActivity = null;
       return true;
     }
   }

@@ -169,7 +169,21 @@ abstract class _AppInfo extends AppInfo {
 /// @nodoc
 mixin _$ExclusionRules {
   /// including password patterns and password managers
-  bool get sensitiveInfo => throw _privateConstructorUsedError;
+  bool get enable => throw _privateConstructorUsedError; // Exclude credit card
+  bool get creditCard =>
+      throw _privateConstructorUsedError; // Exclude phone number
+  bool get phone =>
+      throw _privateConstructorUsedError; // Exclude password managers
+  bool get passwordManager =>
+      throw _privateConstructorUsedError; // Exclude common password patterns, signup, login, forgot password pages.
+  bool get passwords => throw _privateConstructorUsedError; // Exclude emails
+  bool get email =>
+      throw _privateConstructorUsedError; // Exclude bank account numbers
+  bool get bankAccount =>
+      throw _privateConstructorUsedError; // Exclude some personal info ( international ) like passport number
+  bool get personalInfo =>
+      throw _privateConstructorUsedError; // Exclude sensitive urls
+  bool get sensitiveUrls => throw _privateConstructorUsedError;
   List<String> get patterns => throw _privateConstructorUsedError;
   List<String> get titles => throw _privateConstructorUsedError;
   List<String> get urls => throw _privateConstructorUsedError;
@@ -187,7 +201,15 @@ abstract class $ExclusionRulesCopyWith<$Res> {
       _$ExclusionRulesCopyWithImpl<$Res, ExclusionRules>;
   @useResult
   $Res call(
-      {bool sensitiveInfo,
+      {bool enable,
+      bool creditCard,
+      bool phone,
+      bool passwordManager,
+      bool passwords,
+      bool email,
+      bool bankAccount,
+      bool personalInfo,
+      bool sensitiveUrls,
       List<String> patterns,
       List<String> titles,
       List<String> urls,
@@ -207,16 +229,56 @@ class _$ExclusionRulesCopyWithImpl<$Res, $Val extends ExclusionRules>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sensitiveInfo = null,
+    Object? enable = null,
+    Object? creditCard = null,
+    Object? phone = null,
+    Object? passwordManager = null,
+    Object? passwords = null,
+    Object? email = null,
+    Object? bankAccount = null,
+    Object? personalInfo = null,
+    Object? sensitiveUrls = null,
     Object? patterns = null,
     Object? titles = null,
     Object? urls = null,
     Object? apps = null,
   }) {
     return _then(_value.copyWith(
-      sensitiveInfo: null == sensitiveInfo
-          ? _value.sensitiveInfo
-          : sensitiveInfo // ignore: cast_nullable_to_non_nullable
+      enable: null == enable
+          ? _value.enable
+          : enable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      creditCard: null == creditCard
+          ? _value.creditCard
+          : creditCard // ignore: cast_nullable_to_non_nullable
+              as bool,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as bool,
+      passwordManager: null == passwordManager
+          ? _value.passwordManager
+          : passwordManager // ignore: cast_nullable_to_non_nullable
+              as bool,
+      passwords: null == passwords
+          ? _value.passwords
+          : passwords // ignore: cast_nullable_to_non_nullable
+              as bool,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bankAccount: null == bankAccount
+          ? _value.bankAccount
+          : bankAccount // ignore: cast_nullable_to_non_nullable
+              as bool,
+      personalInfo: null == personalInfo
+          ? _value.personalInfo
+          : personalInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      sensitiveUrls: null == sensitiveUrls
+          ? _value.sensitiveUrls
+          : sensitiveUrls // ignore: cast_nullable_to_non_nullable
               as bool,
       patterns: null == patterns
           ? _value.patterns
@@ -247,7 +309,15 @@ abstract class _$$ExclusionRulesImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool sensitiveInfo,
+      {bool enable,
+      bool creditCard,
+      bool phone,
+      bool passwordManager,
+      bool passwords,
+      bool email,
+      bool bankAccount,
+      bool personalInfo,
+      bool sensitiveUrls,
       List<String> patterns,
       List<String> titles,
       List<String> urls,
@@ -265,16 +335,56 @@ class __$$ExclusionRulesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sensitiveInfo = null,
+    Object? enable = null,
+    Object? creditCard = null,
+    Object? phone = null,
+    Object? passwordManager = null,
+    Object? passwords = null,
+    Object? email = null,
+    Object? bankAccount = null,
+    Object? personalInfo = null,
+    Object? sensitiveUrls = null,
     Object? patterns = null,
     Object? titles = null,
     Object? urls = null,
     Object? apps = null,
   }) {
     return _then(_$ExclusionRulesImpl(
-      sensitiveInfo: null == sensitiveInfo
-          ? _value.sensitiveInfo
-          : sensitiveInfo // ignore: cast_nullable_to_non_nullable
+      enable: null == enable
+          ? _value.enable
+          : enable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      creditCard: null == creditCard
+          ? _value.creditCard
+          : creditCard // ignore: cast_nullable_to_non_nullable
+              as bool,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as bool,
+      passwordManager: null == passwordManager
+          ? _value.passwordManager
+          : passwordManager // ignore: cast_nullable_to_non_nullable
+              as bool,
+      passwords: null == passwords
+          ? _value.passwords
+          : passwords // ignore: cast_nullable_to_non_nullable
+              as bool,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as bool,
+      bankAccount: null == bankAccount
+          ? _value.bankAccount
+          : bankAccount // ignore: cast_nullable_to_non_nullable
+              as bool,
+      personalInfo: null == personalInfo
+          ? _value.personalInfo
+          : personalInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      sensitiveUrls: null == sensitiveUrls
+          ? _value.sensitiveUrls
+          : sensitiveUrls // ignore: cast_nullable_to_non_nullable
               as bool,
       patterns: null == patterns
           ? _value._patterns
@@ -300,7 +410,15 @@ class __$$ExclusionRulesImplCopyWithImpl<$Res>
 
 class _$ExclusionRulesImpl extends _ExclusionRules {
   _$ExclusionRulesImpl(
-      {this.sensitiveInfo = false,
+      {this.enable = false,
+      this.creditCard = true,
+      this.phone = true,
+      this.passwordManager = true,
+      this.passwords = true,
+      this.email = true,
+      this.bankAccount = true,
+      this.personalInfo = true,
+      this.sensitiveUrls = true,
       final List<String> patterns = const [],
       final List<String> titles = const [],
       final List<String> urls = const [],
@@ -314,7 +432,39 @@ class _$ExclusionRulesImpl extends _ExclusionRules {
   /// including password patterns and password managers
   @override
   @JsonKey()
-  final bool sensitiveInfo;
+  final bool enable;
+// Exclude credit card
+  @override
+  @JsonKey()
+  final bool creditCard;
+// Exclude phone number
+  @override
+  @JsonKey()
+  final bool phone;
+// Exclude password managers
+  @override
+  @JsonKey()
+  final bool passwordManager;
+// Exclude common password patterns, signup, login, forgot password pages.
+  @override
+  @JsonKey()
+  final bool passwords;
+// Exclude emails
+  @override
+  @JsonKey()
+  final bool email;
+// Exclude bank account numbers
+  @override
+  @JsonKey()
+  final bool bankAccount;
+// Exclude some personal info ( international ) like passport number
+  @override
+  @JsonKey()
+  final bool personalInfo;
+// Exclude sensitive urls
+  @override
+  @JsonKey()
+  final bool sensitiveUrls;
   final List<String> _patterns;
   @override
   @JsonKey()
@@ -353,7 +503,7 @@ class _$ExclusionRulesImpl extends _ExclusionRules {
 
   @override
   String toString() {
-    return 'ExclusionRules(sensitiveInfo: $sensitiveInfo, patterns: $patterns, titles: $titles, urls: $urls, apps: $apps)';
+    return 'ExclusionRules(enable: $enable, creditCard: $creditCard, phone: $phone, passwordManager: $passwordManager, passwords: $passwords, email: $email, bankAccount: $bankAccount, personalInfo: $personalInfo, sensitiveUrls: $sensitiveUrls, patterns: $patterns, titles: $titles, urls: $urls, apps: $apps)';
   }
 
   @override
@@ -361,8 +511,21 @@ class _$ExclusionRulesImpl extends _ExclusionRules {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExclusionRulesImpl &&
-            (identical(other.sensitiveInfo, sensitiveInfo) ||
-                other.sensitiveInfo == sensitiveInfo) &&
+            (identical(other.enable, enable) || other.enable == enable) &&
+            (identical(other.creditCard, creditCard) ||
+                other.creditCard == creditCard) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.passwordManager, passwordManager) ||
+                other.passwordManager == passwordManager) &&
+            (identical(other.passwords, passwords) ||
+                other.passwords == passwords) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.bankAccount, bankAccount) ||
+                other.bankAccount == bankAccount) &&
+            (identical(other.personalInfo, personalInfo) ||
+                other.personalInfo == personalInfo) &&
+            (identical(other.sensitiveUrls, sensitiveUrls) ||
+                other.sensitiveUrls == sensitiveUrls) &&
             const DeepCollectionEquality().equals(other._patterns, _patterns) &&
             const DeepCollectionEquality().equals(other._titles, _titles) &&
             const DeepCollectionEquality().equals(other._urls, _urls) &&
@@ -372,7 +535,15 @@ class _$ExclusionRulesImpl extends _ExclusionRules {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      sensitiveInfo,
+      enable,
+      creditCard,
+      phone,
+      passwordManager,
+      passwords,
+      email,
+      bankAccount,
+      personalInfo,
+      sensitiveUrls,
       const DeepCollectionEquality().hash(_patterns),
       const DeepCollectionEquality().hash(_titles),
       const DeepCollectionEquality().hash(_urls),
@@ -388,7 +559,15 @@ class _$ExclusionRulesImpl extends _ExclusionRules {
 
 abstract class _ExclusionRules extends ExclusionRules {
   factory _ExclusionRules(
-      {final bool sensitiveInfo,
+      {final bool enable,
+      final bool creditCard,
+      final bool phone,
+      final bool passwordManager,
+      final bool passwords,
+      final bool email,
+      final bool bankAccount,
+      final bool personalInfo,
+      final bool sensitiveUrls,
       final List<String> patterns,
       final List<String> titles,
       final List<String> urls,
@@ -398,7 +577,23 @@ abstract class _ExclusionRules extends ExclusionRules {
   @override
 
   /// including password patterns and password managers
-  bool get sensitiveInfo;
+  bool get enable;
+  @override // Exclude credit card
+  bool get creditCard;
+  @override // Exclude phone number
+  bool get phone;
+  @override // Exclude password managers
+  bool get passwordManager;
+  @override // Exclude common password patterns, signup, login, forgot password pages.
+  bool get passwords;
+  @override // Exclude emails
+  bool get email;
+  @override // Exclude bank account numbers
+  bool get bankAccount;
+  @override // Exclude some personal info ( international ) like passport number
+  bool get personalInfo;
+  @override // Exclude sensitive urls
+  bool get sensitiveUrls;
   @override
   List<String> get patterns;
   @override

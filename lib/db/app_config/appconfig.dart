@@ -105,7 +105,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
 
   @ignore
   ExclusionRules get copyExclusionRules =>
-      exclusionRules ?? ExclusionRules(sensitiveInfo: true);
+      exclusionRules ?? ExclusionRules(enable: false);
 
   @ignore
   EncryptionSecret? get enc2Key =>
