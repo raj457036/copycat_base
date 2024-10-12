@@ -19,10 +19,10 @@ import 'package:copycat_base/bloc/collection_clips_cubit/collection_clips_cubit.
     as _i1054;
 import 'package:copycat_base/bloc/drive_setup_cubit/drive_setup_cubit.dart'
     as _i746;
-import 'package:copycat_base/bloc/focused_clipitem_cubit/focused_clipitem_cubit.dart'
-    as _i232;
 import 'package:copycat_base/bloc/offline_persistance_cubit/offline_persistance_cubit.dart'
     as _i768;
+import 'package:copycat_base/bloc/selected_clips_cubit/selected_clips_cubit.dart'
+    as _i443;
 import 'package:copycat_base/bloc/sync_manager_cubit/sync_manager_cubit.dart'
     as _i11;
 import 'package:copycat_base/bloc/window_action_cubit/window_action_cubit.dart'
@@ -60,6 +60,7 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) async {
     final registerModule = _$RegisterModule();
+    gh.factory<_i443.SelectedClipsCubit>(() => _i443.SelectedClipsCubit());
     gh.factory<_i617.WindowActionCubit>(() => _i617.WindowActionCubit());
     await gh.singletonAsync<_i829.TinyStorage>(
       () => registerModule.localCache(),
@@ -73,8 +74,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     );
     gh.lazySingleton<_i872.GoogleOAuth2Service>(
         () => _i872.GoogleOAuth2Service());
-    gh.lazySingleton<_i232.FocusedClipitemCubit>(
-        () => _i232.FocusedClipitemCubit());
     gh.lazySingleton<_i854.AppConfigRepository>(
         () => _i228.AppConfigRepositoryImpl(gh<_i338.Isar>()));
     gh.lazySingleton<_i860.AnalyticsRepository>(
