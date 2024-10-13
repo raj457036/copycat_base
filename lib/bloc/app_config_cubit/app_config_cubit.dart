@@ -327,7 +327,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   Future<bool> isCopyingAllowedByActivity() async {
     try {
       final activity =
-          await focusWindow.getActivity().timeout(Durations.extralong4);
+          await focusWindow.getActivity().timeout(const Duration(seconds: 5));
       logger.w(activity);
       lastActivity = activity;
       final allowed = exclusionChecker?.isActivityAllowed(activity) ?? true;

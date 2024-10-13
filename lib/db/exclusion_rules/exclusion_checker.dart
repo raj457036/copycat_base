@@ -161,7 +161,9 @@ class ExclusionChecker {
     }
 
     for (final app in _apps) {
-      if (app.identifier != null && activity.identifier == app.identifier!) {
+      if (app.identifier != null &&
+          (activity.identifier.isEmpty ||
+              activity.identifier == app.identifier!)) {
         logger.w("Excluded pattern detected for the app.");
         return false;
       }
