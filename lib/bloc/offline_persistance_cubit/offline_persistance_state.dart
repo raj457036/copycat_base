@@ -3,16 +3,16 @@ part of 'offline_persistance_cubit.dart';
 @freezed
 class OfflinePersistanceState with _$OfflinePersistanceState {
   const factory OfflinePersistanceState.initial() = OfflinePersistanceInitial;
-  const factory OfflinePersistanceState.creatingItem(ClipboardItem item) =
-      OfflinePersistanceCreating;
-  const factory OfflinePersistanceState.updatingItem(ClipboardItem item) =
-      OfflinePersistanceUpdating;
-  const factory OfflinePersistanceState.deletingItem(ClipboardItem item) =
-      OfflinePersistanceDeleting;
-  const factory OfflinePersistanceState.deletedItem(ClipboardItem item) =
-      OfflinePersistanceDeleted;
+  const factory OfflinePersistanceState.creatingItems(
+      List<ClipboardItem> items) = OfflinePersistanceCreating;
+  const factory OfflinePersistanceState.updatingItems(
+      List<ClipboardItem> items) = OfflinePersistanceUpdating;
+  const factory OfflinePersistanceState.deletingItems(
+      List<ClipboardItem> items) = OfflinePersistanceDeleting;
+  const factory OfflinePersistanceState.deletedItems(
+      List<ClipboardItem> items) = OfflinePersistanceDeleted;
   const factory OfflinePersistanceState.saved(
-    ClipboardItem item, {
+    List<ClipboardItem> items, {
     @Default(false) bool created,
     @Default(false) bool synced,
     List<String>? updatedFields,

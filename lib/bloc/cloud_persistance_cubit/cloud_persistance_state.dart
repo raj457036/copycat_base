@@ -7,9 +7,9 @@ class CloudPersistanceState with _$CloudPersistanceState {
       CloudPersistanceCreating;
   const factory CloudPersistanceState.updatingItem(ClipboardItem item) =
       CloudPersistanceUpdating;
-  const factory CloudPersistanceState.deletingItem(ClipboardItem item) =
+  const factory CloudPersistanceState.deletingItems(List<ClipboardItem> items) =
       CloudPersistanceDeleting;
-  const factory CloudPersistanceState.deletedItem(ClipboardItem item) =
+  const factory CloudPersistanceState.deletedItems(List<ClipboardItem> items) =
       CloudPersistanceDeleted;
   const factory CloudPersistanceState.uploadingFile(ClipboardItem item) =
       CloudPersistanceUploadingFile;
@@ -18,7 +18,7 @@ class CloudPersistanceState with _$CloudPersistanceState {
   const factory CloudPersistanceState.saved(ClipboardItem item,
       {@Default(false) bool created}) = CloudPersistanceSaved;
   const factory CloudPersistanceState.error(
-    Failure failure,
-    ClipboardItem item,
-  ) = CloudPersistanceError;
+    Failure failure, [
+    ClipboardItem? item,
+  ]) = CloudPersistanceError;
 }

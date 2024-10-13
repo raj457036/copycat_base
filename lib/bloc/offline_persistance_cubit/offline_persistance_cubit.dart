@@ -169,10 +169,12 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
     if (copied) {
       persist(
-        item.copyWith(
-          copiedCount: item.copiedCount + 1,
-          lastCopied: now(),
-        )..applyId(item),
+        [
+          item.copyWith(
+            copiedCount: item.copiedCount + 1,
+            lastCopied: now(),
+          )..applyId(item)
+        ],
         updatedFields: ["copiedCount"],
       );
     }
@@ -264,58 +266,73 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
       if (manualPaste) {
         final userItem = item.copyWith(userIntent: manualPaste)..applyId(item);
-        await persist(userItem);
+        await persist([userItem]);
         continue;
       }
-      await persist(item);
+      await persist([item]);
     }
   }
 
   Future<void> persist(
-    ClipboardItem item, {
+    List<ClipboardItem> items, {
     bool synced = false,
     List<String>? updatedFields,
   }) async {
-    item = item.copyWith(deviceId: deviceId)..applyId(item);
+    final persited = items
+        .where((item) => item.isPersisted)
+        .map((item) => item.copyWith(deviceId: deviceId)..applyId(item))
+        .toList();
+    final nonPersisted = items
+        .where((item) => !item.isPersisted)
+        .map((item) => item.copyWith(deviceId: deviceId)..applyId(item))
+        .toList();
 
-    if (!item.isPersisted) {
-      emit(OfflinePersistanceState.creatingItem(item));
-      final created = await repo.create(item);
+    if (nonPersisted.isNotEmpty) {
+      emit(OfflinePersistanceState.creatingItems(nonPersisted));
+      final created =
+          await Future.wait(nonPersisted.map((item) => repo.create(item)));
 
-      emit(
-        created.fold(
-          (l) => OfflinePersistanceState.error(l, item),
-          (r) => OfflinePersistanceState.saved(
-            r,
-            created: true,
-            synced: synced,
-            updatedFields: updatedFields,
+      for (var item in created) {
+        emit(
+          item.fold(
+            (l) => OfflinePersistanceState.error(l),
+            (r) => OfflinePersistanceState.saved(
+              [r],
+              created: true,
+              synced: synced,
+              updatedFields: updatedFields,
+            ),
           ),
-        ),
-      );
+        );
+      }
     } else {
-      emit(OfflinePersistanceState.updatingItem(item));
-      final updated = await repo.update(item);
+      emit(OfflinePersistanceState.updatingItems(persited));
+      final updated =
+          await Future.wait(persited.map((item) => repo.update(item)));
 
-      emit(
-        updated.fold(
-          (l) => OfflinePersistanceState.error(l, item),
-          (r) => OfflinePersistanceState.saved(
-            r,
-            synced: synced,
-            updatedFields: updatedFields,
+      for (var item in updated) {
+        emit(
+          item.fold(
+            (l) => OfflinePersistanceState.error(l),
+            (r) => OfflinePersistanceState.saved(
+              [r],
+              synced: synced,
+              updatedFields: updatedFields,
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
   }
 
-  Future<void> delete(ClipboardItem item) async {
-    if (item.isSynced) return;
-    emit(OfflinePersistanceState.deletingItem(item));
-    await item.cleanUp();
-    await repo.delete(item);
-    emit(OfflinePersistanceState.deletedItem(item));
+  Future<void> delete(List<ClipboardItem> items) async {
+    emit(OfflinePersistanceState.deletingItems(items));
+    await Future.wait(items.map((item) => item.cleanUp()));
+    final items_ = items.where((item) => !item.isSynced).map(
+          (item) => item.copyWith(deviceId: deviceId)..applyId(item),
+        );
+    await repo.deleteMany(items_.toList());
+    emit(OfflinePersistanceState.deletedItems(items));
   }
 
   @override

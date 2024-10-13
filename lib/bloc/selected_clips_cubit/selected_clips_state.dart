@@ -4,6 +4,6 @@ part of 'selected_clips_cubit.dart';
 sealed class SelectedClipsState with _$SelectedClipsState {
   const factory SelectedClipsState.noClipSelected() = NoClipSelected;
   const factory SelectedClipsState.clipSelected({
-    required Set<int> selectedClipIds,
+    required Set<ClipboardItem> selectedClipIds,
   }) = ClipSelected;
 }

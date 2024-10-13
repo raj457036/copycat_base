@@ -162,15 +162,12 @@ class GoogleDriveService implements DriveService {
 
   @override
   Future<void> delete(ClipboardItem item) async {
-    final client = authClient;
     try {
       final drive = getDrive();
       if (item.driveFileId == null) return;
       await drive.files.delete(item.driveFileId!);
     } catch (e) {
       logger.e(e, error: e);
-    } finally {
-      client.close();
     }
   }
 
@@ -185,5 +182,17 @@ class GoogleDriveService implements DriveService {
   @override
   bool isDownloading(ClipboardItem item) {
     return _downloadOperations.containsKey(item.id);
+  }
+
+  @override
+  Future<void> deleteMany(List<ClipboardItem> items) async {
+    try {
+      final drive = getDrive();
+      await Future.wait(items
+          .where((item) => item.driveFileId != null)
+          .map((item) => drive.files.delete(item.driveFileId!)));
+    } catch (e) {
+      logger.e(e, error: e);
+    }
   }
 }

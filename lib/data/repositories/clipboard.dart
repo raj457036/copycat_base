@@ -128,6 +128,16 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   FailureOr<void> decryptPending() {
     throw UnimplementedError();
   }
+
+  @override
+  FailureOr<bool> deleteMany(List<ClipboardItem> items) async {
+    try {
+      await remote.deleteMany(items);
+      return const Right(true);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
 }
 
 @Named("offline")
@@ -237,6 +247,16 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
     try {
       await local.decryptPending();
       return const Right(null);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<bool> deleteMany(List<ClipboardItem> items) async {
+    try {
+      await local.deleteMany(items);
+      return const Right(true);
     } catch (e) {
       return Left(Failure.fromException(e));
     }

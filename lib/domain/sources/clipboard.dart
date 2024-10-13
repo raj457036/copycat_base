@@ -30,6 +30,7 @@ abstract class ClipboardSource {
   Future<ClipboardItem> update(ClipboardItem item);
 
   Future<bool> delete(ClipboardItem item);
+  Future<bool> deleteMany(List<ClipboardItem> items);
 
   Future<void> deleteAll();
 

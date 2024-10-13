@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,24 +10,24 @@ part 'selected_clips_state.dart';
 class SelectedClipsCubit extends Cubit<SelectedClipsState> {
   SelectedClipsCubit() : super(const SelectedClipsState.noClipSelected());
 
-  void select(int clipId) {
+  void select(ClipboardItem clip) {
     switch (state) {
       case NoClipSelected():
-        emit(SelectedClipsState.clipSelected(selectedClipIds: {clipId}));
+        emit(SelectedClipsState.clipSelected(selectedClipIds: {clip}));
       case ClipSelected(:final selectedClipIds):
         {
-          final newSelectedClipIds = {...selectedClipIds, clipId};
+          final newSelectedClipIds = {...selectedClipIds, clip};
           emit(SelectedClipsState.clipSelected(
               selectedClipIds: newSelectedClipIds));
         }
     }
   }
 
-  void unselect(int clipId) {
+  void unselect(ClipboardItem clip) {
     switch (state) {
       case ClipSelected(:final selectedClipIds):
-        if (selectedClipIds.contains(clipId)) {
-          final newSelectedClipIds = {...selectedClipIds}..remove(clipId);
+        if (selectedClipIds.contains(clip)) {
+          final newSelectedClipIds = {...selectedClipIds}..remove(clip);
           if (newSelectedClipIds.isEmpty) {
             emit(const SelectedClipsState.noClipSelected());
             return;
@@ -42,10 +43,10 @@ class SelectedClipsCubit extends Cubit<SelectedClipsState> {
     emit(const SelectedClipsState.noClipSelected());
   }
 
-  bool isSelected(int clipId) {
+  bool isSelected(ClipboardItem clip) {
     return switch (state) {
       NoClipSelected() => false,
-      ClipSelected(:final selectedClipIds) => selectedClipIds.contains(clipId)
+      ClipSelected(:final selectedClipIds) => selectedClipIds.contains(clip)
     };
   }
 }

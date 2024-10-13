@@ -6,7 +6,6 @@ import 'package:copycat_base/bloc/auth_cubit/auth_cubit.dart';
 import 'package:copycat_base/bloc/drive_setup_cubit/drive_setup_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
-import 'package:copycat_base/data/services/google_services.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/enums/clip_type.dart';
@@ -24,7 +23,6 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
   final AuthCubit auth;
   final DriveSetupCubit driveCubit;
   final ClipboardRepository repo;
-  final DriveService drive;
   final AppConfigCubit appConfig;
   final String deviceId;
 
@@ -34,7 +32,6 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     this.appConfig,
     @Named("device_id") this.deviceId,
     @Named("cloud") this.repo,
-    @Named("google_drive") this.drive,
   ) : super(const CloudPersistanceState.initial());
 
   Future<void> persist(ClipboardItem item) async {
@@ -158,19 +155,15 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
       return;
     }
 
-    await driveCubit.waitIfNotReady();
+    final drive = await driveCubit.drive;
 
-    final accessToken = await driveCubit.accessToken;
-
-    if (accessToken == null) {
+    if (drive == null) {
       emit(CloudPersistanceState.error(
         driveFailure,
         item.syncDone(driveFailure),
       ));
       return;
     }
-
-    drive.accessToken = accessToken;
 
     final results = await Future.wait([
       drive.upload(
@@ -212,12 +205,11 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
   }
 
   Future<void> delete(ClipboardItem item) async {
-    emit(CloudPersistanceState.deletingItem(item));
-    drive.cancelOperation(item);
+    emit(CloudPersistanceState.deletingItems([item]));
+    final drive = await driveCubit.drive;
+    drive?.cancelOperation(item);
     if (item.driveFileId != null) {
-      final accessToken = await driveCubit.accessToken;
-
-      if (accessToken == null) {
+      if (drive == null) {
         emit(CloudPersistanceState.error(
           driveFailure,
           item.syncDone(driveFailure),
@@ -225,7 +217,6 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
         return;
       }
 
-      drive.accessToken = accessToken;
       await drive.delete(item);
 
       item = item.copyWith(driveFileId: null)..applyId(item);
@@ -233,8 +224,8 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
 
     if (item.serverId == null) {
       emit(
-        CloudPersistanceState.deletedItem(
-          item.copyWith(lastSynced: null)..applyId(item),
+        CloudPersistanceState.deletedItems(
+          [item.copyWith(lastSynced: null)..applyId(item)],
         ),
       );
       return;
@@ -249,19 +240,48 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
         item,
       )),
       (r) => emit(
-        CloudPersistanceState.deletedItem(
-          item.copyWith(
-            serverId: null,
-            lastSynced: null,
-          )..applyId(item),
+        CloudPersistanceState.deletedItems(
+          [
+            item.copyWith(
+              serverId: null,
+              lastSynced: null,
+            )..applyId(item)
+          ],
         ),
       ),
     );
   }
 
+  Future<void> deleteMany(List<ClipboardItem> items) async {
+    emit(CloudPersistanceState.deletingItems(items));
+    final drive = await driveCubit.drive;
+
+    await drive?.deleteMany(items);
+
+    final items_ = items.map(
+      (item) => item.copyWith(deviceId: deviceId)..applyId(item),
+    );
+    final result = await repo.deleteMany(items_.toList());
+
+    result.fold(
+      (l) => emit(CloudPersistanceState.error(
+        l,
+      )),
+      (r) => emit(
+        CloudPersistanceState.deletedItems(items
+            .map((item) => item.copyWith(
+                  serverId: null,
+                  lastSynced: null,
+                )..applyId(item))
+            .toList()),
+      ),
+    );
+  }
+
   Future<void> download(ClipboardItem item) async {
-    final isDownloading = drive.isDownloading(item);
-    if (isDownloading) return;
+    final drive = await driveCubit.drive;
+    final isDownloading = drive?.isDownloading(item);
+    if (isDownloading ?? false) return;
 
     if (item.localPath != null) {
       final exists = await File(item.localPath!).exists();
@@ -293,8 +313,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
       return;
     }
 
-    drive.accessToken = accessToken;
-    final result = await drive.download(
+    final result = await drive?.download(
       item.assignUserId(userId),
       // onProgress: (downloaded, total) {
       //   emit(CloudPersistanceState.downloadingFile(
@@ -307,7 +326,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
       // }
     );
 
-    result.fold(
+    result?.fold(
       (failure) {
         emit(
           CloudPersistanceState.error(failure, item),

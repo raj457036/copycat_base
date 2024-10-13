@@ -85,13 +85,15 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
     }
   }
 
-  Future<void> deleteItem(ClipboardItem item) async {
+  Future<void> deleteItem(List<ClipboardItem> items) async {
     state.mapOrNull(results: (result) {
-      final items = result.results.where((it) => it.id != item.id).toList();
-      final isDeleted = items.length < result.results.length;
+      final ids = items.map((item) => item.id).toSet();
+      final items_ =
+          result.results.where((it) => !ids.contains(it.id)).toList();
+      final isDeleted = items_.length < result.results.length;
       emit(
         result.copyWith(
-          results: items,
+          results: items_,
           offset: isDeleted ? result.offset - 1 : result.offset,
         ),
       );
@@ -100,7 +102,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
 
   void put(ClipboardItem item) {
     if (item.collectionId != collection.id) {
-      deleteItem(item);
+      deleteItem([item]);
       return;
     }
 

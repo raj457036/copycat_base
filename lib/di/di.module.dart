@@ -78,8 +78,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
         () => _i228.AppConfigRepositoryImpl(gh<_i338.Isar>()));
     gh.lazySingleton<_i860.AnalyticsRepository>(
         () => const _i55.AnalyticsRepositoryImpl());
-    gh.lazySingleton<_i746.DriveSetupCubit>(
-        () => _i746.DriveSetupCubit(gh<_i447.DriveCredentialRepository>()));
     gh.lazySingleton<_i106.SyncRepository>(() => _i421.SyncRepositoryImpl(
         gh<_i903.SyncClipboardSource>(instanceName: 'remote')));
     await gh.factoryAsync<String>(
@@ -142,19 +140,14 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i72.ClipboardRepository>(instanceName: 'offline'),
               collection: collection,
             ));
+    gh.lazySingleton<_i746.DriveSetupCubit>(() => _i746.DriveSetupCubit(
+          gh<_i447.DriveCredentialRepository>(),
+          gh<_i1054.DriveService>(instanceName: 'google_drive'),
+        ));
     gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
           gh<_i72.ClipboardRepository>(instanceName: 'offline'),
           gh<_i338.Isar>(),
         ));
-    gh.lazySingleton<_i691.CloudPersistanceCubit>(
-        () => _i691.CloudPersistanceCubit(
-              gh<_i630.AuthCubit>(),
-              gh<_i746.DriveSetupCubit>(),
-              gh<_i411.AppConfigCubit>(),
-              gh<String>(instanceName: 'device_id'),
-              gh<_i72.ClipboardRepository>(instanceName: 'cloud'),
-              gh<_i1054.DriveService>(instanceName: 'google_drive'),
-            ));
     gh.lazySingleton<_i768.OfflinePersistanceCubit>(
         () => _i768.OfflinePersistanceCubit(
               gh<_i630.AuthCubit>(),
@@ -163,6 +156,14 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i411.AppConfigCubit>(),
               gh<_i860.AnalyticsRepository>(),
               gh<String>(instanceName: 'device_id'),
+            ));
+    gh.lazySingleton<_i691.CloudPersistanceCubit>(
+        () => _i691.CloudPersistanceCubit(
+              gh<_i630.AuthCubit>(),
+              gh<_i746.DriveSetupCubit>(),
+              gh<_i411.AppConfigCubit>(),
+              gh<String>(instanceName: 'device_id'),
+              gh<_i72.ClipboardRepository>(instanceName: 'cloud'),
             ));
   }
 }

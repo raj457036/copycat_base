@@ -22,25 +22,47 @@ mixin _$ClipboardState {
   int get offset => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   bool get syncing => throw _privateConstructorUsedError;
+  SearchFilterState get filterState => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<ClipboardItem> items, dynamic hasMore,
-            int limit, int offset, bool loading, bool syncing, Failure? failure)
+    required TResult Function(
+            List<ClipboardItem> items,
+            dynamic hasMore,
+            int limit,
+            int offset,
+            bool loading,
+            bool syncing,
+            SearchFilterState filterState,
+            Failure? failure)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<ClipboardItem> items, dynamic hasMore, int limit,
-            int offset, bool loading, bool syncing, Failure? failure)?
+    TResult? Function(
+            List<ClipboardItem> items,
+            dynamic hasMore,
+            int limit,
+            int offset,
+            bool loading,
+            bool syncing,
+            SearchFilterState filterState,
+            Failure? failure)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<ClipboardItem> items, dynamic hasMore, int limit,
-            int offset, bool loading, bool syncing, Failure? failure)?
+    TResult Function(
+            List<ClipboardItem> items,
+            dynamic hasMore,
+            int limit,
+            int offset,
+            bool loading,
+            bool syncing,
+            SearchFilterState filterState,
+            Failure? failure)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -80,6 +102,7 @@ abstract class $ClipboardStateCopyWith<$Res> {
       int offset,
       bool loading,
       bool syncing,
+      SearchFilterState filterState,
       Failure? failure});
 }
 
@@ -102,6 +125,7 @@ class _$ClipboardStateCopyWithImpl<$Res, $Val extends ClipboardState>
     Object? offset = null,
     Object? loading = null,
     Object? syncing = null,
+    Object? filterState = null,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
@@ -129,6 +153,10 @@ class _$ClipboardStateCopyWithImpl<$Res, $Val extends ClipboardState>
           ? _value.syncing
           : syncing // ignore: cast_nullable_to_non_nullable
               as bool,
+      filterState: null == filterState
+          ? _value.filterState
+          : filterState // ignore: cast_nullable_to_non_nullable
+              as SearchFilterState,
       failure: freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -152,6 +180,7 @@ abstract class _$$ClipboardLoadedStateImplCopyWith<$Res>
       int offset,
       bool loading,
       bool syncing,
+      SearchFilterState filterState,
       Failure? failure});
 }
 
@@ -172,6 +201,7 @@ class __$$ClipboardLoadedStateImplCopyWithImpl<$Res>
     Object? offset = null,
     Object? loading = null,
     Object? syncing = null,
+    Object? filterState = null,
     Object? failure = freezed,
   }) {
     return _then(_$ClipboardLoadedStateImpl(
@@ -196,6 +226,10 @@ class __$$ClipboardLoadedStateImplCopyWithImpl<$Res>
           ? _value.syncing
           : syncing // ignore: cast_nullable_to_non_nullable
               as bool,
+      filterState: null == filterState
+          ? _value.filterState
+          : filterState // ignore: cast_nullable_to_non_nullable
+              as SearchFilterState,
       failure: freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -214,6 +248,7 @@ class _$ClipboardLoadedStateImpl implements ClipboardLoadedState {
       this.offset = 0,
       this.loading = true,
       this.syncing = false,
+      this.filterState = const SearchFilterState(),
       this.failure})
       : _items = items;
 
@@ -241,11 +276,14 @@ class _$ClipboardLoadedStateImpl implements ClipboardLoadedState {
   @JsonKey()
   final bool syncing;
   @override
+  @JsonKey()
+  final SearchFilterState filterState;
+  @override
   final Failure? failure;
 
   @override
   String toString() {
-    return 'ClipboardState.loaded(items: $items, hasMore: $hasMore, limit: $limit, offset: $offset, loading: $loading, syncing: $syncing, failure: $failure)';
+    return 'ClipboardState.loaded(items: $items, hasMore: $hasMore, limit: $limit, offset: $offset, loading: $loading, syncing: $syncing, filterState: $filterState, failure: $failure)';
   }
 
   @override
@@ -259,6 +297,8 @@ class _$ClipboardLoadedStateImpl implements ClipboardLoadedState {
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.syncing, syncing) || other.syncing == syncing) &&
+            (identical(other.filterState, filterState) ||
+                other.filterState == filterState) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -271,6 +311,7 @@ class _$ClipboardLoadedStateImpl implements ClipboardLoadedState {
       offset,
       loading,
       syncing,
+      filterState,
       failure);
 
   @JsonKey(ignore: true)
@@ -284,34 +325,57 @@ class _$ClipboardLoadedStateImpl implements ClipboardLoadedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<ClipboardItem> items, dynamic hasMore,
-            int limit, int offset, bool loading, bool syncing, Failure? failure)
+    required TResult Function(
+            List<ClipboardItem> items,
+            dynamic hasMore,
+            int limit,
+            int offset,
+            bool loading,
+            bool syncing,
+            SearchFilterState filterState,
+            Failure? failure)
         loaded,
   }) {
-    return loaded(items, hasMore, limit, offset, loading, syncing, failure);
+    return loaded(
+        items, hasMore, limit, offset, loading, syncing, filterState, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<ClipboardItem> items, dynamic hasMore, int limit,
-            int offset, bool loading, bool syncing, Failure? failure)?
+    TResult? Function(
+            List<ClipboardItem> items,
+            dynamic hasMore,
+            int limit,
+            int offset,
+            bool loading,
+            bool syncing,
+            SearchFilterState filterState,
+            Failure? failure)?
         loaded,
   }) {
     return loaded?.call(
-        items, hasMore, limit, offset, loading, syncing, failure);
+        items, hasMore, limit, offset, loading, syncing, filterState, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<ClipboardItem> items, dynamic hasMore, int limit,
-            int offset, bool loading, bool syncing, Failure? failure)?
+    TResult Function(
+            List<ClipboardItem> items,
+            dynamic hasMore,
+            int limit,
+            int offset,
+            bool loading,
+            bool syncing,
+            SearchFilterState filterState,
+            Failure? failure)?
         loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(items, hasMore, limit, offset, loading, syncing, failure);
+      return loaded(items, hasMore, limit, offset, loading, syncing,
+          filterState, failure);
     }
     return orElse();
   }
@@ -353,6 +417,7 @@ abstract class ClipboardLoadedState implements ClipboardState {
       final int offset,
       final bool loading,
       final bool syncing,
+      final SearchFilterState filterState,
       final Failure? failure}) = _$ClipboardLoadedStateImpl;
 
   @override
@@ -367,6 +432,8 @@ abstract class ClipboardLoadedState implements ClipboardState {
   bool get loading;
   @override
   bool get syncing;
+  @override
+  SearchFilterState get filterState;
   @override
   Failure? get failure;
   @override

@@ -18,6 +18,7 @@ abstract class DriveService {
     void Function(int, int)? onProgress,
   });
   Future<void> delete(ClipboardItem item);
+  Future<void> deleteMany(List<ClipboardItem> items);
 
   bool isDownloading(ClipboardItem item);
 

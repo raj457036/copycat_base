@@ -19,19 +19,19 @@ mixin _$SelectedClipsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noClipSelected,
-    required TResult Function(Set<int> selectedClipIds) clipSelected,
+    required TResult Function(Set<ClipboardItem> selectedClipIds) clipSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noClipSelected,
-    TResult? Function(Set<int> selectedClipIds)? clipSelected,
+    TResult? Function(Set<ClipboardItem> selectedClipIds)? clipSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noClipSelected,
-    TResult Function(Set<int> selectedClipIds)? clipSelected,
+    TResult Function(Set<ClipboardItem> selectedClipIds)? clipSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$NoClipSelectedImpl implements NoClipSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noClipSelected,
-    required TResult Function(Set<int> selectedClipIds) clipSelected,
+    required TResult Function(Set<ClipboardItem> selectedClipIds) clipSelected,
   }) {
     return noClipSelected();
   }
@@ -122,7 +122,7 @@ class _$NoClipSelectedImpl implements NoClipSelected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noClipSelected,
-    TResult? Function(Set<int> selectedClipIds)? clipSelected,
+    TResult? Function(Set<ClipboardItem> selectedClipIds)? clipSelected,
   }) {
     return noClipSelected?.call();
   }
@@ -131,7 +131,7 @@ class _$NoClipSelectedImpl implements NoClipSelected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noClipSelected,
-    TResult Function(Set<int> selectedClipIds)? clipSelected,
+    TResult Function(Set<ClipboardItem> selectedClipIds)? clipSelected,
     required TResult orElse(),
   }) {
     if (noClipSelected != null) {
@@ -182,7 +182,7 @@ abstract class _$$ClipSelectedImplCopyWith<$Res> {
           _$ClipSelectedImpl value, $Res Function(_$ClipSelectedImpl) then) =
       __$$ClipSelectedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Set<int> selectedClipIds});
+  $Res call({Set<ClipboardItem> selectedClipIds});
 }
 
 /// @nodoc
@@ -202,7 +202,7 @@ class __$$ClipSelectedImplCopyWithImpl<$Res>
       selectedClipIds: null == selectedClipIds
           ? _value._selectedClipIds
           : selectedClipIds // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
+              as Set<ClipboardItem>,
     ));
   }
 }
@@ -210,12 +210,12 @@ class __$$ClipSelectedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ClipSelectedImpl implements ClipSelected {
-  const _$ClipSelectedImpl({required final Set<int> selectedClipIds})
+  const _$ClipSelectedImpl({required final Set<ClipboardItem> selectedClipIds})
       : _selectedClipIds = selectedClipIds;
 
-  final Set<int> _selectedClipIds;
+  final Set<ClipboardItem> _selectedClipIds;
   @override
-  Set<int> get selectedClipIds {
+  Set<ClipboardItem> get selectedClipIds {
     if (_selectedClipIds is EqualUnmodifiableSetView) return _selectedClipIds;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_selectedClipIds);
@@ -249,7 +249,7 @@ class _$ClipSelectedImpl implements ClipSelected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() noClipSelected,
-    required TResult Function(Set<int> selectedClipIds) clipSelected,
+    required TResult Function(Set<ClipboardItem> selectedClipIds) clipSelected,
   }) {
     return clipSelected(selectedClipIds);
   }
@@ -258,7 +258,7 @@ class _$ClipSelectedImpl implements ClipSelected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? noClipSelected,
-    TResult? Function(Set<int> selectedClipIds)? clipSelected,
+    TResult? Function(Set<ClipboardItem> selectedClipIds)? clipSelected,
   }) {
     return clipSelected?.call(selectedClipIds);
   }
@@ -267,7 +267,7 @@ class _$ClipSelectedImpl implements ClipSelected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? noClipSelected,
-    TResult Function(Set<int> selectedClipIds)? clipSelected,
+    TResult Function(Set<ClipboardItem> selectedClipIds)? clipSelected,
     required TResult orElse(),
   }) {
     if (clipSelected != null) {
@@ -309,10 +309,10 @@ class _$ClipSelectedImpl implements ClipSelected {
 }
 
 abstract class ClipSelected implements SelectedClipsState {
-  const factory ClipSelected({required final Set<int> selectedClipIds}) =
-      _$ClipSelectedImpl;
+  const factory ClipSelected(
+      {required final Set<ClipboardItem> selectedClipIds}) = _$ClipSelectedImpl;
 
-  Set<int> get selectedClipIds;
+  Set<ClipboardItem> get selectedClipIds;
   @JsonKey(ignore: true)
   _$$ClipSelectedImplCopyWith<_$ClipSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;

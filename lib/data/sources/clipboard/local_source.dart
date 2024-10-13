@@ -176,4 +176,18 @@ class LocalClipboardSource implements ClipboardSource {
       }
     });
   }
+
+  @override
+  Future<bool> deleteMany(List<ClipboardItem> items) async {
+    final result = await db.writeTxn(
+      () => db.clipboardItems
+          .filter()
+          .anyOf(
+            items,
+            (q, item) => q.idEqualTo(item.id),
+          )
+          .deleteAll(),
+    );
+    return result == items.length;
+  }
 }

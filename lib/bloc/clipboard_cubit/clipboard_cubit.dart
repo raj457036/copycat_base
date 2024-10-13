@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
+import 'package:copycat_base/domain/model/search_filter_state.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
-import 'package:copycat_base/domain/sources/clipboard.dart';
-import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/enums/sort.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -51,17 +50,15 @@ class ClipboardCubit extends Cubit<ClipboardState> {
   Future<void> fetch({
     bool fromTop = false,
     String? query,
-    Set<TextCategory>? textCategories,
-    Set<ClipItemType>? clipTypes,
-    ClipboardSortKey? sortBy,
-    SortOrder? order,
-    DateTime? from,
-    DateTime? to,
+    SearchFilterState? filterState,
   }) async {
     emit(
       state.copyWith(
         loading: true,
         offset: fromTop ? 0 : state.offset,
+        filterState: fromTop
+            ? filterState ?? const SearchFilterState()
+            : state.filterState,
       ),
     );
 
@@ -69,12 +66,12 @@ class ClipboardCubit extends Cubit<ClipboardState> {
       limit: state.limit,
       offset: fromTop ? 0 : state.offset,
       search: query,
-      types: clipTypes,
-      category: textCategories,
-      from: from,
-      to: to,
-      order: order ?? SortOrder.desc,
-      sortBy: sortBy,
+      types: state.filterState.typeIncludes,
+      category: state.filterState.textCategories,
+      from: state.filterState.from,
+      to: state.filterState.to,
+      order: state.filterState.sortOrder ?? SortOrder.desc,
+      sortBy: state.filterState.sortBy,
     );
 
     emit(
@@ -94,14 +91,17 @@ class ClipboardCubit extends Cubit<ClipboardState> {
     );
   }
 
-  Future<void> deleteItem(ClipboardItem item) async {
-    final result = state.items.where((it) => it.id != item.id).toList();
-    final isDeleted = result.length < state.items.length;
-    emit(
-      state.copyWith(
-        items: result,
-        offset: isDeleted ? state.offset - 1 : state.offset,
-      ),
-    );
+  Future<void> deleteItem(List<ClipboardItem> items) async {
+    state.mapOrNull(loaded: (result) {
+      final ids = items.map((item) => item.id).toSet();
+      final items_ = result.items.where((it) => !ids.contains(it.id)).toList();
+      final isDeleted = items_.length < result.items.length;
+      emit(
+        result.copyWith(
+          items: items_,
+          offset: isDeleted ? result.offset - 1 : result.offset,
+        ),
+      );
+    });
   }
 }

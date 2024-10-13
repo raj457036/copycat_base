@@ -25,6 +25,7 @@ abstract class ClipboardRepository {
   FailureOr<ClipboardItem> update(ClipboardItem item);
 
   FailureOr<bool> delete(ClipboardItem item);
+  FailureOr<bool> deleteMany(List<ClipboardItem> items);
 
   FailureOr<void> deleteAll();
 

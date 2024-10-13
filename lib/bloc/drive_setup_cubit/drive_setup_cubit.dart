@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/common/failure.dart';
+import 'package:copycat_base/data/services/google_services.dart';
 import 'package:copycat_base/domain/model/drive_access_token/drive_access_token.dart';
 import 'package:copycat_base/domain/repositories/drive_credential.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,11 +15,15 @@ part 'drive_setup_state.dart';
 @lazySingleton
 class DriveSetupCubit extends Cubit<DriveSetupState> {
   Completer? readyState;
+  final DriveService _drive;
   final DriveCredentialRepository repo;
 
   Timer? timer;
 
-  DriveSetupCubit(this.repo) : super(const DriveSetupState.unknown());
+  DriveSetupCubit(
+    this.repo,
+    @Named("google_drive") this._drive,
+  ) : super(const DriveSetupState.unknown());
 
   void _readyNow() {
     if (readyState != null) {
@@ -27,6 +32,13 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
         readyState = null;
       }
     }
+  }
+
+  Future<DriveService?> get drive async {
+    await waitIfNotReady();
+    _drive.accessToken = await accessToken;
+    if (_drive.accessToken == null) return null;
+    return _drive;
   }
 
   Future<void> waitIfNotReady() async {

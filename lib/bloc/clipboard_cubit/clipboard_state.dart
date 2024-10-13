@@ -9,6 +9,7 @@ class ClipboardState with _$ClipboardState {
     @Default(0) int offset,
     @Default(true) bool loading,
     @Default(false) bool syncing,
+    @Default(SearchFilterState()) SearchFilterState filterState,
     Failure? failure,
   }) = ClipboardLoadedState;
 }
