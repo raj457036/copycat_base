@@ -37,6 +37,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default(true) bool enableFileSync,
     @Default(AppLayout.grid) @Enumerated(EnumType.name) AppLayout layout,
     @Default(AppView.windowed) @Enumerated(EnumType.name) AppView view,
+    @Default(false) bool pinned,
     @Default(initialWindowWidth) double windowWidth,
     @Default(initialWindowHeight) double windowHeight,
 

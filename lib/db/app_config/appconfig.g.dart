@@ -94,46 +94,51 @@ const AppConfigSchema = CollectionSchema(
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
-    r'smartPaste': PropertySchema(
+    r'pinned': PropertySchema(
       id: 15,
+      name: r'pinned',
+      type: IsarType.bool,
+    ),
+    r'smartPaste': PropertySchema(
+      id: 16,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'themeColor': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'toggleHotkey',
       type: IsarType.string,
     ),
     r'view': PropertySchema(
-      id: 20,
+      id: 21,
       name: r'view',
       type: IsarType.string,
       enumMap: _AppConfigviewEnumValueMap,
     ),
     r'windowHeight': PropertySchema(
-      id: 21,
+      id: 22,
       name: r'windowHeight',
       type: IsarType.double,
     ),
     r'windowWidth': PropertySchema(
-      id: 22,
+      id: 23,
       name: r'windowWidth',
       type: IsarType.double,
     )
@@ -215,14 +220,15 @@ void _appConfigSerialize(
   writer.writeString(offsets[12], object.layout.name);
   writer.writeString(offsets[13], object.locale);
   writer.writeDateTime(offsets[14], object.pausedTill);
-  writer.writeBool(offsets[15], object.smartPaste);
-  writer.writeLong(offsets[16], object.themeColor);
-  writer.writeString(offsets[17], object.themeMode.name);
-  writer.writeString(offsets[18], object.themeVariant.name);
-  writer.writeString(offsets[19], object.toggleHotkey);
-  writer.writeString(offsets[20], object.view.name);
-  writer.writeDouble(offsets[21], object.windowHeight);
-  writer.writeDouble(offsets[22], object.windowWidth);
+  writer.writeBool(offsets[15], object.pinned);
+  writer.writeBool(offsets[16], object.smartPaste);
+  writer.writeLong(offsets[17], object.themeColor);
+  writer.writeString(offsets[18], object.themeMode.name);
+  writer.writeString(offsets[19], object.themeVariant.name);
+  writer.writeString(offsets[20], object.toggleHotkey);
+  writer.writeString(offsets[21], object.view.name);
+  writer.writeDouble(offsets[22], object.windowHeight);
+  writer.writeDouble(offsets[23], object.windowWidth);
 }
 
 AppConfig _appConfigDeserialize(
@@ -252,19 +258,20 @@ AppConfig _appConfigDeserialize(
             AppLayout.grid,
     locale: reader.readString(offsets[13]),
     pausedTill: reader.readDateTimeOrNull(offsets[14]),
-    smartPaste: reader.readBool(offsets[15]),
-    themeColor: reader.readLong(offsets[16]),
+    pinned: reader.readBool(offsets[15]),
+    smartPaste: reader.readBool(offsets[16]),
+    themeColor: reader.readLong(offsets[17]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[17])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[18])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[18])] ??
+            reader.readStringOrNull(offsets[19])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[19]),
-    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[20])] ??
+    toggleHotkey: reader.readStringOrNull(offsets[20]),
+    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[21])] ??
         AppView.topDocked,
-    windowHeight: reader.readDouble(offsets[21]),
-    windowWidth: reader.readDouble(offsets[22]),
+    windowHeight: reader.readDouble(offsets[22]),
+    windowWidth: reader.readDouble(offsets[23]),
   );
   object.id = id;
   return object;
@@ -315,23 +322,25 @@ P _appConfigDeserializeProp<P>(
     case 15:
       return (reader.readBool(offset)) as P;
     case 16:
-      return (reader.readLong(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 17:
+      return (reader.readLong(offset)) as P;
+    case 18:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 18:
+    case 19:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 19:
-      return (reader.readStringOrNull(offset)) as P;
     case 20:
+      return (reader.readStringOrNull(offset)) as P;
+    case 21:
       return (_AppConfigviewValueEnumMap[reader.readStringOrNull(offset)] ??
           AppView.topDocked) as P;
-    case 21:
-      return (reader.readDouble(offset)) as P;
     case 22:
+      return (reader.readDouble(offset)) as P;
+    case 23:
       return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1269,6 +1278,16 @@ extension AppConfigQueryFilter
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> pinnedEqualTo(
+      bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'pinned',
+        value: value,
+      ));
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> smartPasteEqualTo(
       bool value) {
     return QueryBuilder.apply(this, (query) {
@@ -2195,6 +2214,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByPinnedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortBySmartPaste() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'smartPaste', Sort.asc);
@@ -2476,6 +2507,18 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByPinnedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'pinned', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenBySmartPaste() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'smartPaste', Sort.asc);
@@ -2662,6 +2705,12 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByPinned() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'pinned');
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctBySmartPaste() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'smartPaste');
@@ -2814,6 +2863,12 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, bool, QQueryOperations> pinnedProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'pinned');
+    });
+  }
+
   QueryBuilder<AppConfig, bool, QQueryOperations> smartPasteProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'smartPaste');
@@ -2878,6 +2933,7 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
           AppLayout.grid,
       view: $enumDecodeNullable(_$AppViewEnumMap, json['view']) ??
           AppView.windowed,
+      pinned: json['pinned'] as bool? ?? false,
       windowWidth:
           (json['windowWidth'] as num?)?.toDouble() ?? initialWindowWidth,
       windowHeight:
@@ -2910,6 +2966,7 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'enableFileSync': instance.enableFileSync,
       'layout': _$AppLayoutEnumMap[instance.layout]!,
       'view': _$AppViewEnumMap[instance.view]!,
+      'pinned': instance.pinned,
       'windowWidth': instance.windowWidth,
       'windowHeight': instance.windowHeight,
       'dontUploadOver': instance.dontUploadOver,

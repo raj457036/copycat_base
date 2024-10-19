@@ -150,6 +150,8 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   bool get isEncryptionEnabled => state.config.autoEncrypt;
   bool get isE2EESetupDone => state.config.enc2 != null;
 
+  bool get isPinned => state.config.pinned;
+
   bool get isFileSyncEnabled =>
       state.config.enableSync && state.config.enableFileSync;
 
@@ -171,6 +173,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
 
   Future<void> changeAppView(AppView view) async {
     final newConfig = state.config.copyWith(view: view)..applyId(state.config);
+    emit(AppConfigState.loaded(config: newConfig));
+    await repo.update(newConfig);
+  }
+
+  Future<void> togglePinned() async {
+    final newConfig = state.config.copyWith(pinned: !state.config.pinned)
+      ..applyId(state.config);
     emit(AppConfigState.loaded(config: newConfig));
     await repo.update(newConfig);
   }

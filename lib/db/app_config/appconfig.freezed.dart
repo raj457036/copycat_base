@@ -28,6 +28,7 @@ mixin _$AppConfig {
   AppLayout get layout => throw _privateConstructorUsedError;
   @Enumerated(EnumType.name)
   AppView get view => throw _privateConstructorUsedError;
+  bool get pinned => throw _privateConstructorUsedError;
   double get windowWidth => throw _privateConstructorUsedError;
   double get windowHeight => throw _privateConstructorUsedError;
 
@@ -88,6 +89,7 @@ abstract class $AppConfigCopyWith<$Res> {
       bool enableFileSync,
       @Enumerated(EnumType.name) AppLayout layout,
       @Enumerated(EnumType.name) AppView view,
+      bool pinned,
       double windowWidth,
       double windowHeight,
       int dontUploadOver,
@@ -132,6 +134,7 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? enableFileSync = null,
     Object? layout = null,
     Object? view = null,
+    Object? pinned = null,
     Object? windowWidth = null,
     Object? windowHeight = null,
     Object? dontUploadOver = null,
@@ -173,6 +176,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.view
           : view // ignore: cast_nullable_to_non_nullable
               as AppView,
+      pinned: null == pinned
+          ? _value.pinned
+          : pinned // ignore: cast_nullable_to_non_nullable
+              as bool,
       windowWidth: null == windowWidth
           ? _value.windowWidth
           : windowWidth // ignore: cast_nullable_to_non_nullable
@@ -279,6 +286,7 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       bool enableFileSync,
       @Enumerated(EnumType.name) AppLayout layout,
       @Enumerated(EnumType.name) AppView view,
+      bool pinned,
       double windowWidth,
       double windowHeight,
       int dontUploadOver,
@@ -322,6 +330,7 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? enableFileSync = null,
     Object? layout = null,
     Object? view = null,
+    Object? pinned = null,
     Object? windowWidth = null,
     Object? windowHeight = null,
     Object? dontUploadOver = null,
@@ -363,6 +372,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.view
           : view // ignore: cast_nullable_to_non_nullable
               as AppView,
+      pinned: null == pinned
+          ? _value.pinned
+          : pinned // ignore: cast_nullable_to_non_nullable
+              as bool,
       windowWidth: null == windowWidth
           ? _value.windowWidth
           : windowWidth // ignore: cast_nullable_to_non_nullable
@@ -452,6 +465,7 @@ class _$AppConfigImpl extends _AppConfig {
       this.enableFileSync = true,
       @Enumerated(EnumType.name) this.layout = AppLayout.grid,
       @Enumerated(EnumType.name) this.view = AppView.windowed,
+      this.pinned = false,
       this.windowWidth = initialWindowWidth,
       this.windowHeight = initialWindowHeight,
       this.dontUploadOver = $10MB,
@@ -498,6 +512,9 @@ class _$AppConfigImpl extends _AppConfig {
   @JsonKey()
   @Enumerated(EnumType.name)
   final AppView view;
+  @override
+  @JsonKey()
+  final bool pinned;
   @override
   @JsonKey()
   final double windowWidth;
@@ -577,7 +594,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -593,6 +610,7 @@ class _$AppConfigImpl extends _AppConfig {
                 other.enableFileSync == enableFileSync) &&
             (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.view, view) || other.view == view) &&
+            (identical(other.pinned, pinned) || other.pinned == pinned) &&
             (identical(other.windowWidth, windowWidth) ||
                 other.windowWidth == windowWidth) &&
             (identical(other.windowHeight, windowHeight) ||
@@ -640,6 +658,7 @@ class _$AppConfigImpl extends _AppConfig {
         enableFileSync,
         layout,
         view,
+        pinned,
         windowWidth,
         windowHeight,
         dontUploadOver,
@@ -682,6 +701,7 @@ abstract class _AppConfig extends AppConfig {
       final bool enableFileSync,
       @Enumerated(EnumType.name) final AppLayout layout,
       @Enumerated(EnumType.name) final AppView view,
+      final bool pinned,
       final double windowWidth,
       final double windowHeight,
       final int dontUploadOver,
@@ -722,6 +742,8 @@ abstract class _AppConfig extends AppConfig {
   @override
   @Enumerated(EnumType.name)
   AppView get view;
+  @override
+  bool get pinned;
   @override
   double get windowWidth;
   @override
