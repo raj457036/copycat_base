@@ -326,7 +326,6 @@ class AppConfigCubit extends Cubit<AppConfigState> {
       final allowed = exclusionChecker?.isActivityAllowed(activity) ?? true;
       return allowed;
     } on TimeoutException {
-      logger.e("TIMEOUT");
       lastActivity = null;
       return true;
     } catch (e) {

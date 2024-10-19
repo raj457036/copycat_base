@@ -103,31 +103,20 @@ class ExclusionChecker {
     return false; // Not a password
   }
 
+  bool isPatternExcluded(String text) {
+    return _patterns.any((pattern) => pattern.hasMatch(text));
+  }
+
   bool isClipAllowed(ClipItem clip, ActivityInfo? activity) {
     logger.w("Excluded pattern detected in content");
     if (clip.isText) {
-      if (_phone && clip.textCategory == TextCategory.phone) {
-        logger.w("Detected Phone");
-        return false;
-      }
-      if (_email && clip.textCategory == TextCategory.email) {
-        logger.w("Detected Email");
-        return false;
-      }
-
-      if (_creditCard) {
-        return !_creditCardPattern.hasMatch(clip.text!);
-      }
-
-      if (_passwords) {
-        return !isPossiblePassword(clip.text!);
-      }
-      if (_bankAccount) {
-        return !bankAccountPattern.hasMatch(clip.text!);
-      }
-      if (_personalInfo) {
-        return !passportPattern.hasMatch(clip.text!);
-      }
+      if (isPatternExcluded(clip.text!)) return false;
+      if (_phone && clip.textCategory == TextCategory.phone) return false;
+      if (_email && clip.textCategory == TextCategory.email) return false;
+      if (_creditCard && _creditCardPattern.hasMatch(clip.text!)) return false;
+      if (_passwords && isPossiblePassword(clip.text!)) return false;
+      if (_bankAccount && bankAccountPattern.hasMatch(clip.text!)) return false;
+      if (_personalInfo && passportPattern.hasMatch(clip.text!)) return false;
     }
     if (_sensitiveUrls) {
       final p0 = activity != null ? isActivityAllowed(activity) : true;
