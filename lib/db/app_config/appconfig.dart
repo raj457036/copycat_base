@@ -78,7 +78,6 @@ class AppConfig with _$AppConfig, IsarIdMixin {
 
     // Exprimental
     @Default(false) bool enableDragNDrop,
-    @Default(false) bool hideWhenDragging,
     @Default(false) bool enablePasteStack,
 
     //? Local App States

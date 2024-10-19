@@ -269,13 +269,6 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
-  Future<void> toggleHideWhenDragging(bool value) async {
-    final newConfig = state.config.copyWith(hideWhenDragging: value)
-      ..applyId(state.config);
-    emit(state.copyWith(config: newConfig));
-    await repo.update(newConfig);
-  }
-
   Future<void> toggleAutoEncrypt(bool value) async {
     final newConfig = state.config.copyWith(autoEncrypt: value)
       ..applyId(state.config);

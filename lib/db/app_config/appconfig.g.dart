@@ -68,77 +68,72 @@ const AppConfigSchema = CollectionSchema(
       type: IsarType.object,
       target: r'ExclusionRules',
     ),
-    r'hideWhenDragging': PropertySchema(
-      id: 10,
-      name: r'hideWhenDragging',
-      type: IsarType.bool,
-    ),
     r'isPersisted': PropertySchema(
-      id: 11,
+      id: 10,
       name: r'isPersisted',
       type: IsarType.bool,
     ),
     r'launchAtStartup': PropertySchema(
-      id: 12,
+      id: 11,
       name: r'launchAtStartup',
       type: IsarType.bool,
     ),
     r'layout': PropertySchema(
-      id: 13,
+      id: 12,
       name: r'layout',
       type: IsarType.string,
       enumMap: _AppConfiglayoutEnumValueMap,
     ),
     r'locale': PropertySchema(
-      id: 14,
+      id: 13,
       name: r'locale',
       type: IsarType.string,
     ),
     r'pausedTill': PropertySchema(
-      id: 15,
+      id: 14,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'smartPaste': PropertySchema(
-      id: 16,
+      id: 15,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'themeColor': PropertySchema(
-      id: 17,
+      id: 16,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 18,
+      id: 17,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 19,
+      id: 18,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 20,
+      id: 19,
       name: r'toggleHotkey',
       type: IsarType.string,
     ),
     r'view': PropertySchema(
-      id: 21,
+      id: 20,
       name: r'view',
       type: IsarType.string,
       enumMap: _AppConfigviewEnumValueMap,
     ),
     r'windowHeight': PropertySchema(
-      id: 22,
+      id: 21,
       name: r'windowHeight',
       type: IsarType.double,
     ),
     r'windowWidth': PropertySchema(
-      id: 23,
+      id: 22,
       name: r'windowWidth',
       type: IsarType.double,
     )
@@ -215,20 +210,19 @@ void _appConfigSerialize(
     ExclusionRulesSchema.serialize,
     object.exclusionRules,
   );
-  writer.writeBool(offsets[10], object.hideWhenDragging);
-  writer.writeBool(offsets[11], object.isPersisted);
-  writer.writeBool(offsets[12], object.launchAtStartup);
-  writer.writeString(offsets[13], object.layout.name);
-  writer.writeString(offsets[14], object.locale);
-  writer.writeDateTime(offsets[15], object.pausedTill);
-  writer.writeBool(offsets[16], object.smartPaste);
-  writer.writeLong(offsets[17], object.themeColor);
-  writer.writeString(offsets[18], object.themeMode.name);
-  writer.writeString(offsets[19], object.themeVariant.name);
-  writer.writeString(offsets[20], object.toggleHotkey);
-  writer.writeString(offsets[21], object.view.name);
-  writer.writeDouble(offsets[22], object.windowHeight);
-  writer.writeDouble(offsets[23], object.windowWidth);
+  writer.writeBool(offsets[10], object.isPersisted);
+  writer.writeBool(offsets[11], object.launchAtStartup);
+  writer.writeString(offsets[12], object.layout.name);
+  writer.writeString(offsets[13], object.locale);
+  writer.writeDateTime(offsets[14], object.pausedTill);
+  writer.writeBool(offsets[15], object.smartPaste);
+  writer.writeLong(offsets[16], object.themeColor);
+  writer.writeString(offsets[17], object.themeMode.name);
+  writer.writeString(offsets[18], object.themeVariant.name);
+  writer.writeString(offsets[19], object.toggleHotkey);
+  writer.writeString(offsets[20], object.view.name);
+  writer.writeDouble(offsets[21], object.windowHeight);
+  writer.writeDouble(offsets[22], object.windowWidth);
 }
 
 AppConfig _appConfigDeserialize(
@@ -252,26 +246,25 @@ AppConfig _appConfigDeserialize(
       ExclusionRulesSchema.deserialize,
       allOffsets,
     ),
-    hideWhenDragging: reader.readBool(offsets[10]),
-    launchAtStartup: reader.readBool(offsets[12]),
+    launchAtStartup: reader.readBool(offsets[11]),
     layout:
-        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[13])] ??
+        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[12])] ??
             AppLayout.grid,
-    locale: reader.readString(offsets[14]),
-    pausedTill: reader.readDateTimeOrNull(offsets[15]),
-    smartPaste: reader.readBool(offsets[16]),
-    themeColor: reader.readLong(offsets[17]),
+    locale: reader.readString(offsets[13]),
+    pausedTill: reader.readDateTimeOrNull(offsets[14]),
+    smartPaste: reader.readBool(offsets[15]),
+    themeColor: reader.readLong(offsets[16]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[18])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[17])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[19])] ??
+            reader.readStringOrNull(offsets[18])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[20]),
-    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[21])] ??
+    toggleHotkey: reader.readStringOrNull(offsets[19]),
+    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[20])] ??
         AppView.topDocked,
-    windowHeight: reader.readDouble(offsets[22]),
-    windowWidth: reader.readDouble(offsets[23]),
+    windowHeight: reader.readDouble(offsets[21]),
+    windowWidth: reader.readDouble(offsets[22]),
   );
   object.id = id;
   return object;
@@ -313,34 +306,32 @@ P _appConfigDeserializeProp<P>(
     case 11:
       return (reader.readBool(offset)) as P;
     case 12:
-      return (reader.readBool(offset)) as P;
-    case 13:
       return (_AppConfiglayoutValueEnumMap[reader.readStringOrNull(offset)] ??
           AppLayout.grid) as P;
-    case 14:
+    case 13:
       return (reader.readString(offset)) as P;
-    case 15:
+    case 14:
       return (reader.readDateTimeOrNull(offset)) as P;
-    case 16:
+    case 15:
       return (reader.readBool(offset)) as P;
-    case 17:
+    case 16:
       return (reader.readLong(offset)) as P;
-    case 18:
+    case 17:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 19:
+    case 18:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 20:
+    case 19:
       return (reader.readStringOrNull(offset)) as P;
-    case 21:
+    case 20:
       return (_AppConfigviewValueEnumMap[reader.readStringOrNull(offset)] ??
           AppView.topDocked) as P;
-    case 22:
+    case 21:
       return (reader.readDouble(offset)) as P;
-    case 23:
+    case 22:
       return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -870,16 +861,6 @@ extension AppConfigQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'exclusionRules',
-      ));
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
-      hideWhenDraggingEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'hideWhenDragging',
-        value: value,
       ));
     });
   }
@@ -2154,19 +2135,6 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByHideWhenDragging() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hideWhenDragging', Sort.asc);
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
-      sortByHideWhenDraggingDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hideWhenDragging', Sort.desc);
-    });
-  }
-
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByIsPersisted() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isPersisted', Sort.asc);
@@ -2436,19 +2404,6 @@ extension AppConfigQuerySortThenBy
     });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByHideWhenDragging() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hideWhenDragging', Sort.asc);
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
-      thenByHideWhenDraggingDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'hideWhenDragging', Sort.desc);
-    });
-  }
-
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
@@ -2675,12 +2630,6 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByHideWhenDragging() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'hideWhenDragging');
-    });
-  }
-
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByIsPersisted() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isPersisted');
@@ -2835,12 +2784,6 @@ extension AppConfigQueryProperty
     });
   }
 
-  QueryBuilder<AppConfig, bool, QQueryOperations> hideWhenDraggingProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'hideWhenDragging');
-    });
-  }
-
   QueryBuilder<AppConfig, bool, QQueryOperations> isPersistedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isPersisted');
@@ -2956,7 +2899,6 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
               _$DynamicSchemeVariantEnumMap, json['themeVariant']) ??
           DynamicSchemeVariant.tonalSpot,
       enableDragNDrop: json['enableDragNDrop'] as bool? ?? false,
-      hideWhenDragging: json['hideWhenDragging'] as bool? ?? false,
       enablePasteStack: json['enablePasteStack'] as bool? ?? false,
       clockUnSynced: json['clockUnSynced'] as bool? ?? false,
     );
@@ -2983,7 +2925,6 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'themeColor': instance.themeColor,
       'themeVariant': _$DynamicSchemeVariantEnumMap[instance.themeVariant]!,
       'enableDragNDrop': instance.enableDragNDrop,
-      'hideWhenDragging': instance.hideWhenDragging,
       'enablePasteStack': instance.enablePasteStack,
       'clockUnSynced': instance.clockUnSynced,
     };
