@@ -98,8 +98,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
-    Locale('zh'),
-    Locale('zh', 'CN')
+    Locale('zh')
   ];
 
   /// No description provided for @appName.
@@ -815,12 +814,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No collection found'**
   String get noCollectionFound;
-
-  /// No description provided for @pinToTop.
-  ///
-  /// In en, this message translates to:
-  /// **'Pin to Top'**
-  String get pinToTop;
 
   /// No description provided for @done.
   ///
@@ -2087,6 +2080,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Customize the entire look and feel of the app to match your preferences.'**
   String get themingFeatureDesc;
+
+  /// No description provided for @resetSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Search'**
+  String get resetSearch;
+
+  /// No description provided for @security.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get security;
+
+  /// No description provided for @exclusionRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclusion Rules'**
+  String get exclusionRules;
+
+  /// No description provided for @exclusionRulesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent information from copying to clipboard. Click for Advance control.'**
+  String get exclusionRulesDesc;
+
+  /// No description provided for @predefinedExclRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Predefined Exclusion Rules'**
+  String get predefinedExclRules;
+
+  /// No description provided for @passwordManagers.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Managers'**
+  String get passwordManagers;
+
+  /// No description provided for @commonPasswordPatterns.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Password Patterns'**
+  String get commonPasswordPatterns;
+
+  /// No description provided for @creditCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit Card Number'**
+  String get creditCardNumber;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @bankAccountNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Account Number'**
+  String get bankAccountNumber;
+
+  /// No description provided for @passportNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Passport Number'**
+  String get passportNumber;
+
+  /// No description provided for @sensitiveUrls.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensitive Urls'**
+  String get sensitiveUrls;
+
+  /// No description provided for @customExclusionRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Exclusion Rules'**
+  String get customExclusionRules;
+
+  /// No description provided for @customRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Rules'**
+  String get customRules;
+
+  /// No description provided for @customRulesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclude by app, app window/website title, website url or regex pattern'**
+  String get customRulesDesc;
+
+  /// No description provided for @apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps'**
+  String get apps;
+
+  /// No description provided for @pattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Patterns'**
+  String get pattern;
+
+  /// No description provided for @excludeAnApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a new app'**
+  String get excludeAnApp;
+
+  /// No description provided for @noCustomAppExcluded.
+  ///
+  /// In en, this message translates to:
+  /// **'No custom app excluded'**
+  String get noCustomAppExcluded;
+
+  /// No description provided for @removeCustomApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this app'**
+  String get removeCustomApp;
+
+  /// No description provided for @excludeUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent copy from website matching these url segments.'**
+  String get excludeUrl;
+
+  /// No description provided for @excludeUrlInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a url or part of a url here.'**
+  String get excludeUrlInputHint;
+
+  /// No description provided for @noCustomUrlExcluded.
+  ///
+  /// In en, this message translates to:
+  /// **'No custom url(s) excluded'**
+  String get noCustomUrlExcluded;
+
+  /// No description provided for @removeCustomUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this url'**
+  String get removeCustomUrl;
+
+  /// No description provided for @excludePattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent copy when copied content matches these patterns'**
+  String get excludePattern;
+
+  /// No description provided for @noCustomPatternExcluded.
+  ///
+  /// In en, this message translates to:
+  /// **'No custom pattern(s) excluded'**
+  String get noCustomPatternExcluded;
+
+  /// No description provided for @removeCustomPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this pattern'**
+  String get removeCustomPattern;
+
+  /// No description provided for @excludeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent copy from app or website when window title matches.'**
+  String get excludeTitle;
+
+  /// No description provided for @noCustomTitleExcluded.
+  ///
+  /// In en, this message translates to:
+  /// **'No custom title(s) excluded'**
+  String get noCustomTitleExcluded;
+
+  /// No description provided for @removeCustomTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this title'**
+  String get removeCustomTitle;
+
+  /// No description provided for @reconnectGoogleDrive.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Re-Connect Google Drive?'**
+  String get reconnectGoogleDrive;
+
+  /// No description provided for @reconnectGoogleDriveDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.'**
+  String get reconnectGoogleDriveDesc;
+
+  /// No description provided for @sureToDeleteItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure to delete this item(s)?'**
+  String get sureToDeleteItem;
+
+  /// No description provided for @noAppFoundToHandleFile.
+  ///
+  /// In en, this message translates to:
+  /// **'No application found to open this file.'**
+  String get noAppFoundToHandleFile;
+
+  /// No description provided for @fileOpenPermissionNotGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission to open this file not granted.'**
+  String get fileOpenPermissionNotGranted;
+
+  /// No description provided for @proOnlyTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is available for Pro users only.'**
+  String get proOnlyTooltip;
+
+  /// No description provided for @viewWindow.
+  ///
+  /// In en, this message translates to:
+  /// **'Windowed'**
+  String get viewWindow;
+
+  /// No description provided for @viewDockRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Dock Right'**
+  String get viewDockRight;
+
+  /// No description provided for @viewDockLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Dock Left'**
+  String get viewDockLeft;
+
+  /// No description provided for @viewDockTop.
+  ///
+  /// In en, this message translates to:
+  /// **'Dock Top'**
+  String get viewDockTop;
+
+  /// No description provided for @viewDockBottom.
+  ///
+  /// In en, this message translates to:
+  /// **'Dock Bottom'**
+  String get viewDockBottom;
+
+  /// No description provided for @changeView.
+  ///
+  /// In en, this message translates to:
+  /// **'Change View'**
+  String get changeView;
+
+  /// No description provided for @pin.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin'**
+  String get pin;
+
+  /// No description provided for @unpin.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpin'**
+  String get unpin;
 }
 
 class _AppLocalizationsDelegate
@@ -2107,19 +2364,6 @@ class _AppLocalizationsDelegate
 }
 
 Future<AppLocalizations> lookupAppLocalizations(Locale locale) {
-  // Lookup logic when language+country codes are specified.
-  switch (locale.languageCode) {
-    case 'zh':
-      {
-        switch (locale.countryCode) {
-          case 'CN':
-            return app_localizations_zh.loadLibrary().then(
-                (dynamic _) => app_localizations_zh.AppLocalizationsZhCn());
-        }
-        break;
-      }
-  }
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'de':

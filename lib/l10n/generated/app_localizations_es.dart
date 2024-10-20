@@ -402,9 +402,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noCollectionFound => 'No se encontró ninguna colección';
 
   @override
-  String get pinToTop => 'Fijar al principio';
-
-  @override
   String get done => 'Hecho';
 
   @override
@@ -1103,4 +1100,144 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get themingFeatureDesc =>
       'Personaliza el aspecto y la sensación de la aplicación para que coincida con tus preferencias.';
+
+  @override
+  String get resetSearch => 'Reset Search';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get exclusionRules => 'Exclusion Rules';
+
+  @override
+  String get exclusionRulesDesc =>
+      'Prevent information from copying to clipboard. Click for Advance control.';
+
+  @override
+  String get predefinedExclRules => 'Predefined Exclusion Rules';
+
+  @override
+  String get passwordManagers => 'Password Managers';
+
+  @override
+  String get commonPasswordPatterns => 'Common Password Patterns';
+
+  @override
+  String get creditCardNumber => 'Credit Card Number';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get bankAccountNumber => 'Bank Account Number';
+
+  @override
+  String get passportNumber => 'Passport Number';
+
+  @override
+  String get sensitiveUrls => 'Sensitive Urls';
+
+  @override
+  String get customExclusionRules => 'Custom Exclusion Rules';
+
+  @override
+  String get customRules => 'Custom Rules';
+
+  @override
+  String get customRulesDesc =>
+      'Exclude by app, app window/website title, website url or regex pattern';
+
+  @override
+  String get apps => 'Apps';
+
+  @override
+  String get pattern => 'Patterns';
+
+  @override
+  String get excludeAnApp => 'Add a new app';
+
+  @override
+  String get noCustomAppExcluded => 'No custom app excluded';
+
+  @override
+  String get removeCustomApp => 'Remove this app';
+
+  @override
+  String get excludeUrl =>
+      'Prevent copy from website matching these url segments.';
+
+  @override
+  String get excludeUrlInputHint => 'Enter a url or part of a url here.';
+
+  @override
+  String get noCustomUrlExcluded => 'No custom url(s) excluded';
+
+  @override
+  String get removeCustomUrl => 'Remove this url';
+
+  @override
+  String get excludePattern =>
+      'Prevent copy when copied content matches these patterns';
+
+  @override
+  String get noCustomPatternExcluded => 'No custom pattern(s) excluded';
+
+  @override
+  String get removeCustomPattern => 'Remove this pattern';
+
+  @override
+  String get excludeTitle =>
+      'Prevent copy from app or website when window title matches.';
+
+  @override
+  String get noCustomTitleExcluded => 'No custom title(s) excluded';
+
+  @override
+  String get removeCustomTitle => 'Remove this title';
+
+  @override
+  String get reconnectGoogleDrive => '⚠️ Re-Connect Google Drive?';
+
+  @override
+  String get reconnectGoogleDriveDesc =>
+      'Your drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.';
+
+  @override
+  String get sureToDeleteItem => 'Are you sure to delete this item(s)?';
+
+  @override
+  String get noAppFoundToHandleFile =>
+      'No application found to open this file.';
+
+  @override
+  String get fileOpenPermissionNotGranted =>
+      'Permission to open this file not granted.';
+
+  @override
+  String get proOnlyTooltip => 'This feature is available for Pro users only.';
+
+  @override
+  String get viewWindow => 'Windowed';
+
+  @override
+  String get viewDockRight => 'Dock Right';
+
+  @override
+  String get viewDockLeft => 'Dock Left';
+
+  @override
+  String get viewDockTop => 'Dock Top';
+
+  @override
+  String get viewDockBottom => 'Dock Bottom';
+
+  @override
+  String get changeView => 'Change View';
+
+  @override
+  String get pin => 'Pin';
+
+  @override
+  String get unpin => 'Unpin';
 }
