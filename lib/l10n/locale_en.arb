@@ -297,14 +297,14 @@
     "exportSuccess": "✅ Successfully exported",
     "copySuccess": "✅ Successfully copied to clipboard",
     "whatsNew": "What's New?",
-    "feature1": "Smart Cross-Platform Clipboard",
-    "feature1Desc": "Seamlessly sync your clipboard content across all your devices. Whether it's text, images, or files, access your clipboard history wherever you go.",
-    "feature2": "Unlimited History with Instant Search",
-    "feature2Desc": "Never lose your copied items again. Our unlimited history feature ensures you can instantly search and retrieve any past clipboard item.",
-    "feature3": "Smart Paste",
-    "feature3Desc": "Paste intelligently with context-aware suggestions. Save time by quickly accessing the right content for your current task.",
-    "feature4": "Collections",
-    "feature4Desc": "Organize your clipboard items into collections for easy access and management. Perfect for projects, research, and more.",
+    "feature1": "Dock and Window View",
+    "feature1Desc": "Now you can have your clipboard docked on any edge or floating as always.",
+    "feature2": "List & Grid View for your clips",
+    "feature2Desc": "On supported window size now you can choose between list and grid view for your clips.",
+    "feature3": "Exclusion Rules",
+    "feature3Desc": "Precise control over what not to copy to your clipboard.",
+    "feature4": "Bulk Operations",
+    "feature4Desc": "Now select multiple clips and perform bulk operations",
     "gettingStarted": "Get Started",
     "howToUse": "How to Use",
     "howToUseDesc": "How to use CopyCat? Read our documentation to get started.",
@@ -430,6 +430,8 @@
     "rainbow": "Rainbow",
     "vibrant": "Vibrant",
     
+    "customExclusionRuleFeature": "Custom Exclusion Rules",
+    "customExclusionRuleFeatureDesc": "Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.",
     "dragNDropFeature": "Drag & Drop",
     "dragNDropFeatureDesc": "Seamlessly move items in any direction on your Desktop and Tablet devices.",
     "experimentalLabel": "Experimental",
@@ -466,11 +468,9 @@
     "excludePattern": "Prevent copy when copied content matches these patterns",
     "noCustomPatternExcluded": "No custom pattern(s) excluded",
     "removeCustomPattern": "Remove this pattern",
-
     "excludeTitle": "Prevent copy from app or website when window title matches.",
     "noCustomTitleExcluded": "No custom title(s) excluded",
     "removeCustomTitle": "Remove this title",
-
     "reconnectGoogleDrive": "⚠️ Re-Connect Google Drive?",
     "reconnectGoogleDriveDesc":  "Your drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.",
     "sureToDeleteItem": "Are you sure to delete this item(s)?",
@@ -484,6 +484,8 @@
     "viewDockBottom": "Dock Bottom",
     "changeView": "Change View",
     "pin": "Pin",
-    "unpin": "Unpin"
+    "unpin": "Unpin",
+    "layoutToGrid": "Switch to Grid Layout",
+    "layoutToList": "Switch to List Layout"
 
 }

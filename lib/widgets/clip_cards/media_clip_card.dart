@@ -3,6 +3,7 @@ import 'package:copycat_base/constants/widgets.dart';
 import 'package:copycat_base/db/app_config/appconfig.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/utils/blur_hash.dart';
+import 'package:copycat_base/utils/common_extension.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:copycat_base/widgets/clipcard_loading.dart';
 import 'package:flutter/material.dart';
@@ -85,6 +86,8 @@ class MediaClipCard extends StatelessWidget {
       if (item.fileMimeType!.startsWith(mediaMimeRegex)) {
         final label = "${item.fileMimeType!} • ${formatBytes(item.fileSize!)}";
         return Chip(
+          padding: EdgeInsets.zero,
+          materialTapTargetSize: MaterialTapTargetSize.padded,
           label: Text(
             label,
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
@@ -105,8 +108,9 @@ class MediaClipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isGrid = AppLayout.grid == layout;
     final preview = MediaPreview(item: item);
+    final isNarrow = context.mq.size.height < 230;
     final child = SizedBox.expand(
-      child: isGrid
+      child: isGrid && !isNarrow
           ? Stack(
               children: [
                 Positioned.fill(child: preview),

@@ -99,11 +99,11 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     final position = await calcWindowPosition(dockedMaxSize, alignment);
     await windowManager.setSize(dockedMaxSize);
     await windowManager.setPosition(position, animate: true);
-    windowManager.setMinimumSize(dockedMinSize);
-    windowManager.setMaximumSize(dockedMaxSize);
-    windowManager.setMovable(false);
-    windowManager.setAsFrameless();
-    windowManager.setAlwaysOnTop(true);
+    await windowManager.setMinimumSize(dockedMinSize);
+    await windowManager.setMaximumSize(dockedMaxSize);
+    await windowManager.setMovable(false);
+    await windowManager.setAsFrameless();
+    await windowManager.setAlwaysOnTop(true);
     emit(state.copyWith(view: view));
   }
 

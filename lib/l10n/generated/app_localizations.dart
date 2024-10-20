@@ -1430,49 +1430,49 @@ abstract class AppLocalizations {
   /// No description provided for @feature1.
   ///
   /// In en, this message translates to:
-  /// **'Smart Cross-Platform Clipboard'**
+  /// **'Dock and Window View'**
   String get feature1;
 
   /// No description provided for @feature1Desc.
   ///
   /// In en, this message translates to:
-  /// **'Seamlessly sync your clipboard content across all your devices. Whether it\'s text, images, or files, access your clipboard history wherever you go.'**
+  /// **'Now you can have your clipboard docked on any edge or floating as always.'**
   String get feature1Desc;
 
   /// No description provided for @feature2.
   ///
   /// In en, this message translates to:
-  /// **'Unlimited History with Instant Search'**
+  /// **'List & Grid View for your clips'**
   String get feature2;
 
   /// No description provided for @feature2Desc.
   ///
   /// In en, this message translates to:
-  /// **'Never lose your copied items again. Our unlimited history feature ensures you can instantly search and retrieve any past clipboard item.'**
+  /// **'On supported window size now you can choose between list and grid view for your clips.'**
   String get feature2Desc;
 
   /// No description provided for @feature3.
   ///
   /// In en, this message translates to:
-  /// **'Smart Paste'**
+  /// **'Exclusion Rules'**
   String get feature3;
 
   /// No description provided for @feature3Desc.
   ///
   /// In en, this message translates to:
-  /// **'Paste intelligently with context-aware suggestions. Save time by quickly accessing the right content for your current task.'**
+  /// **'Precise control over what not to copy to your clipboard.'**
   String get feature3Desc;
 
   /// No description provided for @feature4.
   ///
   /// In en, this message translates to:
-  /// **'Collections'**
+  /// **'Bulk Operations'**
   String get feature4;
 
   /// No description provided for @feature4Desc.
   ///
   /// In en, this message translates to:
-  /// **'Organize your clipboard items into collections for easy access and management. Perfect for projects, research, and more.'**
+  /// **'Now select multiple clips and perform bulk operations'**
   String get feature4Desc;
 
   /// No description provided for @gettingStarted.
@@ -2033,6 +2033,18 @@ abstract class AppLocalizations {
   /// **'Vibrant'**
   String get vibrant;
 
+  /// No description provided for @customExclusionRuleFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Exclusion Rules'**
+  String get customExclusionRuleFeature;
+
+  /// No description provided for @customExclusionRuleFeatureDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.'**
+  String get customExclusionRuleFeatureDesc;
+
   /// No description provided for @dragNDropFeature.
   ///
   /// In en, this message translates to:
@@ -2344,6 +2356,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unpin'**
   String get unpin;
+
+  /// No description provided for @layoutToGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Grid Layout'**
+  String get layoutToGrid;
+
+  /// No description provided for @layoutToList.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to List Layout'**
+  String get layoutToList;
 }
 
 class _AppLocalizationsDelegate

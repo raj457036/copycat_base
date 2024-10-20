@@ -742,32 +742,32 @@ class AppLocalizationsFr extends AppLocalizations {
   String get whatsNew => 'Quoi de neuf ?';
 
   @override
-  String get feature1 => 'Presse-papiers Intelligent Multi-Plateforme';
+  String get feature1 => 'Vue Ancrée et Fenêtre';
 
   @override
   String get feature1Desc =>
-      'Synchronisez sans effort le contenu de votre presse-papiers sur tous vos appareils. Qu\'il s\'agisse de texte, d\'images ou de fichiers, accédez à l\'historique de votre presse-papiers où que vous alliez.';
+      'Vous pouvez désormais ancrer votre presse-papiers à n\'importe quel bord ou le garder flottant comme toujours.';
 
   @override
-  String get feature2 => 'Historique Illimité avec Recherche Instantanée';
+  String get feature2 => 'Vue Liste et Grille pour vos clips';
 
   @override
   String get feature2Desc =>
-      'Ne perdez plus jamais vos éléments copiés. Notre fonctionnalité d\'historique illimité garantit que vous pouvez rechercher et récupérer instantanément tout élément de presse-papiers passé.';
+      'Sur les fenêtres compatibles, vous pouvez désormais choisir entre la vue liste et grille pour vos clips.';
 
   @override
-  String get feature3 => 'Collage Intelligent';
+  String get feature3 => 'Règles d\'Exclusion';
 
   @override
   String get feature3Desc =>
-      'Collez intelligemment avec des suggestions contextuelles. Gagnez du temps en accédant rapidement au contenu approprié pour votre tâche actuelle.';
+      'Contrôle précis sur ce qui ne doit pas être copié dans votre presse-papiers.';
 
   @override
-  String get feature4 => 'Collections';
+  String get feature4 => 'Opérations en Masse';
 
   @override
   String get feature4Desc =>
-      'Organisez les éléments de votre presse-papiers en collections pour un accès et une gestion faciles. Parfait pour les projets, la recherche et plus encore.';
+      'Sélectionnez maintenant plusieurs clips et effectuez des opérations en masse.';
 
   @override
   String get gettingStarted => 'Commencer';
@@ -1077,6 +1077,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get vibrant => 'Vibrant';
 
   @override
+  String get customExclusionRuleFeature => 'Custom Exclusion Rules';
+
+  @override
+  String get customExclusionRuleFeatureDesc =>
+      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+
+  @override
   String get dragNDropFeature => 'Glisser & Déposer';
 
   @override
@@ -1105,142 +1112,150 @@ class AppLocalizationsFr extends AppLocalizations {
       'Personnalisez l\'apparence et le ressenti de l\'application selon vos préférences.';
 
   @override
-  String get resetSearch => 'Reset Search';
+  String get resetSearch => 'Réinitialiser la Recherche';
 
   @override
-  String get security => 'Security';
+  String get security => 'Sécurité';
 
   @override
-  String get exclusionRules => 'Exclusion Rules';
+  String get exclusionRules => 'Règles d\'Exclusion';
 
   @override
   String get exclusionRulesDesc =>
-      'Prevent information from copying to clipboard. Click for Advance control.';
+      'Empêcher la copie des informations dans le presse-papiers. Cliquez pour contrôle avancé.';
 
   @override
-  String get predefinedExclRules => 'Predefined Exclusion Rules';
+  String get predefinedExclRules => 'Règles d\'Exclusion Prédéfinies';
 
   @override
-  String get passwordManagers => 'Password Managers';
+  String get passwordManagers => 'Gestionnaires de Mots de Passe';
 
   @override
-  String get commonPasswordPatterns => 'Common Password Patterns';
+  String get commonPasswordPatterns => 'Modèles Courants de Mots de Passe';
 
   @override
-  String get creditCardNumber => 'Credit Card Number';
+  String get creditCardNumber => 'Numéro de Carte de Crédit';
 
   @override
-  String get phoneNumber => 'Phone Number';
+  String get phoneNumber => 'Numéro de Téléphone';
 
   @override
-  String get bankAccountNumber => 'Bank Account Number';
+  String get bankAccountNumber => 'Numéro de Compte Bancaire';
 
   @override
-  String get passportNumber => 'Passport Number';
+  String get passportNumber => 'Numéro de Passeport';
 
   @override
-  String get sensitiveUrls => 'Sensitive Urls';
+  String get sensitiveUrls => 'URLs Sensibles';
 
   @override
-  String get customExclusionRules => 'Custom Exclusion Rules';
+  String get customExclusionRules => 'Règles d\'Exclusion Personnalisées';
 
   @override
-  String get customRules => 'Custom Rules';
+  String get customRules => 'Règles Personnalisées';
 
   @override
   String get customRulesDesc =>
-      'Exclude by app, app window/website title, website url or regex pattern';
+      'Exclure par application, titre de fenêtre d\'application/site Web, URL du site Web ou motif regex.';
 
   @override
-  String get apps => 'Apps';
+  String get apps => 'Applications';
 
   @override
-  String get pattern => 'Patterns';
+  String get pattern => 'Motifs';
 
   @override
-  String get excludeAnApp => 'Add a new app';
+  String get excludeAnApp => 'Ajouter une nouvelle application';
 
   @override
-  String get noCustomAppExcluded => 'No custom app excluded';
+  String get noCustomAppExcluded => 'Aucune application personnalisée exclue';
 
   @override
-  String get removeCustomApp => 'Remove this app';
+  String get removeCustomApp => 'Supprimer cette application';
 
   @override
   String get excludeUrl =>
-      'Prevent copy from website matching these url segments.';
+      'Empêcher la copie des sites Web correspondant à ces segments d\'URL.';
 
   @override
-  String get excludeUrlInputHint => 'Enter a url or part of a url here.';
+  String get excludeUrlInputHint => 'Entrez une URL ou une partie d\'URL ici.';
 
   @override
-  String get noCustomUrlExcluded => 'No custom url(s) excluded';
+  String get noCustomUrlExcluded => 'Aucune URL personnalisée exclue';
 
   @override
-  String get removeCustomUrl => 'Remove this url';
+  String get removeCustomUrl => 'Supprimer cette URL';
 
   @override
   String get excludePattern =>
-      'Prevent copy when copied content matches these patterns';
+      'Empêcher la copie lorsque le contenu copié correspond à ces motifs.';
 
   @override
-  String get noCustomPatternExcluded => 'No custom pattern(s) excluded';
+  String get noCustomPatternExcluded => 'Aucun motif personnalisé exclu';
 
   @override
-  String get removeCustomPattern => 'Remove this pattern';
+  String get removeCustomPattern => 'Supprimer ce motif';
 
   @override
   String get excludeTitle =>
-      'Prevent copy from app or website when window title matches.';
+      'Empêcher la copie des applications ou des sites Web lorsque le titre de la fenêtre correspond.';
 
   @override
-  String get noCustomTitleExcluded => 'No custom title(s) excluded';
+  String get noCustomTitleExcluded => 'Aucun titre personnalisé exclu';
 
   @override
-  String get removeCustomTitle => 'Remove this title';
+  String get removeCustomTitle => 'Supprimer ce titre';
 
   @override
-  String get reconnectGoogleDrive => '⚠️ Re-Connect Google Drive?';
+  String get reconnectGoogleDrive => '⚠️ Reconnecter Google Drive?';
 
   @override
   String get reconnectGoogleDriveDesc =>
-      'Your drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.';
+      'Votre disque est déjà connecté ! Souhaitez-vous le reconnecter ?\n\nPour éviter toute perte de données, veuillez utiliser le même compte qu\'auparavant.';
 
   @override
-  String get sureToDeleteItem => 'Are you sure to delete this item(s)?';
+  String get sureToDeleteItem =>
+      'Êtes-vous sûr de vouloir supprimer cet élément ?';
 
   @override
   String get noAppFoundToHandleFile =>
-      'No application found to open this file.';
+      'Aucune application trouvée pour ouvrir ce fichier.';
 
   @override
   String get fileOpenPermissionNotGranted =>
-      'Permission to open this file not granted.';
+      'Permission d\'ouvrir ce fichier non accordée.';
 
   @override
-  String get proOnlyTooltip => 'This feature is available for Pro users only.';
+  String get proOnlyTooltip =>
+      'Cette fonctionnalité est disponible uniquement pour les utilisateurs Pro.';
 
   @override
-  String get viewWindow => 'Windowed';
+  String get viewWindow => 'Fenêtré';
 
   @override
-  String get viewDockRight => 'Dock Right';
+  String get viewDockRight => 'Ancrer à Droite';
 
   @override
-  String get viewDockLeft => 'Dock Left';
+  String get viewDockLeft => 'Ancrer à Gauche';
 
   @override
-  String get viewDockTop => 'Dock Top';
+  String get viewDockTop => 'Ancrer en Haut';
 
   @override
-  String get viewDockBottom => 'Dock Bottom';
+  String get viewDockBottom => 'Ancrer en Bas';
 
   @override
-  String get changeView => 'Change View';
+  String get changeView => 'Changer de Vue';
 
   @override
-  String get pin => 'Pin';
+  String get pin => 'Épingler';
 
   @override
-  String get unpin => 'Unpin';
+  String get unpin => 'Désépingler';
+
+  @override
+  String get layoutToGrid => 'Passer à la Disposition en Grille';
+
+  @override
+  String get layoutToList => 'Passer à la Disposition en Liste';
 }

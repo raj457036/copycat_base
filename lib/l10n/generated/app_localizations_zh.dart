@@ -271,8 +271,8 @@ class AppLocalizationsZh extends AppLocalizations {
     String _temp0 = intl.Intl.selectLogic(
       isPaused,
       {
-        'true': 'Auto copy is not paused',
-        'other': 'Auto Copy is paused until $till',
+        'true': '自动复制未暂停',
+        'other': '自动复制已暂停，直到 $till',
       },
     );
     return '$_temp0';
@@ -708,29 +708,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get whatsNew => '有什么新鲜事？';
 
   @override
-  String get feature1 => '智能跨平台剪贴板';
+  String get feature1 => '停靠和窗口视图';
 
   @override
-  String get feature1Desc =>
-      '无缝同步你的剪贴板内容至所有设备。不论是文本、图片还是文件，在任何地方都能访问你的剪贴板历史记录。';
+  String get feature1Desc => '现在，您可以将剪贴板停靠在任何边缘或像往常一样浮动。';
 
   @override
-  String get feature2 => '无限历史记录，搭配即时搜索';
+  String get feature2 => '剪辑的列表和网格视图';
 
   @override
-  String get feature2Desc => '永远不再丢失复制的条目。我们的无限历史功能确保您可以即时搜索和检索任何过去的剪贴板条目。';
+  String get feature2Desc => '在支持的窗口大小中，您现在可以在列表和网格视图之间进行选择。';
 
   @override
-  String get feature3 => '智能粘贴';
+  String get feature3 => '排除规则';
 
   @override
-  String get feature3Desc => '使用智能粘贴功能，并根据上下文提供建议。通过快速访问当前任务所需内容来节省时间。';
+  String get feature3Desc => '精确控制不复制到剪贴板的内容。';
 
   @override
-  String get feature4 => '收藏';
+  String get feature4 => '批量操作';
 
   @override
-  String get feature4Desc => '将剪贴板内容整理成集合，便于快速访问和管理。非常适合项目、研究等用途。';
+  String get feature4Desc => '现在选择多个剪辑并执行批量操作。';
 
   @override
   String get gettingStarted => '开始使用';
@@ -1025,6 +1024,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get vibrant => '鲜艳的';
 
   @override
+  String get customExclusionRuleFeature => 'Custom Exclusion Rules';
+
+  @override
+  String get customExclusionRuleFeatureDesc =>
+      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+
+  @override
   String get dragNDropFeature => '拖拽';
 
   @override
@@ -1049,142 +1055,141 @@ class AppLocalizationsZh extends AppLocalizations {
   String get themingFeatureDesc => '自定义整个应用程序的外观和感觉，以符合您的偏好。';
 
   @override
-  String get resetSearch => 'Reset Search';
+  String get resetSearch => '重置搜索';
 
   @override
-  String get security => 'Security';
+  String get security => '安全';
 
   @override
-  String get exclusionRules => 'Exclusion Rules';
+  String get exclusionRules => '排除规则';
 
   @override
-  String get exclusionRulesDesc =>
-      'Prevent information from copying to clipboard. Click for Advance control.';
+  String get exclusionRulesDesc => '防止信息复制到剪贴板。点击进行高级控制。';
 
   @override
-  String get predefinedExclRules => 'Predefined Exclusion Rules';
+  String get predefinedExclRules => '预定义排除规则';
 
   @override
-  String get passwordManagers => 'Password Managers';
+  String get passwordManagers => '密码管理器';
 
   @override
-  String get commonPasswordPatterns => 'Common Password Patterns';
+  String get commonPasswordPatterns => '常见密码模式';
 
   @override
-  String get creditCardNumber => 'Credit Card Number';
+  String get creditCardNumber => '信用卡号';
 
   @override
-  String get phoneNumber => 'Phone Number';
+  String get phoneNumber => '电话号码';
 
   @override
-  String get bankAccountNumber => 'Bank Account Number';
+  String get bankAccountNumber => '银行账号';
 
   @override
-  String get passportNumber => 'Passport Number';
+  String get passportNumber => '护照号码';
 
   @override
-  String get sensitiveUrls => 'Sensitive Urls';
+  String get sensitiveUrls => '敏感网址';
 
   @override
-  String get customExclusionRules => 'Custom Exclusion Rules';
+  String get customExclusionRules => '自定义排除规则';
 
   @override
-  String get customRules => 'Custom Rules';
+  String get customRules => '自定义规则';
 
   @override
-  String get customRulesDesc =>
-      'Exclude by app, app window/website title, website url or regex pattern';
+  String get customRulesDesc => '按应用、应用窗口/网站标题、网址或正则表达式模式排除。';
 
   @override
-  String get apps => 'Apps';
+  String get apps => '应用程序';
 
   @override
-  String get pattern => 'Patterns';
+  String get pattern => '模式';
 
   @override
-  String get excludeAnApp => 'Add a new app';
+  String get excludeAnApp => '添加一个新应用程序';
 
   @override
-  String get noCustomAppExcluded => 'No custom app excluded';
+  String get noCustomAppExcluded => '未排除任何自定义应用程序';
 
   @override
-  String get removeCustomApp => 'Remove this app';
+  String get removeCustomApp => '移除此应用程序';
 
   @override
-  String get excludeUrl =>
-      'Prevent copy from website matching these url segments.';
+  String get excludeUrl => '防止从与这些网址段匹配的网站复制。';
 
   @override
-  String get excludeUrlInputHint => 'Enter a url or part of a url here.';
+  String get excludeUrlInputHint => '在此输入网址或部分网址。';
 
   @override
-  String get noCustomUrlExcluded => 'No custom url(s) excluded';
+  String get noCustomUrlExcluded => '未排除任何自定义网址';
 
   @override
-  String get removeCustomUrl => 'Remove this url';
+  String get removeCustomUrl => '移除此网址';
 
   @override
-  String get excludePattern =>
-      'Prevent copy when copied content matches these patterns';
+  String get excludePattern => '当复制的内容与这些模式匹配时，防止复制。';
 
   @override
-  String get noCustomPatternExcluded => 'No custom pattern(s) excluded';
+  String get noCustomPatternExcluded => '未排除任何自定义模式';
 
   @override
-  String get removeCustomPattern => 'Remove this pattern';
+  String get removeCustomPattern => '移除此模式';
 
   @override
-  String get excludeTitle =>
-      'Prevent copy from app or website when window title matches.';
+  String get excludeTitle => '当窗口标题匹配时，防止从应用程序或网站复制。';
 
   @override
-  String get noCustomTitleExcluded => 'No custom title(s) excluded';
+  String get noCustomTitleExcluded => '未排除任何自定义标题';
 
   @override
-  String get removeCustomTitle => 'Remove this title';
+  String get removeCustomTitle => '移除此标题';
 
   @override
-  String get reconnectGoogleDrive => '⚠️ Re-Connect Google Drive?';
+  String get reconnectGoogleDrive => '⚠️ 重新连接Google Drive？';
 
   @override
   String get reconnectGoogleDriveDesc =>
-      'Your drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.';
+      '您的驱动器已经连接！您想重新连接吗？\n\n为了避免数据丢失，请确保使用之前相同的帐户。';
 
   @override
-  String get sureToDeleteItem => 'Are you sure to delete this item(s)?';
+  String get sureToDeleteItem => '确定删除此项目吗？';
 
   @override
-  String get noAppFoundToHandleFile =>
-      'No application found to open this file.';
+  String get noAppFoundToHandleFile => '未找到打开此文件的应用程序。';
 
   @override
-  String get fileOpenPermissionNotGranted =>
-      'Permission to open this file not granted.';
+  String get fileOpenPermissionNotGranted => '未授予打开此文件的权限。';
 
   @override
-  String get proOnlyTooltip => 'This feature is available for Pro users only.';
+  String get proOnlyTooltip => '此功能仅对Pro用户可用。';
 
   @override
-  String get viewWindow => 'Windowed';
+  String get viewWindow => '窗口模式';
 
   @override
-  String get viewDockRight => 'Dock Right';
+  String get viewDockRight => '停靠右侧';
 
   @override
-  String get viewDockLeft => 'Dock Left';
+  String get viewDockLeft => '停靠左侧';
 
   @override
-  String get viewDockTop => 'Dock Top';
+  String get viewDockTop => '停靠顶部';
 
   @override
-  String get viewDockBottom => 'Dock Bottom';
+  String get viewDockBottom => '停靠底部';
 
   @override
-  String get changeView => 'Change View';
+  String get changeView => '更改视图';
 
   @override
-  String get pin => 'Pin';
+  String get pin => '固定';
 
   @override
-  String get unpin => 'Unpin';
+  String get unpin => '取消固定';
+
+  @override
+  String get layoutToGrid => '切换到网格布局';
+
+  @override
+  String get layoutToList => '切换到列表布局';
 }

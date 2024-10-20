@@ -731,32 +731,32 @@ class AppLocalizationsEn extends AppLocalizations {
   String get whatsNew => 'What\'s New?';
 
   @override
-  String get feature1 => 'Smart Cross-Platform Clipboard';
+  String get feature1 => 'Dock and Window View';
 
   @override
   String get feature1Desc =>
-      'Seamlessly sync your clipboard content across all your devices. Whether it\'s text, images, or files, access your clipboard history wherever you go.';
+      'Now you can have your clipboard docked on any edge or floating as always.';
 
   @override
-  String get feature2 => 'Unlimited History with Instant Search';
+  String get feature2 => 'List & Grid View for your clips';
 
   @override
   String get feature2Desc =>
-      'Never lose your copied items again. Our unlimited history feature ensures you can instantly search and retrieve any past clipboard item.';
+      'On supported window size now you can choose between list and grid view for your clips.';
 
   @override
-  String get feature3 => 'Smart Paste';
+  String get feature3 => 'Exclusion Rules';
 
   @override
   String get feature3Desc =>
-      'Paste intelligently with context-aware suggestions. Save time by quickly accessing the right content for your current task.';
+      'Precise control over what not to copy to your clipboard.';
 
   @override
-  String get feature4 => 'Collections';
+  String get feature4 => 'Bulk Operations';
 
   @override
   String get feature4Desc =>
-      'Organize your clipboard items into collections for easy access and management. Perfect for projects, research, and more.';
+      'Now select multiple clips and perform bulk operations';
 
   @override
   String get gettingStarted => 'Get Started';
@@ -1062,6 +1062,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vibrant => 'Vibrant';
 
   @override
+  String get customExclusionRuleFeature => 'Custom Exclusion Rules';
+
+  @override
+  String get customExclusionRuleFeatureDesc =>
+      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+
+  @override
   String get dragNDropFeature => 'Drag & Drop';
 
   @override
@@ -1228,4 +1235,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unpin => 'Unpin';
+
+  @override
+  String get layoutToGrid => 'Switch to Grid Layout';
+
+  @override
+  String get layoutToList => 'Switch to List Layout';
 }
