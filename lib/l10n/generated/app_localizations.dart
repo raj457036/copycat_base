@@ -2368,6 +2368,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Switch to List Layout'**
   String get layoutToList;
+
+  /// No description provided for @downloadDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **'Download Desktop Client'**
+  String get downloadDesktop;
+
+  /// No description provided for @downloadPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Download Phone Client'**
+  String get downloadPhone;
+
+  /// No description provided for @downloadClientDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Access your clipboard on all your devices.'**
+  String get downloadClientDesc;
 }
 
 class _AppLocalizationsDelegate

@@ -1259,4 +1259,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get layoutToList => 'Cambiar a Diseño de Lista';
+
+  @override
+  String get downloadDesktop => 'Descargar Cliente de Escritorio';
+
+  @override
+  String get downloadPhone => 'Descargar Cliente de Teléfono';
+
+  @override
+  String get downloadClientDesc =>
+      'Accede a tu portapapeles en todos tus dispositivos.';
 }

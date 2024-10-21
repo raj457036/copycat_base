@@ -1258,4 +1258,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get layoutToList => 'Passer à la Disposition en Liste';
+
+  @override
+  String get downloadDesktop => 'Télécharger le Client de Bureau';
+
+  @override
+  String get downloadPhone => 'Télécharger le Client Téléphone';
+
+  @override
+  String get downloadClientDesc =>
+      'Accédez à votre presse-papiers sur tous vos appareils.';
 }

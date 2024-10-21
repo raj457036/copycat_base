@@ -486,6 +486,10 @@
     "pin": "Pin",
     "unpin": "Unpin",
     "layoutToGrid": "Switch to Grid Layout",
-    "layoutToList": "Switch to List Layout"
+    "layoutToList": "Switch to List Layout",
+
+    "downloadDesktop": "Download Desktop Client",
+    "downloadPhone": "Download Phone Client",
+    "downloadClientDesc": "Access your clipboard on all your devices."
 
 }

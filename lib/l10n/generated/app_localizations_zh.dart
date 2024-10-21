@@ -1192,4 +1192,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get layoutToList => '切换到列表布局';
+
+  @override
+  String get downloadDesktop => '下载桌面客户端';
+
+  @override
+  String get downloadPhone => '下载手机客户端';
+
+  @override
+  String get downloadClientDesc => '在所有设备上访问您的剪贴板。';
 }

@@ -1257,4 +1257,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get layoutToList => 'Zum Listenlayout wechseln';
+
+  @override
+  String get downloadDesktop => 'Desktop-Client herunterladen';
+
+  @override
+  String get downloadPhone => 'Telefon-Client herunterladen';
+
+  @override
+  String get downloadClientDesc =>
+      'Greife auf allen deinen Geräten auf deine Zwischenablage zu.';
 }

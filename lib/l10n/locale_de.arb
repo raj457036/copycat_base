@@ -482,5 +482,10 @@
     "pin": "Anheften",
     "unpin": "Loslösen",
     "layoutToGrid": "Zum Rasterlayout wechseln",
-    "layoutToList": "Zum Listenlayout wechseln"
+    "layoutToList": "Zum Listenlayout wechseln",
+
+    "downloadDesktop": "Desktop-Client herunterladen",
+    "downloadPhone": "Telefon-Client herunterladen",
+    "downloadClientDesc": "Greife auf allen deinen Geräten auf deine Zwischenablage zu."
+
 }

@@ -46,7 +46,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   }
 
   void initializeExclusionChecker() {
-    if (exclusionRules.enable) {
+    if (exclusionRules.enable && isDesktopPlatform) {
       exclusionChecker = ExclusionChecker(exclusionRules);
     } else {
       exclusionChecker = null;
@@ -327,6 +327,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   }
 
   Future<bool> isCopyingAllowedByActivity() async {
+    if (isMobilePlatform) return true;
     try {
       final activity =
           await focusWindow.getActivity().timeout(const Duration(seconds: 5));

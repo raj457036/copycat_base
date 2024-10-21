@@ -482,5 +482,10 @@
     "pin": "Épingler",
     "unpin": "Désépingler",
     "layoutToGrid": "Passer à la Disposition en Grille",
-    "layoutToList": "Passer à la Disposition en Liste"
+    "layoutToList": "Passer à la Disposition en Liste",
+
+    "downloadDesktop": "Télécharger le Client de Bureau",
+    "downloadPhone": "Télécharger le Client Téléphone",
+    "downloadClientDesc": "Accédez à votre presse-papiers sur tous vos appareils."
+
 }

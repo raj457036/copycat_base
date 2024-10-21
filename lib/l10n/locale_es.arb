@@ -482,5 +482,10 @@
     "pin": "Fijar",
     "unpin": "Desfijar",
     "layoutToGrid": "Cambiar a Diseño de Cuadrícula",
-    "layoutToList": "Cambiar a Diseño de Lista"
+    "layoutToList": "Cambiar a Diseño de Lista",
+
+    "downloadDesktop": "Descargar Cliente de Escritorio",
+    "downloadPhone": "Descargar Cliente de Teléfono",
+    "downloadClientDesc": "Accede a tu portapapeles en todos tus dispositivos."
+
 }

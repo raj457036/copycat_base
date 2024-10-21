@@ -1241,4 +1241,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get layoutToList => 'Switch to List Layout';
+
+  @override
+  String get downloadDesktop => 'Download Desktop Client';
+
+  @override
+  String get downloadPhone => 'Download Phone Client';
+
+  @override
+  String get downloadClientDesc => 'Access your clipboard on all your devices.';
 }
