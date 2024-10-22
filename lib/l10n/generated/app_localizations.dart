@@ -392,7 +392,7 @@ abstract class AppLocalizations {
   /// No description provided for @oneClipboardLimitlessPosibility.
   ///
   /// In en, this message translates to:
-  /// **'One Clipboard, Limitless Posibility'**
+  /// **'One Clipboard, Limitless Possibility'**
   String get oneClipboardLimitlessPosibility;
 
   /// No description provided for @fullName.

@@ -157,7 +157,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get oneClipboardLimitlessPosibility =>
-      'One Clipboard, Limitless Posibility';
+      'One Clipboard, Limitless Possibility';
 
   @override
   String get fullName => 'Full Name';

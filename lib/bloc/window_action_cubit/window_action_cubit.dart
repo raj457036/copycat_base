@@ -42,9 +42,15 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     return initialWindowSize.width;
   }
 
+  Future<void> checkFocus() async {
+    if (isDesktopPlatform) {
+      isFocused = await windowManager.isFocused();
+    }
+  }
+
   Future<void> setupScreenInfo() async {
     primaryDisplay = await screenRetriever.getPrimaryDisplay();
-    isFocused = await windowManager.isFocused();
+    checkFocus();
     emit(
       const WindowActionState.loaded(loading: false),
     );
@@ -122,6 +128,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   }
 
   Future<void> hide({bool animated = false}) async {
+    isFocused = false;
     if (state.view == AppView.windowed) {
       if (animated && primaryDisplay != null) {
         final currentPosition = await windowManager.getPosition();
@@ -137,7 +144,6 @@ class WindowActionCubit extends Cubit<WindowActionState> {
       }
     }
     await windowManager.hide();
-    isFocused = false;
   }
 
   Future<void> show({bool animated = false}) async {
