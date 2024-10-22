@@ -205,6 +205,7 @@
     "openInBrowser": "Im Browser öffnen",
     "makePhoneCall": "Einen Anruf tätigen",
     "selectCollection": "Sammlung auswählen",
+    "selectCollectionSub": "Oder erstelle eine neue",
     "confirm": "Bestätigen",
     "recordKeyboardShortcut": "Tastenkombination aufzeichnen.",
     "recordKeyboardShortcutDesc": "Geben Sie Ihre Tastenkombination über Ihre Tastatur ein und klicken Sie ",
@@ -428,6 +429,8 @@
     "rainbow": "Regenbogen",
     "vibrant": "Lebendig",
 
+    "customExclusionRuleFeature": "Benutzerdefinierte Ausschlussregeln",
+    "customExclusionRuleFeatureDesc": "Präzise Kontrolle über Ihre Zwischenablage. Erlaubt Ihnen zu definieren, was kopiert wird, von wo und wann kopiert wird.",
     "dragNDropFeature": "Ziehen & Ablegen",
     "dragNDropFeatureDesc": "Bewege Elemente nahtlos in jede Richtung auf deinen Desktop- und Tablet-Geräten.",
     "experimentalLabel": "Experimentell",

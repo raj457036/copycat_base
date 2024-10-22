@@ -204,6 +204,7 @@
     "openInBrowser": "Open in browser",
     "makePhoneCall": "Make a phone call",
     "selectCollection": "Select a collection",
+    "selectCollectionSub": "Or create a new one",
     "confirm": "Confirm",
     "recordKeyboardShortcut": "Record keyboard shortcut.",
     "recordKeyboardShortcutDesc": "Type your shortcut using your keyboard and click ",

@@ -205,6 +205,7 @@
     "openInBrowser": "Ouvrir dans le navigateur",
     "makePhoneCall": "Passer un appel téléphonique",
     "selectCollection": "Sélectionner une collection",
+    "selectCollectionSub": "Ou créez-en une nouvelle",
     "confirm": "Confirmer",
     "recordKeyboardShortcut": "Enregistrer le raccourci clavier.",
     "recordKeyboardShortcutDesc": "Tapez votre raccourci à l'aide de votre clavier et cliquez ",
@@ -428,6 +429,8 @@
     "rainbow": "Arc-en-ciel",
     "vibrant": "Vibrant",
 
+    "customExclusionRuleFeature": "Règles d'Exclusion Personnalisées",
+    "customExclusionRuleFeatureDesc": "Contrôle précis de votre presse-papiers. Vous permet de définir quoi copier, d'où copier et quand copier.",
     "dragNDropFeature": "Glisser & Déposer",
     "dragNDropFeatureDesc": "Déplacez les éléments sans effort dans toutes les directions sur vos appareils de bureau et tablettes.",
     "experimentalLabel": "Expérimental",

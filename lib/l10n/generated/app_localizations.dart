@@ -929,6 +929,12 @@ abstract class AppLocalizations {
   /// **'Select a collection'**
   String get selectCollection;
 
+  /// No description provided for @selectCollectionSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Or create a new one'**
+  String get selectCollectionSub;
+
   /// No description provided for @confirm.
   ///
   /// In en, this message translates to:

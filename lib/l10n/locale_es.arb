@@ -205,6 +205,7 @@
     "openInBrowser": "Abrir en el navegador",
     "makePhoneCall": "Hacer una llamada",
     "selectCollection": "Seleccionar una colección",
+    "selectCollectionSub": "O crea una nueva",
     "confirm": "Confirmar",
     "recordKeyboardShortcut": "Grabar atajo de teclado.",
     "recordKeyboardShortcutDesc": "Escribe tu atajo usando tu teclado y haz clic ",
@@ -428,6 +429,8 @@
     "rainbow": "Arcoíris",
     "vibrant": "Vibrante",
 
+    "customExclusionRuleFeature": "Reglas de Exclusión Personalizadas",
+    "customExclusionRuleFeatureDesc": "Control preciso sobre tu portapapeles. Te permite definir qué copiar, desde dónde copiar y cuándo copiar.",
     "dragNDropFeature": "Arrastrar y Soltar",
     "dragNDropFeatureDesc": "Mueve elementos sin problemas en cualquier dirección en tus dispositivos de escritorio y tabletas.",
     "experimentalLabel": "Experimental",

@@ -205,6 +205,7 @@
     "openInBrowser": "在浏览器中打开",
     "makePhoneCall": "打电话",
     "selectCollection": "选择一个集合",
+    "selectCollectionSub": "或者创建一个新的",
     "confirm": "确认",
     "recordKeyboardShortcut": "记录键盘快捷键。",
     "recordKeyboardShortcutDesc": "使用键盘输入您的快捷键并点击",
@@ -424,6 +425,9 @@
     "neutral": "中立的",
     "rainbow": "彩虹",
     "vibrant": "鲜艳的",
+
+    "customExclusionRuleFeature": "自定义排除规则",
+    "customExclusionRuleFeatureDesc": "精确控制剪贴板。允许您定义复制内容、复制来源以及复制时间。",
     "dragNDropFeature": "拖拽",
     "dragNDropFeatureDesc": "在您的桌面和平板设备上无缝地移动项目。",
     "experimentalLabel": "实验性的",

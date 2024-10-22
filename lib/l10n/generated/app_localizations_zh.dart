@@ -444,6 +444,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get selectCollection => '选择一个集合';
 
   @override
+  String get selectCollectionSub => '或者创建一个新的';
+
+  @override
   String get confirm => '确认';
 
   @override
@@ -1024,11 +1027,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get vibrant => '鲜艳的';
 
   @override
-  String get customExclusionRuleFeature => 'Custom Exclusion Rules';
+  String get customExclusionRuleFeature => '自定义排除规则';
 
   @override
-  String get customExclusionRuleFeatureDesc =>
-      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+  String get customExclusionRuleFeatureDesc => '精确控制剪贴板。允许您定义复制内容、复制来源以及复制时间。';
 
   @override
   String get dragNDropFeature => '拖拽';

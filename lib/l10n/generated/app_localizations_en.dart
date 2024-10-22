@@ -456,6 +456,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectCollection => 'Select a collection';
 
   @override
+  String get selectCollectionSub => 'Or create a new one';
+
+  @override
   String get confirm => 'Confirm';
 
   @override

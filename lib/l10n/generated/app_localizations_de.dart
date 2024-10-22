@@ -459,6 +459,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get selectCollection => 'Sammlung auswählen';
 
   @override
+  String get selectCollectionSub => 'Oder erstelle eine neue';
+
+  @override
   String get confirm => 'Bestätigen';
 
   @override
@@ -1072,11 +1075,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get vibrant => 'Lebendig';
 
   @override
-  String get customExclusionRuleFeature => 'Custom Exclusion Rules';
+  String get customExclusionRuleFeature =>
+      'Benutzerdefinierte Ausschlussregeln';
 
   @override
   String get customExclusionRuleFeatureDesc =>
-      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+      'Präzise Kontrolle über Ihre Zwischenablage. Erlaubt Ihnen zu definieren, was kopiert wird, von wo und wann kopiert wird.';
 
   @override
   String get dragNDropFeature => 'Ziehen & Ablegen';
