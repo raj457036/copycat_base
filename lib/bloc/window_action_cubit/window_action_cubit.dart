@@ -1,5 +1,3 @@
-import 'dart:math' show min;
-
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/db/app_config/appconfig.dart';
@@ -83,11 +81,12 @@ class WindowActionCubit extends Cubit<WindowActionState> {
 
     final Size dockedMaxSize = switch (view) {
       AppView.leftDocked || AppView.rightDocked => Size(
-          min(dockedLRMaxWidth, size?.width ?? dockedLRMaxWidth),
+          dockedLRMaxWidth,
           displayHeight,
         ),
-      AppView.topDocked || AppView.bottomDocked => Size(displayWidth,
-          min(dockedTBMaxHeight, size?.height ?? dockedTBMaxHeight)),
+      AppView.topDocked ||
+      AppView.bottomDocked =>
+        Size(displayWidth, dockedTBMaxHeight),
       _ => initialWindowSize,
     };
 
@@ -102,28 +101,27 @@ class WindowActionCubit extends Cubit<WindowActionState> {
       _ => initialWindowSize,
     };
 
+    await windowManager.setMovable(false);
+    await windowManager.setAsFrameless();
+    await windowManager.setMinimumSize(dockedMinSize);
+    await windowManager.setMaximumSize(dockedMaxSize);
+    await windowManager.setAlwaysOnTop(true);
     final position = await calcWindowPosition(dockedMaxSize, alignment);
     await windowManager.setSize(dockedMaxSize);
     await windowManager.setPosition(position, animate: true);
-    await windowManager.setMinimumSize(dockedMinSize);
-    await windowManager.setMaximumSize(dockedMaxSize);
-    await windowManager.setMovable(false);
-    await windowManager.setAsFrameless();
-    await windowManager.setAlwaysOnTop(true);
     emit(state.copyWith(view: view));
   }
 
   Future<void> setWindowdView([Size? size]) async {
-    windowManager.setMinimumSize(minimumWindowSize);
+    await windowManager.setMinimumSize(minimumWindowSize);
     if (primaryDisplay != null) {
-      windowManager.setMaximumSize(primaryDisplay!.size);
+      await windowManager.setMaximumSize(primaryDisplay!.size);
     }
-    windowManager.setMovable(true);
-    windowManager.setAlwaysOnTop(false);
-    windowManager.setTitleBarStyle(TitleBarStyle.hidden);
-    await wait(250);
-    windowManager.setSize(size ?? initialWindowSize);
-    windowManager.center(animate: true);
+    await windowManager.setMovable(true);
+    await windowManager.setAlwaysOnTop(false);
+    await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+    await windowManager.setSize(size ?? initialWindowSize);
+    await windowManager.center(animate: true);
     emit(state.copyWith(view: AppView.windowed));
   }
 
