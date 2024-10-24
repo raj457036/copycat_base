@@ -91,18 +91,6 @@ class ExclusionChecker {
     }
   }
 
-  bool isPossiblePassword(String text) {
-    // If text matches the password pattern and does not match excluded patterns
-    if (passwordPattern.hasMatch(text) &&
-        !commonWordPattern.hasMatch(text) &&
-        !hexPattern.hasMatch(text) &&
-        !otpPattern.hasMatch(text)) {
-      return true; // Most likely a password
-    }
-
-    return false; // Not a password
-  }
-
   bool isPatternExcluded(String text) {
     return _patterns.any((pattern) => pattern.hasMatch(text));
   }
@@ -114,9 +102,8 @@ class ExclusionChecker {
       if (_phone && clip.textCategory == TextCategory.phone) return false;
       if (_email && clip.textCategory == TextCategory.email) return false;
       if (_creditCard && _creditCardPattern.hasMatch(clip.text!)) return false;
-      if (_passwords && isPossiblePassword(clip.text!)) return false;
-      if (_bankAccount && bankAccountPattern.hasMatch(clip.text!)) return false;
-      if (_personalInfo && passportPattern.hasMatch(clip.text!)) return false;
+      // if (_bankAccount && bankAccountPattern.hasMatch(clip.text!)) return false;
+      // if (_personalInfo && passportPattern.hasMatch(clip.text!)) return false;
     }
     if (_sensitiveUrls) {
       final p0 = activity != null ? isActivityAllowed(activity) : true;
