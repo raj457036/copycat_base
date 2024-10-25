@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:screen_retriever/screen_retriever.dart';
+import 'package:universal_io/io.dart';
 import 'package:window_manager/window_manager.dart';
 
 part 'window_action_cubit.freezed.dart';
@@ -101,7 +102,14 @@ class WindowActionCubit extends Cubit<WindowActionState> {
       _ => initialWindowSize,
     };
 
-    await windowManager.setMovable(false);
+    if (Platform.isMacOS) await windowManager.setMovable(false);
+    if (Platform.isWindows) {
+      final DockSide side = switch (view) {
+        AppView.leftDocked || AppView.rightDocked => DockSide.left,
+        AppView.topDocked || AppView.bottomDocked || _ => DockSide.right,
+      };
+      await windowManager.dock(side: side, width: 0);
+    }
     await windowManager.setAsFrameless();
     await windowManager.setMinimumSize(dockedMinSize);
     await windowManager.setMaximumSize(dockedMaxSize);
@@ -117,7 +125,8 @@ class WindowActionCubit extends Cubit<WindowActionState> {
     if (primaryDisplay != null) {
       await windowManager.setMaximumSize(primaryDisplay!.size);
     }
-    await windowManager.setMovable(true);
+    if (Platform.isMacOS) await windowManager.setMovable(true);
+    if (Platform.isWindows) await windowManager.undock();
     await windowManager.setAlwaysOnTop(false);
     await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
     await windowManager.setSize(size ?? initialWindowSize);
