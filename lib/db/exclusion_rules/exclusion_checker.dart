@@ -4,6 +4,7 @@ import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
 import 'package:copycat_base/db/exclusion_rules/sensitive_info.dart';
 import 'package:copycat_base/enums/clip_type.dart';
 import 'package:focus_window/platform/activity_info.dart';
+import 'package:universal_io/io.dart';
 
 // patterns
 final _creditCardPattern = RegExp(r'\b\d{4} \d{4} \d{4} \d{4}\b');
@@ -139,8 +140,10 @@ class ExclusionChecker {
     for (final app in _apps) {
       if (app.identifier != null &&
           (activity.identifier.isEmpty ||
-              activity.identifier == app.identifier!)) {
+              activity.identifier == app.identifier!) &&
+          app.name == activity.app) {
         logger.w("Excluded pattern detected for the app.");
+
         return false;
       }
       if (activity.appFileName.startsWith(app.name)) {
