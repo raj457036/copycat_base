@@ -62,6 +62,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   }
 
   Future<void> changeView(AppView view, [Size? size]) async {
+    await setupScreenInfo();
     if (view == AppView.windowed) {
       await setWindowdView(size);
     } else {
