@@ -54,13 +54,15 @@ class ExclusionChecker {
         _personalInfo = rules.personalInfo,
         _sensitiveUrls = rules.sensitiveUrls {
     if (_sensitiveUrls) {
-      _rUrls.add(
-        RegExp(
-          sensitiveUrlKeywords.join("|"),
-          caseSensitive: false,
-          multiLine: true,
-        ),
-      );
+      if (Platform.isMacOS) {
+        _rUrls.add(
+          RegExp(
+            sensitiveUrlKeywords.join("|"),
+            caseSensitive: false,
+            multiLine: true,
+          ),
+        );
+      }
 
       _rTitle.add(
         RegExp(
@@ -79,7 +81,7 @@ class ExclusionChecker {
       ));
     }
 
-    if (rules.urls.isNotEmpty) {
+    if (rules.urls.isNotEmpty && Platform.isMacOS) {
       _rUrls.add(RegExp(
         rules.urls.join("|"),
         caseSensitive: false,
@@ -129,7 +131,7 @@ class ExclusionChecker {
         return false;
       }
     }
-    if (activity.url.isNotEmpty) {
+    if (activity.url.isNotEmpty && Platform.isMacOS) {
       final hasMatch = _rUrls.any((r) => activity.url.contains(r));
       if (hasMatch) {
         logger.w("Excluded pattern detected in url");
@@ -139,9 +141,9 @@ class ExclusionChecker {
 
     for (final app in _apps) {
       if (app.identifier != null &&
-          (activity.identifier.isEmpty ||
+          (activity.identifier.isNotEmpty &&
               activity.identifier == app.identifier!) &&
-          app.name == activity.app) {
+          (activity.app.isNotEmpty && app.name == activity.app)) {
         logger.w("Excluded pattern detected for the app.");
 
         return false;
