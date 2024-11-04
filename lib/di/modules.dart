@@ -3,6 +3,7 @@ import "package:copycat_base/db/clip_collection/clipcollection.dart";
 import "package:copycat_base/db/clipboard_item/clipboard_item.dart";
 import "package:copycat_base/db/subscription/subscription.dart";
 import "package:copycat_base/db/sync_status/syncstatus.dart";
+import "package:copycat_base/utils/utility.dart";
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:isar/isar.dart";
@@ -45,8 +46,18 @@ abstract class RegisterModule {
 
   @preResolve
   @Named("device_id")
-  Future<String> get deviceId async =>
-      (await PlatformDeviceId.getDeviceId) ?? "";
+  Future<String> deviceId(TinyStorage cache) async {
+    const deviceIdKey = r"$$DEVICE_ID_KEY$$";
+    String? deviceId_ =
+        (await PlatformDeviceId.getDeviceId ?? cache.get<String?>(deviceIdKey));
+    if (deviceId_ == null) {
+      final id_ = getId();
+      cache.set(deviceIdKey, id_);
+      deviceId_ = id_;
+    }
+
+    return deviceId_;
+  }
 }
 
 Future<void> closeIsarDb(Isar db) async {

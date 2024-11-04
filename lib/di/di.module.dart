@@ -80,11 +80,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
         () => const _i55.AnalyticsRepositoryImpl());
     gh.lazySingleton<_i106.SyncRepository>(() => _i421.SyncRepositoryImpl(
         gh<_i903.SyncClipboardSource>(instanceName: 'remote')));
-    await gh.factoryAsync<String>(
-      () => registerModule.deviceId,
-      instanceName: 'device_id',
-      preResolve: true,
-    );
     gh.lazySingleton<_i569.ClipCollectionSource>(
       () => _i799.LocalClipCollectionSource(gh<_i338.Isar>()),
       instanceName: 'local',
@@ -99,6 +94,11 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     );
     gh.singleton<_i411.AppConfigCubit>(
         () => _i411.AppConfigCubit(gh<_i854.AppConfigRepository>()));
+    await gh.factoryAsync<String>(
+      () => registerModule.deviceId(gh<_i829.TinyStorage>()),
+      instanceName: 'device_id',
+      preResolve: true,
+    );
     gh.lazySingleton<_i72.ClipboardRepository>(
       () => _i122.ClipboardRepositoryOfflineImpl(
           gh<_i191.ClipboardSource>(instanceName: 'local')),
