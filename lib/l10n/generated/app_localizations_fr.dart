@@ -393,10 +393,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get logoutSuccess => 'Déconnexion réussie';
 
   @override
-  String get internetConnected => 'Internet Connecté';
+  String get internetConnected => 'Connecté au Cloud';
 
   @override
-  String get internetDisconnected => 'Internet Déconnecté';
+  String get internetDisconnected => 'Connexion au Cloud en cours...';
 
   @override
   String get noCollectionFound => 'Aucune collection trouvée';

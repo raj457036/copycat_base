@@ -387,10 +387,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutSuccess => 'Logged out successfully';
 
   @override
-  String get internetConnected => 'Internet Connected';
+  String get internetConnected => 'Connected to Cloud';
 
   @override
-  String get internetDisconnected => 'Internet Disconnected';
+  String get internetDisconnected => 'Connecting to Cloud...';
 
   @override
   String get noCollectionFound => 'No collection found';

@@ -376,10 +376,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get logoutSuccess => '退出成功';
 
   @override
-  String get internetConnected => '联网连接';
+  String get internetConnected => '已连接到云端';
 
   @override
-  String get internetDisconnected => '互联网连接已断开';
+  String get internetDisconnected => '正在连接到云端...';
 
   @override
   String get noCollectionFound => '未找到集合';

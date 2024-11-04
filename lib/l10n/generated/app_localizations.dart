@@ -800,13 +800,13 @@ abstract class AppLocalizations {
   /// No description provided for @internetConnected.
   ///
   /// In en, this message translates to:
-  /// **'Internet Connected'**
+  /// **'Connected to Cloud'**
   String get internetConnected;
 
   /// No description provided for @internetDisconnected.
   ///
   /// In en, this message translates to:
-  /// **'Internet Disconnected'**
+  /// **'Connecting to Cloud...'**
   String get internetDisconnected;
 
   /// No description provided for @noCollectionFound.
