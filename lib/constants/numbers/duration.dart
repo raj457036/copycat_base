@@ -1,3 +1,4 @@
+const $0S = 0;
 const $3S = 3;
 const $5S = 5;
 const $10S = 10;

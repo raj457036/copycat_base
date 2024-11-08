@@ -22,87 +22,88 @@ const AppConfigSchema = CollectionSchema(
       name: r'autoEncrypt',
       type: IsarType.bool,
     ),
-    r'autoSyncInterval': PropertySchema(
-      id: 1,
-      name: r'autoSyncInterval',
-      type: IsarType.long,
-    ),
     r'dontCopyOver': PropertySchema(
-      id: 2,
+      id: 1,
       name: r'dontCopyOver',
       type: IsarType.long,
     ),
     r'dontUploadOver': PropertySchema(
-      id: 3,
+      id: 2,
       name: r'dontUploadOver',
       type: IsarType.long,
     ),
     r'enableDragNDrop': PropertySchema(
-      id: 4,
+      id: 3,
       name: r'enableDragNDrop',
       type: IsarType.bool,
     ),
     r'enableFileSync': PropertySchema(
-      id: 5,
+      id: 4,
       name: r'enableFileSync',
       type: IsarType.bool,
     ),
     r'enablePasteStack': PropertySchema(
-      id: 6,
+      id: 5,
       name: r'enablePasteStack',
       type: IsarType.bool,
     ),
     r'enableSync': PropertySchema(
-      id: 7,
+      id: 6,
       name: r'enableSync',
       type: IsarType.bool,
     ),
     r'enc2': PropertySchema(
-      id: 8,
+      id: 7,
       name: r'enc2',
       type: IsarType.string,
     ),
     r'exclusionRules': PropertySchema(
-      id: 9,
+      id: 8,
       name: r'exclusionRules',
       type: IsarType.object,
       target: r'ExclusionRules',
     ),
     r'isPersisted': PropertySchema(
-      id: 10,
+      id: 9,
       name: r'isPersisted',
       type: IsarType.bool,
     ),
     r'launchAtStartup': PropertySchema(
-      id: 11,
+      id: 10,
       name: r'launchAtStartup',
       type: IsarType.bool,
     ),
     r'layout': PropertySchema(
-      id: 12,
+      id: 11,
       name: r'layout',
       type: IsarType.string,
       enumMap: _AppConfiglayoutEnumValueMap,
     ),
     r'locale': PropertySchema(
-      id: 13,
+      id: 12,
       name: r'locale',
       type: IsarType.string,
     ),
     r'pausedTill': PropertySchema(
-      id: 14,
+      id: 13,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'pinned': PropertySchema(
-      id: 15,
+      id: 14,
       name: r'pinned',
       type: IsarType.bool,
     ),
     r'smartPaste': PropertySchema(
-      id: 16,
+      id: 15,
       name: r'smartPaste',
       type: IsarType.bool,
+    ),
+    r'syncSpeed': PropertySchema(
+      id: 16,
+      name: r'syncSpeed',
+      type: IsarType.string,
+      enumMap: _AppConfigsyncSpeedEnumValueMap,
     ),
     r'themeColor': PropertySchema(
       id: 17,
@@ -182,6 +183,7 @@ int _appConfigEstimateSize(
   }
   bytesCount += 3 + object.layout.name.length * 3;
   bytesCount += 3 + object.locale.length * 3;
+  bytesCount += 3 + object.syncSpeed.name.length * 3;
   bytesCount += 3 + object.themeMode.name.length * 3;
   bytesCount += 3 + object.themeVariant.name.length * 3;
   {
@@ -201,27 +203,27 @@ void _appConfigSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeBool(offsets[0], object.autoEncrypt);
-  writer.writeLong(offsets[1], object.autoSyncInterval);
-  writer.writeLong(offsets[2], object.dontCopyOver);
-  writer.writeLong(offsets[3], object.dontUploadOver);
-  writer.writeBool(offsets[4], object.enableDragNDrop);
-  writer.writeBool(offsets[5], object.enableFileSync);
-  writer.writeBool(offsets[6], object.enablePasteStack);
-  writer.writeBool(offsets[7], object.enableSync);
-  writer.writeString(offsets[8], object.enc2);
+  writer.writeLong(offsets[1], object.dontCopyOver);
+  writer.writeLong(offsets[2], object.dontUploadOver);
+  writer.writeBool(offsets[3], object.enableDragNDrop);
+  writer.writeBool(offsets[4], object.enableFileSync);
+  writer.writeBool(offsets[5], object.enablePasteStack);
+  writer.writeBool(offsets[6], object.enableSync);
+  writer.writeString(offsets[7], object.enc2);
   writer.writeObject<ExclusionRules>(
-    offsets[9],
+    offsets[8],
     allOffsets,
     ExclusionRulesSchema.serialize,
     object.exclusionRules,
   );
-  writer.writeBool(offsets[10], object.isPersisted);
-  writer.writeBool(offsets[11], object.launchAtStartup);
-  writer.writeString(offsets[12], object.layout.name);
-  writer.writeString(offsets[13], object.locale);
-  writer.writeDateTime(offsets[14], object.pausedTill);
-  writer.writeBool(offsets[15], object.pinned);
-  writer.writeBool(offsets[16], object.smartPaste);
+  writer.writeBool(offsets[9], object.isPersisted);
+  writer.writeBool(offsets[10], object.launchAtStartup);
+  writer.writeString(offsets[11], object.layout.name);
+  writer.writeString(offsets[12], object.locale);
+  writer.writeDateTime(offsets[13], object.pausedTill);
+  writer.writeBool(offsets[14], object.pinned);
+  writer.writeBool(offsets[15], object.smartPaste);
+  writer.writeString(offsets[16], object.syncSpeed.name);
   writer.writeLong(offsets[17], object.themeColor);
   writer.writeString(offsets[18], object.themeMode.name);
   writer.writeString(offsets[19], object.themeVariant.name);
@@ -239,27 +241,29 @@ AppConfig _appConfigDeserialize(
 ) {
   final object = AppConfig(
     autoEncrypt: reader.readBool(offsets[0]),
-    autoSyncInterval: reader.readLong(offsets[1]),
-    dontCopyOver: reader.readLong(offsets[2]),
-    dontUploadOver: reader.readLong(offsets[3]),
-    enableDragNDrop: reader.readBool(offsets[4]),
-    enableFileSync: reader.readBool(offsets[5]),
-    enablePasteStack: reader.readBool(offsets[6]),
-    enableSync: reader.readBool(offsets[7]),
-    enc2: reader.readStringOrNull(offsets[8]),
+    dontCopyOver: reader.readLong(offsets[1]),
+    dontUploadOver: reader.readLong(offsets[2]),
+    enableDragNDrop: reader.readBool(offsets[3]),
+    enableFileSync: reader.readBool(offsets[4]),
+    enablePasteStack: reader.readBool(offsets[5]),
+    enableSync: reader.readBool(offsets[6]),
+    enc2: reader.readStringOrNull(offsets[7]),
     exclusionRules: reader.readObjectOrNull<ExclusionRules>(
-      offsets[9],
+      offsets[8],
       ExclusionRulesSchema.deserialize,
       allOffsets,
     ),
-    launchAtStartup: reader.readBool(offsets[11]),
+    launchAtStartup: reader.readBool(offsets[10]),
     layout:
-        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[12])] ??
+        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[11])] ??
             AppLayout.grid,
-    locale: reader.readString(offsets[13]),
-    pausedTill: reader.readDateTimeOrNull(offsets[14]),
-    pinned: reader.readBool(offsets[15]),
-    smartPaste: reader.readBool(offsets[16]),
+    locale: reader.readString(offsets[12]),
+    pausedTill: reader.readDateTimeOrNull(offsets[13]),
+    pinned: reader.readBool(offsets[14]),
+    smartPaste: reader.readBool(offsets[15]),
+    syncSpeed:
+        _AppConfigsyncSpeedValueEnumMap[reader.readStringOrNull(offsets[16])] ??
+            SyncSpeed.realtime,
     themeColor: reader.readLong(offsets[17]),
     themeMode:
         _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[18])] ??
@@ -291,7 +295,7 @@ P _appConfigDeserializeProp<P>(
     case 2:
       return (reader.readLong(offset)) as P;
     case 3:
-      return (reader.readLong(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 4:
       return (reader.readBool(offset)) as P;
     case 5:
@@ -299,30 +303,32 @@ P _appConfigDeserializeProp<P>(
     case 6:
       return (reader.readBool(offset)) as P;
     case 7:
-      return (reader.readBool(offset)) as P;
-    case 8:
       return (reader.readStringOrNull(offset)) as P;
-    case 9:
+    case 8:
       return (reader.readObjectOrNull<ExclusionRules>(
         offset,
         ExclusionRulesSchema.deserialize,
         allOffsets,
       )) as P;
+    case 9:
+      return (reader.readBool(offset)) as P;
     case 10:
       return (reader.readBool(offset)) as P;
     case 11:
-      return (reader.readBool(offset)) as P;
-    case 12:
       return (_AppConfiglayoutValueEnumMap[reader.readStringOrNull(offset)] ??
           AppLayout.grid) as P;
-    case 13:
+    case 12:
       return (reader.readString(offset)) as P;
-    case 14:
+    case 13:
       return (reader.readDateTimeOrNull(offset)) as P;
+    case 14:
+      return (reader.readBool(offset)) as P;
     case 15:
       return (reader.readBool(offset)) as P;
     case 16:
-      return (reader.readBool(offset)) as P;
+      return (_AppConfigsyncSpeedValueEnumMap[
+              reader.readStringOrNull(offset)] ??
+          SyncSpeed.realtime) as P;
     case 17:
       return (reader.readLong(offset)) as P;
     case 18:
@@ -354,6 +360,14 @@ const _AppConfiglayoutEnumValueMap = {
 const _AppConfiglayoutValueEnumMap = {
   r'grid': AppLayout.grid,
   r'list': AppLayout.list,
+};
+const _AppConfigsyncSpeedEnumValueMap = {
+  r'realtime': r'realtime',
+  r'balanced': r'balanced',
+};
+const _AppConfigsyncSpeedValueEnumMap = {
+  r'realtime': SyncSpeed.realtime,
+  r'balanced': SyncSpeed.balanced,
 };
 const _AppConfigthemeModeEnumValueMap = {
   r'system': r'system',
@@ -499,62 +513,6 @@ extension AppConfigQueryFilter
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'autoEncrypt',
         value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
-      autoSyncIntervalEqualTo(int value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'autoSyncInterval',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
-      autoSyncIntervalGreaterThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'autoSyncInterval',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
-      autoSyncIntervalLessThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'autoSyncInterval',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
-      autoSyncIntervalBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'autoSyncInterval',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
       ));
     });
   }
@@ -1294,6 +1252,138 @@ extension AppConfigQueryFilter
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'smartPaste',
         value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedEqualTo(
+    SyncSpeed value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'syncSpeed',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      syncSpeedGreaterThan(
+    SyncSpeed value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'syncSpeed',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedLessThan(
+    SyncSpeed value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'syncSpeed',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedBetween(
+    SyncSpeed lower,
+    SyncSpeed upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'syncSpeed',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'syncSpeed',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'syncSpeed',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'syncSpeed',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'syncSpeed',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition> syncSpeedIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'syncSpeed',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      syncSpeedIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'syncSpeed',
+        value: '',
       ));
     });
   }
@@ -2056,19 +2146,6 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByAutoSyncInterval() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'autoSyncInterval', Sort.asc);
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
-      sortByAutoSyncIntervalDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'autoSyncInterval', Sort.desc);
-    });
-  }
-
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByDontCopyOver() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'dontCopyOver', Sort.asc);
@@ -2238,6 +2315,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortBySyncSpeed() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'syncSpeed', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortBySyncSpeedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'syncSpeed', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByThemeColor() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'themeColor', Sort.asc);
@@ -2334,19 +2423,6 @@ extension AppConfigQuerySortThenBy
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByAutoEncryptDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'autoEncrypt', Sort.desc);
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByAutoSyncInterval() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'autoSyncInterval', Sort.asc);
-    });
-  }
-
-  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
-      thenByAutoSyncIntervalDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'autoSyncInterval', Sort.desc);
     });
   }
 
@@ -2531,6 +2607,18 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenBySyncSpeed() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'syncSpeed', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenBySyncSpeedDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'syncSpeed', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByThemeColor() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'themeColor', Sort.asc);
@@ -2624,12 +2712,6 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
-  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByAutoSyncInterval() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'autoSyncInterval');
-    });
-  }
-
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByDontCopyOver() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'dontCopyOver');
@@ -2717,6 +2799,13 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctBySyncSpeed(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'syncSpeed', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByThemeColor() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'themeColor');
@@ -2775,12 +2864,6 @@ extension AppConfigQueryProperty
   QueryBuilder<AppConfig, bool, QQueryOperations> autoEncryptProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'autoEncrypt');
-    });
-  }
-
-  QueryBuilder<AppConfig, int, QQueryOperations> autoSyncIntervalProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'autoSyncInterval');
     });
   }
 
@@ -2875,6 +2958,12 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, SyncSpeed, QQueryOperations> syncSpeedProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'syncSpeed');
+    });
+  }
+
   QueryBuilder<AppConfig, int, QQueryOperations> themeColorProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'themeColor');
@@ -2943,7 +3032,8 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       pausedTill: json['pausedTill'] == null
           ? null
           : DateTime.parse(json['pausedTill'] as String),
-      autoSyncInterval: (json['autoSyncInterval'] as num?)?.toInt() ?? $60S,
+      syncSpeed: $enumDecodeNullable(_$SyncSpeedEnumMap, json['syncSpeed']) ??
+          SyncSpeed.balanced,
       toggleHotkey: json['toggleHotkey'] as String?,
       smartPaste: json['smartPaste'] as bool? ?? false,
       launchAtStartup: json['launchAtStartup'] as bool? ?? false,
@@ -2972,7 +3062,7 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'dontUploadOver': instance.dontUploadOver,
       'dontCopyOver': instance.dontCopyOver,
       'pausedTill': instance.pausedTill?.toIso8601String(),
-      'autoSyncInterval': instance.autoSyncInterval,
+      'syncSpeed': _$SyncSpeedEnumMap[instance.syncSpeed]!,
       'toggleHotkey': instance.toggleHotkey,
       'smartPaste': instance.smartPaste,
       'launchAtStartup': instance.launchAtStartup,
@@ -3003,6 +3093,11 @@ const _$AppViewEnumMap = {
   AppView.leftDocked: 'leftDocked',
   AppView.rightDocked: 'rightDocked',
   AppView.windowed: 'windowed',
+};
+
+const _$SyncSpeedEnumMap = {
+  SyncSpeed.realtime: 'realtime',
+  SyncSpeed.balanced: 'balanced',
 };
 
 const _$DynamicSchemeVariantEnumMap = {

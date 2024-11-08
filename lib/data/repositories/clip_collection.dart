@@ -100,4 +100,14 @@ class ClipCollectionRepositoryImpl implements ClipCollectionRepository {
       return Left(Failure.fromException(e));
     }
   }
+
+  @override
+  FailureOr<ClipCollection> updateOrCreate(ClipCollection collection) async {
+    try {
+      final result = await local.updateOrCreate(collection);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
 }

@@ -11,7 +11,7 @@ enum ClipboardSortKey {
 }
 
 abstract class ClipboardSource {
-  Future<ClipboardItem?> get({int? id, String? serverId});
+  Future<ClipboardItem?> get({int? id, int? serverId});
   Future<ClipboardItem> create(ClipboardItem item);
 
   Future<PaginatedResult<ClipboardItem>> getList({
@@ -28,6 +28,8 @@ abstract class ClipboardSource {
   });
 
   Future<ClipboardItem> update(ClipboardItem item);
+
+  Future<ClipboardItem> updateOrCreate(ClipboardItem item);
 
   Future<bool> delete(ClipboardItem item);
   Future<bool> deleteMany(List<ClipboardItem> items);

@@ -111,8 +111,27 @@ class LocalClipCollectionSource implements ClipCollectionSource {
 
   @override
   Future<ClipCollection?> get({int? id, int? serverId}) async {
-    if (id == null) return null;
-    final result = await db.txn(() => db.clipCollections.get(id));
-    return result;
+    if (serverId != null) {
+      final result = await db.txn(() =>
+          db.clipCollections.filter().serverIdEqualTo(serverId).findFirst());
+      return result;
+    }
+    if (id != null) {
+      final result = await db.txn(() => db.clipCollections.get(id));
+      return result;
+    }
+    return null;
+  }
+
+  @override
+  Future<ClipCollection> updateOrCreate(ClipCollection collection) async {
+    if (collection.serverId != null) {
+      final existingClip = await get(serverId: collection.serverId!);
+      if (existingClip != null) {
+        collection.id = existingClip.id;
+        return update(collection);
+      }
+    }
+    return create(collection);
   }
 }

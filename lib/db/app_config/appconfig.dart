@@ -1,6 +1,5 @@
 import 'dart:convert' show jsonDecode;
 
-import 'package:copycat_base/constants/numbers/duration.dart';
 import 'package:copycat_base/constants/numbers/file_sizes.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/data/services/encryption.dart';
@@ -17,6 +16,8 @@ part 'appconfig.g.dart';
 const int defaultThemeColor = 0xFF7469B6;
 
 enum AppLayout { grid, list }
+
+enum SyncSpeed { realtime, balanced }
 
 enum AppView {
   topDocked,
@@ -51,7 +52,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     DateTime? pausedTill,
 
     // Auto Sync Interval
-    @Default($60S) int autoSyncInterval,
+    @Default(SyncSpeed.balanced) @Enumerated(EnumType.name) SyncSpeed syncSpeed,
 
     // System show/hide toggle hotkey
     String? toggleHotkey,

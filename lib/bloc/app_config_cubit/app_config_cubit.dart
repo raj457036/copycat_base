@@ -4,7 +4,6 @@ import 'dart:convert' show jsonEncode;
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
-import 'package:copycat_base/constants/numbers/duration.dart';
 import 'package:copycat_base/db/app_config/appconfig.dart';
 import 'package:copycat_base/db/exclusion_rules/exclusion_checker.dart';
 import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
@@ -85,7 +84,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
 
   Future<void> reset() async {
     setE2EEKey(null);
-    changeAutoSyncDuration($60S);
+    changeAutoSyncDuration(SyncSpeed.balanced);
   }
 
   (AppConfig, bool) applyForSubscription(
@@ -94,7 +93,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   ) {
     if (subscription.isFree || !subscription.isActive) {
       config = config.copyWith(
-        autoSyncInterval: $45S,
+        syncSpeed: SyncSpeed.balanced,
         enableDragNDrop: false,
       )..applyId(config);
       return (config, true);
@@ -222,8 +221,8 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
-  Future<void> changeAutoSyncDuration(int seconds) async {
-    final newConfig = state.config.copyWith(autoSyncInterval: seconds)
+  Future<void> changeAutoSyncDuration(SyncSpeed speed) async {
+    final newConfig = state.config.copyWith(syncSpeed: speed)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);

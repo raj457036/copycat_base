@@ -41,7 +41,8 @@ mixin _$AppConfig {
   /// Pause auto copy for till pausedTill is reached.
   DateTime? get pausedTill =>
       throw _privateConstructorUsedError; // Auto Sync Interval
-  int get autoSyncInterval =>
+  @Enumerated(EnumType.name)
+  SyncSpeed get syncSpeed =>
       throw _privateConstructorUsedError; // System show/hide toggle hotkey
   String? get toggleHotkey => throw _privateConstructorUsedError;
 
@@ -95,7 +96,7 @@ abstract class $AppConfigCopyWith<$Res> {
       int dontUploadOver,
       int dontCopyOver,
       DateTime? pausedTill,
-      int autoSyncInterval,
+      @Enumerated(EnumType.name) SyncSpeed syncSpeed,
       String? toggleHotkey,
       bool smartPaste,
       bool launchAtStartup,
@@ -140,7 +141,7 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? dontUploadOver = null,
     Object? dontCopyOver = null,
     Object? pausedTill = freezed,
-    Object? autoSyncInterval = null,
+    Object? syncSpeed = null,
     Object? toggleHotkey = freezed,
     Object? smartPaste = null,
     Object? launchAtStartup = null,
@@ -200,10 +201,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.pausedTill
           : pausedTill // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      autoSyncInterval: null == autoSyncInterval
-          ? _value.autoSyncInterval
-          : autoSyncInterval // ignore: cast_nullable_to_non_nullable
-              as int,
+      syncSpeed: null == syncSpeed
+          ? _value.syncSpeed
+          : syncSpeed // ignore: cast_nullable_to_non_nullable
+              as SyncSpeed,
       toggleHotkey: freezed == toggleHotkey
           ? _value.toggleHotkey
           : toggleHotkey // ignore: cast_nullable_to_non_nullable
@@ -292,7 +293,7 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       int dontUploadOver,
       int dontCopyOver,
       DateTime? pausedTill,
-      int autoSyncInterval,
+      @Enumerated(EnumType.name) SyncSpeed syncSpeed,
       String? toggleHotkey,
       bool smartPaste,
       bool launchAtStartup,
@@ -336,7 +337,7 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? dontUploadOver = null,
     Object? dontCopyOver = null,
     Object? pausedTill = freezed,
-    Object? autoSyncInterval = null,
+    Object? syncSpeed = null,
     Object? toggleHotkey = freezed,
     Object? smartPaste = null,
     Object? launchAtStartup = null,
@@ -396,10 +397,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.pausedTill
           : pausedTill // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      autoSyncInterval: null == autoSyncInterval
-          ? _value.autoSyncInterval
-          : autoSyncInterval // ignore: cast_nullable_to_non_nullable
-              as int,
+      syncSpeed: null == syncSpeed
+          ? _value.syncSpeed
+          : syncSpeed // ignore: cast_nullable_to_non_nullable
+              as SyncSpeed,
       toggleHotkey: freezed == toggleHotkey
           ? _value.toggleHotkey
           : toggleHotkey // ignore: cast_nullable_to_non_nullable
@@ -471,7 +472,7 @@ class _$AppConfigImpl extends _AppConfig {
       this.dontUploadOver = $10MB,
       this.dontCopyOver = $10MB,
       this.pausedTill,
-      this.autoSyncInterval = $60S,
+      @Enumerated(EnumType.name) this.syncSpeed = SyncSpeed.balanced,
       this.toggleHotkey,
       this.smartPaste = false,
       this.launchAtStartup = false,
@@ -538,7 +539,8 @@ class _$AppConfigImpl extends _AppConfig {
 // Auto Sync Interval
   @override
   @JsonKey()
-  final int autoSyncInterval;
+  @Enumerated(EnumType.name)
+  final SyncSpeed syncSpeed;
 // System show/hide toggle hotkey
   @override
   final String? toggleHotkey;
@@ -594,7 +596,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, autoSyncInterval: $autoSyncInterval, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, syncSpeed: $syncSpeed, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -621,8 +623,8 @@ class _$AppConfigImpl extends _AppConfig {
                 other.dontCopyOver == dontCopyOver) &&
             (identical(other.pausedTill, pausedTill) ||
                 other.pausedTill == pausedTill) &&
-            (identical(other.autoSyncInterval, autoSyncInterval) ||
-                other.autoSyncInterval == autoSyncInterval) &&
+            (identical(other.syncSpeed, syncSpeed) ||
+                other.syncSpeed == syncSpeed) &&
             (identical(other.toggleHotkey, toggleHotkey) ||
                 other.toggleHotkey == toggleHotkey) &&
             (identical(other.smartPaste, smartPaste) ||
@@ -664,7 +666,7 @@ class _$AppConfigImpl extends _AppConfig {
         dontUploadOver,
         dontCopyOver,
         pausedTill,
-        autoSyncInterval,
+        syncSpeed,
         toggleHotkey,
         smartPaste,
         launchAtStartup,
@@ -707,7 +709,7 @@ abstract class _AppConfig extends AppConfig {
       final int dontUploadOver,
       final int dontCopyOver,
       final DateTime? pausedTill,
-      final int autoSyncInterval,
+      @Enumerated(EnumType.name) final SyncSpeed syncSpeed,
       final String? toggleHotkey,
       final bool smartPaste,
       final bool launchAtStartup,
@@ -761,7 +763,8 @@ abstract class _AppConfig extends AppConfig {
   /// Pause auto copy for till pausedTill is reached.
   DateTime? get pausedTill;
   @override // Auto Sync Interval
-  int get autoSyncInterval;
+  @Enumerated(EnumType.name)
+  SyncSpeed get syncSpeed;
   @override // System show/hide toggle hotkey
   String? get toggleHotkey;
   @override

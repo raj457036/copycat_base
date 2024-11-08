@@ -109,7 +109,7 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<ClipboardItem?> get({int? id, String? serverId}) async {
+  FailureOr<ClipboardItem?> get({int? id, int? serverId}) async {
     try {
       final result = await remote.get(serverId: serverId);
       final decrypted = await result?.decrypt();
@@ -137,6 +137,11 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
     } catch (e) {
       return Left(Failure.fromException(e));
     }
+  }
+
+  @override
+  FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item) {
+    throw UnimplementedError();
   }
 }
 
@@ -223,9 +228,9 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<ClipboardItem?> get({int? id, String? serverId}) async {
+  FailureOr<ClipboardItem?> get({int? id, int? serverId}) async {
     try {
-      final result = await local.get(id: id);
+      final result = await local.get(id: id, serverId: serverId);
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));
@@ -257,6 +262,16 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
     try {
       await local.deleteMany(items);
       return const Right(true);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item) async {
+    try {
+      final result = await local.updateOrCreate(item);
+      return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));
     }

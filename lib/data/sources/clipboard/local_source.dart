@@ -143,10 +143,17 @@ class LocalClipboardSource implements ClipboardSource {
   }
 
   @override
-  Future<ClipboardItem?> get({int? id, String? serverId}) async {
-    if (id == null) return null;
-    final result = await db.txn(() => db.clipboardItems.get(id));
-    return result;
+  Future<ClipboardItem?> get({int? id, int? serverId}) async {
+    if (serverId != null) {
+      final result = await db.txn(() =>
+          db.clipboardItems.filter().serverIdEqualTo(serverId).findFirst());
+      return result;
+    }
+    if (id != null) {
+      final result = await db.txn(() => db.clipboardItems.get(id));
+      return result;
+    }
+    return null;
   }
 
   @override
@@ -189,5 +196,21 @@ class LocalClipboardSource implements ClipboardSource {
           .deleteAll(),
     );
     return result == items.length;
+  }
+
+  @override
+  Future<ClipboardItem> updateOrCreate(ClipboardItem item) async {
+    item = item.copyWith(lastSynced: now());
+    if (item.serverId != null) {
+      final existingClip = await get(serverId: item.serverId!);
+      if (existingClip != null) {
+        item = item.copyWith(
+          localPath: existingClip.localPath,
+          localOnly: existingClip.localOnly,
+        )..id = existingClip.id;
+        return update(item);
+      }
+    }
+    return create(item);
   }
 }

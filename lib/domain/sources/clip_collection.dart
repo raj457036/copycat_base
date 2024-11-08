@@ -12,6 +12,7 @@ abstract class ClipCollectionSource {
   });
 
   Future<ClipCollection> update(ClipCollection collection);
+  Future<ClipCollection> updateOrCreate(ClipCollection collection);
 
   Future<bool> delete(ClipCollection collection);
 

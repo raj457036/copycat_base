@@ -1,3 +1,4 @@
+import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/sources/clipboard.dart';
 import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/enums/sort.dart';
@@ -19,6 +20,20 @@ class SearchFilterState {
     this.sortBy,
     this.sortOrder,
   });
+
+  bool matchedByFilter(ClipboardItem item) {
+    if (from != null && item.created.isBefore(from!)) return false;
+    if (to != null && item.created.isAfter(from!)) return false;
+    if (typeIncludes != null && !typeIncludes!.contains(item.type)) {
+      return false;
+    }
+    if (textCategories != null &&
+        !textCategories!.contains(item.textCategory)) {
+      return false;
+    }
+
+    return true;
+  }
 
   bool get isActive =>
       from != null ||

@@ -21,6 +21,8 @@ import 'package:copycat_base/bloc/drive_setup_cubit/drive_setup_cubit.dart'
     as _i746;
 import 'package:copycat_base/bloc/offline_persistance_cubit/offline_persistance_cubit.dart'
     as _i768;
+import 'package:copycat_base/bloc/realtime_clip_sync_cubit/realtime_clip_sync_cubit.dart'
+    as _i685;
 import 'package:copycat_base/bloc/selected_clips_cubit/selected_clips_cubit.dart'
     as _i443;
 import 'package:copycat_base/bloc/sync_manager_cubit/sync_manager_cubit.dart'
@@ -48,6 +50,7 @@ import 'package:copycat_base/domain/repositories/clipboard.dart' as _i72;
 import 'package:copycat_base/domain/repositories/drive_credential.dart'
     as _i447;
 import 'package:copycat_base/domain/repositories/sync_clipboard.dart' as _i106;
+import 'package:copycat_base/domain/services/cross_sync_listener.dart' as _i159;
 import 'package:copycat_base/domain/sources/clip_collection.dart' as _i569;
 import 'package:copycat_base/domain/sources/clipboard.dart' as _i191;
 import 'package:copycat_base/domain/sources/sync_clipboard.dart' as _i903;
@@ -109,6 +112,8 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i191.ClipboardSource>(instanceName: 'remote')),
       instanceName: 'cloud',
     );
+    gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
+        gh<_i72.ClipboardRepository>(instanceName: 'offline')));
     gh.lazySingleton<_i625.ClipCollectionRepository>(
         () => _i834.ClipCollectionRepositoryImpl(
               gh<_i569.ClipCollectionSource>(instanceName: 'remote'),
@@ -131,6 +136,11 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i625.ClipCollectionRepository>(),
           gh<String>(instanceName: 'device_id'),
         ));
+    gh.factory<_i685.RealtimeClipSyncCubit>(() => _i685.RealtimeClipSyncCubit(
+          gh<_i159.ClipCrossSyncListener>(),
+          gh<_i72.ClipboardRepository>(instanceName: 'offline'),
+          gh<_i625.ClipCollectionRepository>(),
+        ));
     gh.factoryParam<_i1054.CollectionClipsCubit, _i531.ClipCollection, dynamic>(
         (
       collection,
@@ -143,10 +153,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     gh.lazySingleton<_i746.DriveSetupCubit>(() => _i746.DriveSetupCubit(
           gh<_i447.DriveCredentialRepository>(),
           gh<_i1054.DriveService>(instanceName: 'google_drive'),
-        ));
-    gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
-          gh<_i72.ClipboardRepository>(instanceName: 'offline'),
-          gh<_i338.Isar>(),
         ));
     gh.lazySingleton<_i768.OfflinePersistanceCubit>(
         () => _i768.OfflinePersistanceCubit(

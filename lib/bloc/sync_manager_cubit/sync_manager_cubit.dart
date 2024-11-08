@@ -55,7 +55,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
   int manualSyncDuration = 15;
   int? syncHours;
   bool syncing = false;
-  Timer? autoSyncTimer;
   DateTime? lastManualSyncTS;
   bool rebuilding = false;
   late EasyCompute<int, List<ClipboardItem>> syncWorker;
@@ -96,24 +95,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
   void emit(SyncManagerState state) {
     if (isClosed) return;
     super.emit(state);
-  }
-
-  void setupAutoSync(Duration duration) {
-    autoSyncTimer?.cancel();
-
-    if (duration == Duration.zero) {
-      return;
-    }
-
-    autoSyncTimer = Timer.periodic(
-      duration,
-      (timer) => syncChanges(silent: true, auto: true),
-    );
-  }
-
-  void stopAutoSync() {
-    autoSyncTimer?.cancel();
-    autoSyncTimer = null;
   }
 
   DateTime getLastSyncedTime(DateTime? current) {

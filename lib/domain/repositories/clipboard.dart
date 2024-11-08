@@ -6,7 +6,7 @@ import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/enums/sort.dart';
 
 abstract class ClipboardRepository {
-  FailureOr<ClipboardItem?> get({int? id, String? serverId});
+  FailureOr<ClipboardItem?> get({int? id, int? serverId});
   FailureOr<ClipboardItem> create(ClipboardItem item);
 
   FailureOr<PaginatedResult<ClipboardItem>> getList({
@@ -23,6 +23,7 @@ abstract class ClipboardRepository {
   });
 
   FailureOr<ClipboardItem> update(ClipboardItem item);
+  FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item);
 
   FailureOr<bool> delete(ClipboardItem item);
   FailureOr<bool> deleteMany(List<ClipboardItem> items);

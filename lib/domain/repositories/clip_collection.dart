@@ -14,6 +14,7 @@ abstract class ClipCollectionRepository {
   });
 
   FailureOr<ClipCollection> update(ClipCollection collection);
+  FailureOr<ClipCollection> updateOrCreate(ClipCollection collection);
 
   FailureOr<bool> delete(ClipCollection collection);
 
