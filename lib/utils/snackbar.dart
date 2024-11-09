@@ -1,9 +1,11 @@
 import 'package:copycat_base/common/failure.dart';
+import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/key.dart';
 import 'package:copycat_base/constants/numbers/breakpoints.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:copycat_base/widgets/timer_progress_bar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showSnackbar(
@@ -59,6 +61,15 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showFailureSnackbar(
     ),
     closePrevious: true,
   );
+}
+
+ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showDebugSnackbar(
+    String text) {
+  if (!kDebugMode) return null;
+  final message = "DEBUG :: $text";
+  logger.d(message);
+  showTextSnackbar(message, closePrevious: true);
+  return null;
 }
 
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(

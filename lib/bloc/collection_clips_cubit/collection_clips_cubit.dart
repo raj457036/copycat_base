@@ -1,8 +1,11 @@
+import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
+import 'package:copycat_base/common/events.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/db/clip_collection/clipcollection.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
+import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -14,12 +17,25 @@ part 'collection_clips_state.dart';
 class CollectionClipsCubit extends Cubit<CollectionClipsState> {
   final ClipboardRepository repo;
   final ClipCollection collection;
+
+  EventRule<ClipCrossSyncEvent>? clipboardItemER;
+  EventRule<List<ClipCrossSyncEvent>>? batchClipboardItemER;
+  String? currentQuery;
+
   CollectionClipsCubit(
     @Named("offline") this.repo, {
     @factoryParam required this.collection,
-  }) : super(const CollectionClipsState.initial());
+  }) : super(const CollectionClipsState.initial()) {
+    clipboardItemER = EventRule(clipboardEvent, targets: [
+      EventListener(onSyncEvent),
+    ]);
+    batchClipboardItemER = EventRule(clipboardBatchEvent, targets: [
+      EventListener(onBatchSyncEvent),
+    ]);
+  }
 
   Future<void> search([String? searchQuery]) async {
+    currentQuery = searchQuery;
     switch (state) {
       case InitialCollectionClipsState() || CollectionClipsErrorState():
         {
@@ -112,5 +128,80 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
         result.copyWith(results: items),
       );
     });
+  }
+
+  void onBatchSyncEvent(List<ClipCrossSyncEvent> events) {
+    if (state is! CollectionClipsResultsState) return;
+    final currentState = state as CollectionClipsResultsState;
+    // Deleted
+    final deleted = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.delete;
+        })
+        .map((event) => event.$2)
+        .toList();
+    deleteItem(deleted);
+
+    if (currentQuery != null && currentQuery!.isNotEmpty) return;
+
+    // Created
+    final created = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.create;
+        })
+        .map((event) => event.$2)
+        .toList();
+    if (created.isNotEmpty) {
+      emit(currentState
+          .copyWith(results: [...created, ...currentState.results]));
+    }
+
+    // Updates
+    final updated = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.update;
+        })
+        .map((event) => event.$2)
+        .toList();
+    if (updated.isEmpty) return;
+    final updateIndexMap = <int, int>{};
+    for (var i = 0; i < updated.length; i++) {
+      final item = updated[i];
+      updateIndexMap[item.id] = i;
+    }
+
+    final replaced = <ClipboardItem>[];
+    for (var i = 0; i < currentState.results.length; i++) {
+      final item = currentState.results[i];
+      final found = updateIndexMap[item.id];
+      if (found != null) {
+        replaced.add(item);
+      } else {
+        replaced.add(item);
+      }
+    }
+    emit(currentState.copyWith(results: replaced));
+  }
+
+  void onSyncEvent(ClipCrossSyncEvent event) {
+    final (type, item) = event;
+    // deleted
+    if (item.deletedAt != null || type == CrossSyncEventType.delete) {
+      deleteItem([item]);
+      return;
+    }
+
+    if (currentQuery != null && currentQuery!.isNotEmpty) return;
+    put(item);
+  }
+
+  @override
+  Future<void> close() {
+    clipboardItemER?.cancel();
+    batchClipboardItemER?.cancel();
+    return super.close();
   }
 }

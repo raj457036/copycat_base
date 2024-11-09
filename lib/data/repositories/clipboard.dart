@@ -120,7 +120,7 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<ClipboardItem?> getLatest() {
+  FailureOr<ClipboardItem?> getLatest({bool? synced}) {
     throw UnimplementedError();
   }
 
@@ -130,10 +130,10 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<bool> deleteMany(List<ClipboardItem> items) async {
+  FailureOr<List<ClipboardItem>> deleteMany(List<ClipboardItem> items) async {
     try {
-      await remote.deleteMany(items);
-      return const Right(true);
+      final deleted = await remote.deleteMany(items);
+      return Right(deleted);
     } catch (e) {
       return Left(Failure.fromException(e));
     }
@@ -238,9 +238,9 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<ClipboardItem?> getLatest() async {
+  FailureOr<ClipboardItem?> getLatest({bool? synced}) async {
     try {
-      final result = await local.getLatest();
+      final result = await local.getLatest(synced: synced);
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));
@@ -258,10 +258,10 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<bool> deleteMany(List<ClipboardItem> items) async {
+  FailureOr<List<ClipboardItem>> deleteMany(List<ClipboardItem> items) async {
     try {
-      await local.deleteMany(items);
-      return const Right(true);
+      final deleted = await local.deleteMany(items);
+      return Right(deleted);
     } catch (e) {
       return Left(Failure.fromException(e));
     }

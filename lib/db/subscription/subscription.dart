@@ -59,6 +59,25 @@ class Subscription with _$Subscription, IsarIdMixin {
     return (activeTill != null && activeTill!.isAfter(now()));
   }
 
+  bool isSameAs(Subscription other) {
+    return planName == other.planName &&
+        subId == other.subId &&
+        source == other.source &&
+        trialStart == other.trialStart &&
+        trialEnd == other.trialEnd &&
+        collections == other.collections &&
+        itemsPerCollection == other.itemsPerCollection &&
+        dragNdrop == other.dragNdrop &&
+        theming == other.theming &&
+        syncHours == other.syncHours &&
+        ads == other.ads &&
+        syncInterval == other.syncInterval &&
+        edit == other.edit &&
+        activeTill == other.activeTill &&
+        maxSyncDevices == other.maxSyncDevices &&
+        customExclusionRules == other.customExclusionRules;
+  }
+
   factory Subscription.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionFromJson(json);
 }

@@ -4,5 +4,6 @@ import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 final searchFocusEvent = Event<void>("SEARCH_FOCUS");
 
 // clipboard events
-final clipboardSyncItemEvent =
-    Event<ClipCrossSyncEvent>("CLIPBOARD_SYNCED_ITEM");
+final clipboardEvent = Event<ClipCrossSyncEvent>("CLIPBOARD_SYNCED_ITEM");
+final clipboardBatchEvent =
+    Event<List<ClipCrossSyncEvent>>("CLIPBOARD_SYNCED_BATCH_ITEMS");

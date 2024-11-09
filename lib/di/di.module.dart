@@ -11,6 +11,8 @@ import 'package:copycat_base/bloc/app_config_cubit/app_config_cubit.dart'
 import 'package:copycat_base/bloc/auth_cubit/auth_cubit.dart' as _i630;
 import 'package:copycat_base/bloc/clip_collection_cubit/clip_collection_cubit.dart'
     as _i402;
+import 'package:copycat_base/bloc/clip_sync_manager_cubit/clip_sync_manager_cubit.dart'
+    as _i84;
 import 'package:copycat_base/bloc/clipboard_cubit/clipboard_cubit.dart'
     as _i189;
 import 'package:copycat_base/bloc/cloud_persistance_cubit/cloud_persistance_cubit.dart'
@@ -25,8 +27,6 @@ import 'package:copycat_base/bloc/realtime_clip_sync_cubit/realtime_clip_sync_cu
     as _i685;
 import 'package:copycat_base/bloc/selected_clips_cubit/selected_clips_cubit.dart'
     as _i443;
-import 'package:copycat_base/bloc/sync_manager_cubit/sync_manager_cubit.dart'
-    as _i11;
 import 'package:copycat_base/bloc/window_action_cubit/window_action_cubit.dart'
     as _i617;
 import 'package:copycat_base/data/repositories/analytics.dart' as _i55;
@@ -124,13 +124,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i829.TinyStorage>(),
           gh<_i860.AnalyticsRepository>(),
         ));
-    gh.singleton<_i11.SyncManagerCubit>(() => _i11.SyncManagerCubit(
-          gh<_i338.Isar>(),
-          gh<_i630.AuthCubit>(),
-          gh<_i106.SyncRepository>(),
-          gh<_i625.ClipCollectionRepository>(),
-          gh<String>(instanceName: 'device_id'),
-        ));
     gh.lazySingleton<_i402.ClipCollectionCubit>(() => _i402.ClipCollectionCubit(
           gh<_i630.AuthCubit>(),
           gh<_i625.ClipCollectionRepository>(),
@@ -171,6 +164,13 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<String>(instanceName: 'device_id'),
               gh<_i72.ClipboardRepository>(instanceName: 'cloud'),
             ));
+    gh.factory<_i84.ClipSyncManagerCubit>(() => _i84.ClipSyncManagerCubit(
+          gh<_i106.SyncRepository>(),
+          gh<_i402.ClipCollectionCubit>(),
+          gh<_i72.ClipboardRepository>(instanceName: 'offline'),
+          gh<_i625.ClipCollectionRepository>(),
+          gh<String>(instanceName: 'device_id'),
+        ));
   }
 }
 

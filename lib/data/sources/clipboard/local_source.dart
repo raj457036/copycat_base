@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_use_of_protected_member
 
+import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/common/paginated_results.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/sources/clipboard.dart';
@@ -157,16 +158,25 @@ class LocalClipboardSource implements ClipboardSource {
   }
 
   @override
-  Future<ClipboardItem?> getLatest() async {
-    final result = await db
-        .txn(() => db.clipboardItems.where().sortByModifiedDesc().findFirst());
+  Future<ClipboardItem?> getLatest({bool? synced}) async {
+    final result = await db.txn(() {
+      if (synced == true) {
+        final q = db.clipboardItems
+            .filter()
+            .lastSyncedIsNotNull()
+            .sortByLastSyncedDesc();
+        return q.findFirst();
+      }
+      final q = db.clipboardItems.where().sortByModifiedDesc();
+      return q.findFirst();
+    });
     return result;
   }
 
   @override
   Future<void> decryptPending() async {
     await db.writeTxn(() async {
-      const limit = 50;
+      const limit = 100;
 
       while (true) {
         final items = await db.clipboardItems
@@ -185,17 +195,30 @@ class LocalClipboardSource implements ClipboardSource {
   }
 
   @override
-  Future<bool> deleteMany(List<ClipboardItem> items) async {
-    final result = await db.writeTxn(
-      () => db.clipboardItems
+  Future<List<ClipboardItem>> deleteMany(List<ClipboardItem> items) async {
+    final result = await db.writeTxn(() async {
+      final q = db.clipboardItems
           .filter()
-          .anyOf(
-            items,
-            (q, item) => q.idEqualTo(item.id),
-          )
-          .deleteAll(),
-    );
-    return result == items.length;
+          .anyOf(items, (q, item) => q.idEqualTo(item.id))
+          .or()
+          .anyOf(items, (q, item) => q.serverIdEqualTo(item.serverId));
+
+      final clipsWithLocalCache = await q.localPathIsNotNull().findAll();
+
+      // Delete cached media
+      logger.i("Deleting Cached Media");
+      for (var item in clipsWithLocalCache) {
+        await item.cleanUp();
+      }
+
+      // Find all items to delete at once
+      final deleted = await q.findAll();
+
+      await q.deleteAll();
+
+      return deleted;
+    });
+    return result;
   }
 
   @override

@@ -15,7 +15,6 @@ class SyncRepositoryImpl implements SyncRepository {
 
   @override
   FailureOr<PaginatedResult<ClipboardItem>> getLatestClipboardItems({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -23,7 +22,6 @@ class SyncRepositoryImpl implements SyncRepository {
   }) async {
     try {
       final result = await source.getLatestClipboardItems(
-        userId: userId,
         limit: limit,
         offset: offset,
         excludeDeviceId: excludeDeviceId,
@@ -49,7 +47,6 @@ class SyncRepositoryImpl implements SyncRepository {
 
   @override
   FailureOr<PaginatedResult<ClipCollection>> getLatestClipCollections({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -57,7 +54,6 @@ class SyncRepositoryImpl implements SyncRepository {
   }) async {
     try {
       final result = await source.getLatestClipCollections(
-        userId: userId,
         limit: limit,
         offset: offset,
         excludeDeviceId: excludeDeviceId,
@@ -71,7 +67,6 @@ class SyncRepositoryImpl implements SyncRepository {
 
   @override
   FailureOr<PaginatedResult<ClipboardItem>> getDeletedClipboardItems({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -79,7 +74,6 @@ class SyncRepositoryImpl implements SyncRepository {
   }) async {
     try {
       final result = await source.getDeletedClipboardItems(
-        userId: userId,
         limit: limit,
         offset: offset,
         excludeDeviceId: excludeDeviceId,
@@ -93,7 +87,6 @@ class SyncRepositoryImpl implements SyncRepository {
 
   @override
   FailureOr<PaginatedResult<ClipCollection>> getDeletedClipCollections({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -101,7 +94,6 @@ class SyncRepositoryImpl implements SyncRepository {
   }) async {
     try {
       final result = await source.getDeletedClipCollections(
-        userId: userId,
         limit: limit,
         offset: offset,
         excludeDeviceId: excludeDeviceId,

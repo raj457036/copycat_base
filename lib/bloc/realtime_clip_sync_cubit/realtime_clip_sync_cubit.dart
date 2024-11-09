@@ -19,6 +19,7 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
   final ClipCrossSyncListener listener;
   final ClipboardRepository clipRepo;
   final ClipCollectionRepository collectionRepo;
+  bool _subscribed = false;
 
   StreamSubscription? statusSubscription, changeSubscription;
 
@@ -34,15 +35,19 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
   }
 
   void subscribe() {
+    if (_subscribed) return;
     _clearSubs();
     statusSubscription = listener.onStatusChange.listen(onStatusChange);
     changeSubscription = listener.onChange.listen(onSync);
     listener.start();
+    _subscribed = true;
   }
 
   void unsubscribe() {
+    if (!_subscribed) return;
     _clearSubs();
     listener.stop();
+    _subscribed = false;
   }
 
   void onStatusChange(CrossSyncStatusEvent event) {
@@ -71,7 +76,7 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
 
     final result = await clipRepo.updateOrCreate(item);
     result.fold((failure) {}, (item) {
-      final eventPayload = clipboardSyncItemEvent.createPayload((type, item));
+      final eventPayload = clipboardEvent.createPayload((type, item));
       EventBus.emit(eventPayload);
     });
   }

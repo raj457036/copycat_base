@@ -26,11 +26,11 @@ abstract class ClipboardRepository {
   FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item);
 
   FailureOr<bool> delete(ClipboardItem item);
-  FailureOr<bool> deleteMany(List<ClipboardItem> items);
+  FailureOr<List<ClipboardItem>> deleteMany(List<ClipboardItem> items);
 
   FailureOr<void> deleteAll();
 
-  FailureOr<ClipboardItem?> getLatest();
+  FailureOr<ClipboardItem?> getLatest({bool? synced});
 
   FailureOr<void> decryptPending();
 }

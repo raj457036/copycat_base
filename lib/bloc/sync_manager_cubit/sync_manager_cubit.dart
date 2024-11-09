@@ -10,11 +10,8 @@ import 'package:copycat_base/db/subscription/subscription.dart';
 import 'package:copycat_base/db/sync_status/syncstatus.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
 import 'package:copycat_base/domain/repositories/sync_clipboard.dart';
-import 'package:copycat_base/l10n/l10n.dart';
-import 'package:copycat_base/utils/snackbar.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:easy_worker/easy_worker.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -24,27 +21,8 @@ import 'package:isar/isar.dart';
 part 'sync_manager_cubit.freezed.dart';
 part 'sync_manager_state.dart';
 
-Future<void> syncChanges(BuildContext context) async {
-  if (!context.mounted) return;
-
-  showTextSnackbar(
-    context.locale.syncing,
-    isLoading: true,
-    closePrevious: true,
-  );
-  final failure = await context.read<SyncManagerCubit>().syncChanges();
-  if (context.mounted) {
-    if (failure != null) {
-      showFailureSnackbar(failure);
-      return;
-    }
-    showTextSnackbar(context.locale.done, closePrevious: true);
-  }
-}
-
 const _syncId = 1;
 
-@singleton
 class SyncManagerCubit extends Cubit<SyncManagerState> {
   final Isar db;
   final AuthCubit auth;
@@ -164,7 +142,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     while (hasMore) {
       emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getDeletedClipCollections(
-        userId: auth.userId!,
         lastSynced: lastSync.lastSync,
         offset: offset,
         excludeDeviceId: deviceId,
@@ -217,7 +194,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
     while (hasMore) {
       emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getLatestClipCollections(
-        userId: auth.userId!,
         lastSynced: syncInfo?.lastSync,
         offset: offset,
         excludeDeviceId: syncInfo?.lastSync != null ? deviceId : null,
@@ -298,7 +274,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getDeletedClipboardItems(
         limit: 1000,
-        userId: auth.userId!,
         lastSynced: syncInfo.lastSync,
         offset: offset,
         excludeDeviceId: deviceId,
@@ -362,7 +337,6 @@ class SyncManagerCubit extends Cubit<SyncManagerState> {
       emit(SyncManagerState.checking(needDbRebuilding: rebuilding));
       final result = await syncRepo.getLatestClipboardItems(
         limit: 1000,
-        userId: auth.userId!,
         lastSynced: getLastSyncedTime(lastSync?.lastSync),
         offset: offset,
         excludeDeviceId: lastSync?.lastSync != null ? deviceId : null,

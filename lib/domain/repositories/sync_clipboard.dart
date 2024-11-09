@@ -5,7 +5,6 @@ import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 
 abstract class SyncRepository {
   FailureOr<PaginatedResult<ClipCollection>> getLatestClipCollections({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -13,7 +12,6 @@ abstract class SyncRepository {
   });
 
   FailureOr<PaginatedResult<ClipboardItem>> getLatestClipboardItems({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -21,7 +19,6 @@ abstract class SyncRepository {
   });
 
   FailureOr<PaginatedResult<ClipCollection>> getDeletedClipCollections({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
@@ -29,7 +26,6 @@ abstract class SyncRepository {
   });
 
   FailureOr<PaginatedResult<ClipboardItem>> getDeletedClipboardItems({
-    required String userId,
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,

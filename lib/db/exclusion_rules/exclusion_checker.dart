@@ -99,26 +99,39 @@ class ExclusionChecker {
   }
 
   bool isClipAllowed(ClipItem clip, ActivityInfo? activity) {
-    logger.w("Excluded pattern detected in content");
     if (clip.isText) {
       if (isPatternExcluded(clip.text!)) return false;
-      if (_phone && clip.textCategory == TextCategory.phone) return false;
-      if (_email && clip.textCategory == TextCategory.email) return false;
-      if (_creditCard && _creditCardPattern.hasMatch(clip.text!)) return false;
+      if (_phone && clip.textCategory == TextCategory.phone) {
+        logger.w("Exclusion rule triggered for phone numebr");
+        return false;
+      }
+      if (_email && clip.textCategory == TextCategory.email) {
+        logger.w("Exclusion rule triggered for email");
+        return false;
+      }
+      if (_creditCard && _creditCardPattern.hasMatch(clip.text!)) {
+        logger.w("Exclusion rule triggered for credit card");
+        return false;
+      }
       // if (_bankAccount && bankAccountPattern.hasMatch(clip.text!)) return false;
       // if (_personalInfo && passportPattern.hasMatch(clip.text!)) return false;
     }
     if (_sensitiveUrls) {
       final p0 = activity != null ? isActivityAllowed(activity) : true;
       if (clip.isUri) {
+        logger.w("Exclusion rule triggered for sensitive url");
         final p1 = !_rUrls.any((r) => clip.uri!.toString().contains(r));
         return p1 && p0;
       }
       return p0;
     }
 
-    if (_creditCard) {
-      return !_patterns.any((pattern) => pattern.hasMatch(clip.text!));
+    if (_patterns.isNotEmpty) {
+      final found = _patterns.any((pattern) => pattern.hasMatch(clip.text!));
+      if (found) {
+        logger.w("Exclusion rule triggered for custom pattern.");
+        return false;
+      }
     }
     return true;
   }

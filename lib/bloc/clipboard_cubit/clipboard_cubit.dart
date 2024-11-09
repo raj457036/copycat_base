@@ -20,18 +20,75 @@ part 'clipboard_state.dart';
 class ClipboardCubit extends Cubit<ClipboardState> {
   final ClipboardRepository repo;
   EventRule<ClipCrossSyncEvent>? clipboardItemER;
+  EventRule<List<ClipCrossSyncEvent>>? batchClipboardItemER;
   String? currentQuery;
 
   ClipboardCubit(
     @Named("offline") this.repo,
   ) : super(const ClipboardState.loaded(items: [])) {
-    clipboardItemER = EventRule(clipboardSyncItemEvent, targets: [
+    clipboardItemER = EventRule(clipboardEvent, targets: [
       EventListener(onSyncEvent),
+    ]);
+    batchClipboardItemER = EventRule(clipboardBatchEvent, targets: [
+      EventListener(onBatchSyncEvent),
     ]);
   }
 
-  void reset() {
-    emit(const ClipboardState.loaded(items: []));
+  void onBatchSyncEvent(List<ClipCrossSyncEvent> events) {
+    if (events.isEmpty) return;
+    // Deleted
+    final deleted = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.delete;
+        })
+        .map((event) => event.$2)
+        .toList();
+    deleteItem(deleted);
+
+    if (currentQuery != null && currentQuery!.isNotEmpty) return;
+    final filter = state.filterState;
+
+    // Created
+    final created = events
+        .where((event) {
+          final (type, item) = event;
+          return type == CrossSyncEventType.create &&
+              filter.matchedByFilter(item);
+        })
+        .map((event) => event.$2)
+        .toList();
+    if (created.isNotEmpty) {
+      emit(state.copyWith(items: [...created, ...state.items]));
+    }
+
+    // Updates
+    final updated = events
+        .where((event) {
+          final (type, item) = event;
+          return type == CrossSyncEventType.update &&
+              filter.matchedByFilter(item);
+        })
+        .map((event) => event.$2)
+        .toList();
+    if (updated.isEmpty) return;
+    final updateIndexMap = <int, int>{};
+    for (var i = 0; i < updated.length; i++) {
+      final item = updated[i];
+      updateIndexMap[item.id] = i;
+    }
+
+    final replaced = <ClipboardItem>[];
+    for (var i = 0; i < state.items.length; i++) {
+      final item = state.items[i];
+      final found = updateIndexMap[item.id];
+      if (found != null) {
+        replaced.add(updated[found]);
+      } else {
+        replaced.add(item);
+      }
+    }
+    emit(state.copyWith(items: replaced));
   }
 
   void onSyncEvent(ClipCrossSyncEvent event) {
@@ -48,6 +105,8 @@ class ClipboardCubit extends Cubit<ClipboardState> {
       put(item, isNew: type == CrossSyncEventType.create);
     }
   }
+
+  void reset() => emit(const ClipboardState.loaded(items: []));
 
   void put(ClipboardItem item, {bool isNew = false}) {
     if (isNew) {
@@ -130,6 +189,7 @@ class ClipboardCubit extends Cubit<ClipboardState> {
   @override
   Future<void> close() {
     clipboardItemER?.cancel();
+    batchClipboardItemER?.cancel();
     return super.close();
   }
 }

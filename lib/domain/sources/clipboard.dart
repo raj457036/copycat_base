@@ -32,11 +32,11 @@ abstract class ClipboardSource {
   Future<ClipboardItem> updateOrCreate(ClipboardItem item);
 
   Future<bool> delete(ClipboardItem item);
-  Future<bool> deleteMany(List<ClipboardItem> items);
+  Future<List<ClipboardItem>> deleteMany(List<ClipboardItem> items);
 
   Future<void> deleteAll();
 
-  Future<ClipboardItem?> getLatest();
+  Future<ClipboardItem?> getLatest({bool? synced});
 
   Future<void> decryptPending();
 }
