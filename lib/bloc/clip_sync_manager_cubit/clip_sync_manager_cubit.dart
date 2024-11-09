@@ -32,7 +32,7 @@ void _syncingClips(
 ) async {
   final Isar db;
   final instance = Isar.getInstance("CopyCat-Clipboard-DB");
-  if (instance != null) {
+  if (instance != null && instance.isOpen) {
     db = instance;
   } else {
     final dir = await getApplicationDocumentsDirectory();
@@ -162,12 +162,12 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     return (true, 0);
   }
 
-  Future<void> syncClips({bool manual = false}) async {
+  Future<bool> syncClips({bool manual = false}) async {
     if (manual) {
       final (canSync, secondLeft) = canManullySync();
       if (!canSync) {
         showFailureSnackbar(frequentSyncing(secondLeft));
-        return;
+        return false;
       }
       closeSnackbar();
     }
@@ -175,7 +175,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     _busy = true;
     emit(const ClipSyncManagerState.unknown());
     try {
-      if (_syncHours == null) return;
+      if (_syncHours == null) return false;
 
       DateTime? fromTs;
       final latestSyncedItem =
@@ -186,11 +186,12 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
 
       await syncDeleted(fromTs);
 
-      if (state is ClipSyncFailed) return;
+      if (state is ClipSyncFailed) return false;
       await syncChanges(fromTs);
 
-      if (state is ClipSyncFailed) return;
+      if (state is ClipSyncFailed) return false;
       emit(const ClipSyncManagerState.synced());
+      return state is ClipSyncComplete;
     } finally {
       _busy = false;
     }

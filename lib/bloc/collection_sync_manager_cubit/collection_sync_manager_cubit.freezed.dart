@@ -22,7 +22,7 @@ mixin _$CollectionSyncManagerState {
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$CollectionSyncManagerState {
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$CollectionSyncManagerState {
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) =>
@@ -51,7 +51,7 @@ mixin _$CollectionSyncManagerState {
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -61,7 +61,7 @@ mixin _$CollectionSyncManagerState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -71,7 +71,7 @@ mixin _$CollectionSyncManagerState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,
@@ -155,7 +155,7 @@ class _$CollectionSyncDisabledImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return disabled();
@@ -168,7 +168,7 @@ class _$CollectionSyncDisabledImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return disabled?.call();
@@ -181,7 +181,7 @@ class _$CollectionSyncDisabledImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -196,7 +196,7 @@ class _$CollectionSyncDisabledImpl
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -209,7 +209,7 @@ class _$CollectionSyncDisabledImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -222,7 +222,7 @@ class _$CollectionSyncDisabledImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,
@@ -293,7 +293,7 @@ class _$CollectionSyncUnknownImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return unknown();
@@ -306,7 +306,7 @@ class _$CollectionSyncUnknownImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return unknown?.call();
@@ -319,7 +319,7 @@ class _$CollectionSyncUnknownImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -334,7 +334,7 @@ class _$CollectionSyncUnknownImpl
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -347,7 +347,7 @@ class _$CollectionSyncUnknownImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -360,7 +360,7 @@ class _$CollectionSyncUnknownImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,
@@ -378,29 +378,30 @@ abstract class CollectionSyncUnknown implements CollectionSyncManagerState {
 }
 
 /// @nodoc
-abstract class _$$CollectionSyncUnknownImplCopyWith<$Res> {
-  factory _$$CollectionSyncUnknownImplCopyWith(
-          _$CollectionSyncUnknownImpl value,
-          $Res Function(_$CollectionSyncUnknownImpl) then) =
-      __$$CollectionSyncUnknownImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncingUnknownImplCopyWith<$Res> {
+  factory _$$CollectionSyncingUnknownImplCopyWith(
+          _$CollectionSyncingUnknownImpl value,
+          $Res Function(_$CollectionSyncingUnknownImpl) then) =
+      __$$CollectionSyncingUnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CollectionSyncUnknownImplCopyWithImpl<$Res>
+class __$$CollectionSyncingUnknownImplCopyWithImpl<$Res>
     extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
-        _$CollectionSyncUnknownImpl>
-    implements _$$CollectionSyncUnknownImplCopyWith<$Res> {
-  __$$CollectionSyncUnknownImplCopyWithImpl(_$CollectionSyncUnknownImpl _value,
-      $Res Function(_$CollectionSyncUnknownImpl) _then)
+        _$CollectionSyncingUnknownImpl>
+    implements _$$CollectionSyncingUnknownImplCopyWith<$Res> {
+  __$$CollectionSyncingUnknownImplCopyWithImpl(
+      _$CollectionSyncingUnknownImpl _value,
+      $Res Function(_$CollectionSyncingUnknownImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CollectionSyncUnknownImpl
+class _$CollectionSyncingUnknownImpl
     with DiagnosticableTreeMixin
-    implements CollectionSyncUnknown {
-  const _$CollectionSyncUnknownImpl();
+    implements CollectionSyncingUnknown {
+  const _$CollectionSyncingUnknownImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -418,7 +419,7 @@ class _$CollectionSyncUnknownImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CollectionSyncUnknownImpl);
+            other is _$CollectionSyncingUnknownImpl);
   }
 
   @override
@@ -431,7 +432,7 @@ class _$CollectionSyncUnknownImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return syncingUnknonw();
@@ -444,7 +445,7 @@ class _$CollectionSyncUnknownImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return syncingUnknonw?.call();
@@ -457,7 +458,7 @@ class _$CollectionSyncUnknownImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -472,7 +473,7 @@ class _$CollectionSyncUnknownImpl
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -485,7 +486,7 @@ class _$CollectionSyncUnknownImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -498,7 +499,7 @@ class _$CollectionSyncUnknownImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,
@@ -511,8 +512,8 @@ class _$CollectionSyncUnknownImpl
   }
 }
 
-abstract class CollectionSyncUnknown implements CollectionSyncManagerState {
-  const factory CollectionSyncUnknown() = _$CollectionSyncUnknownImpl;
+abstract class CollectionSyncingUnknown implements CollectionSyncManagerState {
+  const factory CollectionSyncingUnknown() = _$CollectionSyncingUnknownImpl;
 }
 
 /// @nodoc
@@ -604,7 +605,7 @@ class _$CollectionSyncingImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return syncing(total, this.synced);
@@ -617,7 +618,7 @@ class _$CollectionSyncingImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return syncing?.call(total, this.synced);
@@ -630,7 +631,7 @@ class _$CollectionSyncingImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -645,7 +646,7 @@ class _$CollectionSyncingImpl
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -658,7 +659,7 @@ class _$CollectionSyncingImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -671,7 +672,7 @@ class _$CollectionSyncingImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,
@@ -702,6 +703,8 @@ abstract class _$$CollectionSyncCompleteImplCopyWith<$Res> {
           _$CollectionSyncCompleteImpl value,
           $Res Function(_$CollectionSyncCompleteImpl) then) =
       __$$CollectionSyncCompleteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool manual});
 }
 
 /// @nodoc
@@ -713,6 +716,19 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
       _$CollectionSyncCompleteImpl _value,
       $Res Function(_$CollectionSyncCompleteImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? manual = null,
+  }) {
+    return _then(_$CollectionSyncCompleteImpl(
+      manual: null == manual
+          ? _value.manual
+          : manual // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
@@ -720,29 +736,42 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
 class _$CollectionSyncCompleteImpl
     with DiagnosticableTreeMixin
     implements CollectionSyncComplete {
-  const _$CollectionSyncCompleteImpl();
+  const _$CollectionSyncCompleteImpl({this.manual = false});
+
+  @override
+  @JsonKey()
+  final bool manual;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CollectionSyncManagerState.synced()';
+    return 'CollectionSyncManagerState.synced(manual: $manual)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'CollectionSyncManagerState.synced'));
+      ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.synced'))
+      ..add(DiagnosticsProperty('manual', manual));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CollectionSyncCompleteImpl);
+            other is _$CollectionSyncCompleteImpl &&
+            (identical(other.manual, manual) || other.manual == manual));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, manual);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CollectionSyncCompleteImplCopyWith<_$CollectionSyncCompleteImpl>
+      get copyWith => __$$CollectionSyncCompleteImplCopyWithImpl<
+          _$CollectionSyncCompleteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -751,10 +780,10 @@ class _$CollectionSyncCompleteImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) {
-    return synced();
+    return synced(manual);
   }
 
   @override
@@ -764,10 +793,10 @@ class _$CollectionSyncCompleteImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
-    return synced?.call();
+    return synced?.call(manual);
   }
 
   @override
@@ -777,12 +806,12 @@ class _$CollectionSyncCompleteImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
     if (synced != null) {
-      return synced();
+      return synced(manual);
     }
     return orElse();
   }
@@ -792,7 +821,7 @@ class _$CollectionSyncCompleteImpl
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -805,7 +834,7 @@ class _$CollectionSyncCompleteImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -818,7 +847,7 @@ class _$CollectionSyncCompleteImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,
@@ -832,7 +861,13 @@ class _$CollectionSyncCompleteImpl
 }
 
 abstract class CollectionSyncComplete implements CollectionSyncManagerState {
-  const factory CollectionSyncComplete() = _$CollectionSyncCompleteImpl;
+  const factory CollectionSyncComplete({final bool manual}) =
+      _$CollectionSyncCompleteImpl;
+
+  bool get manual;
+  @JsonKey(ignore: true)
+  _$$CollectionSyncCompleteImplCopyWith<_$CollectionSyncCompleteImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -916,7 +951,7 @@ class _$CollectionSyncFailedImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int total, int synced) syncing,
-    required TResult Function() synced,
+    required TResult Function(bool manual) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return failed(failure);
@@ -929,7 +964,7 @@ class _$CollectionSyncFailedImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int total, int synced)? syncing,
-    TResult? Function()? synced,
+    TResult? Function(bool manual)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return failed?.call(failure);
@@ -942,7 +977,7 @@ class _$CollectionSyncFailedImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int total, int synced)? syncing,
-    TResult Function()? synced,
+    TResult Function(bool manual)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -957,7 +992,7 @@ class _$CollectionSyncFailedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(CollectionSyncDisabled value) disabled,
     required TResult Function(CollectionSyncUnknown value) unknown,
-    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncingUnknown value) syncingUnknonw,
     required TResult Function(CollectionSyncing value) syncing,
     required TResult Function(CollectionSyncComplete value) synced,
     required TResult Function(CollectionSyncFailed value) failed,
@@ -970,7 +1005,7 @@ class _$CollectionSyncFailedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CollectionSyncDisabled value)? disabled,
     TResult? Function(CollectionSyncUnknown value)? unknown,
-    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult? Function(CollectionSyncing value)? syncing,
     TResult? Function(CollectionSyncComplete value)? synced,
     TResult? Function(CollectionSyncFailed value)? failed,
@@ -983,7 +1018,7 @@ class _$CollectionSyncFailedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CollectionSyncDisabled value)? disabled,
     TResult Function(CollectionSyncUnknown value)? unknown,
-    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncingUnknown value)? syncingUnknonw,
     TResult Function(CollectionSyncing value)? syncing,
     TResult Function(CollectionSyncComplete value)? synced,
     TResult Function(CollectionSyncFailed value)? failed,

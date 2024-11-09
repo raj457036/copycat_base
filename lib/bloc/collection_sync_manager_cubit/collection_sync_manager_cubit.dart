@@ -82,12 +82,12 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     return (true, 0);
   }
 
-  Future<void> syncCollections({bool manual = false}) async {
+  Future<bool> syncCollections({bool manual = false}) async {
     if (manual) {
       final (canSync, secondLeft) = canManullySync();
       if (!canSync) {
         showFailureSnackbar(frequentSyncing(secondLeft));
-        return;
+        return false;
       }
       closeSnackbar();
     }
@@ -95,7 +95,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     _busy = true;
     emit(const CollectionSyncManagerState.unknown());
     try {
-      if (_syncHours == null) return;
+      if (_syncHours == null) return false;
 
       DateTime? fromTs;
       final latestSyncedItem = await collectionRepo.getLatest(synced: true);
@@ -105,11 +105,12 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
 
       await syncDeleted(fromTs);
 
-      if (state is CollectionSyncFailed) return;
+      if (state is CollectionSyncFailed) return false;
       await syncChanges(fromTs);
 
-      if (state is CollectionSyncFailed) return;
-      emit(const CollectionSyncManagerState.synced());
+      if (state is CollectionSyncFailed) return false;
+      emit(CollectionSyncManagerState.synced(manual: manual));
+      return state is CollectionSyncComplete;
     } finally {
       _busy = false;
     }
