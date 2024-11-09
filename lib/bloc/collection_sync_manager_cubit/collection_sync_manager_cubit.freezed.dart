@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'clip_sync_manager_cubit.dart';
+part of 'collection_sync_manager_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ClipSyncManagerState {
+mixin _$CollectionSyncManagerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
@@ -49,49 +49,50 @@ mixin _$ClipSyncManagerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClipSyncManagerStateCopyWith<$Res> {
-  factory $ClipSyncManagerStateCopyWith(ClipSyncManagerState value,
-          $Res Function(ClipSyncManagerState) then) =
-      _$ClipSyncManagerStateCopyWithImpl<$Res, ClipSyncManagerState>;
+abstract class $CollectionSyncManagerStateCopyWith<$Res> {
+  factory $CollectionSyncManagerStateCopyWith(CollectionSyncManagerState value,
+          $Res Function(CollectionSyncManagerState) then) =
+      _$CollectionSyncManagerStateCopyWithImpl<$Res,
+          CollectionSyncManagerState>;
 }
 
 /// @nodoc
-class _$ClipSyncManagerStateCopyWithImpl<$Res,
-        $Val extends ClipSyncManagerState>
-    implements $ClipSyncManagerStateCopyWith<$Res> {
-  _$ClipSyncManagerStateCopyWithImpl(this._value, this._then);
+class _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        $Val extends CollectionSyncManagerState>
+    implements $CollectionSyncManagerStateCopyWith<$Res> {
+  _$CollectionSyncManagerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -100,44 +101,48 @@ class _$ClipSyncManagerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ClipSyncDisabledImplCopyWith<$Res> {
-  factory _$$ClipSyncDisabledImplCopyWith(_$ClipSyncDisabledImpl value,
-          $Res Function(_$ClipSyncDisabledImpl) then) =
-      __$$ClipSyncDisabledImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncDisabledImplCopyWith<$Res> {
+  factory _$$CollectionSyncDisabledImplCopyWith(
+          _$CollectionSyncDisabledImpl value,
+          $Res Function(_$CollectionSyncDisabledImpl) then) =
+      __$$CollectionSyncDisabledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ClipSyncDisabledImplCopyWithImpl<$Res>
-    extends _$ClipSyncManagerStateCopyWithImpl<$Res, _$ClipSyncDisabledImpl>
-    implements _$$ClipSyncDisabledImplCopyWith<$Res> {
-  __$$ClipSyncDisabledImplCopyWithImpl(_$ClipSyncDisabledImpl _value,
-      $Res Function(_$ClipSyncDisabledImpl) _then)
+class __$$CollectionSyncDisabledImplCopyWithImpl<$Res>
+    extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        _$CollectionSyncDisabledImpl>
+    implements _$$CollectionSyncDisabledImplCopyWith<$Res> {
+  __$$CollectionSyncDisabledImplCopyWithImpl(
+      _$CollectionSyncDisabledImpl _value,
+      $Res Function(_$CollectionSyncDisabledImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ClipSyncDisabledImpl
+class _$CollectionSyncDisabledImpl
     with DiagnosticableTreeMixin
-    implements ClipSyncDisabled {
-  const _$ClipSyncDisabledImpl();
+    implements CollectionSyncDisabled {
+  const _$CollectionSyncDisabledImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.disabled()';
+    return 'CollectionSyncManagerState.disabled()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'ClipSyncManagerState.disabled'));
+    properties.add(
+        DiagnosticsProperty('type', 'CollectionSyncManagerState.disabled'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClipSyncDisabledImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CollectionSyncDisabledImpl);
   }
 
   @override
@@ -189,12 +194,12 @@ class _$ClipSyncDisabledImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) {
     return disabled(this);
   }
@@ -202,12 +207,12 @@ class _$ClipSyncDisabledImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) {
     return disabled?.call(this);
   }
@@ -215,12 +220,12 @@ class _$ClipSyncDisabledImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) {
     if (disabled != null) {
@@ -230,48 +235,52 @@ class _$ClipSyncDisabledImpl
   }
 }
 
-abstract class ClipSyncDisabled implements ClipSyncManagerState {
-  const factory ClipSyncDisabled() = _$ClipSyncDisabledImpl;
+abstract class CollectionSyncDisabled implements CollectionSyncManagerState {
+  const factory CollectionSyncDisabled() = _$CollectionSyncDisabledImpl;
 }
 
 /// @nodoc
-abstract class _$$ClipSyncUnknownImplCopyWith<$Res> {
-  factory _$$ClipSyncUnknownImplCopyWith(_$ClipSyncUnknownImpl value,
-          $Res Function(_$ClipSyncUnknownImpl) then) =
-      __$$ClipSyncUnknownImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncUnknownImplCopyWith<$Res> {
+  factory _$$CollectionSyncUnknownImplCopyWith(
+          _$CollectionSyncUnknownImpl value,
+          $Res Function(_$CollectionSyncUnknownImpl) then) =
+      __$$CollectionSyncUnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ClipSyncUnknownImplCopyWithImpl<$Res>
-    extends _$ClipSyncManagerStateCopyWithImpl<$Res, _$ClipSyncUnknownImpl>
-    implements _$$ClipSyncUnknownImplCopyWith<$Res> {
-  __$$ClipSyncUnknownImplCopyWithImpl(
-      _$ClipSyncUnknownImpl _value, $Res Function(_$ClipSyncUnknownImpl) _then)
+class __$$CollectionSyncUnknownImplCopyWithImpl<$Res>
+    extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        _$CollectionSyncUnknownImpl>
+    implements _$$CollectionSyncUnknownImplCopyWith<$Res> {
+  __$$CollectionSyncUnknownImplCopyWithImpl(_$CollectionSyncUnknownImpl _value,
+      $Res Function(_$CollectionSyncUnknownImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ClipSyncUnknownImpl
+class _$CollectionSyncUnknownImpl
     with DiagnosticableTreeMixin
-    implements ClipSyncUnknown {
-  const _$ClipSyncUnknownImpl();
+    implements CollectionSyncUnknown {
+  const _$CollectionSyncUnknownImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.unknown()';
+    return 'CollectionSyncManagerState.unknown()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ClipSyncManagerState.unknown'));
+    properties
+        .add(DiagnosticsProperty('type', 'CollectionSyncManagerState.unknown'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClipSyncUnknownImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CollectionSyncUnknownImpl);
   }
 
   @override
@@ -323,12 +332,12 @@ class _$ClipSyncUnknownImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) {
     return unknown(this);
   }
@@ -336,12 +345,12 @@ class _$ClipSyncUnknownImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) {
     return unknown?.call(this);
   }
@@ -349,12 +358,12 @@ class _$ClipSyncUnknownImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -364,49 +373,52 @@ class _$ClipSyncUnknownImpl
   }
 }
 
-abstract class ClipSyncUnknown implements ClipSyncManagerState {
-  const factory ClipSyncUnknown() = _$ClipSyncUnknownImpl;
+abstract class CollectionSyncUnknown implements CollectionSyncManagerState {
+  const factory CollectionSyncUnknown() = _$CollectionSyncUnknownImpl;
 }
 
 /// @nodoc
-abstract class _$$ClipSyncingUnknownImplCopyWith<$Res> {
-  factory _$$ClipSyncingUnknownImplCopyWith(_$ClipSyncingUnknownImpl value,
-          $Res Function(_$ClipSyncingUnknownImpl) then) =
-      __$$ClipSyncingUnknownImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncUnknownImplCopyWith<$Res> {
+  factory _$$CollectionSyncUnknownImplCopyWith(
+          _$CollectionSyncUnknownImpl value,
+          $Res Function(_$CollectionSyncUnknownImpl) then) =
+      __$$CollectionSyncUnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ClipSyncingUnknownImplCopyWithImpl<$Res>
-    extends _$ClipSyncManagerStateCopyWithImpl<$Res, _$ClipSyncingUnknownImpl>
-    implements _$$ClipSyncingUnknownImplCopyWith<$Res> {
-  __$$ClipSyncingUnknownImplCopyWithImpl(_$ClipSyncingUnknownImpl _value,
-      $Res Function(_$ClipSyncingUnknownImpl) _then)
+class __$$CollectionSyncUnknownImplCopyWithImpl<$Res>
+    extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        _$CollectionSyncUnknownImpl>
+    implements _$$CollectionSyncUnknownImplCopyWith<$Res> {
+  __$$CollectionSyncUnknownImplCopyWithImpl(_$CollectionSyncUnknownImpl _value,
+      $Res Function(_$CollectionSyncUnknownImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ClipSyncingUnknownImpl
+class _$CollectionSyncUnknownImpl
     with DiagnosticableTreeMixin
-    implements ClipSyncingUnknown {
-  const _$ClipSyncingUnknownImpl();
+    implements CollectionSyncUnknown {
+  const _$CollectionSyncUnknownImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.syncingUnknonw()';
+    return 'CollectionSyncManagerState.syncingUnknonw()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'ClipSyncManagerState.syncingUnknonw'));
+    properties.add(DiagnosticsProperty(
+        'type', 'CollectionSyncManagerState.syncingUnknonw'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClipSyncingUnknownImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CollectionSyncUnknownImpl);
   }
 
   @override
@@ -458,12 +470,12 @@ class _$ClipSyncingUnknownImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) {
     return syncingUnknonw(this);
   }
@@ -471,12 +483,12 @@ class _$ClipSyncingUnknownImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) {
     return syncingUnknonw?.call(this);
   }
@@ -484,12 +496,12 @@ class _$ClipSyncingUnknownImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) {
     if (syncingUnknonw != null) {
@@ -499,25 +511,26 @@ class _$ClipSyncingUnknownImpl
   }
 }
 
-abstract class ClipSyncingUnknown implements ClipSyncManagerState {
-  const factory ClipSyncingUnknown() = _$ClipSyncingUnknownImpl;
+abstract class CollectionSyncUnknown implements CollectionSyncManagerState {
+  const factory CollectionSyncUnknown() = _$CollectionSyncUnknownImpl;
 }
 
 /// @nodoc
-abstract class _$$ClipSyncingImplCopyWith<$Res> {
-  factory _$$ClipSyncingImplCopyWith(
-          _$ClipSyncingImpl value, $Res Function(_$ClipSyncingImpl) then) =
-      __$$ClipSyncingImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncingImplCopyWith<$Res> {
+  factory _$$CollectionSyncingImplCopyWith(_$CollectionSyncingImpl value,
+          $Res Function(_$CollectionSyncingImpl) then) =
+      __$$CollectionSyncingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int total, int synced});
 }
 
 /// @nodoc
-class __$$ClipSyncingImplCopyWithImpl<$Res>
-    extends _$ClipSyncManagerStateCopyWithImpl<$Res, _$ClipSyncingImpl>
-    implements _$$ClipSyncingImplCopyWith<$Res> {
-  __$$ClipSyncingImplCopyWithImpl(
-      _$ClipSyncingImpl _value, $Res Function(_$ClipSyncingImpl) _then)
+class __$$CollectionSyncingImplCopyWithImpl<$Res>
+    extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        _$CollectionSyncingImpl>
+    implements _$$CollectionSyncingImplCopyWith<$Res> {
+  __$$CollectionSyncingImplCopyWithImpl(_$CollectionSyncingImpl _value,
+      $Res Function(_$CollectionSyncingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -526,7 +539,7 @@ class __$$ClipSyncingImplCopyWithImpl<$Res>
     Object? total = null,
     Object? synced = null,
   }) {
-    return _then(_$ClipSyncingImpl(
+    return _then(_$CollectionSyncingImpl(
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -541,8 +554,10 @@ class __$$ClipSyncingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
-  const _$ClipSyncingImpl({required this.total, required this.synced});
+class _$CollectionSyncingImpl
+    with DiagnosticableTreeMixin
+    implements CollectionSyncing {
+  const _$CollectionSyncingImpl({required this.total, required this.synced});
 
   @override
   final int total;
@@ -551,14 +566,14 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.syncing(total: $total, synced: $synced)';
+    return 'CollectionSyncManagerState.syncing(total: $total, synced: $synced)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ClipSyncManagerState.syncing'))
+      ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.syncing'))
       ..add(DiagnosticsProperty('total', total))
       ..add(DiagnosticsProperty('synced', synced));
   }
@@ -567,7 +582,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ClipSyncingImpl &&
+            other is _$CollectionSyncingImpl &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.synced, synced) || other.synced == synced));
   }
@@ -578,8 +593,9 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ClipSyncingImplCopyWith<_$ClipSyncingImpl> get copyWith =>
-      __$$ClipSyncingImplCopyWithImpl<_$ClipSyncingImpl>(this, _$identity);
+  _$$CollectionSyncingImplCopyWith<_$CollectionSyncingImpl> get copyWith =>
+      __$$CollectionSyncingImplCopyWithImpl<_$CollectionSyncingImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -627,12 +643,12 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) {
     return syncing(this);
   }
@@ -640,12 +656,12 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) {
     return syncing?.call(this);
   }
@@ -653,12 +669,12 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) {
     if (syncing != null) {
@@ -668,56 +684,61 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   }
 }
 
-abstract class ClipSyncing implements ClipSyncManagerState {
-  const factory ClipSyncing(
+abstract class CollectionSyncing implements CollectionSyncManagerState {
+  const factory CollectionSyncing(
       {required final int total,
-      required final int synced}) = _$ClipSyncingImpl;
+      required final int synced}) = _$CollectionSyncingImpl;
 
   int get total;
   int get synced;
   @JsonKey(ignore: true)
-  _$$ClipSyncingImplCopyWith<_$ClipSyncingImpl> get copyWith =>
+  _$$CollectionSyncingImplCopyWith<_$CollectionSyncingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ClipSyncCompleteImplCopyWith<$Res> {
-  factory _$$ClipSyncCompleteImplCopyWith(_$ClipSyncCompleteImpl value,
-          $Res Function(_$ClipSyncCompleteImpl) then) =
-      __$$ClipSyncCompleteImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncCompleteImplCopyWith<$Res> {
+  factory _$$CollectionSyncCompleteImplCopyWith(
+          _$CollectionSyncCompleteImpl value,
+          $Res Function(_$CollectionSyncCompleteImpl) then) =
+      __$$CollectionSyncCompleteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ClipSyncCompleteImplCopyWithImpl<$Res>
-    extends _$ClipSyncManagerStateCopyWithImpl<$Res, _$ClipSyncCompleteImpl>
-    implements _$$ClipSyncCompleteImplCopyWith<$Res> {
-  __$$ClipSyncCompleteImplCopyWithImpl(_$ClipSyncCompleteImpl _value,
-      $Res Function(_$ClipSyncCompleteImpl) _then)
+class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
+    extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        _$CollectionSyncCompleteImpl>
+    implements _$$CollectionSyncCompleteImplCopyWith<$Res> {
+  __$$CollectionSyncCompleteImplCopyWithImpl(
+      _$CollectionSyncCompleteImpl _value,
+      $Res Function(_$CollectionSyncCompleteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ClipSyncCompleteImpl
+class _$CollectionSyncCompleteImpl
     with DiagnosticableTreeMixin
-    implements ClipSyncComplete {
-  const _$ClipSyncCompleteImpl();
+    implements CollectionSyncComplete {
+  const _$CollectionSyncCompleteImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.synced()';
+    return 'CollectionSyncManagerState.synced()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ClipSyncManagerState.synced'));
+    properties
+        .add(DiagnosticsProperty('type', 'CollectionSyncManagerState.synced'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClipSyncCompleteImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CollectionSyncCompleteImpl);
   }
 
   @override
@@ -769,12 +790,12 @@ class _$ClipSyncCompleteImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) {
     return synced(this);
   }
@@ -782,12 +803,12 @@ class _$ClipSyncCompleteImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) {
     return synced?.call(this);
   }
@@ -795,12 +816,12 @@ class _$ClipSyncCompleteImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) {
     if (synced != null) {
@@ -810,25 +831,26 @@ class _$ClipSyncCompleteImpl
   }
 }
 
-abstract class ClipSyncComplete implements ClipSyncManagerState {
-  const factory ClipSyncComplete() = _$ClipSyncCompleteImpl;
+abstract class CollectionSyncComplete implements CollectionSyncManagerState {
+  const factory CollectionSyncComplete() = _$CollectionSyncCompleteImpl;
 }
 
 /// @nodoc
-abstract class _$$ClipSyncFailedImplCopyWith<$Res> {
-  factory _$$ClipSyncFailedImplCopyWith(_$ClipSyncFailedImpl value,
-          $Res Function(_$ClipSyncFailedImpl) then) =
-      __$$ClipSyncFailedImplCopyWithImpl<$Res>;
+abstract class _$$CollectionSyncFailedImplCopyWith<$Res> {
+  factory _$$CollectionSyncFailedImplCopyWith(_$CollectionSyncFailedImpl value,
+          $Res Function(_$CollectionSyncFailedImpl) then) =
+      __$$CollectionSyncFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$$ClipSyncFailedImplCopyWithImpl<$Res>
-    extends _$ClipSyncManagerStateCopyWithImpl<$Res, _$ClipSyncFailedImpl>
-    implements _$$ClipSyncFailedImplCopyWith<$Res> {
-  __$$ClipSyncFailedImplCopyWithImpl(
-      _$ClipSyncFailedImpl _value, $Res Function(_$ClipSyncFailedImpl) _then)
+class __$$CollectionSyncFailedImplCopyWithImpl<$Res>
+    extends _$CollectionSyncManagerStateCopyWithImpl<$Res,
+        _$CollectionSyncFailedImpl>
+    implements _$$CollectionSyncFailedImplCopyWith<$Res> {
+  __$$CollectionSyncFailedImplCopyWithImpl(_$CollectionSyncFailedImpl _value,
+      $Res Function(_$CollectionSyncFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -836,7 +858,7 @@ class __$$ClipSyncFailedImplCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$ClipSyncFailedImpl(
+    return _then(_$CollectionSyncFailedImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -847,24 +869,24 @@ class __$$ClipSyncFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ClipSyncFailedImpl
+class _$CollectionSyncFailedImpl
     with DiagnosticableTreeMixin
-    implements ClipSyncFailed {
-  const _$ClipSyncFailedImpl(this.failure);
+    implements CollectionSyncFailed {
+  const _$CollectionSyncFailedImpl(this.failure);
 
   @override
   final Failure failure;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.failed(failure: $failure)';
+    return 'CollectionSyncManagerState.failed(failure: $failure)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ClipSyncManagerState.failed'))
+      ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.failed'))
       ..add(DiagnosticsProperty('failure', failure));
   }
 
@@ -872,7 +894,7 @@ class _$ClipSyncFailedImpl
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ClipSyncFailedImpl &&
+            other is _$CollectionSyncFailedImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -882,9 +904,10 @@ class _$ClipSyncFailedImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ClipSyncFailedImplCopyWith<_$ClipSyncFailedImpl> get copyWith =>
-      __$$ClipSyncFailedImplCopyWithImpl<_$ClipSyncFailedImpl>(
-          this, _$identity);
+  _$$CollectionSyncFailedImplCopyWith<_$CollectionSyncFailedImpl>
+      get copyWith =>
+          __$$CollectionSyncFailedImplCopyWithImpl<_$CollectionSyncFailedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -932,12 +955,12 @@ class _$ClipSyncFailedImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ClipSyncDisabled value) disabled,
-    required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
-    required TResult Function(ClipSyncing value) syncing,
-    required TResult Function(ClipSyncComplete value) synced,
-    required TResult Function(ClipSyncFailed value) failed,
+    required TResult Function(CollectionSyncDisabled value) disabled,
+    required TResult Function(CollectionSyncUnknown value) unknown,
+    required TResult Function(CollectionSyncUnknown value) syncingUnknonw,
+    required TResult Function(CollectionSyncing value) syncing,
+    required TResult Function(CollectionSyncComplete value) synced,
+    required TResult Function(CollectionSyncFailed value) failed,
   }) {
     return failed(this);
   }
@@ -945,12 +968,12 @@ class _$ClipSyncFailedImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClipSyncDisabled value)? disabled,
-    TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult? Function(ClipSyncing value)? syncing,
-    TResult? Function(ClipSyncComplete value)? synced,
-    TResult? Function(ClipSyncFailed value)? failed,
+    TResult? Function(CollectionSyncDisabled value)? disabled,
+    TResult? Function(CollectionSyncUnknown value)? unknown,
+    TResult? Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult? Function(CollectionSyncing value)? syncing,
+    TResult? Function(CollectionSyncComplete value)? synced,
+    TResult? Function(CollectionSyncFailed value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -958,12 +981,12 @@ class _$ClipSyncFailedImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClipSyncDisabled value)? disabled,
-    TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
-    TResult Function(ClipSyncing value)? syncing,
-    TResult Function(ClipSyncComplete value)? synced,
-    TResult Function(ClipSyncFailed value)? failed,
+    TResult Function(CollectionSyncDisabled value)? disabled,
+    TResult Function(CollectionSyncUnknown value)? unknown,
+    TResult Function(CollectionSyncUnknown value)? syncingUnknonw,
+    TResult Function(CollectionSyncing value)? syncing,
+    TResult Function(CollectionSyncComplete value)? synced,
+    TResult Function(CollectionSyncFailed value)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -973,11 +996,12 @@ class _$ClipSyncFailedImpl
   }
 }
 
-abstract class ClipSyncFailed implements ClipSyncManagerState {
-  const factory ClipSyncFailed(final Failure failure) = _$ClipSyncFailedImpl;
+abstract class CollectionSyncFailed implements CollectionSyncManagerState {
+  const factory CollectionSyncFailed(final Failure failure) =
+      _$CollectionSyncFailedImpl;
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$$ClipSyncFailedImplCopyWith<_$ClipSyncFailedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CollectionSyncFailedImplCopyWith<_$CollectionSyncFailedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

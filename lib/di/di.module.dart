@@ -19,12 +19,16 @@ import 'package:copycat_base/bloc/cloud_persistance_cubit/cloud_persistance_cubi
     as _i691;
 import 'package:copycat_base/bloc/collection_clips_cubit/collection_clips_cubit.dart'
     as _i1054;
+import 'package:copycat_base/bloc/collection_sync_manager_cubit/collection_sync_manager_cubit.dart'
+    as _i988;
 import 'package:copycat_base/bloc/drive_setup_cubit/drive_setup_cubit.dart'
     as _i746;
 import 'package:copycat_base/bloc/offline_persistance_cubit/offline_persistance_cubit.dart'
     as _i768;
 import 'package:copycat_base/bloc/realtime_clip_sync_cubit/realtime_clip_sync_cubit.dart'
     as _i685;
+import 'package:copycat_base/bloc/realtime_collection_sync_cubit/realtime_collection_sync_cubit.dart'
+    as _i141;
 import 'package:copycat_base/bloc/selected_clips_cubit/selected_clips_cubit.dart'
     as _i443;
 import 'package:copycat_base/bloc/window_action_cubit/window_action_cubit.dart'
@@ -147,6 +151,18 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i447.DriveCredentialRepository>(),
           gh<_i1054.DriveService>(instanceName: 'google_drive'),
         ));
+    gh.factory<_i141.RealtimeCollectionSyncCubit>(
+        () => _i141.RealtimeCollectionSyncCubit(
+              gh<_i159.CollectionCrossSyncListener>(),
+              gh<_i625.ClipCollectionRepository>(),
+            ));
+    gh.factory<_i988.CollectionSyncManagerCubit>(
+        () => _i988.CollectionSyncManagerCubit(
+              gh<_i106.SyncRepository>(),
+              gh<_i402.ClipCollectionCubit>(),
+              gh<_i625.ClipCollectionRepository>(),
+              gh<String>(instanceName: 'device_id'),
+            ));
     gh.lazySingleton<_i768.OfflinePersistanceCubit>(
         () => _i768.OfflinePersistanceCubit(
               gh<_i630.AuthCubit>(),

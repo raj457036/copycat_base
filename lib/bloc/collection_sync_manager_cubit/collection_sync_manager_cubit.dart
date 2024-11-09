@@ -8,102 +8,23 @@ import 'package:copycat_base/common/events.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/numbers/duration.dart';
-import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
-import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/domain/repositories/sync_clipboard.dart';
 import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 import 'package:copycat_base/utils/snackbar.dart';
 import 'package:copycat_base/utils/utility.dart';
-import 'package:easy_worker/easy_worker.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 
-part 'clip_sync_manager_cubit.freezed.dart';
-part 'clip_sync_manager_state.dart';
-
-void _syncingClips(
-  (List<ClipboardItem>, Map<int, int>) record,
-  Sender send,
-) async {
-  final Isar db;
-  final instance = Isar.getInstance("CopyCat-Clipboard-DB");
-  if (instance != null) {
-    db = instance;
-  } else {
-    final dir = await getApplicationDocumentsDirectory();
-    db = Isar.openSync(
-      [ClipboardItemSchema],
-      directory: dir.path,
-      relaxedDurability: true,
-      inspector: kDebugMode,
-      name: "CopyCat-Clipboard-DB",
-    );
-  }
-
-  final events = <ClipCrossSyncEvent>[];
-  final (items, collectionMap) = record;
-  await db.txn(() async {
-    for (var index = 0; index < items.length; index++) {
-      final item = items[index];
-      final found = await db.clipboardItems
-          .filter()
-          .serverIdEqualTo(item.serverId)
-          .findFirst();
-
-      if (found == null) {
-        events.add((CrossSyncEventType.create, item));
-        continue;
-      }
-
-      items[index] = item.copyWith(
-        lastSynced: found.lastSynced,
-        localPath: found.localPath,
-        collectionId: collectionMap[item.serverCollectionId],
-      )..applyId(found);
-      events.add((CrossSyncEventType.update, item));
-    }
-  });
-
-  await db.writeTxn(() async {
-    final ids = await db.clipboardItems.putAll(items);
-    for (int i = 0; i < events.length; i++) {
-      events[i].$2.id = ids[i];
-    }
-  });
-
-  send(events);
-}
-
-final _clipSyncWorker =
-    EasyCompute<List<ClipCrossSyncEvent>, (List<ClipboardItem>, Map<int, int>)>(
-  ComputeEntrypoint(
-    _syncingClips,
-    initData: {
-      "token": ServicesBinding.rootIsolateToken,
-    },
-    onInit: (payload) async {
-      if (payload is Map) {
-        final token = payload["token"];
-        if (token != null) {
-          BackgroundIsolateBinaryMessenger.ensureInitialized(token);
-        }
-      }
-    },
-  ),
-  workerName: "ClipSyncWorker",
-);
+part 'collection_sync_manager_cubit.freezed.dart';
+part 'collection_sync_manager_state.dart';
 
 @injectable
-class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
+class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
   final String deviceId;
   final ClipCollectionCubit collectionCubit;
-  final ClipboardRepository clipboardRepository;
-  final ClipCollectionRepository clipCollectionRepository;
+  final ClipCollectionRepository collectionRepo;
   final SyncRepository syncRepo;
 
   Timer? _pollingTimer;
@@ -111,13 +32,12 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
   bool _busy = false;
   DateTime? lastSynced;
 
-  ClipSyncManagerCubit(
+  CollectionSyncManagerCubit(
     this.syncRepo,
     this.collectionCubit,
-    @Named("offline") this.clipboardRepository,
-    this.clipCollectionRepository,
+    this.collectionRepo,
     @Named("device_id") this.deviceId,
-  ) : super(const ClipSyncManagerState.unknown());
+  ) : super(const CollectionSyncManagerState.unknown());
 
   int get syncHours => _syncHours ?? 0;
 
@@ -129,9 +49,9 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     if (manualDelay != null) _manualDelay = manualDelay;
     if (disabled != null) {
       if (disabled) {
-        emit(const ClipSyncManagerState.disabled());
+        emit(const CollectionSyncManagerState.disabled());
       } else {
-        emit(const ClipSyncManagerState.unknown());
+        emit(const CollectionSyncManagerState.unknown());
       }
     }
   }
@@ -140,7 +60,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     if (_pollingTimer != null) return;
     _pollingTimer = Timer.periodic(
       const Duration(seconds: $45S),
-      (_) => !_busy ? syncClips() : null,
+      (_) => !_busy ? syncCollections() : null,
     );
   }
 
@@ -162,7 +82,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     return (true, 0);
   }
 
-  Future<void> syncClips({bool manual = false}) async {
+  Future<void> syncCollections({bool manual = false}) async {
     if (manual) {
       final (canSync, secondLeft) = canManullySync();
       if (!canSync) {
@@ -173,24 +93,23 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     }
 
     _busy = true;
-    emit(const ClipSyncManagerState.unknown());
+    emit(const CollectionSyncManagerState.unknown());
     try {
       if (_syncHours == null) return;
 
       DateTime? fromTs;
-      final latestSyncedItem =
-          await clipboardRepository.getLatest(synced: true);
+      final latestSyncedItem = await collectionRepo.getLatest(synced: true);
       latestSyncedItem.fold((l) {}, (item) {
         fromTs = item?.lastSynced;
       });
 
       await syncDeleted(fromTs);
 
-      if (state is ClipSyncFailed) return;
+      if (state is CollectionSyncFailed) return;
       await syncChanges(fromTs);
 
-      if (state is ClipSyncFailed) return;
-      emit(const ClipSyncManagerState.synced());
+      if (state is CollectionSyncFailed) return;
+      emit(const CollectionSyncManagerState.synced());
     } finally {
       _busy = false;
     }
@@ -201,9 +120,9 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     bool hasMore = true;
     int offset = 0;
 
-    emit(const ClipSyncManagerState.syncingUnknonw());
+    emit(const CollectionSyncManagerState.syncingUnknonw());
     while (hasMore) {
-      final result = await syncRepo.getDeletedClipboardItems(
+      final result = await syncRepo.getDeletedClipCollections(
         limit: 1000,
         lastSynced: _lastSyncedTime(fromTs),
         offset: offset,
@@ -211,7 +130,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
       );
 
       await result.fold((l) async {
-        emit(ClipSyncManagerState.failed(l));
+        emit(CollectionSyncManagerState.failed(l));
       }, (r) async {
         hasMore = r.hasMore;
         offset += r.results.length;
@@ -219,7 +138,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
         final items = r.results;
         if (items.isEmpty) return;
 
-        final deletedItems = await clipboardRepository.deleteMany(items);
+        final deletedItems = await collectionRepo.deleteMany(items);
         deletedItems.fold((l) {
           logger.e(l);
         }, (deletedItems) {
@@ -247,8 +166,8 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     final collectionMapping = collectionCubit.serverMapping;
 
     while (hasMore && !failed) {
-      emit(ClipSyncManagerState.syncing(total: 0, synced: syncedCount));
-      final result = await syncRepo.getLatestClipboardItems(
+      emit(CollectionSyncManagerState.syncing(total: 0, synced: syncedCount));
+      final result = await syncRepo.getLatestClipCollections(
         limit: 1000,
         lastSynced: _lastSyncedTime(fromTs),
         offset: offset,
@@ -256,31 +175,49 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
       );
 
       await result.fold((l) async {
-        emit(ClipSyncManagerState.failed(l));
+        emit(CollectionSyncManagerState.failed(l));
         failed = true;
       }, (r) async {
         hasMore = r.hasMore;
         offset += r.results.length;
-        // Apply changes to local db
         final items = r.results;
 
         if (items.isEmpty) return;
-        await _clipSyncWorker.waitUntilReady();
-        final syncEvents = await _clipSyncWorker.compute(
-          (items, collectionMapping),
-        );
-        syncedCount = syncEvents.length;
-        broadcastBatchEvent(syncEvents);
+
+        final syncEvents = <CollectionCrossSyncEvent>[];
+        for (var item in items) {
+          final serverId = item.serverId;
+          final localId = collectionMapping[serverId];
+          if (localId != null) {
+            syncEvents.add((CrossSyncEventType.update, item));
+            item.id = localId;
+          } else {
+            syncEvents.add((CrossSyncEventType.create, item));
+          }
+        }
+
+        final collections = await collectionRepo.updateMany(items);
+
+        collections.fold((l) {
+          emit(CollectionSyncManagerState.failed(l));
+          failed = true;
+        }, (collections) {
+          syncedCount = collections.length;
+          for (var i = 0; i < collections.length; i++) {
+            syncEvents[i].$2.id = collections[i].id;
+          }
+          broadcastBatchEvent(syncEvents);
+        });
       });
     }
 
     if (!failed) {
-      emit(const ClipSyncManagerState.synced());
+      emit(const CollectionSyncManagerState.synced());
     }
   }
 
-  void broadcastBatchEvent(List<ClipCrossSyncEvent> events) {
-    final eventPayload = clipboardBatchEvent.createPayload(events);
+  void broadcastBatchEvent(List<CollectionCrossSyncEvent> events) {
+    final eventPayload = collectionBatchEvent.createPayload(events);
     EventBus.emit(eventPayload);
   }
 

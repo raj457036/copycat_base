@@ -7,3 +7,9 @@ final searchFocusEvent = Event<void>("SEARCH_FOCUS");
 final clipboardEvent = Event<ClipCrossSyncEvent>("CLIPBOARD_SYNCED_ITEM");
 final clipboardBatchEvent =
     Event<List<ClipCrossSyncEvent>>("CLIPBOARD_SYNCED_BATCH_ITEMS");
+
+// collection events
+final collectionEvent =
+    Event<CollectionCrossSyncEvent>("COLLECTION_SYNCED_ITEM");
+final collectionBatchEvent =
+    Event<List<CollectionCrossSyncEvent>>("COLLECTION_SYNCED_BATCH_ITEMS");

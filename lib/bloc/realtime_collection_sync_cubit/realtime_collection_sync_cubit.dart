@@ -5,28 +5,25 @@ import 'package:bloc/bloc.dart';
 import 'package:copycat_base/common/events.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
-import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'realtime_clip_sync_cubit.freezed.dart';
-part 'realtime_clip_sync_state.dart';
+part 'realtime_collection_sync_cubit.freezed.dart';
+part 'realtime_collection_sync_state.dart';
 
 @injectable
-class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
-  final ClipCrossSyncListener listener;
-  final ClipboardRepository clipRepo;
+class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
+  final CollectionCrossSyncListener listener;
   final ClipCollectionRepository collectionRepo;
   bool _subscribed = false;
 
   StreamSubscription? statusSubscription, changeSubscription;
 
-  RealtimeClipSyncCubit(
+  RealtimeCollectionSyncCubit(
     this.listener,
-    @Named("offline") this.clipRepo,
     this.collectionRepo,
-  ) : super(const RealtimeClipSyncState.initial());
+  ) : super(const RealtimeCollectionSyncState.initial());
 
   void _clearSubs() {
     changeSubscription?.cancel();
@@ -56,26 +53,15 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
     logger.w(obj);
   }
 
-  Future<void> onSync(ClipCrossSyncEvent event) async {
+  Future<void> onSync(CollectionCrossSyncEvent event) async {
     var (type, item) = event;
     logger.w("Sync Change");
     logger.w(type);
     logger.w(item);
 
-    if (item.serverCollectionId != null) {
-      final collection =
-          await collectionRepo.get(serverId: item.serverCollectionId);
-
-      collection.fold((failure) {}, (collection) {
-        if (collection != null) {
-          item = item.copyWith(collectionId: collection.id);
-        }
-      });
-    }
-
-    final result = await clipRepo.updateOrCreate(item);
+    final result = await collectionRepo.updateOrCreate(item);
     result.fold((failure) {}, (item) {
-      final eventPayload = clipboardEvent.createPayload((type, item));
+      final eventPayload = collectionEvent.createPayload((type, item));
       EventBus.emit(eventPayload);
     });
   }

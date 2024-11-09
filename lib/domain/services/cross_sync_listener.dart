@@ -31,5 +31,7 @@ typedef ClipCrossSyncEvent = CrossSyncEvent<ClipboardItem>;
 
 abstract class ClipCrossSyncListener extends CrossSyncListener<ClipboardItem> {}
 
+typedef CollectionCrossSyncEvent = CrossSyncEvent<ClipCollection>;
+
 abstract class CollectionCrossSyncListener
     extends CrossSyncListener<ClipCollection> {}

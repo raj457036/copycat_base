@@ -84,6 +84,24 @@ class LocalClipCollectionSource implements ClipCollectionSource {
   }
 
   @override
+  Future<List<ClipCollection>> updateMany(
+      List<ClipCollection> collections) async {
+    final updates = collections
+        .map((collection) => collection.copyWith(
+              modified: now(),
+            )..applyId(collection))
+        .toList();
+    final ids = await db.writeTxn(
+      () => db.clipCollections.putAll(updates),
+    );
+
+    for (var i = 0; i < ids.length; i++) {
+      collections[i].id = ids[i];
+    }
+    return collections;
+  }
+
+  @override
   Future<bool> delete(ClipCollection collection) async {
     final result = await db.writeTxn(() async {
       final items = await db.clipboardItems
@@ -133,5 +151,41 @@ class LocalClipCollectionSource implements ClipCollectionSource {
       }
     }
     return create(collection);
+  }
+
+  @override
+  Future<ClipCollection?> getLatest({bool? synced}) async {
+    final result = await db.txn(() {
+      if (synced == true) {
+        final q = db.clipCollections
+            .filter()
+            .lastSyncedIsNotNull()
+            .sortByLastSyncedDesc()
+            .findFirst();
+        return q;
+      }
+      final q = db.clipCollections.where().sortByModifiedDesc().findFirst();
+      return q;
+    });
+    return result;
+  }
+
+  @override
+  Future<List<ClipCollection>> deleteMany(List<ClipCollection> items) async {
+    final result = await db.writeTxn(() async {
+      final q = db.clipCollections
+          .filter()
+          .anyOf(items, (q, item) => q.idEqualTo(item.id))
+          .or()
+          .anyOf(items, (q, item) => q.serverIdEqualTo(item.serverId));
+
+      // Find all items to delete at once
+      final deleted = await q.findAll();
+
+      await q.deleteAll();
+
+      return deleted;
+    });
+    return result;
   }
 }

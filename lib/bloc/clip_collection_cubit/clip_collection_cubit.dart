@@ -1,10 +1,13 @@
+import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/bloc/auth_cubit/auth_cubit.dart';
+import 'package:copycat_base/common/events.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/strings/strings.dart';
 import 'package:copycat_base/db/clip_collection/clipcollection.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
+import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -17,15 +20,99 @@ class ClipCollectionCubit extends Cubit<ClipCollectionState> {
   final AuthCubit auth;
   final ClipCollectionRepository repo;
   final String deviceId;
+  EventRule<CollectionCrossSyncEvent>? collectionER;
+  EventRule<List<CollectionCrossSyncEvent>>? batchCollectionER;
 
   ClipCollectionCubit(
     this.auth,
     this.repo,
     @Named("device_id") this.deviceId,
-  ) : super(const ClipCollectionState.initial());
+  ) : super(const ClipCollectionState.loaded(collections: [])) {
+    collectionER = EventRule(collectionEvent, targets: [
+      EventListener(onSyncEvent),
+    ]);
+    batchCollectionER = EventRule(collectionBatchEvent, targets: [
+      EventListener(onBatchSyncEvent),
+    ]);
+  }
+
+  void onBatchSyncEvent(List<CollectionCrossSyncEvent> events) {
+    if (events.isEmpty) return;
+    // Deleted
+    final deleted = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.delete;
+        })
+        .map((event) => event.$2)
+        .toList();
+    deleted.map(delete);
+
+    // Created
+    final created = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.create;
+        })
+        .map((event) => event.$2)
+        .toList();
+    if (created.isNotEmpty) {
+      emit(state.copyWith(collections: [...created, ...state.collections]));
+    }
+
+    // Updates
+    final updated = events
+        .where((event) {
+          final (type, _) = event;
+          return type == CrossSyncEventType.update;
+        })
+        .map((event) => event.$2)
+        .toList();
+    if (updated.isEmpty) return;
+    final updateIndexMap = <int, int>{};
+    for (var i = 0; i < updated.length; i++) {
+      final collection = updated[i];
+      updateIndexMap[collection.id] = i;
+    }
+
+    final replaced = <ClipCollection>[];
+    for (var i = 0; i < state.collections.length; i++) {
+      final collection = state.collections[i];
+      final found = updateIndexMap[collection.id];
+      if (found != null) {
+        replaced.add(updated[found]);
+      } else {
+        replaced.add(collection);
+      }
+    }
+    emit(state.copyWith(collections: replaced));
+  }
+
+  void onSyncEvent(CollectionCrossSyncEvent event) {
+    final (type, collection) = event;
+    // deleted
+    if (collection.deletedAt != null || type == CrossSyncEventType.delete) {
+      delete(collection);
+      return;
+    }
+
+    put(collection, isNew: type == CrossSyncEventType.create);
+  }
+
+  void put(ClipCollection collection, {bool isNew = false}) {
+    if (isNew) {
+      emit(state.copyWith(collections: [collection, ...state.collections]));
+    } else {
+      final collections = state.collections
+          .replaceWhere((it) => it.id == collection.id, collection);
+      emit(
+        state.copyWith(collections: collections),
+      );
+    }
+  }
 
   Future<void> reset() async {
-    emit(const ClipCollectionState.initial());
+    emit(const ClipCollectionState.loaded(collections: []));
   }
 
   Future<ClipCollection?> get(int id) async {
@@ -40,6 +127,7 @@ class ClipCollectionCubit extends Cubit<ClipCollectionState> {
     return collection;
   }
 
+  /// Maps serverId to localId
   Map<int, int> get serverMapping => state.maybeMap(
       orElse: () => {},
       loaded: (loaded) {
@@ -111,37 +199,40 @@ class ClipCollectionCubit extends Cubit<ClipCollectionState> {
   }
 
   Future<void> fetch({bool fromTop = false}) async {
-    if (state is ClipCollectionInitial ||
-        state is ClipCollectionError ||
-        fromTop) {
-      emit(const ClipCollectionState.initial());
-      final result = await repo.getList(limit: 100);
-      final next = result.fold(
-        (l) => ClipCollectionState.error(l),
-        (r) => ClipCollectionState.loaded(
-          collections: r.results,
-          hasMore: r.hasMore,
-          offset: r.results.length,
-        ),
-      );
-      emit(next);
-    } else {
-      final state_ = state as ClipCollectionLoaded;
-      emit(state_.copyWith(isLoading: true));
-      final result = await repo.getList(
-        offset: state_.offset,
-        limit: state_.limit,
-      );
+    emit(
+      state.copyWith(
+        loading: true,
+        offset: fromTop ? 0 : state.offset,
+      ),
+    );
 
-      final next = result.fold(
-        (l) => ClipCollectionState.error(l),
-        (r) => ClipCollectionState.loaded(
-          collections: [...state_.collections, ...r.results],
-          hasMore: r.hasMore,
-          offset: r.results.length + state_.offset,
+    final items = await repo.getList(
+      limit: state.limit,
+      offset: fromTop ? 0 : state.offset,
+    );
+
+    emit(
+      items.fold(
+        (l) => state.copyWith(
+          failure: l,
+          loading: false,
         ),
-      );
-      emit(next);
-    }
+        (r) => state.copyWith(
+          loading: false,
+          collections:
+              fromTop ? r.results : [...state.collections, ...r.results],
+          offset: state.offset + r.results.length,
+          limit: state.limit,
+          hasMore: r.hasMore,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Future<void> close() {
+    collectionER?.cancel();
+    batchCollectionER?.cancel();
+    return super.close();
   }
 }

@@ -102,9 +102,40 @@ class ClipCollectionRepositoryImpl implements ClipCollectionRepository {
   }
 
   @override
+  FailureOr<List<ClipCollection>> deleteMany(List<ClipCollection> items) async {
+    try {
+      final result = await local.deleteMany(items);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
   FailureOr<ClipCollection> updateOrCreate(ClipCollection collection) async {
     try {
       final result = await local.updateOrCreate(collection);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<ClipCollection?> getLatest({bool? synced}) async {
+    try {
+      final result = await local.getLatest(synced: synced);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<List<ClipCollection>> updateMany(
+      List<ClipCollection> collections) async {
+    try {
+      final result = await local.updateMany(collections);
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));
