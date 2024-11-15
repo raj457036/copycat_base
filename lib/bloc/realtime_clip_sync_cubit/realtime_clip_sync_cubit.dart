@@ -74,7 +74,8 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
     }
 
     final result = await clipRepo.updateOrCreate(item);
-    result.fold((failure) {}, (item) {
+    result.fold((failure) {}, (item) async {
+      item = await item.decrypt();
       final eventPayload = clipboardEvent.createPayload((type, item));
       EventBus.emit(eventPayload);
     });

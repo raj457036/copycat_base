@@ -60,17 +60,19 @@ dependencies:
   flutter_svg: ^2.0.10+1
   screen_retriever: ^0.2.0
   focus_window:
-    path: ../focus_window  
+    path: ../focus_window
+  android_background_clipboard:
+    path: ../android_background_clipboard
 
 dev_dependencies:
-  flutter_lints: ^3.0.2
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  build_runner: ^2.4.9
+  build_runner: ^2.4.13
   isar_generator: 3.1.0+1
-  injectable_generator:  ^2.6.1
-  freezed: 2.4.7
-  json_serializable: ^6.7.1
+  injectable_generator:  ^2.6.2
+  freezed: 2.5.7
+  json_serializable: ^6.8.0
 
 dependency_overrides:
   intl: ^0.19.0

@@ -30,3 +30,5 @@ const youtubePlaylistUrl = String.fromEnvironment("YOUTUBE_PLAYLIST_URL");
 const supportUrl = String.fromEnvironment("SUPPORT_URL");
 const discordUrl = String.fromEnvironment("DISCORD_URL");
 const downloadUrl = String.fromEnvironment("DOWNLOAD_URL");
+
+const dbName = "CopyCat-Clipboard-DB";

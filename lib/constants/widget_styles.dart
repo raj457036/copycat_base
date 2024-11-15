@@ -43,6 +43,9 @@ const radius8 = BorderRadius.all(
 const radius12 = BorderRadius.all(
   Radius.circular(12),
 );
+const radius16 = BorderRadius.all(
+  Radius.circular(16),
+);
 
 const radiusBottom12 = BorderRadius.vertical(
   bottom: Radius.circular(12),

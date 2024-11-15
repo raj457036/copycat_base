@@ -1,3 +1,4 @@
+import "package:copycat_base/constants/strings/strings.dart";
 import "package:copycat_base/db/app_config/appconfig.dart";
 import "package:copycat_base/db/clip_collection/clipcollection.dart";
 import "package:copycat_base/db/clipboard_item/clipboard_item.dart";
@@ -39,7 +40,7 @@ abstract class RegisterModule {
       directory: dir.path,
       relaxedDurability: true,
       inspector: kDebugMode,
-      name: "CopyCat-Clipboard-DB",
+      name: dbName,
     );
     return isar;
   }

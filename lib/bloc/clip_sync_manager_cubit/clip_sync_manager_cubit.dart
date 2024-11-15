@@ -8,6 +8,7 @@ import 'package:copycat_base/common/events.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/numbers/duration.dart';
+import 'package:copycat_base/constants/strings/strings.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
@@ -30,20 +31,7 @@ void _syncingClips(
   (List<ClipboardItem>, Map<int, int>) record,
   Sender send,
 ) async {
-  final Isar db;
-  final instance = Isar.getInstance("CopyCat-Clipboard-DB");
-  if (instance != null && instance.isOpen) {
-    db = instance;
-  } else {
-    final dir = await getApplicationDocumentsDirectory();
-    db = Isar.openSync(
-      [ClipboardItemSchema],
-      directory: dir.path,
-      relaxedDurability: true,
-      inspector: kDebugMode,
-      name: "CopyCat-Clipboard-DB",
-    );
-  }
+  final Isar db = Isar.getInstance(dbName)!;
 
   final events = <ClipCrossSyncEvent>[];
   final (items, collectionMap) = record;
@@ -92,6 +80,14 @@ final _clipSyncWorker =
         if (token != null) {
           BackgroundIsolateBinaryMessenger.ensureInitialized(token);
         }
+        final dir = await getApplicationDocumentsDirectory();
+        Isar.openSync(
+          [ClipboardItemSchema],
+          directory: dir.path,
+          relaxedDurability: true,
+          inspector: kDebugMode,
+          name: dbName,
+        );
       }
     },
   ),
