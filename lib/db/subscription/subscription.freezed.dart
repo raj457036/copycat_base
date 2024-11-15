@@ -51,8 +51,9 @@ mixin _$Subscription {
   @JsonKey(name: "devices")
   int get maxSyncDevices => throw _privateConstructorUsedError;
   @JsonKey(name: "cers")
-  bool get customExclusionRules =>
-      throw _privateConstructorUsedError; // local state
+  bool get customExclusionRules => throw _privateConstructorUsedError;
+  int get grants => throw _privateConstructorUsedError;
+  String? get tkn => throw _privateConstructorUsedError; // local state
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get managementUrl => throw _privateConstructorUsedError;
@@ -90,6 +91,8 @@ abstract class $SubscriptionCopyWith<$Res> {
       @DateTimeConverter() DateTime? activeTill,
       @JsonKey(name: "devices") int maxSyncDevices,
       @JsonKey(name: "cers") bool customExclusionRules,
+      int grants,
+      String? tkn,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? managementUrl});
@@ -128,6 +131,8 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? activeTill = freezed,
     Object? maxSyncDevices = null,
     Object? customExclusionRules = null,
+    Object? grants = null,
+    Object? tkn = freezed,
     Object? managementUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -211,6 +216,14 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.customExclusionRules
           : customExclusionRules // ignore: cast_nullable_to_non_nullable
               as bool,
+      grants: null == grants
+          ? _value.grants
+          : grants // ignore: cast_nullable_to_non_nullable
+              as int,
+      tkn: freezed == tkn
+          ? _value.tkn
+          : tkn // ignore: cast_nullable_to_non_nullable
+              as String?,
       managementUrl: freezed == managementUrl
           ? _value.managementUrl
           : managementUrl // ignore: cast_nullable_to_non_nullable
@@ -248,6 +261,8 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
       @DateTimeConverter() DateTime? activeTill,
       @JsonKey(name: "devices") int maxSyncDevices,
       @JsonKey(name: "cers") bool customExclusionRules,
+      int grants,
+      String? tkn,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? managementUrl});
@@ -284,6 +299,8 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? activeTill = freezed,
     Object? maxSyncDevices = null,
     Object? customExclusionRules = null,
+    Object? grants = null,
+    Object? tkn = freezed,
     Object? managementUrl = freezed,
   }) {
     return _then(_$SubscriptionImpl(
@@ -367,6 +384,14 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.customExclusionRules
           : customExclusionRules // ignore: cast_nullable_to_non_nullable
               as bool,
+      grants: null == grants
+          ? _value.grants
+          : grants // ignore: cast_nullable_to_non_nullable
+              as int,
+      tkn: freezed == tkn
+          ? _value.tkn
+          : tkn // ignore: cast_nullable_to_non_nullable
+              as String?,
       managementUrl: freezed == managementUrl
           ? _value.managementUrl
           : managementUrl // ignore: cast_nullable_to_non_nullable
@@ -399,6 +424,8 @@ class _$SubscriptionImpl extends _Subscription {
       @DateTimeConverter() this.activeTill,
       @JsonKey(name: "devices") this.maxSyncDevices = 3,
       @JsonKey(name: "cers") this.customExclusionRules = false,
+      this.grants = 0,
+      this.tkn,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.managementUrl})
@@ -465,6 +492,11 @@ class _$SubscriptionImpl extends _Subscription {
   @override
   @JsonKey(name: "cers")
   final bool customExclusionRules;
+  @override
+  @JsonKey()
+  final int grants;
+  @override
+  final String? tkn;
 // local state
   @override
   @ignore
@@ -473,7 +505,7 @@ class _$SubscriptionImpl extends _Subscription {
 
   @override
   String toString() {
-    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, theming: $theming, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, customExclusionRules: $customExclusionRules, managementUrl: $managementUrl)';
+    return 'Subscription(serverId: $serverId, created: $created, modified: $modified, userId: $userId, planName: $planName, subId: $subId, source: $source, trialStart: $trialStart, trialEnd: $trialEnd, collections: $collections, itemsPerCollection: $itemsPerCollection, dragNdrop: $dragNdrop, theming: $theming, syncHours: $syncHours, ads: $ads, syncInterval: $syncInterval, edit: $edit, activeTill: $activeTill, maxSyncDevices: $maxSyncDevices, customExclusionRules: $customExclusionRules, grants: $grants, tkn: $tkn, managementUrl: $managementUrl)';
   }
 
   @override
@@ -514,6 +546,8 @@ class _$SubscriptionImpl extends _Subscription {
                 other.maxSyncDevices == maxSyncDevices) &&
             (identical(other.customExclusionRules, customExclusionRules) ||
                 other.customExclusionRules == customExclusionRules) &&
+            (identical(other.grants, grants) || other.grants == grants) &&
+            (identical(other.tkn, tkn) || other.tkn == tkn) &&
             (identical(other.managementUrl, managementUrl) ||
                 other.managementUrl == managementUrl));
   }
@@ -542,6 +576,8 @@ class _$SubscriptionImpl extends _Subscription {
         activeTill,
         maxSyncDevices,
         customExclusionRules,
+        grants,
+        tkn,
         managementUrl
       ]);
 
@@ -585,6 +621,8 @@ abstract class _Subscription extends Subscription {
       @DateTimeConverter() final DateTime? activeTill,
       @JsonKey(name: "devices") final int maxSyncDevices,
       @JsonKey(name: "cers") final bool customExclusionRules,
+      final int grants,
+      final String? tkn,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       final String? managementUrl}) = _$SubscriptionImpl;
@@ -645,6 +683,10 @@ abstract class _Subscription extends Subscription {
   @override
   @JsonKey(name: "cers")
   bool get customExclusionRules;
+  @override
+  int get grants;
+  @override
+  String? get tkn;
   @override // local state
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)

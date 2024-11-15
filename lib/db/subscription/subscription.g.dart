@@ -52,73 +52,83 @@ const SubscriptionSchema = CollectionSchema(
       name: r'edit',
       type: IsarType.bool,
     ),
-    r'isPersisted': PropertySchema(
+    r'grants': PropertySchema(
       id: 7,
+      name: r'grants',
+      type: IsarType.long,
+    ),
+    r'isPersisted': PropertySchema(
+      id: 8,
       name: r'isPersisted',
       type: IsarType.bool,
     ),
     r'itemsPerCollection': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'itemsPerCollection',
       type: IsarType.long,
     ),
     r'maxSyncDevices': PropertySchema(
-      id: 9,
+      id: 10,
       name: r'maxSyncDevices',
       type: IsarType.long,
     ),
     r'modified': PropertySchema(
-      id: 10,
+      id: 11,
       name: r'modified',
       type: IsarType.dateTime,
     ),
     r'planName': PropertySchema(
-      id: 11,
+      id: 12,
       name: r'planName',
       type: IsarType.string,
     ),
     r'serverId': PropertySchema(
-      id: 12,
+      id: 13,
       name: r'serverId',
       type: IsarType.long,
     ),
     r'source': PropertySchema(
-      id: 13,
+      id: 14,
       name: r'source',
       type: IsarType.string,
     ),
     r'subId': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'subId',
       type: IsarType.string,
     ),
     r'syncHours': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'syncHours',
       type: IsarType.long,
     ),
     r'syncInterval': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'syncInterval',
       type: IsarType.long,
     ),
     r'theming': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'theming',
       type: IsarType.bool,
     ),
+    r'tkn': PropertySchema(
+      id: 19,
+      name: r'tkn',
+      type: IsarType.string,
+    ),
     r'trialEnd': PropertySchema(
-      id: 18,
+      id: 20,
       name: r'trialEnd',
       type: IsarType.dateTime,
     ),
     r'trialStart': PropertySchema(
-      id: 19,
+      id: 21,
       name: r'trialStart',
       type: IsarType.dateTime,
     ),
     r'userId': PropertySchema(
-      id: 20,
+      id: 22,
       name: r'userId',
       type: IsarType.string,
     )
@@ -146,6 +156,12 @@ int _subscriptionEstimateSize(
   bytesCount += 3 + object.planName.length * 3;
   bytesCount += 3 + object.source.length * 3;
   bytesCount += 3 + object.subId.length * 3;
+  {
+    final value = object.tkn;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 + object.userId.length * 3;
   return bytesCount;
 }
@@ -163,20 +179,22 @@ void _subscriptionSerialize(
   writer.writeBool(offsets[4], object.customExclusionRules);
   writer.writeBool(offsets[5], object.dragNdrop);
   writer.writeBool(offsets[6], object.edit);
-  writer.writeBool(offsets[7], object.isPersisted);
-  writer.writeLong(offsets[8], object.itemsPerCollection);
-  writer.writeLong(offsets[9], object.maxSyncDevices);
-  writer.writeDateTime(offsets[10], object.modified);
-  writer.writeString(offsets[11], object.planName);
-  writer.writeLong(offsets[12], object.serverId);
-  writer.writeString(offsets[13], object.source);
-  writer.writeString(offsets[14], object.subId);
-  writer.writeLong(offsets[15], object.syncHours);
-  writer.writeLong(offsets[16], object.syncInterval);
-  writer.writeBool(offsets[17], object.theming);
-  writer.writeDateTime(offsets[18], object.trialEnd);
-  writer.writeDateTime(offsets[19], object.trialStart);
-  writer.writeString(offsets[20], object.userId);
+  writer.writeLong(offsets[7], object.grants);
+  writer.writeBool(offsets[8], object.isPersisted);
+  writer.writeLong(offsets[9], object.itemsPerCollection);
+  writer.writeLong(offsets[10], object.maxSyncDevices);
+  writer.writeDateTime(offsets[11], object.modified);
+  writer.writeString(offsets[12], object.planName);
+  writer.writeLong(offsets[13], object.serverId);
+  writer.writeString(offsets[14], object.source);
+  writer.writeString(offsets[15], object.subId);
+  writer.writeLong(offsets[16], object.syncHours);
+  writer.writeLong(offsets[17], object.syncInterval);
+  writer.writeBool(offsets[18], object.theming);
+  writer.writeString(offsets[19], object.tkn);
+  writer.writeDateTime(offsets[20], object.trialEnd);
+  writer.writeDateTime(offsets[21], object.trialStart);
+  writer.writeString(offsets[22], object.userId);
 }
 
 Subscription _subscriptionDeserialize(
@@ -193,19 +211,21 @@ Subscription _subscriptionDeserialize(
     customExclusionRules: reader.readBool(offsets[4]),
     dragNdrop: reader.readBool(offsets[5]),
     edit: reader.readBool(offsets[6]),
-    itemsPerCollection: reader.readLong(offsets[8]),
-    maxSyncDevices: reader.readLong(offsets[9]),
-    modified: reader.readDateTime(offsets[10]),
-    planName: reader.readString(offsets[11]),
-    serverId: reader.readLongOrNull(offsets[12]),
-    source: reader.readString(offsets[13]),
-    subId: reader.readString(offsets[14]),
-    syncHours: reader.readLong(offsets[15]),
-    syncInterval: reader.readLong(offsets[16]),
-    theming: reader.readBool(offsets[17]),
-    trialEnd: reader.readDateTimeOrNull(offsets[18]),
-    trialStart: reader.readDateTimeOrNull(offsets[19]),
-    userId: reader.readString(offsets[20]),
+    grants: reader.readLong(offsets[7]),
+    itemsPerCollection: reader.readLong(offsets[9]),
+    maxSyncDevices: reader.readLong(offsets[10]),
+    modified: reader.readDateTime(offsets[11]),
+    planName: reader.readString(offsets[12]),
+    serverId: reader.readLongOrNull(offsets[13]),
+    source: reader.readString(offsets[14]),
+    subId: reader.readString(offsets[15]),
+    syncHours: reader.readLong(offsets[16]),
+    syncInterval: reader.readLong(offsets[17]),
+    theming: reader.readBool(offsets[18]),
+    tkn: reader.readStringOrNull(offsets[19]),
+    trialEnd: reader.readDateTimeOrNull(offsets[20]),
+    trialStart: reader.readDateTimeOrNull(offsets[21]),
+    userId: reader.readString(offsets[22]),
   );
   object.id = id;
   return object;
@@ -233,32 +253,36 @@ P _subscriptionDeserializeProp<P>(
     case 6:
       return (reader.readBool(offset)) as P;
     case 7:
-      return (reader.readBool(offset)) as P;
-    case 8:
       return (reader.readLong(offset)) as P;
+    case 8:
+      return (reader.readBool(offset)) as P;
     case 9:
       return (reader.readLong(offset)) as P;
     case 10:
-      return (reader.readDateTime(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 11:
-      return (reader.readString(offset)) as P;
+      return (reader.readDateTime(offset)) as P;
     case 12:
-      return (reader.readLongOrNull(offset)) as P;
-    case 13:
       return (reader.readString(offset)) as P;
+    case 13:
+      return (reader.readLongOrNull(offset)) as P;
     case 14:
       return (reader.readString(offset)) as P;
     case 15:
-      return (reader.readLong(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 16:
       return (reader.readLong(offset)) as P;
     case 17:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLong(offset)) as P;
     case 18:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 19:
-      return (reader.readDateTimeOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 20:
+      return (reader.readDateTimeOrNull(offset)) as P;
+    case 21:
+      return (reader.readDateTimeOrNull(offset)) as P;
+    case 22:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -581,6 +605,61 @@ extension SubscriptionQueryFilter
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'edit',
         value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> grantsEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'grants',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      grantsGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'grants',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      grantsLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'grants',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> grantsBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'grants',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -1417,6 +1496,155 @@ extension SubscriptionQueryFilter
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'tkn',
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      tknIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'tkn',
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'tkn',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      tknGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'tkn',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'tkn',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'tkn',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'tkn',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'tkn',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'tkn',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'tkn',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition> tknIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'tkn',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
+      tknIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'tkn',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterFilterCondition>
       trialEndIsNull() {
     return QueryBuilder.apply(this, (query) {
@@ -1797,6 +2025,18 @@ extension SubscriptionQuerySortBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByGrants() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'grants', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByGrantsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'grants', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByIsPersisted() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isPersisted', Sort.asc);
@@ -1935,6 +2175,18 @@ extension SubscriptionQuerySortBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByTkn() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tkn', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByTknDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tkn', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> sortByTrialEnd() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'trialEnd', Sort.asc);
@@ -2060,6 +2312,18 @@ extension SubscriptionQuerySortThenBy
   QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByEditDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'edit', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByGrants() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'grants', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByGrantsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'grants', Sort.desc);
     });
   }
 
@@ -2213,6 +2477,18 @@ extension SubscriptionQuerySortThenBy
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByTkn() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tkn', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByTknDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'tkn', Sort.desc);
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QAfterSortBy> thenByTrialEnd() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'trialEnd', Sort.asc);
@@ -2296,6 +2572,12 @@ extension SubscriptionQueryWhereDistinct
     });
   }
 
+  QueryBuilder<Subscription, Subscription, QDistinct> distinctByGrants() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'grants');
+    });
+  }
+
   QueryBuilder<Subscription, Subscription, QDistinct> distinctByIsPersisted() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isPersisted');
@@ -2364,6 +2646,13 @@ extension SubscriptionQueryWhereDistinct
   QueryBuilder<Subscription, Subscription, QDistinct> distinctByTheming() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'theming');
+    });
+  }
+
+  QueryBuilder<Subscription, Subscription, QDistinct> distinctByTkn(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'tkn', caseSensitive: caseSensitive);
     });
   }
 
@@ -2438,6 +2727,12 @@ extension SubscriptionQueryProperty
     });
   }
 
+  QueryBuilder<Subscription, int, QQueryOperations> grantsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'grants');
+    });
+  }
+
   QueryBuilder<Subscription, bool, QQueryOperations> isPersistedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'isPersisted');
@@ -2505,6 +2800,12 @@ extension SubscriptionQueryProperty
     });
   }
 
+  QueryBuilder<Subscription, String?, QQueryOperations> tknProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'tkn');
+    });
+  }
+
   QueryBuilder<Subscription, DateTime?, QQueryOperations> trialEndProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'trialEnd');
@@ -2553,6 +2854,8 @@ _$SubscriptionImpl _$$SubscriptionImplFromJson(Map<String, dynamic> json) =>
           json['activeTill'], const DateTimeConverter().fromJson),
       maxSyncDevices: (json['devices'] as num?)?.toInt() ?? 3,
       customExclusionRules: json['cers'] as bool? ?? false,
+      grants: (json['grants'] as num?)?.toInt() ?? 0,
+      tkn: json['tkn'] as String?,
     );
 
 Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
@@ -2579,6 +2882,8 @@ Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
           instance.activeTill, const DateTimeConverter().toJson),
       'devices': instance.maxSyncDevices,
       'cers': instance.customExclusionRules,
+      'grants': instance.grants,
+      'tkn': instance.tkn,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

@@ -34,7 +34,8 @@ class Subscription with _$Subscription, IsarIdMixin {
     @DateTimeConverter() DateTime? activeTill,
     @JsonKey(name: "devices") @Default(3) int maxSyncDevices,
     @JsonKey(name: "cers") @Default(false) bool customExclusionRules,
-
+    @Default(0) int grants,
+    String? tkn,
     // local state
     @ignore
     @JsonKey(includeFromJson: false, includeToJson: false)
@@ -75,7 +76,9 @@ class Subscription with _$Subscription, IsarIdMixin {
         edit == other.edit &&
         activeTill == other.activeTill &&
         maxSyncDevices == other.maxSyncDevices &&
-        customExclusionRules == other.customExclusionRules;
+        customExclusionRules == other.customExclusionRules &&
+        tkn == other.tkn &&
+        grants == other.grants;
   }
 
   factory Subscription.fromJson(Map<String, dynamic> json) =>
