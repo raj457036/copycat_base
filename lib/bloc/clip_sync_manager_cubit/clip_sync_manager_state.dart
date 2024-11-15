@@ -4,7 +4,7 @@ part of 'clip_sync_manager_cubit.dart';
 class ClipSyncManagerState with _$ClipSyncManagerState {
   const factory ClipSyncManagerState.disabled() = ClipSyncDisabled;
   const factory ClipSyncManagerState.unknown() = ClipSyncUnknown;
-  const factory ClipSyncManagerState.syncingUnknonw() = ClipSyncingUnknown;
+  const factory ClipSyncManagerState.syncingUnknown() = ClipSyncingUnknown;
   const factory ClipSyncManagerState.syncing({
     required int total,
     required int synced,

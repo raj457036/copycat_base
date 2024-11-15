@@ -145,7 +145,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     _pollingTimer?.cancel();
   }
 
-  (bool, int) canManullySync() {
+  (bool, int) canManuallySync() {
     if (lastSynced != null) {
       final elapsed = now().difference(lastSynced!).inSeconds;
       if (elapsed >= manualDelay) {
@@ -160,7 +160,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
 
   Future<bool> syncClips({bool manual = false}) async {
     if (manual) {
-      final (canSync, secondLeft) = canManullySync();
+      final (canSync, secondLeft) = canManuallySync();
       if (!canSync) {
         showFailureSnackbar(frequentSyncing(secondLeft));
         return false;
@@ -198,7 +198,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     bool hasMore = true;
     int offset = 0;
 
-    emit(const ClipSyncManagerState.syncingUnknonw());
+    emit(const ClipSyncManagerState.syncingUnknown());
     while (hasMore) {
       final result = await syncRepo.getDeletedClipboardItems(
         limit: 1000,

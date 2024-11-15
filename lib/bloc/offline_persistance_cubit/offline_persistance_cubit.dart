@@ -88,7 +88,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
     _listening = true;
   }
 
-  void stopListners() {
+  void stopListeners() {
     if (!_listening) return;
     clipboard.dispose();
     copySub?.cancel();
@@ -337,7 +337,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
   @override
   Future<void> close() {
-    stopListners();
+    stopListeners();
     return super.close();
   }
 }
