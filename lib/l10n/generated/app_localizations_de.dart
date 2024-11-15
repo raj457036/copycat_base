@@ -2,6 +2,8 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for German (`de`).
 class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
@@ -390,10 +392,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get logoutSuccess => 'Erfolgreich abgemeldet';
 
   @override
-  String get internetConnected => 'Internet verbunden';
+  String get internetConnected => 'Mit der Cloud verbunden';
 
   @override
-  String get internetDisconnected => 'Internet getrennt';
+  String get internetDisconnected => 'Verbindung zur Cloud wird hergestellt...';
 
   @override
   String get noCollectionFound => 'Keine Sammlung gefunden';

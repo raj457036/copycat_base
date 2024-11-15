@@ -2,6 +2,8 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for French (`fr`).
 class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
@@ -393,10 +395,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get logoutSuccess => 'Déconnexion réussie';
 
   @override
-  String get internetConnected => 'Internet Connecté';
+  String get internetConnected => 'Connecté au Cloud';
 
   @override
-  String get internetDisconnected => 'Internet Déconnecté';
+  String get internetDisconnected => 'Connexion au Cloud en cours...';
 
   @override
   String get noCollectionFound => 'Aucune collection trouvée';

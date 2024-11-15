@@ -2,6 +2,8 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for Spanish Castilian (`es`).
 class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
@@ -393,10 +395,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get logoutSuccess => 'Sesión cerrada con éxito';
 
   @override
-  String get internetConnected => 'Internet Conectado';
+  String get internetConnected => 'Conectado a la Nube';
 
   @override
-  String get internetDisconnected => 'Internet Desconectado';
+  String get internetDisconnected => 'Conectando a la Nube...';
 
   @override
   String get noCollectionFound => 'No se encontró ninguna colección';

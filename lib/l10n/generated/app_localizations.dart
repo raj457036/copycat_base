@@ -10,6 +10,8 @@ import 'app_localizations_es.dart' deferred as app_localizations_es;
 import 'app_localizations_fr.dart' deferred as app_localizations_fr;
 import 'app_localizations_zh.dart' deferred as app_localizations_zh;
 
+// ignore_for_file: type=lint
+
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
 ///
@@ -800,13 +802,13 @@ abstract class AppLocalizations {
   /// No description provided for @internetConnected.
   ///
   /// In en, this message translates to:
-  /// **'Internet Connected'**
+  /// **'Connected to Cloud'**
   String get internetConnected;
 
   /// No description provided for @internetDisconnected.
   ///
   /// In en, this message translates to:
-  /// **'Internet Disconnected'**
+  /// **'Connecting to Cloud...'**
   String get internetDisconnected;
 
   /// No description provided for @noCollectionFound.

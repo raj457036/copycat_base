@@ -2,6 +2,8 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
@@ -387,10 +389,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutSuccess => 'Logged out successfully';
 
   @override
-  String get internetConnected => 'Internet Connected';
+  String get internetConnected => 'Connected to Cloud';
 
   @override
-  String get internetDisconnected => 'Internet Disconnected';
+  String get internetDisconnected => 'Connecting to Cloud...';
 
   @override
   String get noCollectionFound => 'No collection found';
