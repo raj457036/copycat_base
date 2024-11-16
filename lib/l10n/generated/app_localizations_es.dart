@@ -266,7 +266,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get cloudStorageInfoDefault =>
-      '\n\nGoogle Drive no conectado, la sincronización de archivos y medios está deshabilitada.';
+      'Google Drive no conectado, la sincronización de archivos y medios está deshabilitada.';
 
   @override
   String cloudStorageInfo(String info) {

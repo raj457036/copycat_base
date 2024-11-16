@@ -202,10 +202,11 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
-  Future<void> setE2EEKey(String? key) async {
+  Future<Failure?> setE2EEKey(String? key) async {
     final newConfig = state.config.copyWith(enc2: key)..applyId(state.config);
     emit(state.copyWith(config: newConfig));
-    await repo.update(newConfig);
+    final result = await repo.update(newConfig);
+    return result.fold((l) => l, (r) => null);
   }
 
   Future<void> setThemeColor(Color color) async {

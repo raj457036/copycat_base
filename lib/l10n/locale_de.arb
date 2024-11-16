@@ -108,7 +108,7 @@
     "authorizing": "Autorisierung...",
     "connectNow": "Jetzt verbinden",
     "tips": "ⓘ Tipps",
-    "cloudStorageInfoDefault": "\n\nGoogle Drive nicht verbunden, Datei- und Mediensynchronisierung ist deaktiviert.",
+    "cloudStorageInfoDefault": "Google Drive nicht verbunden, Datei- und Mediensynchronisierung ist deaktiviert.",
     "cloudStorageInfo": "{info}Ihre Dateien und Medien werden sicher über Google Drive synchronisiert, um Ihre Privatsphäre zu schützen.",
     "@cloudStorageInfo": {
         "placeholders": {
