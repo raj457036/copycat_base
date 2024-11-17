@@ -266,7 +266,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
         final syncEvents = await _clipSyncWorker.compute(
           (items, collectionMapping),
         );
-        syncedCount = syncEvents.length;
+        syncedCount += syncEvents.length;
         broadcastBatchEvent(syncEvents);
       });
     }
