@@ -51,6 +51,8 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       "Phone" => TextCategory.phone,
       _ => null,
     };
+    final desc = parts[1];
+    final serverId = int.tryParse(parts[2]);
     return ClipboardItem(
       created: now(),
       modified: now(),
@@ -59,6 +61,9 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       textCategory: textCategory,
       text: clipType == ClipItemType.text ? clip : null,
       url: clipType == ClipItemType.url ? clip : null,
+      description: desc,
+      serverId: serverId,
+      lastSynced: serverId != null ? now() : null,
     );
   }
 
