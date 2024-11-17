@@ -108,7 +108,7 @@
     "authorizing": "Authorizing...",
     "connectNow": "Connect Now",
     "tips": "ⓘ Tips",
-    "cloudStorageInfoDefault": "\n\nGoogle Drive not connected, File and media syncing is disabled.",
+    "cloudStorageInfoDefault": "Google Drive not connected, File and media syncing is disabled.",
     "cloudStorageInfo": "{info}Your files and media are synced securely across devices using Google Drive to protect your privacy.",
     "@cloudStorageInfo": {
         "placeholders": {

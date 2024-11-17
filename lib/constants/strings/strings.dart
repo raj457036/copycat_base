@@ -32,3 +32,5 @@ const discordUrl = String.fromEnvironment("DISCORD_URL");
 const downloadUrl = String.fromEnvironment("DOWNLOAD_URL");
 
 const dbName = "CopyCat-Clipboard-DB";
+
+const sentryDSN = String.fromEnvironment("SENTRY_DSN");

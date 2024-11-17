@@ -1,17 +1,11 @@
 import 'package:copycat_base/domain/model/auth_user/auth_user.dart';
 import 'package:copycat_base/domain/repositories/analytics.dart';
 import 'package:copycat_base/utils/utility.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AnalyticsRepository)
 class AnalyticsRepositoryImpl implements AnalyticsRepository {
   const AnalyticsRepositoryImpl();
-
-  FirebaseAnalytics? get client {
-    if (isAnalyticsSupported) return FirebaseAnalytics.instance;
-    return null;
-  }
 
   @override
   Future<void> logAnalyticsEvent({
@@ -19,10 +13,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    await client?.logEvent(
-      name: name,
-      parameters: parameters,
-    );
+    // TODO: implement it with someother provider or self host?
   }
 
   @override
@@ -31,10 +22,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     Map<String, dynamic>? parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    await client?.logEvent(name: "copycat_feature_used", parameters: {
-      "feature": feature,
-      ...?parameters,
-    });
+    // TODO: implement it with some other provider or self host?
   }
 
   @override
@@ -43,10 +31,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    client?.logLogin(
-      loginMethod: loginMethod,
-      parameters: parameters,
-    );
+    // TODO: implement it with some other provider or self host?
   }
 
   @override
@@ -55,21 +40,13 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    client?.logSignUp(
-      signUpMethod: signUpMethod,
-      parameters: parameters,
-    );
+    // TODO: implement it with someother provider or self host?
   }
 
   @override
   Future<void> setAnalyticUser(AuthUser user) async {
     if (!isAnalyticsSupported) return;
 
-    await client?.setUserId(id: user.userId);
-    await client?.setUserProperty(
-      name: "email",
-      value: user.email,
-    );
-    await client?.logAppOpen();
+    // TODO: implement it with someother provider or self host?
   }
 }

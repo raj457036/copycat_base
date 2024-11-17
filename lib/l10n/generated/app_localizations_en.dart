@@ -262,7 +262,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cloudStorageInfoDefault =>
-      '\n\nGoogle Drive not connected, File and media syncing is disabled.';
+      'Google Drive not connected, File and media syncing is disabled.';
 
   @override
   String cloudStorageInfo(String info) {

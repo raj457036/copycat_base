@@ -586,7 +586,7 @@ abstract class AppLocalizations {
   /// No description provided for @cloudStorageInfoDefault.
   ///
   /// In en, this message translates to:
-  /// **'\n\nGoogle Drive not connected, File and media syncing is disabled.'**
+  /// **'Google Drive not connected, File and media syncing is disabled.'**
   String get cloudStorageInfoDefault;
 
   /// No description provided for @cloudStorageInfo.
