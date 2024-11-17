@@ -37,7 +37,7 @@ dependencies:
   uuid: ^4.4.2
   atom_event_bus: ^0.0.5
   logger: ^2.4.0
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
   mime: ^1.0.5
   http: ^1.2.2

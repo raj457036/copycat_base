@@ -96,6 +96,9 @@ class _$DriveSetupStateCopyWithImpl<$Res, $Val extends DriveSetupState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -115,6 +118,8 @@ class __$$DriveSetupUnknownImplCopyWithImpl<$Res>
       $Res Function(_$DriveSetupUnknownImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +159,9 @@ class _$DriveSetupUnknownImpl implements DriveSetupUnknown {
   @override
   int get hashCode => Object.hash(runtimeType, waiting);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DriveSetupUnknownImplCopyWith<_$DriveSetupUnknownImpl> get copyWith =>
@@ -253,7 +260,10 @@ abstract class DriveSetupUnknown implements DriveSetupState {
       _$DriveSetupUnknownImpl;
 
   bool get waiting;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DriveSetupUnknownImplCopyWith<_$DriveSetupUnknownImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -272,6 +282,9 @@ class __$$DriveSetupFetchingImplCopyWithImpl<$Res>
   __$$DriveSetupFetchingImplCopyWithImpl(_$DriveSetupFetchingImpl _value,
       $Res Function(_$DriveSetupFetchingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -403,6 +416,8 @@ class __$$DriveSetupVerifyingCodeImplCopyWithImpl<$Res>
       $Res Function(_$DriveSetupVerifyingCodeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -457,7 +472,9 @@ class _$DriveSetupVerifyingCodeImpl implements DriveSetupVerifyingCode {
   int get hashCode => Object.hash(
       runtimeType, code, const DeepCollectionEquality().hash(_scopes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DriveSetupVerifyingCodeImplCopyWith<_$DriveSetupVerifyingCodeImpl>
@@ -558,7 +575,10 @@ abstract class DriveSetupVerifyingCode implements DriveSetupState {
 
   String get code;
   List<String> get scopes;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DriveSetupVerifyingCodeImplCopyWith<_$DriveSetupVerifyingCodeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -579,6 +599,9 @@ class __$$DriveSetupRefreshingTokenImplCopyWithImpl<$Res>
       _$DriveSetupRefreshingTokenImpl _value,
       $Res Function(_$DriveSetupRefreshingTokenImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -711,6 +734,8 @@ class __$$DriveSetupDoneImplCopyWithImpl<$Res>
       _$DriveSetupDoneImpl _value, $Res Function(_$DriveSetupDoneImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -724,6 +749,8 @@ class __$$DriveSetupDoneImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DriveAccessTokenCopyWith<$Res> get token {
@@ -757,7 +784,9 @@ class _$DriveSetupDoneImpl implements DriveSetupDone {
   @override
   int get hashCode => Object.hash(runtimeType, token);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DriveSetupDoneImplCopyWith<_$DriveSetupDoneImpl> get copyWith =>
@@ -856,7 +885,10 @@ abstract class DriveSetupDone implements DriveSetupState {
       _$DriveSetupDoneImpl;
 
   DriveAccessToken get token;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DriveSetupDoneImplCopyWith<_$DriveSetupDoneImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -878,6 +910,8 @@ class __$$DriveSetupErrorImplCopyWithImpl<$Res>
       _$DriveSetupErrorImpl _value, $Res Function(_$DriveSetupErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -916,7 +950,9 @@ class _$DriveSetupErrorImpl implements DriveSetupError {
   @override
   int get hashCode => Object.hash(runtimeType, failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DriveSetupErrorImplCopyWith<_$DriveSetupErrorImpl> get copyWith =>
@@ -1015,7 +1051,10 @@ abstract class DriveSetupError implements DriveSetupState {
       _$DriveSetupErrorImpl;
 
   Failure get failure;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DriveSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DriveSetupErrorImplCopyWith<_$DriveSetupErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

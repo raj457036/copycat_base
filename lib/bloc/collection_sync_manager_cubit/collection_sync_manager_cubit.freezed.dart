@@ -98,6 +98,9 @@ class _$CollectionSyncManagerStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -117,6 +120,9 @@ class __$$CollectionSyncDisabledImplCopyWithImpl<$Res>
       _$CollectionSyncDisabledImpl _value,
       $Res Function(_$CollectionSyncDisabledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -255,6 +261,9 @@ class __$$CollectionSyncUnknownImplCopyWithImpl<$Res>
   __$$CollectionSyncUnknownImplCopyWithImpl(_$CollectionSyncUnknownImpl _value,
       $Res Function(_$CollectionSyncUnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -394,6 +403,9 @@ class __$$CollectionSyncingUnknownImplCopyWithImpl<$Res>
       _$CollectionSyncingUnknownImpl _value,
       $Res Function(_$CollectionSyncingUnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -534,6 +546,8 @@ class __$$CollectionSyncingImplCopyWithImpl<$Res>
       $Res Function(_$CollectionSyncingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -591,7 +605,9 @@ class _$CollectionSyncingImpl
   @override
   int get hashCode => Object.hash(runtimeType, total, synced);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionSyncingImplCopyWith<_$CollectionSyncingImpl> get copyWith =>
@@ -692,7 +708,10 @@ abstract class CollectionSyncing implements CollectionSyncManagerState {
 
   int get total;
   int get synced;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionSyncingImplCopyWith<_$CollectionSyncingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -717,6 +736,8 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
       $Res Function(_$CollectionSyncCompleteImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -766,7 +787,9 @@ class _$CollectionSyncCompleteImpl
   @override
   int get hashCode => Object.hash(runtimeType, manual);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionSyncCompleteImplCopyWith<_$CollectionSyncCompleteImpl>
@@ -865,7 +888,10 @@ abstract class CollectionSyncComplete implements CollectionSyncManagerState {
       _$CollectionSyncCompleteImpl;
 
   bool get manual;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionSyncCompleteImplCopyWith<_$CollectionSyncCompleteImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -888,6 +914,8 @@ class __$$CollectionSyncFailedImplCopyWithImpl<$Res>
       $Res Function(_$CollectionSyncFailedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -936,7 +964,9 @@ class _$CollectionSyncFailedImpl
   @override
   int get hashCode => Object.hash(runtimeType, failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionSyncFailedImplCopyWith<_$CollectionSyncFailedImpl>
@@ -1036,7 +1066,10 @@ abstract class CollectionSyncFailed implements CollectionSyncManagerState {
       _$CollectionSyncFailedImpl;
 
   Failure get failure;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionSyncFailedImplCopyWith<_$CollectionSyncFailedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

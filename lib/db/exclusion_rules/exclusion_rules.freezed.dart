@@ -20,7 +20,9 @@ mixin _$AppInfo {
   String? get path => throw _privateConstructorUsedError;
   String? get identifier => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppInfoCopyWith<AppInfo> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -42,6 +44,8 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$AppInfoImplCopyWithImpl<$Res>
       _$AppInfoImpl _value, $Res Function(_$AppInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +146,9 @@ class _$AppInfoImpl extends _AppInfo {
   @override
   int get hashCode => Object.hash(runtimeType, name, path, identifier);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
@@ -160,8 +168,11 @@ abstract class _AppInfo extends AppInfo {
   String? get path;
   @override
   String? get identifier;
+
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -189,7 +200,9 @@ mixin _$ExclusionRules {
   List<String> get urls => throw _privateConstructorUsedError;
   List<AppInfo> get apps => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExclusionRules
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExclusionRulesCopyWith<ExclusionRules> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -226,6 +239,8 @@ class _$ExclusionRulesCopyWithImpl<$Res, $Val extends ExclusionRules>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExclusionRules
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -332,6 +347,8 @@ class __$$ExclusionRulesImplCopyWithImpl<$Res>
       _$ExclusionRulesImpl _value, $Res Function(_$ExclusionRulesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExclusionRules
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -549,7 +566,9 @@ class _$ExclusionRulesImpl extends _ExclusionRules {
       const DeepCollectionEquality().hash(_urls),
       const DeepCollectionEquality().hash(_apps));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExclusionRules
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExclusionRulesImplCopyWith<_$ExclusionRulesImpl> get copyWith =>
@@ -574,25 +593,26 @@ abstract class _ExclusionRules extends ExclusionRules {
       final List<AppInfo> apps}) = _$ExclusionRulesImpl;
   _ExclusionRules._() : super._();
 
-  @override
-
   /// including password patterns and password managers
-  bool get enable;
-  @override // Exclude credit card
-  bool get creditCard;
-  @override // Exclude phone number
-  bool get phone;
-  @override // Exclude password managers
-  bool get passwordManager;
-  @override // Exclude common password patterns, signup, login, forgot password pages.
-  bool get passwords;
-  @override // Exclude emails
-  bool get email;
-  @override // Exclude bank account numbers
-  bool get bankAccount;
-  @override // Exclude some personal info ( international ) like passport number
-  bool get personalInfo;
-  @override // Exclude sensitive urls
+  @override
+  bool get enable; // Exclude credit card
+  @override
+  bool get creditCard; // Exclude phone number
+  @override
+  bool get phone; // Exclude password managers
+  @override
+  bool
+      get passwordManager; // Exclude common password patterns, signup, login, forgot password pages.
+  @override
+  bool get passwords; // Exclude emails
+  @override
+  bool get email; // Exclude bank account numbers
+  @override
+  bool
+      get bankAccount; // Exclude some personal info ( international ) like passport number
+  @override
+  bool get personalInfo; // Exclude sensitive urls
+  @override
   bool get sensitiveUrls;
   @override
   List<String> get patterns;
@@ -602,8 +622,11 @@ abstract class _ExclusionRules extends ExclusionRules {
   List<String> get urls;
   @override
   List<AppInfo> get apps;
+
+  /// Create a copy of ExclusionRules
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExclusionRulesImplCopyWith<_$ExclusionRulesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

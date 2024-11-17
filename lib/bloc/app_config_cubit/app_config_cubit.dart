@@ -277,6 +277,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
+  Future<void> toggleAndroidBgListener(bool value) async {
+    final newConfig = state.config.copyWith(androidBgListener: value)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+  }
+
   Future<void> toggleAutoEncrypt(bool value) async {
     final newConfig = state.config.copyWith(autoEncrypt: value)
       ..applyId(state.config);

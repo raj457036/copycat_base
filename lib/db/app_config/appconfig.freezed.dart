@@ -64,7 +64,8 @@ mixin _$AppConfig {
   DynamicSchemeVariant get themeVariant =>
       throw _privateConstructorUsedError; // Exprimental
   bool get enableDragNDrop => throw _privateConstructorUsedError;
-  bool get enablePasteStack =>
+  bool get enablePasteStack => throw _privateConstructorUsedError;
+  bool get androidBgListener =>
       throw _privateConstructorUsedError; //? Local App States
   /// last focus window id
   @ignore
@@ -73,8 +74,12 @@ mixin _$AppConfig {
   @ignore
   bool get clockUnSynced => throw _privateConstructorUsedError;
 
+  /// Serializes this AppConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppConfigCopyWith<AppConfig> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -109,6 +114,7 @@ abstract class $AppConfigCopyWith<$Res> {
       @Enumerated(EnumType.name) DynamicSchemeVariant themeVariant,
       bool enableDragNDrop,
       bool enablePasteStack,
+      bool androidBgListener,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
@@ -127,6 +133,8 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,6 +161,7 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? themeVariant = null,
     Object? enableDragNDrop = null,
     Object? enablePasteStack = null,
+    Object? androidBgListener = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -249,6 +258,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.enablePasteStack
           : enablePasteStack // ignore: cast_nullable_to_non_nullable
               as bool,
+      androidBgListener: null == androidBgListener
+          ? _value.androidBgListener
+          : androidBgListener // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -260,6 +273,8 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     ) as $Val);
   }
 
+  /// Create a copy of AppConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExclusionRulesCopyWith<$Res>? get exclusionRules {
@@ -306,6 +321,7 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       @Enumerated(EnumType.name) DynamicSchemeVariant themeVariant,
       bool enableDragNDrop,
       bool enablePasteStack,
+      bool androidBgListener,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
@@ -323,6 +339,8 @@ class __$$AppConfigImplCopyWithImpl<$Res>
       _$AppConfigImpl _value, $Res Function(_$AppConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -349,6 +367,7 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? themeVariant = null,
     Object? enableDragNDrop = null,
     Object? enablePasteStack = null,
+    Object? androidBgListener = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -445,6 +464,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.enablePasteStack
           : enablePasteStack // ignore: cast_nullable_to_non_nullable
               as bool,
+      androidBgListener: null == androidBgListener
+          ? _value.androidBgListener
+          : androidBgListener // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -486,6 +509,7 @@ class _$AppConfigImpl extends _AppConfig {
       this.themeVariant = DynamicSchemeVariant.tonalSpot,
       this.enableDragNDrop = false,
       this.enablePasteStack = false,
+      this.androidBgListener = false,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.lastFocusedWindowId,
@@ -583,6 +607,9 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final bool enablePasteStack;
+  @override
+  @JsonKey()
+  final bool androidBgListener;
 //? Local App States
   /// last focus window id
   @override
@@ -596,7 +623,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, syncSpeed: $syncSpeed, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, syncSpeed: $syncSpeed, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, androidBgListener: $androidBgListener, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -645,13 +672,15 @@ class _$AppConfigImpl extends _AppConfig {
                 other.enableDragNDrop == enableDragNDrop) &&
             (identical(other.enablePasteStack, enablePasteStack) ||
                 other.enablePasteStack == enablePasteStack) &&
+            (identical(other.androidBgListener, androidBgListener) ||
+                other.androidBgListener == androidBgListener) &&
             (identical(other.lastFocusedWindowId, lastFocusedWindowId) ||
                 other.lastFocusedWindowId == lastFocusedWindowId) &&
             (identical(other.clockUnSynced, clockUnSynced) ||
                 other.clockUnSynced == clockUnSynced));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -678,11 +707,14 @@ class _$AppConfigImpl extends _AppConfig {
         themeVariant,
         enableDragNDrop,
         enablePasteStack,
+        androidBgListener,
         lastFocusedWindowId,
         clockUnSynced
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppConfigImplCopyWith<_$AppConfigImpl> get copyWith =>
@@ -722,6 +754,7 @@ abstract class _AppConfig extends AppConfig {
       @Enumerated(EnumType.name) final DynamicSchemeVariant themeVariant,
       final bool enableDragNDrop,
       final bool enablePasteStack,
+      final bool androidBgListener,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       final int? lastFocusedWindowId,
@@ -750,61 +783,66 @@ abstract class _AppConfig extends AppConfig {
   double get windowWidth;
   @override
   double get windowHeight;
-  @override
 
   /// will prevent auto upload for files over 10 MB
-  int get dontUploadOver;
   @override
+  int get dontUploadOver;
 
   /// will prevent auto copy for files over 10 MB
-  int get dontCopyOver;
   @override
+  int get dontCopyOver;
 
   /// Pause auto copy for till pausedTill is reached.
-  DateTime? get pausedTill;
-  @override // Auto Sync Interval
-  @Enumerated(EnumType.name)
-  SyncSpeed get syncSpeed;
-  @override // System show/hide toggle hotkey
-  String? get toggleHotkey;
   @override
+  DateTime? get pausedTill; // Auto Sync Interval
+  @override
+  @Enumerated(EnumType.name)
+  SyncSpeed get syncSpeed; // System show/hide toggle hotkey
+  @override
+  String? get toggleHotkey;
 
   /// If enabled, the primary action on clips will be smartly selected.
   /// The primary action will be paste, which will directly paste the clip
   /// to the last focused cursor in the last window, and the clipboard will minimize.
-  bool get smartPaste;
   @override
+  bool get smartPaste;
 
   /// If enabled, the application will automatically start at startup.
+  @override
   bool get launchAtStartup;
   @override
-  String get locale;
-  @override // Security
+  String get locale; // Security
+  @override
   String? get enc2;
   @override
   bool get autoEncrypt;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  ExclusionRules? get exclusionRules;
-  @override // Customization
+  ExclusionRules? get exclusionRules; // Customization
+  @override
   int get themeColor;
   @override
   @Enumerated(EnumType.name)
-  DynamicSchemeVariant get themeVariant;
-  @override // Exprimental
+  DynamicSchemeVariant get themeVariant; // Exprimental
+  @override
   bool get enableDragNDrop;
   @override
   bool get enablePasteStack;
-  @override //? Local App States
+  @override
+  bool get androidBgListener; //? Local App States
   /// last focus window id
+  @override
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   int? get lastFocusedWindowId;
   @override
   @ignore
   bool get clockUnSynced;
+
+  /// Create a copy of AppConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppConfigImplCopyWith<_$AppConfigImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

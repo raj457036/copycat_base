@@ -91,6 +91,9 @@ class _$CollectionClipsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,9 @@ class __$$InitialCollectionClipsStateImplCopyWithImpl<$Res>
       _$InitialCollectionClipsStateImpl _value,
       $Res Function(_$InitialCollectionClipsStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -238,6 +244,8 @@ class __$$SearchingCollectionClipsStateImplCopyWithImpl<$Res>
       $Res Function(_$SearchingCollectionClipsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,7 +285,9 @@ class _$SearchingCollectionClipsStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchingCollectionClipsStateImplCopyWith<
@@ -371,7 +381,10 @@ abstract class SearchingCollectionClipsState implements CollectionClipsState {
       _$SearchingCollectionClipsStateImpl;
 
   String? get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchingCollectionClipsStateImplCopyWith<
           _$SearchingCollectionClipsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -402,6 +415,8 @@ class __$$CollectionClipsResultsStateImplCopyWithImpl<$Res>
       $Res Function(_$CollectionClipsResultsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,7 +509,9 @@ class _$CollectionClipsResultsStateImpl implements CollectionClipsResultsState {
       isLoading,
       offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionClipsResultsStateImplCopyWith<_$CollectionClipsResultsStateImpl>
@@ -595,7 +612,10 @@ abstract class CollectionClipsResultsState implements CollectionClipsState {
   bool get hasMore;
   bool get isLoading;
   int get offset;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionClipsResultsStateImplCopyWith<_$CollectionClipsResultsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -620,6 +640,8 @@ class __$$CollectionClipsErrorStateImplCopyWithImpl<$Res>
       $Res Function(_$CollectionClipsErrorStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -658,7 +680,9 @@ class _$CollectionClipsErrorStateImpl implements CollectionClipsErrorState {
   @override
   int get hashCode => Object.hash(runtimeType, failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionClipsErrorStateImplCopyWith<_$CollectionClipsErrorStateImpl>
@@ -751,7 +775,10 @@ abstract class CollectionClipsErrorState implements CollectionClipsState {
       _$CollectionClipsErrorStateImpl;
 
   Failure get failure;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionClipsErrorStateImplCopyWith<_$CollectionClipsErrorStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

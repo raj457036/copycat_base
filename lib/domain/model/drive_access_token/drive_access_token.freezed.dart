@@ -29,8 +29,12 @@ mixin _$DriveAccessToken {
   @JsonKey(name: "scopes")
   List<String> get scopes => throw _privateConstructorUsedError;
 
+  /// Serializes this DriveAccessToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DriveAccessToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DriveAccessTokenCopyWith<DriveAccessToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$DriveAccessTokenCopyWithImpl<$Res, $Val extends DriveAccessToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DriveAccessToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +116,8 @@ class __$$DriveAccessTokenImplCopyWithImpl<$Res>
       $Res Function(_$DriveAccessTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DriveAccessToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -190,12 +198,14 @@ class _$DriveAccessTokenImpl extends _DriveAccessToken {
             const DeepCollectionEquality().equals(other._scopes, _scopes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, accessToken, expiresIn, issuedAt,
       const DeepCollectionEquality().hash(_scopes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DriveAccessToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DriveAccessTokenImplCopyWith<_$DriveAccessTokenImpl> get copyWith =>
@@ -234,8 +244,11 @@ abstract class _DriveAccessToken extends DriveAccessToken {
   @override
   @JsonKey(name: "scopes")
   List<String> get scopes;
+
+  /// Create a copy of DriveAccessToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DriveAccessTokenImplCopyWith<_$DriveAccessTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -201,7 +201,10 @@ class LocalClipboardSource implements ClipboardSource {
           .filter()
           .anyOf(items, (q, item) => q.idEqualTo(item.id))
           .or()
-          .anyOf(items, (q, item) => q.serverIdEqualTo(item.serverId));
+          .anyOf(
+              items,
+              (q, item) =>
+                  q.serverIdEqualTo(item.serverId).and().serverIdIsNotNull());
 
       final clipsWithLocalCache = await q.localPathIsNotNull().findAll();
 

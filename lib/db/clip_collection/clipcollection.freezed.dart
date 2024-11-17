@@ -39,8 +39,12 @@ mixin _$ClipCollection {
   String? get description => throw _privateConstructorUsedError;
   String get emoji => throw _privateConstructorUsedError;
 
+  /// Serializes this ClipCollection to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClipCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClipCollectionCopyWith<ClipCollection> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +81,8 @@ class _$ClipCollectionCopyWithImpl<$Res, $Val extends ClipCollection>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClipCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,6 +174,8 @@ class __$$ClipCollectionImplCopyWithImpl<$Res>
       _$ClipCollectionImpl _value, $Res Function(_$ClipCollectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClipCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -306,12 +314,14 @@ class _$ClipCollectionImpl extends _ClipCollection {
             (identical(other.emoji, emoji) || other.emoji == emoji));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, serverId, lastSynced, created,
       modified, userId, deletedAt, deviceId, title, description, emoji);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipCollectionImplCopyWith<_$ClipCollectionImpl> get copyWith =>
@@ -378,8 +388,11 @@ abstract class _ClipCollection extends ClipCollection {
   String? get description;
   @override
   String get emoji;
+
+  /// Create a copy of ClipCollection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipCollectionImplCopyWith<_$ClipCollectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

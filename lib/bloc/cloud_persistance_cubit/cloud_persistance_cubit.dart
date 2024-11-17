@@ -264,9 +264,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     final result = await repo.deleteMany(items_.toList());
 
     result.fold(
-      (l) => emit(CloudPersistanceState.error(
-        l,
-      )),
+      (l) => emit(CloudPersistanceState.error(l)),
       (r) => emit(
         CloudPersistanceState.deletedItems(items
             .map((item) => item.copyWith(

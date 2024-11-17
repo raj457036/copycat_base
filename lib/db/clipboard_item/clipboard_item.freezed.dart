@@ -96,8 +96,12 @@ mixin _$ClipboardItem {
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool get userIntent => throw _privateConstructorUsedError;
 
+  /// Serializes this ClipboardItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClipboardItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClipboardItemCopyWith<ClipboardItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -171,6 +175,8 @@ class _$ClipboardItemCopyWithImpl<$Res, $Val extends ClipboardItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClipboardItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -424,6 +430,8 @@ class __$$ClipboardItemImplCopyWithImpl<$Res>
       _$ClipboardItemImpl _value, $Res Function(_$ClipboardItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClipboardItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -860,7 +868,7 @@ class _$ClipboardItemImpl extends _ClipboardItem {
                 other.userIntent == userIntent));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -901,7 +909,9 @@ class _$ClipboardItemImpl extends _ClipboardItem {
         userIntent
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipboardItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipboardItemImplCopyWith<_$ClipboardItemImpl> get copyWith =>
@@ -1014,16 +1024,16 @@ abstract class _ClipboardItem extends ClipboardItem {
   DateTime? get deletedAt;
   @override
   @Index()
-  bool get encrypted;
-  @override // Text related
+  bool get encrypted; // Text related
+  @override
   String? get text;
   @override
   String? get url;
   @override
   @Enumerated(EnumType.name)
   @Index()
-  TextCategory? get textCategory;
-  @override // Files related
+  TextCategory? get textCategory; // Files related
+  @override
   String? get fileName;
   @override
   String? get fileMimeType;
@@ -1032,34 +1042,34 @@ abstract class _ClipboardItem extends ClipboardItem {
   @override
   String? get driveFileId;
   @override
-  int? get fileSize;
-  @override // in KB
-  String? get imgBlurHash;
-  @override // only for image
+  int? get fileSize; // in KB
+  @override
+  String? get imgBlurHash; // only for image
 // Source Information
+  @override
   String? get sourceUrl;
   @override
   String? get sourceApp;
   @override
   @Enumerated(EnumType.name)
-  PlatformOS get os;
-  @override // Collection
+  PlatformOS get os; // Collection
+  @override
   @JsonKey(name: "collectionId")
   @Index()
   int? get serverCollectionId;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @Index()
-  int? get collectionId;
-  @override // local only
+  int? get collectionId; // local only
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  bool get localOnly;
-  @override // Stats
+  bool get localOnly; // Stats
+  @override
   int get copiedCount;
   @override
   @DateTimeConverter()
-  DateTime? get lastCopied;
-  @override // non persistant state
+  DateTime? get lastCopied; // non persistant state
+  @override
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool get downloading;
@@ -1079,14 +1089,17 @@ abstract class _ClipboardItem extends ClipboardItem {
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   Failure? get failure;
-  @override
 
   /// This clip is manually triggered to upload, sync or persist.
+  @override
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool get userIntent;
+
+  /// Create a copy of ClipboardItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipboardItemImplCopyWith<_$ClipboardItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

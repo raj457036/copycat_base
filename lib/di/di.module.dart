@@ -6,6 +6,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i687;
 
+import 'package:android_background_clipboard/android_background_clipboard.dart'
+    as _i565;
+import 'package:copycat_base/bloc/android_bg_clipboard_cubit/android_bg_clipboard_cubit.dart'
+    as _i433;
 import 'package:copycat_base/bloc/app_config_cubit/app_config_cubit.dart'
     as _i411;
 import 'package:copycat_base/bloc/auth_cubit/auth_cubit.dart' as _i630;
@@ -79,6 +83,8 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
       preResolve: true,
       dispose: _i50.closeIsarDb,
     );
+    gh.lazySingleton<_i565.AndroidBackgroundClipboard>(
+        () => registerModule.bgService);
     gh.lazySingleton<_i872.GoogleOAuth2Service>(
         () => _i872.GoogleOAuth2Service());
     gh.lazySingleton<_i854.AppConfigRepository>(
@@ -151,6 +157,11 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i447.DriveCredentialRepository>(),
           gh<_i1054.DriveService>(instanceName: 'google_drive'),
         ));
+    gh.factory<_i433.AndroidBgClipboardCubit>(
+        () => _i433.AndroidBgClipboardCubit(
+              gh<_i565.AndroidBackgroundClipboard>(),
+              gh<_i72.ClipboardRepository>(instanceName: 'offline'),
+            ));
     gh.factory<_i141.RealtimeCollectionSyncCubit>(
         () => _i141.RealtimeCollectionSyncCubit(
               gh<_i159.CollectionCrossSyncListener>(),

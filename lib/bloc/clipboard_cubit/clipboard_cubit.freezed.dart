@@ -84,7 +84,9 @@ mixin _$ClipboardState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClipboardStateCopyWith<ClipboardState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -116,6 +118,8 @@ class _$ClipboardStateCopyWithImpl<$Res, $Val extends ClipboardState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,6 +196,8 @@ class __$$ClipboardLoadedStateImplCopyWithImpl<$Res>
       $Res Function(_$ClipboardLoadedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -314,7 +320,9 @@ class _$ClipboardLoadedStateImpl implements ClipboardLoadedState {
       filterState,
       failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipboardLoadedStateImplCopyWith<_$ClipboardLoadedStateImpl>
@@ -436,8 +444,11 @@ abstract class ClipboardLoadedState implements ClipboardState {
   SearchFilterState get filterState;
   @override
   Failure? get failure;
+
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipboardLoadedStateImplCopyWith<_$ClipboardLoadedStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

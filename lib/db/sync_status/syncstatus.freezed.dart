@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SyncStatus {
   DateTime? get lastSync => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SyncStatusCopyWith<SyncStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$SyncStatusCopyWithImpl<$Res, $Val extends SyncStatus>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$SyncStatusImplCopyWithImpl<$Res>
       _$SyncStatusImpl _value, $Res Function(_$SyncStatusImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$SyncStatusImpl extends _SyncStatus {
   @override
   int get hashCode => Object.hash(runtimeType, lastSync);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SyncStatusImplCopyWith<_$SyncStatusImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _SyncStatus extends SyncStatus {
 
   @override
   DateTime? get lastSync;
+
+  /// Create a copy of SyncStatus
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SyncStatusImplCopyWith<_$SyncStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

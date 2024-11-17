@@ -81,6 +81,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     // Exprimental
     @Default(false) bool enableDragNDrop,
     @Default(false) bool enablePasteStack,
+    @Default(false) bool androidBgListener,
 
     //? Local App States
     /// last focus window id

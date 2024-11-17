@@ -20,7 +20,7 @@ mixin _$ClipSyncManagerState {
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
@@ -30,7 +30,7 @@ mixin _$ClipSyncManagerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
@@ -40,7 +40,7 @@ mixin _$ClipSyncManagerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
@@ -51,7 +51,7 @@ mixin _$ClipSyncManagerState {
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
@@ -61,7 +61,7 @@ mixin _$ClipSyncManagerState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
@@ -71,7 +71,7 @@ mixin _$ClipSyncManagerState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
@@ -97,6 +97,9 @@ class _$ClipSyncManagerStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -113,6 +116,9 @@ class __$$ClipSyncDisabledImplCopyWithImpl<$Res>
   __$$ClipSyncDisabledImplCopyWithImpl(_$ClipSyncDisabledImpl _value,
       $Res Function(_$ClipSyncDisabledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -148,7 +154,7 @@ class _$ClipSyncDisabledImpl
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
@@ -161,7 +167,7 @@ class _$ClipSyncDisabledImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
@@ -174,7 +180,7 @@ class _$ClipSyncDisabledImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
@@ -191,7 +197,7 @@ class _$ClipSyncDisabledImpl
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
@@ -204,7 +210,7 @@ class _$ClipSyncDisabledImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
@@ -217,7 +223,7 @@ class _$ClipSyncDisabledImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
@@ -248,6 +254,9 @@ class __$$ClipSyncUnknownImplCopyWithImpl<$Res>
   __$$ClipSyncUnknownImplCopyWithImpl(
       _$ClipSyncUnknownImpl _value, $Res Function(_$ClipSyncUnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -282,7 +291,7 @@ class _$ClipSyncUnknownImpl
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
@@ -295,7 +304,7 @@ class _$ClipSyncUnknownImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
@@ -308,7 +317,7 @@ class _$ClipSyncUnknownImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
@@ -325,7 +334,7 @@ class _$ClipSyncUnknownImpl
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
@@ -338,7 +347,7 @@ class _$ClipSyncUnknownImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
@@ -351,7 +360,7 @@ class _$ClipSyncUnknownImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
@@ -382,6 +391,9 @@ class __$$ClipSyncingUnknownImplCopyWithImpl<$Res>
   __$$ClipSyncingUnknownImplCopyWithImpl(_$ClipSyncingUnknownImpl _value,
       $Res Function(_$ClipSyncingUnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -393,14 +405,14 @@ class _$ClipSyncingUnknownImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.syncingUnknonw()';
+    return 'ClipSyncManagerState.syncingUnknown()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-        DiagnosticsProperty('type', 'ClipSyncManagerState.syncingUnknonw'));
+        DiagnosticsProperty('type', 'ClipSyncManagerState.syncingUnknown'));
   }
 
   @override
@@ -417,12 +429,12 @@ class _$ClipSyncingUnknownImpl
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
-    return syncingUnknonw();
+    return syncingUnknown();
   }
 
   @override
@@ -430,12 +442,12 @@ class _$ClipSyncingUnknownImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
-    return syncingUnknonw?.call();
+    return syncingUnknown?.call();
   }
 
   @override
@@ -443,14 +455,14 @@ class _$ClipSyncingUnknownImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
-    if (syncingUnknonw != null) {
-      return syncingUnknonw();
+    if (syncingUnknown != null) {
+      return syncingUnknown();
     }
     return orElse();
   }
@@ -460,12 +472,12 @@ class _$ClipSyncingUnknownImpl
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
   }) {
-    return syncingUnknonw(this);
+    return syncingUnknown(this);
   }
 
   @override
@@ -473,12 +485,12 @@ class _$ClipSyncingUnknownImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
   }) {
-    return syncingUnknonw?.call(this);
+    return syncingUnknown?.call(this);
   }
 
   @override
@@ -486,14 +498,14 @@ class _$ClipSyncingUnknownImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
     required TResult orElse(),
   }) {
-    if (syncingUnknonw != null) {
-      return syncingUnknonw(this);
+    if (syncingUnknown != null) {
+      return syncingUnknown(this);
     }
     return orElse();
   }
@@ -520,6 +532,8 @@ class __$$ClipSyncingImplCopyWithImpl<$Res>
       _$ClipSyncingImpl _value, $Res Function(_$ClipSyncingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -575,7 +589,9 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   @override
   int get hashCode => Object.hash(runtimeType, total, synced);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipSyncingImplCopyWith<_$ClipSyncingImpl> get copyWith =>
@@ -586,7 +602,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
@@ -599,7 +615,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
@@ -612,7 +628,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
@@ -629,7 +645,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
@@ -642,7 +658,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
@@ -655,7 +671,7 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
@@ -675,7 +691,10 @@ abstract class ClipSyncing implements ClipSyncManagerState {
 
   int get total;
   int get synced;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipSyncingImplCopyWith<_$ClipSyncingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -694,6 +713,9 @@ class __$$ClipSyncCompleteImplCopyWithImpl<$Res>
   __$$ClipSyncCompleteImplCopyWithImpl(_$ClipSyncCompleteImpl _value,
       $Res Function(_$ClipSyncCompleteImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -728,7 +750,7 @@ class _$ClipSyncCompleteImpl
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
@@ -741,7 +763,7 @@ class _$ClipSyncCompleteImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
@@ -754,7 +776,7 @@ class _$ClipSyncCompleteImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
@@ -771,7 +793,7 @@ class _$ClipSyncCompleteImpl
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
@@ -784,7 +806,7 @@ class _$ClipSyncCompleteImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
@@ -797,7 +819,7 @@ class _$ClipSyncCompleteImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
@@ -831,6 +853,8 @@ class __$$ClipSyncFailedImplCopyWithImpl<$Res>
       _$ClipSyncFailedImpl _value, $Res Function(_$ClipSyncFailedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -879,7 +903,9 @@ class _$ClipSyncFailedImpl
   @override
   int get hashCode => Object.hash(runtimeType, failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipSyncFailedImplCopyWith<_$ClipSyncFailedImpl> get copyWith =>
@@ -891,7 +917,7 @@ class _$ClipSyncFailedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() disabled,
     required TResult Function() unknown,
-    required TResult Function() syncingUnknonw,
+    required TResult Function() syncingUnknown,
     required TResult Function(int total, int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
@@ -904,7 +930,7 @@ class _$ClipSyncFailedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disabled,
     TResult? Function()? unknown,
-    TResult? Function()? syncingUnknonw,
+    TResult? Function()? syncingUnknown,
     TResult? Function(int total, int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
@@ -917,7 +943,7 @@ class _$ClipSyncFailedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disabled,
     TResult Function()? unknown,
-    TResult Function()? syncingUnknonw,
+    TResult Function()? syncingUnknown,
     TResult Function(int total, int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
@@ -934,7 +960,7 @@ class _$ClipSyncFailedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(ClipSyncDisabled value) disabled,
     required TResult Function(ClipSyncUnknown value) unknown,
-    required TResult Function(ClipSyncingUnknown value) syncingUnknonw,
+    required TResult Function(ClipSyncingUnknown value) syncingUnknown,
     required TResult Function(ClipSyncing value) syncing,
     required TResult Function(ClipSyncComplete value) synced,
     required TResult Function(ClipSyncFailed value) failed,
@@ -947,7 +973,7 @@ class _$ClipSyncFailedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClipSyncDisabled value)? disabled,
     TResult? Function(ClipSyncUnknown value)? unknown,
-    TResult? Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult? Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult? Function(ClipSyncing value)? syncing,
     TResult? Function(ClipSyncComplete value)? synced,
     TResult? Function(ClipSyncFailed value)? failed,
@@ -960,7 +986,7 @@ class _$ClipSyncFailedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClipSyncDisabled value)? disabled,
     TResult Function(ClipSyncUnknown value)? unknown,
-    TResult Function(ClipSyncingUnknown value)? syncingUnknonw,
+    TResult Function(ClipSyncingUnknown value)? syncingUnknown,
     TResult Function(ClipSyncing value)? syncing,
     TResult Function(ClipSyncComplete value)? synced,
     TResult Function(ClipSyncFailed value)? failed,
@@ -977,7 +1003,10 @@ abstract class ClipSyncFailed implements ClipSyncManagerState {
   const factory ClipSyncFailed(final Failure failure) = _$ClipSyncFailedImpl;
 
   Failure get failure;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClipSyncManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipSyncFailedImplCopyWith<_$ClipSyncFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

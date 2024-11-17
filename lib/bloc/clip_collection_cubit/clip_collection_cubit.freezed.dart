@@ -84,7 +84,9 @@ mixin _$ClipCollectionState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipCollectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClipCollectionStateCopyWith<ClipCollectionState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -116,6 +118,8 @@ class _$ClipCollectionStateCopyWithImpl<$Res, $Val extends ClipCollectionState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClipCollectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,6 +196,8 @@ class __$$ClipCollectionLoadedImplCopyWithImpl<$Res>
       $Res Function(_$ClipCollectionLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClipCollectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -318,7 +324,9 @@ class _$ClipCollectionLoadedImpl implements ClipCollectionLoaded {
       syncing,
       failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipCollectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipCollectionLoadedImplCopyWith<_$ClipCollectionLoadedImpl>
@@ -440,8 +448,11 @@ abstract class ClipCollectionLoaded implements ClipCollectionState {
   bool get syncing;
   @override
   Failure? get failure;
+
+  /// Create a copy of ClipCollectionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipCollectionLoadedImplCopyWith<_$ClipCollectionLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

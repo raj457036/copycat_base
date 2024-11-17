@@ -85,6 +85,9 @@ class _$RealtimeClipSyncStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RealtimeClipSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,9 @@ class __$$RealtimeClipSyncUnknownImplCopyWithImpl<$Res>
       _$RealtimeClipSyncUnknownImpl _value,
       $Res Function(_$RealtimeClipSyncUnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeClipSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -222,6 +228,9 @@ class __$$RealtimeClipSyncConnectingImplCopyWithImpl<$Res>
       _$RealtimeClipSyncConnectingImpl _value,
       $Res Function(_$RealtimeClipSyncConnectingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeClipSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -340,6 +349,9 @@ class __$$RealtimeClipSyncConnectedImplCopyWithImpl<$Res>
       _$RealtimeClipSyncConnectedImpl _value,
       $Res Function(_$RealtimeClipSyncConnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeClipSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -458,6 +470,9 @@ class __$$RealtimeClipSyncDisconnectedImplCopyWithImpl<$Res>
       _$RealtimeClipSyncDisconnectedImpl _value,
       $Res Function(_$RealtimeClipSyncDisconnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeClipSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

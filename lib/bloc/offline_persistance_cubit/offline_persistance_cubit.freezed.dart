@@ -122,6 +122,9 @@ class _$OfflinePersistanceStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -141,6 +144,9 @@ class __$$OfflinePersistanceInitialImplCopyWithImpl<$Res>
       _$OfflinePersistanceInitialImpl _value,
       $Res Function(_$OfflinePersistanceInitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -299,6 +305,8 @@ class __$$OfflinePersistanceCreatingImplCopyWithImpl<$Res>
       $Res Function(_$OfflinePersistanceCreatingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -344,7 +352,9 @@ class _$OfflinePersistanceCreatingImpl implements OfflinePersistanceCreating {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfflinePersistanceCreatingImplCopyWith<_$OfflinePersistanceCreatingImpl>
@@ -468,7 +478,10 @@ abstract class OfflinePersistanceCreating implements OfflinePersistanceState {
       _$OfflinePersistanceCreatingImpl;
 
   List<ClipboardItem> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfflinePersistanceCreatingImplCopyWith<_$OfflinePersistanceCreatingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -493,6 +506,8 @@ class __$$OfflinePersistanceUpdatingImplCopyWithImpl<$Res>
       $Res Function(_$OfflinePersistanceUpdatingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -538,7 +553,9 @@ class _$OfflinePersistanceUpdatingImpl implements OfflinePersistanceUpdating {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfflinePersistanceUpdatingImplCopyWith<_$OfflinePersistanceUpdatingImpl>
@@ -662,7 +679,10 @@ abstract class OfflinePersistanceUpdating implements OfflinePersistanceState {
       _$OfflinePersistanceUpdatingImpl;
 
   List<ClipboardItem> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfflinePersistanceUpdatingImplCopyWith<_$OfflinePersistanceUpdatingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -687,6 +707,8 @@ class __$$OfflinePersistanceDeletingImplCopyWithImpl<$Res>
       $Res Function(_$OfflinePersistanceDeletingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -732,7 +754,9 @@ class _$OfflinePersistanceDeletingImpl implements OfflinePersistanceDeleting {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfflinePersistanceDeletingImplCopyWith<_$OfflinePersistanceDeletingImpl>
@@ -856,7 +880,10 @@ abstract class OfflinePersistanceDeleting implements OfflinePersistanceState {
       _$OfflinePersistanceDeletingImpl;
 
   List<ClipboardItem> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfflinePersistanceDeletingImplCopyWith<_$OfflinePersistanceDeletingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -881,6 +908,8 @@ class __$$OfflinePersistanceDeletedImplCopyWithImpl<$Res>
       $Res Function(_$OfflinePersistanceDeletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -926,7 +955,9 @@ class _$OfflinePersistanceDeletedImpl implements OfflinePersistanceDeleted {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfflinePersistanceDeletedImplCopyWith<_$OfflinePersistanceDeletedImpl>
@@ -1050,7 +1081,10 @@ abstract class OfflinePersistanceDeleted implements OfflinePersistanceState {
       _$OfflinePersistanceDeletedImpl;
 
   List<ClipboardItem> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfflinePersistanceDeletedImplCopyWith<_$OfflinePersistanceDeletedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1079,6 +1113,8 @@ class __$$OfflinePersistanceSavedImplCopyWithImpl<$Res>
       $Res Function(_$OfflinePersistanceSavedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1167,7 +1203,9 @@ class _$OfflinePersistanceSavedImpl implements OfflinePersistanceSaved {
       synced,
       const DeepCollectionEquality().hash(_updatedFields));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfflinePersistanceSavedImplCopyWith<_$OfflinePersistanceSavedImpl>
@@ -1296,7 +1334,10 @@ abstract class OfflinePersistanceSaved implements OfflinePersistanceState {
   bool get created;
   bool get synced;
   List<String>? get updatedFields;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfflinePersistanceSavedImplCopyWith<_$OfflinePersistanceSavedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1318,6 +1359,9 @@ class __$$OfflinePersistanceDecryptingStateImplCopyWithImpl<$Res>
       _$OfflinePersistanceDecryptingStateImpl _value,
       $Res Function(_$OfflinePersistanceDecryptingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1476,6 +1520,9 @@ class __$$OfflinePersistanceDecryptedStateImplCopyWithImpl<$Res>
       _$OfflinePersistanceDecryptedStateImpl _value,
       $Res Function(_$OfflinePersistanceDecryptedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1639,6 +1686,8 @@ class __$$OfflinePersistanceErrorImplCopyWithImpl<$Res>
       $Res Function(_$OfflinePersistanceErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1657,6 +1706,8 @@ class __$$OfflinePersistanceErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res>? get item {
@@ -1697,7 +1748,9 @@ class _$OfflinePersistanceErrorImpl implements OfflinePersistanceError {
   @override
   int get hashCode => Object.hash(runtimeType, failure, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OfflinePersistanceErrorImplCopyWith<_$OfflinePersistanceErrorImpl>
@@ -1822,7 +1875,10 @@ abstract class OfflinePersistanceError implements OfflinePersistanceState {
 
   Failure get failure;
   ClipboardItem? get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OfflinePersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfflinePersistanceErrorImplCopyWith<_$OfflinePersistanceErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

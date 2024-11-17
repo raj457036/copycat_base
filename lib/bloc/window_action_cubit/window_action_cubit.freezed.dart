@@ -51,7 +51,9 @@ mixin _$WindowActionState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WindowActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WindowActionStateCopyWith<WindowActionState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +77,8 @@ class _$WindowActionStateCopyWithImpl<$Res, $Val extends WindowActionState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WindowActionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,6 +117,8 @@ class __$$WindowActionLoadedImplCopyWithImpl<$Res>
       $Res Function(_$WindowActionLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WindowActionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,7 +179,9 @@ class _$WindowActionLoadedImpl
   @override
   int get hashCode => Object.hash(runtimeType, view, loading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WindowActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WindowActionLoadedImplCopyWith<_$WindowActionLoadedImpl> get copyWith =>
@@ -245,8 +253,11 @@ abstract class WindowActionLoaded implements WindowActionState {
   AppView get view;
   @override
   bool get loading;
+
+  /// Create a copy of WindowActionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WindowActionLoadedImplCopyWith<_$WindowActionLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

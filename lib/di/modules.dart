@@ -1,3 +1,4 @@
+import "package:android_background_clipboard/android_background_clipboard.dart";
 import "package:copycat_base/constants/strings/strings.dart";
 import "package:copycat_base/db/app_config/appconfig.dart";
 import "package:copycat_base/db/clip_collection/clipcollection.dart";
@@ -59,6 +60,10 @@ abstract class RegisterModule {
 
     return deviceId_;
   }
+
+  @LazySingleton()
+  AndroidBackgroundClipboard get bgService =>
+      const AndroidBackgroundClipboard();
 }
 
 Future<void> closeIsarDb(Isar db) async {

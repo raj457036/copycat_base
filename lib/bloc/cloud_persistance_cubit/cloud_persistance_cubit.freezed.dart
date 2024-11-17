@@ -117,6 +117,9 @@ class _$CloudPersistanceStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -136,6 +139,9 @@ class __$$CloudPersistanceInitialImplCopyWithImpl<$Res>
       _$CloudPersistanceInitialImpl _value,
       $Res Function(_$CloudPersistanceInitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -291,6 +297,8 @@ class __$$CloudPersistanceCreatingImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceCreatingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -304,6 +312,8 @@ class __$$CloudPersistanceCreatingImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res> get item {
@@ -337,7 +347,9 @@ class _$CloudPersistanceCreatingImpl implements CloudPersistanceCreating {
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceCreatingImplCopyWith<_$CloudPersistanceCreatingImpl>
@@ -456,7 +468,10 @@ abstract class CloudPersistanceCreating implements CloudPersistanceState {
       _$CloudPersistanceCreatingImpl;
 
   ClipboardItem get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceCreatingImplCopyWith<_$CloudPersistanceCreatingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -483,6 +498,8 @@ class __$$CloudPersistanceUpdatingImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceUpdatingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -496,6 +513,8 @@ class __$$CloudPersistanceUpdatingImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res> get item {
@@ -529,7 +548,9 @@ class _$CloudPersistanceUpdatingImpl implements CloudPersistanceUpdating {
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceUpdatingImplCopyWith<_$CloudPersistanceUpdatingImpl>
@@ -648,7 +669,10 @@ abstract class CloudPersistanceUpdating implements CloudPersistanceState {
       _$CloudPersistanceUpdatingImpl;
 
   ClipboardItem get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceUpdatingImplCopyWith<_$CloudPersistanceUpdatingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -673,6 +697,8 @@ class __$$CloudPersistanceDeletingImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceDeletingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -718,7 +744,9 @@ class _$CloudPersistanceDeletingImpl implements CloudPersistanceDeleting {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceDeletingImplCopyWith<_$CloudPersistanceDeletingImpl>
@@ -837,7 +865,10 @@ abstract class CloudPersistanceDeleting implements CloudPersistanceState {
       _$CloudPersistanceDeletingImpl;
 
   List<ClipboardItem> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceDeletingImplCopyWith<_$CloudPersistanceDeletingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -862,6 +893,8 @@ class __$$CloudPersistanceDeletedImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceDeletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -907,7 +940,9 @@ class _$CloudPersistanceDeletedImpl implements CloudPersistanceDeleted {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceDeletedImplCopyWith<_$CloudPersistanceDeletedImpl>
@@ -1026,7 +1061,10 @@ abstract class CloudPersistanceDeleted implements CloudPersistanceState {
       _$CloudPersistanceDeletedImpl;
 
   List<ClipboardItem> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceDeletedImplCopyWith<_$CloudPersistanceDeletedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1053,6 +1091,8 @@ class __$$CloudPersistanceUploadingFileImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceUploadingFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1066,6 +1106,8 @@ class __$$CloudPersistanceUploadingFileImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res> get item {
@@ -1100,7 +1142,9 @@ class _$CloudPersistanceUploadingFileImpl
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceUploadingFileImplCopyWith<
@@ -1220,7 +1264,10 @@ abstract class CloudPersistanceUploadingFile implements CloudPersistanceState {
       _$CloudPersistanceUploadingFileImpl;
 
   ClipboardItem get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceUploadingFileImplCopyWith<
           _$CloudPersistanceUploadingFileImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1248,6 +1295,8 @@ class __$$CloudPersistanceDownloadingFileImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceDownloadingFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1261,6 +1310,8 @@ class __$$CloudPersistanceDownloadingFileImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res> get item {
@@ -1295,7 +1346,9 @@ class _$CloudPersistanceDownloadingFileImpl
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceDownloadingFileImplCopyWith<
@@ -1416,7 +1469,10 @@ abstract class CloudPersistanceDownloadingFile
       _$CloudPersistanceDownloadingFileImpl;
 
   ClipboardItem get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceDownloadingFileImplCopyWith<
           _$CloudPersistanceDownloadingFileImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1443,6 +1499,8 @@ class __$$CloudPersistanceSavedImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceSavedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1461,6 +1519,8 @@ class __$$CloudPersistanceSavedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res> get item {
@@ -1498,7 +1558,9 @@ class _$CloudPersistanceSavedImpl implements CloudPersistanceSaved {
   @override
   int get hashCode => Object.hash(runtimeType, item, created);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceSavedImplCopyWith<_$CloudPersistanceSavedImpl>
@@ -1618,7 +1680,10 @@ abstract class CloudPersistanceSaved implements CloudPersistanceState {
 
   ClipboardItem get item;
   bool get created;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceSavedImplCopyWith<_$CloudPersistanceSavedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1644,6 +1709,8 @@ class __$$CloudPersistanceErrorImplCopyWithImpl<$Res>
       $Res Function(_$CloudPersistanceErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1662,6 +1729,8 @@ class __$$CloudPersistanceErrorImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClipboardItemCopyWith<$Res>? get item {
@@ -1702,7 +1771,9 @@ class _$CloudPersistanceErrorImpl implements CloudPersistanceError {
   @override
   int get hashCode => Object.hash(runtimeType, failure, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CloudPersistanceErrorImplCopyWith<_$CloudPersistanceErrorImpl>
@@ -1822,7 +1893,10 @@ abstract class CloudPersistanceError implements CloudPersistanceState {
 
   Failure get failure;
   ClipboardItem? get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CloudPersistanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CloudPersistanceErrorImplCopyWith<_$CloudPersistanceErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

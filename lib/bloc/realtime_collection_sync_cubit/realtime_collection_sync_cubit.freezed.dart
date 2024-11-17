@@ -89,6 +89,9 @@ class _$RealtimeCollectionSyncStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RealtimeCollectionSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,9 @@ class __$$RealtimeCollectionSyncUnknownImplCopyWithImpl<$Res>
       _$RealtimeCollectionSyncUnknownImpl _value,
       $Res Function(_$RealtimeCollectionSyncUnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeCollectionSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -231,6 +237,9 @@ class __$$RealtimeCollectionSyncConnectingImplCopyWithImpl<$Res>
       _$RealtimeCollectionSyncConnectingImpl _value,
       $Res Function(_$RealtimeCollectionSyncConnectingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeCollectionSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -354,6 +363,9 @@ class __$$RealtimeCollectionSyncConnectedImplCopyWithImpl<$Res>
       _$RealtimeCollectionSyncConnectedImpl _value,
       $Res Function(_$RealtimeCollectionSyncConnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeCollectionSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -477,6 +489,9 @@ class __$$RealtimeCollectionSyncDisconnectedImplCopyWithImpl<$Res>
       _$RealtimeCollectionSyncDisconnectedImpl _value,
       $Res Function(_$RealtimeCollectionSyncDisconnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RealtimeCollectionSyncState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

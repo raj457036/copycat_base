@@ -72,6 +72,9 @@ class _$SelectedClipsStateCopyWithImpl<$Res, $Val extends SelectedClipsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SelectedClipsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$NoClipSelectedImplCopyWithImpl<$Res>
   __$$NoClipSelectedImplCopyWithImpl(
       _$NoClipSelectedImpl _value, $Res Function(_$NoClipSelectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectedClipsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -193,6 +199,8 @@ class __$$ClipSelectedImplCopyWithImpl<$Res>
       _$ClipSelectedImpl _value, $Res Function(_$ClipSelectedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SelectedClipsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -239,7 +247,9 @@ class _$ClipSelectedImpl implements ClipSelected {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_selectedClipIds));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectedClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClipSelectedImplCopyWith<_$ClipSelectedImpl> get copyWith =>
@@ -313,7 +323,10 @@ abstract class ClipSelected implements SelectedClipsState {
       {required final Set<ClipboardItem> selectedClipIds}) = _$ClipSelectedImpl;
 
   Set<ClipboardItem> get selectedClipIds;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SelectedClipsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClipSelectedImplCopyWith<_$ClipSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

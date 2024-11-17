@@ -56,7 +56,9 @@ mixin _$AppConfigState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppConfigState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppConfigStateCopyWith<AppConfigState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppConfigState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -105,6 +109,8 @@ class _$AppConfigStateCopyWithImpl<$Res, $Val extends AppConfigState>
     ) as $Val);
   }
 
+  /// Create a copy of AppConfigState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AppConfigCopyWith<$Res> get config {
@@ -136,6 +142,8 @@ class __$$AppConfigLoadedImplCopyWithImpl<$Res>
       _$AppConfigLoadedImpl _value, $Res Function(_$AppConfigLoadedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppConfigState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -193,7 +201,9 @@ class _$AppConfigLoadedImpl implements AppConfigLoaded {
   @override
   int get hashCode => Object.hash(runtimeType, config, isLoading, failure);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppConfigState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppConfigLoadedImplCopyWith<_$AppConfigLoadedImpl> get copyWith =>
@@ -273,8 +283,11 @@ abstract class AppConfigLoaded implements AppConfigState {
   bool get isLoading;
   @override
   Failure? get failure;
+
+  /// Create a copy of AppConfigState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppConfigLoadedImplCopyWith<_$AppConfigLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
