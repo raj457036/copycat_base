@@ -46,7 +46,7 @@ dependencies:
   launch_at_startup: ^0.3.1
   ntp: ^2.0.0
   tiny_storage: ^1.1.0
-  share_plus: ^9.0.0
+  share_plus: ^10.1.2
   retry: ^3.1.2
   platform_device_id:
     git:
