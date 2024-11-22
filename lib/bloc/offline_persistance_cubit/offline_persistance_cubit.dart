@@ -21,7 +21,7 @@ part 'offline_persistance_cubit.freezed.dart';
 part 'offline_persistance_state.dart';
 
 @lazySingleton
-class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
+class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
   final AuthCubit auth;
   final ClipboardRepository repo;
   final ClipboardService clipboard;
@@ -34,7 +34,7 @@ class OfflinePersistanceCubit extends Cubit<OfflinePersistanceState> {
 
   StreamSubscription<List<ClipItem?>>? copySub;
 
-  OfflinePersistanceCubit(
+  OfflinePersistenceCubit(
     this.auth,
     @Named("offline") this.repo,
     this.clipboard,

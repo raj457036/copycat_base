@@ -174,8 +174,8 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i625.ClipCollectionRepository>(),
               gh<String>(instanceName: 'device_id'),
             ));
-    gh.lazySingleton<_i768.OfflinePersistanceCubit>(
-        () => _i768.OfflinePersistanceCubit(
+    gh.lazySingleton<_i768.OfflinePersistenceCubit>(
+        () => _i768.OfflinePersistenceCubit(
               gh<_i630.AuthCubit>(),
               gh<_i72.ClipboardRepository>(instanceName: 'offline'),
               gh<_i354.ClipboardService>(),
