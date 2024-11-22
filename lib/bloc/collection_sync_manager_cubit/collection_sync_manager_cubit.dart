@@ -222,16 +222,14 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     EventBus.emit(eventPayload);
   }
 
-  DateTime _lastSyncedTime(DateTime? relativeTo) {
-    if (relativeTo != null) {
-      final diff = now().difference(relativeTo);
-      if (diff.inHours < syncHours) {
-        return relativeTo;
-      }
-    }
+  DateTime? _lastSyncedTime(DateTime? relativeTo) {
+    if (relativeTo == null) return null;
 
-    final pastDate = now().subtract(Duration(hours: syncHours));
-    return pastDate;
+    final diff = now().difference(relativeTo);
+    if (diff.inHours < syncHours) {
+      return relativeTo;
+    }
+    return null;
   }
 
   @override
