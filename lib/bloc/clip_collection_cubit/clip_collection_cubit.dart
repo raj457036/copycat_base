@@ -128,16 +128,18 @@ class ClipCollectionCubit extends Cubit<ClipCollectionState> {
   }
 
   /// Maps serverId to localId
-  Map<int, int> get serverMapping => state.maybeMap(
-      orElse: () => {},
-      loaded: (loaded) {
-        final map = <int, int>{};
-        for (var collection in loaded.collections) {
-          if (collection.serverId == null) continue;
-          map[collection.serverId!] = collection.id;
-        }
-        return map;
-      });
+  Map<int, int> get serverMapping {
+    return state.maybeMap(
+        orElse: () => {},
+        loaded: (loaded) {
+          final map = <int, int>{};
+          for (var collection in loaded.collections) {
+            if (collection.serverId == null) continue;
+            map[collection.serverId!] = collection.id;
+          }
+          return map;
+        });
+  }
 
   Future<void> delete(ClipCollection collection) async {
     await state.mapOrNull(

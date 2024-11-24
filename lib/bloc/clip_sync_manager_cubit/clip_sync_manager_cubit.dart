@@ -30,35 +30,37 @@ part 'clip_sync_manager_state.dart';
 void _syncingClips(
   (List<ClipboardItem>, Map<int, int>) record,
   Sender send,
-) async {
+) {
   final Isar db = Isar.getInstance(dbName)!;
 
   final events = <ClipCrossSyncEvent>[];
   final (items, collectionMap) = record;
-  await db.txn(() async {
+  db.writeTxnSync(() {
     for (var index = 0; index < items.length; index++) {
-      final item = items[index];
-      final found = await db.clipboardItems
+      var item = items[index];
+      final found = db.clipboardItems
           .filter()
           .serverIdEqualTo(item.serverId)
-          .findFirst();
-
+          .findFirstSync();
+      final collectionId = collectionMap[item.serverCollectionId];
       if (found == null) {
+        item = item.copyWith(
+          collectionId: collectionId,
+        );
+        items[index] = item;
         events.add((CrossSyncEventType.create, item));
         continue;
       }
-
-      items[index] = item.copyWith(
+      item = item.copyWith(
         lastSynced: found.lastSynced,
         localPath: found.localPath,
-        collectionId: collectionMap[item.serverCollectionId],
+        collectionId: collectionId,
       )..applyId(found);
+      items[index] = item;
       events.add((CrossSyncEventType.update, item));
     }
-  });
 
-  await db.writeTxn(() async {
-    final ids = await db.clipboardItems.putAll(items);
+    final ids = db.clipboardItems.putAllSync(items);
     for (int i = 0; i < events.length; i++) {
       events[i].$2.id = ids[i];
     }

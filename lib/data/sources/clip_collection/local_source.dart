@@ -85,7 +85,8 @@ class LocalClipCollectionSource implements ClipCollectionSource {
 
   @override
   Future<List<ClipCollection>> updateMany(
-      List<ClipCollection> collections) async {
+    List<ClipCollection> collections,
+  ) async {
     final updates = collections
         .map((collection) => collection.copyWith(
               modified: now(),
