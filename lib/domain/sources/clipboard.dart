@@ -36,7 +36,7 @@ abstract class ClipboardSource {
 
   Future<void> deleteAll();
 
-  Future<ClipboardItem?> getLatest({bool? synced});
+  Future<ClipboardItem?> getLatestFromOthers({bool? synced});
 
   Future<void> decryptPending();
 }

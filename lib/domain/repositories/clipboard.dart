@@ -30,7 +30,7 @@ abstract class ClipboardRepository {
 
   FailureOr<void> deleteAll();
 
-  FailureOr<ClipboardItem?> getLatest({bool? synced});
+  FailureOr<ClipboardItem?> getLatestFromOthers({bool? synced});
 
   FailureOr<void> decryptPending();
 }

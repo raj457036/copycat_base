@@ -120,7 +120,7 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<ClipboardItem?> getLatest({bool? synced}) {
+  FailureOr<ClipboardItem?> getLatestFromOthers({bool? synced}) {
     throw UnimplementedError();
   }
 
@@ -238,9 +238,9 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<ClipboardItem?> getLatest({bool? synced}) async {
+  FailureOr<ClipboardItem?> getLatestFromOthers({bool? synced}) async {
     try {
-      final result = await local.getLatest(synced: synced);
+      final result = await local.getLatestFromOthers(synced: synced);
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));

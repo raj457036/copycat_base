@@ -177,7 +177,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
 
       DateTime? fromTs;
       final latestSyncedItem =
-          await clipboardRepository.getLatest(synced: true);
+          await clipboardRepository.getLatestFromOthers(synced: true);
       latestSyncedItem.fold((l) {}, (item) {
         fromTs = item?.lastSynced;
       });

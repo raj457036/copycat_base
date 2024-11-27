@@ -122,9 +122,9 @@ class ClipCollectionRepositoryImpl implements ClipCollectionRepository {
   }
 
   @override
-  FailureOr<ClipCollection?> getLatest({bool? synced}) async {
+  FailureOr<ClipCollection?> getLatestFromOthers({bool? synced}) async {
     try {
-      final result = await local.getLatest(synced: synced);
+      final result = await local.getLatestFromOthers(synced: synced);
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));

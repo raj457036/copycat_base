@@ -98,7 +98,8 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
       if (_syncHours == null) return false;
 
       DateTime? fromTs;
-      final latestSyncedItem = await collectionRepo.getLatest(synced: true);
+      final latestSyncedItem =
+          await collectionRepo.getLatestFromOthers(synced: true);
       latestSyncedItem.fold((l) {}, (item) {
         fromTs = item?.lastSynced;
       });

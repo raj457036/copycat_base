@@ -16,7 +16,7 @@ abstract class ClipCollectionRepository {
   FailureOr<ClipCollection> update(ClipCollection collection);
   FailureOr<List<ClipCollection>> updateMany(List<ClipCollection> collections);
   FailureOr<ClipCollection> updateOrCreate(ClipCollection collection);
-  FailureOr<ClipCollection?> getLatest({bool? synced});
+  FailureOr<ClipCollection?> getLatestFromOthers({bool? synced});
 
   FailureOr<bool> delete(ClipCollection collection);
   FailureOr<List<ClipCollection>> deleteMany(List<ClipCollection> items);

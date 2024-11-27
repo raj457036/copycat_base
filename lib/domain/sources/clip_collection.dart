@@ -14,7 +14,7 @@ abstract class ClipCollectionSource {
   Future<ClipCollection> update(ClipCollection collection);
   Future<List<ClipCollection>> updateMany(List<ClipCollection> collections);
   Future<ClipCollection> updateOrCreate(ClipCollection collection);
-  Future<ClipCollection?> getLatest({bool? synced});
+  Future<ClipCollection?> getLatestFromOthers({bool? synced});
 
   Future<bool> delete(ClipCollection collection);
   Future<List<ClipCollection>> deleteMany(List<ClipCollection> items);

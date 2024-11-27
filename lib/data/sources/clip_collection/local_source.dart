@@ -12,8 +12,9 @@ import 'package:isar/isar.dart';
 @LazySingleton(as: ClipCollectionSource)
 class LocalClipCollectionSource implements ClipCollectionSource {
   final Isar db;
+  final String deviceId;
 
-  LocalClipCollectionSource(this.db);
+  LocalClipCollectionSource(this.db, @Named("device_id") this.deviceId);
 
   @override
   Future<ClipCollection> create(ClipCollection collection) async {
@@ -155,17 +156,25 @@ class LocalClipCollectionSource implements ClipCollectionSource {
   }
 
   @override
-  Future<ClipCollection?> getLatest({bool? synced}) async {
+  Future<ClipCollection?> getLatestFromOthers({bool? synced}) async {
     final result = await db.txn(() {
       if (synced == true) {
         final q = db.clipCollections
             .filter()
+            .not()
+            .deviceIdEqualTo(deviceId)
+            .and()
             .lastSyncedIsNotNull()
             .sortByLastSyncedDesc()
             .findFirst();
         return q;
       }
-      final q = db.clipCollections.where().sortByModifiedDesc().findFirst();
+      final q = db.clipCollections
+          .filter()
+          .not()
+          .deviceIdEqualTo(deviceId)
+          .sortByModifiedDesc()
+          .findFirst();
       return q;
     });
     return result;

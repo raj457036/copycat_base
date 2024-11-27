@@ -93,17 +93,9 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
         () => const _i55.AnalyticsRepositoryImpl());
     gh.lazySingleton<_i106.SyncRepository>(() => _i421.SyncRepositoryImpl(
         gh<_i903.SyncClipboardSource>(instanceName: 'remote')));
-    gh.lazySingleton<_i569.ClipCollectionSource>(
-      () => _i799.LocalClipCollectionSource(gh<_i338.Isar>()),
-      instanceName: 'local',
-    );
     gh.lazySingleton<_i1054.DriveService>(
       () => _i872.GoogleDriveService(),
       instanceName: 'google_drive',
-    );
-    gh.lazySingleton<_i191.ClipboardSource>(
-      () => _i397.LocalClipboardSource(gh<_i338.Isar>()),
-      instanceName: 'local',
     );
     gh.singleton<_i411.AppConfigCubit>(
         () => _i411.AppConfigCubit(gh<_i854.AppConfigRepository>()));
@@ -113,27 +105,62 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
       preResolve: true,
     );
     gh.lazySingleton<_i72.ClipboardRepository>(
-      () => _i122.ClipboardRepositoryOfflineImpl(
-          gh<_i191.ClipboardSource>(instanceName: 'local')),
-      instanceName: 'offline',
-    );
-    gh.lazySingleton<_i72.ClipboardRepository>(
       () => _i122.ClipboardRepositoryCloudImpl(
           gh<_i191.ClipboardSource>(instanceName: 'remote')),
       instanceName: 'cloud',
     );
-    gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
-        gh<_i72.ClipboardRepository>(instanceName: 'offline')));
-    gh.lazySingleton<_i625.ClipCollectionRepository>(
-        () => _i834.ClipCollectionRepositoryImpl(
-              gh<_i569.ClipCollectionSource>(instanceName: 'remote'),
-              gh<_i569.ClipCollectionSource>(instanceName: 'local'),
-            ));
     gh.singleton<_i630.AuthCubit>(() => _i630.AuthCubit(
           gh<_i281.AuthRepository>(),
           gh<_i829.TinyStorage>(),
           gh<_i860.AnalyticsRepository>(),
         ));
+    gh.lazySingleton<_i191.ClipboardSource>(
+      () => _i397.LocalClipboardSource(
+        gh<_i338.Isar>(),
+        gh<String>(instanceName: 'device_id'),
+      ),
+      instanceName: 'local',
+    );
+    gh.lazySingleton<_i569.ClipCollectionSource>(
+      () => _i799.LocalClipCollectionSource(
+        gh<_i338.Isar>(),
+        gh<String>(instanceName: 'device_id'),
+      ),
+      instanceName: 'local',
+    );
+    gh.lazySingleton<_i746.DriveSetupCubit>(() => _i746.DriveSetupCubit(
+          gh<_i447.DriveCredentialRepository>(),
+          gh<_i1054.DriveService>(instanceName: 'google_drive'),
+        ));
+    gh.lazySingleton<_i72.ClipboardRepository>(
+      () => _i122.ClipboardRepositoryOfflineImpl(
+          gh<_i191.ClipboardSource>(instanceName: 'local')),
+      instanceName: 'offline',
+    );
+    gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
+        gh<_i72.ClipboardRepository>(instanceName: 'offline')));
+    gh.lazySingleton<_i768.OfflinePersistenceCubit>(
+        () => _i768.OfflinePersistenceCubit(
+              gh<_i630.AuthCubit>(),
+              gh<_i72.ClipboardRepository>(instanceName: 'offline'),
+              gh<_i354.ClipboardService>(),
+              gh<_i411.AppConfigCubit>(),
+              gh<_i860.AnalyticsRepository>(),
+              gh<String>(instanceName: 'device_id'),
+            ));
+    gh.lazySingleton<_i691.CloudPersistanceCubit>(
+        () => _i691.CloudPersistanceCubit(
+              gh<_i630.AuthCubit>(),
+              gh<_i746.DriveSetupCubit>(),
+              gh<_i411.AppConfigCubit>(),
+              gh<String>(instanceName: 'device_id'),
+              gh<_i72.ClipboardRepository>(instanceName: 'cloud'),
+            ));
+    gh.lazySingleton<_i625.ClipCollectionRepository>(
+        () => _i834.ClipCollectionRepositoryImpl(
+              gh<_i569.ClipCollectionSource>(instanceName: 'remote'),
+              gh<_i569.ClipCollectionSource>(instanceName: 'local'),
+            ));
     gh.lazySingleton<_i402.ClipCollectionCubit>(() => _i402.ClipCollectionCubit(
           gh<_i630.AuthCubit>(),
           gh<_i625.ClipCollectionRepository>(),
@@ -153,10 +180,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i72.ClipboardRepository>(instanceName: 'offline'),
               collection: collection,
             ));
-    gh.lazySingleton<_i746.DriveSetupCubit>(() => _i746.DriveSetupCubit(
-          gh<_i447.DriveCredentialRepository>(),
-          gh<_i1054.DriveService>(instanceName: 'google_drive'),
-        ));
     gh.factory<_i433.AndroidBgClipboardCubit>(
         () => _i433.AndroidBgClipboardCubit(
               gh<_i565.AndroidBackgroundClipboard>(),
@@ -173,23 +196,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i402.ClipCollectionCubit>(),
               gh<_i625.ClipCollectionRepository>(),
               gh<String>(instanceName: 'device_id'),
-            ));
-    gh.lazySingleton<_i768.OfflinePersistenceCubit>(
-        () => _i768.OfflinePersistenceCubit(
-              gh<_i630.AuthCubit>(),
-              gh<_i72.ClipboardRepository>(instanceName: 'offline'),
-              gh<_i354.ClipboardService>(),
-              gh<_i411.AppConfigCubit>(),
-              gh<_i860.AnalyticsRepository>(),
-              gh<String>(instanceName: 'device_id'),
-            ));
-    gh.lazySingleton<_i691.CloudPersistanceCubit>(
-        () => _i691.CloudPersistanceCubit(
-              gh<_i630.AuthCubit>(),
-              gh<_i746.DriveSetupCubit>(),
-              gh<_i411.AppConfigCubit>(),
-              gh<String>(instanceName: 'device_id'),
-              gh<_i72.ClipboardRepository>(instanceName: 'cloud'),
             ));
     gh.factory<_i84.ClipSyncManagerCubit>(() => _i84.ClipSyncManagerCubit(
           gh<_i106.SyncRepository>(),

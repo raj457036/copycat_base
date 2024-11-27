@@ -14,8 +14,9 @@ import 'package:isar/isar.dart';
 @LazySingleton(as: ClipboardSource)
 class LocalClipboardSource implements ClipboardSource {
   final Isar db;
+  final String deviceId;
 
-  LocalClipboardSource(this.db);
+  LocalClipboardSource(this.db, @Named('device_id') this.deviceId);
 
   @override
   Future<ClipboardItem> create(ClipboardItem item) async {
@@ -158,16 +159,23 @@ class LocalClipboardSource implements ClipboardSource {
   }
 
   @override
-  Future<ClipboardItem?> getLatest({bool? synced}) async {
+  Future<ClipboardItem?> getLatestFromOthers({bool? synced}) async {
     final result = await db.txn(() {
       if (synced == true) {
         final q = db.clipboardItems
             .filter()
+            .not()
+            .deviceIdEqualTo(deviceId)
+            .and()
             .lastSyncedIsNotNull()
             .sortByLastSyncedDesc();
         return q.findFirst();
       }
-      final q = db.clipboardItems.where().sortByModifiedDesc();
+      final q = db.clipboardItems
+          .filter()
+          .not()
+          .deviceIdEqualTo(deviceId)
+          .sortByModifiedDesc();
       return q.findFirst();
     });
     return result;
