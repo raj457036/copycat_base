@@ -104,7 +104,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
         fromTs = item?.lastSynced;
       });
 
-      await syncDeleted(fromTs);
+      if (fromTs != null) await syncDeleted(fromTs!);
 
       if (state is CollectionSyncFailed) return false;
       await syncChanges(fromTs);
@@ -117,7 +117,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
   }
 
-  Future<void> syncDeleted(DateTime? fromTs) async {
+  Future<void> syncDeleted(DateTime fromTs) async {
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;

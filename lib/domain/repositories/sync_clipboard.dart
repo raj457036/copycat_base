@@ -16,6 +16,7 @@ abstract class SyncRepository {
     int offset = 0,
     String? excludeDeviceId,
     DateTime? lastSynced,
+    bool havingCollection = false,
   });
 
   FailureOr<PaginatedResult<ClipCollection>> getDeletedClipCollections({

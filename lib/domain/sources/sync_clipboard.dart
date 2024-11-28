@@ -15,6 +15,7 @@ abstract class SyncClipboardSource {
     int offset = 0,
     String? excludeDeviceId,
     DateTime? lastSynced,
+    bool havingCollection = false,
   });
 
   Future<PaginatedResult<ClipCollection>> getDeletedClipCollections({

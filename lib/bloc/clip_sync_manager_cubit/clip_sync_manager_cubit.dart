@@ -182,7 +182,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
         fromTs = item?.lastSynced;
       });
 
-      await syncDeleted(fromTs);
+      if (fromTs != null) await syncDeleted(fromTs!);
 
       if (state is ClipSyncFailed) return false;
       await syncChanges(fromTs);
@@ -195,7 +195,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     }
   }
 
-  Future<void> syncDeleted(DateTime? fromTs) async {
+  Future<void> syncDeleted(DateTime fromTs) async {
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
@@ -239,6 +239,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
+    bool havingCollection = fromTs == null; // first time syncing after login
 
     bool failed = false;
     int syncedCount = 0;
@@ -249,17 +250,24 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
       emit(ClipSyncManagerState.syncing(total: 0, synced: syncedCount));
       final result = await syncRepo.getLatestClipboardItems(
         limit: 1000,
-        lastSynced: _lastSyncedTime(fromTs),
+        lastSynced: havingCollection ? null : _lastSyncedTime(fromTs),
         offset: offset,
         excludeDeviceId: fromTs != null ? deviceId : null,
+        havingCollection: havingCollection,
       );
 
       await result.fold((l) async {
         emit(ClipSyncManagerState.failed(l));
         failed = true;
       }, (r) async {
-        hasMore = r.hasMore;
-        offset += r.results.length;
+        if (!r.hasMore && havingCollection) {
+          hasMore = true;
+          offset = 0;
+          havingCollection = false;
+        } else {
+          hasMore = r.hasMore;
+          offset += r.results.length;
+        }
         // Apply changes to local db
         final items = r.results;
 

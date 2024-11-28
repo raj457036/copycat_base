@@ -19,6 +19,7 @@ class SyncRepositoryImpl implements SyncRepository {
     int offset = 0,
     String? excludeDeviceId,
     DateTime? lastSynced,
+    bool havingCollection = false,
   }) async {
     try {
       final result = await source.getLatestClipboardItems(
@@ -26,6 +27,7 @@ class SyncRepositoryImpl implements SyncRepository {
         offset: offset,
         excludeDeviceId: excludeDeviceId,
         lastSynced: lastSynced,
+        havingCollection: havingCollection,
       );
 
       final decryptedItems = await Future.wait(
