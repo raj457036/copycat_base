@@ -30,15 +30,9 @@ class SyncRepositoryImpl implements SyncRepository {
         havingCollection: havingCollection,
       );
 
-      final decryptedItems = await Future.wait(
-        result.results.map(
-          (e) => e.decrypt(),
-        ),
-      );
-
       return Right(
         PaginatedResult(
-          results: decryptedItems,
+          results: result.results,
           hasMore: result.hasMore,
         ),
       );

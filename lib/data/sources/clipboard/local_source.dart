@@ -235,13 +235,14 @@ class LocalClipboardSource implements ClipboardSource {
   @override
   Future<ClipboardItem> updateOrCreate(ClipboardItem item) async {
     item = item.copyWith(lastSynced: now());
+    item = await item.decrypt();
     if (item.serverId != null) {
       final existingClip = await get(serverId: item.serverId!);
       if (existingClip != null) {
         item = item.copyWith(
           localPath: existingClip.localPath,
           localOnly: existingClip.localOnly,
-        )..id = existingClip.id;
+        )..applyId(existingClip);
         return update(item);
       }
     }

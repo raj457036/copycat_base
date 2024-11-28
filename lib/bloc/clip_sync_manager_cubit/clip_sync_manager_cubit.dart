@@ -30,11 +30,12 @@ part 'clip_sync_manager_state.dart';
 void _syncingClips(
   (List<ClipboardItem>, Map<int, int>) record,
   Sender send,
-) {
+) async {
   final Isar db = Isar.getInstance(dbName)!;
 
   final events = <ClipCrossSyncEvent>[];
-  final (items, collectionMap) = record;
+  var (items, collectionMap) = record;
+
   db.writeTxnSync(() {
     for (var index = 0; index < items.length; index++) {
       var item = items[index];
@@ -46,13 +47,14 @@ void _syncingClips(
       if (found == null) {
         item = item.copyWith(
           collectionId: collectionId,
+          lastSynced: now(),
         );
         items[index] = item;
         events.add((CrossSyncEventType.create, item));
         continue;
       }
       item = item.copyWith(
-        lastSynced: found.lastSynced,
+        lastSynced: now(),
         localPath: found.localPath,
         collectionId: collectionId,
       )..applyId(found);
