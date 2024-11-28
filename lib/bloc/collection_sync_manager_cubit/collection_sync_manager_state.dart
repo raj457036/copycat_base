@@ -7,11 +7,11 @@ class CollectionSyncManagerState with _$CollectionSyncManagerState {
   const factory CollectionSyncManagerState.syncingUnknonw() =
       CollectionSyncingUnknown;
   const factory CollectionSyncManagerState.syncing({
-    required int total,
     required int synced,
   }) = CollectionSyncing;
   const factory CollectionSyncManagerState.synced(
-      {@Default(false) bool manual}) = CollectionSyncComplete;
+      {@Default(false) bool manual,
+      @Default(true) triggerReaction}) = CollectionSyncComplete;
   const factory CollectionSyncManagerState.failed(Failure failure) =
       CollectionSyncFailed;
 }

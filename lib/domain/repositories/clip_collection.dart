@@ -22,4 +22,6 @@ abstract class ClipCollectionRepository {
   FailureOr<List<ClipCollection>> deleteMany(List<ClipCollection> items);
 
   FailureOr<void> deleteAll();
+
+  FailureOr<int> getCount({bool local = true});
 }

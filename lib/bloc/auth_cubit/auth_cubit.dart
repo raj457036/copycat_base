@@ -61,6 +61,18 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  Future<void> removeEncryptionSetup() async {
+    await state.mapOrNull(authenticated: (authState) async {
+      final result = await repo.updateUserInfo({
+        "enc1": null,
+        "enc2KeyId": null,
+      });
+      result.fold((l) {}, (user) {
+        emit(authState.copyWith(user: user));
+      });
+    });
+  }
+
   /// enc1 is always encrypted with enc2 key.
   Future<void> setupEncryption(String enc2KeyId, String enc1) async {
     await state.mapOrNull(authenticated: (authState) async {

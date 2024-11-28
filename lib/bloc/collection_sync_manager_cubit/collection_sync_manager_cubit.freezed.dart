@@ -21,8 +21,8 @@ mixin _$CollectionSyncManagerState {
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,8 +31,8 @@ mixin _$CollectionSyncManagerState {
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,8 +41,8 @@ mixin _$CollectionSyncManagerState {
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) =>
@@ -160,8 +160,8 @@ class _$CollectionSyncDisabledImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return disabled();
@@ -173,8 +173,8 @@ class _$CollectionSyncDisabledImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return disabled?.call();
@@ -186,8 +186,8 @@ class _$CollectionSyncDisabledImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -301,8 +301,8 @@ class _$CollectionSyncUnknownImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return unknown();
@@ -314,8 +314,8 @@ class _$CollectionSyncUnknownImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return unknown?.call();
@@ -327,8 +327,8 @@ class _$CollectionSyncUnknownImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -443,8 +443,8 @@ class _$CollectionSyncingUnknownImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return syncingUnknonw();
@@ -456,8 +456,8 @@ class _$CollectionSyncingUnknownImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return syncingUnknonw?.call();
@@ -469,8 +469,8 @@ class _$CollectionSyncingUnknownImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -534,7 +534,7 @@ abstract class _$$CollectionSyncingImplCopyWith<$Res> {
           $Res Function(_$CollectionSyncingImpl) then) =
       __$$CollectionSyncingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int total, int synced});
+  $Res call({int synced});
 }
 
 /// @nodoc
@@ -551,14 +551,9 @@ class __$$CollectionSyncingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? total = null,
     Object? synced = null,
   }) {
     return _then(_$CollectionSyncingImpl(
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
       synced: null == synced
           ? _value.synced
           : synced // ignore: cast_nullable_to_non_nullable
@@ -572,16 +567,14 @@ class __$$CollectionSyncingImplCopyWithImpl<$Res>
 class _$CollectionSyncingImpl
     with DiagnosticableTreeMixin
     implements CollectionSyncing {
-  const _$CollectionSyncingImpl({required this.total, required this.synced});
+  const _$CollectionSyncingImpl({required this.synced});
 
-  @override
-  final int total;
   @override
   final int synced;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CollectionSyncManagerState.syncing(total: $total, synced: $synced)';
+    return 'CollectionSyncManagerState.syncing(synced: $synced)';
   }
 
   @override
@@ -589,7 +582,6 @@ class _$CollectionSyncingImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.syncing'))
-      ..add(DiagnosticsProperty('total', total))
       ..add(DiagnosticsProperty('synced', synced));
   }
 
@@ -598,12 +590,11 @@ class _$CollectionSyncingImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionSyncingImpl &&
-            (identical(other.total, total) || other.total == total) &&
             (identical(other.synced, synced) || other.synced == synced));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, total, synced);
+  int get hashCode => Object.hash(runtimeType, synced);
 
   /// Create a copy of CollectionSyncManagerState
   /// with the given fields replaced by the non-null parameter values.
@@ -620,11 +611,11 @@ class _$CollectionSyncingImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) {
-    return syncing(total, this.synced);
+    return syncing(this.synced);
   }
 
   @override
@@ -633,11 +624,11 @@ class _$CollectionSyncingImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
-    return syncing?.call(total, this.synced);
+    return syncing?.call(this.synced);
   }
 
   @override
@@ -646,13 +637,13 @@ class _$CollectionSyncingImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
     if (syncing != null) {
-      return syncing(total, this.synced);
+      return syncing(this.synced);
     }
     return orElse();
   }
@@ -702,11 +693,9 @@ class _$CollectionSyncingImpl
 }
 
 abstract class CollectionSyncing implements CollectionSyncManagerState {
-  const factory CollectionSyncing(
-      {required final int total,
-      required final int synced}) = _$CollectionSyncingImpl;
+  const factory CollectionSyncing({required final int synced}) =
+      _$CollectionSyncingImpl;
 
-  int get total;
   int get synced;
 
   /// Create a copy of CollectionSyncManagerState
@@ -723,7 +712,7 @@ abstract class _$$CollectionSyncCompleteImplCopyWith<$Res> {
           $Res Function(_$CollectionSyncCompleteImpl) then) =
       __$$CollectionSyncCompleteImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool manual});
+  $Res call({bool manual, dynamic triggerReaction});
 }
 
 /// @nodoc
@@ -742,12 +731,16 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? manual = null,
+    Object? triggerReaction = freezed,
   }) {
     return _then(_$CollectionSyncCompleteImpl(
       manual: null == manual
           ? _value.manual
           : manual // ignore: cast_nullable_to_non_nullable
               as bool,
+      triggerReaction: freezed == triggerReaction
+          ? _value.triggerReaction!
+          : triggerReaction,
     ));
   }
 }
@@ -757,15 +750,19 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
 class _$CollectionSyncCompleteImpl
     with DiagnosticableTreeMixin
     implements CollectionSyncComplete {
-  const _$CollectionSyncCompleteImpl({this.manual = false});
+  const _$CollectionSyncCompleteImpl(
+      {this.manual = false, this.triggerReaction = true});
 
   @override
   @JsonKey()
   final bool manual;
+  @override
+  @JsonKey()
+  final dynamic triggerReaction;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CollectionSyncManagerState.synced(manual: $manual)';
+    return 'CollectionSyncManagerState.synced(manual: $manual, triggerReaction: $triggerReaction)';
   }
 
   @override
@@ -773,7 +770,8 @@ class _$CollectionSyncCompleteImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.synced'))
-      ..add(DiagnosticsProperty('manual', manual));
+      ..add(DiagnosticsProperty('manual', manual))
+      ..add(DiagnosticsProperty('triggerReaction', triggerReaction));
   }
 
   @override
@@ -781,11 +779,14 @@ class _$CollectionSyncCompleteImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionSyncCompleteImpl &&
-            (identical(other.manual, manual) || other.manual == manual));
+            (identical(other.manual, manual) || other.manual == manual) &&
+            const DeepCollectionEquality()
+                .equals(other.triggerReaction, triggerReaction));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, manual);
+  int get hashCode => Object.hash(runtimeType, manual,
+      const DeepCollectionEquality().hash(triggerReaction));
 
   /// Create a copy of CollectionSyncManagerState
   /// with the given fields replaced by the non-null parameter values.
@@ -802,11 +803,11 @@ class _$CollectionSyncCompleteImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) {
-    return synced(manual);
+    return synced(manual, triggerReaction);
   }
 
   @override
@@ -815,11 +816,11 @@ class _$CollectionSyncCompleteImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
-    return synced?.call(manual);
+    return synced?.call(manual, triggerReaction);
   }
 
   @override
@@ -828,13 +829,13 @@ class _$CollectionSyncCompleteImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
     if (synced != null) {
-      return synced(manual);
+      return synced(manual, triggerReaction);
     }
     return orElse();
   }
@@ -884,10 +885,12 @@ class _$CollectionSyncCompleteImpl
 }
 
 abstract class CollectionSyncComplete implements CollectionSyncManagerState {
-  const factory CollectionSyncComplete({final bool manual}) =
-      _$CollectionSyncCompleteImpl;
+  const factory CollectionSyncComplete(
+      {final bool manual,
+      final dynamic triggerReaction}) = _$CollectionSyncCompleteImpl;
 
   bool get manual;
+  dynamic get triggerReaction;
 
   /// Create a copy of CollectionSyncManagerState
   /// with the given fields replaced by the non-null parameter values.
@@ -980,8 +983,8 @@ class _$CollectionSyncFailedImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
-    required TResult Function(int total, int synced) syncing,
-    required TResult Function(bool manual) synced,
+    required TResult Function(int synced) syncing,
+    required TResult Function(bool manual, dynamic triggerReaction) synced,
     required TResult Function(Failure failure) failed,
   }) {
     return failed(failure);
@@ -993,8 +996,8 @@ class _$CollectionSyncFailedImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
-    TResult? Function(int total, int synced)? syncing,
-    TResult? Function(bool manual)? synced,
+    TResult? Function(int synced)? syncing,
+    TResult? Function(bool manual, dynamic triggerReaction)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return failed?.call(failure);
@@ -1006,8 +1009,8 @@ class _$CollectionSyncFailedImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
-    TResult Function(int total, int synced)? syncing,
-    TResult Function(bool manual)? synced,
+    TResult Function(int synced)? syncing,
+    TResult Function(bool manual, dynamic triggerReaction)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {

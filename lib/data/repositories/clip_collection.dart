@@ -141,4 +141,19 @@ class ClipCollectionRepositoryImpl implements ClipCollectionRepository {
       return Left(Failure.fromException(e));
     }
   }
+
+  @override
+  FailureOr<int> getCount({bool local = true}) async {
+    try {
+      final int count;
+      if (local) {
+        count = await this.local.getCount();
+      } else {
+        count = await remote.getCount();
+      }
+      return Right(count);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
 }

@@ -10,6 +10,13 @@ class Failure {
     required this.code,
   });
 
+  factory Failure.fromMessage(String message) {
+    return Failure(
+      message: message,
+      code: "common-failure",
+    );
+  }
+
   factory Failure.fromException(dynamic e) {
     if (e is Failure) return e;
     if (e is SocketException) return noInternetConnectionFailure;

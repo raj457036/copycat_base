@@ -38,7 +38,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showFailureSnackbar(
         children: [
           Icon(
             Icons.warning_amber_rounded,
-            color: colors.errorContainer,
+            color: colors.onError,
           ),
           width8,
           Expanded(
@@ -47,13 +47,15 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showFailureSnackbar(
               maxLines: 10,
               overflow: TextOverflow.clip,
               style: TextStyle(
-                color: colors.errorContainer,
+                color: colors.onError,
               ),
             ),
           )
         ],
       ),
-      closeIconColor: colors.errorContainer,
+      shape: StadiumBorder(),
+      elevation: 0,
+      closeIconColor: colors.onError,
       behavior: isMobile ? SnackBarBehavior.fixed : SnackBarBehavior.floating,
       width: isMobile ? null : 480,
       showCloseIcon: !isMobile,
@@ -84,11 +86,15 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
 }) {
   final context = scaffoldMessengerKey.currentContext!;
   final mq = context.mq;
+
   final isMobile = Breakpoints.isMobile(mq.size.width);
 
   Color? bg;
   if (success) bg = Colors.green;
-  if (failure) bg = Colors.red;
+  if (failure) {
+    final colors = context.colors;
+    bg = colors.error;
+  }
 
   Widget child;
 
@@ -129,8 +135,10 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
           ? Duration(seconds: duration)
           : isLoading
               ? const Duration(seconds: 30)
-              : const Duration(seconds: 2),
+              : const Duration(seconds: 4),
       action: action,
+      shape: StadiumBorder(),
+      elevation: 0,
     ),
     closePrevious: closePrevious,
   );

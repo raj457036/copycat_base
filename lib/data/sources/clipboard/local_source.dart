@@ -248,4 +248,17 @@ class LocalClipboardSource implements ClipboardSource {
     }
     return create(item);
   }
+
+  @override
+  Future<void> deleteAllEncrypted() async {
+    // no-op
+  }
+
+  @override
+  Future<int> getClipCounts() async {
+    final count = await db.txn(() async {
+      return db.clipboardItems.count();
+    });
+    return count;
+  }
 }

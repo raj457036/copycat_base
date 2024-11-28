@@ -198,4 +198,12 @@ class LocalClipCollectionSource implements ClipCollectionSource {
     });
     return result;
   }
+
+  @override
+  Future<int> getCount() async {
+    final count = await db.txn(() {
+      return db.clipCollections.count();
+    });
+    return count;
+  }
 }

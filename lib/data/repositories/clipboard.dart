@@ -143,6 +143,26 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item) {
     throw UnimplementedError();
   }
+
+  @override
+  FailureOr<void> deleteAllEncrypted() async {
+    try {
+      await remote.deleteAllEncrypted();
+      return Right(null);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<int> getClipCounts() async {
+    try {
+      final count = await remote.getClipCounts();
+      return Right(count);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
 }
 
 @Named("offline")
@@ -271,6 +291,22 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item) async {
     try {
       final result = await local.updateOrCreate(item);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<void> deleteAllEncrypted() async {
+    // no-op
+    return Right(null);
+  }
+
+  @override
+  FailureOr<int> getClipCounts() async {
+    try {
+      final result = await local.getClipCounts();
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));

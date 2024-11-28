@@ -20,4 +20,6 @@ abstract class ClipCollectionSource {
   Future<List<ClipCollection>> deleteMany(List<ClipCollection> items);
 
   Future<void> deleteAll();
+
+  Future<int> getCount();
 }

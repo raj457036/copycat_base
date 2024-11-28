@@ -249,7 +249,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     final collectionMapping = collectionCubit.serverMapping;
 
     while (hasMore && !failed) {
-      emit(ClipSyncManagerState.syncing(total: 0, synced: syncedCount));
+      emit(ClipSyncManagerState.syncing(synced: syncedCount));
       final result = await syncRepo.getLatestClipboardItems(
         limit: 1000,
         lastSynced: havingCollection ? null : _lastSyncedTime(fromTs),

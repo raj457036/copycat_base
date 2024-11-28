@@ -33,4 +33,8 @@ abstract class ClipboardRepository {
   FailureOr<ClipboardItem?> getLatestFromOthers({bool? synced});
 
   FailureOr<void> decryptPending();
+
+  FailureOr<void> deleteAllEncrypted();
+
+  FailureOr<int> getClipCounts();
 }

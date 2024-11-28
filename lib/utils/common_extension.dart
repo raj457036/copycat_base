@@ -29,7 +29,8 @@ extension BuildContextExtension on BuildContext {
   ColorScheme get colors => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
   MediaQueryData get mq => MediaQuery.of(this);
-  WindowActionCubit? get windowAction => read<WindowActionCubit?>();
+  WindowActionCubit? get windowAction =>
+      isDesktopPlatform ? read<WindowActionCubit?>() : null;
   bool get isDarkMode => theme.brightness == Brightness.dark;
 }
 

@@ -39,4 +39,8 @@ abstract class ClipboardSource {
   Future<ClipboardItem?> getLatestFromOthers({bool? synced});
 
   Future<void> decryptPending();
+
+  Future<void> deleteAllEncrypted();
+
+  Future<int> getClipCounts();
 }

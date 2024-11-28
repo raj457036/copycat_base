@@ -82,7 +82,10 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     return (true, 0);
   }
 
-  Future<bool> syncCollections({bool manual = false}) async {
+  Future<bool> syncCollections({
+    bool manual = false,
+    bool triggerReaction = true,
+  }) async {
     if (manual) {
       final (canSync, secondLeft) = canManullySync();
       if (!canSync) {
@@ -110,7 +113,10 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
       await syncChanges(fromTs);
 
       if (state is CollectionSyncFailed) return false;
-      emit(CollectionSyncManagerState.synced(manual: manual));
+      emit(CollectionSyncManagerState.synced(
+        manual: manual,
+        triggerReaction: triggerReaction,
+      ));
       return state is CollectionSyncComplete;
     } finally {
       _busy = false;
@@ -155,9 +161,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
   }
 
-  Future<void> syncChanges(
-    DateTime? fromTs,
-  ) async {
+  Future<void> syncChanges(DateTime? fromTs) async {
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
@@ -168,7 +172,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     final collectionMapping = collectionCubit.serverMapping;
 
     while (hasMore && !failed) {
-      emit(CollectionSyncManagerState.syncing(total: 0, synced: syncedCount));
+      emit(CollectionSyncManagerState.syncing(synced: syncedCount));
       final result = await syncRepo.getLatestClipCollections(
         limit: 1000,
         lastSynced: _lastSyncedTime(fromTs),
@@ -211,10 +215,6 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
           broadcastBatchEvent(syncEvents);
         });
       });
-    }
-
-    if (!failed) {
-      emit(const CollectionSyncManagerState.synced());
     }
   }
 

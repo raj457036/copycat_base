@@ -21,7 +21,7 @@ mixin _$ClipSyncManagerState {
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) =>
@@ -31,7 +31,7 @@ mixin _$ClipSyncManagerState {
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) =>
@@ -41,7 +41,7 @@ mixin _$ClipSyncManagerState {
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
@@ -155,7 +155,7 @@ class _$ClipSyncDisabledImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -168,7 +168,7 @@ class _$ClipSyncDisabledImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
@@ -181,7 +181,7 @@ class _$ClipSyncDisabledImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
@@ -292,7 +292,7 @@ class _$ClipSyncUnknownImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -305,7 +305,7 @@ class _$ClipSyncUnknownImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
@@ -318,7 +318,7 @@ class _$ClipSyncUnknownImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
@@ -430,7 +430,7 @@ class _$ClipSyncingUnknownImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -443,7 +443,7 @@ class _$ClipSyncingUnknownImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
@@ -456,7 +456,7 @@ class _$ClipSyncingUnknownImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
@@ -521,7 +521,7 @@ abstract class _$$ClipSyncingImplCopyWith<$Res> {
           _$ClipSyncingImpl value, $Res Function(_$ClipSyncingImpl) then) =
       __$$ClipSyncingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int total, int synced});
+  $Res call({int synced});
 }
 
 /// @nodoc
@@ -537,14 +537,9 @@ class __$$ClipSyncingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? total = null,
     Object? synced = null,
   }) {
     return _then(_$ClipSyncingImpl(
-      total: null == total
-          ? _value.total
-          : total // ignore: cast_nullable_to_non_nullable
-              as int,
       synced: null == synced
           ? _value.synced
           : synced // ignore: cast_nullable_to_non_nullable
@@ -556,16 +551,14 @@ class __$$ClipSyncingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
-  const _$ClipSyncingImpl({required this.total, required this.synced});
+  const _$ClipSyncingImpl({required this.synced});
 
-  @override
-  final int total;
   @override
   final int synced;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ClipSyncManagerState.syncing(total: $total, synced: $synced)';
+    return 'ClipSyncManagerState.syncing(synced: $synced)';
   }
 
   @override
@@ -573,7 +566,6 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ClipSyncManagerState.syncing'))
-      ..add(DiagnosticsProperty('total', total))
       ..add(DiagnosticsProperty('synced', synced));
   }
 
@@ -582,12 +574,11 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClipSyncingImpl &&
-            (identical(other.total, total) || other.total == total) &&
             (identical(other.synced, synced) || other.synced == synced));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, total, synced);
+  int get hashCode => Object.hash(runtimeType, synced);
 
   /// Create a copy of ClipSyncManagerState
   /// with the given fields replaced by the non-null parameter values.
@@ -603,11 +594,11 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
-    return syncing(total, this.synced);
+    return syncing(this.synced);
   }
 
   @override
@@ -616,11 +607,11 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
-    return syncing?.call(total, this.synced);
+    return syncing?.call(this.synced);
   }
 
   @override
@@ -629,13 +620,13 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
     if (syncing != null) {
-      return syncing(total, this.synced);
+      return syncing(this.synced);
     }
     return orElse();
   }
@@ -685,11 +676,8 @@ class _$ClipSyncingImpl with DiagnosticableTreeMixin implements ClipSyncing {
 }
 
 abstract class ClipSyncing implements ClipSyncManagerState {
-  const factory ClipSyncing(
-      {required final int total,
-      required final int synced}) = _$ClipSyncingImpl;
+  const factory ClipSyncing({required final int synced}) = _$ClipSyncingImpl;
 
-  int get total;
   int get synced;
 
   /// Create a copy of ClipSyncManagerState
@@ -751,7 +739,7 @@ class _$ClipSyncCompleteImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -764,7 +752,7 @@ class _$ClipSyncCompleteImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
@@ -777,7 +765,7 @@ class _$ClipSyncCompleteImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
@@ -918,7 +906,7 @@ class _$ClipSyncFailedImpl
     required TResult Function() disabled,
     required TResult Function() unknown,
     required TResult Function() syncingUnknown,
-    required TResult Function(int total, int synced) syncing,
+    required TResult Function(int synced) syncing,
     required TResult Function() synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -931,7 +919,7 @@ class _$ClipSyncFailedImpl
     TResult? Function()? disabled,
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknown,
-    TResult? Function(int total, int synced)? syncing,
+    TResult? Function(int synced)? syncing,
     TResult? Function()? synced,
     TResult? Function(Failure failure)? failed,
   }) {
@@ -944,7 +932,7 @@ class _$ClipSyncFailedImpl
     TResult Function()? disabled,
     TResult Function()? unknown,
     TResult Function()? syncingUnknown,
-    TResult Function(int total, int synced)? syncing,
+    TResult Function(int synced)? syncing,
     TResult Function()? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
