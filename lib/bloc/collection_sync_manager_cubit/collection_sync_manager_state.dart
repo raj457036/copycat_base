@@ -9,7 +9,7 @@ class CollectionSyncManagerState with _$CollectionSyncManagerState {
   const factory CollectionSyncManagerState.syncing({
     required int synced,
   }) = CollectionSyncing;
-  const factory CollectionSyncManagerState.synced(
+  const factory CollectionSyncManagerState.synced(int syncCount,
       {@Default(false) bool manual,
       @Default(true) triggerReaction}) = CollectionSyncComplete;
   const factory CollectionSyncManagerState.failed(Failure failure) =

@@ -56,6 +56,8 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
   }
 
+  void reset() => emit(CollectionSyncManagerState.unknown());
+
   void startPolling() {
     if (_pollingTimer != null) return;
     _pollingTimer = Timer.periodic(
@@ -110,13 +112,14 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
       if (fromTs != null) await syncDeleted(fromTs!);
 
       if (state is CollectionSyncFailed) return false;
-      await syncChanges(fromTs);
-
-      if (state is CollectionSyncFailed) return false;
-      emit(CollectionSyncManagerState.synced(
+      await syncChanges(
+        fromTs,
         manual: manual,
         triggerReaction: triggerReaction,
-      ));
+      );
+
+      if (state is CollectionSyncFailed) return false;
+
       return state is CollectionSyncComplete;
     } finally {
       _busy = false;
@@ -161,7 +164,11 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
   }
 
-  Future<void> syncChanges(DateTime? fromTs) async {
+  Future<void> syncChanges(
+    DateTime? fromTs, {
+    required bool manual,
+    required bool triggerReaction,
+  }) async {
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
@@ -174,7 +181,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     while (hasMore && !failed) {
       emit(CollectionSyncManagerState.syncing(synced: syncedCount));
       final result = await syncRepo.getLatestClipCollections(
-        limit: 1000,
+        limit: 250,
         lastSynced: _lastSyncedTime(fromTs),
         offset: offset,
         excludeDeviceId: fromTs != null ? deviceId : null,
@@ -215,7 +222,15 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
           broadcastBatchEvent(syncEvents);
         });
       });
+      await wait(250);
     }
+
+    if (failed) return;
+    emit(CollectionSyncManagerState.synced(
+      syncedCount,
+      manual: manual,
+      triggerReaction: triggerReaction,
+    ));
   }
 
   void broadcastBatchEvent(List<CollectionCrossSyncEvent> events) {

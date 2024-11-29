@@ -36,5 +36,5 @@ abstract class ClipboardRepository {
 
   FailureOr<void> deleteAllEncrypted();
 
-  FailureOr<int> getClipCounts();
+  FailureOr<int> getClipCounts([DateTime? fromTs]);
 }

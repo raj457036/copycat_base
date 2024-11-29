@@ -8,6 +8,6 @@ sealed class ClipSyncManagerState with _$ClipSyncManagerState {
   const factory ClipSyncManagerState.syncing({
     required int synced,
   }) = ClipSyncing;
-  const factory ClipSyncManagerState.synced() = ClipSyncComplete;
+  const factory ClipSyncManagerState.synced(int syncCount) = ClipSyncComplete;
   const factory ClipSyncManagerState.failed(Failure failure) = ClipSyncFailed;
 }

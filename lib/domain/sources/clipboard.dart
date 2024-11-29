@@ -42,5 +42,5 @@ abstract class ClipboardSource {
 
   Future<void> deleteAllEncrypted();
 
-  Future<int> getClipCounts();
+  Future<int> getClipCounts([DateTime? fromTs]);
 }

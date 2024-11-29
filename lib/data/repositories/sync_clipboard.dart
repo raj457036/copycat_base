@@ -30,12 +30,7 @@ class SyncRepositoryImpl implements SyncRepository {
         havingCollection: havingCollection,
       );
 
-      return Right(
-        PaginatedResult(
-          results: result.results,
-          hasMore: result.hasMore,
-        ),
-      );
+      return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));
     }

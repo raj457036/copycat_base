@@ -255,7 +255,7 @@ class LocalClipboardSource implements ClipboardSource {
   }
 
   @override
-  Future<int> getClipCounts() async {
+  Future<int> getClipCounts([DateTime? fromTs]) async {
     final count = await db.txn(() async {
       return db.clipboardItems.count();
     });

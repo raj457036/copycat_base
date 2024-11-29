@@ -155,9 +155,9 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<int> getClipCounts() async {
+  FailureOr<int> getClipCounts([DateTime? fromTs]) async {
     try {
-      final count = await remote.getClipCounts();
+      final count = await remote.getClipCounts(fromTs);
       return Right(count);
     } catch (e) {
       return Left(Failure.fromException(e));
@@ -304,7 +304,7 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<int> getClipCounts() async {
+  FailureOr<int> getClipCounts([DateTime? fromTs]) async {
     try {
       final result = await local.getClipCounts();
       return Right(result);

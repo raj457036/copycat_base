@@ -136,6 +136,8 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     }
   }
 
+  void reset() => emit(ClipSyncManagerState.unknown());
+
   void startPolling() {
     if (_pollingTimer != null) return;
     _pollingTimer = Timer.periodic(
@@ -190,7 +192,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
       await syncChanges(fromTs);
 
       if (state is ClipSyncFailed) return false;
-      emit(const ClipSyncManagerState.synced());
+
       return state is ClipSyncComplete;
     } finally {
       _busy = false;
@@ -206,7 +208,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     while (hasMore) {
       final result = await syncRepo.getDeletedClipboardItems(
         limit: 1000,
-        lastSynced: _lastSyncedTime(fromTs),
+        lastSynced: getLastSyncedTime(fromTs),
         offset: offset,
         excludeDeviceId: deviceId,
       );
@@ -238,6 +240,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
   Future<void> syncChanges(
     DateTime? fromTs,
   ) async {
+    await _clipSyncWorker.waitUntilReady();
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
@@ -251,8 +254,8 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     while (hasMore && !failed) {
       emit(ClipSyncManagerState.syncing(synced: syncedCount));
       final result = await syncRepo.getLatestClipboardItems(
-        limit: 1000,
-        lastSynced: havingCollection ? null : _lastSyncedTime(fromTs),
+        limit: 500,
+        lastSynced: havingCollection ? null : getLastSyncedTime(fromTs),
         offset: offset,
         excludeDeviceId: fromTs != null ? deviceId : null,
         havingCollection: havingCollection,
@@ -274,18 +277,18 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
         final items = r.results;
 
         if (items.isEmpty) return;
-        await _clipSyncWorker.waitUntilReady();
+
         final syncEvents = await _clipSyncWorker.compute(
           (items, collectionMapping),
         );
         syncedCount += syncEvents.length;
         broadcastBatchEvent(syncEvents);
       });
+      await wait(250);
     }
 
-    if (!failed) {
-      emit(const ClipSyncManagerState.synced());
-    }
+    if (failed) return;
+    emit(ClipSyncManagerState.synced(syncedCount));
   }
 
   void broadcastBatchEvent(List<ClipCrossSyncEvent> events) {
@@ -293,7 +296,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     EventBus.emit(eventPayload);
   }
 
-  DateTime _lastSyncedTime(DateTime? relativeTo) {
+  DateTime getLastSyncedTime([DateTime? relativeTo]) {
     if (relativeTo != null) {
       final diff = now().difference(relativeTo);
       if (diff.inHours < syncHours) {
