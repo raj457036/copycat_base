@@ -14,6 +14,7 @@ abstract class SyncClipboardSource {
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
+    DateTime? from,
     DateTime? lastSynced,
     bool havingCollection = false,
   });

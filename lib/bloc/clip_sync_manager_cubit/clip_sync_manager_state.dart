@@ -7,7 +7,13 @@ sealed class ClipSyncManagerState with _$ClipSyncManagerState {
   const factory ClipSyncManagerState.syncingUnknown() = ClipSyncingUnknown;
   const factory ClipSyncManagerState.syncing({
     required int synced,
+    required DateTime fromTs,
+    required DateTime toTs,
   }) = ClipSyncing;
-  const factory ClipSyncManagerState.synced(int syncCount) = ClipSyncComplete;
+  const factory ClipSyncManagerState.synced(
+    int syncCount, {
+    required DateTime fromTs,
+    required DateTime toTs,
+  }) = ClipSyncComplete;
   const factory ClipSyncManagerState.failed(Failure failure) = ClipSyncFailed;
 }

@@ -16,7 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SyncStatus {
-  DateTime? get lastSync => throw _privateConstructorUsedError;
+  DateTime? get lastSyncPoint =>
+      throw _privateConstructorUsedError; // . . . ->* . . |<- it stores the last sync end point in time.
+  DateTime? get lastSyncStartPoint =>
+      throw _privateConstructorUsedError; // . . . ->| . . *<- it stores the last sync start point in time.
+  int? get lastKnownSyncCount => throw _privateConstructorUsedError;
+  int? get lastKnownTotalCount => throw _privateConstructorUsedError;
+  bool get restorationPending => throw _privateConstructorUsedError;
 
   /// Create a copy of SyncStatus
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +37,12 @@ abstract class $SyncStatusCopyWith<$Res> {
           SyncStatus value, $Res Function(SyncStatus) then) =
       _$SyncStatusCopyWithImpl<$Res, SyncStatus>;
   @useResult
-  $Res call({DateTime? lastSync});
+  $Res call(
+      {DateTime? lastSyncPoint,
+      DateTime? lastSyncStartPoint,
+      int? lastKnownSyncCount,
+      int? lastKnownTotalCount,
+      bool restorationPending});
 }
 
 /// @nodoc
@@ -49,13 +60,33 @@ class _$SyncStatusCopyWithImpl<$Res, $Val extends SyncStatus>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastSync = freezed,
+    Object? lastSyncPoint = freezed,
+    Object? lastSyncStartPoint = freezed,
+    Object? lastKnownSyncCount = freezed,
+    Object? lastKnownTotalCount = freezed,
+    Object? restorationPending = null,
   }) {
     return _then(_value.copyWith(
-      lastSync: freezed == lastSync
-          ? _value.lastSync
-          : lastSync // ignore: cast_nullable_to_non_nullable
+      lastSyncPoint: freezed == lastSyncPoint
+          ? _value.lastSyncPoint
+          : lastSyncPoint // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      lastSyncStartPoint: freezed == lastSyncStartPoint
+          ? _value.lastSyncStartPoint
+          : lastSyncStartPoint // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      lastKnownSyncCount: freezed == lastKnownSyncCount
+          ? _value.lastKnownSyncCount
+          : lastKnownSyncCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastKnownTotalCount: freezed == lastKnownTotalCount
+          ? _value.lastKnownTotalCount
+          : lastKnownTotalCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      restorationPending: null == restorationPending
+          ? _value.restorationPending
+          : restorationPending // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -68,7 +99,12 @@ abstract class _$$SyncStatusImplCopyWith<$Res>
       __$$SyncStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime? lastSync});
+  $Res call(
+      {DateTime? lastSyncPoint,
+      DateTime? lastSyncStartPoint,
+      int? lastKnownSyncCount,
+      int? lastKnownTotalCount,
+      bool restorationPending});
 }
 
 /// @nodoc
@@ -84,13 +120,33 @@ class __$$SyncStatusImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastSync = freezed,
+    Object? lastSyncPoint = freezed,
+    Object? lastSyncStartPoint = freezed,
+    Object? lastKnownSyncCount = freezed,
+    Object? lastKnownTotalCount = freezed,
+    Object? restorationPending = null,
   }) {
     return _then(_$SyncStatusImpl(
-      lastSync: freezed == lastSync
-          ? _value.lastSync
-          : lastSync // ignore: cast_nullable_to_non_nullable
+      lastSyncPoint: freezed == lastSyncPoint
+          ? _value.lastSyncPoint
+          : lastSyncPoint // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      lastSyncStartPoint: freezed == lastSyncStartPoint
+          ? _value.lastSyncStartPoint
+          : lastSyncStartPoint // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      lastKnownSyncCount: freezed == lastKnownSyncCount
+          ? _value.lastKnownSyncCount
+          : lastKnownSyncCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastKnownTotalCount: freezed == lastKnownTotalCount
+          ? _value.lastKnownTotalCount
+          : lastKnownTotalCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      restorationPending: null == restorationPending
+          ? _value.restorationPending
+          : restorationPending // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -98,14 +154,31 @@ class __$$SyncStatusImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SyncStatusImpl extends _SyncStatus {
-  _$SyncStatusImpl({this.lastSync}) : super._();
+  _$SyncStatusImpl(
+      {this.lastSyncPoint,
+      this.lastSyncStartPoint,
+      this.lastKnownSyncCount,
+      this.lastKnownTotalCount,
+      this.restorationPending = true})
+      : super._();
 
   @override
-  final DateTime? lastSync;
+  final DateTime? lastSyncPoint;
+// . . . ->* . . |<- it stores the last sync end point in time.
+  @override
+  final DateTime? lastSyncStartPoint;
+// . . . ->| . . *<- it stores the last sync start point in time.
+  @override
+  final int? lastKnownSyncCount;
+  @override
+  final int? lastKnownTotalCount;
+  @override
+  @JsonKey()
+  final bool restorationPending;
 
   @override
   String toString() {
-    return 'SyncStatus(lastSync: $lastSync)';
+    return 'SyncStatus(lastSyncPoint: $lastSyncPoint, lastSyncStartPoint: $lastSyncStartPoint, lastKnownSyncCount: $lastKnownSyncCount, lastKnownTotalCount: $lastKnownTotalCount, restorationPending: $restorationPending)';
   }
 
   @override
@@ -113,12 +186,26 @@ class _$SyncStatusImpl extends _SyncStatus {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SyncStatusImpl &&
-            (identical(other.lastSync, lastSync) ||
-                other.lastSync == lastSync));
+            (identical(other.lastSyncPoint, lastSyncPoint) ||
+                other.lastSyncPoint == lastSyncPoint) &&
+            (identical(other.lastSyncStartPoint, lastSyncStartPoint) ||
+                other.lastSyncStartPoint == lastSyncStartPoint) &&
+            (identical(other.lastKnownSyncCount, lastKnownSyncCount) ||
+                other.lastKnownSyncCount == lastKnownSyncCount) &&
+            (identical(other.lastKnownTotalCount, lastKnownTotalCount) ||
+                other.lastKnownTotalCount == lastKnownTotalCount) &&
+            (identical(other.restorationPending, restorationPending) ||
+                other.restorationPending == restorationPending));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, lastSync);
+  int get hashCode => Object.hash(
+      runtimeType,
+      lastSyncPoint,
+      lastSyncStartPoint,
+      lastKnownSyncCount,
+      lastKnownTotalCount,
+      restorationPending);
 
   /// Create a copy of SyncStatus
   /// with the given fields replaced by the non-null parameter values.
@@ -130,11 +217,26 @@ class _$SyncStatusImpl extends _SyncStatus {
 }
 
 abstract class _SyncStatus extends SyncStatus {
-  factory _SyncStatus({final DateTime? lastSync}) = _$SyncStatusImpl;
+  factory _SyncStatus(
+      {final DateTime? lastSyncPoint,
+      final DateTime? lastSyncStartPoint,
+      final int? lastKnownSyncCount,
+      final int? lastKnownTotalCount,
+      final bool restorationPending}) = _$SyncStatusImpl;
   _SyncStatus._() : super._();
 
   @override
-  DateTime? get lastSync;
+  DateTime?
+      get lastSyncPoint; // . . . ->* . . |<- it stores the last sync end point in time.
+  @override
+  DateTime?
+      get lastSyncStartPoint; // . . . ->| . . *<- it stores the last sync start point in time.
+  @override
+  int? get lastKnownSyncCount;
+  @override
+  int? get lastKnownTotalCount;
+  @override
+  bool get restorationPending;
 
   /// Create a copy of SyncStatus
   /// with the given fields replaced by the non-null parameter values.

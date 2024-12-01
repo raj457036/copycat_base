@@ -114,7 +114,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
   ClipSyncManagerCubit(
     this.syncRepo,
     this.collectionCubit,
-    @Named("offline") this.clipboardRepository,
+    @Named("local") this.clipboardRepository,
     this.clipCollectionRepository,
     @Named("device_id") this.deviceId,
   ) : super(const ClipSyncManagerState.unknown());
@@ -164,7 +164,12 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     return (true, 0);
   }
 
-  Future<bool> syncClips({bool manual = false}) async {
+  Future<bool> syncClips({
+    bool manual = false,
+    DateTime? syncStartTs,
+    int lastSyncedCount = 0,
+    bool restoration = false,
+  }) async {
     if (manual) {
       final (canSync, secondLeft) = canManuallySync();
       if (!canSync) {
@@ -179,17 +184,20 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     try {
       if (_syncHours == null) return false;
 
-      DateTime? fromTs;
-      final latestSyncedItem =
-          await clipboardRepository.getLatestFromOthers(synced: true);
-      latestSyncedItem.fold((l) {}, (item) {
-        fromTs = item?.lastSynced;
-      });
+      DateTime? syncEndTs;
 
-      if (fromTs != null) await syncDeleted(fromTs!);
+      if (!restoration) {
+        final latestSyncedItem =
+            await clipboardRepository.getLatestFromOthers(synced: true);
+        latestSyncedItem.fold((l) {}, (item) {
+          syncEndTs = item?.lastSynced;
+        });
+      }
+
+      if (syncEndTs != null) await syncDeleted(syncEndTs!);
 
       if (state is ClipSyncFailed) return false;
-      await syncChanges(fromTs);
+      await syncChanges(syncEndTs, syncStartTs, lastSyncedCount);
 
       if (state is ClipSyncFailed) return false;
 
@@ -199,7 +207,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     }
   }
 
-  Future<void> syncDeleted(DateTime fromTs) async {
+  Future<void> syncDeleted(DateTime syncEndTs) async {
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
@@ -208,7 +216,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     while (hasMore) {
       final result = await syncRepo.getDeletedClipboardItems(
         limit: 1000,
-        lastSynced: getLastSyncedTime(fromTs),
+        lastSynced: getLastSyncedTime(syncEndTs),
         offset: offset,
         excludeDeviceId: deviceId,
       );
@@ -238,26 +246,36 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
   }
 
   Future<void> syncChanges(
-    DateTime? fromTs,
-  ) async {
+    DateTime? syncEndTs, [
+    DateTime? syncStartTs,
+    int lastSyncedCount = 0,
+  ]) async {
     await _clipSyncWorker.waitUntilReady();
     // Fetch changes from server
     bool hasMore = true;
     int offset = 0;
-    bool havingCollection = fromTs == null; // first time syncing after login
+    bool havingCollection = syncEndTs == null; // first time syncing after login
 
+    DateTime fromTs = syncStartTs ?? now();
     bool failed = false;
-    int syncedCount = 0;
+    int syncedCount = lastSyncedCount;
 
     final collectionMapping = collectionCubit.serverMapping;
 
+    final lastSynced = getLastSyncedTime(syncEndTs);
+
     while (hasMore && !failed) {
-      emit(ClipSyncManagerState.syncing(synced: syncedCount));
+      emit(ClipSyncManagerState.syncing(
+        synced: syncedCount,
+        fromTs: fromTs,
+        toTs: lastSynced,
+      ));
       final result = await syncRepo.getLatestClipboardItems(
         limit: 500,
-        lastSynced: havingCollection ? null : getLastSyncedTime(fromTs),
+        from: havingCollection ? null : syncStartTs,
+        lastSynced: havingCollection ? null : lastSynced,
         offset: offset,
-        excludeDeviceId: fromTs != null ? deviceId : null,
+        excludeDeviceId: syncEndTs != null ? deviceId : null,
         havingCollection: havingCollection,
       );
 
@@ -283,12 +301,17 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
         );
         syncedCount += syncEvents.length;
         broadcastBatchEvent(syncEvents);
+        fromTs = syncEvents.lastOrNull?.$2.modified ?? fromTs;
       });
       await wait(250);
     }
 
     if (failed) return;
-    emit(ClipSyncManagerState.synced(syncedCount));
+    emit(ClipSyncManagerState.synced(
+      syncedCount,
+      fromTs: fromTs,
+      toTs: lastSynced,
+    ));
   }
 
   void broadcastBatchEvent(List<ClipCrossSyncEvent> events) {

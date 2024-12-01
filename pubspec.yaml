@@ -28,7 +28,7 @@ dependencies:
   super_clipboard: ^0.8.18
   clipboard_watcher: ^0.2.1
   window_manager: ^0.4.2
-  rxdart: ^0.27.5
+  rxdart: ^0.28.0
   file_picker: ^8.0.5
   encrypt: ^5.0.3
   hotkey_manager: ^0.2.3

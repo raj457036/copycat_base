@@ -36,7 +36,7 @@ class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
 
   OfflinePersistenceCubit(
     this.auth,
-    @Named("offline") this.repo,
+    @Named("local") this.repo,
     this.clipboard,
     this.appConfig,
     this.analyticsRepo,
@@ -53,13 +53,6 @@ class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
       return r;
     });
     return item;
-  }
-
-  Future<void> decryptAllClipboardItems() async {
-    emit(const OfflinePersistanceState.decrypting());
-    await Future.delayed(const Duration(seconds: 3));
-    await repo.decryptPending();
-    emit(const OfflinePersistanceState.decrypted());
   }
 
   Future<void> onCaptureClipboard() async {

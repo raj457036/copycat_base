@@ -17,15 +17,30 @@ const SyncStatusSchema = CollectionSchema(
   name: r'SyncStatus',
   id: -6770449623075495653,
   properties: {
-    r'isPersisted': PropertySchema(
+    r'lastKnownSyncCount': PropertySchema(
       id: 0,
-      name: r'isPersisted',
-      type: IsarType.bool,
+      name: r'lastKnownSyncCount',
+      type: IsarType.long,
     ),
-    r'lastSync': PropertySchema(
+    r'lastKnownTotalCount': PropertySchema(
       id: 1,
-      name: r'lastSync',
+      name: r'lastKnownTotalCount',
+      type: IsarType.long,
+    ),
+    r'lastSyncPoint': PropertySchema(
+      id: 2,
+      name: r'lastSyncPoint',
       type: IsarType.dateTime,
+    ),
+    r'lastSyncStartPoint': PropertySchema(
+      id: 3,
+      name: r'lastSyncStartPoint',
+      type: IsarType.dateTime,
+    ),
+    r'restorationPending': PropertySchema(
+      id: 4,
+      name: r'restorationPending',
+      type: IsarType.bool,
     )
   },
   estimateSize: _syncStatusEstimateSize,
@@ -57,8 +72,11 @@ void _syncStatusSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeBool(offsets[0], object.isPersisted);
-  writer.writeDateTime(offsets[1], object.lastSync);
+  writer.writeLong(offsets[0], object.lastKnownSyncCount);
+  writer.writeLong(offsets[1], object.lastKnownTotalCount);
+  writer.writeDateTime(offsets[2], object.lastSyncPoint);
+  writer.writeDateTime(offsets[3], object.lastSyncStartPoint);
+  writer.writeBool(offsets[4], object.restorationPending);
 }
 
 SyncStatus _syncStatusDeserialize(
@@ -68,7 +86,11 @@ SyncStatus _syncStatusDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = SyncStatus(
-    lastSync: reader.readDateTimeOrNull(offsets[1]),
+    lastKnownSyncCount: reader.readLongOrNull(offsets[0]),
+    lastKnownTotalCount: reader.readLongOrNull(offsets[1]),
+    lastSyncPoint: reader.readDateTimeOrNull(offsets[2]),
+    lastSyncStartPoint: reader.readDateTimeOrNull(offsets[3]),
+    restorationPending: reader.readBool(offsets[4]),
   );
   object.id = id;
   return object;
@@ -82,9 +104,15 @@ P _syncStatusDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readBool(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 1:
+      return (reader.readLongOrNull(offset)) as P;
+    case 2:
       return (reader.readDateTimeOrNull(offset)) as P;
+    case 3:
+      return (reader.readDateTimeOrNull(offset)) as P;
+    case 4:
+      return (reader.readBool(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -235,70 +263,211 @@ extension SyncStatusQueryFilter
   }
 
   QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
-      isPersistedEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isPersisted',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition> lastSyncIsNull() {
+      lastKnownSyncCountIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'lastSync',
+        property: r'lastKnownSyncCount',
       ));
     });
   }
 
   QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
-      lastSyncIsNotNull() {
+      lastKnownSyncCountIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'lastSync',
+        property: r'lastKnownSyncCount',
       ));
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition> lastSyncEqualTo(
-      DateTime? value) {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownSyncCountEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'lastSync',
+        property: r'lastKnownSyncCount',
         value: value,
       ));
     });
   }
 
   QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
-      lastSyncGreaterThan(
+      lastKnownSyncCountGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'lastKnownSyncCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownSyncCountLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'lastKnownSyncCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownSyncCountBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'lastKnownSyncCount',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownTotalCountIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'lastKnownTotalCount',
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownTotalCountIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'lastKnownTotalCount',
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownTotalCountEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'lastKnownTotalCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownTotalCountGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'lastKnownTotalCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownTotalCountLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'lastKnownTotalCount',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastKnownTotalCountBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'lastKnownTotalCount',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncPointIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'lastSyncPoint',
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncPointIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'lastSyncPoint',
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncPointEqualTo(DateTime? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'lastSyncPoint',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncPointGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'lastSync',
+        property: r'lastSyncPoint',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition> lastSyncLessThan(
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncPointLessThan(
     DateTime? value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'lastSync',
+        property: r'lastSyncPoint',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition> lastSyncBetween(
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncPointBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -306,11 +475,95 @@ extension SyncStatusQueryFilter
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'lastSync',
+        property: r'lastSyncPoint',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncStartPointIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'lastSyncStartPoint',
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncStartPointIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'lastSyncStartPoint',
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncStartPointEqualTo(DateTime? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'lastSyncStartPoint',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncStartPointGreaterThan(
+    DateTime? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'lastSyncStartPoint',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncStartPointLessThan(
+    DateTime? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'lastSyncStartPoint',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      lastSyncStartPointBetween(
+    DateTime? lower,
+    DateTime? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'lastSyncStartPoint',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterFilterCondition>
+      restorationPendingEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'restorationPending',
+        value: value,
       ));
     });
   }
@@ -324,27 +577,71 @@ extension SyncStatusQueryLinks
 
 extension SyncStatusQuerySortBy
     on QueryBuilder<SyncStatus, SyncStatus, QSortBy> {
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> sortByIsPersisted() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByLastKnownSyncCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.asc);
+      return query.addSortBy(r'lastKnownSyncCount', Sort.asc);
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> sortByIsPersistedDesc() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByLastKnownSyncCountDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.desc);
+      return query.addSortBy(r'lastKnownSyncCount', Sort.desc);
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> sortByLastSync() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByLastKnownTotalCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'lastSync', Sort.asc);
+      return query.addSortBy(r'lastKnownTotalCount', Sort.asc);
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> sortByLastSyncDesc() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByLastKnownTotalCountDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'lastSync', Sort.desc);
+      return query.addSortBy(r'lastKnownTotalCount', Sort.desc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> sortByLastSyncPoint() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncPoint', Sort.asc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> sortByLastSyncPointDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncPoint', Sort.desc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByLastSyncStartPoint() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncStartPoint', Sort.asc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByLastSyncStartPointDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncStartPoint', Sort.desc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByRestorationPending() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restorationPending', Sort.asc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      sortByRestorationPendingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restorationPending', Sort.desc);
     });
   }
 }
@@ -363,42 +660,108 @@ extension SyncStatusQuerySortThenBy
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> thenByIsPersisted() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByLastKnownSyncCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.asc);
+      return query.addSortBy(r'lastKnownSyncCount', Sort.asc);
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> thenByIsPersistedDesc() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByLastKnownSyncCountDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.desc);
+      return query.addSortBy(r'lastKnownSyncCount', Sort.desc);
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> thenByLastSync() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByLastKnownTotalCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'lastSync', Sort.asc);
+      return query.addSortBy(r'lastKnownTotalCount', Sort.asc);
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> thenByLastSyncDesc() {
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByLastKnownTotalCountDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'lastSync', Sort.desc);
+      return query.addSortBy(r'lastKnownTotalCount', Sort.desc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> thenByLastSyncPoint() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncPoint', Sort.asc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy> thenByLastSyncPointDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncPoint', Sort.desc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByLastSyncStartPoint() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncStartPoint', Sort.asc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByLastSyncStartPointDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'lastSyncStartPoint', Sort.desc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByRestorationPending() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restorationPending', Sort.asc);
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QAfterSortBy>
+      thenByRestorationPendingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restorationPending', Sort.desc);
     });
   }
 }
 
 extension SyncStatusQueryWhereDistinct
     on QueryBuilder<SyncStatus, SyncStatus, QDistinct> {
-  QueryBuilder<SyncStatus, SyncStatus, QDistinct> distinctByIsPersisted() {
+  QueryBuilder<SyncStatus, SyncStatus, QDistinct>
+      distinctByLastKnownSyncCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'isPersisted');
+      return query.addDistinctBy(r'lastKnownSyncCount');
     });
   }
 
-  QueryBuilder<SyncStatus, SyncStatus, QDistinct> distinctByLastSync() {
+  QueryBuilder<SyncStatus, SyncStatus, QDistinct>
+      distinctByLastKnownTotalCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'lastSync');
+      return query.addDistinctBy(r'lastKnownTotalCount');
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QDistinct> distinctByLastSyncPoint() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'lastSyncPoint');
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QDistinct>
+      distinctByLastSyncStartPoint() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'lastSyncStartPoint');
+    });
+  }
+
+  QueryBuilder<SyncStatus, SyncStatus, QDistinct>
+      distinctByRestorationPending() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'restorationPending');
     });
   }
 }
@@ -411,15 +774,38 @@ extension SyncStatusQueryProperty
     });
   }
 
-  QueryBuilder<SyncStatus, bool, QQueryOperations> isPersistedProperty() {
+  QueryBuilder<SyncStatus, int?, QQueryOperations>
+      lastKnownSyncCountProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'isPersisted');
+      return query.addPropertyName(r'lastKnownSyncCount');
     });
   }
 
-  QueryBuilder<SyncStatus, DateTime?, QQueryOperations> lastSyncProperty() {
+  QueryBuilder<SyncStatus, int?, QQueryOperations>
+      lastKnownTotalCountProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'lastSync');
+      return query.addPropertyName(r'lastKnownTotalCount');
+    });
+  }
+
+  QueryBuilder<SyncStatus, DateTime?, QQueryOperations>
+      lastSyncPointProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'lastSyncPoint');
+    });
+  }
+
+  QueryBuilder<SyncStatus, DateTime?, QQueryOperations>
+      lastSyncStartPointProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'lastSyncStartPoint');
+    });
+  }
+
+  QueryBuilder<SyncStatus, bool, QQueryOperations>
+      restorationPendingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'restorationPending');
     });
   }
 }

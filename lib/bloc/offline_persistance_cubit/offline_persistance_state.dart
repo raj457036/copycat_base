@@ -17,10 +17,6 @@ class OfflinePersistanceState with _$OfflinePersistanceState {
     @Default(false) bool synced,
     List<String>? updatedFields,
   }) = OfflinePersistanceSaved;
-  const factory OfflinePersistanceState.decrypting() =
-      OfflinePersistanceDecryptingState;
-  const factory OfflinePersistanceState.decrypted() =
-      OfflinePersistanceDecryptedState;
   const factory OfflinePersistanceState.error(Failure failure,
       [ClipboardItem? item]) = OfflinePersistanceError;
 }

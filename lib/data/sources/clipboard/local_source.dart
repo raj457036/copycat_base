@@ -37,6 +37,7 @@ class LocalClipboardSource implements ClipboardSource {
     SortOrder order = SortOrder.desc,
     DateTime? from,
     DateTime? to,
+    bool? encrypted,
   }) async {
     QueryBuilder<ClipboardItem, ClipboardItem, QFilterCondition> resultsQuery;
 
@@ -63,6 +64,10 @@ class LocalClipboardSource implements ClipboardSource {
             .or()
             .fileMimeTypeContains(word, caseSensitive: false));
       }
+    }
+
+    if (encrypted != null) {
+      resultsQuery = resultsQuery.encryptedEqualTo(encrypted);
     }
 
     if (types != null) {
@@ -182,24 +187,11 @@ class LocalClipboardSource implements ClipboardSource {
   }
 
   @override
-  Future<void> decryptPending() async {
-    await db.writeTxn(() async {
-      const limit = 100;
-
-      while (true) {
-        final items = await db.clipboardItems
-            .filter()
-            .encryptedEqualTo(true)
-            .limit(limit)
-            .findAll();
-        if (items.isEmpty) break;
-        final decrypted = await Future.wait(
-          items.map((item) => item.decrypt()),
-        );
-        await db.clipboardItems.putAll(decrypted);
-        if (items.length < limit) break;
-      }
+  Future<int> fetchEncryptedCount() async {
+    final count = await db.txn(() async {
+      return db.clipboardItems.filter().encryptedEqualTo(true).count();
     });
+    return count;
   }
 
   @override
@@ -260,5 +252,18 @@ class LocalClipboardSource implements ClipboardSource {
       return db.clipboardItems.count();
     });
     return count;
+  }
+
+  @override
+  Future<List<ClipboardItem>> updateAll(List<ClipboardItem> items) async {
+    final updates = items
+        .map((item) => item.copyWith(
+              modified: now(),
+            )..applyId(item))
+        .toList();
+    await db.writeTxn(
+      () => db.clipboardItems.putAll(updates),
+    );
+    return updates;
   }
 }

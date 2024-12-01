@@ -23,7 +23,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
   String? currentQuery;
 
   CollectionClipsCubit(
-    @Named("offline") this.repo, {
+    @Named("local") this.repo, {
     @factoryParam required this.collection,
   }) : super(const CollectionClipsState.initial()) {
     clipboardItemER = EventRule(clipboardEvent, targets: [

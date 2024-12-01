@@ -23,7 +23,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
 
   AndroidBgClipboardCubit(
     this.plugin,
-    @Named("offline") this.clipRepo,
+    @Named("local") this.clipRepo,
   ) : super(AndroidBgClipboardState.unknown());
 
   Future<void> writeToLocal(ClipboardItem item) async {

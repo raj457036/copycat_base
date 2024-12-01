@@ -20,9 +20,11 @@ abstract class ClipboardRepository {
     SortOrder order = SortOrder.desc,
     DateTime? from,
     DateTime? to,
+    bool? encrypted,
   });
 
   FailureOr<ClipboardItem> update(ClipboardItem item);
+  FailureOr<List<ClipboardItem>> updateAll(List<ClipboardItem> items);
   FailureOr<ClipboardItem> updateOrCreate(ClipboardItem item);
 
   FailureOr<bool> delete(ClipboardItem item);
@@ -32,7 +34,7 @@ abstract class ClipboardRepository {
 
   FailureOr<ClipboardItem?> getLatestFromOthers({bool? synced});
 
-  FailureOr<void> decryptPending();
+  FailureOr<int> fetchEncryptedCount();
 
   FailureOr<void> deleteAllEncrypted();
 

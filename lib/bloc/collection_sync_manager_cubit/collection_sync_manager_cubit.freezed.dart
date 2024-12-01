@@ -22,8 +22,7 @@ mixin _$CollectionSyncManagerState {
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) =>
@@ -34,8 +33,7 @@ mixin _$CollectionSyncManagerState {
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,8 +43,7 @@ mixin _$CollectionSyncManagerState {
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) =>
@@ -165,8 +162,7 @@ class _$CollectionSyncDisabledImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -180,8 +176,7 @@ class _$CollectionSyncDisabledImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return disabled?.call();
@@ -194,8 +189,7 @@ class _$CollectionSyncDisabledImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -310,8 +304,7 @@ class _$CollectionSyncUnknownImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -325,8 +318,7 @@ class _$CollectionSyncUnknownImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return unknown?.call();
@@ -339,8 +331,7 @@ class _$CollectionSyncUnknownImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -456,8 +447,7 @@ class _$CollectionSyncingUnknownImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -471,8 +461,7 @@ class _$CollectionSyncingUnknownImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return syncingUnknonw?.call();
@@ -485,8 +474,7 @@ class _$CollectionSyncingUnknownImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -628,8 +616,7 @@ class _$CollectionSyncingImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -643,8 +630,7 @@ class _$CollectionSyncingImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return syncing?.call(this.synced);
@@ -657,8 +643,7 @@ class _$CollectionSyncingImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
@@ -732,7 +717,7 @@ abstract class _$$CollectionSyncCompleteImplCopyWith<$Res> {
           $Res Function(_$CollectionSyncCompleteImpl) then) =
       __$$CollectionSyncCompleteImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int syncCount, bool manual, dynamic triggerReaction});
+  $Res call({int syncCount, bool manual, dynamic restoration});
 }
 
 /// @nodoc
@@ -752,7 +737,7 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
   $Res call({
     Object? syncCount = null,
     Object? manual = null,
-    Object? triggerReaction = freezed,
+    Object? restoration = freezed,
   }) {
     return _then(_$CollectionSyncCompleteImpl(
       null == syncCount
@@ -763,9 +748,7 @@ class __$$CollectionSyncCompleteImplCopyWithImpl<$Res>
           ? _value.manual
           : manual // ignore: cast_nullable_to_non_nullable
               as bool,
-      triggerReaction: freezed == triggerReaction
-          ? _value.triggerReaction!
-          : triggerReaction,
+      restoration: freezed == restoration ? _value.restoration! : restoration,
     ));
   }
 }
@@ -776,7 +759,7 @@ class _$CollectionSyncCompleteImpl
     with DiagnosticableTreeMixin
     implements CollectionSyncComplete {
   const _$CollectionSyncCompleteImpl(this.syncCount,
-      {this.manual = false, this.triggerReaction = true});
+      {this.manual = false, this.restoration = true});
 
   @override
   final int syncCount;
@@ -785,11 +768,11 @@ class _$CollectionSyncCompleteImpl
   final bool manual;
   @override
   @JsonKey()
-  final dynamic triggerReaction;
+  final dynamic restoration;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CollectionSyncManagerState.synced(syncCount: $syncCount, manual: $manual, triggerReaction: $triggerReaction)';
+    return 'CollectionSyncManagerState.synced(syncCount: $syncCount, manual: $manual, restoration: $restoration)';
   }
 
   @override
@@ -799,7 +782,7 @@ class _$CollectionSyncCompleteImpl
       ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.synced'))
       ..add(DiagnosticsProperty('syncCount', syncCount))
       ..add(DiagnosticsProperty('manual', manual))
-      ..add(DiagnosticsProperty('triggerReaction', triggerReaction));
+      ..add(DiagnosticsProperty('restoration', restoration));
   }
 
   @override
@@ -811,12 +794,12 @@ class _$CollectionSyncCompleteImpl
                 other.syncCount == syncCount) &&
             (identical(other.manual, manual) || other.manual == manual) &&
             const DeepCollectionEquality()
-                .equals(other.triggerReaction, triggerReaction));
+                .equals(other.restoration, restoration));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, syncCount, manual,
-      const DeepCollectionEquality().hash(triggerReaction));
+      const DeepCollectionEquality().hash(restoration));
 
   /// Create a copy of CollectionSyncManagerState
   /// with the given fields replaced by the non-null parameter values.
@@ -834,12 +817,11 @@ class _$CollectionSyncCompleteImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) {
-    return synced(syncCount, manual, triggerReaction);
+    return synced(syncCount, manual, restoration);
   }
 
   @override
@@ -849,11 +831,10 @@ class _$CollectionSyncCompleteImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
-    return synced?.call(syncCount, manual, triggerReaction);
+    return synced?.call(syncCount, manual, restoration);
   }
 
   @override
@@ -863,13 +844,12 @@ class _$CollectionSyncCompleteImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {
     if (synced != null) {
-      return synced(syncCount, manual, triggerReaction);
+      return synced(syncCount, manual, restoration);
     }
     return orElse();
   }
@@ -921,11 +901,11 @@ class _$CollectionSyncCompleteImpl
 abstract class CollectionSyncComplete implements CollectionSyncManagerState {
   const factory CollectionSyncComplete(final int syncCount,
       {final bool manual,
-      final dynamic triggerReaction}) = _$CollectionSyncCompleteImpl;
+      final dynamic restoration}) = _$CollectionSyncCompleteImpl;
 
   int get syncCount;
   bool get manual;
-  dynamic get triggerReaction;
+  dynamic get restoration;
 
   /// Create a copy of CollectionSyncManagerState
   /// with the given fields replaced by the non-null parameter values.
@@ -1019,8 +999,7 @@ class _$CollectionSyncFailedImpl
     required TResult Function() unknown,
     required TResult Function() syncingUnknonw,
     required TResult Function(int synced) syncing,
-    required TResult Function(
-            int syncCount, bool manual, dynamic triggerReaction)
+    required TResult Function(int syncCount, bool manual, dynamic restoration)
         synced,
     required TResult Function(Failure failure) failed,
   }) {
@@ -1034,8 +1013,7 @@ class _$CollectionSyncFailedImpl
     TResult? Function()? unknown,
     TResult? Function()? syncingUnknonw,
     TResult? Function(int synced)? syncing,
-    TResult? Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult? Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult? Function(Failure failure)? failed,
   }) {
     return failed?.call(failure);
@@ -1048,8 +1026,7 @@ class _$CollectionSyncFailedImpl
     TResult Function()? unknown,
     TResult Function()? syncingUnknonw,
     TResult Function(int synced)? syncing,
-    TResult Function(int syncCount, bool manual, dynamic triggerReaction)?
-        synced,
+    TResult Function(int syncCount, bool manual, dynamic restoration)? synced,
     TResult Function(Failure failure)? failed,
     required TResult orElse(),
   }) {

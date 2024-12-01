@@ -25,9 +25,11 @@ abstract class ClipboardSource {
     SortOrder order = SortOrder.desc,
     DateTime? from,
     DateTime? to,
+    bool? encrypted,
   });
 
   Future<ClipboardItem> update(ClipboardItem item);
+  Future<List<ClipboardItem>> updateAll(List<ClipboardItem> items);
 
   Future<ClipboardItem> updateOrCreate(ClipboardItem item);
 
@@ -38,7 +40,7 @@ abstract class ClipboardSource {
 
   Future<ClipboardItem?> getLatestFromOthers({bool? synced});
 
-  Future<void> decryptPending();
+  Future<int> fetchEncryptedCount();
 
   Future<void> deleteAllEncrypted();
 

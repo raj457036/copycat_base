@@ -5,6 +5,7 @@ mixin IsarIdMixin {
   @JsonKey(includeToJson: false, includeFromJson: false)
   Id id = Isar.autoIncrement;
 
+  @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool get isPersisted => id != Isar.autoIncrement;
 

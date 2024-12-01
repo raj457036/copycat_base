@@ -24,7 +24,7 @@ class ClipboardCubit extends Cubit<ClipboardState> {
   String? currentQuery;
 
   ClipboardCubit(
-    @Named("offline") this.repo,
+    @Named("local") this.repo,
   ) : super(const ClipboardState.loaded(items: [])) {
     clipboardItemER = EventRule(clipboardEvent, targets: [
       EventListener(onSyncEvent),

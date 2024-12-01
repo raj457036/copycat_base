@@ -47,38 +47,33 @@ const ClipCollectionSchema = CollectionSchema(
       name: r'emoji',
       type: IsarType.string,
     ),
-    r'isPersisted': PropertySchema(
-      id: 6,
-      name: r'isPersisted',
-      type: IsarType.bool,
-    ),
     r'lastSynced': PropertySchema(
-      id: 7,
+      id: 6,
       name: r'lastSynced',
       type: IsarType.dateTime,
     ),
     r'modified': PropertySchema(
-      id: 8,
+      id: 7,
       name: r'modified',
       type: IsarType.dateTime,
     ),
     r'serverId': PropertySchema(
-      id: 9,
+      id: 8,
       name: r'serverId',
       type: IsarType.long,
     ),
     r'title': PropertySchema(
-      id: 10,
+      id: 9,
       name: r'title',
       type: IsarType.string,
     ),
     r'titleWords': PropertySchema(
-      id: 11,
+      id: 10,
       name: r'titleWords',
       type: IsarType.stringList,
     ),
     r'userId': PropertySchema(
-      id: 12,
+      id: 11,
       name: r'userId',
       type: IsarType.string,
     )
@@ -187,13 +182,12 @@ void _clipCollectionSerialize(
   writer.writeStringList(offsets[3], object.descriptionWords);
   writer.writeString(offsets[4], object.deviceId);
   writer.writeString(offsets[5], object.emoji);
-  writer.writeBool(offsets[6], object.isPersisted);
-  writer.writeDateTime(offsets[7], object.lastSynced);
-  writer.writeDateTime(offsets[8], object.modified);
-  writer.writeLong(offsets[9], object.serverId);
-  writer.writeString(offsets[10], object.title);
-  writer.writeStringList(offsets[11], object.titleWords);
-  writer.writeString(offsets[12], object.userId);
+  writer.writeDateTime(offsets[6], object.lastSynced);
+  writer.writeDateTime(offsets[7], object.modified);
+  writer.writeLong(offsets[8], object.serverId);
+  writer.writeString(offsets[9], object.title);
+  writer.writeStringList(offsets[10], object.titleWords);
+  writer.writeString(offsets[11], object.userId);
 }
 
 ClipCollection _clipCollectionDeserialize(
@@ -208,11 +202,11 @@ ClipCollection _clipCollectionDeserialize(
     description: reader.readStringOrNull(offsets[2]),
     deviceId: reader.readStringOrNull(offsets[4]),
     emoji: reader.readString(offsets[5]),
-    lastSynced: reader.readDateTimeOrNull(offsets[7]),
-    modified: reader.readDateTime(offsets[8]),
-    serverId: reader.readLongOrNull(offsets[9]),
-    title: reader.readString(offsets[10]),
-    userId: reader.readString(offsets[12]),
+    lastSynced: reader.readDateTimeOrNull(offsets[6]),
+    modified: reader.readDateTime(offsets[7]),
+    serverId: reader.readLongOrNull(offsets[8]),
+    title: reader.readString(offsets[9]),
+    userId: reader.readString(offsets[11]),
   );
   object.id = id;
   return object;
@@ -238,18 +232,16 @@ P _clipCollectionDeserializeProp<P>(
     case 5:
       return (reader.readString(offset)) as P;
     case 6:
-      return (reader.readBool(offset)) as P;
-    case 7:
       return (reader.readDateTimeOrNull(offset)) as P;
-    case 8:
+    case 7:
       return (reader.readDateTime(offset)) as P;
-    case 9:
+    case 8:
       return (reader.readLongOrNull(offset)) as P;
-    case 10:
+    case 9:
       return (reader.readString(offset)) as P;
-    case 11:
+    case 10:
       return (reader.readStringList(offset) ?? []) as P;
-    case 12:
+    case 11:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1632,16 +1624,6 @@ extension ClipCollectionQueryFilter
   }
 
   QueryBuilder<ClipCollection, ClipCollection, QAfterFilterCondition>
-      isPersistedEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isPersisted',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipCollection, ClipCollection, QAfterFilterCondition>
       lastSyncedIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2417,20 +2399,6 @@ extension ClipCollectionQuerySortBy
   }
 
   QueryBuilder<ClipCollection, ClipCollection, QAfterSortBy>
-      sortByIsPersisted() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipCollection, ClipCollection, QAfterSortBy>
-      sortByIsPersistedDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ClipCollection, ClipCollection, QAfterSortBy>
       sortByLastSynced() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastSynced', Sort.asc);
@@ -2576,20 +2544,6 @@ extension ClipCollectionQuerySortThenBy
   }
 
   QueryBuilder<ClipCollection, ClipCollection, QAfterSortBy>
-      thenByIsPersisted() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipCollection, ClipCollection, QAfterSortBy>
-      thenByIsPersistedDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.desc);
-    });
-  }
-
-  QueryBuilder<ClipCollection, ClipCollection, QAfterSortBy>
       thenByLastSynced() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastSynced', Sort.asc);
@@ -2699,13 +2653,6 @@ extension ClipCollectionQueryWhereDistinct
   }
 
   QueryBuilder<ClipCollection, ClipCollection, QDistinct>
-      distinctByIsPersisted() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'isPersisted');
-    });
-  }
-
-  QueryBuilder<ClipCollection, ClipCollection, QDistinct>
       distinctByLastSynced() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'lastSynced');
@@ -2790,12 +2737,6 @@ extension ClipCollectionQueryProperty
   QueryBuilder<ClipCollection, String, QQueryOperations> emojiProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'emoji');
-    });
-  }
-
-  QueryBuilder<ClipCollection, bool, QQueryOperations> isPersistedProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'isPersisted');
     });
   }
 

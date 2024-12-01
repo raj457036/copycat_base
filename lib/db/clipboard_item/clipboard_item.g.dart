@@ -82,91 +82,86 @@ const ClipboardItemSchema = CollectionSchema(
       name: r'imgBlurHash',
       type: IsarType.string,
     ),
-    r'isPersisted': PropertySchema(
-      id: 13,
-      name: r'isPersisted',
-      type: IsarType.bool,
-    ),
     r'lastCopied': PropertySchema(
-      id: 14,
+      id: 13,
       name: r'lastCopied',
       type: IsarType.dateTime,
     ),
     r'lastSynced': PropertySchema(
-      id: 15,
+      id: 14,
       name: r'lastSynced',
       type: IsarType.dateTime,
     ),
     r'localOnly': PropertySchema(
-      id: 16,
+      id: 15,
       name: r'localOnly',
       type: IsarType.bool,
     ),
     r'localPath': PropertySchema(
-      id: 17,
+      id: 16,
       name: r'localPath',
       type: IsarType.string,
     ),
     r'modified': PropertySchema(
-      id: 18,
+      id: 17,
       name: r'modified',
       type: IsarType.dateTime,
     ),
     r'os': PropertySchema(
-      id: 19,
+      id: 18,
       name: r'os',
       type: IsarType.string,
       enumMap: _ClipboardItemosEnumValueMap,
     ),
     r'serverCollectionId': PropertySchema(
-      id: 20,
+      id: 19,
       name: r'serverCollectionId',
       type: IsarType.long,
     ),
     r'serverId': PropertySchema(
-      id: 21,
+      id: 20,
       name: r'serverId',
       type: IsarType.long,
     ),
     r'sourceApp': PropertySchema(
-      id: 22,
+      id: 21,
       name: r'sourceApp',
       type: IsarType.string,
     ),
     r'sourceUrl': PropertySchema(
-      id: 23,
+      id: 22,
       name: r'sourceUrl',
       type: IsarType.string,
     ),
     r'text': PropertySchema(
-      id: 24,
+      id: 23,
       name: r'text',
       type: IsarType.string,
     ),
     r'textCategory': PropertySchema(
-      id: 25,
+      id: 24,
       name: r'textCategory',
       type: IsarType.string,
       enumMap: _ClipboardItemtextCategoryEnumValueMap,
     ),
     r'title': PropertySchema(
-      id: 26,
+      id: 25,
       name: r'title',
       type: IsarType.string,
     ),
     r'type': PropertySchema(
-      id: 27,
+      id: 26,
       name: r'type',
       type: IsarType.string,
       enumMap: _ClipboardItemtypeEnumValueMap,
     ),
     r'url': PropertySchema(
-      id: 28,
+      id: 27,
       name: r'url',
       type: IsarType.string,
     ),
     r'userId': PropertySchema(
-      id: 29,
+      id: 28,
       name: r'userId',
       type: IsarType.string,
     )
@@ -392,23 +387,22 @@ void _clipboardItemSerialize(
   writer.writeString(offsets[10], object.fileName);
   writer.writeLong(offsets[11], object.fileSize);
   writer.writeString(offsets[12], object.imgBlurHash);
-  writer.writeBool(offsets[13], object.isPersisted);
-  writer.writeDateTime(offsets[14], object.lastCopied);
-  writer.writeDateTime(offsets[15], object.lastSynced);
-  writer.writeBool(offsets[16], object.localOnly);
-  writer.writeString(offsets[17], object.localPath);
-  writer.writeDateTime(offsets[18], object.modified);
-  writer.writeString(offsets[19], object.os.name);
-  writer.writeLong(offsets[20], object.serverCollectionId);
-  writer.writeLong(offsets[21], object.serverId);
-  writer.writeString(offsets[22], object.sourceApp);
-  writer.writeString(offsets[23], object.sourceUrl);
-  writer.writeString(offsets[24], object.text);
-  writer.writeString(offsets[25], object.textCategory?.name);
-  writer.writeString(offsets[26], object.title);
-  writer.writeString(offsets[27], object.type.name);
-  writer.writeString(offsets[28], object.url);
-  writer.writeString(offsets[29], object.userId);
+  writer.writeDateTime(offsets[13], object.lastCopied);
+  writer.writeDateTime(offsets[14], object.lastSynced);
+  writer.writeBool(offsets[15], object.localOnly);
+  writer.writeString(offsets[16], object.localPath);
+  writer.writeDateTime(offsets[17], object.modified);
+  writer.writeString(offsets[18], object.os.name);
+  writer.writeLong(offsets[19], object.serverCollectionId);
+  writer.writeLong(offsets[20], object.serverId);
+  writer.writeString(offsets[21], object.sourceApp);
+  writer.writeString(offsets[22], object.sourceUrl);
+  writer.writeString(offsets[23], object.text);
+  writer.writeString(offsets[24], object.textCategory?.name);
+  writer.writeString(offsets[25], object.title);
+  writer.writeString(offsets[26], object.type.name);
+  writer.writeString(offsets[27], object.url);
+  writer.writeString(offsets[28], object.userId);
 }
 
 ClipboardItem _clipboardItemDeserialize(
@@ -431,26 +425,26 @@ ClipboardItem _clipboardItemDeserialize(
     fileName: reader.readStringOrNull(offsets[10]),
     fileSize: reader.readLongOrNull(offsets[11]),
     imgBlurHash: reader.readStringOrNull(offsets[12]),
-    lastCopied: reader.readDateTimeOrNull(offsets[14]),
-    lastSynced: reader.readDateTimeOrNull(offsets[15]),
-    localOnly: reader.readBool(offsets[16]),
-    localPath: reader.readStringOrNull(offsets[17]),
-    modified: reader.readDateTime(offsets[18]),
-    os: _ClipboardItemosValueEnumMap[reader.readStringOrNull(offsets[19])] ??
+    lastCopied: reader.readDateTimeOrNull(offsets[13]),
+    lastSynced: reader.readDateTimeOrNull(offsets[14]),
+    localOnly: reader.readBool(offsets[15]),
+    localPath: reader.readStringOrNull(offsets[16]),
+    modified: reader.readDateTime(offsets[17]),
+    os: _ClipboardItemosValueEnumMap[reader.readStringOrNull(offsets[18])] ??
         PlatformOS.android,
-    serverCollectionId: reader.readLongOrNull(offsets[20]),
-    serverId: reader.readLongOrNull(offsets[21]),
-    sourceApp: reader.readStringOrNull(offsets[22]),
-    sourceUrl: reader.readStringOrNull(offsets[23]),
-    text: reader.readStringOrNull(offsets[24]),
+    serverCollectionId: reader.readLongOrNull(offsets[19]),
+    serverId: reader.readLongOrNull(offsets[20]),
+    sourceApp: reader.readStringOrNull(offsets[21]),
+    sourceUrl: reader.readStringOrNull(offsets[22]),
+    text: reader.readStringOrNull(offsets[23]),
     textCategory: _ClipboardItemtextCategoryValueEnumMap[
-        reader.readStringOrNull(offsets[25])],
-    title: reader.readStringOrNull(offsets[26]),
+        reader.readStringOrNull(offsets[24])],
+    title: reader.readStringOrNull(offsets[25]),
     type:
-        _ClipboardItemtypeValueEnumMap[reader.readStringOrNull(offsets[27])] ??
+        _ClipboardItemtypeValueEnumMap[reader.readStringOrNull(offsets[26])] ??
             ClipItemType.text,
-    url: reader.readStringOrNull(offsets[28]),
-    userId: reader.readString(offsets[29]),
+    url: reader.readStringOrNull(offsets[27]),
+    userId: reader.readString(offsets[28]),
   );
   object.id = id;
   return object;
@@ -490,41 +484,39 @@ P _clipboardItemDeserializeProp<P>(
     case 12:
       return (reader.readStringOrNull(offset)) as P;
     case 13:
-      return (reader.readBool(offset)) as P;
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 14:
       return (reader.readDateTimeOrNull(offset)) as P;
     case 15:
-      return (reader.readDateTimeOrNull(offset)) as P;
-    case 16:
       return (reader.readBool(offset)) as P;
-    case 17:
+    case 16:
       return (reader.readStringOrNull(offset)) as P;
-    case 18:
+    case 17:
       return (reader.readDateTime(offset)) as P;
-    case 19:
+    case 18:
       return (_ClipboardItemosValueEnumMap[reader.readStringOrNull(offset)] ??
           PlatformOS.android) as P;
+    case 19:
+      return (reader.readLongOrNull(offset)) as P;
     case 20:
       return (reader.readLongOrNull(offset)) as P;
     case 21:
-      return (reader.readLongOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 22:
       return (reader.readStringOrNull(offset)) as P;
     case 23:
       return (reader.readStringOrNull(offset)) as P;
     case 24:
-      return (reader.readStringOrNull(offset)) as P;
-    case 25:
       return (_ClipboardItemtextCategoryValueEnumMap[
           reader.readStringOrNull(offset)]) as P;
-    case 26:
+    case 25:
       return (reader.readStringOrNull(offset)) as P;
-    case 27:
+    case 26:
       return (_ClipboardItemtypeValueEnumMap[reader.readStringOrNull(offset)] ??
           ClipItemType.text) as P;
-    case 28:
+    case 27:
       return (reader.readStringOrNull(offset)) as P;
-    case 29:
+    case 28:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -2798,16 +2790,6 @@ extension ClipboardItemQueryFilter
   }
 
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
-      isPersistedEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'isPersisted',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterFilterCondition>
       lastCopiedIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -4829,19 +4811,6 @@ extension ClipboardItemQuerySortBy
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> sortByIsPersisted() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      sortByIsPersistedDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.desc);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> sortByLastCopied() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastCopied', Sort.asc);
@@ -5232,19 +5201,6 @@ extension ClipboardItemQuerySortThenBy
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> thenByIsPersisted() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.asc);
-    });
-  }
-
-  QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy>
-      thenByIsPersistedDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'isPersisted', Sort.desc);
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QAfterSortBy> thenByLastCopied() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'lastCopied', Sort.asc);
@@ -5540,13 +5496,6 @@ extension ClipboardItemQueryWhereDistinct
     });
   }
 
-  QueryBuilder<ClipboardItem, ClipboardItem, QDistinct>
-      distinctByIsPersisted() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'isPersisted');
-    });
-  }
-
   QueryBuilder<ClipboardItem, ClipboardItem, QDistinct> distinctByLastCopied() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'lastCopied');
@@ -5740,12 +5689,6 @@ extension ClipboardItemQueryProperty
   QueryBuilder<ClipboardItem, String?, QQueryOperations> imgBlurHashProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'imgBlurHash');
-    });
-  }
-
-  QueryBuilder<ClipboardItem, bool, QQueryOperations> isPersistedProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'isPersisted');
     });
   }
 

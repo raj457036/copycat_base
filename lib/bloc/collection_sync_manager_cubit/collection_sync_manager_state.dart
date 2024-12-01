@@ -11,7 +11,7 @@ class CollectionSyncManagerState with _$CollectionSyncManagerState {
   }) = CollectionSyncing;
   const factory CollectionSyncManagerState.synced(int syncCount,
       {@Default(false) bool manual,
-      @Default(true) triggerReaction}) = CollectionSyncComplete;
+      @Default(true) restoration}) = CollectionSyncComplete;
   const factory CollectionSyncManagerState.failed(Failure failure) =
       CollectionSyncFailed;
 }

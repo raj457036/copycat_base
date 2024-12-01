@@ -46,6 +46,7 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
     SortOrder order = SortOrder.desc,
     DateTime? from,
     DateTime? to,
+    bool? encrypted,
   }) async {
     try {
       final result = await remote.getList(
@@ -125,7 +126,7 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<void> decryptPending() {
+  FailureOr<int> fetchEncryptedCount() {
     throw UnimplementedError();
   }
 
@@ -163,9 +164,19 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
       return Left(Failure.fromException(e));
     }
   }
+
+  @override
+  FailureOr<List<ClipboardItem>> updateAll(List<ClipboardItem> items) async {
+    try {
+      final updates = await remote.updateAll(items);
+      return Right(updates);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
 }
 
-@Named("offline")
+@Named("local")
 @LazySingleton(as: ClipboardRepository)
 class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   final ClipboardSource local;
@@ -196,6 +207,7 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
     SortOrder order = SortOrder.desc,
     DateTime? from,
     DateTime? to,
+    bool? encrypted,
   }) async {
     try {
       final result = await local.getList(
@@ -209,6 +221,7 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
         order: order,
         from: from,
         to: to,
+        encrypted: encrypted,
       );
 
       return Right(result);
@@ -268,10 +281,10 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   }
 
   @override
-  FailureOr<void> decryptPending() async {
+  FailureOr<int> fetchEncryptedCount() async {
     try {
-      await local.decryptPending();
-      return const Right(null);
+      final count = await local.fetchEncryptedCount();
+      return Right(count);
     } catch (e) {
       return Left(Failure.fromException(e));
     }
@@ -307,6 +320,16 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   FailureOr<int> getClipCounts([DateTime? fromTs]) async {
     try {
       final result = await local.getClipCounts();
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.fromException(e));
+    }
+  }
+
+  @override
+  FailureOr<List<ClipboardItem>> updateAll(List<ClipboardItem> items) async {
+    try {
+      final result = await local.updateAll(items);
       return Right(result);
     } catch (e) {
       return Left(Failure.fromException(e));

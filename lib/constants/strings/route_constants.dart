@@ -13,6 +13,7 @@ class RouteConstants {
   static const String preview = "preview";
   static const String resetPassword = "reset-password";
   static const String accountDetails = "account-details";
+  static const String rebuildDatabase = "rebuildDatabase";
   static const String androidBgClipboardSettings =
       "android-bg-clipboard-settings";
 }

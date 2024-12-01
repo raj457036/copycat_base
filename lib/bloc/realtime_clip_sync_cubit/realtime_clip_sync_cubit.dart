@@ -24,7 +24,7 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
 
   RealtimeClipSyncCubit(
     this.listener,
-    @Named("offline") this.clipRepo,
+    @Named("local") this.clipRepo,
     this.collectionRepo,
   ) : super(const RealtimeClipSyncState.initial());
 

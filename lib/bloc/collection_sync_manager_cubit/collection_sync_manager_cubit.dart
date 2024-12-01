@@ -86,7 +86,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
 
   Future<bool> syncCollections({
     bool manual = false,
-    bool triggerReaction = true,
+    bool restoration = false,
   }) async {
     if (manual) {
       final (canSync, secondLeft) = canManullySync();
@@ -102,20 +102,23 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     try {
       if (_syncHours == null) return false;
 
-      DateTime? fromTs;
-      final latestSyncedItem =
-          await collectionRepo.getLatestFromOthers(synced: true);
-      latestSyncedItem.fold((l) {}, (item) {
-        fromTs = item?.lastSynced;
-      });
+      DateTime? syncEndTs;
 
-      if (fromTs != null) await syncDeleted(fromTs!);
+      if (!restoration) {
+        final latestSyncedItem =
+            await collectionRepo.getLatestFromOthers(synced: true);
+        latestSyncedItem.fold((l) {}, (item) {
+          syncEndTs = item?.lastSynced;
+        });
+      }
+
+      if (syncEndTs != null) await syncDeleted(syncEndTs!);
 
       if (state is CollectionSyncFailed) return false;
       await syncChanges(
-        fromTs,
+        syncEndTs,
         manual: manual,
-        triggerReaction: triggerReaction,
+        restoration: restoration,
       );
 
       if (state is CollectionSyncFailed) return false;
@@ -165,9 +168,9 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
   }
 
   Future<void> syncChanges(
-    DateTime? fromTs, {
+    DateTime? syncEndTs, {
     required bool manual,
-    required bool triggerReaction,
+    required bool restoration,
   }) async {
     // Fetch changes from server
     bool hasMore = true;
@@ -182,9 +185,9 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
       emit(CollectionSyncManagerState.syncing(synced: syncedCount));
       final result = await syncRepo.getLatestClipCollections(
         limit: 250,
-        lastSynced: _lastSyncedTime(fromTs),
+        lastSynced: _lastSyncedTime(syncEndTs),
         offset: offset,
-        excludeDeviceId: fromTs != null ? deviceId : null,
+        excludeDeviceId: syncEndTs != null ? deviceId : null,
       );
 
       await result.fold((l) async {
@@ -229,7 +232,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     emit(CollectionSyncManagerState.synced(
       syncedCount,
       manual: manual,
-      triggerReaction: triggerReaction,
+      restoration: restoration,
     ));
   }
 

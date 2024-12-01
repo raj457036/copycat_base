@@ -18,6 +18,7 @@ class SyncRepositoryImpl implements SyncRepository {
     int limit = 100,
     int offset = 0,
     String? excludeDeviceId,
+    DateTime? from,
     DateTime? lastSynced,
     bool havingCollection = false,
   }) async {
@@ -26,6 +27,7 @@ class SyncRepositoryImpl implements SyncRepository {
         limit: limit,
         offset: offset,
         excludeDeviceId: excludeDeviceId,
+        from: from,
         lastSynced: lastSynced,
         havingCollection: havingCollection,
       );
