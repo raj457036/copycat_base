@@ -83,9 +83,12 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   }
 
   Future<void> reset() async {
-    setE2EEKey(null);
-    changeAutoSyncDuration(SyncSpeed.balanced);
-    changeOnBoardStatus(false);
+    final config = AppConfig(
+      onBoardComplete: false,
+      syncSpeed: SyncSpeed.balanced,
+    )..id = 1;
+    emit(AppConfigState.loaded(config: config));
+    await repo.update(config);
   }
 
   (AppConfig, bool) applyForSubscription(
