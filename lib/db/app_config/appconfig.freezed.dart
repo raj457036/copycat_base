@@ -66,7 +66,9 @@ mixin _$AppConfig {
   bool get enableDragNDrop => throw _privateConstructorUsedError;
   bool get enablePasteStack => throw _privateConstructorUsedError;
   bool get androidBgListener =>
-      throw _privateConstructorUsedError; //? Local App States
+      throw _privateConstructorUsedError; // on boarding
+  bool get onBoardComplete => throw _privateConstructorUsedError; //
+//? Local App States
   /// last focus window id
   @ignore
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -115,6 +117,7 @@ abstract class $AppConfigCopyWith<$Res> {
       bool enableDragNDrop,
       bool enablePasteStack,
       bool androidBgListener,
+      bool onBoardComplete,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
@@ -162,6 +165,7 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
     Object? enableDragNDrop = null,
     Object? enablePasteStack = null,
     Object? androidBgListener = null,
+    Object? onBoardComplete = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -262,6 +266,10 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig>
           ? _value.androidBgListener
           : androidBgListener // ignore: cast_nullable_to_non_nullable
               as bool,
+      onBoardComplete: null == onBoardComplete
+          ? _value.onBoardComplete
+          : onBoardComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -322,6 +330,7 @@ abstract class _$$AppConfigImplCopyWith<$Res>
       bool enableDragNDrop,
       bool enablePasteStack,
       bool androidBgListener,
+      bool onBoardComplete,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       int? lastFocusedWindowId,
@@ -368,6 +377,7 @@ class __$$AppConfigImplCopyWithImpl<$Res>
     Object? enableDragNDrop = null,
     Object? enablePasteStack = null,
     Object? androidBgListener = null,
+    Object? onBoardComplete = null,
     Object? lastFocusedWindowId = freezed,
     Object? clockUnSynced = null,
   }) {
@@ -468,6 +478,10 @@ class __$$AppConfigImplCopyWithImpl<$Res>
           ? _value.androidBgListener
           : androidBgListener // ignore: cast_nullable_to_non_nullable
               as bool,
+      onBoardComplete: null == onBoardComplete
+          ? _value.onBoardComplete
+          : onBoardComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastFocusedWindowId: freezed == lastFocusedWindowId
           ? _value.lastFocusedWindowId
           : lastFocusedWindowId // ignore: cast_nullable_to_non_nullable
@@ -510,6 +524,7 @@ class _$AppConfigImpl extends _AppConfig {
       this.enableDragNDrop = false,
       this.enablePasteStack = false,
       this.androidBgListener = false,
+      this.onBoardComplete = true,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.lastFocusedWindowId,
@@ -610,6 +625,11 @@ class _$AppConfigImpl extends _AppConfig {
   @override
   @JsonKey()
   final bool androidBgListener;
+// on boarding
+  @override
+  @JsonKey()
+  final bool onBoardComplete;
+//
 //? Local App States
   /// last focus window id
   @override
@@ -623,7 +643,7 @@ class _$AppConfigImpl extends _AppConfig {
 
   @override
   String toString() {
-    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, syncSpeed: $syncSpeed, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, androidBgListener: $androidBgListener, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
+    return 'AppConfig(themeMode: $themeMode, enableSync: $enableSync, enableFileSync: $enableFileSync, layout: $layout, view: $view, pinned: $pinned, windowWidth: $windowWidth, windowHeight: $windowHeight, dontUploadOver: $dontUploadOver, dontCopyOver: $dontCopyOver, pausedTill: $pausedTill, syncSpeed: $syncSpeed, toggleHotkey: $toggleHotkey, smartPaste: $smartPaste, launchAtStartup: $launchAtStartup, locale: $locale, enc2: $enc2, autoEncrypt: $autoEncrypt, exclusionRules: $exclusionRules, themeColor: $themeColor, themeVariant: $themeVariant, enableDragNDrop: $enableDragNDrop, enablePasteStack: $enablePasteStack, androidBgListener: $androidBgListener, onBoardComplete: $onBoardComplete, lastFocusedWindowId: $lastFocusedWindowId, clockUnSynced: $clockUnSynced)';
   }
 
   @override
@@ -674,6 +694,8 @@ class _$AppConfigImpl extends _AppConfig {
                 other.enablePasteStack == enablePasteStack) &&
             (identical(other.androidBgListener, androidBgListener) ||
                 other.androidBgListener == androidBgListener) &&
+            (identical(other.onBoardComplete, onBoardComplete) ||
+                other.onBoardComplete == onBoardComplete) &&
             (identical(other.lastFocusedWindowId, lastFocusedWindowId) ||
                 other.lastFocusedWindowId == lastFocusedWindowId) &&
             (identical(other.clockUnSynced, clockUnSynced) ||
@@ -708,6 +730,7 @@ class _$AppConfigImpl extends _AppConfig {
         enableDragNDrop,
         enablePasteStack,
         androidBgListener,
+        onBoardComplete,
         lastFocusedWindowId,
         clockUnSynced
       ]);
@@ -755,6 +778,7 @@ abstract class _AppConfig extends AppConfig {
       final bool enableDragNDrop,
       final bool enablePasteStack,
       final bool androidBgListener,
+      final bool onBoardComplete,
       @ignore
       @JsonKey(includeFromJson: false, includeToJson: false)
       final int? lastFocusedWindowId,
@@ -829,7 +853,10 @@ abstract class _AppConfig extends AppConfig {
   @override
   bool get enablePasteStack;
   @override
-  bool get androidBgListener; //? Local App States
+  bool get androidBgListener; // on boarding
+  @override
+  bool get onBoardComplete; //
+//? Local App States
   /// last focus window id
   @override
   @ignore

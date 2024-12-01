@@ -84,62 +84,67 @@ const AppConfigSchema = CollectionSchema(
       name: r'locale',
       type: IsarType.string,
     ),
-    r'pausedTill': PropertySchema(
+    r'onBoardComplete': PropertySchema(
       id: 13,
+      name: r'onBoardComplete',
+      type: IsarType.bool,
+    ),
+    r'pausedTill': PropertySchema(
+      id: 14,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'pinned': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'pinned',
       type: IsarType.bool,
     ),
     r'smartPaste': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'syncSpeed': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'syncSpeed',
       type: IsarType.string,
       enumMap: _AppConfigsyncSpeedEnumValueMap,
     ),
     r'themeColor': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 20,
+      id: 21,
       name: r'toggleHotkey',
       type: IsarType.string,
     ),
     r'view': PropertySchema(
-      id: 21,
+      id: 22,
       name: r'view',
       type: IsarType.string,
       enumMap: _AppConfigviewEnumValueMap,
     ),
     r'windowHeight': PropertySchema(
-      id: 22,
+      id: 23,
       name: r'windowHeight',
       type: IsarType.double,
     ),
     r'windowWidth': PropertySchema(
-      id: 23,
+      id: 24,
       name: r'windowWidth',
       type: IsarType.double,
     )
@@ -220,17 +225,18 @@ void _appConfigSerialize(
   writer.writeBool(offsets[10], object.launchAtStartup);
   writer.writeString(offsets[11], object.layout.name);
   writer.writeString(offsets[12], object.locale);
-  writer.writeDateTime(offsets[13], object.pausedTill);
-  writer.writeBool(offsets[14], object.pinned);
-  writer.writeBool(offsets[15], object.smartPaste);
-  writer.writeString(offsets[16], object.syncSpeed.name);
-  writer.writeLong(offsets[17], object.themeColor);
-  writer.writeString(offsets[18], object.themeMode.name);
-  writer.writeString(offsets[19], object.themeVariant.name);
-  writer.writeString(offsets[20], object.toggleHotkey);
-  writer.writeString(offsets[21], object.view.name);
-  writer.writeDouble(offsets[22], object.windowHeight);
-  writer.writeDouble(offsets[23], object.windowWidth);
+  writer.writeBool(offsets[13], object.onBoardComplete);
+  writer.writeDateTime(offsets[14], object.pausedTill);
+  writer.writeBool(offsets[15], object.pinned);
+  writer.writeBool(offsets[16], object.smartPaste);
+  writer.writeString(offsets[17], object.syncSpeed.name);
+  writer.writeLong(offsets[18], object.themeColor);
+  writer.writeString(offsets[19], object.themeMode.name);
+  writer.writeString(offsets[20], object.themeVariant.name);
+  writer.writeString(offsets[21], object.toggleHotkey);
+  writer.writeString(offsets[22], object.view.name);
+  writer.writeDouble(offsets[23], object.windowHeight);
+  writer.writeDouble(offsets[24], object.windowWidth);
 }
 
 AppConfig _appConfigDeserialize(
@@ -259,24 +265,25 @@ AppConfig _appConfigDeserialize(
         _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[11])] ??
             AppLayout.grid,
     locale: reader.readString(offsets[12]),
-    pausedTill: reader.readDateTimeOrNull(offsets[13]),
-    pinned: reader.readBool(offsets[14]),
-    smartPaste: reader.readBool(offsets[15]),
+    onBoardComplete: reader.readBool(offsets[13]),
+    pausedTill: reader.readDateTimeOrNull(offsets[14]),
+    pinned: reader.readBool(offsets[15]),
+    smartPaste: reader.readBool(offsets[16]),
     syncSpeed:
-        _AppConfigsyncSpeedValueEnumMap[reader.readStringOrNull(offsets[16])] ??
+        _AppConfigsyncSpeedValueEnumMap[reader.readStringOrNull(offsets[17])] ??
             SyncSpeed.realtime,
-    themeColor: reader.readLong(offsets[17]),
+    themeColor: reader.readLong(offsets[18]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[18])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[19])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[19])] ??
+            reader.readStringOrNull(offsets[20])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[20]),
-    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[21])] ??
+    toggleHotkey: reader.readStringOrNull(offsets[21]),
+    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[22])] ??
         AppView.topDocked,
-    windowHeight: reader.readDouble(offsets[22]),
-    windowWidth: reader.readDouble(offsets[23]),
+    windowHeight: reader.readDouble(offsets[23]),
+    windowWidth: reader.readDouble(offsets[24]),
   );
   object.id = id;
   return object;
@@ -321,33 +328,35 @@ P _appConfigDeserializeProp<P>(
     case 12:
       return (reader.readString(offset)) as P;
     case 13:
-      return (reader.readDateTimeOrNull(offset)) as P;
-    case 14:
       return (reader.readBool(offset)) as P;
+    case 14:
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 15:
       return (reader.readBool(offset)) as P;
     case 16:
+      return (reader.readBool(offset)) as P;
+    case 17:
       return (_AppConfigsyncSpeedValueEnumMap[
               reader.readStringOrNull(offset)] ??
           SyncSpeed.realtime) as P;
-    case 17:
-      return (reader.readLong(offset)) as P;
     case 18:
+      return (reader.readLong(offset)) as P;
+    case 19:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 19:
+    case 20:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 20:
-      return (reader.readStringOrNull(offset)) as P;
     case 21:
+      return (reader.readStringOrNull(offset)) as P;
+    case 22:
       return (_AppConfigviewValueEnumMap[reader.readStringOrNull(offset)] ??
           AppView.topDocked) as P;
-    case 22:
-      return (reader.readDouble(offset)) as P;
     case 23:
+      return (reader.readDouble(offset)) as P;
+    case 24:
       return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1162,6 +1171,16 @@ extension AppConfigQueryFilter
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'locale',
         value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      onBoardCompleteEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'onBoardComplete',
+        value: value,
       ));
     });
   }
@@ -2281,6 +2300,18 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByOnBoardComplete() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'onBoardComplete', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByOnBoardCompleteDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'onBoardComplete', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByPausedTill() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'pausedTill', Sort.asc);
@@ -2574,6 +2605,18 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByOnBoardComplete() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'onBoardComplete', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByOnBoardCompleteDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'onBoardComplete', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByPausedTill() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'pausedTill', Sort.asc);
@@ -2784,6 +2827,12 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByOnBoardComplete() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'onBoardComplete');
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByPausedTill() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'pausedTill');
@@ -2943,6 +2992,12 @@ extension AppConfigQueryProperty
     });
   }
 
+  QueryBuilder<AppConfig, bool, QQueryOperations> onBoardCompleteProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'onBoardComplete');
+    });
+  }
+
   QueryBuilder<AppConfig, DateTime?, QQueryOperations> pausedTillProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'pausedTill');
@@ -3050,6 +3105,7 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       enableDragNDrop: json['enableDragNDrop'] as bool? ?? false,
       enablePasteStack: json['enablePasteStack'] as bool? ?? false,
       androidBgListener: json['androidBgListener'] as bool? ?? false,
+      onBoardComplete: json['onBoardComplete'] as bool? ?? true,
       clockUnSynced: json['clockUnSynced'] as bool? ?? false,
     );
 
@@ -3078,6 +3134,7 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'enableDragNDrop': instance.enableDragNDrop,
       'enablePasteStack': instance.enablePasteStack,
       'androidBgListener': instance.androidBgListener,
+      'onBoardComplete': instance.onBoardComplete,
       'clockUnSynced': instance.clockUnSynced,
     };
 

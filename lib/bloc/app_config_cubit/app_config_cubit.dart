@@ -85,6 +85,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   Future<void> reset() async {
     setE2EEKey(null);
     changeAutoSyncDuration(SyncSpeed.balanced);
+    changeOnBoardStatus(false);
   }
 
   (AppConfig, bool) applyForSubscription(
@@ -286,6 +287,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
 
   Future<void> toggleAutoEncrypt(bool value) async {
     final newConfig = state.config.copyWith(autoEncrypt: value)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+  }
+
+  Future<void> changeOnBoardStatus(bool value) async {
+    final newConfig = state.config.copyWith(onBoardComplete: value)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);

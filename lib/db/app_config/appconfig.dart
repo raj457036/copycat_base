@@ -83,6 +83,10 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default(false) bool enablePasteStack,
     @Default(false) bool androidBgListener,
 
+    // on boarding
+    @Default(true)
+    bool onBoardComplete, // On logout/unauth this will be set to true
+
     //? Local App States
     /// last focus window id
     @ignore
