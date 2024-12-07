@@ -8,6 +8,7 @@ import 'package:copycat_base/constants/strings/strings.dart';
 import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:easy_worker/easy_worker.dart';
+import 'package:equatable/equatable.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,23 @@ import 'package:rxdart/rxdart.dart';
 import 'package:super_clipboard/super_clipboard.dart';
 import "package:universal_io/io.dart";
 import 'package:window_manager/window_manager.dart';
+
+class ImmediateClip extends Equatable {
+  final ClipItemType type;
+  final String? text;
+  final Uri? uri;
+  final String? ogFilePath;
+
+  const ImmediateClip({
+    required this.type,
+    this.text,
+    this.uri,
+    this.ogFilePath,
+  });
+
+  @override
+  List<Object?> get props => [type, text, uri, ogFilePath];
+}
 
 class ClipItem {
   final ClipItemType type;
@@ -128,6 +146,7 @@ class ClipItem {
       );
 }
 
+ImmediateClip? _immediateClip;
 final rgbRegex = RegExp(r"^#?(?:[0-9a-fA-F]{3}){1,2}$");
 final rgbaRegex = RegExp(r"^#?(?:[0-9a-fA-F]{3,4}){1,2}$");
 final emailRegex = RegExp(
@@ -235,6 +254,8 @@ Future<(File?, String?, int)> writeToClipboardCacheFile({
 }
 
 class ClipboardFormatProcessor {
+  bool preventDuplicate = false;
+
   String cleanText(String text) {
     try {
       return Uri.decodeComponent(cleanUpString(text) ?? '');
@@ -285,6 +306,14 @@ class ClipboardFormatProcessor {
       format,
       (file) async {
         try {
+          // duplicate prevention
+          if (isDuplicate(
+              type: ClipItemType.file, path: file.fileName, save: true)) {
+            logger.w("Duplicate File Clip Found!");
+            c.complete();
+            return;
+          }
+
           name = p.basenameWithoutExtension(file.fileName ?? "");
           content = await streamToUint8List(file.getStream());
           c.complete();
@@ -302,6 +331,40 @@ class ClipboardFormatProcessor {
     }
     await c.future;
     return (name, content);
+  }
+
+  ImmediateClip? getImmediateClip({
+    required ClipItemType type,
+    String? text,
+    String? path,
+    Uri? uri,
+  }) {
+    ImmediateClip? ic;
+    if (type == ClipItemType.text && text != null) {
+      ic = ImmediateClip(type: type, text: text);
+    }
+    if ((type == ClipItemType.media || type == ClipItemType.file) &&
+        path != null) {
+      ic = ImmediateClip(type: type, ogFilePath: path);
+    }
+    if (type == ClipItemType.url && uri != null) {
+      ic = ImmediateClip(type: type, uri: uri);
+    }
+    return ic;
+  }
+
+  bool isDuplicate({
+    required ClipItemType type,
+    String? text,
+    String? path,
+    Uri? uri,
+    bool save = false,
+  }) {
+    if (!preventDuplicate) return false;
+    final ic = getImmediateClip(type: type, text: text, path: path, uri: uri);
+    final isDuplicate_ = ic == _immediateClip;
+    if (save) _immediateClip = ic;
+    return isDuplicate_;
   }
 
   Future<ClipItem?> _getPlainText(DataReader reader) async {
@@ -325,6 +388,13 @@ class ClipboardFormatProcessor {
       if (text.trim().isEmpty) return null;
       text = text.replaceAll(RegExp('\r[\n]?'), '\n');
       final (textCategory, parsedText) = getTextCategory(text);
+
+      // duplicate prevention
+      if (isDuplicate(type: ClipItemType.text, text: parsedText, save: true)) {
+        logger.w("Duplicate Text Clip Found!");
+        return null;
+      }
+
       return ClipItem.text(
         text: parsedText,
         textCategory: textCategory,
@@ -372,7 +442,6 @@ class ClipboardFormatProcessor {
       (String?, Uint8List?) result;
 
       final tryVirtualFirst = Platform.isWindows;
-
       try {
         result = await readFile(
           reader,
@@ -438,6 +507,12 @@ class ClipboardFormatProcessor {
       return null;
     }
 
+    // duplicate prevention
+    if (isDuplicate(type: ClipItemType.file, path: file.path, save: true)) {
+      logger.w("Duplicate File Clip Found!");
+      return null;
+    }
+
     final ext = p.extension(file.path).substring(1);
     final fileName = p.basenameWithoutExtension(file.path);
     final (cacheFile, mimeType, size) = await writeToClipboardCacheFile(
@@ -489,6 +564,11 @@ class ClipboardFormatProcessor {
     }
 
     if (uri != null) {
+      // duplicate prevention
+      if (isDuplicate(type: ClipItemType.url, uri: uri.uri, save: true)) {
+        logger.w("Duplicate Uri Clip Found!");
+        return null;
+      }
       return await getUrl(reader, uri);
     }
 
@@ -497,39 +577,42 @@ class ClipboardFormatProcessor {
     return await _getPlainText(reader);
   }
 
-  Future<ClipItem?> process(
-    DataReader reader,
-    DataFormat format,
-  ) async {
-    switch (format) {
-      case Formats.plainText:
-        return await _getPlainText(reader);
-      case Formats.plainTextFile:
-        return await _getPlainTextFile(reader);
-      // Images
-      case avif:
-        return await getImage(reader, "avif", format);
-      case Formats.png:
-        return await getImage(reader, "png", format);
-      case Formats.jpeg:
-        return await getImage(reader, "jpeg", format);
-      case Formats.gif:
-        return await getImage(reader, "gif", format);
-      case Formats.tiff:
-        return await getImage(reader, "tiff", format);
-      case Formats.webp:
-        return await getImage(reader, "webp", format);
-      case Formats.heic:
-        return await getImage(reader, "heic", format);
-      case svg:
-        return await getImage(reader, "svg", format);
+  Future<ClipItem?> process(DataReader reader, DataFormat format,
+      {bool preventDuplicate = false}) async {
+    try {
+      this.preventDuplicate = preventDuplicate;
+      switch (format) {
+        case Formats.plainText:
+          return await _getPlainText(reader);
+        case Formats.plainTextFile:
+          return await _getPlainTextFile(reader);
+        // Images
+        case avif:
+          return await getImage(reader, "avif", format);
+        case Formats.png:
+          return await getImage(reader, "png", format);
+        case Formats.jpeg:
+          return await getImage(reader, "jpeg", format);
+        case Formats.gif:
+          return await getImage(reader, "gif", format);
+        case Formats.tiff:
+          return await getImage(reader, "tiff", format);
+        case Formats.webp:
+          return await getImage(reader, "webp", format);
+        case Formats.heic:
+          return await getImage(reader, "heic", format);
+        case svg:
+          return await getImage(reader, "svg", format);
 
-      // Files or Url
-      case Formats.fileUri:
-      case Formats.uri:
-        return await processUri(reader);
-      default:
-        return null;
+        // Files or Url
+        case Formats.fileUri:
+        case Formats.uri:
+          return await processUri(reader);
+        default:
+          return null;
+      }
+    } finally {
+      this.preventDuplicate = false;
     }
   }
 }
@@ -625,7 +708,10 @@ class ClipboardService with ClipboardListener {
     }
   }
 
-  Future<List<ClipItem?>?> readClipboard({bool manual = false}) async {
+  Future<List<ClipItem?>?> readClipboard({
+    bool manual = false,
+    preventDuplicate = false,
+  }) async {
     logger.i("Reading clipboard");
     await Future.delayed(Durations.short2);
     final reader = await getReader();
@@ -659,6 +745,7 @@ class ClipboardService with ClipboardListener {
       reader,
       res,
       manual: manual,
+      preventDuplicate: preventDuplicate,
     );
     return clips;
   }
@@ -710,11 +797,16 @@ class ClipboardService with ClipboardListener {
     DataReader reader,
     Iterable<DataFormat<Object>> data, {
     bool manual = false,
+    bool preventDuplicate = false,
   }) async {
     final clips = await Future.wait(
       data.map(
         (format) {
-          return processor.process(reader, format);
+          return processor.process(
+            reader,
+            format,
+            preventDuplicate: preventDuplicate && !manual,
+          );
         },
       ),
     );

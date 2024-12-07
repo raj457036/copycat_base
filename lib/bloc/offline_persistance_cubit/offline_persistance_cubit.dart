@@ -70,7 +70,9 @@ class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
       return;
     }
     if (await appConfig.isCopyingAllowedByActivity()) {
-      await clipboard.readClipboard();
+      await clipboard.readClipboard(
+        preventDuplicate: appConfig.duplicatePrevention,
+      );
     }
   }
 

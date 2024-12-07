@@ -158,6 +158,8 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   bool get isFileSyncEnabled =>
       state.config.enableSync && state.config.enableFileSync;
 
+  bool get duplicatePrevention => state.config.duplicatePrevention;
+
   ExclusionRules get exclusionRules => state.config.copyExclusionRules;
 
   Future<void> changePausedTill(DateTime? pausedTill) async {
@@ -218,28 +220,32 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
-  Future<void> setThemeColorVariant(DynamicSchemeVariant variant) async {
+  Future<void> setThemeColorVariant(DynamicSchemeVariant? variant) async {
+    if (variant == null) return;
     final newConfig = state.config.copyWith(themeVariant: variant)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);
   }
 
-  Future<void> changeAutoSyncDuration(SyncSpeed speed) async {
+  Future<void> changeAutoSyncDuration(SyncSpeed? speed) async {
+    if (speed == null) return;
     final newConfig = state.config.copyWith(syncSpeed: speed)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);
   }
 
-  Future<void> changeDontCopyOver(int size) async {
+  Future<void> changeDontCopyOver(int? size) async {
+    if (size == null) return;
     final newConfig = state.config.copyWith(dontCopyOver: size)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);
   }
 
-  Future<void> changeDontUploadOver(int size) async {
+  Future<void> changeDontUploadOver(int? size) async {
+    if (size == null) return;
     final newConfig = state.config.copyWith(dontUploadOver: size)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
@@ -253,7 +259,8 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
-  Future<void> changeThemeMode(ThemeMode mode) async {
+  Future<void> changeThemeMode(ThemeMode? mode) async {
+    if (mode == null) return;
     final newConfig = state.config.copyWith(themeMode: mode)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
@@ -262,6 +269,13 @@ class AppConfigCubit extends Cubit<AppConfigState> {
 
   Future<void> changeSync(bool value) async {
     final newConfig = state.config.copyWith(enableSync: value)
+      ..applyId(state.config);
+    emit(state.copyWith(config: newConfig));
+    await repo.update(newConfig);
+  }
+
+  Future<void> togglePreventDuplication(bool value) async {
+    final newConfig = state.config.copyWith(duplicatePrevention: value)
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);

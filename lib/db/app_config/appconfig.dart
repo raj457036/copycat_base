@@ -82,6 +82,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
     @Default(false) bool enableDragNDrop,
     @Default(false) bool enablePasteStack,
     @Default(false) bool androidBgListener,
+    @Default(false) bool duplicatePrevention,
 
     // on boarding
     @Default(true)

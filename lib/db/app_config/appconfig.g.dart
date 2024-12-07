@@ -37,114 +37,119 @@ const AppConfigSchema = CollectionSchema(
       name: r'dontUploadOver',
       type: IsarType.long,
     ),
-    r'enableDragNDrop': PropertySchema(
+    r'duplicatePrevention': PropertySchema(
       id: 4,
+      name: r'duplicatePrevention',
+      type: IsarType.bool,
+    ),
+    r'enableDragNDrop': PropertySchema(
+      id: 5,
       name: r'enableDragNDrop',
       type: IsarType.bool,
     ),
     r'enableFileSync': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'enableFileSync',
       type: IsarType.bool,
     ),
     r'enablePasteStack': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'enablePasteStack',
       type: IsarType.bool,
     ),
     r'enableSync': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'enableSync',
       type: IsarType.bool,
     ),
     r'enc2': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'enc2',
       type: IsarType.string,
     ),
     r'exclusionRules': PropertySchema(
-      id: 9,
+      id: 10,
       name: r'exclusionRules',
       type: IsarType.object,
       target: r'ExclusionRules',
     ),
     r'launchAtStartup': PropertySchema(
-      id: 10,
+      id: 11,
       name: r'launchAtStartup',
       type: IsarType.bool,
     ),
     r'layout': PropertySchema(
-      id: 11,
+      id: 12,
       name: r'layout',
       type: IsarType.string,
       enumMap: _AppConfiglayoutEnumValueMap,
     ),
     r'locale': PropertySchema(
-      id: 12,
+      id: 13,
       name: r'locale',
       type: IsarType.string,
     ),
     r'onBoardComplete': PropertySchema(
-      id: 13,
+      id: 14,
       name: r'onBoardComplete',
       type: IsarType.bool,
     ),
     r'pausedTill': PropertySchema(
-      id: 14,
+      id: 15,
       name: r'pausedTill',
       type: IsarType.dateTime,
     ),
     r'pinned': PropertySchema(
-      id: 15,
+      id: 16,
       name: r'pinned',
       type: IsarType.bool,
     ),
     r'smartPaste': PropertySchema(
-      id: 16,
+      id: 17,
       name: r'smartPaste',
       type: IsarType.bool,
     ),
     r'syncSpeed': PropertySchema(
-      id: 17,
+      id: 18,
       name: r'syncSpeed',
       type: IsarType.string,
       enumMap: _AppConfigsyncSpeedEnumValueMap,
     ),
     r'themeColor': PropertySchema(
-      id: 18,
+      id: 19,
       name: r'themeColor',
       type: IsarType.long,
     ),
     r'themeMode': PropertySchema(
-      id: 19,
+      id: 20,
       name: r'themeMode',
       type: IsarType.string,
       enumMap: _AppConfigthemeModeEnumValueMap,
     ),
     r'themeVariant': PropertySchema(
-      id: 20,
+      id: 21,
       name: r'themeVariant',
       type: IsarType.string,
       enumMap: _AppConfigthemeVariantEnumValueMap,
     ),
     r'toggleHotkey': PropertySchema(
-      id: 21,
+      id: 22,
       name: r'toggleHotkey',
       type: IsarType.string,
     ),
     r'view': PropertySchema(
-      id: 22,
+      id: 23,
       name: r'view',
       type: IsarType.string,
       enumMap: _AppConfigviewEnumValueMap,
     ),
     r'windowHeight': PropertySchema(
-      id: 23,
+      id: 24,
       name: r'windowHeight',
       type: IsarType.double,
     ),
     r'windowWidth': PropertySchema(
-      id: 24,
+      id: 25,
       name: r'windowWidth',
       type: IsarType.double,
     )
@@ -211,32 +216,33 @@ void _appConfigSerialize(
   writer.writeBool(offsets[1], object.autoEncrypt);
   writer.writeLong(offsets[2], object.dontCopyOver);
   writer.writeLong(offsets[3], object.dontUploadOver);
-  writer.writeBool(offsets[4], object.enableDragNDrop);
-  writer.writeBool(offsets[5], object.enableFileSync);
-  writer.writeBool(offsets[6], object.enablePasteStack);
-  writer.writeBool(offsets[7], object.enableSync);
-  writer.writeString(offsets[8], object.enc2);
+  writer.writeBool(offsets[4], object.duplicatePrevention);
+  writer.writeBool(offsets[5], object.enableDragNDrop);
+  writer.writeBool(offsets[6], object.enableFileSync);
+  writer.writeBool(offsets[7], object.enablePasteStack);
+  writer.writeBool(offsets[8], object.enableSync);
+  writer.writeString(offsets[9], object.enc2);
   writer.writeObject<ExclusionRules>(
-    offsets[9],
+    offsets[10],
     allOffsets,
     ExclusionRulesSchema.serialize,
     object.exclusionRules,
   );
-  writer.writeBool(offsets[10], object.launchAtStartup);
-  writer.writeString(offsets[11], object.layout.name);
-  writer.writeString(offsets[12], object.locale);
-  writer.writeBool(offsets[13], object.onBoardComplete);
-  writer.writeDateTime(offsets[14], object.pausedTill);
-  writer.writeBool(offsets[15], object.pinned);
-  writer.writeBool(offsets[16], object.smartPaste);
-  writer.writeString(offsets[17], object.syncSpeed.name);
-  writer.writeLong(offsets[18], object.themeColor);
-  writer.writeString(offsets[19], object.themeMode.name);
-  writer.writeString(offsets[20], object.themeVariant.name);
-  writer.writeString(offsets[21], object.toggleHotkey);
-  writer.writeString(offsets[22], object.view.name);
-  writer.writeDouble(offsets[23], object.windowHeight);
-  writer.writeDouble(offsets[24], object.windowWidth);
+  writer.writeBool(offsets[11], object.launchAtStartup);
+  writer.writeString(offsets[12], object.layout.name);
+  writer.writeString(offsets[13], object.locale);
+  writer.writeBool(offsets[14], object.onBoardComplete);
+  writer.writeDateTime(offsets[15], object.pausedTill);
+  writer.writeBool(offsets[16], object.pinned);
+  writer.writeBool(offsets[17], object.smartPaste);
+  writer.writeString(offsets[18], object.syncSpeed.name);
+  writer.writeLong(offsets[19], object.themeColor);
+  writer.writeString(offsets[20], object.themeMode.name);
+  writer.writeString(offsets[21], object.themeVariant.name);
+  writer.writeString(offsets[22], object.toggleHotkey);
+  writer.writeString(offsets[23], object.view.name);
+  writer.writeDouble(offsets[24], object.windowHeight);
+  writer.writeDouble(offsets[25], object.windowWidth);
 }
 
 AppConfig _appConfigDeserialize(
@@ -250,40 +256,41 @@ AppConfig _appConfigDeserialize(
     autoEncrypt: reader.readBool(offsets[1]),
     dontCopyOver: reader.readLong(offsets[2]),
     dontUploadOver: reader.readLong(offsets[3]),
-    enableDragNDrop: reader.readBool(offsets[4]),
-    enableFileSync: reader.readBool(offsets[5]),
-    enablePasteStack: reader.readBool(offsets[6]),
-    enableSync: reader.readBool(offsets[7]),
-    enc2: reader.readStringOrNull(offsets[8]),
+    duplicatePrevention: reader.readBool(offsets[4]),
+    enableDragNDrop: reader.readBool(offsets[5]),
+    enableFileSync: reader.readBool(offsets[6]),
+    enablePasteStack: reader.readBool(offsets[7]),
+    enableSync: reader.readBool(offsets[8]),
+    enc2: reader.readStringOrNull(offsets[9]),
     exclusionRules: reader.readObjectOrNull<ExclusionRules>(
-      offsets[9],
+      offsets[10],
       ExclusionRulesSchema.deserialize,
       allOffsets,
     ),
-    launchAtStartup: reader.readBool(offsets[10]),
+    launchAtStartup: reader.readBool(offsets[11]),
     layout:
-        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[11])] ??
+        _AppConfiglayoutValueEnumMap[reader.readStringOrNull(offsets[12])] ??
             AppLayout.grid,
-    locale: reader.readString(offsets[12]),
-    onBoardComplete: reader.readBool(offsets[13]),
-    pausedTill: reader.readDateTimeOrNull(offsets[14]),
-    pinned: reader.readBool(offsets[15]),
-    smartPaste: reader.readBool(offsets[16]),
+    locale: reader.readString(offsets[13]),
+    onBoardComplete: reader.readBool(offsets[14]),
+    pausedTill: reader.readDateTimeOrNull(offsets[15]),
+    pinned: reader.readBool(offsets[16]),
+    smartPaste: reader.readBool(offsets[17]),
     syncSpeed:
-        _AppConfigsyncSpeedValueEnumMap[reader.readStringOrNull(offsets[17])] ??
+        _AppConfigsyncSpeedValueEnumMap[reader.readStringOrNull(offsets[18])] ??
             SyncSpeed.realtime,
-    themeColor: reader.readLong(offsets[18]),
+    themeColor: reader.readLong(offsets[19]),
     themeMode:
-        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[19])] ??
+        _AppConfigthemeModeValueEnumMap[reader.readStringOrNull(offsets[20])] ??
             ThemeMode.system,
     themeVariant: _AppConfigthemeVariantValueEnumMap[
-            reader.readStringOrNull(offsets[20])] ??
+            reader.readStringOrNull(offsets[21])] ??
         DynamicSchemeVariant.tonalSpot,
-    toggleHotkey: reader.readStringOrNull(offsets[21]),
-    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[22])] ??
+    toggleHotkey: reader.readStringOrNull(offsets[22]),
+    view: _AppConfigviewValueEnumMap[reader.readStringOrNull(offsets[23])] ??
         AppView.topDocked,
-    windowHeight: reader.readDouble(offsets[23]),
-    windowWidth: reader.readDouble(offsets[24]),
+    windowHeight: reader.readDouble(offsets[24]),
+    windowWidth: reader.readDouble(offsets[25]),
   );
   object.id = id;
   return object;
@@ -313,50 +320,52 @@ P _appConfigDeserializeProp<P>(
     case 7:
       return (reader.readBool(offset)) as P;
     case 8:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 9:
+      return (reader.readStringOrNull(offset)) as P;
+    case 10:
       return (reader.readObjectOrNull<ExclusionRules>(
         offset,
         ExclusionRulesSchema.deserialize,
         allOffsets,
       )) as P;
-    case 10:
-      return (reader.readBool(offset)) as P;
     case 11:
+      return (reader.readBool(offset)) as P;
+    case 12:
       return (_AppConfiglayoutValueEnumMap[reader.readStringOrNull(offset)] ??
           AppLayout.grid) as P;
-    case 12:
-      return (reader.readString(offset)) as P;
     case 13:
-      return (reader.readBool(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 14:
-      return (reader.readDateTimeOrNull(offset)) as P;
-    case 15:
       return (reader.readBool(offset)) as P;
+    case 15:
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 16:
       return (reader.readBool(offset)) as P;
     case 17:
+      return (reader.readBool(offset)) as P;
+    case 18:
       return (_AppConfigsyncSpeedValueEnumMap[
               reader.readStringOrNull(offset)] ??
           SyncSpeed.realtime) as P;
-    case 18:
-      return (reader.readLong(offset)) as P;
     case 19:
+      return (reader.readLong(offset)) as P;
+    case 20:
       return (_AppConfigthemeModeValueEnumMap[
               reader.readStringOrNull(offset)] ??
           ThemeMode.system) as P;
-    case 20:
+    case 21:
       return (_AppConfigthemeVariantValueEnumMap[
               reader.readStringOrNull(offset)] ??
           DynamicSchemeVariant.tonalSpot) as P;
-    case 21:
-      return (reader.readStringOrNull(offset)) as P;
     case 22:
+      return (reader.readStringOrNull(offset)) as P;
+    case 23:
       return (_AppConfigviewValueEnumMap[reader.readStringOrNull(offset)] ??
           AppView.topDocked) as P;
-    case 23:
-      return (reader.readDouble(offset)) as P;
     case 24:
+      return (reader.readDouble(offset)) as P;
+    case 25:
       return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -644,6 +653,16 @@ extension AppConfigQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterFilterCondition>
+      duplicatePreventionEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'duplicatePrevention',
+        value: value,
       ));
     });
   }
@@ -2203,6 +2222,19 @@ extension AppConfigQuerySortBy on QueryBuilder<AppConfig, AppConfig, QSortBy> {
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByDuplicatePrevention() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'duplicatePrevention', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
+      sortByDuplicatePreventionDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'duplicatePrevention', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> sortByEnableDragNDrop() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enableDragNDrop', Sort.asc);
@@ -2496,6 +2528,19 @@ extension AppConfigQuerySortThenBy
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByDuplicatePrevention() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'duplicatePrevention', Sort.asc);
+    });
+  }
+
+  QueryBuilder<AppConfig, AppConfig, QAfterSortBy>
+      thenByDuplicatePreventionDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'duplicatePrevention', Sort.desc);
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QAfterSortBy> thenByEnableDragNDrop() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'enableDragNDrop', Sort.asc);
@@ -2776,6 +2821,13 @@ extension AppConfigQueryWhereDistinct
     });
   }
 
+  QueryBuilder<AppConfig, AppConfig, QDistinct>
+      distinctByDuplicatePrevention() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'duplicatePrevention');
+    });
+  }
+
   QueryBuilder<AppConfig, AppConfig, QDistinct> distinctByEnableDragNDrop() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'enableDragNDrop');
@@ -2934,6 +2986,13 @@ extension AppConfigQueryProperty
   QueryBuilder<AppConfig, int, QQueryOperations> dontUploadOverProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'dontUploadOver');
+    });
+  }
+
+  QueryBuilder<AppConfig, bool, QQueryOperations>
+      duplicatePreventionProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'duplicatePrevention');
     });
   }
 
@@ -3105,6 +3164,7 @@ _$AppConfigImpl _$$AppConfigImplFromJson(Map<String, dynamic> json) =>
       enableDragNDrop: json['enableDragNDrop'] as bool? ?? false,
       enablePasteStack: json['enablePasteStack'] as bool? ?? false,
       androidBgListener: json['androidBgListener'] as bool? ?? false,
+      duplicatePrevention: json['duplicatePrevention'] as bool? ?? false,
       onBoardComplete: json['onBoardComplete'] as bool? ?? true,
       clockUnSynced: json['clockUnSynced'] as bool? ?? false,
     );
@@ -3134,6 +3194,7 @@ Map<String, dynamic> _$$AppConfigImplToJson(_$AppConfigImpl instance) =>
       'enableDragNDrop': instance.enableDragNDrop,
       'enablePasteStack': instance.enablePasteStack,
       'androidBgListener': instance.androidBgListener,
+      'duplicatePrevention': instance.duplicatePrevention,
       'onBoardComplete': instance.onBoardComplete,
       'clockUnSynced': instance.clockUnSynced,
     };
