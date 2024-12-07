@@ -53,8 +53,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showFailureSnackbar(
           )
         ],
       ),
-      shape: StadiumBorder(),
-      elevation: 0,
+      shape: isMobile ? null : const StadiumBorder(),
       closeIconColor: colors.onError,
       behavior: isMobile ? SnackBarBehavior.fixed : SnackBarBehavior.floating,
       width: isMobile ? null : 480,
@@ -137,8 +136,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
               ? const Duration(seconds: 30)
               : const Duration(seconds: 4),
       action: action,
-      shape: StadiumBorder(),
-      elevation: 0,
+      shape: isMobile ? null : const StadiumBorder(),
     ),
     closePrevious: closePrevious,
   );
