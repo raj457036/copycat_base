@@ -74,7 +74,7 @@ class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
     }
   }
 
-  Future<void> startListners() async {
+  Future<void> startListeners() async {
     if (_listening) return;
     clipboard.start(onCaptureClipboard);
     copySub = clipboard.onCopy?.listen(onClips);
