@@ -51,6 +51,15 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
     logger.w("Status Change");
     logger.w(status);
     logger.w(obj);
+
+    switch (status) {
+      case CrossSyncListenerStatus.connecting:
+        emit(RealtimeCollectionSyncState.connecting());
+      case CrossSyncListenerStatus.connected:
+        emit(RealtimeCollectionSyncState.connected());
+      default:
+        emit(RealtimeCollectionSyncState.disconnected());
+    }
   }
 
   Future<void> onSync(CollectionCrossSyncEvent event) async {

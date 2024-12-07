@@ -54,6 +54,14 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
     logger.w("Status Change");
     logger.w(status);
     logger.w(obj);
+    switch (status) {
+      case CrossSyncListenerStatus.connecting:
+        emit(RealtimeClipSyncState.connecting());
+      case CrossSyncListenerStatus.connected:
+        emit(RealtimeClipSyncState.connected());
+      default:
+        emit(RealtimeClipSyncState.disconnected());
+    }
   }
 
   Future<void> onSync(ClipCrossSyncEvent event) async {
