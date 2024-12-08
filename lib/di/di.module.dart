@@ -191,6 +191,7 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
         () => _i433.AndroidBgClipboardCubit(
               gh<_i565.AndroidBackgroundClipboard>(),
               gh<_i72.ClipboardRepository>(instanceName: 'local'),
+              gh<String>(instanceName: 'device_id'),
             ));
     gh.factory<_i84.ClipSyncManagerCubit>(() => _i84.ClipSyncManagerCubit(
           gh<_i106.SyncRepository>(),

@@ -20,10 +20,12 @@ part 'android_bg_clipboard_state.dart';
 class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
   final AndroidBackgroundClipboard plugin;
   final ClipboardRepository clipRepo;
+  final String deviceId;
 
   AndroidBgClipboardCubit(
     this.plugin,
     @Named("local") this.clipRepo,
+    @Named("device_id") this.deviceId,
   ) : super(AndroidBgClipboardState.unknown());
 
   Future<void> writeToLocal(ClipboardItem item) async {
@@ -64,6 +66,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       description: desc,
       serverId: serverId,
       lastSynced: serverId != null ? now() : null,
+      deviceId: deviceId,
     );
   }
 

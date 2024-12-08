@@ -303,7 +303,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
         broadcastBatchEvent(syncEvents);
         fromTs = syncEvents.lastOrNull?.$2.modified ?? fromTs;
       });
-      await wait(250);
+      await wait(350);
     }
 
     if (failed) return;
