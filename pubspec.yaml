@@ -29,6 +29,7 @@ dependencies:
   clipboard_watcher: ^0.2.1
   window_manager: ^0.4.2
   rxdart: ^0.28.0
+  crypto: ^3.0.6
   file_picker: ^8.0.5
   encrypt: ^5.0.3
   hotkey_manager: ^0.2.3

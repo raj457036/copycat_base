@@ -4,9 +4,11 @@ import 'dart:convert' show utf8;
 
 import 'package:clipboard_watcher/clipboard_watcher.dart';
 import 'package:copycat_base/common/logging.dart';
+import 'package:copycat_base/constants/misc.dart';
 import 'package:copycat_base/constants/strings/strings.dart';
 import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/utils/utility.dart';
+import 'package:crypto/crypto.dart' show sha1, Digest;
 import 'package:easy_worker/easy_worker.dart';
 import 'package:equatable/equatable.dart';
 import 'package:file_picker/file_picker.dart';
@@ -25,6 +27,7 @@ class ImmediateClip extends Equatable {
   final ClipItemType type;
   final String? text;
   final Uri? uri;
+  final Digest? digest;
   final String? ogFilePath;
 
   const ImmediateClip({
@@ -32,10 +35,11 @@ class ImmediateClip extends Equatable {
     this.text,
     this.uri,
     this.ogFilePath,
+    this.digest,
   });
 
   @override
-  List<Object?> get props => [type, text, uri, ogFilePath];
+  List<Object?> get props => [type, text, uri, ogFilePath, digest];
 }
 
 class ClipItem {
@@ -49,6 +53,7 @@ class ClipItem {
   final String? text;
   final Uri? uri;
   final TextCategory? textCategory;
+  final bool isDuplicate;
 
   ClipItem({
     required this.type,
@@ -61,6 +66,7 @@ class ClipItem {
     required this.fileSize,
     this.textCategory,
     this.blurHash,
+    this.isDuplicate = false,
   });
 
   bool get isImage => fileMimeType?.startsWith("image") ?? false;
@@ -77,6 +83,18 @@ class ClipItem {
       await file!.delete();
     }
   }
+
+  factory ClipItem.duplicate() => ClipItem(
+        type: ClipItemType.text,
+        file: null,
+        fileName: null,
+        text: null,
+        uri: null,
+        fileMimeType: null,
+        fileExtension: null,
+        fileSize: null,
+        isDuplicate: true,
+      );
 
   factory ClipItem.text({
     required String text,
@@ -147,6 +165,7 @@ class ClipItem {
 }
 
 ImmediateClip? _immediateClip;
+const _duplicateTag = "<-Duplicate";
 final rgbRegex = RegExp(r"^#?(?:[0-9a-fA-F]{3}){1,2}$");
 final rgbaRegex = RegExp(r"^#?(?:[0-9a-fA-F]{3,4}){1,2}$");
 final emailRegex = RegExp(
@@ -307,15 +326,33 @@ class ClipboardFormatProcessor {
       (file) async {
         try {
           // duplicate prevention
-          if (isDuplicate(
-              type: ClipItemType.file, path: file.fileName, save: true)) {
+          if (file.fileName != null &&
+              isDuplicate(
+                  type: ClipItemType.file, path: file.fileName, save: true)) {
             logger.w("Duplicate File Clip Found!");
             c.complete();
+            name = _duplicateTag;
             return;
           }
 
           name = p.basenameWithoutExtension(file.fileName ?? "");
-          content = await streamToUint8List(file.getStream());
+          final bin = await streamToUint8List(file.getStream());
+
+          final digest = sha1.convert(bin);
+
+          // Duplicate prevention
+          if (isDuplicate(
+            type: ClipItemType.file,
+            digest: digest,
+            save: true,
+          )) {
+            logger.w("Duplicate File Digest Found!");
+            c.complete();
+            name = _duplicateTag;
+            return;
+          }
+
+          content = bin;
           c.complete();
         } catch (e) {
           c.completeError(e);
@@ -337,6 +374,7 @@ class ClipboardFormatProcessor {
     required ClipItemType type,
     String? text,
     String? path,
+    Digest? digest,
     Uri? uri,
   }) {
     ImmediateClip? ic;
@@ -344,8 +382,12 @@ class ClipboardFormatProcessor {
       ic = ImmediateClip(type: type, text: text);
     }
     if ((type == ClipItemType.media || type == ClipItemType.file) &&
-        path != null) {
-      ic = ImmediateClip(type: type, ogFilePath: path);
+            path != null ||
+        digest != null) {
+      ic = ImmediateClip(type: type, ogFilePath: path, digest: digest);
+    }
+    if (type == ClipItemType.url && uri != null) {
+      ic = ImmediateClip(type: type, uri: uri);
     }
     if (type == ClipItemType.url && uri != null) {
       ic = ImmediateClip(type: type, uri: uri);
@@ -357,13 +399,23 @@ class ClipboardFormatProcessor {
     required ClipItemType type,
     String? text,
     String? path,
+    Digest? digest,
     Uri? uri,
     bool save = false,
   }) {
     if (!preventDuplicate) return false;
-    final ic = getImmediateClip(type: type, text: text, path: path, uri: uri);
-    final isDuplicate_ = ic == _immediateClip;
-    if (save) _immediateClip = ic;
+    final ic = getImmediateClip(
+      type: type,
+      text: text,
+      path: path,
+      digest: digest,
+      uri: uri,
+    );
+    final isDuplicate_ = ic == _immediateClip && ic != null;
+    if (save && ic != null) {
+      _immediateClip = ic;
+    }
+
     return isDuplicate_;
   }
 
@@ -385,6 +437,7 @@ class ClipboardFormatProcessor {
       return null;
     } else {
       text = cleanText(text);
+
       if (text.trim().isEmpty) return null;
       text = text.replaceAll(RegExp('\r[\n]?'), '\n');
       final (textCategory, parsedText) = getTextCategory(text);
@@ -392,7 +445,7 @@ class ClipboardFormatProcessor {
       // duplicate prevention
       if (isDuplicate(type: ClipItemType.text, text: parsedText, save: true)) {
         logger.w("Duplicate Text Clip Found!");
-        return null;
+        return ClipItem.duplicate();
       }
 
       return ClipItem.text(
@@ -405,6 +458,9 @@ class ClipboardFormatProcessor {
   Future<ClipItem?> _getPlainTextFile(DataReader reader) async {
     final (fileName, binary) = await readFile(reader, Formats.plainTextFile);
 
+    if (fileName == _duplicateTag) {
+      return ClipItem.duplicate();
+    }
     if (binary == null) {
       logger.w("Text file is null or empty.");
       return null;
@@ -462,6 +518,10 @@ class ClipboardFormatProcessor {
 
       final (fileName, binary) = result;
 
+      if (fileName == _duplicateTag) {
+        return ClipItem.duplicate();
+      }
+
       if (binary == null) {
         logger.w("Couldn't read content of image file with format $format");
         return null;
@@ -510,7 +570,7 @@ class ClipboardFormatProcessor {
     // duplicate prevention
     if (isDuplicate(type: ClipItemType.file, path: file.path, save: true)) {
       logger.w("Duplicate File Clip Found!");
-      return null;
+      return ClipItem.duplicate();
     }
 
     final ext = p.extension(file.path).substring(1);
@@ -567,7 +627,7 @@ class ClipboardFormatProcessor {
       // duplicate prevention
       if (isDuplicate(type: ClipItemType.url, uri: uri.uri, save: true)) {
         logger.w("Duplicate Uri Clip Found!");
-        return null;
+        return ClipItem.duplicate();
       }
       return await getUrl(reader, uri);
     }
@@ -617,47 +677,25 @@ class ClipboardFormatProcessor {
   }
 }
 
-const avif = SimpleFileFormat(
-  uniformTypeIdentifiers: ['public.avif'],
-  windowsFormats: ['AVIF'],
-  mimeTypes: ['image/avif'],
-);
-
-const svg = SimpleFileFormat(
-  uniformTypeIdentifiers: ['public.svg-image'],
-  mimeTypes: [
-    'public.svg-image',
-    "image/svg+xml",
-    "image/svg",
-  ],
-);
-
-final allSupportedClipFormats = [
-  ...Formats.standardFormats,
-  avif,
-  svg,
-];
-
-const _clipTypePriority = [
-  avif,
-  Formats.png,
-  Formats.jpeg,
-  Formats.gif,
-  Formats.tiff,
-  Formats.webp,
-  Formats.heic,
-  Formats.bmp,
-  svg,
-  Formats.fileUri,
-  Formats.uri,
-  Formats.plainTextFile,
-  Formats.plainText,
-];
-
 @singleton
 class ClipboardService with ClipboardListener {
   bool _writing = false;
   bool _started = false;
+  var _clipTypePriority = <DataFormat>[
+    avif,
+    Formats.png,
+    Formats.jpeg,
+    Formats.gif,
+    Formats.tiff,
+    Formats.webp,
+    Formats.heic,
+    Formats.bmp,
+    svg,
+    Formats.fileUri,
+    Formats.uri,
+    Formats.plainTextFile,
+    Formats.plainText,
+  ];
 
   void Function()? onRead;
   BehaviorSubject<List<ClipItem?>>? onCopy;
@@ -669,6 +707,10 @@ class ClipboardService with ClipboardListener {
 
   void setWriting([bool writing = false]) {
     _writing = writing;
+  }
+
+  void updateSupportedTypes(List<DataFormat> updatedList) {
+    _clipTypePriority = updatedList;
   }
 
   Future<void> write(Iterable<DataWriterItem> items) async {
@@ -727,14 +769,12 @@ class ClipboardService with ClipboardListener {
     }
 
     final res = <DataFormat>{};
-    int selectedPref = -1;
 
     for (final item in reader.items) {
       DataFormat? selectedFormat;
       final itemFormats = item.getFormats(allSupportedClipFormats);
-      (selectedFormat, selectedPref) = filterOutByPriority(
+      selectedFormat = filterOutByPriority(
         itemFormats,
-        prefScore: selectedPref,
       );
       if (selectedFormat != null) {
         res.add(selectedFormat);
@@ -750,26 +790,42 @@ class ClipboardService with ClipboardListener {
     return clips;
   }
 
-  (DataFormat<Object>?, int) filterOutByPriority(
-    List<DataFormat<Object>> itemFormats, {
-    int prefScore = -1,
-  }) {
+  DataFormat? filterOutByPriority(List<DataFormat> itemFormats) {
     DataFormat? selectedFormat;
+
+    final clipTypePriority = <DataFormat>[
+      Formats.fileUri,
+      Formats.uri,
+      Formats.plainText,
+      Formats.plainTextFile,
+      avif,
+      Formats.png,
+      Formats.jpeg,
+      Formats.gif,
+      Formats.tiff,
+      Formats.webp,
+      Formats.heic,
+      Formats.bmp,
+      svg,
+    ];
+
+    int currentPrefScore =
+        clipTypePriority.length; // Initialize to max possible priority index
+
     for (final format in itemFormats) {
-      if (selectedFormat == null) {
-        selectedFormat = format;
-        prefScore = _clipTypePriority.indexOf(selectedFormat);
-        continue;
-      }
+      // Get the index of the current format in the priority list.
+      final pref = clipTypePriority.indexOf(format);
 
-      final pref = _clipTypePriority.indexOf(format);
-
-      if ((pref != -1 && pref < prefScore) || prefScore == -1) {
+      // Check if the format is present in the priority list (index != -1).
+      // If it has a higher priority (lower index), update the selected format.
+      if (pref != -1 && pref < currentPrefScore) {
         selectedFormat = format;
-        prefScore = pref;
+        currentPrefScore =
+            pref; // Update the score to reflect the new priority.
       }
     }
-    return (selectedFormat, prefScore);
+
+    return selectedFormat ?? Formats.plainText;
   }
 
   Future<List<ClipItem?>?> processMultipleReaderDataFormat(

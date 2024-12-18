@@ -26,7 +26,10 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
     this.listener,
     @Named("local") this.clipRepo,
     this.collectionRepo,
-  ) : super(const RealtimeClipSyncState.initial());
+  ) : super(const RealtimeClipSyncState.initial()) {
+    statusSubscription = listener.onStatusChange.listen(onStatusChange);
+    changeSubscription = listener.onChange.listen(onSync);
+  }
 
   void _clearSubs() {
     changeSubscription?.cancel();
@@ -35,16 +38,12 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
 
   void subscribe() {
     if (_subscribed) return;
-    _clearSubs();
-    statusSubscription = listener.onStatusChange.listen(onStatusChange);
-    changeSubscription = listener.onChange.listen(onSync);
     listener.start();
     _subscribed = true;
   }
 
   void unsubscribe() {
     if (!_subscribed) return;
-    _clearSubs();
     listener.stop();
     _subscribed = false;
   }
@@ -91,6 +90,7 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
   @override
   Future<void> close() {
     unsubscribe();
+    _clearSubs();
     return super.close();
   }
 }

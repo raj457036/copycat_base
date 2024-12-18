@@ -239,7 +239,7 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
   }
 
   Future<ClipboardItem> encrypt() async {
-    final encrypter = EncrypterWorker.instance;
+    final encrypter = EncryptionWorker.instance;
     if (!encrypter.isRunning || !encrypter.isEncryptionActive || encrypted) {
       return this;
     }
@@ -259,7 +259,7 @@ class ClipboardItem with _$ClipboardItem, IsarIdMixin {
   Future<ClipboardItem> decrypt({bool throwException = false}) async {
     if (!encrypted) return this;
 
-    final encrypter = EncrypterWorker.instance;
+    final encrypter = EncryptionWorker.instance;
     await encrypter.waitUntilReady();
 
     if (!encrypter.isRunning || !encrypter.isDecryptionActive) {

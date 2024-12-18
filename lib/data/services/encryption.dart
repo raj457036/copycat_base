@@ -152,10 +152,10 @@ class EncryptionException implements Exception {
   EncryptionException(this.message, {this.code = "not-active"});
 }
 
-class EncrypterWorker {
+class EncryptionWorker {
   Completer? _completer;
   bool _isRunning = false;
-
+  bool _isStarting = false;
   bool _encryption = false;
   bool _decryption = true;
 
@@ -166,12 +166,13 @@ class EncrypterWorker {
 
   StreamSubscription? _subscription;
 
-  EncrypterWorker._();
+  EncryptionWorker._();
 
-  static final EncrypterWorker _instance = EncrypterWorker._();
-  static EncrypterWorker get instance => _instance;
+  static final EncryptionWorker _instance = EncryptionWorker._();
+  static EncryptionWorker get instance => _instance;
 
   bool get isRunning => _isRunning;
+  bool get isStarting => _isStarting;
   bool get isEncryptionActive => _encryption;
   bool get isDecryptionActive => _decryption;
 
@@ -192,23 +193,29 @@ class EncrypterWorker {
   }
 
   Future<void> start(String secret) async {
+    if (_completer != null || _isRunning) return;
     _completer = Completer();
-    _isRunning = false;
-    this.secret = secret;
-    _subscription?.cancel();
-    _encryptor = EasyWorker<(String, String), EncryptionPayload>(
-      Entrypoint(_encryptorEntryPoint),
-      workerName: "Encryptor Worker",
-    );
+    _isStarting = true;
+    try {
+      _isRunning = false;
+      this.secret = secret;
+      _subscription?.cancel();
+      _encryptor = EasyWorker<(String, String), EncryptionPayload>(
+        Entrypoint(_encryptorEntryPoint),
+        workerName: "Encryptor Worker",
+      );
 
-    await _encryptor?.waitUntilReady();
-    _subscription = _encryptor?.onMessage((p0) {
-      final (id, content) = p0;
-      _tasks.remove(id)?.complete(content);
-      if (id == "PING" && content == "PONG") _completer?.complete();
-    });
-    await _encryptor?.send(("PING", "PING", "PING", EncDecType.ping));
-    _isRunning = true;
+      await _encryptor?.waitUntilReady();
+      _subscription = _encryptor?.onMessage((p0) {
+        final (id, content) = p0;
+        _tasks.remove(id)?.complete(content);
+        if (id == "PING" && content == "PONG") _completer?.complete();
+      });
+      await _encryptor?.send(("PING", "PING", "PING", EncDecType.ping));
+      _isRunning = true;
+    } finally {
+      _isStarting = false;
+    }
   }
 
   Future<void> waitUntilReady() async {

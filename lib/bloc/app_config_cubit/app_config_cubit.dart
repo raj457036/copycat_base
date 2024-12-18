@@ -34,7 +34,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
       : super(
           AppConfigState.loaded(
             isLoading: true,
-            config: AppConfig(onBoardComplete: false),
+            config: AppConfig(),
           ),
         );
 

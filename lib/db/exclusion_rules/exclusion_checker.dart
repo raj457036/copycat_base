@@ -119,9 +119,11 @@ class ExclusionChecker {
     if (_sensitiveUrls) {
       final p0 = activity != null ? isActivityAllowed(activity) : true;
       if (clip.isUri) {
-        logger.w("Exclusion rule triggered for sensitive url");
-        final p1 = !_rUrls.any((r) => clip.uri!.toString().contains(r));
-        return p1 && p0;
+        final p1 = !_rUrls.any((r) => r.hasMatch(clip.uri!.toString())) && p0;
+        if (!p1) {
+          logger.w("Exclusion rule triggered for sensitive url");
+        }
+        return p1;
       }
       return p0;
     }
@@ -138,7 +140,7 @@ class ExclusionChecker {
 
   bool isActivityAllowed(ActivityInfo activity) {
     if (activity.title.isNotEmpty) {
-      final hasMatch = _rTitle.any((r) => activity.title.contains(r));
+      final hasMatch = _rTitle.any((r) => r.hasMatch(activity.title));
       if (hasMatch) {
         logger.w("Excluded pattern detected in title");
         return false;

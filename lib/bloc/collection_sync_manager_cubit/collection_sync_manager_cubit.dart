@@ -69,6 +69,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
   void stopPolling() {
     if (_pollingTimer == null) return;
     _pollingTimer?.cancel();
+    _pollingTimer = null;
   }
 
   (bool, int) canManullySync() {

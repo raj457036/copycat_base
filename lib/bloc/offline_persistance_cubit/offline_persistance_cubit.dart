@@ -257,6 +257,18 @@ class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
         return;
       }
 
+      if (clip.isDuplicate) {
+        emit(
+          const OfflinePersistanceState.error(
+            Failure(
+              message: "Duplicate Clip Detected",
+              code: "duplicate-clip",
+            ),
+          ),
+        );
+        return;
+      }
+
       final item = await _convertToClipboardItem(clip);
 
       if (manualPaste) {

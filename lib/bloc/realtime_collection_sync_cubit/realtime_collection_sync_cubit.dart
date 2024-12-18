@@ -23,7 +23,10 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
   RealtimeCollectionSyncCubit(
     this.listener,
     this.collectionRepo,
-  ) : super(const RealtimeCollectionSyncState.initial());
+  ) : super(const RealtimeCollectionSyncState.initial()) {
+    statusSubscription = listener.onStatusChange.listen(onStatusChange);
+    changeSubscription = listener.onChange.listen(onSync);
+  }
 
   void _clearSubs() {
     changeSubscription?.cancel();
@@ -32,16 +35,12 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
 
   void subscribe() {
     if (_subscribed) return;
-    _clearSubs();
-    statusSubscription = listener.onStatusChange.listen(onStatusChange);
-    changeSubscription = listener.onChange.listen(onSync);
     listener.start();
     _subscribed = true;
   }
 
   void unsubscribe() {
     if (!_subscribed) return;
-    _clearSubs();
     listener.stop();
     _subscribed = false;
   }
@@ -77,6 +76,7 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
   @override
   Future<void> close() {
     unsubscribe();
+    _clearSubs();
     return super.close();
   }
 }
