@@ -17,4 +17,5 @@ class RouteConstants {
   static const String androidBgClipboardSettings =
       "android-bg-clipboard-settings";
   static const String clipCollectionSelection = "clip-collection-selection";
+  static const String createClipNote = "create-clip-note";
 }
