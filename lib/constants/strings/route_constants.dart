@@ -16,4 +16,5 @@ class RouteConstants {
   static const String rebuildDatabase = "rebuildDatabase";
   static const String androidBgClipboardSettings =
       "android-bg-clipboard-settings";
+  static const String clipCollectionSelection = "clip-collection-selection";
 }

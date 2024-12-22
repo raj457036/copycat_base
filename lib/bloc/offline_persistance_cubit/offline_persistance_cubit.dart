@@ -158,8 +158,6 @@ class OfflinePersistenceCubit extends Cubit<OfflinePersistanceState> {
             mimeType: item.fileMimeType,
           );
         }
-      default:
-        copied = false;
     }
 
     if (copied) {

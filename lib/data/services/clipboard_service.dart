@@ -682,6 +682,10 @@ class ClipboardService with ClipboardListener {
   bool _writing = false;
   bool _started = false;
   var _clipTypePriority = <DataFormat>[
+    Formats.fileUri,
+    Formats.uri,
+    Formats.plainText,
+    Formats.plainTextFile,
     avif,
     Formats.png,
     Formats.jpeg,
@@ -691,10 +695,6 @@ class ClipboardService with ClipboardListener {
     Formats.heic,
     Formats.bmp,
     svg,
-    Formats.fileUri,
-    Formats.uri,
-    Formats.plainTextFile,
-    Formats.plainText,
   ];
 
   void Function()? onRead;
@@ -793,28 +793,12 @@ class ClipboardService with ClipboardListener {
   DataFormat? filterOutByPriority(List<DataFormat> itemFormats) {
     DataFormat? selectedFormat;
 
-    final clipTypePriority = <DataFormat>[
-      Formats.fileUri,
-      Formats.uri,
-      Formats.plainText,
-      Formats.plainTextFile,
-      avif,
-      Formats.png,
-      Formats.jpeg,
-      Formats.gif,
-      Formats.tiff,
-      Formats.webp,
-      Formats.heic,
-      Formats.bmp,
-      svg,
-    ];
-
     int currentPrefScore =
-        clipTypePriority.length; // Initialize to max possible priority index
+        _clipTypePriority.length; // Initialize to max possible priority index
 
     for (final format in itemFormats) {
       // Get the index of the current format in the priority list.
-      final pref = clipTypePriority.indexOf(format);
+      final pref = _clipTypePriority.indexOf(format);
 
       // Check if the format is present in the priority list (index != -1).
       // If it has a higher priority (lower index), update the selected format.
