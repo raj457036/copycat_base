@@ -11,8 +11,12 @@ import 'package:flutter/material.dart';
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showSnackbar(
   SnackBar snackBar, {
   bool closePrevious = false,
+  BuildContext? context,
 }) {
-  ScaffoldMessengerState? state = scaffoldMessengerKey.currentState;
+  ScaffoldMessengerState? state = context != null
+      ? (ScaffoldMessenger.maybeOf(context) ??
+          scaffoldMessengerKey.currentState)
+      : scaffoldMessengerKey.currentState;
 
   if (closePrevious) {
     state?.removeCurrentSnackBar(reason: SnackBarClosedReason.dismiss);
@@ -28,7 +32,9 @@ void closeSnackbar() {
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showFailureSnackbar(
   Failure failure,
 ) {
-  final context = scaffoldMessengerKey.currentContext!;
+  final context = scaffoldMessengerKey.currentContext;
+  if (context == null) return null;
+
   final mq = context.mq;
   final colors = context.colors;
   final isMobile = Breakpoints.isMobile(mq.size.width);
@@ -82,16 +88,18 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
   bool closePrevious = false,
   int? duration,
   SnackBarAction? action,
+  BuildContext? context,
 }) {
-  final context = scaffoldMessengerKey.currentContext!;
-  final mq = context.mq;
+  final context_ = context ?? scaffoldMessengerKey.currentContext;
+  if (context == null) return null;
+  final mq = context_!.mq;
 
   final isMobile = Breakpoints.isMobile(mq.size.width);
 
   Color? bg;
   if (success) bg = Colors.green;
   if (failure) {
-    final colors = context.colors;
+    final colors = context_.colors;
     bg = colors.error;
   }
 
@@ -139,5 +147,6 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
       shape: isMobile ? null : const StadiumBorder(),
     ),
     closePrevious: closePrevious,
+    context: context_,
   );
 }
