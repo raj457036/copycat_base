@@ -1,4 +1,5 @@
 import 'package:any_link_preview/any_link_preview.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:flutter/material.dart';
@@ -16,26 +17,28 @@ class LinkPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     final isValidUrl = AnyLinkPreview.isValidLink(url);
     if (!isValidUrl) {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
-    final placeholder = Card.filled(
-      child: Center(child: CircularProgressIndicator()),
-    );
+
     return AnyLinkPreview.builder(
         link: url,
-        placeholderWidget:
-            expanded ? Expanded(child: placeholder) : placeholder,
-        errorWidget: SizedBox.shrink(),
+        placeholderWidget: const SizedBox.shrink(),
+        errorWidget: const SizedBox.shrink(),
         cache: Duration(days: 30),
         itemBuilder: (context, meta, provider, svg) {
           if (meta.title == null && meta.desc == null && provider == null) {
             return const SizedBox.shrink();
           }
           final colors = context.colors;
-          final content = Card.filled(
+          provider as NetworkImage?;
+          final content = Card(
             margin: EdgeInsets.zero,
             shape: RoundedRectangleBorder(
               borderRadius: radius8,
+              side: BorderSide(
+                color: colors.outlineVariant,
+                width: 1,
+              ),
             ),
             child: ClipRRect(
               borderRadius: radius8,
@@ -46,11 +49,13 @@ class LinkPreview extends StatelessWidget {
                 children: [
                   if (provider != null)
                     Expanded(
-                      child: Image(
-                          image: provider,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const SizedBox.shrink()),
+                      child: CachedNetworkImage(
+                        imageUrl: provider.url,
+                        httpHeaders: provider.headers,
+                        fit: BoxFit.cover,
+                        errorWidget: (context, error, stackTrace) =>
+                            const SizedBox.shrink(),
+                      ),
                     )
                   else if (svg != null)
                     Expanded(child: svg),

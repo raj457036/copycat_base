@@ -59,6 +59,8 @@ dependencies:
   equatable: ^2.0.7
   apps_list: ^0.0.3
   any_link_preview: ^3.0.2
+  cached_network_svg_image: ^1.2.0
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0
