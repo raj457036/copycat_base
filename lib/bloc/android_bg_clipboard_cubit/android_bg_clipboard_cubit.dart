@@ -39,6 +39,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
   }
 
   ClipboardItem parseClip(String clip, String meta) {
+    // type::description::serverId::userid::encrypted
     final parts = meta.split("::");
     final ClipItemType clipType = switch (parts[0]) {
       "Text" => ClipItemType.text,

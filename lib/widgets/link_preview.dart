@@ -35,10 +35,6 @@ class LinkPreview extends StatelessWidget {
             margin: EdgeInsets.zero,
             shape: RoundedRectangleBorder(
               borderRadius: radius8,
-              side: BorderSide(
-                color: colors.outlineVariant,
-                width: 1,
-              ),
             ),
             child: ClipRRect(
               borderRadius: radius8,

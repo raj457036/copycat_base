@@ -118,6 +118,14 @@ class AppConfig with _$AppConfig, IsarIdMixin {
   EncryptionSecret? get enc2Key =>
       enc2 != null ? EncryptionSecret.deserilize(enc2!) : null;
 
+  String? decryptEnc2(String? enc1) {
+    final enc2Key_ = enc2Key;
+    if (enc2Key_ == null || enc1 == null) return null;
+    final encMngr = EncryptionManager(enc2Key_);
+    final enc1Decrypt = encMngr.decrypt(enc1);
+    return enc1Decrypt;
+  }
+
   @ignore
   HotKey? get getToggleHotkey =>
       toggleHotkey != null ? HotKey.fromJson(jsonDecode(toggleHotkey!)) : null;

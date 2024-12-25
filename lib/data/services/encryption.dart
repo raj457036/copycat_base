@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' show Random;
 
+import 'package:copycat_base/common/logging.dart';
 import 'package:easy_worker/easy_worker.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:uuid/uuid.dart';
@@ -116,6 +117,8 @@ void _encryptorEntryPoint(
 
   if (id != "PING") {
     _encSecret ??= EncryptionSecret.deserilize(secret);
+    logger.d("KEY: ${_encSecret!.key.bytes}");
+    logger.d("IV: ${_encSecret!.iv.bytes}");
     _aesEncrypter ??= Encrypter(
       AES(
         _encSecret!.key,
@@ -126,12 +129,20 @@ void _encryptorEntryPoint(
 
   switch (action) {
     case EncDecType.encrypt:
-      final encrypted = _aesEncrypter!.encrypt(content, iv: _encSecret!.iv);
-      send((id, encrypted.base64));
+      try {
+        final encrypted = _aesEncrypter!.encrypt(content, iv: _encSecret!.iv);
+        send((id, encrypted.base64));
+      } catch (e) {
+        send((id, EncryptionException(e.toString())));
+      }
 
     case EncDecType.decrypt:
-      final decrypted = _aesEncrypter!.decrypt64(content, iv: _encSecret!.iv);
-      send((id, decrypted));
+      try {
+        final decrypted = _aesEncrypter!.decrypt64(content, iv: _encSecret!.iv);
+        send((id, decrypted));
+      } catch (e) {
+        send((id, DecryptionException(e.toString())));
+      }
 
     case EncDecType.ping:
       send(("PING", "PONG"));
@@ -200,7 +211,7 @@ class EncryptionWorker {
       _isRunning = false;
       this.secret = secret;
       _subscription?.cancel();
-      _encryptor = EasyWorker<(String, String), EncryptionPayload>(
+      _encryptor = EasyWorker<(String, dynamic), EncryptionPayload>(
         Entrypoint(_encryptorEntryPoint),
         workerName: "Encryptor Worker",
       );
@@ -234,12 +245,18 @@ class EncryptionWorker {
       throw EncryptionException("Encryption is not active");
     }
     final id = const Uuid().v4();
-    final completer = Completer<String>();
+    final completer = Completer();
     _tasks[id] = completer;
     await _encryptor?.send(
       (id, content, secret!, EncDecType.encrypt),
     );
-    return completer.future;
+
+    final result = await completer.future;
+    if (result is String) {
+      return result;
+    } else {
+      throw result;
+    }
   }
 
   Future<String> decrypt(String content) async {
@@ -253,11 +270,17 @@ class EncryptionWorker {
       throw DecryptionException("Decryption is not active");
     }
     final id = const Uuid().v4();
-    final completer = Completer<String>();
+    final completer = Completer();
     _tasks[id] = completer;
     await _encryptor?.send(
       (id, content, secret!, EncDecType.decrypt),
     );
-    return completer.future;
+
+    final result = await completer.future;
+    if (result is String) {
+      return result;
+    } else {
+      throw result;
+    }
   }
 }
