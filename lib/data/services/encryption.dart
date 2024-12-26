@@ -83,12 +83,14 @@ class EncryptionManager {
     encrypter = Encrypter(AES(secret.key, mode: AESMode.cfb64));
   }
 
-  String encrypt(String content) {
-    return encrypter.encrypt(content, iv: _iv).base64;
+  String encrypt(String content, [String? customIV]) {
+    final iv = customIV != null ? IV.fromBase64(customIV) : _iv;
+    return encrypter.encrypt(content, iv: iv).base64;
   }
 
-  String decrypt(String content) {
-    return encrypter.decrypt64(content, iv: _iv);
+  String decrypt(String content, [String? customIV]) {
+    final iv = customIV != null ? IV.fromBase64(customIV) : _iv;
+    return encrypter.decrypt64(content, iv: iv);
   }
 }
 
@@ -105,6 +107,7 @@ typedef EncryptionPayload = (
   String id,
   String content,
   String secret,
+  String? customIV,
   EncDecType action
 );
 
@@ -112,13 +115,19 @@ void _encryptorEntryPoint(
   EncryptionPayload payload,
   Sender send,
 ) {
-  final (id, content, secret, action) = payload;
+  final (id, content, secret, customIV, action) = payload;
   if (id == "") return;
 
+  final iv = customIV != null ? IV.fromBase64(customIV) : _encSecret!.iv;
   if (id != "PING") {
     _encSecret ??= EncryptionSecret.deserilize(secret);
     logger.d("KEY: ${_encSecret!.key.bytes}");
-    logger.d("IV: ${_encSecret!.iv.bytes}");
+
+    if (customIV != null) {
+      logger.d("Custom IV: ${iv.bytes}");
+    } else {
+      logger.d("IV: ${iv.bytes}");
+    }
     _aesEncrypter ??= Encrypter(
       AES(
         _encSecret!.key,
@@ -130,7 +139,7 @@ void _encryptorEntryPoint(
   switch (action) {
     case EncDecType.encrypt:
       try {
-        final encrypted = _aesEncrypter!.encrypt(content, iv: _encSecret!.iv);
+        final encrypted = _aesEncrypter!.encrypt(content, iv: iv);
         send((id, encrypted.base64));
       } catch (e) {
         send((id, EncryptionException(e.toString())));
@@ -138,7 +147,7 @@ void _encryptorEntryPoint(
 
     case EncDecType.decrypt:
       try {
-        final decrypted = _aesEncrypter!.decrypt64(content, iv: _encSecret!.iv);
+        final decrypted = _aesEncrypter!.decrypt64(content, iv: iv);
         send((id, decrypted));
       } catch (e) {
         send((id, DecryptionException(e.toString())));
@@ -234,7 +243,7 @@ class EncryptionWorker {
     await _completer?.future;
   }
 
-  Future<String> encrypt(String content) async {
+  Future<String> encrypt(String content, [String? customIV]) async {
     if (secret == null) {
       throw EncryptionException("Secret is not set", code: "invalid-secret");
     }
@@ -248,7 +257,7 @@ class EncryptionWorker {
     final completer = Completer();
     _tasks[id] = completer;
     await _encryptor?.send(
-      (id, content, secret!, EncDecType.encrypt),
+      (id, content, secret!, customIV, EncDecType.encrypt),
     );
 
     final result = await completer.future;
@@ -259,7 +268,7 @@ class EncryptionWorker {
     }
   }
 
-  Future<String> decrypt(String content) async {
+  Future<String> decrypt(String content, [String? customIV]) async {
     if (secret == null) {
       throw DecryptionException("Secret is not set", code: "invalid-secret");
     }
@@ -273,7 +282,7 @@ class EncryptionWorker {
     final completer = Completer();
     _tasks[id] = completer;
     await _encryptor?.send(
-      (id, content, secret!, EncDecType.decrypt),
+      (id, content, secret!, customIV, EncDecType.decrypt),
     );
 
     final result = await completer.future;
