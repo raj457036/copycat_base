@@ -31,7 +31,7 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
     this.driveCubit,
     this.appConfig,
     @Named("device_id") this.deviceId,
-    @Named("cloud") this.repo,
+    @Named("remote") this.repo,
   ) : super(const CloudPersistanceState.initial());
 
   Future<void> persist(ClipboardItem item) async {

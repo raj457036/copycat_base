@@ -18,9 +18,14 @@ enum CrossSyncListenerStatus {
 typedef CrossSyncStatusEvent = (CrossSyncListenerStatus, Object? object);
 
 abstract class CrossSyncListener<T> {
+  /// Start the service
   Future<void> start();
+
+  /// Stop the service
   Future<void> stop();
-  Future<void> send(T item);
+
+  /// Reconnect to the service
+  Future<void> reconnect();
   Stream<CrossSyncEvent<T>> get onChange;
   Stream<CrossSyncStatusEvent> get onStatusChange;
 

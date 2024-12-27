@@ -9,7 +9,7 @@ import 'package:copycat_base/utils/utility.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-@Named("cloud")
+@Named("remote")
 @LazySingleton(as: ClipboardRepository)
 class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   final ClipboardSource remote;

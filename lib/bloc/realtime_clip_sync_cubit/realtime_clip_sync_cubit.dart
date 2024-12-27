@@ -37,7 +37,10 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
   }
 
   void subscribe() {
-    if (_subscribed) return;
+    if (_subscribed) {
+      listener.reconnect();
+      return;
+    }
     listener.start();
     _subscribed = true;
   }
