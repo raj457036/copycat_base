@@ -118,15 +118,16 @@ void _encryptorEntryPoint(
   final (id, content, secret, customIV, action) = payload;
   if (id == "") return;
 
-  final iv = customIV != null ? IV.fromBase64(customIV) : _encSecret!.iv;
+  IV? iv;
   if (id != "PING") {
     _encSecret ??= EncryptionSecret.deserilize(secret);
+    iv = customIV != null ? IV.fromBase64(customIV) : _encSecret?.iv;
     logger.d("KEY: ${_encSecret!.key.bytes}");
 
     if (customIV != null) {
-      logger.d("Custom IV: ${iv.bytes}");
+      logger.d("Custom IV: ${iv?.bytes}");
     } else {
-      logger.d("IV: ${iv.bytes}");
+      logger.d("IV: ${iv?.bytes}");
     }
     _aesEncrypter ??= Encrypter(
       AES(
@@ -231,7 +232,7 @@ class EncryptionWorker {
         _tasks.remove(id)?.complete(content);
         if (id == "PING" && content == "PONG") _completer?.complete();
       });
-      await _encryptor?.send(("PING", "PING", "PING", EncDecType.ping));
+      await _encryptor?.send(("PING", "PING", "PING", null, EncDecType.ping));
       _isRunning = true;
     } finally {
       _isStarting = false;

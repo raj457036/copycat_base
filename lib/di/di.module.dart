@@ -116,7 +116,7 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     gh.lazySingleton<_i72.ClipboardRepository>(
       () => _i122.ClipboardRepositoryCloudImpl(
           gh<_i191.ClipboardSource>(instanceName: 'remote')),
-      instanceName: 'cloud',
+      instanceName: 'remote',
     );
     gh.singleton<_i630.AuthCubit>(() => _i630.AuthCubit(
           gh<_i281.AuthRepository>(),
@@ -150,7 +150,7 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i746.DriveSetupCubit>(),
               gh<_i411.AppConfigCubit>(),
               gh<String>(instanceName: 'device_id'),
-              gh<_i72.ClipboardRepository>(instanceName: 'cloud'),
+              gh<_i72.ClipboardRepository>(instanceName: 'remote'),
             ));
     gh.lazySingleton<_i72.ClipboardRepository>(
       () => _i122.ClipboardRepositoryOfflineImpl(
