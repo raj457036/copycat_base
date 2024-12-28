@@ -21,6 +21,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
   final AndroidBackgroundClipboard plugin;
   final ClipboardRepository clipRepo;
   final String deviceId;
+  bool isSyncing = false;
 
   AndroidBgClipboardCubit(
     this.plugin,
@@ -72,30 +73,35 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
   }
 
   Future<void> syncStates() async {
-    final endMark = await plugin.readShared<int>("endId") ?? -1;
-    if (endMark == -1) return;
-    final deleteKeys = <String>[];
-    for (var i = 0; i < endMark + 1; i++) {
-      final clipKey = "Clip-$i";
-      final clipMetaKey = "Clip-$i-meta";
-      final clip = await plugin.readShared<String>(clipKey);
-      final clipMeta = await plugin.readShared<String>(clipMetaKey);
+    if (isSyncing) return;
+    try {
+      final endMark = await plugin.readShared<int>("endId") ?? -1;
+      if (endMark == -1) return;
+      final deleteKeys = <String>[];
+      for (var i = 0; i < endMark + 1; i++) {
+        final clipKey = "Clip-$i";
+        final clipMetaKey = "Clip-$i-meta";
+        final clip = await plugin.readShared<String>(clipKey);
+        final clipMeta = await plugin.readShared<String>(clipMetaKey);
 
-      if (clip != null &&
-          clipMeta != null &&
-          clip.isNotEmpty &&
-          clipMeta.isNotEmpty) {
-        final clipItem = parseClip(clip, clipMeta);
-        writeToLocal(clipItem);
+        if (clip != null &&
+            clipMeta != null &&
+            clip.isNotEmpty &&
+            clipMeta.isNotEmpty) {
+          final clipItem = parseClip(clip, clipMeta);
+          writeToLocal(clipItem);
+        }
+        deleteKeys
+          ..add(clipKey)
+          ..add(clipMetaKey);
+
+        logger.w("Clip: $clip | Meta: $clipMeta");
       }
-      deleteKeys
-        ..add(clipKey)
-        ..add(clipMetaKey);
-
-      logger.w("Clip: $clip | Meta: $clipMeta");
+      await plugin.writeShared("endId", -1);
+      await plugin.deleteShared(deleteKeys);
+    } finally {
+      isSyncing = false;
     }
-    await plugin.writeShared("endId", -1);
-    await plugin.deleteShared(deleteKeys);
   }
 
   Future<void> reset() async {

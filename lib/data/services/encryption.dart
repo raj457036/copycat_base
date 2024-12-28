@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math' show Random;
 
-import 'package:copycat_base/common/logging.dart';
 import 'package:easy_worker/easy_worker.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:uuid/uuid.dart';
@@ -122,13 +121,13 @@ void _encryptorEntryPoint(
   if (id != "PING") {
     _encSecret ??= EncryptionSecret.deserilize(secret);
     iv = customIV != null ? IV.fromBase64(customIV) : _encSecret?.iv;
-    logger.d("KEY: ${_encSecret!.key.bytes}");
+    // logger.d("KEY: ${_encSecret!.key.bytes}");
 
-    if (customIV != null) {
-      logger.d("Custom IV: ${iv?.bytes}");
-    } else {
-      logger.d("IV: ${iv?.bytes}");
-    }
+    // if (customIV != null) {
+    //   logger.d("Custom IV: ${iv?.bytes}");
+    // } else {
+    //   logger.d("IV: ${iv?.bytes}");
+    // }
     _aesEncrypter ??= Encrypter(
       AES(
         _encSecret!.key,
@@ -203,6 +202,7 @@ class EncryptionWorker {
     _subscription?.cancel();
     _encryptor?.dispose();
     _encryptor = null;
+    _completer = null;
   }
 
   void setEncryption(bool value) {
