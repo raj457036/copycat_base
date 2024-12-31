@@ -58,11 +58,11 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
     logger.w(obj);
     switch (status) {
       case CrossSyncListenerStatus.connecting:
-        emit(RealtimeClipSyncState.connecting());
+        emit(const RealtimeClipSyncState.connecting());
       case CrossSyncListenerStatus.connected:
-        emit(RealtimeClipSyncState.connected());
+        emit(const RealtimeClipSyncState.connected());
       default:
-        emit(RealtimeClipSyncState.disconnected());
+        emit(const RealtimeClipSyncState.disconnected());
     }
   }
 

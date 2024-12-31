@@ -149,7 +149,7 @@ class ClipboardRepositoryCloudImpl implements ClipboardRepository {
   FailureOr<void> deleteAllEncrypted() async {
     try {
       await remote.deleteAllEncrypted();
-      return Right(null);
+      return const Right(null);
     } catch (e) {
       return Left(Failure.fromException(e));
     }
@@ -313,7 +313,7 @@ class ClipboardRepositoryOfflineImpl implements ClipboardRepository {
   @override
   FailureOr<void> deleteAllEncrypted() async {
     // no-op
-    return Right(null);
+    return const Right(null);
   }
 
   @override

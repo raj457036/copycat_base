@@ -1,1 +1,1 @@
-library copycat_base;
+library;

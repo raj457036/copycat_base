@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 Color _darken(Color c, [int percent = 0]) {
   if (percent <= 0) return c;
   var f = 1 - percent / 100;
-  return Color.fromARGB(c.alpha, (c.red * f).round(), (c.green * f).round(),
-      (c.blue * f).round());
+  return Color.fromARGB(
+      c.a.toInt(), (c.r * f).round(), (c.g * f).round(), (c.b * f).round());
 }
 
 /// Lighten a color by [percent] amount (100 = white)
@@ -14,11 +14,8 @@ Color _darken(Color c, [int percent = 0]) {
 Color _lighten(Color c, [int percent = 0]) {
   if (percent <= 0) return c;
   var p = percent / 100;
-  return Color.fromARGB(
-      c.alpha,
-      c.red + ((255 - c.red) * p).round(),
-      c.green + ((255 - c.green) * p).round(),
-      c.blue + ((255 - c.blue) * p).round());
+  return Color.fromARGB(c.a.toInt(), (c.r + (255 - c.r) * p).round(),
+      (c.g + (255 - c.g) * p).round(), (c.b + (255 - c.b) * p).round());
 }
 
 extension ColorBrightnessExtension on Color {

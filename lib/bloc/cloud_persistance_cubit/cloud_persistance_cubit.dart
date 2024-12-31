@@ -115,7 +115,9 @@ class CloudPersistanceCubit extends Cubit<CloudPersistanceState> {
   Future<String?> _getBlurHashIfNeeded(ClipboardItem item) async {
     if (item.fileMimeType == null ||
         !item.fileMimeType!.startsWith("image/") ||
-        item.localPath == null) return null;
+        item.localPath == null) {
+      return null;
+    }
 
     if (item.imgBlurHash != null) return item.imgBlurHash;
 

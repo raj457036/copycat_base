@@ -36,7 +36,7 @@ class LinkPreview extends StatelessWidget {
         link: url,
         placeholderWidget: const SizedBox.shrink(),
         errorWidget: const SizedBox.shrink(),
-        cache: Duration(days: 30),
+        cache: const Duration(days: 30),
         itemBuilder: (context, meta, provider, svg) {
           if (withProgress && !meta.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -47,8 +47,9 @@ class LinkPreview extends StatelessWidget {
           final colors = context.colors;
           provider as NetworkImage?;
           Widget content = Card(
+            elevation: 0.1,
             margin: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: radius8,
             ),
             child: ClipRRect(
@@ -63,9 +64,11 @@ class LinkPreview extends StatelessWidget {
                       child: CachedNetworkImage(
                         imageUrl: provider.url,
                         httpHeaders: provider.headers,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fitWidth,
                         errorWidget: (context, error, stackTrace) =>
-                            const SizedBox.shrink(),
+                            const Center(
+                          child: Icon(Icons.error),
+                        ),
                       ),
                     )
                   else if (svg != null)
@@ -91,7 +94,7 @@ class LinkPreview extends StatelessWidget {
                                 meta.title!,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: maxTitleLines,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                   // color: colors.primary,

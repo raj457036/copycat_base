@@ -136,7 +136,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     }
   }
 
-  void reset() => emit(ClipSyncManagerState.unknown());
+  void reset() => emit(const ClipSyncManagerState.unknown());
 
   void startPolling() {
     if (_pollingTimer != null) return;

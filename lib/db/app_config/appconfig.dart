@@ -13,7 +13,7 @@ import 'package:isar/isar.dart';
 part 'appconfig.freezed.dart';
 part 'appconfig.g.dart';
 
-const int defaultThemeColor = 0xFF7469B6;
+const int defaultThemeColor = 0xFF322C57;
 
 enum AppLayout { grid, list }
 
@@ -133,7 +133,8 @@ class AppConfig with _$AppConfig, IsarIdMixin {
   @ignore
   ColorScheme get lightThemeColorScheme {
     return ColorScheme.fromSeed(
-      seedColor: Color(themeColor.isNegative ? defaultThemeColor : themeColor),
+      // seedColor: Color(themeColor.isNegative ? defaultThemeColor : themeColor),
+      seedColor: const Color(defaultThemeColor),
       dynamicSchemeVariant: themeVariant,
     );
   }

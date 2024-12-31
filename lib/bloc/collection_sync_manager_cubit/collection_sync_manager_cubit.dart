@@ -56,7 +56,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
   }
 
-  void reset() => emit(CollectionSyncManagerState.unknown());
+  void reset() => emit(const CollectionSyncManagerState.unknown());
 
   void startPolling() {
     if (_pollingTimer != null) return;
