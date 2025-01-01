@@ -18,6 +18,7 @@ import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:injectable/injectable.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:ntp/ntp.dart';
+import 'package:universal_io/io.dart';
 
 part 'app_config_cubit.freezed.dart';
 part 'app_config_state.dart';
@@ -373,5 +374,15 @@ class AppConfigCubit extends Cubit<AppConfigState> {
       lastActivity = null;
       return true;
     }
+  }
+
+  Future<bool> confirmAccessibilityPermission() async {
+    if (Platform.isAndroid) return true;
+    final granted = await focusWindow.isAccessibilityPermissionGranted();
+    if (!granted) {
+      await focusWindow.openAccessibilityPermissionSetting();
+      return false;
+    }
+    return true;
   }
 }

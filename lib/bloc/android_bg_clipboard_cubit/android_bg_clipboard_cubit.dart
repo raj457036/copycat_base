@@ -5,6 +5,7 @@ import 'package:copycat_base/common/events.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
+import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 import 'package:copycat_base/enums/clip_type.dart';
@@ -28,6 +29,25 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
     @Named("local") this.clipRepo,
     @Named("device_id") this.deviceId,
   ) : super(const AndroidBgClipboardState.unknown());
+
+  Future<void> updateExclusionRule(ExclusionRules? rules) async {
+    if (rules != null && rules.enable) {
+      plugin.writeShared('exclude-email', rules.email);
+      plugin.writeShared('exclude-phone', rules.phone);
+      plugin.writeShared('exclude-pass-mgr', rules.passwordManager);
+      plugin.writeShared(
+        '<set>excludedPackages',
+        rules.apps.map((e) => e.identifier).join(","),
+      );
+    } else {
+      plugin.deleteShared([
+        'exclude-email',
+        'exclude-phone',
+        'exclude-pass-mgr',
+        'excludedPackages',
+      ]);
+    }
+  }
 
   Future<void> writeToLocal(ClipboardItem item) async {
     final result = await clipRepo.updateOrCreate(item);

@@ -90,16 +90,16 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
   SnackBarAction? action,
   BuildContext? context,
 }) {
-  final context_ = context ?? scaffoldMessengerKey.currentContext;
-  if (context == null) return null;
-  final mq = context_!.mq;
+  final innerContext = context ?? scaffoldMessengerKey.currentContext;
+  if (innerContext == null) return null;
+  final mq = innerContext.mq;
 
   final isMobile = Breakpoints.isMobile(mq.size.width);
 
   Color? bg;
   if (success) bg = Colors.green;
   if (failure) {
-    final colors = context_.colors;
+    final colors = innerContext.colors;
     bg = colors.error;
   }
 
@@ -147,6 +147,6 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showTextSnackbar(
       shape: isMobile ? null : const StadiumBorder(),
     ),
     closePrevious: closePrevious,
-    context: context_,
+    context: innerContext,
   );
 }
