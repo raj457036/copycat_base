@@ -229,8 +229,14 @@ class EncryptionWorker {
       await _encryptor?.waitUntilReady();
       _subscription = _encryptor?.onMessage((p0) {
         final (id, content) = p0;
-        _tasks.remove(id)?.complete(content);
         if (id == "PING" && content == "PONG") _completer?.complete();
+
+        final taskCompleter = _tasks.remove(id);
+        if (content is Exception) {
+          taskCompleter?.completeError(content);
+        } else {
+          taskCompleter?.complete(content);
+        }
       });
       await _encryptor?.send(("PING", "PING", "PING", null, EncDecType.ping));
       _isRunning = true;
