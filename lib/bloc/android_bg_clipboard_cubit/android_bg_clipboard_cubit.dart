@@ -85,6 +85,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       textCategory: textCategory,
       text: clipType == ClipItemType.text ? clip : null,
       url: clipType == ClipItemType.url ? clip : null,
+      title: desc,
       description: desc,
       serverId: serverId,
       lastSynced: serverId != null ? now() : null,

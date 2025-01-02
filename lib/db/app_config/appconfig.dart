@@ -133,8 +133,7 @@ class AppConfig with _$AppConfig, IsarIdMixin {
   @ignore
   ColorScheme get lightThemeColorScheme {
     return ColorScheme.fromSeed(
-      // seedColor: Color(themeColor.isNegative ? defaultThemeColor : themeColor),
-      seedColor: const Color(defaultThemeColor),
+      seedColor: Color(themeColor.isNegative ? defaultThemeColor : themeColor),
       dynamicSchemeVariant: themeVariant,
     );
   }
