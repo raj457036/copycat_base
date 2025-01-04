@@ -105,7 +105,7 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
             );
           }
 
-          return DriveSetupState.setupDone(token: r);
+          return r;
         },
       );
 
@@ -129,9 +129,9 @@ class DriveSetupCubit extends Cubit<DriveSetupState> {
     }
   }
 
-  Future<void> startSetup() async {
+  Future<void> startSetup({bool force = false}) async {
     emit(const DriveSetupState.unknown());
-    final foundAlready = await fetch();
+    final foundAlready = force ? false : await fetch();
     if (foundAlready) return;
     final result = await repo.launchConsentPage();
     emit(result.fold(

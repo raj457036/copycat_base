@@ -4,6 +4,37 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class LinkPreviewImage extends StatelessWidget {
+  final NetworkImage provider;
+  const LinkPreviewImage({super.key, required this.provider});
+
+  @override
+  Widget build(BuildContext context) {
+    final isSvg = provider.url.contains(".svg");
+
+    if (isSvg) {
+      return SvgPicture.network(
+        provider.url,
+        fit: BoxFit.fitWidth,
+        headers: provider.headers,
+        placeholderBuilder: (context) => const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    return CachedNetworkImage(
+      imageUrl: provider.url,
+      httpHeaders: provider.headers,
+      fit: BoxFit.fitWidth,
+      errorWidget: (context, error, stackTrace) => const Center(
+        child: Icon(Icons.error),
+      ),
+    );
+  }
+}
 
 class LinkPreview extends StatelessWidget {
   final String url;
@@ -61,15 +92,7 @@ class LinkPreview extends StatelessWidget {
                 children: [
                   if (provider != null)
                     Expanded(
-                      child: CachedNetworkImage(
-                        imageUrl: provider.url,
-                        httpHeaders: provider.headers,
-                        fit: BoxFit.fitWidth,
-                        errorWidget: (context, error, stackTrace) =>
-                            const Center(
-                          child: Icon(Icons.error),
-                        ),
-                      ),
+                      child: LinkPreviewImage(provider: provider),
                     )
                   else if (svg != null)
                     Expanded(child: svg),

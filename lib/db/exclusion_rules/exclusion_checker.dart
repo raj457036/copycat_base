@@ -32,10 +32,7 @@ class ExclusionChecker {
   final bool _creditCard;
   final bool _phone;
   final bool _passwordManager;
-  final bool _passwords;
   final bool _email;
-  final bool _bankAccount;
-  final bool _personalInfo;
   final bool _sensitiveUrls;
 
   ExclusionChecker(
@@ -48,10 +45,7 @@ class ExclusionChecker {
         _creditCard = rules.creditCard,
         _phone = rules.phone,
         _passwordManager = rules.passwordManager,
-        _passwords = rules.passwords,
         _email = rules.email,
-        _bankAccount = rules.bankAccount,
-        _personalInfo = rules.personalInfo,
         _sensitiveUrls = rules.sensitiveUrls {
     if (_sensitiveUrls) {
       if (Platform.isMacOS) {

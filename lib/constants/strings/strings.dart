@@ -34,6 +34,8 @@ const smartPasteDemoVideo = String.fromEnvironment("SMART_PASTE_DEMO_VIDEO");
 const keyboardShortcutDemoVideo =
     String.fromEnvironment("KEYBOARD_SHORTCUT_DEMO_VIDEO");
 
+const googleOAuthClientID = String.fromEnvironment("GOOGLE_OAUTH_CLIENT_ID");
+
 const dbName = "CopyCat-Clipboard-DB";
 
 const sentryDSN = String.fromEnvironment("SENTRY_DSN");

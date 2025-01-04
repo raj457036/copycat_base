@@ -52,13 +52,14 @@ class AuthCubit extends Cubit<AuthState> {
   bool get isLocalAuth => state is LocalAuthenticatedAuthState;
   String? get userId => repo.userId;
 
-  checkForAuthentication() {
-    if (checkLocalSignin()) return;
+  Future<bool> checkForAuthentication() async {
+    if (checkLocalSignin()) return true;
     if (repo.currentUser != null) {
-      authenticated(repo.currentUser!, repo.accessToken!);
+      await authenticated(repo.currentUser!, repo.accessToken!);
     } else {
       unauthenticated(authFailure);
     }
+    return state is AuthenticatedAuthState;
   }
 
   Future<void> removeEncryptionSetup() async {
