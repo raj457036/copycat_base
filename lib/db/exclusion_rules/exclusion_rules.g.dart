@@ -541,63 +541,48 @@ const ExclusionRulesSchema = Schema(
       type: IsarType.objectList,
       target: r'AppInfo',
     ),
-    r'bankAccount': PropertySchema(
-      id: 1,
-      name: r'bankAccount',
-      type: IsarType.bool,
-    ),
     r'creditCard': PropertySchema(
-      id: 2,
+      id: 1,
       name: r'creditCard',
       type: IsarType.bool,
     ),
     r'email': PropertySchema(
-      id: 3,
+      id: 2,
       name: r'email',
       type: IsarType.bool,
     ),
     r'enable': PropertySchema(
-      id: 4,
+      id: 3,
       name: r'enable',
       type: IsarType.bool,
     ),
     r'passwordManager': PropertySchema(
-      id: 5,
+      id: 4,
       name: r'passwordManager',
       type: IsarType.bool,
     ),
-    r'passwords': PropertySchema(
-      id: 6,
-      name: r'passwords',
-      type: IsarType.bool,
-    ),
     r'patterns': PropertySchema(
-      id: 7,
+      id: 5,
       name: r'patterns',
       type: IsarType.stringList,
     ),
-    r'personalInfo': PropertySchema(
-      id: 8,
-      name: r'personalInfo',
-      type: IsarType.bool,
-    ),
     r'phone': PropertySchema(
-      id: 9,
+      id: 6,
       name: r'phone',
       type: IsarType.bool,
     ),
     r'sensitiveUrls': PropertySchema(
-      id: 10,
+      id: 7,
       name: r'sensitiveUrls',
       type: IsarType.bool,
     ),
     r'titles': PropertySchema(
-      id: 11,
+      id: 8,
       name: r'titles',
       type: IsarType.stringList,
     ),
     r'urls': PropertySchema(
-      id: 12,
+      id: 9,
       name: r'urls',
       type: IsarType.stringList,
     )
@@ -658,18 +643,15 @@ void _exclusionRulesSerialize(
     AppInfoSchema.serialize,
     object.apps,
   );
-  writer.writeBool(offsets[1], object.bankAccount);
-  writer.writeBool(offsets[2], object.creditCard);
-  writer.writeBool(offsets[3], object.email);
-  writer.writeBool(offsets[4], object.enable);
-  writer.writeBool(offsets[5], object.passwordManager);
-  writer.writeBool(offsets[6], object.passwords);
-  writer.writeStringList(offsets[7], object.patterns);
-  writer.writeBool(offsets[8], object.personalInfo);
-  writer.writeBool(offsets[9], object.phone);
-  writer.writeBool(offsets[10], object.sensitiveUrls);
-  writer.writeStringList(offsets[11], object.titles);
-  writer.writeStringList(offsets[12], object.urls);
+  writer.writeBool(offsets[1], object.creditCard);
+  writer.writeBool(offsets[2], object.email);
+  writer.writeBool(offsets[3], object.enable);
+  writer.writeBool(offsets[4], object.passwordManager);
+  writer.writeStringList(offsets[5], object.patterns);
+  writer.writeBool(offsets[6], object.phone);
+  writer.writeBool(offsets[7], object.sensitiveUrls);
+  writer.writeStringList(offsets[8], object.titles);
+  writer.writeStringList(offsets[9], object.urls);
 }
 
 ExclusionRules _exclusionRulesDeserialize(
@@ -686,18 +668,15 @@ ExclusionRules _exclusionRulesDeserialize(
           AppInfo(),
         ) ??
         [],
-    bankAccount: reader.readBool(offsets[1]),
-    creditCard: reader.readBool(offsets[2]),
-    email: reader.readBool(offsets[3]),
-    enable: reader.readBool(offsets[4]),
-    passwordManager: reader.readBool(offsets[5]),
-    passwords: reader.readBool(offsets[6]),
-    patterns: reader.readStringList(offsets[7]) ?? [],
-    personalInfo: reader.readBool(offsets[8]),
-    phone: reader.readBool(offsets[9]),
-    sensitiveUrls: reader.readBool(offsets[10]),
-    titles: reader.readStringList(offsets[11]) ?? [],
-    urls: reader.readStringList(offsets[12]) ?? [],
+    creditCard: reader.readBool(offsets[1]),
+    email: reader.readBool(offsets[2]),
+    enable: reader.readBool(offsets[3]),
+    passwordManager: reader.readBool(offsets[4]),
+    patterns: reader.readStringList(offsets[5]) ?? [],
+    phone: reader.readBool(offsets[6]),
+    sensitiveUrls: reader.readBool(offsets[7]),
+    titles: reader.readStringList(offsets[8]) ?? [],
+    urls: reader.readStringList(offsets[9]) ?? [],
   );
   return object;
 }
@@ -726,20 +705,14 @@ P _exclusionRulesDeserializeProp<P>(
     case 4:
       return (reader.readBool(offset)) as P;
     case 5:
-      return (reader.readBool(offset)) as P;
+      return (reader.readStringList(offset) ?? []) as P;
     case 6:
       return (reader.readBool(offset)) as P;
     case 7:
-      return (reader.readStringList(offset) ?? []) as P;
+      return (reader.readBool(offset)) as P;
     case 8:
-      return (reader.readBool(offset)) as P;
-    case 9:
-      return (reader.readBool(offset)) as P;
-    case 10:
-      return (reader.readBool(offset)) as P;
-    case 11:
       return (reader.readStringList(offset) ?? []) as P;
-    case 12:
+    case 9:
       return (reader.readStringList(offset) ?? []) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -838,16 +811,6 @@ extension ExclusionRulesQueryFilter
   }
 
   QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
-      bankAccountEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'bankAccount',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
       creditCardEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -882,16 +845,6 @@ extension ExclusionRulesQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'passwordManager',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
-      passwordsEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'passwords',
         value: value,
       ));
     });
@@ -1119,16 +1072,6 @@ extension ExclusionRulesQueryFilter
         upper,
         includeUpper,
       );
-    });
-  }
-
-  QueryBuilder<ExclusionRules, ExclusionRules, QAfterFilterCondition>
-      personalInfoEqualTo(bool value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'personalInfo',
-        value: value,
-      ));
     });
   }
 
