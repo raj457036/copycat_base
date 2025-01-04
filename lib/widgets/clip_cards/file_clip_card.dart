@@ -4,6 +4,7 @@ import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:flutter/material.dart';
+import 'package:mime/mime.dart';
 
 class FileClipCard extends StatelessWidget {
   final AppLayout layout;
@@ -19,12 +20,18 @@ class FileClipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final textTheme = context.textTheme;
-    final label = "${item.fileMimeType!} • ${formatBytes(item.fileSize!)}";
+    final label =
+        "~${formatBytes(item.fileSize!)} • ${extensionFromMime(item.fileMimeType!)}";
 
     final metaChip = Chip(
+      labelPadding: EdgeInsets.zero,
+      padding: const EdgeInsets.symmetric(horizontal: padding6),
+
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: const StadiumBorder(),
       label: Text(
         label,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+        style: textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
