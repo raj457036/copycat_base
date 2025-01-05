@@ -1,7 +1,6 @@
 import 'package:android_background_clipboard/android_background_clipboard.dart';
-import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
@@ -19,6 +18,7 @@ part 'android_bg_clipboard_state.dart';
 
 @injectable
 class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
+  final EventBusCubit eventBus;
   final AndroidBackgroundClipboard plugin;
   final ClipboardRepository clipRepo;
   final String deviceId;
@@ -26,6 +26,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
 
   AndroidBgClipboardCubit(
     this.plugin,
+    this.eventBus,
     @Named("local") this.clipRepo,
     @Named("device_id") this.deviceId,
   ) : super(const AndroidBgClipboardState.unknown());
@@ -53,9 +54,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
     final result = await clipRepo.updateOrCreate(item);
     result.fold((failure) {}, (item) async {
       item = await item.decrypt();
-      final eventPayload =
-          clipboardEvent.createPayload((CrossSyncEventType.create, item));
-      EventBus.emit(eventPayload);
+      eventBus.clipSync((CrossSyncEventType.create, item));
     });
   }
 

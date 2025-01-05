@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
 import 'package:copycat_base/domain/services/cross_sync_listener.dart';
@@ -14,6 +13,7 @@ part 'realtime_collection_sync_state.dart';
 
 @injectable
 class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
+  final EventBusCubit eventBus;
   final CollectionCrossSyncListener listener;
   final ClipCollectionRepository collectionRepo;
   bool _subscribed = false;
@@ -21,6 +21,7 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
   StreamSubscription? statusSubscription, changeSubscription;
 
   RealtimeCollectionSyncCubit(
+    this.eventBus,
     this.listener,
     this.collectionRepo,
   ) : super(const RealtimeCollectionSyncState.initial()) {
@@ -71,8 +72,7 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
 
     final result = await collectionRepo.updateOrCreate(item);
     result.fold((failure) {}, (item) {
-      final eventPayload = collectionEvent.createPayload((type, item));
-      EventBus.emit(eventPayload);
+      eventBus.collectionSync((type, item));
     });
   }
 

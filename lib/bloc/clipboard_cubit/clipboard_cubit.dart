@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/model/search_filter_state.dart';
@@ -18,20 +17,24 @@ part 'clipboard_state.dart';
 
 @injectable
 class ClipboardCubit extends Cubit<ClipboardState> {
+  final EventBusCubit eventBus;
   final ClipboardRepository repo;
-  EventRule<ClipCrossSyncEvent>? clipboardItemER;
-  EventRule<List<ClipCrossSyncEvent>>? batchClipboardItemER;
   String? currentQuery;
+  late StreamSubscription eventBusSubscription;
 
   ClipboardCubit(
+    this.eventBus,
     @Named("local") this.repo,
   ) : super(const ClipboardState.loaded(items: [])) {
-    clipboardItemER = EventRule(clipboardEvent, targets: [
-      EventListener(onSyncEvent),
-    ]);
-    batchClipboardItemER = EventRule(clipboardBatchEvent, targets: [
-      EventListener(onBatchSyncEvent),
-    ]);
+    eventBusSubscription = eventBus.stream.listen((state) {
+      switch (state) {
+        case EventBusClipCrossSyncEvent(:final event):
+          onSyncEvent(event);
+          break;
+        case EventBusBatchClipCrossSyncEvent(:final events):
+          onBatchSyncEvent(events);
+      }
+    });
   }
 
   void onBatchSyncEvent(List<ClipCrossSyncEvent> events) {
@@ -188,8 +191,7 @@ class ClipboardCubit extends Cubit<ClipboardState> {
 
   @override
   Future<void> close() {
-    clipboardItemER?.cancel();
-    batchClipboardItemER?.cancel();
+    eventBusSubscription.cancel();
     return super.close();
   }
 }

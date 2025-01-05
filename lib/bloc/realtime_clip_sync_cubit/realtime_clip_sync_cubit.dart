@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/domain/repositories/clip_collection.dart';
 import 'package:copycat_base/domain/repositories/clipboard.dart';
 import 'package:copycat_base/domain/services/cross_sync_listener.dart';
+import 'package:copycat_base/utils/snackbar.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,6 +15,7 @@ part 'realtime_clip_sync_state.dart';
 
 @injectable
 class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
+  final EventBusCubit eventBus;
   final ClipCrossSyncListener listener;
   final ClipboardRepository clipRepo;
   final ClipCollectionRepository collectionRepo;
@@ -24,6 +25,7 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
 
   RealtimeClipSyncCubit(
     this.listener,
+    this.eventBus,
     @Named("local") this.clipRepo,
     this.collectionRepo,
   ) : super(const RealtimeClipSyncState.initial()) {
@@ -84,9 +86,8 @@ class RealtimeClipSyncCubit extends Cubit<RealtimeClipSyncState> {
     }
 
     final result = await clipRepo.updateOrCreate(item);
-    result.fold((failure) {}, (item) async {
-      final eventPayload = clipboardEvent.createPayload((type, item));
-      EventBus.emit(eventPayload);
+    result.fold(showFailureSnackbar, (updated) async {
+      eventBus.clipSync((type, updated));
     });
   }
 

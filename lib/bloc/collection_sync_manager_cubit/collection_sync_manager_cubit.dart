@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/bloc/clip_collection_cubit/clip_collection_cubit.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/numbers/duration.dart';
@@ -22,6 +21,7 @@ part 'collection_sync_manager_state.dart';
 
 @injectable
 class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
+  final EventBusCubit eventBus;
   final String deviceId;
   final ClipCollectionCubit collectionCubit;
   final ClipCollectionRepository collectionRepo;
@@ -33,6 +33,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
   DateTime? lastSynced;
 
   CollectionSyncManagerCubit(
+    this.eventBus,
     this.syncRepo,
     this.collectionCubit,
     this.collectionRepo,
@@ -238,8 +239,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
   }
 
   void broadcastBatchEvent(List<CollectionCrossSyncEvent> events) {
-    final eventPayload = collectionBatchEvent.createPayload(events);
-    EventBus.emit(eventPayload);
+    eventBus.batchCollectionSync(events);
   }
 
   DateTime? _lastSyncedTime(DateTime? relativeTo) {

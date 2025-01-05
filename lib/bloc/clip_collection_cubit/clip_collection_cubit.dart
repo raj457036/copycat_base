@@ -1,7 +1,8 @@
-import 'package:atom_event_bus/atom_event_bus.dart';
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/bloc/auth_cubit/auth_cubit.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/strings/strings.dart';
@@ -17,23 +18,27 @@ part 'clip_collection_state.dart';
 
 @lazySingleton
 class ClipCollectionCubit extends Cubit<ClipCollectionState> {
+  final EventBusCubit eventBus;
   final AuthCubit auth;
   final ClipCollectionRepository repo;
   final String deviceId;
-  EventRule<CollectionCrossSyncEvent>? collectionER;
-  EventRule<List<CollectionCrossSyncEvent>>? batchCollectionER;
+  late StreamSubscription<EventBusState> eventBusSubscription;
 
   ClipCollectionCubit(
+    this.eventBus,
     this.auth,
     this.repo,
     @Named("device_id") this.deviceId,
   ) : super(const ClipCollectionState.loaded(collections: [])) {
-    collectionER = EventRule(collectionEvent, targets: [
-      EventListener(onSyncEvent),
-    ]);
-    batchCollectionER = EventRule(collectionBatchEvent, targets: [
-      EventListener(onBatchSyncEvent),
-    ]);
+    eventBusSubscription = eventBus.stream.listen((state) {
+      switch (state) {
+        case EventBusCollectionCrossSyncEvent(:final event):
+          onSyncEvent(event);
+          break;
+        case EventBusBatchCollectionCrossSyncEvent(:final events):
+          onBatchSyncEvent(events);
+      }
+    });
   }
 
   void onBatchSyncEvent(List<CollectionCrossSyncEvent> events) {
@@ -233,8 +238,7 @@ class ClipCollectionCubit extends Cubit<ClipCollectionState> {
 
   @override
   Future<void> close() {
-    collectionER?.cancel();
-    batchCollectionER?.cancel();
+    eventBusSubscription.cancel();
     return super.close();
   }
 }

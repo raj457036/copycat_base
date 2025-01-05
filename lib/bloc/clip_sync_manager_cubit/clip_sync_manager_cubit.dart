@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:atom_event_bus/atom_event_bus.dart';
 import 'package:bloc/bloc.dart';
 import 'package:copycat_base/bloc/clip_collection_cubit/clip_collection_cubit.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/common/logging.dart';
 import 'package:copycat_base/constants/numbers/duration.dart';
@@ -100,6 +99,7 @@ final _clipSyncWorker =
 
 @injectable
 class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
+  final EventBusCubit eventBus;
   final String deviceId;
   final ClipCollectionCubit collectionCubit;
   final ClipboardRepository clipboardRepository;
@@ -112,6 +112,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
   DateTime? lastSynced;
 
   ClipSyncManagerCubit(
+    this.eventBus,
     this.syncRepo,
     this.collectionCubit,
     @Named("local") this.clipboardRepository,
@@ -315,8 +316,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
   }
 
   void broadcastBatchEvent(List<ClipCrossSyncEvent> events) {
-    final eventPayload = clipboardBatchEvent.createPayload(events);
-    EventBus.emit(eventPayload);
+    eventBus.batchClipSync(events);
   }
 
   DateTime getLastSyncedTime([DateTime? relativeTo]) {

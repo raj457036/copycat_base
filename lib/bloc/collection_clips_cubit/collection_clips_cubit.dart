@@ -1,6 +1,7 @@
-import 'package:atom_event_bus/atom_event_bus.dart';
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
-import 'package:copycat_base/common/events.dart';
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart';
 import 'package:copycat_base/common/failure.dart';
 import 'package:copycat_base/db/clip_collection/clipcollection.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
@@ -15,23 +16,27 @@ part 'collection_clips_state.dart';
 
 @injectable
 class CollectionClipsCubit extends Cubit<CollectionClipsState> {
+  final EventBusCubit eventBus;
   final ClipboardRepository repo;
   final ClipCollection collection;
+  late StreamSubscription eventBusSubscription;
 
-  EventRule<ClipCrossSyncEvent>? clipboardItemER;
-  EventRule<List<ClipCrossSyncEvent>>? batchClipboardItemER;
   String? currentQuery;
 
   CollectionClipsCubit(
+    this.eventBus,
     @Named("local") this.repo, {
     @factoryParam required this.collection,
   }) : super(const CollectionClipsState.initial()) {
-    clipboardItemER = EventRule(clipboardEvent, targets: [
-      EventListener(onSyncEvent),
-    ]);
-    batchClipboardItemER = EventRule(clipboardBatchEvent, targets: [
-      EventListener(onBatchSyncEvent),
-    ]);
+    eventBusSubscription = eventBus.stream.listen((state) {
+      switch (state) {
+        case EventBusClipCrossSyncEvent(:final event):
+          onSyncEvent(event);
+          break;
+        case EventBusBatchClipCrossSyncEvent(:final events):
+          onBatchSyncEvent(events);
+      }
+    });
   }
 
   Future<void> search([String? searchQuery]) async {
@@ -200,8 +205,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
 
   @override
   Future<void> close() {
-    clipboardItemER?.cancel();
-    batchClipboardItemER?.cancel();
+    eventBusSubscription.cancel();
     return super.close();
   }
 }

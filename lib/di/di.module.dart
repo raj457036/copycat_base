@@ -27,6 +27,8 @@ import 'package:copycat_base/bloc/collection_sync_manager_cubit/collection_sync_
     as _i988;
 import 'package:copycat_base/bloc/drive_setup_cubit/drive_setup_cubit.dart'
     as _i746;
+import 'package:copycat_base/bloc/event_bus_cubit/event_bus_cubit.dart'
+    as _i236;
 import 'package:copycat_base/bloc/offline_persistance_cubit/offline_persistance_cubit.dart'
     as _i768;
 import 'package:copycat_base/bloc/realtime_clip_sync_cubit/realtime_clip_sync_cubit.dart'
@@ -85,6 +87,7 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
       preResolve: true,
     );
     gh.singleton<_i354.ClipboardService>(() => _i354.ClipboardService());
+    gh.singleton<_i236.EventBusCubit>(() => _i236.EventBusCubit());
     await gh.lazySingletonAsync<_i338.Isar>(
       () => registerModule.db,
       preResolve: true,
@@ -157,8 +160,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i191.ClipboardSource>(instanceName: 'local')),
       instanceName: 'local',
     );
-    gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
-        gh<_i72.ClipboardRepository>(instanceName: 'local')));
     gh.lazySingleton<_i768.OfflinePersistenceCubit>(
         () => _i768.OfflinePersistenceCubit(
               gh<_i630.AuthCubit>(),
@@ -173,10 +174,29 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
               gh<_i569.ClipCollectionSource>(instanceName: 'remote'),
               gh<_i569.ClipCollectionSource>(instanceName: 'local'),
             ));
+    gh.factory<_i685.RealtimeClipSyncCubit>(() => _i685.RealtimeClipSyncCubit(
+          gh<_i159.ClipCrossSyncListener>(),
+          gh<_i236.EventBusCubit>(),
+          gh<_i72.ClipboardRepository>(instanceName: 'local'),
+          gh<_i625.ClipCollectionRepository>(),
+        ));
     gh.lazySingleton<_i402.ClipCollectionCubit>(() => _i402.ClipCollectionCubit(
+          gh<_i236.EventBusCubit>(),
           gh<_i630.AuthCubit>(),
           gh<_i625.ClipCollectionRepository>(),
           gh<String>(instanceName: 'device_id'),
+        ));
+    gh.factory<_i988.CollectionSyncManagerCubit>(
+        () => _i988.CollectionSyncManagerCubit(
+              gh<_i236.EventBusCubit>(),
+              gh<_i106.SyncRepository>(),
+              gh<_i402.ClipCollectionCubit>(),
+              gh<_i625.ClipCollectionRepository>(),
+              gh<String>(instanceName: 'device_id'),
+            ));
+    gh.factory<_i189.ClipboardCubit>(() => _i189.ClipboardCubit(
+          gh<_i236.EventBusCubit>(),
+          gh<_i72.ClipboardRepository>(instanceName: 'local'),
         ));
     gh.factoryParam<_i1054.CollectionClipsCubit, _i531.ClipCollection, dynamic>(
         (
@@ -184,38 +204,30 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
       _,
     ) =>
             _i1054.CollectionClipsCubit(
+              gh<_i236.EventBusCubit>(),
               gh<_i72.ClipboardRepository>(instanceName: 'local'),
               collection: collection,
             ));
     gh.factory<_i433.AndroidBgClipboardCubit>(
         () => _i433.AndroidBgClipboardCubit(
               gh<_i565.AndroidBackgroundClipboard>(),
+              gh<_i236.EventBusCubit>(),
               gh<_i72.ClipboardRepository>(instanceName: 'local'),
               gh<String>(instanceName: 'device_id'),
             ));
+    gh.factory<_i141.RealtimeCollectionSyncCubit>(
+        () => _i141.RealtimeCollectionSyncCubit(
+              gh<_i236.EventBusCubit>(),
+              gh<_i159.CollectionCrossSyncListener>(),
+              gh<_i625.ClipCollectionRepository>(),
+            ));
     gh.factory<_i84.ClipSyncManagerCubit>(() => _i84.ClipSyncManagerCubit(
+          gh<_i236.EventBusCubit>(),
           gh<_i106.SyncRepository>(),
           gh<_i402.ClipCollectionCubit>(),
           gh<_i72.ClipboardRepository>(instanceName: 'local'),
           gh<_i625.ClipCollectionRepository>(),
           gh<String>(instanceName: 'device_id'),
-        ));
-    gh.factory<_i141.RealtimeCollectionSyncCubit>(
-        () => _i141.RealtimeCollectionSyncCubit(
-              gh<_i159.CollectionCrossSyncListener>(),
-              gh<_i625.ClipCollectionRepository>(),
-            ));
-    gh.factory<_i988.CollectionSyncManagerCubit>(
-        () => _i988.CollectionSyncManagerCubit(
-              gh<_i106.SyncRepository>(),
-              gh<_i402.ClipCollectionCubit>(),
-              gh<_i625.ClipCollectionRepository>(),
-              gh<String>(instanceName: 'device_id'),
-            ));
-    gh.factory<_i685.RealtimeClipSyncCubit>(() => _i685.RealtimeClipSyncCubit(
-          gh<_i159.ClipCrossSyncListener>(),
-          gh<_i72.ClipboardRepository>(instanceName: 'local'),
-          gh<_i625.ClipCollectionRepository>(),
         ));
   }
 }
