@@ -20,10 +20,7 @@ class OnEvent<T> extends StatelessWidget {
       listenWhen: (_, current) {
         return current is T;
       },
-      listener: (context, state) {
-        trigger(context, state as T);
-        context.read<EventBusCubit>().reset();
-      },
+      listener: (context, state) => trigger(context, state as T),
       child: child,
     );
   }
