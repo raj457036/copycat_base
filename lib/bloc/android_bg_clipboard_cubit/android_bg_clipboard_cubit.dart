@@ -66,7 +66,7 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       "Url" => ClipItemType.url,
       "Email" => ClipItemType.text,
       "Phone" => ClipItemType.text,
-      "FileUrl" => ClipItemType.file, // TODO: not supported yet.
+      "FileUrl" => ClipItemType.file, // TODO(raj): add support for files
       _ => ClipItemType.text,
     };
     final TextCategory? textCategory = switch (parts[0]) {

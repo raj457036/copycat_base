@@ -34,7 +34,6 @@ class ClipCollectionCubit extends Cubit<ClipCollectionState> {
       switch (state) {
         case EventBusCollectionCrossSyncEvent(:final event):
           onSyncEvent(event);
-          break;
         case EventBusBatchCollectionCrossSyncEvent(:final events):
           onBatchSyncEvent(events);
       }

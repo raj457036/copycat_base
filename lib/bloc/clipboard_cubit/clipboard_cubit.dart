@@ -30,7 +30,6 @@ class ClipboardCubit extends Cubit<ClipboardState> {
       switch (state) {
         case EventBusClipCrossSyncEvent(:final event):
           onSyncEvent(event);
-          break;
         case EventBusBatchClipCrossSyncEvent(:final events):
           onBatchSyncEvent(events);
       }

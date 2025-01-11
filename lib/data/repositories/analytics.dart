@@ -13,7 +13,6 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    // TODO: implement it with someother provider or self host?
   }
 
   @override
@@ -22,7 +21,6 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     Map<String, dynamic>? parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    // TODO: implement it with some other provider or self host?
   }
 
   @override
@@ -31,7 +29,7 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    // TODO: implement it with some other provider or self host?
+    // TODO(raj): implement it with some other provider or self host?
   }
 
   @override
@@ -40,13 +38,12 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     required Map<String, Object> parameters,
   }) async {
     if (!isAnalyticsSupported) return;
-    // TODO: implement it with someother provider or self host?
+    // TODO(raj): implement it with someother provider or self host?
   }
 
   @override
   Future<void> setAnalyticUser(AuthUser user) async {
     if (!isAnalyticsSupported) return;
-
-    // TODO: implement it with someother provider or self host?
+    // TODO(raj): implement it with someother provider or self host?
   }
 }
