@@ -3,6 +3,7 @@ import 'package:any_link_preview/any_link_preview.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/utils/common_extension.dart';
+import 'package:copycat_base/widgets/image_not_found.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,6 +14,10 @@ class LinkPreviewImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSvg = provider.url.contains(".svg");
+
+    if (provider.url.endsWith("giphy.gif?raw=true")) {
+      return const ImageNotFound();
+    }
 
     if (isSvg) {
       return SvgPicture.network(
@@ -29,9 +34,7 @@ class LinkPreviewImage extends StatelessWidget {
       imageUrl: provider.url,
       httpHeaders: provider.headers,
       fit: BoxFit.fitWidth,
-      errorWidget: (context, error, stackTrace) => const Center(
-        child: Icon(Icons.error),
-      ),
+      errorWidget: (context, error, stackTrace) => const ImageNotFound(),
     );
   }
 }
@@ -44,6 +47,7 @@ class LinkPreview extends StatelessWidget {
   final int maxTitleLines;
   final int maxDescLines;
   final bool withProgress;
+  final VoidCallback? onTap;
 
   const LinkPreview({
     super.key,
@@ -54,6 +58,7 @@ class LinkPreview extends StatelessWidget {
     this.maxTitleLines = 2,
     this.maxDescLines = 4,
     this.withProgress = false,
+    this.onTap,
   });
 
   @override
@@ -77,82 +82,89 @@ class LinkPreview extends StatelessWidget {
           }
           final colors = context.colors;
           provider as NetworkImage?;
-          Widget content = Card(
+
+          Widget body = ClipRRect(
+            borderRadius: radius8,
+            child: Column(
+              spacing: 4,
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (provider != null)
+                  Expanded(
+                    child: LinkPreviewImage(provider: provider),
+                  ),
+                // else if (svg != null)
+                //   Expanded(child: svg),
+                if ((meta.title != null || meta.desc != null) &&
+                    (!hideDesc || !hideTitle))
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: padding6,
+                      right: padding6,
+                      bottom: padding6,
+                    ),
+                    child: Column(
+                      spacing: 4,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (meta.title != null &&
+                            meta.title!.isNotEmpty &&
+                            !hideTitle)
+                          Flexible(
+                            child: Text(
+                              meta.title!,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: maxTitleLines,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                // color: colors.primary,
+                              ),
+                            ),
+                          ),
+                        if (meta.desc != null &&
+                            meta.desc!.isNotEmpty &&
+                            !hideDesc)
+                          Flexible(
+                            child: Text(
+                              meta.desc!,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: maxDescLines,
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: colors.outline,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  )
+              ],
+            ),
+          );
+
+          if (onTap != null) {
+            body = InkWell(borderRadius: radius8, onTap: onTap, child: body);
+          }
+          body = Card(
             elevation: 0.1,
             margin: EdgeInsets.zero,
             shape: const RoundedRectangleBorder(
               borderRadius: radius8,
             ),
-            child: ClipRRect(
-              borderRadius: radius8,
-              child: Column(
-                spacing: 4,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  if (provider != null)
-                    Expanded(
-                      child: LinkPreviewImage(provider: provider),
-                    )
-                  else if (svg != null)
-                    Expanded(child: svg),
-                  if ((meta.title != null || meta.desc != null) &&
-                      (!hideDesc || !hideTitle))
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: padding6,
-                        right: padding6,
-                        bottom: padding6,
-                      ),
-                      child: Column(
-                        spacing: 4,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (meta.title != null &&
-                              meta.title!.isNotEmpty &&
-                              !hideTitle)
-                            Flexible(
-                              child: Text(
-                                meta.title!,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: maxTitleLines,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  // color: colors.primary,
-                                ),
-                              ),
-                            ),
-                          if (meta.desc != null &&
-                              meta.desc!.isNotEmpty &&
-                              !hideDesc)
-                            Flexible(
-                              child: Text(
-                                meta.desc!,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: maxDescLines,
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: colors.outline,
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    )
-                ],
-              ),
-            ),
+            child: body,
           );
           if (withProgress) {
-            content = FadeIn(
+            body = FadeIn(
               delay: const Duration(milliseconds: 150),
-              child: content,
+              child: body,
             );
           }
-          if (expanded) return Expanded(child: content);
-          return content;
+          if (expanded) body = Expanded(child: body);
+
+          return body;
         });
   }
 }

@@ -27,7 +27,7 @@ mixin _$EventBusState {
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ mixin _$EventBusState {
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ mixin _$EventBusState {
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) =>
@@ -172,7 +172,7 @@ class _$EmptyImpl implements _Empty {
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return empty();
@@ -189,7 +189,7 @@ class _$EmptyImpl implements _Empty {
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return empty?.call();
@@ -206,7 +206,7 @@ class _$EmptyImpl implements _Empty {
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {
@@ -352,7 +352,7 @@ class _$EventBusClipCrossSyncEventImpl implements EventBusClipCrossSyncEvent {
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return clipSync(event);
@@ -369,7 +369,7 @@ class _$EventBusClipCrossSyncEventImpl implements EventBusClipCrossSyncEvent {
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return clipSync?.call(event);
@@ -386,7 +386,7 @@ class _$EventBusClipCrossSyncEventImpl implements EventBusClipCrossSyncEvent {
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {
@@ -553,7 +553,7 @@ class _$EventBusBatchClipCrossSyncEventImpl
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return batchClipSync(events);
@@ -570,7 +570,7 @@ class _$EventBusBatchClipCrossSyncEventImpl
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return batchClipSync?.call(events);
@@ -587,7 +587,7 @@ class _$EventBusBatchClipCrossSyncEventImpl
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {
@@ -747,7 +747,7 @@ class _$EventBusCollectionCrossSyncEventImpl
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return collectionSync(event);
@@ -764,7 +764,7 @@ class _$EventBusCollectionCrossSyncEventImpl
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return collectionSync?.call(event);
@@ -781,7 +781,7 @@ class _$EventBusCollectionCrossSyncEventImpl
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {
@@ -949,7 +949,7 @@ class _$EventBusBatchCollectionCrossSyncEventImpl
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return batchCollectionSync(events);
@@ -966,7 +966,7 @@ class _$EventBusBatchCollectionCrossSyncEventImpl
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return batchCollectionSync?.call(events);
@@ -983,7 +983,7 @@ class _$EventBusBatchCollectionCrossSyncEventImpl
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {
@@ -1067,7 +1067,7 @@ abstract class _$$EventBusKeyboardEventImplCopyWith<$Res> {
           $Res Function(_$EventBusKeyboardEventImpl) then) =
       __$$EventBusKeyboardEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String event});
+  $Res call({KeyboardShortcutEvent event});
 }
 
 /// @nodoc
@@ -1089,7 +1089,7 @@ class __$$EventBusKeyboardEventImplCopyWithImpl<$Res>
       null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as String,
+              as KeyboardShortcutEvent,
     ));
   }
 }
@@ -1100,7 +1100,7 @@ class _$EventBusKeyboardEventImpl implements EventBusKeyboardEvent {
   const _$EventBusKeyboardEventImpl(this.event);
 
   @override
-  final String event;
+  final KeyboardShortcutEvent event;
 
   @override
   String toString() {
@@ -1139,7 +1139,7 @@ class _$EventBusKeyboardEventImpl implements EventBusKeyboardEvent {
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return keyboard(event);
@@ -1156,7 +1156,7 @@ class _$EventBusKeyboardEventImpl implements EventBusKeyboardEvent {
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return keyboard?.call(event);
@@ -1173,7 +1173,7 @@ class _$EventBusKeyboardEventImpl implements EventBusKeyboardEvent {
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {
@@ -1236,10 +1236,10 @@ class _$EventBusKeyboardEventImpl implements EventBusKeyboardEvent {
 }
 
 abstract class EventBusKeyboardEvent implements EventBusState {
-  const factory EventBusKeyboardEvent(final String event) =
+  const factory EventBusKeyboardEvent(final KeyboardShortcutEvent event) =
       _$EventBusKeyboardEventImpl;
 
-  String get event;
+  KeyboardShortcutEvent get event;
 
   /// Create a copy of EventBusState
   /// with the given fields replaced by the non-null parameter values.
@@ -1328,7 +1328,7 @@ class _$EventBusIndexPasteEventImpl implements EventBusIndexPasteEvent {
         collectionSync,
     required TResult Function(List<(CrossSyncEventType, ClipCollection)> events)
         batchCollectionSync,
-    required TResult Function(String event) keyboard,
+    required TResult Function(KeyboardShortcutEvent event) keyboard,
     required TResult Function(int index) indexPaste,
   }) {
     return indexPaste(index);
@@ -1345,7 +1345,7 @@ class _$EventBusIndexPasteEventImpl implements EventBusIndexPasteEvent {
         collectionSync,
     TResult? Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult? Function(String event)? keyboard,
+    TResult? Function(KeyboardShortcutEvent event)? keyboard,
     TResult? Function(int index)? indexPaste,
   }) {
     return indexPaste?.call(index);
@@ -1362,7 +1362,7 @@ class _$EventBusIndexPasteEventImpl implements EventBusIndexPasteEvent {
         collectionSync,
     TResult Function(List<(CrossSyncEventType, ClipCollection)> events)?
         batchCollectionSync,
-    TResult Function(String event)? keyboard,
+    TResult Function(KeyboardShortcutEvent event)? keyboard,
     TResult Function(int index)? indexPaste,
     required TResult orElse(),
   }) {

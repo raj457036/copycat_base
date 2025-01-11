@@ -16,6 +16,7 @@ class EventBusState with _$EventBusState {
           List<CollectionCrossSyncEvent> events) =
       EventBusBatchCollectionCrossSyncEvent;
 
-  const factory EventBusState.keyboard(String event) = EventBusKeyboardEvent;
+  const factory EventBusState.keyboard(KeyboardShortcutEvent event) =
+      EventBusKeyboardEvent;
   const factory EventBusState.indexPaste(int index) = EventBusIndexPasteEvent;
 }

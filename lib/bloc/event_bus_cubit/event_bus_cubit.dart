@@ -5,6 +5,8 @@ import 'package:copycat_base/domain/services/cross_sync_listener.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import 'keyboard_shortcuts.dart';
+
 part 'event_bus_cubit.freezed.dart';
 part 'event_bus_state.dart';
 
@@ -30,6 +32,10 @@ class EventBusCubit extends Cubit<EventBusState> {
   void batchCollectionSync(List<CollectionCrossSyncEvent> events) =>
       emit(EventBusState.batchCollectionSync(events));
 
-  void keyboard(String event) => emit(EventBusState.keyboard(event));
+  void keyboard(String event) => emit(
+        EventBusState.keyboard(
+          KeyboardShortcutEvent(name: event),
+        ),
+      );
   void indexPaste(int index) => emit(EventBusState.indexPaste(index));
 }
