@@ -98,2302 +98,803 @@ abstract class AppLocalizations {
   static const List<Locale> supportedLocales = <Locale>[
     Locale('de'),
     Locale('en'),
+    Locale('en', 'US'),
     Locale('es'),
     Locale('fr'),
     Locale('zh')
   ];
 
-  /// No description provided for @appName.
+  /// App name: CopyCat Clipboard
   ///
-  /// In en, this message translates to:
-  /// **'CopyCat'**
-  String get appName;
-
-  /// No description provided for @en.
-  ///
-  /// In en, this message translates to:
-  /// **'English'**
-  String get en;
-
-  /// No description provided for @es.
-  ///
-  /// In en, this message translates to:
-  /// **'Spanish'**
-  String get es;
-
-  /// No description provided for @fr.
-  ///
-  /// In en, this message translates to:
-  /// **'French'**
-  String get fr;
-
-  /// No description provided for @de.
-  ///
-  /// In en, this message translates to:
-  /// **'German'**
-  String get de;
-
-  /// No description provided for @zh.
-  ///
-  /// In en, this message translates to:
-  /// **'Chinese'**
-  String get zh;
-
-  /// No description provided for @zh_cn.
-  ///
-  /// In en, this message translates to:
-  /// **'Simplified Chinese'**
-  String get zh_cn;
-
-  /// No description provided for @language.
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get language;
-
-  /// No description provided for @enterEmail.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your email'**
-  String get enterEmail;
-
-  /// No description provided for @validEmailError.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter a valid email address'**
-  String get validEmailError;
-
-  /// No description provided for @enterPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your password'**
-  String get enterPassword;
-
-  /// No description provided for @passwordLengthError.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter a password that is at least 6 characters long'**
-  String get passwordLengthError;
-
-  /// No description provided for @signIn.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign In'**
-  String get signIn;
-
-  /// No description provided for @signUp.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign Up'**
-  String get signUp;
-
-  /// No description provided for @forgotPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Forgot your password?'**
-  String get forgotPassword;
-
-  /// No description provided for @dontHaveAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Don\'t have an account? Sign up'**
-  String get dontHaveAccount;
-
-  /// No description provided for @haveAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'Already have an account? Sign in'**
-  String get haveAccount;
-
-  /// No description provided for @sendPasswordReset.
-  ///
-  /// In en, this message translates to:
-  /// **'Send password reset email'**
-  String get sendPasswordReset;
-
-  /// No description provided for @backToSignIn.
-  ///
-  /// In en, this message translates to:
-  /// **'Back to sign in'**
-  String get backToSignIn;
-
-  /// No description provided for @updatePassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Update Password'**
-  String get updatePassword;
-
-  /// No description provided for @unexpectedError.
-  ///
-  /// In en, this message translates to:
-  /// **'An unexpected error occurred'**
-  String get unexpectedError;
-
-  /// No description provided for @passwordResetSent.
-  ///
-  /// In en, this message translates to:
-  /// **'Password reset email has been sent'**
-  String get passwordResetSent;
-
-  /// No description provided for @collections.
-  ///
-  /// In en, this message translates to:
-  /// **'Collections'**
-  String get collections;
-
-  /// No description provided for @collection.
-  ///
-  /// In en, this message translates to:
-  /// **'Collection'**
-  String get collection;
-
-  /// No description provided for @createCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Create Collection'**
-  String get createCollection;
-
-  /// No description provided for @editCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Collection'**
-  String get editCollection;
-
-  /// No description provided for @cancel.
-  ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
-  String get cancel;
-
-  /// No description provided for @save.
-  ///
-  /// In en, this message translates to:
-  /// **'Save'**
-  String get save;
-
-  /// No description provided for @edit.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get edit;
-
-  /// No description provided for @description.
-  ///
-  /// In en, this message translates to:
-  /// **'Description'**
-  String get description;
-
-  /// No description provided for @noDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'No description'**
-  String get noDescription;
-
-  /// No description provided for @noResultsWereFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No Results were found'**
-  String get noResultsWereFound;
-
-  /// No description provided for @driveSetupDone.
-  ///
-  /// In en, this message translates to:
-  /// **'Drive Setup Done 🥳'**
-  String get driveSetupDone;
-
-  /// No description provided for @pleaseWaitWhileWeSetupSyncing.
-  ///
-  /// In en, this message translates to:
-  /// **'Please wait while we setup\nsyncing'**
-  String get pleaseWaitWhileWeSetupSyncing;
-
-  /// No description provided for @driveSetupMayTakeFewMin.
-  ///
-  /// In en, this message translates to:
-  /// **'This might take about a minute to complete.\n( Please do not close the app )'**
-  String get driveSetupMayTakeFewMin;
-
-  /// No description provided for @refreshNow.
-  ///
-  /// In en, this message translates to:
-  /// **'Refresh Now'**
-  String get refreshNow;
-
-  /// No description provided for @newUpdates.
-  ///
-  /// In en, this message translates to:
-  /// **'Changes Available:\n {added} Added, {updated} Updated and {deleted} Deleted'**
-  String newUpdates(int added, int updated, int deleted);
-
-  /// No description provided for @itemDeleted.
-  ///
-  /// In en, this message translates to:
-  /// **'Item Deleted'**
-  String get itemDeleted;
-
-  /// No description provided for @deletingFromCloud.
-  ///
-  /// In en, this message translates to:
-  /// **'Deleting from Cloud'**
-  String get deletingFromCloud;
-
-  /// No description provided for @emptyClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Your clipboard is empty'**
-  String get emptyClipboard;
-
-  /// No description provided for @loadMore.
-  ///
-  /// In en, this message translates to:
-  /// **'Load More'**
-  String get loadMore;
-
-  /// No description provided for @clipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Clipboard'**
-  String get clipboard;
-
-  /// No description provided for @search.
-  ///
-  /// In en, this message translates to:
-  /// **'Search'**
-  String get search;
-
-  /// No description provided for @share.
-  ///
-  /// In en, this message translates to:
-  /// **'Share'**
-  String get share;
-
-  /// No description provided for @export.
-  ///
-  /// In en, this message translates to:
-  /// **'Export'**
-  String get export;
-
-  /// No description provided for @searchClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Search Clipboard'**
-  String get searchClipboard;
-
-  /// No description provided for @settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
-
-  /// No description provided for @copyCatClipboard.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'CopyCat Clipboard'**
-  String get copyCatClipboard;
+  String get app__name;
 
-  /// No description provided for @oneClipboardLimitlessPosibility.
+  /// CopyCat Clipboard Slogan
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'One Clipboard, Limitless Possibility'**
-  String get oneClipboardLimitlessPosibility;
+  String get app__slogan;
 
-  /// No description provided for @fullName.
+  /// No description provided for @app__unknown_error.
   ///
-  /// In en, this message translates to:
-  /// **'Full Name'**
-  String get fullName;
+  /// In en_US, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get app__unknown_error;
 
-  /// No description provided for @preview.
+  /// No description provided for @app__downloading.
   ///
-  /// In en, this message translates to:
-  /// **'Preview'**
-  String get preview;
+  /// In en_US, this message translates to:
+  /// **'Downloading...'**
+  String get app__downloading;
 
-  /// No description provided for @editDetails.
+  /// No description provided for @app__download.
   ///
-  /// In en, this message translates to:
-  /// **'Edit Details'**
-  String get editDetails;
+  /// In en_US, this message translates to:
+  /// **'Download'**
+  String get app__download;
 
-  /// No description provided for @title.
+  /// No description provided for @app__follow_link.
   ///
-  /// In en, this message translates to:
-  /// **'Title'**
-  String get title;
+  /// In en_US, this message translates to:
+  /// **'Follow Link'**
+  String get app__follow_link;
 
-  /// No description provided for @nothingHere.
+  /// No description provided for @app__edit.
   ///
-  /// In en, this message translates to:
-  /// **'Nothing Here'**
-  String get nothingHere;
+  /// In en_US, this message translates to:
+  /// **'Edit'**
+  String get app__edit;
 
-  /// No description provided for @downloading.
+  /// No description provided for @app__export.
   ///
-  /// In en, this message translates to:
-  /// **'Downloading'**
-  String get downloading;
+  /// In en_US, this message translates to:
+  /// **'Export'**
+  String get app__export;
 
-  /// No description provided for @downloadForOffline.
+  /// No description provided for @app__delete.
   ///
-  /// In en, this message translates to:
-  /// **'Downloading for offline'**
-  String get downloadForOffline;
-
-  /// No description provided for @copyToClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy to Clipboard'**
-  String get copyToClipboard;
-
-  /// No description provided for @delete.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Delete'**
-  String get delete;
+  String get app__delete;
 
-  /// No description provided for @resetYourPassword.
+  /// No description provided for @app__later.
   ///
-  /// In en, this message translates to:
-  /// **'Reset your password'**
-  String get resetYourPassword;
+  /// In en_US, this message translates to:
+  /// **'Skip'**
+  String get app__later;
 
-  /// No description provided for @passwordResetSuccess.
+  /// No description provided for @login__local_signin__tooltip.
   ///
-  /// In en, this message translates to:
-  /// **'Password reset successfully'**
-  String get passwordResetSuccess;
-
-  /// No description provided for @findWhateverYouLooking.
-  ///
-  /// In en, this message translates to:
-  /// **'Find Whatever you are looking for...'**
-  String get findWhateverYouLooking;
-
-  /// No description provided for @noResults.
-  ///
-  /// In en, this message translates to:
-  /// **'No results were found.'**
-  String get noResults;
-
-  /// No description provided for @searchInClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Search in clipboard'**
-  String get searchInClipboard;
-
-  /// No description provided for @basicLocal.
-  ///
-  /// In en, this message translates to:
-  /// **'Basic • Local'**
-  String get basicLocal;
-
-  /// No description provided for @localSettingsDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'These settings are applicable to this device only.'**
-  String get localSettingsDesc;
-
-  /// No description provided for @theme.
-  ///
-  /// In en, this message translates to:
-  /// **'Theme'**
-  String get theme;
-
-  /// No description provided for @syncLocal.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync • Local'**
-  String get syncLocal;
-
-  /// No description provided for @dontAutoCopyOver.
-  ///
-  /// In en, this message translates to:
-  /// **'Don\'t Auto Copy Over'**
-  String get dontAutoCopyOver;
-
-  /// No description provided for @dontAutoCopyOverDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Files and Media over a certain size ({size}) will not be copied automatically.'**
-  String dontAutoCopyOverDesc(String size);
-
-  /// No description provided for @dontAutoUploadOver.
-  ///
-  /// In en, this message translates to:
-  /// **'Don\'t Auto Upload Over'**
-  String get dontAutoUploadOver;
-
-  /// No description provided for @dontAutoUploadOverDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Files and Media over a certain size ({size}) will not be uploaded automatically.'**
-  String dontAutoUploadOverDesc(String size);
-
-  /// No description provided for @enableSync.
-  ///
-  /// In en, this message translates to:
-  /// **'Enable Sync'**
-  String get enableSync;
-
-  /// No description provided for @enableSyncDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Keep your clips synced across devices'**
-  String get enableSyncDesc;
-
-  /// No description provided for @syncFiles.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync Files and Medias'**
-  String get syncFiles;
-
-  /// No description provided for @syncFilesDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Keep your files and media items updated across devices.'**
-  String get syncFilesDesc;
-
-  /// No description provided for @connected.
-  ///
-  /// In en, this message translates to:
-  /// **'Connected'**
-  String get connected;
-
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
-  String get loading;
-
-  /// No description provided for @authorizing.
-  ///
-  /// In en, this message translates to:
-  /// **'Authorizing...'**
-  String get authorizing;
-
-  /// No description provided for @connectNow.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect Now'**
-  String get connectNow;
-
-  /// No description provided for @tips.
-  ///
-  /// In en, this message translates to:
-  /// **'ⓘ Tips'**
-  String get tips;
-
-  /// No description provided for @cloudStorageInfoDefault.
-  ///
-  /// In en, this message translates to:
-  /// **'Google Drive not connected, File and media syncing is disabled.'**
-  String get cloudStorageInfoDefault;
-
-  /// No description provided for @cloudStorageInfo.
-  ///
-  /// In en, this message translates to:
-  /// **'{info}Your files and media are synced securely across devices using Google Drive to protect your privacy.'**
-  String cloudStorageInfo(String info);
-
-  /// No description provided for @attentionNeeded.
-  ///
-  /// In en, this message translates to:
-  /// **'⚠ Attention Needed!'**
-  String get attentionNeeded;
-
-  /// No description provided for @isPaused.
-  ///
-  /// In en, this message translates to:
-  /// **'Is Paused?'**
-  String get isPaused;
-
-  /// No description provided for @isPausedDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'{isPaused, select, true{Auto copy is not paused} other{Auto Copy is paused until {till}}}'**
-  String isPausedDesc(String isPaused, String till);
-
-  /// No description provided for @paste.
-  ///
-  /// In en, this message translates to:
-  /// **'Paste'**
-  String get paste;
-
-  /// No description provided for @copy.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy'**
-  String get copy;
-
-  /// No description provided for @previewEdit.
-  ///
-  /// In en, this message translates to:
-  /// **'Preview & Edit'**
-  String get previewEdit;
-
-  /// No description provided for @pastingTheSharedContent.
-  ///
-  /// In en, this message translates to:
-  /// **'Pasting the Shared Content to Clipboard'**
-  String get pastingTheSharedContent;
-
-  /// No description provided for @smartPaste.
-  ///
-  /// In en, this message translates to:
-  /// **'Smart Paste'**
-  String get smartPaste;
-
-  /// No description provided for @smartPasteDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Enable to paste clips directly to the last focused window.'**
-  String get smartPasteDesc;
-
-  /// No description provided for @launchAtStartup.
-  ///
-  /// In en, this message translates to:
-  /// **'Launch At Startup'**
-  String get launchAtStartup;
-
-  /// No description provided for @launchAtStartupDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Enable to start the app automatically when your device starts.'**
-  String get launchAtStartupDesc;
-
-  /// No description provided for @autoSyncInterval.
-  ///
-  /// In en, this message translates to:
-  /// **'Auto Sync Interval'**
-  String get autoSyncInterval;
-
-  /// No description provided for @autoSyncIntervalDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Clipboard will be automatically synced'**
-  String get autoSyncIntervalDesc;
-
-  /// No description provided for @clipboardShortcut.
-  ///
-  /// In en, this message translates to:
-  /// **'Clipboard Shortcut'**
-  String get clipboardShortcut;
-
-  /// No description provided for @clipboardShortcutDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Effortlessly Access Clipboard Anywhere'**
-  String get clipboardShortcutDesc;
-
-  /// No description provided for @clipboardShortcutPreview.
-  ///
-  /// In en, this message translates to:
-  /// **'Current Shortcut Key : {key}'**
-  String clipboardShortcutPreview(String key);
-
-  /// No description provided for @unassigned.
-  ///
-  /// In en, this message translates to:
-  /// **'Unassigned'**
-  String get unassigned;
-
-  /// No description provided for @system.
-  ///
-  /// In en, this message translates to:
-  /// **'System'**
-  String get system;
-
-  /// No description provided for @light.
-  ///
-  /// In en, this message translates to:
-  /// **'Light'**
-  String get light;
-
-  /// No description provided for @dark.
-  ///
-  /// In en, this message translates to:
-  /// **'Dark'**
-  String get dark;
-
-  /// No description provided for @local.
-  ///
-  /// In en, this message translates to:
-  /// **'Local'**
-  String get local;
-
-  /// No description provided for @uploading.
-  ///
-  /// In en, this message translates to:
-  /// **'Uploading...'**
-  String get uploading;
-
-  /// No description provided for @pleaseWait.
-  ///
-  /// In en, this message translates to:
-  /// **'Please Wait...'**
-  String get pleaseWait;
-
-  /// No description provided for @open.
-  ///
-  /// In en, this message translates to:
-  /// **'Open'**
-  String get open;
-
-  /// No description provided for @noCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'No Collection'**
-  String get noCollection;
-
-  /// No description provided for @chooseCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose Collection'**
-  String get chooseCollection;
-
-  /// No description provided for @changeCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Change Collection'**
-  String get changeCollection;
-
-  /// No description provided for @removeFromCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove from collection'**
-  String get removeFromCollection;
-
-  /// No description provided for @compactMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Compact Mode'**
-  String get compactMode;
-
-  /// No description provided for @createACollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Create a new collection ( {left} left )'**
-  String createACollection(String left);
-
-  /// No description provided for @logout.
-  ///
-  /// In en, this message translates to:
-  /// **'Logout'**
-  String get logout;
-
-  /// No description provided for @logoutMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'⚠️ WARNING ⚠️\n\nLogging out will delete unsynced changes in the local database. Are you sure you want to proceed?'**
-  String get logoutMessage;
-
-  /// No description provided for @loggingYouOut.
-  ///
-  /// In en, this message translates to:
-  /// **'Logging you out! Please wait...'**
-  String get loggingYouOut;
-
-  /// No description provided for @logoutSuccess.
-  ///
-  /// In en, this message translates to:
-  /// **'Logged out successfully'**
-  String get logoutSuccess;
-
-  /// No description provided for @internetConnected.
-  ///
-  /// In en, this message translates to:
-  /// **'Connected to Cloud'**
-  String get internetConnected;
-
-  /// No description provided for @internetDisconnected.
-  ///
-  /// In en, this message translates to:
-  /// **'Connecting to Cloud...'**
-  String get internetDisconnected;
-
-  /// No description provided for @noCollectionFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No collection found'**
-  String get noCollectionFound;
-
-  /// No description provided for @done.
-  ///
-  /// In en, this message translates to:
-  /// **'Done'**
-  String get done;
-
-  /// No description provided for @failed.
-  ///
-  /// In en, this message translates to:
-  /// **'Failed'**
-  String get failed;
-
-  /// No description provided for @syncNow.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync Now'**
-  String get syncNow;
-
-  /// No description provided for @syncNotAvailable.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync Not Available'**
-  String get syncNotAvailable;
-
-  /// No description provided for @checkingForRecord.
-  ///
-  /// In en, this message translates to:
-  /// **'Checking for Records'**
-  String get checkingForRecord;
-
-  /// No description provided for @sync.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync'**
-  String get sync;
-
-  /// No description provided for @syncing.
-  ///
-  /// In en, this message translates to:
-  /// **'Syncing'**
-  String get syncing;
-
-  /// No description provided for @syncingCheckFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Syncing Check Failed: {message}'**
-  String syncingCheckFailed(String message);
-
-  /// No description provided for @synced.
-  ///
-  /// In en, this message translates to:
-  /// **'✅ Changes Synced'**
-  String get synced;
-
-  /// No description provided for @showWindow.
-  ///
-  /// In en, this message translates to:
-  /// **'Show Window'**
-  String get showWindow;
-
-  /// No description provided for @hideWindow.
-  ///
-  /// In en, this message translates to:
-  /// **'Hide Window'**
-  String get hideWindow;
-
-  /// No description provided for @hideWindowDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Tip: Use keyboard shortcut to show the clipboard.'**
-  String get hideWindowDesc;
-
-  /// No description provided for @quit.
-  ///
-  /// In en, this message translates to:
-  /// **'Quit'**
-  String get quit;
-
-  /// No description provided for @quitDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to quit?'**
-  String get quitDesc;
-
-  /// No description provided for @yes.
-  ///
-  /// In en, this message translates to:
-  /// **'Yes'**
-  String get yes;
-
-  /// No description provided for @no.
-  ///
-  /// In en, this message translates to:
-  /// **'No'**
-  String get no;
-
-  /// No description provided for @openInBrowser.
-  ///
-  /// In en, this message translates to:
-  /// **'Open in browser'**
-  String get openInBrowser;
-
-  /// No description provided for @makePhoneCall.
-  ///
-  /// In en, this message translates to:
-  /// **'Make a phone call'**
-  String get makePhoneCall;
-
-  /// No description provided for @selectCollection.
-  ///
-  /// In en, this message translates to:
-  /// **'Select a collection'**
-  String get selectCollection;
-
-  /// No description provided for @selectCollectionSub.
-  ///
-  /// In en, this message translates to:
-  /// **'Or create a new one'**
-  String get selectCollectionSub;
-
-  /// No description provided for @confirm.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm'**
-  String get confirm;
-
-  /// No description provided for @recordKeyboardShortcut.
-  ///
-  /// In en, this message translates to:
-  /// **'Record keyboard shortcut.'**
-  String get recordKeyboardShortcut;
-
-  /// No description provided for @recordKeyboardShortcutDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Type your shortcut using your keyboard and click '**
-  String get recordKeyboardShortcutDesc;
-
-  /// No description provided for @subscription.
-  ///
-  /// In en, this message translates to:
-  /// **'Subscription'**
-  String get subscription;
-
-  /// No description provided for @beta.
-  ///
-  /// In en, this message translates to:
-  /// **'PUBLIC BETA'**
-  String get beta;
-
-  /// No description provided for @featureListDetail.
-  ///
-  /// In en, this message translates to:
-  /// **'CopyCat Clipboard is currently in the Beta phase. While we strive for a seamless experience, you may encounter occasional bugs. Stay tuned for upcoming features and enhancements.'**
-  String get featureListDetail;
-
-  /// No description provided for @currentPlan.
-  ///
-  /// In en, this message translates to:
-  /// **'Current Plan'**
-  String get currentPlan;
-
-  /// No description provided for @currentPlanLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Current Plan • {label}'**
-  String currentPlanLabel(String label);
-
-  /// No description provided for @included.
-  ///
-  /// In en, this message translates to:
-  /// **'Included'**
-  String get included;
-
-  /// No description provided for @unlimitedClipboardItems.
-  ///
-  /// In en, this message translates to:
-  /// **'Unlimited Clipboard Items'**
-  String get unlimitedClipboardItems;
-
-  /// No description provided for @unlimitedClipboardItemsDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Never run out of space with unlimited clipboard items, ensuring you always have access to your most recent copies.'**
-  String get unlimitedClipboardItemsDesc;
-
-  /// No description provided for @supportAllMajorPlatforms.
-  ///
-  /// In en, this message translates to:
-  /// **'Support all major platforms'**
-  String get supportAllMajorPlatforms;
-
-  /// No description provided for @supportAllMajorPlatformsDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Seamlessly sync across all major platforms—Android, iOS, Windows, macOS, and Linux —for uninterrupted productivity anywhere.'**
-  String get supportAllMajorPlatformsDesc;
-
-  /// No description provided for @supportsAppleUniversalClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Supports Apple Universal Clipboard'**
-  String get supportsAppleUniversalClipboard;
-
-  /// No description provided for @supportsAppleUniversalClipboardDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Effortlessly transfer clipboard content between your Apple devices with support for Apple\'s Universal Clipboard.'**
-  String get supportsAppleUniversalClipboardDesc;
-
-  /// No description provided for @onDeviceStorage.
-  ///
-  /// In en, this message translates to:
-  /// **'On-Device Storage'**
-  String get onDeviceStorage;
-
-  /// No description provided for @onDeviceStorageDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Keep your data secure with on-device storage, ensuring your clipboard items are always within reach and under your control.'**
-  String get onDeviceStorageDesc;
-
-  /// No description provided for @googleDriveIntegration.
-  ///
-  /// In en, this message translates to:
-  /// **'Google Drive Integration'**
-  String get googleDriveIntegration;
-
-  /// No description provided for @googleDriveIntegrationDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Securely store files and media on Google Drive, integrating seamlessly with CopyCat Clipboard for enhanced data management.'**
-  String get googleDriveIntegrationDesc;
-
-  /// No description provided for @instantSearch.
-  ///
-  /// In en, this message translates to:
-  /// **'Instant Search'**
-  String get instantSearch;
-
-  /// No description provided for @instantSearchDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Find what you need instantly with powerful instant search capabilities, making retrieval of clipboard items fast and efficient.'**
-  String get instantSearchDesc;
-
-  /// No description provided for @syncingUpToLast24Hours.
-  ///
-  /// In en, this message translates to:
-  /// **'Syncing Up to the Last 24 Hours'**
-  String get syncingUpToLast24Hours;
-
-  /// No description provided for @syncingUpToLast24HoursDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Access and sync your clipboard history across all your devices for the past 24 hours. This ensures you never lose important copied items, making your workflow seamless and efficient.'**
-  String get syncingUpToLast24HoursDesc;
-
-  /// No description provided for @upTo3Collections.
-  ///
-  /// In en, this message translates to:
-  /// **'Up to 3 Collections'**
-  String get upTo3Collections;
-
-  /// No description provided for @upTo3CollectionsDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.'**
-  String get upTo3CollectionsDesc;
-
-  /// No description provided for @autoSyncEvery45Seconds.
-  ///
-  /// In en, this message translates to:
-  /// **'Auto-Sync Every 45 Seconds'**
-  String get autoSyncEvery45Seconds;
-
-  /// No description provided for @autoSyncEvery45SecondsDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.'**
-  String get autoSyncEvery45SecondsDesc;
-
-  /// No description provided for @withPro.
-  ///
-  /// In en, this message translates to:
-  /// **'With PRO ✨'**
-  String get withPro;
-
-  /// No description provided for @withProDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Everything included in Free +'**
-  String get withProDesc;
-
-  /// No description provided for @supportE2EE.
-  ///
-  /// In en, this message translates to:
-  /// **'Support End-to-End Encryption'**
-  String get supportE2EE;
-
-  /// No description provided for @supportE2EEDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'E2EE will make everything encrypted for superior privacy.'**
-  String get supportE2EEDesc;
-
-  /// No description provided for @upto50Collection.
-  ///
-  /// In en, this message translates to:
-  /// **'Up to 50 Collections'**
-  String get upto50Collection;
-
-  /// No description provided for @upto50CollectionDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Organize your clipboard items into up to 50 collections for ultimate management.'**
-  String get upto50CollectionDesc;
-
-  /// No description provided for @syncLast720Hr.
-  ///
-  /// In en, this message translates to:
-  /// **'Syncing Up to the Last 30 Days'**
-  String get syncLast720Hr;
-
-  /// No description provided for @syncLast720HrDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Clipboard history is synced across all your devices for clips created within the last 30 days. This means you can access any clip you copied in the past month, no matter which device you are using.'**
-  String get syncLast720HrDesc;
-
-  /// No description provided for @realtimeSync.
-  ///
-  /// In en, this message translates to:
-  /// **'Real Time Synchronization'**
-  String get realtimeSync;
-
-  /// No description provided for @realtimeSyncDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Experience lightning-fast syncing.'**
-  String get realtimeSyncDesc;
-
-  /// No description provided for @prioritySupport.
-  ///
-  /// In en, this message translates to:
-  /// **'Faster and Priority Support'**
-  String get prioritySupport;
-
-  /// No description provided for @prioritySupportDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Get prompt and prioritized support as a PRO user.'**
-  String get prioritySupportDesc;
-
-  /// No description provided for @earlyAccessToNewFeature.
-  ///
-  /// In en, this message translates to:
-  /// **'Early Access to New Features'**
-  String get earlyAccessToNewFeature;
-
-  /// No description provided for @earlyAccessToNewFeatureDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Be the first to try out new features and updates.'**
-  String get earlyAccessToNewFeatureDesc;
-
-  /// No description provided for @termsAgreeP1.
-  ///
-  /// In en, this message translates to:
-  /// **'By continuing you agree to the following '**
-  String get termsAgreeP1;
-
-  /// No description provided for @privacyPolicies.
-  ///
-  /// In en, this message translates to:
-  /// **'Privacy policies'**
-  String get privacyPolicies;
-
-  /// No description provided for @and.
-  ///
-  /// In en, this message translates to:
-  /// **' and '**
-  String get and;
-
-  /// No description provided for @termsOfService.
-  ///
-  /// In en, this message translates to:
-  /// **'Terms of Service'**
-  String get termsOfService;
-
-  /// No description provided for @termsAgreeP2.
-  ///
-  /// In en, this message translates to:
-  /// **'.'**
-  String get termsAgreeP2;
-
-  /// No description provided for @backToApp.
-  ///
-  /// In en, this message translates to:
-  /// **'Back to App'**
-  String get backToApp;
-
-  /// No description provided for @experimental.
-  ///
-  /// In en, this message translates to:
-  /// **'🧪'**
-  String get experimental;
-
-  /// No description provided for @experimentalDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'This feature is experimental and might not work as expected.'**
-  String get experimentalDescription;
-
-  /// No description provided for @selectAnOption.
-  ///
-  /// In en, this message translates to:
-  /// **'Select an option'**
-  String get selectAnOption;
-
-  /// No description provided for @advanceSecurity.
-  ///
-  /// In en, this message translates to:
-  /// **'Advance Security'**
-  String get advanceSecurity;
-
-  /// No description provided for @endToEndVault.
-  ///
-  /// In en, this message translates to:
-  /// **'End-to-End Encryption Vault'**
-  String get endToEndVault;
-
-  /// No description provided for @accessE2eeVault.
-  ///
-  /// In en, this message translates to:
-  /// **'Access your E2EE vault settings'**
-  String get accessE2eeVault;
-
-  /// No description provided for @encryptClipboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Encrypt Clipboard'**
-  String get encryptClipboard;
-
-  /// No description provided for @encryptClipboardDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Encrypt clipboard before syncing with the cloud.'**
-  String get encryptClipboardDesc;
-
-  /// No description provided for @$5Sec.
-  ///
-  /// In en, this message translates to:
-  /// **'Instant'**
-  String get $5Sec;
-
-  /// No description provided for @$10Sec.
-  ///
-  /// In en, this message translates to:
-  /// **'Rapid'**
-  String get $10Sec;
-
-  /// No description provided for @$20Sec.
-  ///
-  /// In en, this message translates to:
-  /// **'Swift'**
-  String get $20Sec;
-
-  /// No description provided for @$45Sec.
-  ///
-  /// In en, this message translates to:
-  /// **'Balanced'**
-  String get $45Sec;
-
-  /// No description provided for @$60Sec.
-  ///
-  /// In en, this message translates to:
-  /// **'Casual'**
-  String get $60Sec;
-
-  /// No description provided for @$5MB.
-  ///
-  /// In en, this message translates to:
-  /// **'5 MB'**
-  String get $5MB;
-
-  /// No description provided for @$10MB.
-  ///
-  /// In en, this message translates to:
-  /// **'10 MB'**
-  String get $10MB;
-
-  /// No description provided for @$20MB.
-  ///
-  /// In en, this message translates to:
-  /// **'20 MB'**
-  String get $20MB;
-
-  /// No description provided for @$50MB.
-  ///
-  /// In en, this message translates to:
-  /// **'50 MB'**
-  String get $50MB;
-
-  /// No description provided for @$100MB.
-  ///
-  /// In en, this message translates to:
-  /// **'100 MB'**
-  String get $100MB;
-
-  /// No description provided for @e2eeNotSetup.
-  ///
-  /// In en, this message translates to:
-  /// **'E2EE not setup yet.'**
-  String get e2eeNotSetup;
-
-  /// No description provided for @settingE2eeVault.
-  ///
-  /// In en, this message translates to:
-  /// **'Setting Up E2EE Vault'**
-  String get settingE2eeVault;
-
-  /// No description provided for @e2eeSetupWarning.
-  ///
-  /// In en, this message translates to:
-  /// **'If you lose your E2EE key and do not have a backup, your encrypted data will be permanently inaccessible. Keep your key safe and backed up.'**
-  String get e2eeSetupWarning;
-
-  /// No description provided for @e2eeSetupDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Generate your E2EE Vault key and save it in a secure location. You will need this key to set up other devices to access your encrypted information.'**
-  String get e2eeSetupDesc;
-
-  /// No description provided for @generating.
-  ///
-  /// In en, this message translates to:
-  /// **'Generating...'**
-  String get generating;
-
-  /// No description provided for @generateKey.
-  ///
-  /// In en, this message translates to:
-  /// **'Generate E2EE Vault Key'**
-  String get generateKey;
-
-  /// No description provided for @importE2eeKey.
-  ///
-  /// In en, this message translates to:
-  /// **'Import E2EE Vault Key'**
-  String get importE2eeKey;
-
-  /// No description provided for @importE2eeInvalidKey.
-  ///
-  /// In en, this message translates to:
-  /// **'⚠️ The imported key is invalid!'**
-  String get importE2eeInvalidKey;
-
-  /// No description provided for @importE2eeDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Import your E2EE Vault key below to enable access to your encrypted information on this device. Make sure the key is securely stored and not shared with anyone.'**
-  String get importE2eeDesc;
-
-  /// No description provided for @importing.
-  ///
-  /// In en, this message translates to:
-  /// **'Importing...'**
-  String get importing;
-
-  /// No description provided for @importKey.
-  ///
-  /// In en, this message translates to:
-  /// **'Import E2EE Vault Key'**
-  String get importKey;
-
-  /// No description provided for @e2eeVault.
-  ///
-  /// In en, this message translates to:
-  /// **'E2EE Vault'**
-  String get e2eeVault;
-
-  /// No description provided for @e2eeExportNote.
-  ///
-  /// In en, this message translates to:
-  /// **'Congratulations, you have successfully configured the end-to-end encryption.'**
-  String get e2eeExportNote;
-
-  /// No description provided for @e2eeExportDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Click the button below to export your E2EE Vault key.\nSave the key in a secure location to ensure you can set up other devices to access your encrypted information.'**
-  String get e2eeExportDesc;
-
-  /// No description provided for @exportKey.
-  ///
-  /// In en, this message translates to:
-  /// **'Export E2EE Vault Key'**
-  String get exportKey;
-
-  /// No description provided for @exportSuccess.
-  ///
-  /// In en, this message translates to:
-  /// **'✅ Successfully exported'**
-  String get exportSuccess;
-
-  /// No description provided for @copySuccess.
-  ///
-  /// In en, this message translates to:
-  /// **'✅ Successfully copied to clipboard'**
-  String get copySuccess;
-
-  /// No description provided for @whatsNew.
-  ///
-  /// In en, this message translates to:
-  /// **'What\'s New?'**
-  String get whatsNew;
-
-  /// No description provided for @feature1.
-  ///
-  /// In en, this message translates to:
-  /// **'Dock and Window View'**
-  String get feature1;
-
-  /// No description provided for @feature1Desc.
-  ///
-  /// In en, this message translates to:
-  /// **'Now you can have your clipboard docked on any edge or floating as always.'**
-  String get feature1Desc;
-
-  /// No description provided for @feature2.
-  ///
-  /// In en, this message translates to:
-  /// **'List & Grid View for your clips'**
-  String get feature2;
-
-  /// No description provided for @feature2Desc.
-  ///
-  /// In en, this message translates to:
-  /// **'On supported window size now you can choose between list and grid view for your clips.'**
-  String get feature2Desc;
-
-  /// No description provided for @feature3.
-  ///
-  /// In en, this message translates to:
-  /// **'Exclusion Rules'**
-  String get feature3;
-
-  /// No description provided for @feature3Desc.
-  ///
-  /// In en, this message translates to:
-  /// **'Precise control over what not to copy to your clipboard.'**
-  String get feature3Desc;
-
-  /// No description provided for @feature4.
-  ///
-  /// In en, this message translates to:
-  /// **'Bulk Operations'**
-  String get feature4;
-
-  /// No description provided for @feature4Desc.
-  ///
-  /// In en, this message translates to:
-  /// **'Now select multiple clips and perform bulk operations'**
-  String get feature4Desc;
-
-  /// No description provided for @gettingStarted.
-  ///
-  /// In en, this message translates to:
-  /// **'Get Started'**
-  String get gettingStarted;
-
-  /// No description provided for @howToUse.
-  ///
-  /// In en, this message translates to:
-  /// **'How to Use'**
-  String get howToUse;
-
-  /// No description provided for @howToUseDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'How to use CopyCat? Read our documentation to get started.'**
-  String get howToUseDesc;
-
-  /// No description provided for @tutorials.
-  ///
-  /// In en, this message translates to:
-  /// **'Video Tutorials'**
-  String get tutorials;
-
-  /// No description provided for @tutorialsDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Learn how to make the most out of CopyCat with our step-by-step video tutorials.'**
-  String get tutorialsDesc;
-
-  /// No description provided for @learnAboutFeatures.
-  ///
-  /// In en, this message translates to:
-  /// **'Learn about all the features CopyCat has to offer.'**
-  String get learnAboutFeatures;
-
-  /// No description provided for @learn.
-  ///
-  /// In en, this message translates to:
-  /// **'Learn'**
-  String get learn;
-
-  /// No description provided for @upgrade.
-  ///
-  /// In en, this message translates to:
-  /// **'Upgrade'**
-  String get upgrade;
-
-  /// No description provided for @trialTill.
-  ///
-  /// In en, this message translates to:
-  /// **'Trial till {till}'**
-  String trialTill(String till);
-
-  /// No description provided for @expiredPlan.
-  ///
-  /// In en, this message translates to:
-  /// **'{planName} • Expired'**
-  String expiredPlan(String planName);
-
-  /// No description provided for @displayName.
-  ///
-  /// In en, this message translates to:
-  /// **'Display Name'**
-  String get displayName;
-
-  /// No description provided for @email.
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get email;
-
-  /// No description provided for @accountSettings.
-  ///
-  /// In en, this message translates to:
-  /// **'Account Settings'**
-  String get accountSettings;
-
-  /// No description provided for @dangerZone.
-  ///
-  /// In en, this message translates to:
-  /// **'Danger Zone'**
-  String get dangerZone;
-
-  /// No description provided for @requestAccountDeletion.
-  ///
-  /// In en, this message translates to:
-  /// **'Request Account Deletion'**
-  String get requestAccountDeletion;
-
-  /// No description provided for @myAccount.
-  ///
-  /// In en, this message translates to:
-  /// **'My Account'**
-  String get myAccount;
-
-  /// No description provided for @accountDeleteDialogTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Account Delete Request'**
-  String get accountDeleteDialogTitle;
-
-  /// No description provided for @accountDeleteDialogDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'You will be redirected to the account delete request form, are you sure?'**
-  String get accountDeleteDialogDesc;
-
-  /// No description provided for @unlockPremiumFeatures.
-  ///
-  /// In en, this message translates to:
-  /// **'Unlock CopyCat PRO'**
-  String get unlockPremiumFeatures;
-
-  /// No description provided for @upgradeToPro.
-  ///
-  /// In en, this message translates to:
-  /// **'Enjoy over 30 days of synced history, over 50 collections, end-to-end encryption, real-time syncing, access to the newest features, and much more.'**
-  String get upgradeToPro;
-
-  /// No description provided for @tryAgain.
-  ///
-  /// In en, this message translates to:
-  /// **'Please try again'**
-  String get tryAgain;
-
-  /// No description provided for @continue_.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue'**
-  String get continue_;
-
-  /// No description provided for @year.
-  ///
-  /// In en, this message translates to:
-  /// **'year'**
-  String get year;
-
-  /// No description provided for @month.
-  ///
-  /// In en, this message translates to:
-  /// **'month'**
-  String get month;
-
-  /// No description provided for @manageSubscriptions.
-  ///
-  /// In en, this message translates to:
-  /// **'Manage Subscriptions'**
-  String get manageSubscriptions;
-
-  /// No description provided for @promoSub.
-  ///
-  /// In en, this message translates to:
-  /// **'You are using a promo subscription till {till}'**
-  String promoSub(String till);
-
-  /// No description provided for @subscriptionUpdated.
-  ///
-  /// In en, this message translates to:
-  /// **'Subscription Updated'**
-  String get subscriptionUpdated;
-
-  /// No description provided for @grantedEntitlement.
-  ///
-  /// In en, this message translates to:
-  /// **'Granted Entitlement'**
-  String get grantedEntitlement;
-
-  /// No description provided for @grantedEntitlementDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Granted Entitlement Codes are shared with specific individuals for custom entitlements. You can check if invitations are still available by '**
-  String get grantedEntitlementDesc;
-
-  /// No description provided for @clickingHere.
-  ///
-  /// In en, this message translates to:
-  /// **'clicking here.'**
-  String get clickingHere;
-
-  /// No description provided for @enterCodeSubmit.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter the code and press Submit'**
-  String get enterCodeSubmit;
-
-  /// No description provided for @submit.
-  ///
-  /// In en, this message translates to:
-  /// **'Submit'**
-  String get submit;
-
-  /// No description provided for @subscribeInSupportedPlatform.
-  ///
-  /// In en, this message translates to:
-  /// **'To access premium features on Copycat Clipboard, please subscribe through the Play Store or Apple App Store. Your subscription will be synced across all your devices, including Linux and Windows.'**
-  String get subscribeInSupportedPlatform;
-
-  /// No description provided for @timeSyncWarning.
-  ///
-  /// In en, this message translates to:
-  /// **'⚠️ Time Sync Warning'**
-  String get timeSyncWarning;
-
-  /// No description provided for @timeSyncWarningNote1.
-  ///
-  /// In en, this message translates to:
-  /// **'Inconsistent Device Time Detected'**
-  String get timeSyncWarningNote1;
-
-  /// No description provided for @timeSyncWarningNote2.
-  ///
-  /// In en, this message translates to:
-  /// **'To ensure accurate clipboard syncing, please check and correct your device\'s time settings.'**
-  String get timeSyncWarningNote2;
-
-  /// No description provided for @timeSyncWarningNote3.
-  ///
-  /// In en, this message translates to:
-  /// **'Inconsistent time settings may cause synchronization issues.'**
-  String get timeSyncWarningNote3;
-
-  /// No description provided for @checkAgain.
-  ///
-  /// In en, this message translates to:
-  /// **'Check Again'**
-  String get checkAgain;
-
-  /// No description provided for @shareYourFeedback.
-  ///
-  /// In en, this message translates to:
-  /// **'Share Your Feedback'**
-  String get shareYourFeedback;
-
-  /// No description provided for @shareYourFeedbackDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'We value your thoughts!, Whether it’s a suggestion, a bug report, or just to say hello, your input is invaluable to us.'**
-  String get shareYourFeedbackDesc;
-
-  /// No description provided for @joinDiscord.
-  ///
-  /// In en, this message translates to:
-  /// **'Join Our Discord Community'**
-  String get joinDiscord;
-
-  /// No description provided for @joinDiscordDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect with other users, share ideas, get updates, and chat directly with us.'**
-  String get joinDiscordDesc;
-
-  /// No description provided for @joinGoogleGroup.
-  ///
-  /// In en, this message translates to:
-  /// **'Join Our Google Group'**
-  String get joinGoogleGroup;
-
-  /// No description provided for @joinGoogleGroupDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Stay informed and collaborate with fellow users in our Google Group'**
-  String get joinGoogleGroupDesc;
-
-  /// No description provided for @rebuildingDB.
-  ///
-  /// In en, this message translates to:
-  /// **'⏱️ Rebuilding Database\nPlease Wait...'**
-  String get rebuildingDB;
-
-  /// No description provided for @proTip.
-  ///
-  /// In en, this message translates to:
-  /// **'Pro Tip'**
-  String get proTip;
-
-  /// No description provided for @useCollectionProTip.
-  ///
-  /// In en, this message translates to:
-  /// **'To ensure your important clips are always available regardless of time, across all your devices, save them in a collection!'**
-  String get useCollectionProTip;
-
-  /// No description provided for @syncConfigNotAvailable.
-  ///
-  /// In en, this message translates to:
-  /// **'Sync-related configurations are not available while using the local clipboard.'**
-  String get syncConfigNotAvailable;
-
-  /// No description provided for @useLocally.
-  ///
-  /// In en, this message translates to:
-  /// **'Use Locally'**
-  String get useLocally;
-
-  /// No description provided for @useLocallyDesc.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'No syncing. All data stays on your device.'**
-  String get useLocallyDesc;
+  String get login__local_signin__tooltip;
 
-  /// No description provided for @maxDroppableItem.
+  /// No description provided for @login__local_signin__btn__label.
   ///
-  /// In en, this message translates to:
-  /// **'Maximum {count} drop items are allowed at once.'**
-  String maxDroppableItem(int count);
+  /// In en_US, this message translates to:
+  /// **'Use Locally'**
+  String get login__local_signin__btn__label;
 
-  /// No description provided for @dropHere.
+  /// No description provided for @login__form__input__name.
   ///
-  /// In en, this message translates to:
-  /// **'Drop your files, images or text here'**
-  String get dropHere;
+  /// In en_US, this message translates to:
+  /// **'Enter your good name'**
+  String get login__form__input__name;
 
-  /// No description provided for @general.
+  /// No description provided for @login__form__input__email.
   ///
-  /// In en, this message translates to:
-  /// **'General'**
-  String get general;
+  /// In en_US, this message translates to:
+  /// **'Enter your email'**
+  String get login__form__input__email;
 
-  /// No description provided for @customization.
+  /// No description provided for @login__form__input__error_email.
   ///
-  /// In en, this message translates to:
-  /// **'Customization'**
-  String get customization;
+  /// In en_US, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get login__form__input__error_email;
 
-  /// No description provided for @syncingLabel.
+  /// No description provided for @login__form__input__password.
   ///
-  /// In en, this message translates to:
-  /// **'Syncing'**
-  String get syncingLabel;
+  /// In en_US, this message translates to:
+  /// **'Enter your password'**
+  String get login__form__input__password;
 
-  /// No description provided for @encryption.
+  /// No description provided for @login__form__input__error_password_length.
   ///
-  /// In en, this message translates to:
-  /// **'Encryption'**
-  String get encryption;
+  /// In en_US, this message translates to:
+  /// **'Please enter a password that is at least 6 characters long'**
+  String get login__form__input__error_password_length;
 
-  /// No description provided for @searchFilters.
+  /// No description provided for @login__form__button__signin.
   ///
-  /// In en, this message translates to:
-  /// **'Search Filters'**
-  String get searchFilters;
+  /// In en_US, this message translates to:
+  /// **'Sign In'**
+  String get login__form__button__signin;
 
-  /// No description provided for @from.
+  /// No description provided for @login__form__button__signup.
   ///
-  /// In en, this message translates to:
-  /// **'From'**
-  String get from;
+  /// In en_US, this message translates to:
+  /// **'Sign Up'**
+  String get login__form__button__signup;
 
-  /// No description provided for @to.
+  /// No description provided for @login__form__button__forgot_password.
   ///
-  /// In en, this message translates to:
-  /// **'To'**
-  String get to;
+  /// In en_US, this message translates to:
+  /// **'Forgot your password?'**
+  String get login__form__button__forgot_password;
 
-  /// No description provided for @now.
+  /// No description provided for @login__form__text__signup.
   ///
-  /// In en, this message translates to:
-  /// **'Now'**
-  String get now;
+  /// In en_US, this message translates to:
+  /// **'Don\'t have an account? Sign up'**
+  String get login__form__text__signup;
 
-  /// No description provided for @including.
+  /// No description provided for @login__form__text__old_user.
   ///
-  /// In en, this message translates to:
-  /// **'Including'**
-  String get including;
+  /// In en_US, this message translates to:
+  /// **'Already have an account? Sign in'**
+  String get login__form__text__old_user;
 
-  /// No description provided for @text.
+  /// No description provided for @login__form__text__reset_password.
   ///
-  /// In en, this message translates to:
-  /// **'Text'**
-  String get text;
+  /// In en_US, this message translates to:
+  /// **'Send password reset email'**
+  String get login__form__text__reset_password;
 
-  /// No description provided for @url.
+  /// No description provided for @login__form__text__reset_ack.
   ///
-  /// In en, this message translates to:
-  /// **'URL'**
-  String get url;
+  /// In en_US, this message translates to:
+  /// **'Password reset email has been sent'**
+  String get login__form__text__reset_ack;
 
-  /// No description provided for @media.
+  /// No description provided for @login__form__button__back.
   ///
-  /// In en, this message translates to:
-  /// **'Media'**
-  String get media;
+  /// In en_US, this message translates to:
+  /// **'Back to sign in'**
+  String get login__form__button__back;
 
-  /// No description provided for @docs.
+  /// No description provided for @login__form__button__update_password.
   ///
-  /// In en, this message translates to:
-  /// **'Docs'**
-  String get docs;
+  /// In en_US, this message translates to:
+  /// **'Update Password'**
+  String get login__form__button__update_password;
 
-  /// No description provided for @textCategories.
+  /// No description provided for @login__form__text_tnc_p1.
   ///
-  /// In en, this message translates to:
-  /// **'Text Categories'**
-  String get textCategories;
+  /// In en_US, this message translates to:
+  /// **'By continuing you agree to the following '**
+  String get login__form__text_tnc_p1;
 
-  /// No description provided for @exclusive.
+  /// No description provided for @login__form__text_tnc_p2.
   ///
-  /// In en, this message translates to:
-  /// **'( Exclusive )'**
-  String get exclusive;
+  /// In en_US, this message translates to:
+  /// **'Privacy policies'**
+  String get login__form__text_tnc_p2;
 
-  /// No description provided for @phone.
+  /// No description provided for @login__form__text_tnc_p3.
   ///
-  /// In en, this message translates to:
-  /// **'Phone'**
-  String get phone;
+  /// In en_US, this message translates to:
+  /// **' and '**
+  String get login__form__text_tnc_p3;
 
-  /// No description provided for @color.
+  /// No description provided for @login__form__text_tnc_p4.
   ///
-  /// In en, this message translates to:
-  /// **'Color'**
-  String get color;
+  /// In en_US, this message translates to:
+  /// **'Terms of Service.'**
+  String get login__form__text_tnc_p4;
 
-  /// No description provided for @sortBy.
+  /// No description provided for @home__search__hint.
   ///
-  /// In en, this message translates to:
-  /// **'Sort By'**
-  String get sortBy;
+  /// In en_US, this message translates to:
+  /// **'Search in clipboard'**
+  String get home__search__hint;
 
-  /// No description provided for @select.
+  /// No description provided for @home__search__reset.
   ///
-  /// In en, this message translates to:
-  /// **'Select'**
-  String get select;
-
-  /// No description provided for @lastModified.
-  ///
-  /// In en, this message translates to:
-  /// **'Last Modified'**
-  String get lastModified;
-
-  /// No description provided for @created.
-  ///
-  /// In en, this message translates to:
-  /// **'Created'**
-  String get created;
-
-  /// No description provided for @copyCount.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy Count'**
-  String get copyCount;
-
-  /// No description provided for @lastCopied.
-  ///
-  /// In en, this message translates to:
-  /// **'Last Copied'**
-  String get lastCopied;
-
-  /// No description provided for @sortOrder.
-  ///
-  /// In en, this message translates to:
-  /// **'Sort Order'**
-  String get sortOrder;
-
-  /// No description provided for @asc.
-  ///
-  /// In en, this message translates to:
-  /// **'Asc'**
-  String get asc;
-
-  /// No description provided for @desc.
-  ///
-  /// In en, this message translates to:
-  /// **'Desc'**
-  String get desc;
-
-  /// No description provided for @applyFilter.
-  ///
-  /// In en, this message translates to:
-  /// **'Apply Filter'**
-  String get applyFilter;
-
-  /// No description provided for @themeColor.
-  ///
-  /// In en, this message translates to:
-  /// **'Theme Color'**
-  String get themeColor;
-
-  /// No description provided for @themeColorDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'This color will influence the overall look and feel of the app.'**
-  String get themeColorDesc;
-
-  /// No description provided for @change.
-  ///
-  /// In en, this message translates to:
-  /// **'Change'**
-  String get change;
-
-  /// No description provided for @colorMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Color Mode'**
-  String get colorMode;
-
-  /// No description provided for @colorModeDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Select the color mode to customize the appearance of the app. The default option is Tonal Spot.'**
-  String get colorModeDesc;
-
-  /// No description provided for @tonalSpot.
-  ///
-  /// In en, this message translates to:
-  /// **'Tonal Spot'**
-  String get tonalSpot;
-
-  /// No description provided for @content.
-  ///
-  /// In en, this message translates to:
-  /// **'Content'**
-  String get content;
-
-  /// No description provided for @expressive.
-  ///
-  /// In en, this message translates to:
-  /// **'Expressive'**
-  String get expressive;
-
-  /// No description provided for @fidility.
-  ///
-  /// In en, this message translates to:
-  /// **'Fidility'**
-  String get fidility;
-
-  /// No description provided for @fruitSalad.
-  ///
-  /// In en, this message translates to:
-  /// **'Fruit Salad'**
-  String get fruitSalad;
-
-  /// No description provided for @monochrome.
-  ///
-  /// In en, this message translates to:
-  /// **'Monochrome'**
-  String get monochrome;
-
-  /// No description provided for @neutral.
-  ///
-  /// In en, this message translates to:
-  /// **'Neutral'**
-  String get neutral;
-
-  /// No description provided for @rainbow.
-  ///
-  /// In en, this message translates to:
-  /// **'Rainbow'**
-  String get rainbow;
-
-  /// No description provided for @vibrant.
-  ///
-  /// In en, this message translates to:
-  /// **'Vibrant'**
-  String get vibrant;
-
-  /// No description provided for @customExclusionRuleFeature.
-  ///
-  /// In en, this message translates to:
-  /// **'Custom Exclusion Rules'**
-  String get customExclusionRuleFeature;
-
-  /// No description provided for @customExclusionRuleFeatureDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.'**
-  String get customExclusionRuleFeatureDesc;
-
-  /// No description provided for @dragNDropFeature.
-  ///
-  /// In en, this message translates to:
-  /// **'Drag & Drop'**
-  String get dragNDropFeature;
-
-  /// No description provided for @dragNDropFeatureDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Seamlessly move items in any direction on your Desktop and Tablet devices.'**
-  String get dragNDropFeatureDesc;
-
-  /// No description provided for @experimentalLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Experimental'**
-  String get experimentalLabel;
-
-  /// No description provided for @dragNdrop.
-  ///
-  /// In en, this message translates to:
-  /// **'Drag & Drop'**
-  String get dragNdrop;
-
-  /// No description provided for @dragNdropDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Allow items to be moved freely in both directions within the app.'**
-  String get dragNdropDesc;
-
-  /// No description provided for @featureNotSupported.
-  ///
-  /// In en, this message translates to:
-  /// **'Sorry, this feature isn\'t available on your platform right now.'**
-  String get featureNotSupported;
-
-  /// No description provided for @themingFeature.
-  ///
-  /// In en, this message translates to:
-  /// **'Theming'**
-  String get themingFeature;
-
-  /// No description provided for @themingFeatureDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Customize the entire look and feel of the app to match your preferences.'**
-  String get themingFeatureDesc;
-
-  /// No description provided for @resetSearch.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Reset Search'**
-  String get resetSearch;
+  String get home__search__reset;
 
-  /// No description provided for @security.
+  /// No description provided for @preview__vert_view__tab1_title.
   ///
-  /// In en, this message translates to:
-  /// **'Security'**
-  String get security;
+  /// In en_US, this message translates to:
+  /// **'Preview'**
+  String get preview__vert_view__tab1_title;
 
-  /// No description provided for @exclusionRules.
+  /// No description provided for @preview__vert_view__tab2__title.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
+  /// **'Details'**
+  String get preview__vert_view__tab2__title;
+
+  /// No description provided for @preview__card__missing_text.
+  ///
+  /// In en_US, this message translates to:
+  /// **'This is an Empty Clip'**
+  String get preview__card__missing_text;
+
+  /// No description provided for @preview__card__video__play.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Play Video'**
+  String get preview__card__video__play;
+
+  /// No description provided for @preview__card__file__open.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Open File'**
+  String get preview__card__file__open;
+
+  /// No description provided for @preview__form__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Edit Details'**
+  String get preview__form__title;
+
+  /// No description provided for @preview__form__input__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Title'**
+  String get preview__form__input__title;
+
+  /// No description provided for @preview__form__input__description.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Description'**
+  String get preview__form__input__description;
+
+  /// No description provided for @reset_password__appbar__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Reset your password'**
+  String get reset_password__appbar__title;
+
+  /// No description provided for @reset_password__success_ack.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Password reset successfully'**
+  String get reset_password__success_ack;
+
+  /// No description provided for @onboarding__button__to_login.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sign in'**
+  String get onboarding__button__to_login;
+
+  /// No description provided for @onboarding__snackbar__export_success.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Encryption key successfully exported.'**
+  String get onboarding__snackbar__export_success;
+
+  /// No description provided for @onboarding__dialog__skip_export__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'✋ Backup Your Encryption Key'**
+  String get onboarding__dialog__skip_export__title;
+
+  /// No description provided for @onboarding__dialog__skip_export__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'You haven’t exported your encryption key yet. Without a backup, you won’t be able to access your encrypted clips if the key is lost or you switch devices.\n\n👉 If you already have a secure backup of your key, you can safely continue. Otherwise, we strongly recommend exporting the key now to avoid data loss. Do you still want to continue?'**
+  String get onboarding__dialog__skip_export__subtitle;
+
+  /// No description provided for @onboarding__dialog__export_info__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'🤔 Why Export the Encryption Key?'**
+  String get onboarding__dialog__export_info__title;
+
+  /// No description provided for @onboarding__dialog__export_info__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Exporting your encryption key is essential for securely accessing your encrypted data on multiple devices. Without the key, your encrypted data will remain inaccessible after sync.\n\nKeep a backup of your encryption key in a secure location to prevent data loss. Remember, the key is unique to your account and cannot be recovered if lost.\n\nNote: Copycat cannot access your encrypted clips or your encryption keys. This is because we value your privacy above everything else.'**
+  String get onboarding__dialog__export_info__subtitle;
+
+  /// No description provided for @onboarding__text__export_key_headline.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Clipboard Encryption'**
+  String get onboarding__text__export_key_headline;
+
+  /// No description provided for @onboarding__text__export_key_title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'💪 Great News! Encryption is active for your clipboard'**
+  String get onboarding__text__export_key_title;
+
+  /// No description provided for @onboarding__button__export_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Export Key'**
+  String get onboarding__button__export_key;
+
+  /// No description provided for @onboarding__dialog__skip_gen_key__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'✋ Your Clips Will Be Insecure'**
+  String get onboarding__dialog__skip_gen_key__title;
+
+  /// No description provided for @onboarding__dialog__skip_gen_key__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'You haven’t generated an encryption key yet. Without it, your clips will remain unencrypted and insecure. You can generate the key later in Settings ❯ Security. Do you still want to continue?'**
+  String get onboarding__dialog__skip_gen_key__subtitle;
+
+  /// No description provided for @onboarding__dialog__gen_key_info__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'🤔 Why Do I Need Encryption?'**
+  String get onboarding__dialog__gen_key_info__title;
+
+  /// No description provided for @onboarding__dialog__gen_key_info__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Encryption protects your data by converting it into a secure format that can only be accessed with a key. Without encryption, your clips are stored in plain text, making them vulnerable to unauthorized access. Enabling encryption ensures that only you can access your sensitive data, providing an extra layer of security against potential breaches.'**
+  String get onboarding__dialog__gen_key_info__subtitle;
+
+  /// No description provided for @onboarding__text__gen_key_headline.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Setup Clipboard Encryption'**
+  String get onboarding__text__gen_key_headline;
+
+  /// No description provided for @onboarding__text__key_generated_title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'🎉 Key {keyPreview}*** successfully generated 🎉'**
+  String onboarding__text__key_generated_title({required String keyPreview});
+
+  /// No description provided for @onboarding__button__regenerate_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Re-Generate Key'**
+  String get onboarding__button__regenerate_key;
+
+  /// No description provided for @onboarding__text__no_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your account doesn\'t have any encryption key'**
+  String get onboarding__text__no_key;
+
+  /// No description provided for @onboarding__button__generate_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Generate Key'**
+  String get onboarding__button__generate_key;
+
+  /// No description provided for @onboarding__button__do_it_later.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Do it later'**
+  String get onboarding__button__do_it_later;
+
+  /// No description provided for @onboarding__button__why_important.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Why It\'s Important?'**
+  String get onboarding__button__why_important;
+
+  /// No description provided for @onboarding__snackbar__invalid_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'This is not a valid CopyCat encryption key'**
+  String get onboarding__snackbar__invalid_key;
+
+  /// No description provided for @onboarding__dialog__skip_import__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'✋ Encrypted Clips Inaccessible'**
+  String get onboarding__dialog__skip_import__title;
+
+  /// No description provided for @onboarding__dialog__skip_import__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'You haven’t imported the encryption key yet. This means all your encrypted clips will remain inaccessible locally after sync.\n\nTo access them, import the key from Settings ❯ Security.\nDo you still want to continue?'**
+  String get onboarding__dialog__skip_import__subtitle;
+
+  /// No description provided for @onboarding__dialog__reset_key__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'✋ Permanently Delete Encrypted Data'**
+  String get onboarding__dialog__reset_key__title;
+
+  /// No description provided for @onboarding__dialog__reset_key__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'This action is irreversible. Are you sure you want to permanently delete all encrypted data from the server?'**
+  String get onboarding__dialog__reset_key__subtitle;
+
+  /// No description provided for @onboarding__snackbar__reset_key__success.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Encryption successfully removed.'**
+  String get onboarding__snackbar__reset_key__success;
+
+  /// No description provided for @onboarding__dialog__import_info__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'🤔 Where is my key?'**
+  String get onboarding__dialog__import_info__title;
+
+  /// No description provided for @onboarding__dialog__import_info__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your encryption key is a secure file generated during the encryption setup process. If you’ve misplaced it, check your downloads folder or any backup location where you might have saved it. Without this key, your encrypted data cannot be accessed.\n\nIf you’ve set up the encryption key on another device, you can export it by going to Settings ❯ Security ❯ E2EE Vault on that device. Transfer the key securely to this device to regain access to your encrypted data.'**
+  String get onboarding__dialog__import_info__subtitle;
+
+  /// No description provided for @onboarding__text__import_key_headline.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Import Clipboard Encryption Key'**
+  String get onboarding__text__import_key_headline;
+
+  /// No description provided for @onboarding__text__import_key_title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your account currently has active encryption.'**
+  String get onboarding__text__import_key_title;
+
+  /// No description provided for @onboarding__button__import_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Import Key'**
+  String get onboarding__button__import_key;
+
+  /// No description provided for @onboarding__button__reset_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Reset Encryption'**
+  String get onboarding__button__reset_key;
+
+  /// No description provided for @onboarding__button__where_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Where is the key?'**
+  String get onboarding__button__where_key;
+
+  /// No description provided for @drive__snackbar__success.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Drive Setup is Now Complete.'**
+  String get drive__snackbar__success;
+
+  /// No description provided for @drive__text__setting_up.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Setting up and syncing...'**
+  String get drive__text__setting_up;
+
+  /// No description provided for @drive__text__setting_up__warning.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please wait while we finish this up. Do not close the app.'**
+  String get drive__text__setting_up__warning;
+
+  /// No description provided for @create_clip__appbar__title__new.
+  ///
+  /// In en_US, this message translates to:
+  /// **'New Clip'**
+  String get create_clip__appbar__title__new;
+
+  /// No description provided for @create_clip__appbar__title__edit.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Edit Clip'**
+  String get create_clip__appbar__title__edit;
+
+  /// No description provided for @create_clip__button__save_new.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Save as new'**
+  String get create_clip__button__save_new;
+
+  /// No description provided for @create_clip__input__hint.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Write your clip content here'**
+  String get create_clip__input__hint;
+
+  /// No description provided for @collections__text__tip.
+  ///
+  /// In en_US, this message translates to:
+  /// **'To ensure your important clips are always available regardless of time, across all your devices, save them in a collection!'**
+  String get collections__text__tip;
+
+  /// No description provided for @collections__appbar__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Collections'**
+  String get collections__appbar__title;
+
+  /// No description provided for @collections__appbar__title__create.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Create Collection'**
+  String get collections__appbar__title__create;
+
+  /// No description provided for @collections__appbar__title__edit.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Edit Collection'**
+  String get collections__appbar__title__edit;
+
+  /// No description provided for @collections__input__name.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Name'**
+  String get collections__input__name;
+
+  /// No description provided for @collections__input__description.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Description'**
+  String get collections__input__description;
+
+  /// No description provided for @select_collection__appbar__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Select Collection'**
+  String get select_collection__appbar__title;
+
+  /// No description provided for @account__dialog__delete_confirm__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Account Delete Request'**
+  String get account__dialog__delete_confirm__title;
+
+  /// No description provided for @account__dialog__delete_confirm__description.
+  ///
+  /// In en_US, this message translates to:
+  /// **'You will be redirected to the account delete request form, are you sure?'**
+  String get account__dialog__delete_confirm__description;
+
+  /// No description provided for @account__list_tile__display_name.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Display Name'**
+  String get account__list_tile__display_name;
+
+  /// No description provided for @account__list_tile__email.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Email'**
+  String get account__list_tile__email;
+
+  /// No description provided for @account__list_tile__settings.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Account Settings'**
+  String get account__list_tile__settings;
+
+  /// No description provided for @account__list_tile__danger_zone.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Danger Zone'**
+  String get account__list_tile__danger_zone;
+
+  /// No description provided for @account__button__req_delete.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Request Account Deletion'**
+  String get account__button__req_delete;
+
+  /// No description provided for @account__appbar__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'My Account'**
+  String get account__appbar__title;
+
+  /// No description provided for @settings__appbar__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Settings'**
+  String get settings__appbar__title;
+
+  /// No description provided for @settings__tab__1.
+  ///
+  /// In en_US, this message translates to:
+  /// **'General'**
+  String get settings__tab__1;
+
+  /// No description provided for @settings__tab__2.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Customization'**
+  String get settings__tab__2;
+
+  /// No description provided for @settings__tab__3.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Syncing'**
+  String get settings__tab__3;
+
+  /// No description provided for @settings__tab__4.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Encryption'**
+  String get settings__tab__4;
+
+  /// No description provided for @settings__tab__5.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Experimental'**
+  String get settings__tab__5;
+
+  /// No description provided for @settings__text__encryption.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Encryption'**
+  String get settings__text__encryption;
+
+  /// No description provided for @settings__text__sync_not_available.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync-related configurations are not available while using the local clipboard.'**
+  String get settings__text__sync_not_available;
+
+  /// No description provided for @settings__appbar__er__title.
+  ///
+  /// In en_US, this message translates to:
   /// **'Exclusion Rules'**
-  String get exclusionRules;
+  String get settings__appbar__er__title;
 
-  /// No description provided for @exclusionRulesDesc.
+  /// No description provided for @settings__text__er__predefine.
   ///
-  /// In en, this message translates to:
-  /// **'Prevent information from copying to clipboard. Click for Advance control.'**
-  String get exclusionRulesDesc;
-
-  /// No description provided for @predefinedExclRules.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Predefined Exclusion Rules'**
-  String get predefinedExclRules;
+  String get settings__text__er__predefine;
 
-  /// No description provided for @passwordManagers.
+  /// No description provided for @settings__text__er__pass_manager.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Password Managers'**
-  String get passwordManagers;
+  String get settings__text__er__pass_manager;
 
-  /// No description provided for @commonPasswordPatterns.
+  /// No description provided for @settings__text__er__cc.
   ///
-  /// In en, this message translates to:
-  /// **'Common Password Patterns'**
-  String get commonPasswordPatterns;
-
-  /// No description provided for @creditCardNumber.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Credit Card Number'**
-  String get creditCardNumber;
+  String get settings__text__er__cc;
 
-  /// No description provided for @phoneNumber.
+  /// No description provided for @settings__text__er__phone.
   ///
-  /// In en, this message translates to:
-  /// **'Phone Number'**
-  String get phoneNumber;
+  /// In en_US, this message translates to:
+  /// **'Phone number'**
+  String get settings__text__er__phone;
 
-  /// No description provided for @bankAccountNumber.
+  /// No description provided for @settings__text__er__email.
   ///
-  /// In en, this message translates to:
-  /// **'Bank Account Number'**
-  String get bankAccountNumber;
+  /// In en_US, this message translates to:
+  /// **'Email Address'**
+  String get settings__text__er__email;
 
-  /// No description provided for @passportNumber.
+  /// No description provided for @settings__text__er__url.
   ///
-  /// In en, this message translates to:
-  /// **'Passport Number'**
-  String get passportNumber;
+  /// In en_US, this message translates to:
+  /// **'Sensitive Url'**
+  String get settings__text__er__url;
 
-  /// No description provided for @sensitiveUrls.
+  /// No description provided for @settings__text__decrypted__note.
   ///
-  /// In en, this message translates to:
-  /// **'Sensitive Urls'**
-  String get sensitiveUrls;
+  /// In en_US, this message translates to:
+  /// **'🥳 Congratulations! All your clips have been successfully decrypted locally,\n so rebuilding the database is not required.'**
+  String get settings__text__decrypted__note;
 
-  /// No description provided for @customExclusionRules.
+  /// No description provided for @settings__appbar__cer__title.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Custom Exclusion Rules'**
-  String get customExclusionRules;
+  String get settings__appbar__cer__title;
 
-  /// No description provided for @customRules.
+  /// No description provided for @custom_er__nav__1.
   ///
-  /// In en, this message translates to:
-  /// **'Custom Rules'**
-  String get customRules;
+  /// In en_US, this message translates to:
+  /// **'App'**
+  String get custom_er__nav__1;
 
-  /// No description provided for @customRulesDesc.
+  /// No description provided for @custom_er__nav__2.
   ///
-  /// In en, this message translates to:
-  /// **'Exclude by app, app window/website title, website url or regex pattern'**
-  String get customRulesDesc;
+  /// In en_US, this message translates to:
+  /// **'Window Title'**
+  String get custom_er__nav__2;
 
-  /// No description provided for @apps.
+  /// No description provided for @custom_er__nav__3.
   ///
-  /// In en, this message translates to:
-  /// **'Apps'**
-  String get apps;
+  /// In en_US, this message translates to:
+  /// **'Url'**
+  String get custom_er__nav__3;
 
-  /// No description provided for @pattern.
+  /// No description provided for @custom_er__nav__4.
   ///
-  /// In en, this message translates to:
-  /// **'Patterns'**
-  String get pattern;
+  /// In en_US, this message translates to:
+  /// **'Text Pattern'**
+  String get custom_er__nav__4;
 
-  /// No description provided for @excludeAnApp.
+  /// No description provided for @custom_er__text__not_supported.
   ///
-  /// In en, this message translates to:
-  /// **'Add a new app'**
-  String get excludeAnApp;
+  /// In en_US, this message translates to:
+  /// **'This exclusion is not supported yet'**
+  String get custom_er__text__not_supported;
 
-  /// No description provided for @noCustomAppExcluded.
+  /// No description provided for @custom_er__tile__add_app.
   ///
-  /// In en, this message translates to:
-  /// **'No custom app excluded'**
-  String get noCustomAppExcluded;
+  /// In en_US, this message translates to:
+  /// **'Add an app'**
+  String get custom_er__tile__add_app;
 
-  /// No description provided for @removeCustomApp.
+  /// No description provided for @custom_er__text__no_app.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
+  /// **'No custom app excluded yet'**
+  String get custom_er__text__no_app;
+
+  /// No description provided for @custom_er__button__remove_app.
+  ///
+  /// In en_US, this message translates to:
   /// **'Remove this app'**
-  String get removeCustomApp;
+  String get custom_er__button__remove_app;
 
-  /// No description provided for @excludeUrl.
+  /// No description provided for @custom_er__tile__pattern.
   ///
-  /// In en, this message translates to:
-  /// **'Prevent copy from website matching these url segments.'**
-  String get excludeUrl;
-
-  /// No description provided for @excludeUrlInputHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter a url or part of a url here.'**
-  String get excludeUrlInputHint;
-
-  /// No description provided for @noCustomUrlExcluded.
-  ///
-  /// In en, this message translates to:
-  /// **'No custom url(s) excluded'**
-  String get noCustomUrlExcluded;
-
-  /// No description provided for @removeCustomUrl.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove this url'**
-  String get removeCustomUrl;
-
-  /// No description provided for @excludePattern.
-  ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Prevent copy when copied content matches these patterns'**
-  String get excludePattern;
+  String get custom_er__tile__pattern;
 
-  /// No description provided for @noCustomPatternExcluded.
+  /// No description provided for @custom_er__text__no_pattern.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'No custom pattern(s) excluded'**
-  String get noCustomPatternExcluded;
+  String get custom_er__text__no_pattern;
 
-  /// No description provided for @removeCustomPattern.
+  /// No description provided for @custom_er__button__remove_pattern.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Remove this pattern'**
-  String get removeCustomPattern;
+  String get custom_er__button__remove_pattern;
 
-  /// No description provided for @excludeTitle.
+  /// No description provided for @custom_er__tile__url.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
+  /// **'Prevent copy from website matching these url segments.'**
+  String get custom_er__tile__url;
+
+  /// No description provided for @custom_er__input__url_hint.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Enter a url or part of a url here.'**
+  String get custom_er__input__url_hint;
+
+  /// No description provided for @custom_er__text__no_url.
+  ///
+  /// In en_US, this message translates to:
+  /// **'No custom url(s) excluded'**
+  String get custom_er__text__no_url;
+
+  /// No description provided for @custom_er__button__remove_url.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Remove this url'**
+  String get custom_er__button__remove_url;
+
+  /// No description provided for @custom_er__tile__title.
+  ///
+  /// In en_US, this message translates to:
   /// **'Prevent copy from app or website when window title matches.'**
-  String get excludeTitle;
+  String get custom_er__tile__title;
 
-  /// No description provided for @noCustomTitleExcluded.
+  /// No description provided for @custom_er__text__no_title.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'No custom title(s) excluded'**
-  String get noCustomTitleExcluded;
+  String get custom_er__text__no_title;
 
-  /// No description provided for @removeCustomTitle.
+  /// No description provided for @custom_er__button__remove_title.
   ///
-  /// In en, this message translates to:
+  /// In en_US, this message translates to:
   /// **'Remove this title'**
-  String get removeCustomTitle;
-
-  /// No description provided for @reconnectGoogleDrive.
-  ///
-  /// In en, this message translates to:
-  /// **'⚠️ Re-Connect Google Drive?'**
-  String get reconnectGoogleDrive;
-
-  /// No description provided for @reconnectGoogleDriveDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Your drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.'**
-  String get reconnectGoogleDriveDesc;
-
-  /// No description provided for @sureToDeleteItem.
-  ///
-  /// In en, this message translates to:
-  /// **'Are you sure to delete this item(s)?'**
-  String get sureToDeleteItem;
-
-  /// No description provided for @noAppFoundToHandleFile.
-  ///
-  /// In en, this message translates to:
-  /// **'No application found to open this file.'**
-  String get noAppFoundToHandleFile;
-
-  /// No description provided for @fileOpenPermissionNotGranted.
-  ///
-  /// In en, this message translates to:
-  /// **'Permission to open this file not granted.'**
-  String get fileOpenPermissionNotGranted;
-
-  /// No description provided for @proOnlyTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'This feature is available for Pro users only.'**
-  String get proOnlyTooltip;
-
-  /// No description provided for @viewWindow.
-  ///
-  /// In en, this message translates to:
-  /// **'Windowed'**
-  String get viewWindow;
-
-  /// No description provided for @viewDockRight.
-  ///
-  /// In en, this message translates to:
-  /// **'Dock Right'**
-  String get viewDockRight;
-
-  /// No description provided for @viewDockLeft.
-  ///
-  /// In en, this message translates to:
-  /// **'Dock Left'**
-  String get viewDockLeft;
-
-  /// No description provided for @viewDockTop.
-  ///
-  /// In en, this message translates to:
-  /// **'Dock Top'**
-  String get viewDockTop;
-
-  /// No description provided for @viewDockBottom.
-  ///
-  /// In en, this message translates to:
-  /// **'Dock Bottom'**
-  String get viewDockBottom;
-
-  /// No description provided for @changeView.
-  ///
-  /// In en, this message translates to:
-  /// **'Change View'**
-  String get changeView;
-
-  /// No description provided for @pin.
-  ///
-  /// In en, this message translates to:
-  /// **'Pin'**
-  String get pin;
-
-  /// No description provided for @unpin.
-  ///
-  /// In en, this message translates to:
-  /// **'Unpin'**
-  String get unpin;
-
-  /// No description provided for @layoutToGrid.
-  ///
-  /// In en, this message translates to:
-  /// **'Switch to Grid Layout'**
-  String get layoutToGrid;
-
-  /// No description provided for @layoutToList.
-  ///
-  /// In en, this message translates to:
-  /// **'Switch to List Layout'**
-  String get layoutToList;
-
-  /// No description provided for @downloadDesktop.
-  ///
-  /// In en, this message translates to:
-  /// **'Download Desktop Client'**
-  String get downloadDesktop;
-
-  /// No description provided for @downloadPhone.
-  ///
-  /// In en, this message translates to:
-  /// **'Download Phone Client'**
-  String get downloadPhone;
-
-  /// No description provided for @downloadClientDesc.
-  ///
-  /// In en, this message translates to:
-  /// **'Access your clipboard on all your devices.'**
-  String get downloadClientDesc;
+  String get custom_er__button__remove_title;
 }
 
 class _AppLocalizationsDelegate
@@ -2414,6 +915,19 @@ class _AppLocalizationsDelegate
 }
 
 Future<AppLocalizations> lookupAppLocalizations(Locale locale) {
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'en':
+      {
+        switch (locale.countryCode) {
+          case 'US':
+            return app_localizations_en.loadLibrary().then(
+                (dynamic _) => app_localizations_en.AppLocalizationsEnUs());
+        }
+        break;
+      }
+  }
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'de':

@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -9,1269 +7,434 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get appName => 'CopyCat';
+  String get app__name => 'CopyCat Clipboard';
 
   @override
-  String get en => 'Inglés';
+  String get app__slogan => 'One Clipboard, Limitless Possibility';
 
   @override
-  String get es => 'Español';
+  String get app__unknown_error => 'An unexpected error occurred';
 
   @override
-  String get fr => 'Francés';
+  String get app__downloading => 'Downloading...';
 
   @override
-  String get de => 'Alemán';
+  String get app__download => 'Download';
 
   @override
-  String get zh => 'Chino';
+  String get app__follow_link => 'Follow Link';
 
   @override
-  String get zh_cn => 'Chino simplificado';
+  String get app__edit => 'Edit';
 
   @override
-  String get language => 'Idioma';
+  String get app__export => 'Export';
 
   @override
-  String get enterEmail => 'Introduce tu correo electrónico';
+  String get app__delete => 'Delete';
 
   @override
-  String get validEmailError =>
-      'Por favor, introduce una dirección de correo electrónico válida';
+  String get app__later => 'Skip';
 
   @override
-  String get enterPassword => 'Introduce tu contraseña';
+  String get login__local_signin__tooltip =>
+      'No syncing. All data stays on your device.';
 
   @override
-  String get passwordLengthError =>
-      'Por favor, introduce una contraseña que tenga al menos 6 caracteres';
+  String get login__local_signin__btn__label => 'Use Locally';
 
   @override
-  String get signIn => 'Iniciar Sesión';
+  String get login__form__input__name => 'Enter your good name';
 
   @override
-  String get signUp => 'Registrarse';
+  String get login__form__input__email => 'Enter your email';
 
   @override
-  String get forgotPassword => '¿Olvidaste tu contraseña?';
+  String get login__form__input__error_email =>
+      'Please enter a valid email address';
 
   @override
-  String get dontHaveAccount => '¿No tienes una cuenta? Regístrate';
+  String get login__form__input__password => 'Enter your password';
 
   @override
-  String get haveAccount => '¿Ya tienes una cuenta? Inicia sesión';
+  String get login__form__input__error_password_length =>
+      'Please enter a password that is at least 6 characters long';
 
   @override
-  String get sendPasswordReset =>
-      'Enviar correo de restablecimiento de contraseña';
+  String get login__form__button__signin => 'Sign In';
 
   @override
-  String get backToSignIn => 'Volver a iniciar sesión';
+  String get login__form__button__signup => 'Sign Up';
 
   @override
-  String get updatePassword => 'Actualizar Contraseña';
+  String get login__form__button__forgot_password => 'Forgot your password?';
 
   @override
-  String get unexpectedError => 'Ocurrió un error inesperado';
+  String get login__form__text__signup => 'Don\'t have an account? Sign up';
 
   @override
-  String get passwordResetSent =>
-      'El correo de restablecimiento de contraseña ha sido enviado';
+  String get login__form__text__old_user => 'Already have an account? Sign in';
 
   @override
-  String get collections => 'Colecciones';
+  String get login__form__text__reset_password => 'Send password reset email';
 
   @override
-  String get collection => 'Colección';
+  String get login__form__text__reset_ack =>
+      'Password reset email has been sent';
 
   @override
-  String get createCollection => 'Crear Colección';
+  String get login__form__button__back => 'Back to sign in';
 
   @override
-  String get editCollection => 'Editar Colección';
+  String get login__form__button__update_password => 'Update Password';
 
   @override
-  String get cancel => 'Cancelar';
+  String get login__form__text_tnc_p1 =>
+      'By continuing you agree to the following ';
 
   @override
-  String get save => 'Guardar';
+  String get login__form__text_tnc_p2 => 'Privacy policies';
 
   @override
-  String get edit => 'Editar';
+  String get login__form__text_tnc_p3 => ' and ';
 
   @override
-  String get description => 'Descripción';
+  String get login__form__text_tnc_p4 => 'Terms of Service.';
 
   @override
-  String get noDescription => 'Sin descripción';
+  String get home__search__hint => 'Search in clipboard';
 
   @override
-  String get noResultsWereFound => 'No se encontraron resultados';
+  String get home__search__reset => 'Reset Search';
 
   @override
-  String get driveSetupDone => 'Configuración de Drive Completa 🥳';
+  String get preview__vert_view__tab1_title => 'Preview';
 
   @override
-  String get pleaseWaitWhileWeSetupSyncing =>
-      'Por favor espera mientras configuramos\nla sincronización';
+  String get preview__vert_view__tab2__title => 'Details';
 
   @override
-  String get driveSetupMayTakeFewMin =>
-      'Esto puede tardar aproximadamente un minuto en completarse.\n(Por favor, no cierres la aplicación)';
+  String get preview__card__missing_text => 'This is an Empty Clip';
 
   @override
-  String get refreshNow => 'Actualizar ahora';
+  String get preview__card__video__play => 'Play Video';
 
   @override
-  String newUpdates(int added, int updated, int deleted) {
-    return 'Cambios Disponibles:\n $added Agregado, $updated Actualizado y $deleted Eliminado';
+  String get preview__card__file__open => 'Open File';
+
+  @override
+  String get preview__form__title => 'Edit Details';
+
+  @override
+  String get preview__form__input__title => 'Title';
+
+  @override
+  String get preview__form__input__description => 'Description';
+
+  @override
+  String get reset_password__appbar__title => 'Reset your password';
+
+  @override
+  String get reset_password__success_ack => 'Password reset successfully';
+
+  @override
+  String get onboarding__button__to_login => 'Sign in';
+
+  @override
+  String get onboarding__snackbar__export_success =>
+      'Encryption key successfully exported.';
+
+  @override
+  String get onboarding__dialog__skip_export__title =>
+      '✋ Backup Your Encryption Key';
+
+  @override
+  String get onboarding__dialog__skip_export__subtitle =>
+      'You haven’t exported your encryption key yet. Without a backup, you won’t be able to access your encrypted clips if the key is lost or you switch devices.\n\n👉 If you already have a secure backup of your key, you can safely continue. Otherwise, we strongly recommend exporting the key now to avoid data loss. Do you still want to continue?';
+
+  @override
+  String get onboarding__dialog__export_info__title =>
+      '🤔 Why Export the Encryption Key?';
+
+  @override
+  String get onboarding__dialog__export_info__subtitle =>
+      'Exporting your encryption key is essential for securely accessing your encrypted data on multiple devices. Without the key, your encrypted data will remain inaccessible after sync.\n\nKeep a backup of your encryption key in a secure location to prevent data loss. Remember, the key is unique to your account and cannot be recovered if lost.\n\nNote: Copycat cannot access your encrypted clips or your encryption keys. This is because we value your privacy above everything else.';
+
+  @override
+  String get onboarding__text__export_key_headline => 'Clipboard Encryption';
+
+  @override
+  String get onboarding__text__export_key_title =>
+      '💪 Great News! Encryption is active for your clipboard';
+
+  @override
+  String get onboarding__button__export_key => 'Export Key';
+
+  @override
+  String get onboarding__dialog__skip_gen_key__title =>
+      '✋ Your Clips Will Be Insecure';
+
+  @override
+  String get onboarding__dialog__skip_gen_key__subtitle =>
+      'You haven’t generated an encryption key yet. Without it, your clips will remain unencrypted and insecure. You can generate the key later in Settings ❯ Security. Do you still want to continue?';
+
+  @override
+  String get onboarding__dialog__gen_key_info__title =>
+      '🤔 Why Do I Need Encryption?';
+
+  @override
+  String get onboarding__dialog__gen_key_info__subtitle =>
+      'Encryption protects your data by converting it into a secure format that can only be accessed with a key. Without encryption, your clips are stored in plain text, making them vulnerable to unauthorized access. Enabling encryption ensures that only you can access your sensitive data, providing an extra layer of security against potential breaches.';
+
+  @override
+  String get onboarding__text__gen_key_headline => 'Setup Clipboard Encryption';
+
+  @override
+  String onboarding__text__key_generated_title({required String keyPreview}) {
+    return '🎉 Key $keyPreview*** successfully generated 🎉';
   }
 
   @override
-  String get itemDeleted => 'Elemento Eliminado';
+  String get onboarding__button__regenerate_key => 'Re-Generate Key';
 
   @override
-  String get deletingFromCloud => 'Eliminando del Nube';
+  String get onboarding__text__no_key =>
+      'Your account doesn\'t have any encryption key';
 
   @override
-  String get emptyClipboard => 'Tu portapapeles está vacío';
+  String get onboarding__button__generate_key => 'Generate Key';
 
   @override
-  String get loadMore => 'Cargar más';
+  String get onboarding__button__do_it_later => 'Do it later';
 
   @override
-  String get clipboard => 'Portapapeles';
+  String get onboarding__button__why_important => 'Why It\'s Important?';
 
   @override
-  String get search => 'Buscar';
+  String get onboarding__snackbar__invalid_key =>
+      'This is not a valid CopyCat encryption key';
 
   @override
-  String get share => 'Compartir';
+  String get onboarding__dialog__skip_import__title =>
+      '✋ Encrypted Clips Inaccessible';
 
   @override
-  String get export => 'Exportar';
+  String get onboarding__dialog__skip_import__subtitle =>
+      'You haven’t imported the encryption key yet. This means all your encrypted clips will remain inaccessible locally after sync.\n\nTo access them, import the key from Settings ❯ Security.\nDo you still want to continue?';
 
   @override
-  String get searchClipboard => 'Buscar en el Portapapeles';
+  String get onboarding__dialog__reset_key__title =>
+      '✋ Permanently Delete Encrypted Data';
 
   @override
-  String get settings => 'Configuraciones';
+  String get onboarding__dialog__reset_key__subtitle =>
+      'This action is irreversible. Are you sure you want to permanently delete all encrypted data from the server?';
 
   @override
-  String get copyCatClipboard => 'CopyCat Clipboard';
+  String get onboarding__snackbar__reset_key__success =>
+      'Encryption successfully removed.';
 
   @override
-  String get oneClipboardLimitlessPosibility =>
-      'Un Portapapeles, Posibilidades Ilimitadas';
+  String get onboarding__dialog__import_info__title => '🤔 Where is my key?';
 
   @override
-  String get fullName => 'Nombre completo';
+  String get onboarding__dialog__import_info__subtitle =>
+      'Your encryption key is a secure file generated during the encryption setup process. If you’ve misplaced it, check your downloads folder or any backup location where you might have saved it. Without this key, your encrypted data cannot be accessed.\n\nIf you’ve set up the encryption key on another device, you can export it by going to Settings ❯ Security ❯ E2EE Vault on that device. Transfer the key securely to this device to regain access to your encrypted data.';
 
   @override
-  String get preview => 'Vista previa';
+  String get onboarding__text__import_key_headline =>
+      'Import Clipboard Encryption Key';
 
   @override
-  String get editDetails => 'Editar Detalles';
+  String get onboarding__text__import_key_title =>
+      'Your account currently has active encryption.';
 
   @override
-  String get title => 'Título';
+  String get onboarding__button__import_key => 'Import Key';
 
   @override
-  String get nothingHere => 'Nada aquí';
+  String get onboarding__button__reset_key => 'Reset Encryption';
 
   @override
-  String get downloading => 'Descargando';
+  String get onboarding__button__where_key => 'Where is the key?';
 
   @override
-  String get downloadForOffline => 'Descargando para uso sin conexión';
+  String get drive__snackbar__success => 'Drive Setup is Now Complete.';
 
   @override
-  String get copyToClipboard => 'Copiar al portapapeles';
+  String get drive__text__setting_up => 'Setting up and syncing...';
 
   @override
-  String get delete => 'Eliminar';
+  String get drive__text__setting_up__warning =>
+      'Please wait while we finish this up. Do not close the app.';
 
   @override
-  String get resetYourPassword => 'Restablece tu contraseña';
+  String get create_clip__appbar__title__new => 'New Clip';
 
   @override
-  String get passwordResetSuccess => 'Contraseña restablecida con éxito';
+  String get create_clip__appbar__title__edit => 'Edit Clip';
 
   @override
-  String get findWhateverYouLooking => 'Encuentra lo que estás buscando...';
+  String get create_clip__button__save_new => 'Save as new';
 
   @override
-  String get noResults => 'No se encontraron resultados.';
+  String get create_clip__input__hint => 'Write your clip content here';
 
   @override
-  String get searchInClipboard => 'Buscar en el portapapeles';
+  String get collections__text__tip =>
+      'To ensure your important clips are always available regardless of time, across all your devices, save them in a collection!';
 
   @override
-  String get basicLocal => 'Básico • Local';
+  String get collections__appbar__title => 'Collections';
 
   @override
-  String get localSettingsDesc =>
-      'Estas configuraciones son aplicables solo a este dispositivo.';
+  String get collections__appbar__title__create => 'Create Collection';
 
   @override
-  String get theme => 'Tema';
+  String get collections__appbar__title__edit => 'Edit Collection';
 
   @override
-  String get syncLocal => 'Sincronizar • Local';
+  String get collections__input__name => 'Name';
 
   @override
-  String get dontAutoCopyOver => 'No Copiar Automáticamente';
+  String get collections__input__description => 'Description';
 
   @override
-  String dontAutoCopyOverDesc(String size) {
-    return 'Los archivos y medios que superen un cierto tamaño ($size) no se copiarán automáticamente.';
-  }
+  String get select_collection__appbar__title => 'Select Collection';
 
   @override
-  String get dontAutoUploadOver => 'No Subir Automáticamente';
+  String get account__dialog__delete_confirm__title => 'Account Delete Request';
 
   @override
-  String dontAutoUploadOverDesc(String size) {
-    return 'Los archivos y medios que superen un cierto tamaño ($size) no se subirán automáticamente.';
-  }
+  String get account__dialog__delete_confirm__description =>
+      'You will be redirected to the account delete request form, are you sure?';
 
   @override
-  String get enableSync => 'Habilitar Sincronización';
+  String get account__list_tile__display_name => 'Display Name';
 
   @override
-  String get enableSyncDesc =>
-      'Mantén tus clips sincronizados entre dispositivos';
+  String get account__list_tile__email => 'Email';
 
   @override
-  String get syncFiles => 'Sincronizar Archivos y Medios';
+  String get account__list_tile__settings => 'Account Settings';
 
   @override
-  String get syncFilesDesc =>
-      'Mantén tus archivos y elementos multimedia actualizados en todos los dispositivos.';
+  String get account__list_tile__danger_zone => 'Danger Zone';
 
   @override
-  String get connected => 'Conectado';
+  String get account__button__req_delete => 'Request Account Deletion';
 
   @override
-  String get loading => 'Cargando...';
+  String get account__appbar__title => 'My Account';
 
   @override
-  String get authorizing => 'Autorizando...';
+  String get settings__appbar__title => 'Settings';
 
   @override
-  String get connectNow => 'Conectar Ahora';
+  String get settings__tab__1 => 'General';
 
   @override
-  String get tips => 'ⓘ Consejos';
+  String get settings__tab__2 => 'Customization';
 
   @override
-  String get cloudStorageInfoDefault =>
-      'Google Drive no conectado, la sincronización de archivos y medios está deshabilitada.';
+  String get settings__tab__3 => 'Syncing';
 
   @override
-  String cloudStorageInfo(String info) {
-    return '${info}Tus archivos y medios se sincronizan de manera segura a través de dispositivos utilizando Google Drive para proteger tu privacidad.';
-  }
+  String get settings__tab__4 => 'Encryption';
 
   @override
-  String get attentionNeeded => '⚠ ¡Atención Necesaria!';
+  String get settings__tab__5 => 'Experimental';
 
   @override
-  String get isPaused => '¿Está Pausado?';
+  String get settings__text__encryption => 'Encryption';
 
   @override
-  String isPausedDesc(String isPaused, String till) {
-    String _temp0 = intl.Intl.selectLogic(
-      isPaused,
-      {
-        'true': 'La copia automática no está pausada',
-        'other': 'La copia automática está pausada hasta $till',
-      },
-    );
-    return '$_temp0';
-  }
+  String get settings__text__sync_not_available =>
+      'Sync-related configurations are not available while using the local clipboard.';
 
   @override
-  String get paste => 'Pegar';
+  String get settings__appbar__er__title => 'Exclusion Rules';
 
   @override
-  String get copy => 'Copiar';
+  String get settings__text__er__predefine => 'Predefined Exclusion Rules';
 
   @override
-  String get previewEdit => 'Vista Previa y Editar';
+  String get settings__text__er__pass_manager => 'Password Managers';
 
   @override
-  String get pastingTheSharedContent =>
-      'Pegando el contenido compartido al portapapeles';
+  String get settings__text__er__cc => 'Credit Card Number';
 
   @override
-  String get smartPaste => 'Pegar Inteligente';
+  String get settings__text__er__phone => 'Phone number';
 
   @override
-  String get smartPasteDesc =>
-      'Habilitar para pegar clips directamente en la última ventana enfocada.';
+  String get settings__text__er__email => 'Email Address';
 
   @override
-  String get launchAtStartup => 'Lanzar al Iniciar';
+  String get settings__text__er__url => 'Sensitive Url';
 
   @override
-  String get launchAtStartupDesc =>
-      'Habilitar para iniciar la aplicación automáticamente cuando tu dispositivo se encienda.';
+  String get settings__text__decrypted__note =>
+      '🥳 Congratulations! All your clips have been successfully decrypted locally,\n so rebuilding the database is not required.';
 
   @override
-  String get autoSyncInterval => 'Intervalo de Sincronización Automática';
+  String get settings__appbar__cer__title => 'Custom Exclusion Rules';
 
   @override
-  String get autoSyncIntervalDesc =>
-      'El portapapeles se sincronizará automáticamente';
+  String get custom_er__nav__1 => 'App';
 
   @override
-  String get clipboardShortcut => 'Atajo de Portapapeles';
+  String get custom_er__nav__2 => 'Window Title';
 
   @override
-  String get clipboardShortcutDesc =>
-      'Accede fácilmente al portapapeles en cualquier lugar';
+  String get custom_er__nav__3 => 'Url';
 
   @override
-  String clipboardShortcutPreview(String key) {
-    return 'Tecla de Atajo Actual : $key';
-  }
+  String get custom_er__nav__4 => 'Text Pattern';
 
   @override
-  String get unassigned => 'No asignado';
+  String get custom_er__text__not_supported =>
+      'This exclusion is not supported yet';
 
   @override
-  String get system => 'Sistema';
+  String get custom_er__tile__add_app => 'Add an app';
 
   @override
-  String get light => 'Claro';
+  String get custom_er__text__no_app => 'No custom app excluded yet';
 
   @override
-  String get dark => 'Oscuro';
+  String get custom_er__button__remove_app => 'Remove this app';
 
   @override
-  String get local => 'Local';
+  String get custom_er__tile__pattern =>
+      'Prevent copy when copied content matches these patterns';
 
   @override
-  String get uploading => 'Subiendo...';
+  String get custom_er__text__no_pattern => 'No custom pattern(s) excluded';
 
   @override
-  String get pleaseWait => 'Por favor espera...';
+  String get custom_er__button__remove_pattern => 'Remove this pattern';
 
   @override
-  String get open => 'Abrir';
+  String get custom_er__tile__url =>
+      'Prevent copy from website matching these url segments.';
 
   @override
-  String get noCollection => 'Sin Colección';
+  String get custom_er__input__url_hint => 'Enter a url or part of a url here.';
 
   @override
-  String get chooseCollection => 'Elegir Colección';
+  String get custom_er__text__no_url => 'No custom url(s) excluded';
 
   @override
-  String get changeCollection => 'Cambiar Colección';
+  String get custom_er__button__remove_url => 'Remove this url';
 
   @override
-  String get removeFromCollection => 'Eliminar de la Colección';
+  String get custom_er__tile__title =>
+      'Prevent copy from app or website when window title matches.';
 
   @override
-  String get compactMode => 'Modo Compacto';
+  String get custom_er__text__no_title => 'No custom title(s) excluded';
 
   @override
-  String createACollection(String left) {
-    return 'Crear una nueva colección ( $left restantes )';
-  }
-
-  @override
-  String get logout => 'Cerrar Sesión';
-
-  @override
-  String get logoutMessage =>
-      '⚠️ ADVERTENCIA ⚠️\n\nCerrar sesión eliminará los cambios no sincronizados en la base de datos local. ¿Estás seguro de que quieres proceder?';
-
-  @override
-  String get loggingYouOut => '¡Cerrando sesión! Por favor espera...';
-
-  @override
-  String get logoutSuccess => 'Sesión cerrada con éxito';
-
-  @override
-  String get internetConnected => 'Conectado a la Nube';
-
-  @override
-  String get internetDisconnected => 'Conectando a la Nube...';
-
-  @override
-  String get noCollectionFound => 'No se encontró ninguna colección';
-
-  @override
-  String get done => 'Hecho';
-
-  @override
-  String get failed => 'Fallido';
-
-  @override
-  String get syncNow => 'Sincronizar Ahora';
-
-  @override
-  String get syncNotAvailable => 'Sincronización No Disponible';
-
-  @override
-  String get checkingForRecord => 'Buscando Registros';
-
-  @override
-  String get sync => 'Sincronizar';
-
-  @override
-  String get syncing => 'Sincronizando';
-
-  @override
-  String syncingCheckFailed(String message) {
-    return 'Error en la Comprobación de Sincronización: $message';
-  }
-
-  @override
-  String get synced => '✅ Cambios Sincronizados';
-
-  @override
-  String get showWindow => 'Mostrar Ventana';
-
-  @override
-  String get hideWindow => 'Ocultar Ventana';
-
-  @override
-  String get hideWindowDesc =>
-      'Consejo: Usa el atajo de teclado para mostrar el portapapeles.';
-
-  @override
-  String get quit => 'Salir';
-
-  @override
-  String get quitDesc => '¿Estás seguro de que quieres salir?';
-
-  @override
-  String get yes => 'Sí';
-
-  @override
-  String get no => 'No';
-
-  @override
-  String get openInBrowser => 'Abrir en el navegador';
-
-  @override
-  String get makePhoneCall => 'Hacer una llamada';
-
-  @override
-  String get selectCollection => 'Seleccionar una colección';
-
-  @override
-  String get selectCollectionSub => 'O crea una nueva';
-
-  @override
-  String get confirm => 'Confirmar';
-
-  @override
-  String get recordKeyboardShortcut => 'Grabar atajo de teclado.';
-
-  @override
-  String get recordKeyboardShortcutDesc =>
-      'Escribe tu atajo usando tu teclado y haz clic ';
-
-  @override
-  String get subscription => 'Suscripción';
-
-  @override
-  String get beta => 'PUBLIC BETA';
-
-  @override
-  String get featureListDetail =>
-      'CopyCat Clipboard está actualmente en fase Beta. Mientras nos esforzamos por ofrecer una experiencia sin problemas, puede que encuentres errores ocasionales. Mantente atento a las próximas características y mejoras.';
-
-  @override
-  String get currentPlan => 'Plan Actual';
-
-  @override
-  String currentPlanLabel(String label) {
-    return 'Plan Actual • $label';
-  }
-
-  @override
-  String get included => 'Incluido';
-
-  @override
-  String get unlimitedClipboardItems => 'Elementos de Portapapeles Ilimitados';
-
-  @override
-  String get unlimitedClipboardItemsDesc =>
-      'Nunca te quedes sin espacio con elementos de portapapeles ilimitados, asegurando que siempre tengas acceso a tus copias más recientes.';
-
-  @override
-  String get supportAllMajorPlatforms =>
-      'Compatibilidad con todas las principales plataformas';
-
-  @override
-  String get supportAllMajorPlatformsDesc =>
-      'Sincronización perfecta en todas las principales plataformas—Android, iOS, Windows, macOS y Linux—para una productividad ininterrumpida en cualquier lugar.';
-
-  @override
-  String get supportsAppleUniversalClipboard =>
-      'Compatible con el portapapeles universal de Apple';
-
-  @override
-  String get supportsAppleUniversalClipboardDesc =>
-      'Transfiere fácilmente el contenido del portapapeles entre tus dispositivos Apple con soporte para el Portapapeles Universal de Apple.';
-
-  @override
-  String get onDeviceStorage => 'Almacenamiento en el Dispositivo';
-
-  @override
-  String get onDeviceStorageDesc =>
-      'Mantén tus datos seguros con almacenamiento en el dispositivo, asegurando que los elementos de tu portapapeles siempre estén al alcance y bajo tu control.';
-
-  @override
-  String get googleDriveIntegration => 'Integración con Google Drive';
-
-  @override
-  String get googleDriveIntegrationDesc =>
-      'Almacena de forma segura archivos y medios en Google Drive, integrándose perfectamente con CopyCat Clipboard para una mejor gestión de datos.';
-
-  @override
-  String get instantSearch => 'Búsqueda Instantánea';
-
-  @override
-  String get instantSearchDesc =>
-      'Encuentra lo que necesitas al instante con potentes capacidades de búsqueda instantánea, haciendo que la recuperación de elementos del portapapeles sea rápida y eficiente.';
-
-  @override
-  String get syncingUpToLast24Hours =>
-      'Sincronizando hasta las últimas 24 horas';
-
-  @override
-  String get syncingUpToLast24HoursDesc =>
-      'Accede y sincroniza el historial de tu portapapeles en todos tus dispositivos durante las últimas 24 horas. Esto garantiza que nunca pierdas elementos importantes copiados, haciendo tu flujo de trabajo fluido y eficiente.';
-
-  @override
-  String get upTo3Collections => 'Hasta 3 Colecciones';
-
-  @override
-  String get upTo3CollectionsDesc =>
-      'Organiza los elementos de tu portapapeles en hasta 3 colecciones, proporcionando una categorización simple para una mejor gestión del flujo de trabajo.';
-
-  @override
-  String get autoSyncEvery45Seconds =>
-      'Sincronización Automática Cada 45 Segundos';
-
-  @override
-  String get autoSyncEvery45SecondsDesc =>
-      'Disfruta de la sincronización automática de los elementos del portapapeles cada 45 segundos, manteniendo tus dispositivos actualizados sin intervención manual.';
-
-  @override
-  String get withPro => 'Con PRO ✨';
-
-  @override
-  String get withProDesc => 'Todo incluido en Gratis +';
-
-  @override
-  String get supportE2EE => 'Soporte para Cifrado de Extremo a Extremo';
-
-  @override
-  String get supportE2EEDesc =>
-      'E2EE hará que todo esté cifrado para una privacidad superior.';
-
-  @override
-  String get upto50Collection => 'Hasta 50 Colecciones';
-
-  @override
-  String get upto50CollectionDesc =>
-      'Organiza los elementos de tu portapapeles en hasta 50 colecciones para una gestión óptima.';
-
-  @override
-  String get syncLast720Hr => 'Sincronizando hasta los últimos 30 días';
-
-  @override
-  String get syncLast720HrDesc =>
-      'El historial del portapapeles se sincroniza en todos tus dispositivos para los clips creados en los últimos 30 días. Esto significa que puedes acceder a cualquier clip que copiaste en el último mes, sin importar qué dispositivo estés usando.';
-
-  @override
-  String get realtimeSync => 'Sincronización en Tiempo Real';
-
-  @override
-  String get realtimeSyncDesc => 'Experimenta una sincronización ultrarrápida.';
-
-  @override
-  String get prioritySupport => 'Soporte Rápido y Prioritario';
-
-  @override
-  String get prioritySupportDesc =>
-      'Obtén soporte rápido y prioritario como usuario PRO.';
-
-  @override
-  String get earlyAccessToNewFeature => 'Acceso Temprano a Nuevas Funciones';
-
-  @override
-  String get earlyAccessToNewFeatureDesc =>
-      'Sé el primero en probar nuevas funciones y actualizaciones.';
-
-  @override
-  String get termsAgreeP1 => 'Al continuar, usted acepta los siguientes ';
-
-  @override
-  String get privacyPolicies => 'Políticas de privacidad';
-
-  @override
-  String get and => ' y ';
-
-  @override
-  String get termsOfService => 'Términos de servicio';
-
-  @override
-  String get termsAgreeP2 => '.';
-
-  @override
-  String get backToApp => 'Volver a la aplicación';
-
-  @override
-  String get experimental => '🧪';
-
-  @override
-  String get experimentalDescription =>
-      'Esta característica es experimental y podría no funcionar como se espera.';
-
-  @override
-  String get selectAnOption => 'Seleccione una opción';
-
-  @override
-  String get advanceSecurity => 'Seguridad Avanzada';
-
-  @override
-  String get endToEndVault => 'Bóveda de Cifrado de Extremo a Extremo';
-
-  @override
-  String get accessE2eeVault => 'Acceda a la configuración de su bóveda E2EE';
-
-  @override
-  String get encryptClipboard => 'Cifrar Portapapeles';
-
-  @override
-  String get encryptClipboardDesc =>
-      'Cifre el portapapeles antes de sincronizarlo con la nube.';
-
-  @override
-  String get $5Sec => 'Instantáneo';
-
-  @override
-  String get $10Sec => 'Rápido';
-
-  @override
-  String get $20Sec => 'Veloz';
-
-  @override
-  String get $45Sec => 'Equilibrado';
-
-  @override
-  String get $60Sec => 'Casual';
-
-  @override
-  String get $5MB => '5 MB';
-
-  @override
-  String get $10MB => '10 MB';
-
-  @override
-  String get $20MB => '20 MB';
-
-  @override
-  String get $50MB => '50 MB';
-
-  @override
-  String get $100MB => '100 MB';
-
-  @override
-  String get e2eeNotSetup => 'E2EE no está configurado aún.';
-
-  @override
-  String get settingE2eeVault => 'Configurando Bóveda E2EE';
-
-  @override
-  String get e2eeSetupWarning =>
-      'Si pierde su clave E2EE y no tiene una copia de seguridad, sus datos cifrados serán permanentemente inaccesibles. Mantenga su clave segura y respaldada.';
-
-  @override
-  String get e2eeSetupDesc =>
-      'Genere su clave de la Bóveda E2EE y guárdela en un lugar seguro. Necesitará esta clave para configurar otros dispositivos y acceder a su información cifrada.';
-
-  @override
-  String get generating => 'Generando...';
-
-  @override
-  String get generateKey => 'Generar Clave de la Bóveda E2EE';
-
-  @override
-  String get importE2eeKey => 'Importar Clave de la Bóveda E2EE';
-
-  @override
-  String get importE2eeInvalidKey => '⚠️ ¡La clave importada no es válida!';
-
-  @override
-  String get importE2eeDesc =>
-      'Importe su clave de la Bóveda E2EE a continuación para habilitar el acceso a su información cifrada en este dispositivo. Asegúrese de que la clave esté almacenada de manera segura y no se comparta con nadie.';
-
-  @override
-  String get importing => 'Importando...';
-
-  @override
-  String get importKey => 'Importar Clave de la Bóveda E2EE';
-
-  @override
-  String get e2eeVault => 'Bóveda E2EE';
-
-  @override
-  String get e2eeExportNote =>
-      'Felicidades, ha configurado con éxito el cifrado de extremo a extremo.';
-
-  @override
-  String get e2eeExportDesc =>
-      'Haga clic en el botón a continuación para exportar su clave de la Bóveda E2EE.\nGuarde la clave en un lugar seguro para asegurarse de que puede configurar otros dispositivos y acceder a su información cifrada.';
-
-  @override
-  String get exportKey => 'Exportar Clave de la Bóveda E2EE';
-
-  @override
-  String get exportSuccess => '✅ Exportado con éxito';
-
-  @override
-  String get copySuccess => '✅ Copiado al portapapeles con éxito';
-
-  @override
-  String get whatsNew => '¿Qué hay de nuevo?';
-
-  @override
-  String get feature1 => 'Vista Acoplada y Ventana';
-
-  @override
-  String get feature1Desc =>
-      'Ahora puedes tener tu portapapeles acoplado en cualquier borde o flotante como siempre.';
-
-  @override
-  String get feature2 => 'Vista de Lista y Cuadrícula para tus clips';
-
-  @override
-  String get feature2Desc =>
-      'En el tamaño de ventana compatible, ahora puedes elegir entre vista de lista y cuadrícula para tus clips.';
-
-  @override
-  String get feature3 => 'Reglas de Exclusión';
-
-  @override
-  String get feature3Desc =>
-      'Control preciso sobre lo que no copiar a tu portapapeles.';
-
-  @override
-  String get feature4 => 'Operaciones en Lote';
-
-  @override
-  String get feature4Desc =>
-      'Ahora selecciona múltiples clips y realiza operaciones en lote.';
-
-  @override
-  String get gettingStarted => 'Comenzar';
-
-  @override
-  String get howToUse => 'Cómo Usar';
-
-  @override
-  String get howToUseDesc =>
-      '¿Cómo usar CopyCat? Lee nuestra documentación para comenzar.';
-
-  @override
-  String get tutorials => 'Tutoriales en Video';
-
-  @override
-  String get tutorialsDesc =>
-      'Aprende a aprovechar al máximo CopyCat con nuestros tutoriales en video paso a paso.';
-
-  @override
-  String get learnAboutFeatures =>
-      'Conoce todas las funciones que CopyCat tiene para ofrecer.';
-
-  @override
-  String get learn => 'Aprender';
-
-  @override
-  String get upgrade => 'Actualizar';
-
-  @override
-  String trialTill(String till) {
-    return 'Prueba hasta $till';
-  }
-
-  @override
-  String expiredPlan(String planName) {
-    return '$planName • Expirado';
-  }
-
-  @override
-  String get displayName => 'Nombre para Mostrar';
-
-  @override
-  String get email => 'Correo Electrónico';
-
-  @override
-  String get accountSettings => 'Configuración de la Cuenta';
-
-  @override
-  String get dangerZone => 'Zona de Peligro';
-
-  @override
-  String get requestAccountDeletion => 'Solicitar Eliminación de Cuenta';
-
-  @override
-  String get myAccount => 'Mi Cuenta';
-
-  @override
-  String get accountDeleteDialogTitle => 'Solicitud de Eliminación de Cuenta';
-
-  @override
-  String get accountDeleteDialogDesc =>
-      'Serás redirigido al formulario de solicitud de eliminación de cuenta, ¿estás seguro?';
-
-  @override
-  String get unlockPremiumFeatures => 'Desbloquear CopyCat PRO';
-
-  @override
-  String get upgradeToPro =>
-      'Disfruta de más de 720 horas de historial sincronizado, más de 50 colecciones, cifrado de extremo a extremo, sincronización en tiempo real, acceso a las últimas características y mucho más.';
-
-  @override
-  String get tryAgain => 'Por favor, inténtalo de nuevo';
-
-  @override
-  String get continue_ => 'Continuar';
-
-  @override
-  String get year => 'año';
-
-  @override
-  String get month => 'mes';
-
-  @override
-  String get manageSubscriptions => 'Gestionar Suscripciones';
-
-  @override
-  String promoSub(String till) {
-    return 'Estás usando una suscripción promocional hasta $till';
-  }
-
-  @override
-  String get subscriptionUpdated => 'Suscripción Actualizada';
-
-  @override
-  String get grantedEntitlement => 'Derecho Concedido';
-
-  @override
-  String get grantedEntitlementDesc =>
-      'Los Códigos de Derecho Concedido se comparten con personas específicas para derechos personalizados. Puedes verificar si las invitaciones aún están disponibles ';
-
-  @override
-  String get clickingHere => 'haciendo clic aquí.';
-
-  @override
-  String get enterCodeSubmit => 'Introduce el código y presiona Enviar';
-
-  @override
-  String get submit => 'Enviar';
-
-  @override
-  String get subscribeInSupportedPlatform =>
-      'Para acceder a las funciones premium en Copycat Clipboard, suscríbete a través de Play Store o Apple App Store. Tu suscripción se sincronizará en todos tus dispositivos, incluidos Linux y Windows.';
-
-  @override
-  String get timeSyncWarning => '⚠️ Advertencia de Sincronización de Tiempo';
-
-  @override
-  String get timeSyncWarningNote1 =>
-      'Se Detectó una Hora Inconsistente en el Dispositivo';
-
-  @override
-  String get timeSyncWarningNote2 =>
-      'Para garantizar una sincronización precisa del portapapeles, por favor verifica y corrige la configuración de la hora de tu dispositivo.';
-
-  @override
-  String get timeSyncWarningNote3 =>
-      'Las configuraciones de tiempo inconsistentes pueden causar problemas de sincronización.';
-
-  @override
-  String get checkAgain => 'Verificar Nuevamente';
-
-  @override
-  String get shareYourFeedback => 'Comparte tu Opinión';
-
-  @override
-  String get shareYourFeedbackDesc =>
-      '¡Valoramos tus pensamientos! Ya sea una sugerencia, un informe de error o solo para saludar, tu opinión es invaluable para nosotros.';
-
-  @override
-  String get joinDiscord => 'Únete a Nuestra Comunidad de Discord';
-
-  @override
-  String get joinDiscordDesc =>
-      'Conéctate con otros usuarios, comparte ideas, recibe actualizaciones y chatea directamente con nosotros.';
-
-  @override
-  String get joinGoogleGroup => 'Únete a Nuestro Grupo de Google';
-
-  @override
-  String get joinGoogleGroupDesc =>
-      'Mantente informado y colabora con otros usuarios en nuestro Grupo de Google';
-
-  @override
-  String get rebuildingDB =>
-      '⏱️ Reconstruyendo Base de Datos\nPor Favor Espera...';
-
-  @override
-  String get proTip => 'Consejo Pro';
-
-  @override
-  String get useCollectionProTip =>
-      '¡Para asegurarte de que tus clips importantes siempre estén disponibles sin importar el tiempo, en todos tus dispositivos, guárdalos en una colección!';
-
-  @override
-  String get syncConfigNotAvailable =>
-      'Las configuraciones relacionadas con la sincronización no están disponibles mientras se usa el portapapeles local.';
-
-  @override
-  String get useLocally => 'Usar Localmente';
-
-  @override
-  String get useLocallyDesc =>
-      'Sin sincronización. Todos los datos permanecen en tu dispositivo.';
-
-  @override
-  String maxDroppableItem(int count) {
-    return 'Se permiten un máximo de $count elementos a la vez.';
-  }
-
-  @override
-  String get dropHere => 'Suelta tus archivos, imágenes o texto aquí';
-
-  @override
-  String get general => 'General';
-
-  @override
-  String get customization => 'Personalización';
-
-  @override
-  String get syncingLabel => 'Sincronizando';
-
-  @override
-  String get encryption => 'Cifrado';
-
-  @override
-  String get searchFilters => 'Filtros de Búsqueda';
-
-  @override
-  String get from => 'Desde';
-
-  @override
-  String get to => 'Hasta';
-
-  @override
-  String get now => 'Ahora';
-
-  @override
-  String get including => 'Incluyendo';
-
-  @override
-  String get text => 'Texto';
-
-  @override
-  String get url => 'URL';
-
-  @override
-  String get media => 'Medios';
-
-  @override
-  String get docs => 'Documentos';
-
-  @override
-  String get textCategories => 'Categorías de Texto';
-
-  @override
-  String get exclusive => '( Exclusivo )';
-
-  @override
-  String get phone => 'Teléfono';
-
-  @override
-  String get color => 'Color';
-
-  @override
-  String get sortBy => 'Ordenar Por';
-
-  @override
-  String get select => 'Seleccionar';
-
-  @override
-  String get lastModified => 'Última Modificación';
-
-  @override
-  String get created => 'Creado';
-
-  @override
-  String get copyCount => 'Cantidad de Copias';
-
-  @override
-  String get lastCopied => 'Última Copia';
-
-  @override
-  String get sortOrder => 'Orden de Clasificación';
-
-  @override
-  String get asc => 'Asc';
-
-  @override
-  String get desc => 'Desc';
-
-  @override
-  String get applyFilter => 'Aplicar Filtro';
-
-  @override
-  String get themeColor => 'Color del Tema';
-
-  @override
-  String get themeColorDesc =>
-      'Este color influirá en la apariencia general de la aplicación.';
-
-  @override
-  String get change => 'Cambiar';
-
-  @override
-  String get colorMode => 'Modo de Color';
-
-  @override
-  String get colorModeDesc =>
-      'Selecciona el modo de color para personalizar la apariencia de la aplicación. La opción predeterminada es Tonal Spot.';
-
-  @override
-  String get tonalSpot => 'Punto Tonal';
-
-  @override
-  String get content => 'Contenido';
-
-  @override
-  String get expressive => 'Expresivo';
-
-  @override
-  String get fidility => 'Fidelidad';
-
-  @override
-  String get fruitSalad => 'Ensalada de Frutas';
-
-  @override
-  String get monochrome => 'Monocromo';
-
-  @override
-  String get neutral => 'Neutro';
-
-  @override
-  String get rainbow => 'Arcoíris';
-
-  @override
-  String get vibrant => 'Vibrante';
-
-  @override
-  String get customExclusionRuleFeature => 'Reglas de Exclusión Personalizadas';
-
-  @override
-  String get customExclusionRuleFeatureDesc =>
-      'Control preciso sobre tu portapapeles. Te permite definir qué copiar, desde dónde copiar y cuándo copiar.';
-
-  @override
-  String get dragNDropFeature => 'Arrastrar y Soltar';
-
-  @override
-  String get dragNDropFeatureDesc =>
-      'Mueve elementos sin problemas en cualquier dirección en tus dispositivos de escritorio y tabletas.';
-
-  @override
-  String get experimentalLabel => 'Experimental';
-
-  @override
-  String get dragNdrop => 'Arrastrar y Soltar';
-
-  @override
-  String get dragNdropDesc =>
-      'Permite que los elementos se muevan libremente en ambas direcciones dentro de la aplicación.';
-
-  @override
-  String get featureNotSupported =>
-      'Lo sentimos, esta función no está disponible en tu plataforma en este momento.';
-
-  @override
-  String get themingFeature => 'Temas';
-
-  @override
-  String get themingFeatureDesc =>
-      'Personaliza el aspecto y la sensación de la aplicación para que coincida con tus preferencias.';
-
-  @override
-  String get resetSearch => 'Restablecer Búsqueda';
-
-  @override
-  String get security => 'Seguridad';
-
-  @override
-  String get exclusionRules => 'Reglas de Exclusión';
-
-  @override
-  String get exclusionRulesDesc =>
-      'Evita que la información se copie al portapapeles. Haz clic para control avanzado.';
-
-  @override
-  String get predefinedExclRules => 'Reglas de Exclusión Predefinidas';
-
-  @override
-  String get passwordManagers => 'Gestores de Contraseñas';
-
-  @override
-  String get commonPasswordPatterns => 'Patrones Comunes de Contraseñas';
-
-  @override
-  String get creditCardNumber => 'Número de Tarjeta de Crédito';
-
-  @override
-  String get phoneNumber => 'Número de Teléfono';
-
-  @override
-  String get bankAccountNumber => 'Número de Cuenta Bancaria';
-
-  @override
-  String get passportNumber => 'Número de Pasaporte';
-
-  @override
-  String get sensitiveUrls => 'URLs Sensibles';
-
-  @override
-  String get customExclusionRules => 'Reglas de Exclusión Personalizadas';
-
-  @override
-  String get customRules => 'Reglas Personalizadas';
-
-  @override
-  String get customRulesDesc =>
-      'Excluir por aplicación, título de ventana de aplicación/sitio web, URL del sitio web o patrón de regex.';
-
-  @override
-  String get apps => 'Aplicaciones';
-
-  @override
-  String get pattern => 'Patrones';
-
-  @override
-  String get excludeAnApp => 'Añadir una nueva aplicación';
-
-  @override
-  String get noCustomAppExcluded => 'Ninguna aplicación personalizada excluida';
-
-  @override
-  String get removeCustomApp => 'Eliminar esta aplicación';
-
-  @override
-  String get excludeUrl =>
-      'Evitar copiar desde sitios web que coincidan con estos segmentos de URL.';
-
-  @override
-  String get excludeUrlInputHint =>
-      'Introduce una URL o parte de una URL aquí.';
-
-  @override
-  String get noCustomUrlExcluded =>
-      'No se ha excluido ninguna URL personalizada';
-
-  @override
-  String get removeCustomUrl => 'Eliminar esta URL';
-
-  @override
-  String get excludePattern =>
-      'Evitar copiar cuando el contenido copiado coincida con estos patrones.';
-
-  @override
-  String get noCustomPatternExcluded =>
-      'No se ha excluido ningún patrón personalizado';
-
-  @override
-  String get removeCustomPattern => 'Eliminar este patrón';
-
-  @override
-  String get excludeTitle =>
-      'Evitar copiar desde aplicaciones o sitios web cuando el título de la ventana coincida.';
-
-  @override
-  String get noCustomTitleExcluded =>
-      'No se ha excluido ningún título personalizado';
-
-  @override
-  String get removeCustomTitle => 'Eliminar este título';
-
-  @override
-  String get reconnectGoogleDrive => '⚠️ ¿Reconectar Google Drive?';
-
-  @override
-  String get reconnectGoogleDriveDesc =>
-      '¡Tu unidad ya está conectada! ¿Te gustaría reconectarla?\n\nPara evitar la pérdida de datos, asegúrate de usar la misma cuenta de antes.';
-
-  @override
-  String get sureToDeleteItem =>
-      '¿Estás seguro de eliminar este/estos ítem(s)?';
-
-  @override
-  String get noAppFoundToHandleFile =>
-      'No se encontró ninguna aplicación para abrir este archivo.';
-
-  @override
-  String get fileOpenPermissionNotGranted =>
-      'No se ha concedido permiso para abrir este archivo.';
-
-  @override
-  String get proOnlyTooltip =>
-      'Esta función está disponible solo para usuarios Pro.';
-
-  @override
-  String get viewWindow => 'Ventana';
-
-  @override
-  String get viewDockRight => 'Anclar a la Derecha';
-
-  @override
-  String get viewDockLeft => 'Anclar a la Izquierda';
-
-  @override
-  String get viewDockTop => 'Anclar Arriba';
-
-  @override
-  String get viewDockBottom => 'Anclar Abajo';
-
-  @override
-  String get changeView => 'Cambiar Vista';
-
-  @override
-  String get pin => 'Fijar';
-
-  @override
-  String get unpin => 'Desfijar';
-
-  @override
-  String get layoutToGrid => 'Cambiar a Diseño de Cuadrícula';
-
-  @override
-  String get layoutToList => 'Cambiar a Diseño de Lista';
-
-  @override
-  String get downloadDesktop => 'Descargar Cliente de Escritorio';
-
-  @override
-  String get downloadPhone => 'Descargar Cliente de Teléfono';
-
-  @override
-  String get downloadClientDesc =>
-      'Accede a tu portapapeles en todos tus dispositivos.';
+  String get custom_er__button__remove_title => 'Remove this title';
 }
