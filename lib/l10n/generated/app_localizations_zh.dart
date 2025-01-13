@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -35,6 +37,132 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get app__later => 'Skip';
+
+  @override
+  String get app__select => 'Select';
+
+  @override
+  String get app__change => 'Change';
+
+  @override
+  String get app__action_required => 'Action Required';
+
+  @override
+  String get app__feature_unavailable =>
+      'This feature is not available for your platform.';
+
+  @override
+  String get app__preview => 'Preview';
+
+  @override
+  String get app__open_file => 'Open file';
+
+  @override
+  String get app__change_collection => 'Change Collection';
+
+  @override
+  String get app__share => 'Share';
+
+  @override
+  String get app__uploading => 'Uploading...';
+
+  @override
+  String get app__syncing => 'Syncing...';
+
+  @override
+  String get app__sync => 'Sync';
+
+  @override
+  String get app__local => 'Local';
+
+  @override
+  String get app__send_message => 'Send Message';
+
+  @override
+  String get app__send_email => 'Send Email';
+
+  @override
+  String get app__empty_clipboard => 'Your clipboard is empty.';
+
+  @override
+  String get app__ack__exported => 'Exported';
+
+  @override
+  String get app__ack__copied => 'Copied';
+
+  @override
+  String get app__ack__pasted => 'Pasted';
+
+  @override
+  String get app__ack__pasting => 'Pasting';
+
+  @override
+  String get app__ack__done => 'Done';
+
+  @override
+  String get app__ack__quit_app => 'Quit App';
+
+  @override
+  String get app__ack__missing_e2e_setup => 'Missing encryption setup';
+
+  @override
+  String get app__ack__no_app_for_file =>
+      'No application found to open this file.';
+
+  @override
+  String get app__ack__perm_fail_to_open_file =>
+      'Permission to open this file not granted.';
+
+  @override
+  String get dialog__delete_clip__title => 'Delete Clip';
+
+  @override
+  String dialog__delete_clip__subtitle({required int itemCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      itemCount,
+      locale: localeName,
+      one: 'Are you sure you want to delete this clip?',
+      other: 'Are you sure you want to delete these clips?',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dialog__e2e__title => 'End to End Encryption';
+
+  @override
+  String get dialog__text__e2e_key_export =>
+      'Congratulations, you have successfully configured the end-to-end encryption.';
+
+  @override
+  String get dialog__text__e2e_key_export__note =>
+      'Click the button below to export your encryption key.\nSave the key in a secure location to ensure you can set up other devices to access your encrypted information.';
+
+  @override
+  String get dialog__text__e2e_key_generate =>
+      'Generate an encryption key and store it securely. This key is required to set up other devices for accessing your encrypted data.';
+
+  @override
+  String get dialog__button__e2e_generating_key => 'Generating';
+
+  @override
+  String get dialog__button__e2e_generate_key => 'Generated';
+
+  @override
+  String get dialog__text__invalid_e2e_key => 'The imported key is invalid!';
+
+  @override
+  String get dialog__text__e2e_key_import__note =>
+      'Import your encryption key below to access your encrypted data on this device.';
+
+  @override
+  String get dialog__button__e2e_importing_key => 'Importing';
+
+  @override
+  String get dialog__button__e2e_import_key => 'Import';
+
+  @override
+  String get widget__appbar__action__change_collections => 'Change Collection';
 
   @override
   String get login__local_signin__tooltip =>
@@ -379,6 +507,248 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settings__appbar__cer__title => 'Custom Exclusion Rules';
+
+  @override
+  String get settings__switch__drag_n_drop__title => 'Drag and Drop';
+
+  @override
+  String get settings__switch__drag_n_drop__subtitle =>
+      'Allow items to be moved freely in both directions within the app.';
+
+  @override
+  String get settings__dropdown__no_copy_over_limit__title =>
+      'Don\'t Auto Copy Over';
+
+  @override
+  String settings__dropdown__no_copy_over_limit__subtitle(
+      {required String fileSize}) {
+    return 'Files and Media over a certain size ($fileSize) will not be copied automatically.';
+  }
+
+  @override
+  String get settings__text__5MB => '5 MB';
+
+  @override
+  String get settings__text__10MB => '10 MB';
+
+  @override
+  String get settings__text__20MB => '20 MB';
+
+  @override
+  String get settings__text__50MB => '50 MB';
+
+  @override
+  String get settings__text__100MB => '100 MB';
+
+  @override
+  String get settings__dropdown__no_upload_over_limit__title =>
+      'Don\'t Auto Upload Over';
+
+  @override
+  String settings__dropdown__no_upload_over_limit__subtitle(
+      {required String fileSize}) {
+    return 'Files and Media over a certain size ($fileSize) will not be uploaded automatically.';
+  }
+
+  @override
+  String get settings__dropdown__sync_mode__title => 'Sync Mode';
+
+  @override
+  String get settings__dropdown__sync_mode__subtitle =>
+      'Select the syncing speed that works best for you.';
+
+  @override
+  String get settings__sync_mode__realtime => 'Realtime';
+
+  @override
+  String get settings__sync_mode__balanced => 'Balanced';
+
+  @override
+  String get settings__dropdown__theme__title => 'Theme Mode';
+
+  @override
+  String get settings__theme__system => 'System';
+
+  @override
+  String get settings__theme__light => 'Light';
+
+  @override
+  String get settings__theme__dark => 'Dark';
+
+  @override
+  String get settings__dropdown__color_mode__title => 'Color Mode';
+
+  @override
+  String get settings__dropdown__color_mode__subtitle =>
+      'Select the color mode to customize the appearance of the app. The default option is \'Tonal Spot\'.';
+
+  @override
+  String get settings__color_mode__tonalSpot => 'Tonal Spot';
+
+  @override
+  String get settings__color_mode__content => 'Content';
+
+  @override
+  String get settings__color_mode__expressive => 'Expressive';
+
+  @override
+  String get settings__color_mode__fidelity => 'Fidelity';
+
+  @override
+  String get settings__color_mode__fruit_salad => 'Fruit Salad';
+
+  @override
+  String get settings__color_mode__monochrome => 'Monochrome';
+
+  @override
+  String get settings__color_mode__neutral => 'Neutral';
+
+  @override
+  String get settings__color_mode__rainbow => 'Rainbow';
+
+  @override
+  String get settings__color_mode__vibrant => 'Vibrant';
+
+  @override
+  String get settings__tile__cer_title => 'Custom Rules';
+
+  @override
+  String get settings__tile__cer_subtitle =>
+      'Exclude by app, app window/website title, website url or regex pattern';
+
+  @override
+  String get settings__tile__er_title => 'Exclusion Rules';
+
+  @override
+  String get settings__tile__er_subtitle =>
+      'Prevent information from copying to clipboard. Click for Advance control.';
+
+  @override
+  String get settings__switch__enable_sync__title => 'Clipboard Syncing';
+
+  @override
+  String get settings__switch__enable_sync__subtitle =>
+      'Sync your clipboard across devices effortlessly.';
+
+  @override
+  String get settings__switch__sync_file__title => 'File and Media Syncing';
+
+  @override
+  String get settings__switch__sync_file__subtitle =>
+      'Toggle to sync files and media clips across devices.';
+
+  @override
+  String get settings__switch__paused__title => 'Pause Clipboard Listener';
+
+  @override
+  String get settings__switch__paused__subtitle =>
+      'Temporarily pause clipboard tracking until a set time.';
+
+  @override
+  String settings__switch__paused_active__subtitle({required Object time}) {
+    return 'Paused until $time. Tap to resume or adjust the time.';
+  }
+
+  @override
+  String get settings__switch__smart_paste__title => 'Smart Paste';
+
+  @override
+  String get settings__switch__smart_paste__subtitle =>
+      'Paste content directly on the focused app.';
+
+  @override
+  String get settings__switch__startup__title => 'Launch at Startup';
+
+  @override
+  String get settings__switch__startup__subtitle =>
+      'Automatically start the CopyCat when your device powers on.';
+
+  @override
+  String get settings__switch__hotkey__title => 'Toggle with Hotkey';
+
+  @override
+  String get settings__switch__hotkey__subtitle =>
+      'Use a keyboard shortcut to quickly access your CopyCat Clipboard';
+
+  @override
+  String get settings__hotkey__unassigned => 'Not Assigned';
+
+  @override
+  String get settings__hotkey__preview_start => 'Press ';
+
+  @override
+  String get settings__hotkey__preview_end => ' to show or hide the app.';
+
+  @override
+  String get settings__tile__theme_color__title => 'Theme Color';
+
+  @override
+  String get settings__tile__theme_color__subtitle =>
+      'This color will influence the overall look and feel of the app.';
+
+  @override
+  String get settings__tile__desk_client__title => 'Download Desktop Client';
+
+  @override
+  String get settings__tile__mobile_client__title => 'Download Phone Client';
+
+  @override
+  String get settings__tile__client__subtitle =>
+      'Access your clipboard on all your devices.';
+
+  @override
+  String get settings__tile__e2e_setup__title => 'End to End Encryption Setup';
+
+  @override
+  String get settings__tile__e2e_setup__subtitle =>
+      'Configure encryption for your clips.';
+
+  @override
+  String get settings__switch__e2e__title => 'Enable Encryption';
+
+  @override
+  String get settings__switch__e2e__subtitle =>
+      'Toggle to activate or deactivate end-to-end encryption for your clips.';
+
+  @override
+  String get settings__dialog__conn_gdrive__title => 'Re-Connect Google Drive?';
+
+  @override
+  String get settings__dialog__conn_gdrive__subtitle =>
+      'Your google drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.';
+
+  @override
+  String get settings__drive__connected => 'Connected';
+
+  @override
+  String get settings__drive__loading => 'Loading...';
+
+  @override
+  String get settings__drive__authorizing => 'Authorizing...';
+
+  @override
+  String get settings__drive__disconnected => 'Disconnected';
+
+  @override
+  String get settings__text__cloud__title => 'Cloud Drive';
+
+  @override
+  String get settings__text__cloud__name => 'Google Drive';
+
+  @override
+  String get settings__text__gdrive__error =>
+      'Google Drive is not connected. File and media syncing are currently disabled.';
+
+  @override
+  String get settings__text__gdrive__info =>
+      'Your files and media are securely synced across devices via Google Drive, ensuring your privacy is protected.';
+
+  @override
+  String get settings__tile__other_cloud__title => 'Setup Other Cloud Drive';
+
+  @override
+  String get settings__tile__other_cloud__subtitle =>
+      'Setup other cloud drives like Dropbox, OneDrive, etc.';
 
   @override
   String get custom_er__nav__1 => 'App';

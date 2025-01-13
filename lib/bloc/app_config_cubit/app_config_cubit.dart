@@ -229,7 +229,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
     await repo.update(newConfig);
   }
 
-  Future<void> changeAutoSyncDuration(SyncSpeed? speed) async {
+  Future<void> changeSyncMode(SyncSpeed? speed) async {
     if (speed == null) return;
     final newConfig = state.config.copyWith(syncSpeed: speed)
       ..applyId(state.config);

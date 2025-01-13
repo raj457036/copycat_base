@@ -164,6 +164,228 @@ abstract class AppLocalizations {
   /// **'Skip'**
   String get app__later;
 
+  /// No description provided for @app__select.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Select'**
+  String get app__select;
+
+  /// No description provided for @app__change.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Change'**
+  String get app__change;
+
+  /// No description provided for @app__action_required.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Action Required'**
+  String get app__action_required;
+
+  /// No description provided for @app__feature_unavailable.
+  ///
+  /// In en_US, this message translates to:
+  /// **'This feature is not available for your platform.'**
+  String get app__feature_unavailable;
+
+  /// No description provided for @app__preview.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Preview'**
+  String get app__preview;
+
+  /// No description provided for @app__open_file.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Open file'**
+  String get app__open_file;
+
+  /// No description provided for @app__change_collection.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Change Collection'**
+  String get app__change_collection;
+
+  /// No description provided for @app__share.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Share'**
+  String get app__share;
+
+  /// No description provided for @app__uploading.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Uploading...'**
+  String get app__uploading;
+
+  /// No description provided for @app__syncing.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Syncing...'**
+  String get app__syncing;
+
+  /// No description provided for @app__sync.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync'**
+  String get app__sync;
+
+  /// No description provided for @app__local.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Local'**
+  String get app__local;
+
+  /// No description provided for @app__send_message.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Send Message'**
+  String get app__send_message;
+
+  /// No description provided for @app__send_email.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Send Email'**
+  String get app__send_email;
+
+  /// No description provided for @app__empty_clipboard.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your clipboard is empty.'**
+  String get app__empty_clipboard;
+
+  /// No description provided for @app__ack__exported.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Exported'**
+  String get app__ack__exported;
+
+  /// No description provided for @app__ack__copied.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Copied'**
+  String get app__ack__copied;
+
+  /// No description provided for @app__ack__pasted.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Pasted'**
+  String get app__ack__pasted;
+
+  /// No description provided for @app__ack__pasting.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Pasting'**
+  String get app__ack__pasting;
+
+  /// No description provided for @app__ack__done.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Done'**
+  String get app__ack__done;
+
+  /// No description provided for @app__ack__quit_app.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Quit App'**
+  String get app__ack__quit_app;
+
+  /// No description provided for @app__ack__missing_e2e_setup.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Missing encryption setup'**
+  String get app__ack__missing_e2e_setup;
+
+  /// No description provided for @app__ack__no_app_for_file.
+  ///
+  /// In en_US, this message translates to:
+  /// **'No application found to open this file.'**
+  String get app__ack__no_app_for_file;
+
+  /// No description provided for @app__ack__perm_fail_to_open_file.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Permission to open this file not granted.'**
+  String get app__ack__perm_fail_to_open_file;
+
+  /// No description provided for @dialog__delete_clip__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Delete Clip'**
+  String get dialog__delete_clip__title;
+
+  /// No description provided for @dialog__delete_clip__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'{itemCount, plural, other{Are you sure you want to delete these clips?} one{Are you sure you want to delete this clip?}}'**
+  String dialog__delete_clip__subtitle({required int itemCount});
+
+  /// No description provided for @dialog__e2e__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'End to End Encryption'**
+  String get dialog__e2e__title;
+
+  /// No description provided for @dialog__text__e2e_key_export.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Congratulations, you have successfully configured the end-to-end encryption.'**
+  String get dialog__text__e2e_key_export;
+
+  /// No description provided for @dialog__text__e2e_key_export__note.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Click the button below to export your encryption key.\nSave the key in a secure location to ensure you can set up other devices to access your encrypted information.'**
+  String get dialog__text__e2e_key_export__note;
+
+  /// No description provided for @dialog__text__e2e_key_generate.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Generate an encryption key and store it securely. This key is required to set up other devices for accessing your encrypted data.'**
+  String get dialog__text__e2e_key_generate;
+
+  /// No description provided for @dialog__button__e2e_generating_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Generating'**
+  String get dialog__button__e2e_generating_key;
+
+  /// No description provided for @dialog__button__e2e_generate_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Generated'**
+  String get dialog__button__e2e_generate_key;
+
+  /// No description provided for @dialog__text__invalid_e2e_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'The imported key is invalid!'**
+  String get dialog__text__invalid_e2e_key;
+
+  /// No description provided for @dialog__text__e2e_key_import__note.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Import your encryption key below to access your encrypted data on this device.'**
+  String get dialog__text__e2e_key_import__note;
+
+  /// No description provided for @dialog__button__e2e_importing_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Importing'**
+  String get dialog__button__e2e_importing_key;
+
+  /// No description provided for @dialog__button__e2e_import_key.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Import'**
+  String get dialog__button__e2e_import_key;
+
+  /// No description provided for @widget__appbar__action__change_collections.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Change Collection'**
+  String get widget__appbar__action__change_collections;
+
   /// No description provided for @login__local_signin__tooltip.
   ///
   /// In en_US, this message translates to:
@@ -787,6 +1009,434 @@ abstract class AppLocalizations {
   /// In en_US, this message translates to:
   /// **'Custom Exclusion Rules'**
   String get settings__appbar__cer__title;
+
+  /// No description provided for @settings__switch__drag_n_drop__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Drag and Drop'**
+  String get settings__switch__drag_n_drop__title;
+
+  /// No description provided for @settings__switch__drag_n_drop__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Allow items to be moved freely in both directions within the app.'**
+  String get settings__switch__drag_n_drop__subtitle;
+
+  /// No description provided for @settings__dropdown__no_copy_over_limit__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Don\'t Auto Copy Over'**
+  String get settings__dropdown__no_copy_over_limit__title;
+
+  /// No description provided for @settings__dropdown__no_copy_over_limit__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Files and Media over a certain size ({fileSize}) will not be copied automatically.'**
+  String settings__dropdown__no_copy_over_limit__subtitle(
+      {required String fileSize});
+
+  /// No description provided for @settings__text__5MB.
+  ///
+  /// In en_US, this message translates to:
+  /// **'5 MB'**
+  String get settings__text__5MB;
+
+  /// No description provided for @settings__text__10MB.
+  ///
+  /// In en_US, this message translates to:
+  /// **'10 MB'**
+  String get settings__text__10MB;
+
+  /// No description provided for @settings__text__20MB.
+  ///
+  /// In en_US, this message translates to:
+  /// **'20 MB'**
+  String get settings__text__20MB;
+
+  /// No description provided for @settings__text__50MB.
+  ///
+  /// In en_US, this message translates to:
+  /// **'50 MB'**
+  String get settings__text__50MB;
+
+  /// No description provided for @settings__text__100MB.
+  ///
+  /// In en_US, this message translates to:
+  /// **'100 MB'**
+  String get settings__text__100MB;
+
+  /// No description provided for @settings__dropdown__no_upload_over_limit__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Don\'t Auto Upload Over'**
+  String get settings__dropdown__no_upload_over_limit__title;
+
+  /// No description provided for @settings__dropdown__no_upload_over_limit__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Files and Media over a certain size ({fileSize}) will not be uploaded automatically.'**
+  String settings__dropdown__no_upload_over_limit__subtitle(
+      {required String fileSize});
+
+  /// No description provided for @settings__dropdown__sync_mode__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync Mode'**
+  String get settings__dropdown__sync_mode__title;
+
+  /// No description provided for @settings__dropdown__sync_mode__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Select the syncing speed that works best for you.'**
+  String get settings__dropdown__sync_mode__subtitle;
+
+  /// No description provided for @settings__sync_mode__realtime.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Realtime'**
+  String get settings__sync_mode__realtime;
+
+  /// No description provided for @settings__sync_mode__balanced.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Balanced'**
+  String get settings__sync_mode__balanced;
+
+  /// No description provided for @settings__dropdown__theme__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Theme Mode'**
+  String get settings__dropdown__theme__title;
+
+  /// No description provided for @settings__theme__system.
+  ///
+  /// In en_US, this message translates to:
+  /// **'System'**
+  String get settings__theme__system;
+
+  /// No description provided for @settings__theme__light.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Light'**
+  String get settings__theme__light;
+
+  /// No description provided for @settings__theme__dark.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Dark'**
+  String get settings__theme__dark;
+
+  /// No description provided for @settings__dropdown__color_mode__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Color Mode'**
+  String get settings__dropdown__color_mode__title;
+
+  /// No description provided for @settings__dropdown__color_mode__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Select the color mode to customize the appearance of the app. The default option is \'Tonal Spot\'.'**
+  String get settings__dropdown__color_mode__subtitle;
+
+  /// No description provided for @settings__color_mode__tonalSpot.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Tonal Spot'**
+  String get settings__color_mode__tonalSpot;
+
+  /// No description provided for @settings__color_mode__content.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Content'**
+  String get settings__color_mode__content;
+
+  /// No description provided for @settings__color_mode__expressive.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Expressive'**
+  String get settings__color_mode__expressive;
+
+  /// No description provided for @settings__color_mode__fidelity.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Fidelity'**
+  String get settings__color_mode__fidelity;
+
+  /// No description provided for @settings__color_mode__fruit_salad.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Fruit Salad'**
+  String get settings__color_mode__fruit_salad;
+
+  /// No description provided for @settings__color_mode__monochrome.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Monochrome'**
+  String get settings__color_mode__monochrome;
+
+  /// No description provided for @settings__color_mode__neutral.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Neutral'**
+  String get settings__color_mode__neutral;
+
+  /// No description provided for @settings__color_mode__rainbow.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Rainbow'**
+  String get settings__color_mode__rainbow;
+
+  /// No description provided for @settings__color_mode__vibrant.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Vibrant'**
+  String get settings__color_mode__vibrant;
+
+  /// No description provided for @settings__tile__cer_title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Custom Rules'**
+  String get settings__tile__cer_title;
+
+  /// No description provided for @settings__tile__cer_subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Exclude by app, app window/website title, website url or regex pattern'**
+  String get settings__tile__cer_subtitle;
+
+  /// No description provided for @settings__tile__er_title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Exclusion Rules'**
+  String get settings__tile__er_title;
+
+  /// No description provided for @settings__tile__er_subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Prevent information from copying to clipboard. Click for Advance control.'**
+  String get settings__tile__er_subtitle;
+
+  /// No description provided for @settings__switch__enable_sync__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Clipboard Syncing'**
+  String get settings__switch__enable_sync__title;
+
+  /// No description provided for @settings__switch__enable_sync__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync your clipboard across devices effortlessly.'**
+  String get settings__switch__enable_sync__subtitle;
+
+  /// No description provided for @settings__switch__sync_file__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'File and Media Syncing'**
+  String get settings__switch__sync_file__title;
+
+  /// No description provided for @settings__switch__sync_file__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Toggle to sync files and media clips across devices.'**
+  String get settings__switch__sync_file__subtitle;
+
+  /// No description provided for @settings__switch__paused__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Pause Clipboard Listener'**
+  String get settings__switch__paused__title;
+
+  /// No description provided for @settings__switch__paused__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Temporarily pause clipboard tracking until a set time.'**
+  String get settings__switch__paused__subtitle;
+
+  /// No description provided for @settings__switch__paused_active__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Paused until {time}. Tap to resume or adjust the time.'**
+  String settings__switch__paused_active__subtitle({required Object time});
+
+  /// No description provided for @settings__switch__smart_paste__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Smart Paste'**
+  String get settings__switch__smart_paste__title;
+
+  /// No description provided for @settings__switch__smart_paste__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Paste content directly on the focused app.'**
+  String get settings__switch__smart_paste__subtitle;
+
+  /// No description provided for @settings__switch__startup__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Launch at Startup'**
+  String get settings__switch__startup__title;
+
+  /// No description provided for @settings__switch__startup__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Automatically start the CopyCat when your device powers on.'**
+  String get settings__switch__startup__subtitle;
+
+  /// No description provided for @settings__switch__hotkey__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Toggle with Hotkey'**
+  String get settings__switch__hotkey__title;
+
+  /// No description provided for @settings__switch__hotkey__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Use a keyboard shortcut to quickly access your CopyCat Clipboard'**
+  String get settings__switch__hotkey__subtitle;
+
+  /// No description provided for @settings__hotkey__unassigned.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Not Assigned'**
+  String get settings__hotkey__unassigned;
+
+  /// No description provided for @settings__hotkey__preview_start.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Press '**
+  String get settings__hotkey__preview_start;
+
+  /// No description provided for @settings__hotkey__preview_end.
+  ///
+  /// In en_US, this message translates to:
+  /// **' to show or hide the app.'**
+  String get settings__hotkey__preview_end;
+
+  /// No description provided for @settings__tile__theme_color__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Theme Color'**
+  String get settings__tile__theme_color__title;
+
+  /// No description provided for @settings__tile__theme_color__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'This color will influence the overall look and feel of the app.'**
+  String get settings__tile__theme_color__subtitle;
+
+  /// No description provided for @settings__tile__desk_client__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Download Desktop Client'**
+  String get settings__tile__desk_client__title;
+
+  /// No description provided for @settings__tile__mobile_client__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Download Phone Client'**
+  String get settings__tile__mobile_client__title;
+
+  /// No description provided for @settings__tile__client__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Access your clipboard on all your devices.'**
+  String get settings__tile__client__subtitle;
+
+  /// No description provided for @settings__tile__e2e_setup__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'End to End Encryption Setup'**
+  String get settings__tile__e2e_setup__title;
+
+  /// No description provided for @settings__tile__e2e_setup__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Configure encryption for your clips.'**
+  String get settings__tile__e2e_setup__subtitle;
+
+  /// No description provided for @settings__switch__e2e__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Enable Encryption'**
+  String get settings__switch__e2e__title;
+
+  /// No description provided for @settings__switch__e2e__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Toggle to activate or deactivate end-to-end encryption for your clips.'**
+  String get settings__switch__e2e__subtitle;
+
+  /// No description provided for @settings__dialog__conn_gdrive__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Re-Connect Google Drive?'**
+  String get settings__dialog__conn_gdrive__title;
+
+  /// No description provided for @settings__dialog__conn_gdrive__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your google drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.'**
+  String get settings__dialog__conn_gdrive__subtitle;
+
+  /// No description provided for @settings__drive__connected.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Connected'**
+  String get settings__drive__connected;
+
+  /// No description provided for @settings__drive__loading.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Loading...'**
+  String get settings__drive__loading;
+
+  /// No description provided for @settings__drive__authorizing.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Authorizing...'**
+  String get settings__drive__authorizing;
+
+  /// No description provided for @settings__drive__disconnected.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Disconnected'**
+  String get settings__drive__disconnected;
+
+  /// No description provided for @settings__text__cloud__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Cloud Drive'**
+  String get settings__text__cloud__title;
+
+  /// No description provided for @settings__text__cloud__name.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Google Drive'**
+  String get settings__text__cloud__name;
+
+  /// No description provided for @settings__text__gdrive__error.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Google Drive is not connected. File and media syncing are currently disabled.'**
+  String get settings__text__gdrive__error;
+
+  /// No description provided for @settings__text__gdrive__info.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Your files and media are securely synced across devices via Google Drive, ensuring your privacy is protected.'**
+  String get settings__text__gdrive__info;
+
+  /// No description provided for @settings__tile__other_cloud__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Setup Other Cloud Drive'**
+  String get settings__tile__other_cloud__title;
+
+  /// No description provided for @settings__tile__other_cloud__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Setup other cloud drives like Dropbox, OneDrive, etc.'**
+  String get settings__tile__other_cloud__subtitle;
 
   /// No description provided for @custom_er__nav__1.
   ///
