@@ -573,5 +573,13 @@
   "custom_er__button__remove_url": "Diese URL entfernen",
   "custom_er__tile__title": "Kopieren aus App oder Website verhindern, wenn der Fenstertitel übereinstimmt.",
   "custom_er__text__no_title": "Keine benutzerdefinierten Titel ausgeschlossen",
-  "custom_er__button__remove_title": "Diesen Titel entfernen"
+  "custom_er__button__remove_title": "Diesen Titel entfernen",
+
+  "@@ABOUT": "Über App-Dialog",
+  "about__tile__discord": "Discord • Verbinden",
+  "about__tile__youtube": "YouTube • Tutorial",
+  "about__tile__read_tut": "Lesen • Tutorial",
+  "about__tile__github": "Github • Open Source",
+  "about__tile__website": "EntilityStudio • Website",
+  "about__tile__support": "Unterstützung"
 }

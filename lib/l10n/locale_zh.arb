@@ -555,5 +555,13 @@
     "custom_er__button__remove_url": "移除此网址",
     "custom_er__tile__title": "当窗口标题匹配时禁止从应用或网站复制。",
     "custom_er__text__no_title": "尚无自定义排除标题",
-    "custom_er__button__remove_title": "移除此标题"
-  }
+    "custom_er__button__remove_title": "移除此标题",
+
+    "@@ABOUT": "关于应用对话框",
+  "about__tile__discord": "Discord • 连接",
+  "about__tile__youtube": "YouTube • 教程",
+  "about__tile__read_tut": "阅读 • 教程",
+  "about__tile__github": "Github • 开源",
+  "about__tile__website": "EntilityStudio • 网站",
+  "about__tile__support": "支持"
+}

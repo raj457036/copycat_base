@@ -2472,6 +2472,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove this title'**
   String get custom_er__button__remove_title;
+
+  /// No description provided for @about__tile__discord.
+  ///
+  /// In en, this message translates to:
+  /// **'Discord • Connect'**
+  String get about__tile__discord;
+
+  /// No description provided for @about__tile__youtube.
+  ///
+  /// In en, this message translates to:
+  /// **'YouTube • Tutorial'**
+  String get about__tile__youtube;
+
+  /// No description provided for @about__tile__read_tut.
+  ///
+  /// In en, this message translates to:
+  /// **'Read • Tutorial'**
+  String get about__tile__read_tut;
+
+  /// No description provided for @about__tile__github.
+  ///
+  /// In en, this message translates to:
+  /// **'Github • Open Source'**
+  String get about__tile__github;
+
+  /// No description provided for @about__tile__website.
+  ///
+  /// In en, this message translates to:
+  /// **'EntilityStudio • Website'**
+  String get about__tile__website;
+
+  /// No description provided for @about__tile__support.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get about__tile__support;
 }
 
 class _AppLocalizationsDelegate

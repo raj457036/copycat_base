@@ -81,3 +81,6 @@ flutter:
    - family:  DockIcons
      fonts:
       - asset: fonts/DockIcons.ttf
+   - family:  CustomIcons
+     fonts:
+      - asset: fonts/CustomIcons.ttf

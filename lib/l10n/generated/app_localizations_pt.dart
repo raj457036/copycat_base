@@ -106,7 +106,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get app__locale_zh => 'Chinês';
 
   @override
-  String get app__locale_pt => 'Portuguese';
+  String get app__locale_pt => 'Português';
 
   @override
   String get app__language => 'Idioma';
@@ -1385,4 +1385,22 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get custom_er__button__remove_title => 'Remover este título';
+
+  @override
+  String get about__tile__discord => 'Discord • Conectar';
+
+  @override
+  String get about__tile__youtube => 'YouTube • Tutorial';
+
+  @override
+  String get about__tile__read_tut => 'Ler • Tutorial';
+
+  @override
+  String get about__tile__github => 'Github • Código aberto';
+
+  @override
+  String get about__tile__website => 'EntilityStudio • Site';
+
+  @override
+  String get about__tile__support => 'Suporte';
 }

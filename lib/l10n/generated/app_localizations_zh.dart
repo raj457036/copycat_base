@@ -1294,4 +1294,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get custom_er__button__remove_title => '移除此标题';
+
+  @override
+  String get about__tile__discord => 'Discord • 连接';
+
+  @override
+  String get about__tile__youtube => 'YouTube • 教程';
+
+  @override
+  String get about__tile__read_tut => '阅读 • 教程';
+
+  @override
+  String get about__tile__github => 'Github • 开源';
+
+  @override
+  String get about__tile__website => 'EntilityStudio • 网站';
+
+  @override
+  String get about__tile__support => '支持';
 }

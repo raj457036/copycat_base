@@ -572,5 +572,13 @@
   "custom_er__button__remove_url": "Eliminar esta URL",
   "custom_er__tile__title": "Evitar copiar de aplicación o sitio web cuando el título de la ventana coincide.",
   "custom_er__text__no_title": "No se han excluido título(s) personalizados",
-  "custom_er__button__remove_title": "Eliminar este título"
+  "custom_er__button__remove_title": "Eliminar este título",
+
+  "@@ABOUT": "Acerca del diálogo de la app",
+  "about__tile__discord": "Discord • Conectar",
+  "about__tile__youtube": "YouTube • Tutorial",
+  "about__tile__read_tut": "Leer • Tutorial",
+  "about__tile__github": "Github • Código abierto",
+  "about__tile__website": "EntilityStudio • Sitio web",
+  "about__tile__support": "Soporte"
 }

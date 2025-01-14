@@ -1369,4 +1369,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get custom_er__button__remove_title => 'Eliminar este título';
+
+  @override
+  String get about__tile__discord => 'Discord • Conectar';
+
+  @override
+  String get about__tile__youtube => 'YouTube • Tutorial';
+
+  @override
+  String get about__tile__read_tut => 'Leer • Tutorial';
+
+  @override
+  String get about__tile__github => 'Github • Código abierto';
+
+  @override
+  String get about__tile__website => 'EntilityStudio • Sitio web';
+
+  @override
+  String get about__tile__support => 'Soporte';
 }

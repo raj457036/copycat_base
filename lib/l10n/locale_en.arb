@@ -579,5 +579,13 @@
   "custom_er__button__remove_url": "Remove this url",
   "custom_er__tile__title": "Prevent copy from app or website when window title matches.",
   "custom_er__text__no_title": "No custom title(s) excluded",
-  "custom_er__button__remove_title": "Remove this title"
+  "custom_er__button__remove_title": "Remove this title",
+
+  "@@ABOUT": "About App Dialog",
+  "about__tile__discord": "Discord • Connect",
+  "about__tile__youtube": "YouTube • Tutorial",
+  "about__tile__read_tut": "Read • Tutorial",
+  "about__tile__github": "Github • Open Source",
+  "about__tile__website": "EntilityStudio • Website",
+  "about__tile__support": "Support"
 }

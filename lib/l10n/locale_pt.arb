@@ -40,6 +40,7 @@
     "app__locale_fr": "Francês",
     "app__locale_de": "Alemão",
     "app__locale_zh": "Chinês",
+    "app__locale_pt": "Português",
     "app__language": "Idioma",
     "app__logout": "Sair",
     "app__no_collection": "Nenhuma Coleção Encontrada",
@@ -575,5 +576,13 @@
     "custom_er__button__remove_url": "Remover esta url",
     "custom_er__tile__title": "Evitar cópia de app ou website quando o título da janela corresponder.",
     "custom_er__text__no_title": "Nenhum título personalizado(s) excluído",
-    "custom_er__button__remove_title": "Remover este título"
-  }
+    "custom_er__button__remove_title": "Remover este título",
+
+    "@@ABOUT": "Sobre o diálogo do aplicativo",
+    "about__tile__discord": "Discord • Conectar",
+    "about__tile__youtube": "YouTube • Tutorial",
+    "about__tile__read_tut": "Ler • Tutorial",
+    "about__tile__github": "Github • Código aberto",
+    "about__tile__website": "EntilityStudio • Site",
+    "about__tile__support": "Suporte"
+}

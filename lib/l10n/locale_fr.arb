@@ -572,5 +572,13 @@
   "custom_er__button__remove_url": "Retirer cette URL",
   "custom_er__tile__title": "Empêcher la copie d'une application ou d'un site web lorsque le titre de la fenêtre correspond.",
   "custom_er__text__no_title": "Aucun titre personnalisé exclu",
-  "custom_er__button__remove_title": "Retirer ce titre"
+  "custom_er__button__remove_title": "Retirer ce titre",
+
+  "@@ABOUT": "À propos du dialogue de l'app",
+  "about__tile__discord": "Discord • Connexion",
+  "about__tile__youtube": "YouTube • Tutoriel",
+  "about__tile__read_tut": "Lire • Tutoriel",
+  "about__tile__github": "Github • Open source",
+  "about__tile__website": "EntilityStudio • Site web",
+  "about__tile__support": "Support"
 }
