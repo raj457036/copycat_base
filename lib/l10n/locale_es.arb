@@ -40,6 +40,7 @@
   "app__locale_fr": "Francés",
   "app__locale_de": "Alemán",
   "app__locale_zh": "Chino",
+  "app__locale_pt": "Portugués",
   "app__language": "Idioma",
   "app__logout": "Cerrar Sesión",
   "app__no_collection": "No Se Encontró Colección",

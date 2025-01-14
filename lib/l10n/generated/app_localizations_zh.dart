@@ -105,6 +105,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get app__locale_zh => '中文';
 
   @override
+  String get app__locale_pt => '葡萄牙语';
+
+  @override
   String get app__language => '语言';
 
   @override

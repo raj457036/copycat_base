@@ -8,6 +8,7 @@ import 'app_localizations_de.dart' deferred as app_localizations_de;
 import 'app_localizations_en.dart' deferred as app_localizations_en;
 import 'app_localizations_es.dart' deferred as app_localizations_es;
 import 'app_localizations_fr.dart' deferred as app_localizations_fr;
+import 'app_localizations_pt.dart' deferred as app_localizations_pt;
 import 'app_localizations_zh.dart' deferred as app_localizations_zh;
 
 // ignore_for_file: type=lint
@@ -100,6 +101,7 @@ abstract class AppLocalizations {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
+    Locale('pt'),
     Locale('zh')
   ];
 
@@ -294,6 +296,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Chinese'**
   String get app__locale_zh;
+
+  /// No description provided for @app__locale_pt.
+  ///
+  /// In en, this message translates to:
+  /// **'Portuguese'**
+  String get app__locale_pt;
 
   /// No description provided for @app__language.
   ///
@@ -2476,8 +2484,14 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['de', 'en', 'es', 'fr', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+        'de',
+        'en',
+        'es',
+        'fr',
+        'pt',
+        'zh'
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2502,6 +2516,10 @@ Future<AppLocalizations> lookupAppLocalizations(Locale locale) {
       return app_localizations_fr
           .loadLibrary()
           .then((dynamic _) => app_localizations_fr.AppLocalizationsFr());
+    case 'pt':
+      return app_localizations_pt
+          .loadLibrary()
+          .then((dynamic _) => app_localizations_pt.AppLocalizationsPt());
     case 'zh':
       return app_localizations_zh
           .loadLibrary()

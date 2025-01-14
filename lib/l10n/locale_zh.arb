@@ -40,6 +40,7 @@
     "app__locale_fr": "法语",
     "app__locale_de": "德语",
     "app__locale_zh": "中文",
+    "app__locale_pt": "葡萄牙语",
     "app__language": "语言",
     "app__logout": "登出",
     "app__no_collection": "未找到收藏",

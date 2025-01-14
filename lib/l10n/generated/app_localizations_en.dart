@@ -106,6 +106,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get app__locale_zh => 'Chinese';
 
   @override
+  String get app__locale_pt => 'Portuguese';
+
+  @override
   String get app__language => 'Language';
 
   @override

@@ -106,6 +106,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get app__locale_zh => 'Chino';
 
   @override
+  String get app__locale_pt => 'Portugués';
+
+  @override
   String get app__language => 'Idioma';
 
   @override
