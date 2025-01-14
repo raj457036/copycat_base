@@ -1,7 +1,7 @@
 arb-dir: lib/l10n
 synthetic-package: false
 output-dir: lib/l10n/generated/
-template-arb-file: locale_en_US.arb
+template-arb-file: locale_en.arb
 untranslated-messages-file: lib/l10n/untranslated_messages.json
 output-class: AppLocalizations
 use-deferred-loading: true

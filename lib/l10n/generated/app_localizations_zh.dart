@@ -88,6 +88,39 @@ class AppLocalizationsZh extends AppLocalizations {
   String get app__empty_clipboard => 'Your clipboard is empty.';
 
   @override
+  String get app__load_more => 'Fetch More';
+
+  @override
+  String get app__locale_en => 'English';
+
+  @override
+  String get app__locale_es => 'Spanish';
+
+  @override
+  String get app__locale_fr => 'French';
+
+  @override
+  String get app__locale_de => 'German';
+
+  @override
+  String get app__locale_zh => 'Chinese';
+
+  @override
+  String get app__language => 'Language';
+
+  @override
+  String get app__logout => 'Logout';
+
+  @override
+  String get app__no_collection => 'No Collection Found';
+
+  @override
+  String get app__create_collection => 'Create Collection';
+
+  @override
+  String get app__pro_tip => 'Pro Tip';
+
+  @override
   String get app__ack__exported => 'Exported';
 
   @override
@@ -104,6 +137,21 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get app__ack__quit_app => 'Quit App';
+
+  @override
+  String get app__ack__deleted => 'Deleted';
+
+  @override
+  String get app__ack__deleting => 'Deleting';
+
+  @override
+  String get app__ack__internet_connected => 'Internet Connected';
+
+  @override
+  String get app__ack__internet_disconnected => 'Internet Disconnected';
+
+  @override
+  String get app__ack__logout_success => 'You are successfully logged out.';
 
   @override
   String get app__ack__missing_e2e_setup => 'Missing encryption setup';
@@ -180,6 +228,56 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get dialog__record_keys__subtitle =>
       'Type your shortcut using your keyboard and click ';
+
+  @override
+  String get dialog__ack__sub_updated => 'Subscription Updated';
+
+  @override
+  String get dialog__grant_entitlement__title => 'Granted Entitlement';
+
+  @override
+  String get dialog__grant_entitlement__subtitle_p1 =>
+      'Granted Entitlement Codes are shared with specific individuals for custom entitlements. You can check if invitations are still available by ';
+
+  @override
+  String get dialog__grant_entitlement__subtitle_p2 => 'Clicking Here.';
+
+  @override
+  String get dialog__grant_entitlement__enter_code =>
+      'Enter the code and press Submit';
+
+  @override
+  String get dialog__grant_entitlement__apply_code => 'Apply';
+
+  @override
+  String get view_button__switch_to_grid => 'Switch to Grid Layout';
+
+  @override
+  String get view_button__switch_to_list => 'Switch to List Layout';
+
+  @override
+  String get view_button__change_view => 'Change View';
+
+  @override
+  String get view_button__view_window => 'Windowed';
+
+  @override
+  String get view_button__view_dock_right => 'Dock Right';
+
+  @override
+  String get view_button__view_dock_bottom => 'Dock Bottom';
+
+  @override
+  String get view_button__view_dock_left => 'Dock Left';
+
+  @override
+  String get view_button__view_dock_top => 'Dock Top';
+
+  @override
+  String get view_button__pin => 'Pin to top';
+
+  @override
+  String get view_button__unpin => 'Unpin';
 
   @override
   String get sub_dialog__text__included => 'Included';
@@ -385,6 +483,53 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get search__tooltip__filter => 'Search filters';
+
+  @override
+  String manage_sub__ack__promo_sub({required String till}) {
+    return 'You are using a promo subscription till $till';
+  }
+
+  @override
+  String get manage_sub__button__text => 'Manage Subscriptions';
+
+  @override
+  String get my_account__button__tooltip => 'My Account';
+
+  @override
+  String get badges__tooltip__experimental =>
+      'This feature is experimental and might not work as expected.';
+
+  @override
+  String get badges__tooltip__pro_only =>
+      'This feature is available for Pro users only.';
+
+  @override
+  String get collection_selector__tile__no_collection => 'No Collection';
+
+  @override
+  String get collection_selector__button__remove_collection =>
+      'Remove Collection';
+
+  @override
+  String get dialog__logout__title => 'Logout';
+
+  @override
+  String get dialog__logout__subtitle =>
+      '⚠️ WARNING ⚠️\n\nLogging out will delete unsynced changes in the local database. Are you sure you want to proceed?';
+
+  @override
+  String get dialog__logging_out__ack => 'Logging you out! Please wait...';
+
+  @override
+  String get reset_pass__text__label => 'Reset your password';
+
+  @override
+  String get dnd__text__drop_here => 'Drop Here';
+
+  @override
+  String dnd__ack__error_max_drop_count({required int count}) {
+    return 'Maximum $count drop items are allowed at once.';
+  }
 
   @override
   String get search_filter__text__title => 'Filters';
