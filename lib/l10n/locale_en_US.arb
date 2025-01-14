@@ -20,6 +20,7 @@
   "app__later": "Skip",
   "app__select": "Select",
   "app__change": "Change",
+  "app__confirm": "Confirm",
   "app__action_required": "Action Required",
   "app__feature_unavailable": "This feature is not available for your platform.",
   "app__preview": "Preview",
@@ -63,9 +64,131 @@
   "dialog__text__e2e_key_import__note": "Import your encryption key below to access your encrypted data on this device.",
   "dialog__button__e2e_importing_key": "Importing",
   "dialog__button__e2e_import_key": "Import",
+
+  "dialog__text__inconsistent_time__title": "Time Sync Warning",
+  "dialog__text__inconsistent_time__content": "Inconsistent Device Time Detected\n\nTo ensure accurate clipboard syncing, please check and correct your device's time settings.\n\nInconsistent time settings may cause synchronization issues.",
+  "dialog__button__try_again": "Check Again",
+
+  "dialog__record_keys__title": "Record Keyboard Shortcut",
+  "dialog__record_keys__subtitle": "Type your shortcut using your keyboard and click ",
+
+  "@@SUBSCRIPTION_DIALOG": "Subscription detail dialog",
+  "sub_dialog__text__included": "Included",
+  "sub_dialog__f1__title": "Unlimited Clipboard Items",
+  "sub_dialog__f1__subtitle": "Never run out of space with unlimited clipboard items, ensuring you always have access to your most recent copies.",
+  "sub_dialog__f2__title": "Support all major platforms",
+  "sub_dialog__f2__subtitle": "Seamlessly sync across all major platforms—Android, iOS, Windows, macOS, and Linux —for uninterrupted productivity anywhere.",
+  "sub_dialog__f3__title": "Supports Apple Universal Clipboard",
+  "sub_dialog__f3__subtitle": "Effortlessly transfer clipboard content between your Apple devices with support for Apple's Universal Clipboard.",
+  "sub_dialog__f4__title": "On-Device Storage",
+  "sub_dialog__f4__subtitle": "Keep your data secure with on-device storage, ensuring your clipboard items are always within reach and under your control.",
+  "sub_dialog__f5__title": "Google Drive Integration",
+  "sub_dialog__f5__subtitle": "Securely store files and media on Google Drive, integrating seamlessly with CopyCat Clipboard for enhanced data management.",
+  "sub_dialog__f6__title": "Instant Search",
+  "sub_dialog__f6__subtitle": "Find what you need instantly with powerful instant search capabilities, making retrieval of clipboard items fast and efficient.",
+  "sub_dialog__f7__title": "Syncing Up to the Last 24 Hours",
+  "sub_dialog__f7__subtitle": "Access and sync your clipboard history across all your devices for the past 24 hours. This ensures you never lose important copied items, making your workflow seamless and efficient.",
+  "sub_dialog__f8__title": "Up to 3 Collections",
+  "sub_dialog__f8__subtitle": "Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.",
+  "sub_dialog__f9__title": "Auto-Sync Every 45 Seconds",
+  "sub_dialog__f9__subtitle": "Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.",
+  "sub_dialog__f10__title": "Support End-to-End Encryption",
+  "sub_dialog__f10__subtitle": "E2EE will make everything encrypted for superior privacy.",
+
+  "sub_dialog__text__pro_title": "With PRO ✨",
+  "sub_dialog__text__pro_subtitle": "Everything included in Free +",
+  "sub_dialog__f11__title": "Up to 50 Collections",
+  "sub_dialog__f11__subtitle": "Organize your clipboard items into up to 50 collections for ultimate management.",
+  "sub_dialog__f12__title": "Syncing Up to the Last 30 Days",
+  "sub_dialog__f12__subtitle": "Clipboard history is synced across all your devices for clips created within the last 30 days. This means you can access any clip you copied in the past month, no matter which device you are using.",
+  "sub_dialog__f13__title": "Real Time Synchronization",
+  "sub_dialog__f13__subtitle": "Experience lightning-fast syncing.",
+  "sub_dialog__f14__title": "Faster and Priority Support",
+  "sub_dialog__f14__subtitle": "Get prompt and prioritized support as a PRO user.",
+  "sub_dialog__f15__title": "Early Access to New Features",
+  "sub_dialog__f15__subtitle": "Be the first to try out new features and updates.",
+  "sub_dialog__f16__title": "Custom Exclusion Rules",
+  "sub_dialog__f16__subtitle": "Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.",
+  "sub_dialog__f17__title": "Drag & Drop",
+  "sub_dialog__f17__subtitle": "Seamlessly move items in any direction on your Desktop and Tablet devices.",
+  "sub_dialog__f18__title": "Theming",
+  "sub_dialog__f18__subtitle": "Customize the entire look and feel of the app to match your preferences.",
+  "paywall_dialog__text__month": "month",
+  "paywall_dialog__text__year": "year",
+  "paywall_dialog__text__subscription": "Subscription",
+  "paywall_dialog__text__supported_platform": "To access premium features on Copycat Clipboard, please subscribe through the Play Store or Apple App Store. Your subscription will be synced across all your devices, including Linux and Windows.",
+  "paywall_dialog__text__unlock_pro": "Unlock CopyCat PRO",
+  "paywall_dialog__text__unlock_pro_p1": "Enjoy over 30 days of synced history, over 50 collections, end-to-end encryption, real-time syncing, access to the newest features, and much more.",
+  "paywall_dialog__text__try_again": "Please try again",
+  "paywall_dialog__text__current_plan": "Current Plan",
+  "paywall_dialog__text__expired_plan": "Current Plan • Expired",
+  "paywall_dialog__text__trial_till": "Trial till {till}",
+  "@paywall_dialog__text__trial_till": {
+      "placeholders": {
+          "till": {
+              "type": "DateTime",
+              "format": "yMMMd"
+          }
+      }
+  },
+  "paywall_dialog__text__upgrade": "Upgrade",
+
+  "@@FAB": "Floating Action Button",
+  "fab__create_collection": "Create Collection ( {remaining} Remaining )",
+  "@fab__create_collection": {
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      }
+    }
+  },
+
+  "fab__sync": "Sync",
+  "fab__sync_unavailable": "Sync Unavailable",
+  "fab__sync_up_to_date": "Already up to date.",
+  "fab__sync_failed": "Sync failed : {message}",
+  "@fab__sync_failed": {
+      "placeholders": {
+          "message": {
+              "type": "String"
+          }
+      }
+  },
+
+  "@@LAYOUT": "Layout Widgets",
+  "layout__navbar__clipboard": "Clipboard",
+  "layout__navbar__collections": "Collections",
+  "layout__navbar__settings": "Settings",
+
   "@@WIDGETS": "Custom Widgets",
-  "widget__appbar__action__change_collections": "Change Collection",
-  "widget__appbar__action__change_collections": "Change Collection",
+  "search__tooltip__filter": "Search filters",
+
+  "@@SEARCH_FILTER_DIALOG": "Search filter dialog",
+  "search_filter__text__title": "Filters",
+  "search_filter__button__apply": "Apply",
+  "search_filter__text__from": "From",
+  "search_filter__text__select": "Select",
+  "search_filter__text__to": "To",
+  "search_filter__text__now": "Now",
+  "search_filter__text__including": "Including",
+  "search_filter__chip__text": "Text",
+  "search_filter__chip__url": "URL",
+  "search_filter__chip__media": "Media",
+  "search_filter__chip__docs": "Docs",
+  "search_filter__text__textCategories": "Text Categories",
+  "search_filter__text__exclusive": "( Exclusive )",
+  "search_filter__text_cat__email": "Email",
+  "search_filter__text_cat__phone": "Phone",
+  "search_filter__text_cat__color": "Color",
+  "search_filter__text__sort_by": "Sort By",
+  "search_filter__sort_by__last_mod": "Last Modified",
+  "search_filter__sort_by__created": "Created",
+  "search_filter__sort_by__copy_count": "Copy Count",
+  "search_filter__sort_by__last_copied": "Last Copied",
+  "search_filter__text__sort_order": "Sort Order",
+  "search_filter__sort_ord__asc": "Asc",
+  "search_filter__sort_ord__desc": "Desc",
+
   "@@LOGIN": "Login Screen",
   "login__local_signin__tooltip": "No syncing. All data stays on your device.",
   "login__local_signin__btn__label": "Use Locally",
@@ -247,9 +370,7 @@
     "placeholder": {
       "time": {
         "type": "DateTime",
-        "format": "yMMMd",
-        "example": "11/10/2021",
-        "description": "Balance date"
+        "format": "yMMMd"
       }
     }
   },

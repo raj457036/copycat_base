@@ -45,6 +45,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get app__change => 'Change';
 
   @override
+  String get app__confirm => 'Confirm';
+
+  @override
   String get app__action_required => 'Action Required';
 
   @override
@@ -162,7 +165,298 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dialog__button__e2e_import_key => 'Import';
 
   @override
-  String get widget__appbar__action__change_collections => 'Change Collection';
+  String get dialog__text__inconsistent_time__title => 'Time Sync Warning';
+
+  @override
+  String get dialog__text__inconsistent_time__content =>
+      'Inconsistent Device Time Detected\n\nTo ensure accurate clipboard syncing, please check and correct your device\'s time settings.\n\nInconsistent time settings may cause synchronization issues.';
+
+  @override
+  String get dialog__button__try_again => 'Check Again';
+
+  @override
+  String get dialog__record_keys__title => 'Record Keyboard Shortcut';
+
+  @override
+  String get dialog__record_keys__subtitle =>
+      'Type your shortcut using your keyboard and click ';
+
+  @override
+  String get sub_dialog__text__included => 'Included';
+
+  @override
+  String get sub_dialog__f1__title => 'Unlimited Clipboard Items';
+
+  @override
+  String get sub_dialog__f1__subtitle =>
+      'Never run out of space with unlimited clipboard items, ensuring you always have access to your most recent copies.';
+
+  @override
+  String get sub_dialog__f2__title => 'Support all major platforms';
+
+  @override
+  String get sub_dialog__f2__subtitle =>
+      'Seamlessly sync across all major platforms—Android, iOS, Windows, macOS, and Linux —for uninterrupted productivity anywhere.';
+
+  @override
+  String get sub_dialog__f3__title => 'Supports Apple Universal Clipboard';
+
+  @override
+  String get sub_dialog__f3__subtitle =>
+      'Effortlessly transfer clipboard content between your Apple devices with support for Apple\'s Universal Clipboard.';
+
+  @override
+  String get sub_dialog__f4__title => 'On-Device Storage';
+
+  @override
+  String get sub_dialog__f4__subtitle =>
+      'Keep your data secure with on-device storage, ensuring your clipboard items are always within reach and under your control.';
+
+  @override
+  String get sub_dialog__f5__title => 'Google Drive Integration';
+
+  @override
+  String get sub_dialog__f5__subtitle =>
+      'Securely store files and media on Google Drive, integrating seamlessly with CopyCat Clipboard for enhanced data management.';
+
+  @override
+  String get sub_dialog__f6__title => 'Instant Search';
+
+  @override
+  String get sub_dialog__f6__subtitle =>
+      'Find what you need instantly with powerful instant search capabilities, making retrieval of clipboard items fast and efficient.';
+
+  @override
+  String get sub_dialog__f7__title => 'Syncing Up to the Last 24 Hours';
+
+  @override
+  String get sub_dialog__f7__subtitle =>
+      'Access and sync your clipboard history across all your devices for the past 24 hours. This ensures you never lose important copied items, making your workflow seamless and efficient.';
+
+  @override
+  String get sub_dialog__f8__title => 'Up to 3 Collections';
+
+  @override
+  String get sub_dialog__f8__subtitle =>
+      'Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.';
+
+  @override
+  String get sub_dialog__f9__title => 'Auto-Sync Every 45 Seconds';
+
+  @override
+  String get sub_dialog__f9__subtitle =>
+      'Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.';
+
+  @override
+  String get sub_dialog__f10__title => 'Support End-to-End Encryption';
+
+  @override
+  String get sub_dialog__f10__subtitle =>
+      'E2EE will make everything encrypted for superior privacy.';
+
+  @override
+  String get sub_dialog__text__pro_title => 'With PRO ✨';
+
+  @override
+  String get sub_dialog__text__pro_subtitle => 'Everything included in Free +';
+
+  @override
+  String get sub_dialog__f11__title => 'Up to 50 Collections';
+
+  @override
+  String get sub_dialog__f11__subtitle =>
+      'Organize your clipboard items into up to 50 collections for ultimate management.';
+
+  @override
+  String get sub_dialog__f12__title => 'Syncing Up to the Last 30 Days';
+
+  @override
+  String get sub_dialog__f12__subtitle =>
+      'Clipboard history is synced across all your devices for clips created within the last 30 days. This means you can access any clip you copied in the past month, no matter which device you are using.';
+
+  @override
+  String get sub_dialog__f13__title => 'Real Time Synchronization';
+
+  @override
+  String get sub_dialog__f13__subtitle => 'Experience lightning-fast syncing.';
+
+  @override
+  String get sub_dialog__f14__title => 'Faster and Priority Support';
+
+  @override
+  String get sub_dialog__f14__subtitle =>
+      'Get prompt and prioritized support as a PRO user.';
+
+  @override
+  String get sub_dialog__f15__title => 'Early Access to New Features';
+
+  @override
+  String get sub_dialog__f15__subtitle =>
+      'Be the first to try out new features and updates.';
+
+  @override
+  String get sub_dialog__f16__title => 'Custom Exclusion Rules';
+
+  @override
+  String get sub_dialog__f16__subtitle =>
+      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+
+  @override
+  String get sub_dialog__f17__title => 'Drag & Drop';
+
+  @override
+  String get sub_dialog__f17__subtitle =>
+      'Seamlessly move items in any direction on your Desktop and Tablet devices.';
+
+  @override
+  String get sub_dialog__f18__title => 'Theming';
+
+  @override
+  String get sub_dialog__f18__subtitle =>
+      'Customize the entire look and feel of the app to match your preferences.';
+
+  @override
+  String get paywall_dialog__text__month => 'month';
+
+  @override
+  String get paywall_dialog__text__year => 'year';
+
+  @override
+  String get paywall_dialog__text__subscription => 'Subscription';
+
+  @override
+  String get paywall_dialog__text__supported_platform =>
+      'To access premium features on Copycat Clipboard, please subscribe through the Play Store or Apple App Store. Your subscription will be synced across all your devices, including Linux and Windows.';
+
+  @override
+  String get paywall_dialog__text__unlock_pro => 'Unlock CopyCat PRO';
+
+  @override
+  String get paywall_dialog__text__unlock_pro_p1 =>
+      'Enjoy over 30 days of synced history, over 50 collections, end-to-end encryption, real-time syncing, access to the newest features, and much more.';
+
+  @override
+  String get paywall_dialog__text__try_again => 'Please try again';
+
+  @override
+  String get paywall_dialog__text__current_plan => 'Current Plan';
+
+  @override
+  String get paywall_dialog__text__expired_plan => 'Current Plan • Expired';
+
+  @override
+  String paywall_dialog__text__trial_till({required DateTime till}) {
+    final intl.DateFormat tillDateFormat = intl.DateFormat.yMMMd(localeName);
+    final String tillString = tillDateFormat.format(till);
+
+    return 'Trial till $tillString';
+  }
+
+  @override
+  String get paywall_dialog__text__upgrade => 'Upgrade';
+
+  @override
+  String fab__create_collection({required String remaining}) {
+    return 'Create Collection ( $remaining Remaining )';
+  }
+
+  @override
+  String get fab__sync => 'Sync';
+
+  @override
+  String get fab__sync_unavailable => 'Sync Unavailable';
+
+  @override
+  String get fab__sync_up_to_date => 'Already up to date.';
+
+  @override
+  String fab__sync_failed({required String message}) {
+    return 'Sync failed : $message';
+  }
+
+  @override
+  String get layout__navbar__clipboard => 'Clipboard';
+
+  @override
+  String get layout__navbar__collections => 'Collections';
+
+  @override
+  String get layout__navbar__settings => 'Settings';
+
+  @override
+  String get search__tooltip__filter => 'Search filters';
+
+  @override
+  String get search_filter__text__title => 'Filters';
+
+  @override
+  String get search_filter__button__apply => 'Apply';
+
+  @override
+  String get search_filter__text__from => 'From';
+
+  @override
+  String get search_filter__text__select => 'Select';
+
+  @override
+  String get search_filter__text__to => 'To';
+
+  @override
+  String get search_filter__text__now => 'Now';
+
+  @override
+  String get search_filter__text__including => 'Including';
+
+  @override
+  String get search_filter__chip__text => 'Text';
+
+  @override
+  String get search_filter__chip__url => 'URL';
+
+  @override
+  String get search_filter__chip__media => 'Media';
+
+  @override
+  String get search_filter__chip__docs => 'Docs';
+
+  @override
+  String get search_filter__text__textCategories => 'Text Categories';
+
+  @override
+  String get search_filter__text__exclusive => '( Exclusive )';
+
+  @override
+  String get search_filter__text_cat__email => 'Email';
+
+  @override
+  String get search_filter__text_cat__phone => 'Phone';
+
+  @override
+  String get search_filter__text_cat__color => 'Color';
+
+  @override
+  String get search_filter__text__sort_by => 'Sort By';
+
+  @override
+  String get search_filter__sort_by__last_mod => 'Last Modified';
+
+  @override
+  String get search_filter__sort_by__created => 'Created';
+
+  @override
+  String get search_filter__sort_by__copy_count => 'Copy Count';
+
+  @override
+  String get search_filter__sort_by__last_copied => 'Last Copied';
+
+  @override
+  String get search_filter__text__sort_order => 'Sort Order';
+
+  @override
+  String get search_filter__sort_ord__asc => 'Asc';
+
+  @override
+  String get search_filter__sort_ord__desc => 'Desc';
 
   @override
   String get login__local_signin__tooltip =>

@@ -176,6 +176,12 @@ abstract class AppLocalizations {
   /// **'Change'**
   String get app__change;
 
+  /// No description provided for @app__confirm.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Confirm'**
+  String get app__confirm;
+
   /// No description provided for @app__action_required.
   ///
   /// In en_US, this message translates to:
@@ -380,11 +386,533 @@ abstract class AppLocalizations {
   /// **'Import'**
   String get dialog__button__e2e_import_key;
 
-  /// No description provided for @widget__appbar__action__change_collections.
+  /// No description provided for @dialog__text__inconsistent_time__title.
   ///
   /// In en_US, this message translates to:
-  /// **'Change Collection'**
-  String get widget__appbar__action__change_collections;
+  /// **'Time Sync Warning'**
+  String get dialog__text__inconsistent_time__title;
+
+  /// No description provided for @dialog__text__inconsistent_time__content.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Inconsistent Device Time Detected\n\nTo ensure accurate clipboard syncing, please check and correct your device\'s time settings.\n\nInconsistent time settings may cause synchronization issues.'**
+  String get dialog__text__inconsistent_time__content;
+
+  /// No description provided for @dialog__button__try_again.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Check Again'**
+  String get dialog__button__try_again;
+
+  /// No description provided for @dialog__record_keys__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Record Keyboard Shortcut'**
+  String get dialog__record_keys__title;
+
+  /// No description provided for @dialog__record_keys__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Type your shortcut using your keyboard and click '**
+  String get dialog__record_keys__subtitle;
+
+  /// No description provided for @sub_dialog__text__included.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Included'**
+  String get sub_dialog__text__included;
+
+  /// No description provided for @sub_dialog__f1__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Unlimited Clipboard Items'**
+  String get sub_dialog__f1__title;
+
+  /// No description provided for @sub_dialog__f1__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Never run out of space with unlimited clipboard items, ensuring you always have access to your most recent copies.'**
+  String get sub_dialog__f1__subtitle;
+
+  /// No description provided for @sub_dialog__f2__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Support all major platforms'**
+  String get sub_dialog__f2__title;
+
+  /// No description provided for @sub_dialog__f2__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Seamlessly sync across all major platforms—Android, iOS, Windows, macOS, and Linux —for uninterrupted productivity anywhere.'**
+  String get sub_dialog__f2__subtitle;
+
+  /// No description provided for @sub_dialog__f3__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Supports Apple Universal Clipboard'**
+  String get sub_dialog__f3__title;
+
+  /// No description provided for @sub_dialog__f3__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Effortlessly transfer clipboard content between your Apple devices with support for Apple\'s Universal Clipboard.'**
+  String get sub_dialog__f3__subtitle;
+
+  /// No description provided for @sub_dialog__f4__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'On-Device Storage'**
+  String get sub_dialog__f4__title;
+
+  /// No description provided for @sub_dialog__f4__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Keep your data secure with on-device storage, ensuring your clipboard items are always within reach and under your control.'**
+  String get sub_dialog__f4__subtitle;
+
+  /// No description provided for @sub_dialog__f5__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Google Drive Integration'**
+  String get sub_dialog__f5__title;
+
+  /// No description provided for @sub_dialog__f5__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Securely store files and media on Google Drive, integrating seamlessly with CopyCat Clipboard for enhanced data management.'**
+  String get sub_dialog__f5__subtitle;
+
+  /// No description provided for @sub_dialog__f6__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Instant Search'**
+  String get sub_dialog__f6__title;
+
+  /// No description provided for @sub_dialog__f6__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Find what you need instantly with powerful instant search capabilities, making retrieval of clipboard items fast and efficient.'**
+  String get sub_dialog__f6__subtitle;
+
+  /// No description provided for @sub_dialog__f7__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Syncing Up to the Last 24 Hours'**
+  String get sub_dialog__f7__title;
+
+  /// No description provided for @sub_dialog__f7__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Access and sync your clipboard history across all your devices for the past 24 hours. This ensures you never lose important copied items, making your workflow seamless and efficient.'**
+  String get sub_dialog__f7__subtitle;
+
+  /// No description provided for @sub_dialog__f8__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Up to 3 Collections'**
+  String get sub_dialog__f8__title;
+
+  /// No description provided for @sub_dialog__f8__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.'**
+  String get sub_dialog__f8__subtitle;
+
+  /// No description provided for @sub_dialog__f9__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Auto-Sync Every 45 Seconds'**
+  String get sub_dialog__f9__title;
+
+  /// No description provided for @sub_dialog__f9__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.'**
+  String get sub_dialog__f9__subtitle;
+
+  /// No description provided for @sub_dialog__f10__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Support End-to-End Encryption'**
+  String get sub_dialog__f10__title;
+
+  /// No description provided for @sub_dialog__f10__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'E2EE will make everything encrypted for superior privacy.'**
+  String get sub_dialog__f10__subtitle;
+
+  /// No description provided for @sub_dialog__text__pro_title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'With PRO ✨'**
+  String get sub_dialog__text__pro_title;
+
+  /// No description provided for @sub_dialog__text__pro_subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Everything included in Free +'**
+  String get sub_dialog__text__pro_subtitle;
+
+  /// No description provided for @sub_dialog__f11__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Up to 50 Collections'**
+  String get sub_dialog__f11__title;
+
+  /// No description provided for @sub_dialog__f11__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Organize your clipboard items into up to 50 collections for ultimate management.'**
+  String get sub_dialog__f11__subtitle;
+
+  /// No description provided for @sub_dialog__f12__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Syncing Up to the Last 30 Days'**
+  String get sub_dialog__f12__title;
+
+  /// No description provided for @sub_dialog__f12__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Clipboard history is synced across all your devices for clips created within the last 30 days. This means you can access any clip you copied in the past month, no matter which device you are using.'**
+  String get sub_dialog__f12__subtitle;
+
+  /// No description provided for @sub_dialog__f13__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Real Time Synchronization'**
+  String get sub_dialog__f13__title;
+
+  /// No description provided for @sub_dialog__f13__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Experience lightning-fast syncing.'**
+  String get sub_dialog__f13__subtitle;
+
+  /// No description provided for @sub_dialog__f14__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Faster and Priority Support'**
+  String get sub_dialog__f14__title;
+
+  /// No description provided for @sub_dialog__f14__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Get prompt and prioritized support as a PRO user.'**
+  String get sub_dialog__f14__subtitle;
+
+  /// No description provided for @sub_dialog__f15__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Early Access to New Features'**
+  String get sub_dialog__f15__title;
+
+  /// No description provided for @sub_dialog__f15__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Be the first to try out new features and updates.'**
+  String get sub_dialog__f15__subtitle;
+
+  /// No description provided for @sub_dialog__f16__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Custom Exclusion Rules'**
+  String get sub_dialog__f16__title;
+
+  /// No description provided for @sub_dialog__f16__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.'**
+  String get sub_dialog__f16__subtitle;
+
+  /// No description provided for @sub_dialog__f17__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Drag & Drop'**
+  String get sub_dialog__f17__title;
+
+  /// No description provided for @sub_dialog__f17__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Seamlessly move items in any direction on your Desktop and Tablet devices.'**
+  String get sub_dialog__f17__subtitle;
+
+  /// No description provided for @sub_dialog__f18__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Theming'**
+  String get sub_dialog__f18__title;
+
+  /// No description provided for @sub_dialog__f18__subtitle.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Customize the entire look and feel of the app to match your preferences.'**
+  String get sub_dialog__f18__subtitle;
+
+  /// No description provided for @paywall_dialog__text__month.
+  ///
+  /// In en_US, this message translates to:
+  /// **'month'**
+  String get paywall_dialog__text__month;
+
+  /// No description provided for @paywall_dialog__text__year.
+  ///
+  /// In en_US, this message translates to:
+  /// **'year'**
+  String get paywall_dialog__text__year;
+
+  /// No description provided for @paywall_dialog__text__subscription.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Subscription'**
+  String get paywall_dialog__text__subscription;
+
+  /// No description provided for @paywall_dialog__text__supported_platform.
+  ///
+  /// In en_US, this message translates to:
+  /// **'To access premium features on Copycat Clipboard, please subscribe through the Play Store or Apple App Store. Your subscription will be synced across all your devices, including Linux and Windows.'**
+  String get paywall_dialog__text__supported_platform;
+
+  /// No description provided for @paywall_dialog__text__unlock_pro.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Unlock CopyCat PRO'**
+  String get paywall_dialog__text__unlock_pro;
+
+  /// No description provided for @paywall_dialog__text__unlock_pro_p1.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Enjoy over 30 days of synced history, over 50 collections, end-to-end encryption, real-time syncing, access to the newest features, and much more.'**
+  String get paywall_dialog__text__unlock_pro_p1;
+
+  /// No description provided for @paywall_dialog__text__try_again.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Please try again'**
+  String get paywall_dialog__text__try_again;
+
+  /// No description provided for @paywall_dialog__text__current_plan.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Current Plan'**
+  String get paywall_dialog__text__current_plan;
+
+  /// No description provided for @paywall_dialog__text__expired_plan.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Current Plan • Expired'**
+  String get paywall_dialog__text__expired_plan;
+
+  /// No description provided for @paywall_dialog__text__trial_till.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Trial till {till}'**
+  String paywall_dialog__text__trial_till({required DateTime till});
+
+  /// No description provided for @paywall_dialog__text__upgrade.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Upgrade'**
+  String get paywall_dialog__text__upgrade;
+
+  /// No description provided for @fab__create_collection.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Create Collection ( {remaining} Remaining )'**
+  String fab__create_collection({required String remaining});
+
+  /// No description provided for @fab__sync.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync'**
+  String get fab__sync;
+
+  /// No description provided for @fab__sync_unavailable.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync Unavailable'**
+  String get fab__sync_unavailable;
+
+  /// No description provided for @fab__sync_up_to_date.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Already up to date.'**
+  String get fab__sync_up_to_date;
+
+  /// No description provided for @fab__sync_failed.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sync failed : {message}'**
+  String fab__sync_failed({required String message});
+
+  /// No description provided for @layout__navbar__clipboard.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Clipboard'**
+  String get layout__navbar__clipboard;
+
+  /// No description provided for @layout__navbar__collections.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Collections'**
+  String get layout__navbar__collections;
+
+  /// No description provided for @layout__navbar__settings.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Settings'**
+  String get layout__navbar__settings;
+
+  /// No description provided for @search__tooltip__filter.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Search filters'**
+  String get search__tooltip__filter;
+
+  /// No description provided for @search_filter__text__title.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Filters'**
+  String get search_filter__text__title;
+
+  /// No description provided for @search_filter__button__apply.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Apply'**
+  String get search_filter__button__apply;
+
+  /// No description provided for @search_filter__text__from.
+  ///
+  /// In en_US, this message translates to:
+  /// **'From'**
+  String get search_filter__text__from;
+
+  /// No description provided for @search_filter__text__select.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Select'**
+  String get search_filter__text__select;
+
+  /// No description provided for @search_filter__text__to.
+  ///
+  /// In en_US, this message translates to:
+  /// **'To'**
+  String get search_filter__text__to;
+
+  /// No description provided for @search_filter__text__now.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Now'**
+  String get search_filter__text__now;
+
+  /// No description provided for @search_filter__text__including.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Including'**
+  String get search_filter__text__including;
+
+  /// No description provided for @search_filter__chip__text.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Text'**
+  String get search_filter__chip__text;
+
+  /// No description provided for @search_filter__chip__url.
+  ///
+  /// In en_US, this message translates to:
+  /// **'URL'**
+  String get search_filter__chip__url;
+
+  /// No description provided for @search_filter__chip__media.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Media'**
+  String get search_filter__chip__media;
+
+  /// No description provided for @search_filter__chip__docs.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Docs'**
+  String get search_filter__chip__docs;
+
+  /// No description provided for @search_filter__text__textCategories.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Text Categories'**
+  String get search_filter__text__textCategories;
+
+  /// No description provided for @search_filter__text__exclusive.
+  ///
+  /// In en_US, this message translates to:
+  /// **'( Exclusive )'**
+  String get search_filter__text__exclusive;
+
+  /// No description provided for @search_filter__text_cat__email.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Email'**
+  String get search_filter__text_cat__email;
+
+  /// No description provided for @search_filter__text_cat__phone.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Phone'**
+  String get search_filter__text_cat__phone;
+
+  /// No description provided for @search_filter__text_cat__color.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Color'**
+  String get search_filter__text_cat__color;
+
+  /// No description provided for @search_filter__text__sort_by.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sort By'**
+  String get search_filter__text__sort_by;
+
+  /// No description provided for @search_filter__sort_by__last_mod.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Last Modified'**
+  String get search_filter__sort_by__last_mod;
+
+  /// No description provided for @search_filter__sort_by__created.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Created'**
+  String get search_filter__sort_by__created;
+
+  /// No description provided for @search_filter__sort_by__copy_count.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Copy Count'**
+  String get search_filter__sort_by__copy_count;
+
+  /// No description provided for @search_filter__sort_by__last_copied.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Last Copied'**
+  String get search_filter__sort_by__last_copied;
+
+  /// No description provided for @search_filter__text__sort_order.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Sort Order'**
+  String get search_filter__text__sort_order;
+
+  /// No description provided for @search_filter__sort_ord__asc.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Asc'**
+  String get search_filter__sort_ord__asc;
+
+  /// No description provided for @search_filter__sort_ord__desc.
+  ///
+  /// In en_US, this message translates to:
+  /// **'Desc'**
+  String get search_filter__sort_ord__desc;
 
   /// No description provided for @login__local_signin__tooltip.
   ///
