@@ -120,7 +120,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get app__pro_tip => '专业提示';
 
   @override
-  String get app__try_again => 'Try Again';
+  String get app__try_again => '重试';
 
   @override
   String get app__ack__exported => '已导出';
@@ -228,12 +228,11 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String dialog__delete_collection__title({required Object collectionName}) {
-    return 'Delete $collectionName';
+    return '删除 $collectionName';
   }
 
   @override
-  String get dialog__delete_collection__subtitle =>
-      'Are you sure to delete this collection?';
+  String get dialog__delete_collection__subtitle => '确定要删除此收藏夹吗？';
 
   @override
   String get dialog__ack__sub_updated => '订阅已更新';
@@ -800,104 +799,99 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding__button__where_key => '密钥在哪里？';
 
   @override
-  String get onboarding__text__go_home => 'Let\'s go home';
+  String get onboarding__text__go_home => '回家吧';
 
   @override
   String onboarding__restoration__failed({required Object message}) {
-    return 'Restoration failed: $message';
+    return '恢复失败: $message';
   }
 
   @override
   String get onboarding__restoration_warning =>
-      '⚠️ Please keep this screen open during syncing to avoid data corruption or inconsistencies.';
+      '⚠️ 请在同步过程中保持此页面打开，以避免数据损坏或不一致。';
 
   @override
-  String get restore_clips__text__title => 'Restore My Clipboard';
+  String get restore_clips__text__title => '恢复我的剪贴板';
 
   @override
-  String get restore_clips__error__no_backup => 'No clipboard backup found';
+  String get restore_clips__error__no_backup => '未找到剪贴板备份';
 
   @override
   String restore_clips__text__total_count({required num totalCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       totalCount,
       locale: localeName,
-      zero: 'clip',
-      one: 'clip',
-      other: 'clips',
+      zero: '剪贴板',
+      one: '剪贴板',
+      other: '剪贴板',
     );
-    return 'You have approximately $_temp0 to restore.';
+    return '您大约有 $_temp0 需要恢复。';
   }
 
   @override
-  String get restore_clips__sync_disable =>
-      'Syncing is currently disabled. Please enable it to continue.';
+  String get restore_clips__sync_disable => '当前未启用同步。请启用同步以继续。';
 
   @override
-  String get restore_clips__preparing =>
-      'Preparing to restore clips. Please wait...';
+  String get restore_clips__preparing => '正在准备恢复剪贴板，请稍候...';
 
   @override
   String restore_clips__restored({required num syncCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       syncCount,
       locale: localeName,
-      zero: 'clip',
-      one: 'clip',
-      other: 'clips',
+      zero: '剪贴板',
+      one: '剪贴板',
+      other: '剪贴板',
     );
-    return 'Your $_temp0 have been restored successfully.';
+    return '您的 $_temp0 已成功恢复。';
   }
 
   @override
   String restore_clips__restoring(
       {required Object synced, required Object totalCount}) {
-    return 'Restored: $synced of $totalCount clips.';
+    return '已恢复: $synced / $totalCount 个剪贴板。';
   }
 
   @override
-  String get restore_collections__text__title => 'Restore My Collections';
+  String get restore_collections__text__title => '恢复我的收藏夹';
 
   @override
-  String get restore_collections__error__no_backup =>
-      'No collection backup found';
+  String get restore_collections__error__no_backup => '未找到收藏夹备份';
 
   @override
   String restore_collections__text__total_count({required num totalCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       totalCount,
       locale: localeName,
-      zero: 'collection',
-      one: 'collection',
-      other: 'collections',
+      zero: '收藏夹',
+      one: '收藏夹',
+      other: '收藏夹',
     );
-    return 'You have approximately $_temp0 to restore.';
+    return '您大约有 $_temp0 需要恢复。';
   }
 
   @override
-  String get restore_collections__sync_disable =>
-      'Syncing is currently disabled. Please enable it to continue.';
+  String get restore_collections__sync_disable => '当前未启用同步。请启用同步以继续。';
 
   @override
-  String get restore_collections__preparing =>
-      'Preparing to restore collections. Please wait...';
+  String get restore_collections__preparing => '正在准备恢复收藏夹，请稍候...';
 
   @override
   String restore_collections__restored({required num syncCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       syncCount,
       locale: localeName,
-      zero: 'collection',
-      one: 'collection',
-      other: 'collections',
+      zero: '收藏夹',
+      one: '收藏夹',
+      other: '收藏夹',
     );
-    return 'Your $_temp0 have been restored successfully.';
+    return '您的 $_temp0 已成功恢复。';
   }
 
   @override
   String restore_collections__restoring(
       {required Object synced, required Object totalCount}) {
-    return 'Restored: $synced of $totalCount collections.';
+    return '已恢复: $synced / $totalCount 个收藏夹。';
   }
 
   @override

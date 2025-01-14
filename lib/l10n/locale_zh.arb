@@ -45,6 +45,7 @@
     "app__no_collection": "未找到收藏",
     "app__create_collection": "创建收藏",
     "app__pro_tip": "专业提示",
+    "app__try_again": "重试",
     "app__ack__exported": "已导出",
     "app__ack__copied": "已复制",
     "app__ack__pasted": "已粘贴",
@@ -84,6 +85,15 @@
     "dialog__button__try_again": "再次检查",
     "dialog__record_keys__title": "记录键盘快捷键",
     "dialog__record_keys__subtitle": "使用键盘输入您的快捷键并点击 ",
+    "dialog__delete_collection__title": "删除 {collectionName}",
+    "@dialog__delete_collection__title": {
+      "placeholder": {
+        "collectionName": {
+          "type": "String"
+        }
+      }
+    },
+    "dialog__delete_collection__subtitle": "确定要删除此收藏夹吗？",
     "@@APPLY_DIALOG": "应用优惠码对话框",
     "dialog__ack__sub_updated": "订阅已更新",
     "dialog__grant_entitlement__title": "授予权限",
@@ -316,6 +326,78 @@
     "onboarding__button__import_key": "导入密钥",
     "onboarding__button__reset_key": "重置加密",
     "onboarding__button__where_key": "密钥在哪里？",
+    "onboarding__text__go_home": "回家吧",
+    "onboarding__restoration__failed": "恢复失败: {message}",
+    "@onboarding__restoration__failed": {
+      "placeholder": {
+        "message": "String"
+      }
+    },
+    "onboarding__restoration_warning": "⚠️ 请在同步过程中保持此页面打开，以避免数据损坏或不一致。",
+    "@@RESTORE_CLIPS": "恢复剪贴板",
+    "restore_clips__text__title": "恢复我的剪贴板",
+    "restore_clips__error__no_backup": "未找到剪贴板备份",
+    "restore_clips__text__total_count": "您大约有 {totalCount, plural, other{剪贴板} one{剪贴板} zero{剪贴板}} 需要恢复。",
+    "@restore_clips__text__total_count": {
+      "placeholder": {
+        "totalCount": {
+          "type": "int"
+        }
+      }
+    },
+    "restore_clips__sync_disable": "当前未启用同步。请启用同步以继续。",
+    "restore_clips__preparing": "正在准备恢复剪贴板，请稍候...",
+    "restore_clips__restored": "您的 {syncCount, plural, other{剪贴板} one{剪贴板} zero{剪贴板}} 已成功恢复。",
+    "@restore_clips__restored": {
+      "placeholder": {
+        "syncCount": {
+          "type": "int"
+        }
+      }
+    },
+    "restore_clips__restoring": "已恢复: {synced} / {totalCount} 个剪贴板。",
+    "@restore_clips__restoring": {
+      "placeholder": {
+        "synced": {
+          "type": "int"
+        },
+        "totalCount": {
+          "type": "int"
+        }
+      }
+    },
+    "@@RESTORE_COLLECTION": "恢复收藏夹",
+    "restore_collections__text__title": "恢复我的收藏夹",
+    "restore_collections__error__no_backup": "未找到收藏夹备份",
+    "restore_collections__text__total_count": "您大约有 {totalCount, plural, other{收藏夹} one{收藏夹} zero{收藏夹}} 需要恢复。",
+    "@restore_collections__text__total_count": {
+      "placeholder": {
+        "totalCount": {
+          "type": "int"
+        }
+      }
+    },
+    "restore_collections__sync_disable": "当前未启用同步。请启用同步以继续。",
+    "restore_collections__preparing": "正在准备恢复收藏夹，请稍候...",
+    "restore_collections__restored": "您的 {syncCount, plural, other{收藏夹} one{收藏夹} zero{收藏夹}} 已成功恢复。",
+    "@restore_collections__restored": {
+      "placeholder": {
+        "syncCount": {
+          "type": "int"
+        }
+      }
+    },
+    "restore_collections__restoring": "已恢复: {synced} / {totalCount} 个收藏夹。",
+    "@restore_collections__restoring": {
+      "placeholder": {
+        "synced": {
+          "type": "int"
+        },
+        "totalCount": {
+          "type": "int"
+        }
+      }
+    },
     "@@DRIVE_SETUP": "驱动设置界面",
     "drive__snackbar__success": "驱动设置已完成。",
     "drive__text__setting_up": "设置和同步中...",

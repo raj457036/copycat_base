@@ -45,6 +45,7 @@
   "app__no_collection": "Keine Sammlung gefunden",
   "app__create_collection": "Sammlung erstellen",
   "app__pro_tip": "Pro Tipp",
+  "app__try_again": "Erneut versuchen",
   "app__ack__exported": "Exportiert",
   "app__ack__copied": "Kopiert",
   "app__ack__pasted": "Eingefügt",
@@ -87,6 +88,15 @@
 
   "dialog__record_keys__title": "Tastenkombination aufzeichnen",
   "dialog__record_keys__subtitle": "Geben Sie Ihre Tastenkombination über Ihre Tastatur ein und klicken Sie ",
+  "dialog__delete_collection__title": "{collectionName} löschen",
+  "@dialog__delete_collection__title": {
+    "placeholder": {
+      "collectionName": {
+        "type": "String"
+      }
+    }
+  },
+  "dialog__delete_collection__subtitle": "Sind Sie sicher, dass Sie diese Sammlung löschen möchten?",
 
   "@@APPLY_DIALOG": "Gutschein Dialog anwenden",
   "dialog__ack__sub_updated": "Abonnement aktualisiert",
@@ -334,6 +344,78 @@
   "onboarding__button__import_key": "Schlüssel importieren",
   "onboarding__button__reset_key": "Verschlüsselung zurücksetzen",
   "onboarding__button__where_key": "Wo ist der Schlüssel?",
+  "onboarding__text__go_home": "Gehen wir nach Hause",
+  "onboarding__restoration__failed": "Wiederherstellung fehlgeschlagen: {message}",
+  "@onboarding__restoration__failed": {
+    "placeholder": {
+      "message": "String"
+    }
+  },
+  "onboarding__restoration_warning": "⚠️ Bitte lassen Sie diesen Bildschirm während der Synchronisierung geöffnet, um Datenbeschädigung oder Inkonsistenzen zu vermeiden.",
+  "@@RESTORE_CLIPS": "Wiederherstellen von Clips",
+  "restore_clips__text__title": "Mein Zwischenablage wiederherstellen",
+  "restore_clips__error__no_backup": "Kein Zwischenablage-Backup gefunden",
+  "restore_clips__text__total_count": "Sie haben etwa {totalCount} Clip(s), die wiederhergestellt werden müssen.",
+  "@restore_clips__text__total_count": {
+    "placeholder": {
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_clips__sync_disable": "Die Synchronisierung ist derzeit deaktiviert. Bitte aktivieren Sie sie, um fortzufahren.",
+  "restore_clips__preparing": "Vorbereitung der Wiederherstellung der Clips. Bitte warten...",
+  "restore_clips__restored": "Ihre {syncCount} Clip(s) wurden erfolgreich wiederhergestellt.",
+  "@restore_clips__restored": {
+    "placeholder": {
+      "syncCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_clips__restoring": "Wiederhergestellt: {synced} von {totalCount} Clips.",
+  "@restore_clips__restoring": {
+    "placeholder": {
+      "synced": {
+        "type": "int"
+      },
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "@@RESTORE_COLLECTION": "Wiederherstellen von Sammlungen",
+  "restore_collections__text__title": "Meine Sammlungen wiederherstellen",
+  "restore_collections__error__no_backup": "Kein Sammlungs-Backup gefunden",
+  "restore_collections__text__total_count": "Sie haben etwa {totalCount} Sammlung(en), die wiederhergestellt werden müssen.",
+  "@restore_collections__text__total_count": {
+    "placeholder": {
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_collections__sync_disable": "Die Synchronisierung ist derzeit deaktiviert. Bitte aktivieren Sie sie, um fortzufahren.",
+  "restore_collections__preparing": "Vorbereitung der Wiederherstellung der Sammlungen. Bitte warten...",
+  "restore_collections__restored": "Ihre {syncCount} Sammlung(en) wurden erfolgreich wiederhergestellt.",
+  "@restore_collections__restored": {
+    "placeholder": {
+      "syncCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_collections__restoring": "Wiederhergestellt: {synced} von {totalCount} Sammlungen.",
+  "@restore_collections__restoring": {
+    "placeholder": {
+      "synced": {
+        "type": "int"
+      },
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
   "@@DRIVE_SETUP": "Laufwerksetup-Bildschirm",
   "drive__snackbar__success": "Laufwerksetup ist nun abgeschlossen.",
   "drive__text__setting_up": "Einrichten und Synchronisieren...",

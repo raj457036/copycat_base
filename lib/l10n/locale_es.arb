@@ -45,6 +45,7 @@
   "app__no_collection": "No Se Encontró Colección",
   "app__create_collection": "Crear Colección",
   "app__pro_tip": "Consejo Profesional",
+  "app__try_again": "Intentar de nuevo",
   "app__ack__exported": "Exportado",
   "app__ack__copied": "Copiado",
   "app__ack__pasted": "Pegado",
@@ -86,6 +87,15 @@
 
   "dialog__record_keys__title": "Registrar Atajo de Teclado",
   "dialog__record_keys__subtitle": "Escribe tu atajo usando el teclado y haz clic en ",
+  "dialog__delete_collection__title": "Eliminar {collectionName}",
+  "@dialog__delete_collection__title": {
+    "placeholder": {
+      "collectionName": {
+        "type": "String"
+      }
+    }
+  },
+  "dialog__delete_collection__subtitle": "¿Estás seguro de eliminar esta colección?",
 
   "@@APPLY_DIALOG": "Diálogo de Aplicar Cupón",
   "dialog__ack__sub_updated": "Suscripción Actualizada",
@@ -333,6 +343,78 @@
   "onboarding__button__import_key": "Importar Clave",
   "onboarding__button__reset_key": "Restablecer Encriptación",
   "onboarding__button__where_key": "¿Dónde está la clave?",
+  "onboarding__text__go_home": "Vamos a casa",
+  "onboarding__restoration__failed": "La restauración falló: {message}",
+  "@onboarding__restoration__failed": {
+    "placeholder": {
+      "message": "String"
+    }
+  },
+  "onboarding__restoration_warning": "⚠️ Mantén esta pantalla abierta durante la sincronización para evitar corrupción de datos o inconsistencias.",
+  "@@RESTORE_CLIPS": "Restaurar Clips",
+  "restore_clips__text__title": "Restaurar mi portapapeles",
+  "restore_clips__error__no_backup": "No se encontró una copia de seguridad del portapapeles",
+  "restore_clips__text__total_count": "Tienes aproximadamente {totalCount} clip(s) para restaurar.",
+  "@restore_clips__text__total_count": {
+    "placeholder": {
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_clips__sync_disable": "La sincronización está desactivada. Actívala para continuar.",
+  "restore_clips__preparing": "Preparando para restaurar los clips. Por favor espera...",
+  "restore_clips__restored": "Tus {syncCount} clip(s) se han restaurado con éxito.",
+  "@restore_clips__restored": {
+    "placeholder": {
+      "syncCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_clips__restoring": "Restaurado: {synced} de {totalCount} clips.",
+  "@restore_clips__restoring": {
+    "placeholder": {
+      "synced": {
+        "type": "int"
+      },
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "@@RESTORE_COLLECTION": "Restaurar Colecciones",
+  "restore_collections__text__title": "Restaurar mis colecciones",
+  "restore_collections__error__no_backup": "No se encontró una copia de seguridad de colecciones",
+  "restore_collections__text__total_count": "Tienes aproximadamente {totalCount} colección(es) para restaurar.",
+  "@restore_collections__text__total_count": {
+    "placeholder": {
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_collections__sync_disable": "La sincronización está desactivada. Actívala para continuar.",
+  "restore_collections__preparing": "Preparando para restaurar las colecciones. Por favor espera...",
+  "restore_collections__restored": "Tus {syncCount} colección(es) se han restaurado con éxito.",
+  "@restore_collections__restored": {
+    "placeholder": {
+      "syncCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_collections__restoring": "Restaurado: {synced} de {totalCount} colecciones.",
+  "@restore_collections__restoring": {
+    "placeholder": {
+      "synced": {
+        "type": "int"
+      },
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
   "@@DRIVE_SETUP": "Pantalla de Configuración de Drive",
   "drive__snackbar__success": "La configuración de Drive está ahora completa.",
   "drive__text__setting_up": "Configurando y sincronizando...",

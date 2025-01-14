@@ -121,7 +121,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get app__pro_tip => 'Conseil pro';
 
   @override
-  String get app__try_again => 'Try Again';
+  String get app__try_again => 'Essayer à nouveau';
 
   @override
   String get app__ack__exported => 'Exporté';
@@ -237,12 +237,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String dialog__delete_collection__title({required Object collectionName}) {
-    return 'Delete $collectionName';
+    return 'Supprimer $collectionName';
   }
 
   @override
   String get dialog__delete_collection__subtitle =>
-      'Are you sure to delete this collection?';
+      'Êtes-vous sûr de vouloir supprimer cette collection ?';
 
   @override
   String get dialog__ack__sub_updated => 'Abonnement mis à jour';
@@ -857,104 +857,77 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding__button__where_key => 'Où est la clé?';
 
   @override
-  String get onboarding__text__go_home => 'Let\'s go home';
+  String get onboarding__text__go_home => 'Allons à la maison';
 
   @override
   String onboarding__restoration__failed({required Object message}) {
-    return 'Restoration failed: $message';
+    return 'Échec de la restauration : $message';
   }
 
   @override
   String get onboarding__restoration_warning =>
-      '⚠️ Please keep this screen open during syncing to avoid data corruption or inconsistencies.';
+      '⚠️ Veuillez garder cet écran ouvert pendant la synchronisation pour éviter la corruption des données ou des incohérences.';
 
   @override
-  String get restore_clips__text__title => 'Restore My Clipboard';
+  String get restore_clips__text__title => 'Restaurer mon presse-papiers';
 
   @override
-  String get restore_clips__error__no_backup => 'No clipboard backup found';
+  String get restore_clips__error__no_backup =>
+      'Aucune sauvegarde du presse-papiers trouvée';
 
   @override
   String restore_clips__text__total_count({required num totalCount}) {
-    String _temp0 = intl.Intl.pluralLogic(
-      totalCount,
-      locale: localeName,
-      zero: 'clip',
-      one: 'clip',
-      other: 'clips',
-    );
-    return 'You have approximately $_temp0 to restore.';
+    return 'Vous avez environ $totalCount clip(s) à restaurer.';
   }
 
   @override
   String get restore_clips__sync_disable =>
-      'Syncing is currently disabled. Please enable it to continue.';
+      'La synchronisation est actuellement désactivée. Veuillez l\'activer pour continuer.';
 
   @override
   String get restore_clips__preparing =>
-      'Preparing to restore clips. Please wait...';
+      'Préparation de la restauration des clips. Veuillez patienter...';
 
   @override
   String restore_clips__restored({required num syncCount}) {
-    String _temp0 = intl.Intl.pluralLogic(
-      syncCount,
-      locale: localeName,
-      zero: 'clip',
-      one: 'clip',
-      other: 'clips',
-    );
-    return 'Your $_temp0 have been restored successfully.';
+    return 'Vos $syncCount clip(s) ont été restaurés avec succès.';
   }
 
   @override
   String restore_clips__restoring(
       {required Object synced, required Object totalCount}) {
-    return 'Restored: $synced of $totalCount clips.';
+    return 'Restauré : $synced de $totalCount clips.';
   }
 
   @override
-  String get restore_collections__text__title => 'Restore My Collections';
+  String get restore_collections__text__title => 'Restaurer mes collections';
 
   @override
   String get restore_collections__error__no_backup =>
-      'No collection backup found';
+      'Aucune sauvegarde de collections trouvée';
 
   @override
   String restore_collections__text__total_count({required num totalCount}) {
-    String _temp0 = intl.Intl.pluralLogic(
-      totalCount,
-      locale: localeName,
-      zero: 'collection',
-      one: 'collection',
-      other: 'collections',
-    );
-    return 'You have approximately $_temp0 to restore.';
+    return 'Vous avez environ $totalCount collection(s) à restaurer.';
   }
 
   @override
   String get restore_collections__sync_disable =>
-      'Syncing is currently disabled. Please enable it to continue.';
+      'La synchronisation est actuellement désactivée. Veuillez l\'activer pour continuer.';
 
   @override
   String get restore_collections__preparing =>
-      'Preparing to restore collections. Please wait...';
+      'Préparation de la restauration des collections. Veuillez patienter...';
 
   @override
   String restore_collections__restored({required num syncCount}) {
-    String _temp0 = intl.Intl.pluralLogic(
-      syncCount,
-      locale: localeName,
-      zero: 'collection',
-      one: 'collection',
-      other: 'collections',
-    );
-    return 'Your $_temp0 have been restored successfully.';
+    return 'Vos $syncCount collection(s) ont été restaurées avec succès.';
   }
 
   @override
   String restore_collections__restoring(
       {required Object synced, required Object totalCount}) {
-    return 'Restored: $synced of $totalCount collections.';
+    return 'Restauré : $synced de $totalCount collections.';
   }
 
   @override
