@@ -121,6 +121,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get app__pro_tip => 'Pro Tip';
 
   @override
+  String get app__try_again => 'Try Again';
+
+  @override
   String get app__ack__exported => 'Exported';
 
   @override
@@ -228,6 +231,15 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get dialog__record_keys__subtitle =>
       'Type your shortcut using your keyboard and click ';
+
+  @override
+  String dialog__delete_collection__title({required Object collectionName}) {
+    return 'Delete $collectionName';
+  }
+
+  @override
+  String get dialog__delete_collection__subtitle =>
+      'Are you sure to delete this collection?';
 
   @override
   String get dialog__ack__sub_updated => 'Subscription Updated';
@@ -824,6 +836,107 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboarding__button__where_key => 'Where is the key?';
+
+  @override
+  String get onboarding__text__go_home => 'Let\'s go home';
+
+  @override
+  String onboarding__restoration__failed({required Object message}) {
+    return 'Restoration failed: $message';
+  }
+
+  @override
+  String get onboarding__restoration_warning =>
+      '⚠️ Please keep this screen open during syncing to avoid data corruption or inconsistencies.';
+
+  @override
+  String get restore_clips__text__title => 'Restore My Clipboard';
+
+  @override
+  String get restore_clips__error__no_backup => 'No clipboard backup found';
+
+  @override
+  String restore_clips__text__total_count({required num totalCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      totalCount,
+      locale: localeName,
+      zero: 'clip',
+      one: 'clip',
+      other: 'clips',
+    );
+    return 'You have approximately $_temp0 to restore.';
+  }
+
+  @override
+  String get restore_clips__sync_disable =>
+      'Syncing is currently disabled. Please enable it to continue.';
+
+  @override
+  String get restore_clips__preparing =>
+      'Preparing to restore clips. Please wait...';
+
+  @override
+  String restore_clips__restored({required num syncCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      syncCount,
+      locale: localeName,
+      zero: 'clip',
+      one: 'clip',
+      other: 'clips',
+    );
+    return 'Your $_temp0 have been restored successfully.';
+  }
+
+  @override
+  String restore_clips__restoring(
+      {required Object synced, required Object totalCount}) {
+    return 'Restored: $synced of $totalCount clips.';
+  }
+
+  @override
+  String get restore_collections__text__title => 'Restore My Collections';
+
+  @override
+  String get restore_collections__error__no_backup =>
+      'No collection backup found';
+
+  @override
+  String restore_collections__text__total_count({required num totalCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      totalCount,
+      locale: localeName,
+      zero: 'collection',
+      one: 'collection',
+      other: 'collections',
+    );
+    return 'You have approximately $_temp0 to restore.';
+  }
+
+  @override
+  String get restore_collections__sync_disable =>
+      'Syncing is currently disabled. Please enable it to continue.';
+
+  @override
+  String get restore_collections__preparing =>
+      'Preparing to restore collections. Please wait...';
+
+  @override
+  String restore_collections__restored({required num syncCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      syncCount,
+      locale: localeName,
+      zero: 'collection',
+      one: 'collection',
+      other: 'collections',
+    );
+    return 'Your $_temp0 have been restored successfully.';
+  }
+
+  @override
+  String restore_collections__restoring(
+      {required Object synced, required Object totalCount}) {
+    return 'Restored: $synced of $totalCount collections.';
+  }
 
   @override
   String get drive__snackbar__success => 'Drive Setup is Now Complete.';

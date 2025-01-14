@@ -4,7 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_de.dart' deferred as app_localizations_de;
 import 'app_localizations_en.dart' deferred as app_localizations_en;
+import 'app_localizations_es.dart' deferred as app_localizations_es;
+import 'app_localizations_fr.dart' deferred as app_localizations_fr;
+import 'app_localizations_zh.dart' deferred as app_localizations_zh;
 
 // ignore_for_file: type=lint
 
@@ -91,7 +95,13 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('de'),
+    Locale('en'),
+    Locale('es'),
+    Locale('fr'),
+    Locale('zh')
+  ];
 
   /// App name: CopyCat Clipboard
   ///
@@ -315,6 +325,12 @@ abstract class AppLocalizations {
   /// **'Pro Tip'**
   String get app__pro_tip;
 
+  /// No description provided for @app__try_again.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get app__try_again;
+
   /// No description provided for @app__ack__exported.
   ///
   /// In en, this message translates to:
@@ -500,6 +516,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Type your shortcut using your keyboard and click '**
   String get dialog__record_keys__subtitle;
+
+  /// No description provided for @dialog__delete_collection__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {collectionName}'**
+  String dialog__delete_collection__title({required Object collectionName});
+
+  /// No description provided for @dialog__delete_collection__subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure to delete this collection?'**
+  String get dialog__delete_collection__subtitle;
 
   /// No description provided for @dialog__ack__sub_updated.
   ///
@@ -1563,6 +1591,110 @@ abstract class AppLocalizations {
   /// **'Where is the key?'**
   String get onboarding__button__where_key;
 
+  /// No description provided for @onboarding__text__go_home.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s go home'**
+  String get onboarding__text__go_home;
+
+  /// No description provided for @onboarding__restoration__failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Restoration failed: {message}'**
+  String onboarding__restoration__failed({required Object message});
+
+  /// No description provided for @onboarding__restoration_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Please keep this screen open during syncing to avoid data corruption or inconsistencies.'**
+  String get onboarding__restoration_warning;
+
+  /// No description provided for @restore_clips__text__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore My Clipboard'**
+  String get restore_clips__text__title;
+
+  /// No description provided for @restore_clips__error__no_backup.
+  ///
+  /// In en, this message translates to:
+  /// **'No clipboard backup found'**
+  String get restore_clips__error__no_backup;
+
+  /// No description provided for @restore_clips__text__total_count.
+  ///
+  /// In en, this message translates to:
+  /// **'You have approximately {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.'**
+  String restore_clips__text__total_count({required num totalCount});
+
+  /// No description provided for @restore_clips__sync_disable.
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing is currently disabled. Please enable it to continue.'**
+  String get restore_clips__sync_disable;
+
+  /// No description provided for @restore_clips__preparing.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing to restore clips. Please wait...'**
+  String get restore_clips__preparing;
+
+  /// No description provided for @restore_clips__restored.
+  ///
+  /// In en, this message translates to:
+  /// **'Your {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.'**
+  String restore_clips__restored({required num syncCount});
+
+  /// No description provided for @restore_clips__restoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored: {synced} of {totalCount} clips.'**
+  String restore_clips__restoring(
+      {required Object synced, required Object totalCount});
+
+  /// No description provided for @restore_collections__text__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore My Collections'**
+  String get restore_collections__text__title;
+
+  /// No description provided for @restore_collections__error__no_backup.
+  ///
+  /// In en, this message translates to:
+  /// **'No collection backup found'**
+  String get restore_collections__error__no_backup;
+
+  /// No description provided for @restore_collections__text__total_count.
+  ///
+  /// In en, this message translates to:
+  /// **'You have approximately {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.'**
+  String restore_collections__text__total_count({required num totalCount});
+
+  /// No description provided for @restore_collections__sync_disable.
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing is currently disabled. Please enable it to continue.'**
+  String get restore_collections__sync_disable;
+
+  /// No description provided for @restore_collections__preparing.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing to restore collections. Please wait...'**
+  String get restore_collections__preparing;
+
+  /// No description provided for @restore_collections__restored.
+  ///
+  /// In en, this message translates to:
+  /// **'Your {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.'**
+  String restore_collections__restored({required num syncCount});
+
+  /// No description provided for @restore_collections__restoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored: {synced} of {totalCount} collections.'**
+  String restore_collections__restoring(
+      {required Object synced, required Object totalCount});
+
   /// No description provided for @drive__snackbar__success.
   ///
   /// In en, this message translates to:
@@ -2345,7 +2477,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+      <String>['de', 'en', 'es', 'fr', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2354,10 +2486,26 @@ class _AppLocalizationsDelegate
 Future<AppLocalizations> lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'de':
+      return app_localizations_de
+          .loadLibrary()
+          .then((dynamic _) => app_localizations_de.AppLocalizationsDe());
     case 'en':
       return app_localizations_en
           .loadLibrary()
           .then((dynamic _) => app_localizations_en.AppLocalizationsEn());
+    case 'es':
+      return app_localizations_es
+          .loadLibrary()
+          .then((dynamic _) => app_localizations_es.AppLocalizationsEs());
+    case 'fr':
+      return app_localizations_fr
+          .loadLibrary()
+          .then((dynamic _) => app_localizations_fr.AppLocalizationsFr());
+    case 'zh':
+      return app_localizations_zh
+          .loadLibrary()
+          .then((dynamic _) => app_localizations_zh.AppLocalizationsZh());
   }
 
   throw FlutterError(

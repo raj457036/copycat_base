@@ -45,6 +45,7 @@
   "app__no_collection": "No Collection Found",
   "app__create_collection": "Create Collection",
   "app__pro_tip": "Pro Tip",
+  "app__try_again": "Try Again",
   "app__ack__exported": "Exported",
   "app__ack__copied": "Copied",
   "app__ack__pasted": "Pasted",
@@ -87,6 +88,16 @@
 
   "dialog__record_keys__title": "Record Keyboard Shortcut",
   "dialog__record_keys__subtitle": "Type your shortcut using your keyboard and click ",
+
+  "dialog__delete_collection__title": "Delete {collectionName}",
+  "@dialog__delete_collection__title": {
+    "placeholder": {
+      "collectionName": {
+        "type": "String"
+      }
+    }
+  },
+  "dialog__delete_collection__subtitle": "Are you sure to delete this collection?",
 
   "@@APPLY_DIALOG": "Apply Coupon Dialog",
   "dialog__ack__sub_updated": "Subscription Updated",
@@ -334,6 +345,83 @@
   "onboarding__button__import_key": "Import Key",
   "onboarding__button__reset_key": "Reset Encryption",
   "onboarding__button__where_key": "Where is the key?",
+  "onboarding__text__go_home": "Let's go home",
+  "onboarding__restoration__failed": "Restoration failed: {message}",
+  "@onboarding__restoration__failed": {
+    "placeholder": {
+      "message": "String"
+    }
+  },
+  "onboarding__restoration_warning": "⚠️ Please keep this screen open during syncing to avoid data corruption or inconsistencies.",
+
+  "@@RESTORE_CLIPS": "Restore Clips",
+  "restore_clips__text__title": "Restore My Clipboard",
+  "restore_clips__error__no_backup": "No clipboard backup found",
+  "restore_clips__text__total_count": "You have approximately {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.",
+  "@restore_clips__text__total_count": {
+    "placeholder": {
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_clips__sync_disable": "Syncing is currently disabled. Please enable it to continue.",
+  "restore_clips__preparing": "Preparing to restore clips. Please wait...",
+  "restore_clips__restored": "Your {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.",
+  "@restore_clips__restored": {
+    "placeholder": {
+      "syncCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_clips__restoring": "Restored: {synced} of {totalCount} clips.",
+  "@restore_clips__restoring": {
+    "placeholder": {
+      "synced": {
+        "type": "int"
+      },
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+
+  "@@RESTORE_COLLECTION": "Restore Collections",
+  "restore_collections__text__title": "Restore My Collections",
+  "restore_collections__error__no_backup": "No collection backup found",
+  "restore_collections__text__total_count": "You have approximately {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.",
+  "@restore_collections__text__total_count": {
+    "placeholder": {
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_collections__sync_disable": "Syncing is currently disabled. Please enable it to continue.",
+  "restore_collections__preparing": "Preparing to restore collections. Please wait...",
+  "restore_collections__restored": "Your {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.",
+  "@restore_collections__restored": {
+    "placeholder": {
+      "syncCount": {
+        "type": "int"
+      }
+    }
+  },
+  "restore_collections__restoring": "Restored: {synced} of {totalCount} collections.",
+  "@restore_collections__restoring": {
+    "placeholder": {
+      "synced": {
+        "type": "int"
+      },
+      "totalCount": {
+        "type": "int"
+      }
+    }
+  },
+
+
+
   "@@DRIVE_SETUP": "Drive Setup Screen",
   "drive__snackbar__success": "Drive Setup is Now Complete.",
   "drive__text__setting_up": "Setting up and syncing...",

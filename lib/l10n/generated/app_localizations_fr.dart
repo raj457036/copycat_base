@@ -9,593 +9,617 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get app__name => 'CopyCat Clipboard';
+  String get app__name => 'Presse-papiers CopyCat';
 
   @override
-  String get app__slogan => 'One Clipboard, Limitless Possibility';
+  String get app__slogan => 'Un presse-papiers, des possibilités illimitées';
 
   @override
-  String get app__unknown_error => 'An unexpected error occurred';
+  String get app__unknown_error => 'Une erreur inattendue est survenue';
 
   @override
-  String get app__downloading => 'Downloading...';
+  String get app__downloading => 'Téléchargement...';
 
   @override
-  String get app__download => 'Download';
+  String get app__download => 'Télécharger';
 
   @override
-  String get app__follow_link => 'Follow Link';
+  String get app__follow_link => 'Suivre le lien';
 
   @override
-  String get app__edit => 'Edit';
+  String get app__edit => 'Modifier';
 
   @override
-  String get app__export => 'Export';
+  String get app__export => 'Exporter';
 
   @override
-  String get app__delete => 'Delete';
+  String get app__delete => 'Supprimer';
 
   @override
-  String get app__later => 'Skip';
+  String get app__later => 'Passer';
 
   @override
-  String get app__select => 'Select';
+  String get app__select => 'Sélectionner';
 
   @override
-  String get app__change => 'Change';
+  String get app__change => 'Changer';
 
   @override
-  String get app__confirm => 'Confirm';
+  String get app__confirm => 'Confirmer';
 
   @override
-  String get app__action_required => 'Action Required';
+  String get app__action_required => 'Action requise';
 
   @override
   String get app__feature_unavailable =>
-      'This feature is not available for your platform.';
+      'Cette fonctionnalité n\'est pas disponible pour votre plateforme.';
 
   @override
-  String get app__preview => 'Preview';
+  String get app__preview => 'Aperçu';
 
   @override
-  String get app__open_file => 'Open file';
+  String get app__open_file => 'Ouvrir le fichier';
 
   @override
-  String get app__change_collection => 'Change Collection';
+  String get app__change_collection => 'Changer de collection';
 
   @override
-  String get app__share => 'Share';
+  String get app__share => 'Partager';
 
   @override
-  String get app__uploading => 'Uploading...';
+  String get app__uploading => 'Téléversement...';
 
   @override
-  String get app__syncing => 'Syncing...';
+  String get app__syncing => 'Synchronisation...';
 
   @override
-  String get app__sync => 'Sync';
+  String get app__sync => 'Synchroniser';
 
   @override
   String get app__local => 'Local';
 
   @override
-  String get app__send_message => 'Send Message';
+  String get app__send_message => 'Envoyer un message';
 
   @override
-  String get app__send_email => 'Send Email';
+  String get app__send_email => 'Envoyer un e-mail';
 
   @override
-  String get app__empty_clipboard => 'Your clipboard is empty.';
+  String get app__empty_clipboard => 'Votre presse-papiers est vide.';
 
   @override
-  String get app__load_more => 'Fetch More';
+  String get app__load_more => 'Charger plus';
 
   @override
-  String get app__locale_en => 'English';
+  String get app__locale_en => 'Anglais';
 
   @override
-  String get app__locale_es => 'Spanish';
+  String get app__locale_es => 'Espagnol';
 
   @override
-  String get app__locale_fr => 'French';
+  String get app__locale_fr => 'Français';
 
   @override
-  String get app__locale_de => 'German';
+  String get app__locale_de => 'Allemand';
 
   @override
-  String get app__locale_zh => 'Chinese';
+  String get app__locale_zh => 'Chinois';
 
   @override
-  String get app__language => 'Language';
+  String get app__language => 'Langue';
 
   @override
-  String get app__logout => 'Logout';
+  String get app__logout => 'Déconnexion';
 
   @override
-  String get app__no_collection => 'No Collection Found';
+  String get app__no_collection => 'Aucune collection trouvée';
 
   @override
-  String get app__create_collection => 'Create Collection';
+  String get app__create_collection => 'Créer une collection';
 
   @override
-  String get app__pro_tip => 'Pro Tip';
+  String get app__pro_tip => 'Conseil pro';
 
   @override
-  String get app__ack__exported => 'Exported';
+  String get app__try_again => 'Try Again';
 
   @override
-  String get app__ack__copied => 'Copied';
+  String get app__ack__exported => 'Exporté';
 
   @override
-  String get app__ack__pasted => 'Pasted';
+  String get app__ack__copied => 'Copié';
 
   @override
-  String get app__ack__pasting => 'Pasting';
+  String get app__ack__pasted => 'Collé';
 
   @override
-  String get app__ack__done => 'Done';
+  String get app__ack__pasting => 'Collage';
 
   @override
-  String get app__ack__quit_app => 'Quit App';
+  String get app__ack__done => 'Terminé';
 
   @override
-  String get app__ack__deleted => 'Deleted';
+  String get app__ack__quit_app => 'Quitter l\'application';
 
   @override
-  String get app__ack__deleting => 'Deleting';
+  String get app__ack__deleted => 'Supprimé';
 
   @override
-  String get app__ack__internet_connected => 'Internet Connected';
+  String get app__ack__deleting => 'Suppression';
 
   @override
-  String get app__ack__internet_disconnected => 'Internet Disconnected';
+  String get app__ack__internet_connected => 'Internet connecté';
 
   @override
-  String get app__ack__logout_success => 'You are successfully logged out.';
+  String get app__ack__internet_disconnected => 'Internet déconnecté';
 
   @override
-  String get app__ack__missing_e2e_setup => 'Missing encryption setup';
+  String get app__ack__logout_success =>
+      'Vous vous êtes déconnecté avec succès.';
+
+  @override
+  String get app__ack__missing_e2e_setup =>
+      'Configuration du chiffrement manquante';
 
   @override
   String get app__ack__no_app_for_file =>
-      'No application found to open this file.';
+      'Aucune application trouvée pour ouvrir ce fichier.';
 
   @override
   String get app__ack__perm_fail_to_open_file =>
-      'Permission to open this file not granted.';
+      'Autorisation pour ouvrir ce fichier non accordée.';
 
   @override
-  String get dialog__delete_clip__title => 'Delete Clip';
+  String get dialog__delete_clip__title => 'Supprimer le clip';
 
   @override
   String dialog__delete_clip__subtitle({required int itemCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       itemCount,
       locale: localeName,
-      one: 'Are you sure you want to delete this clip?',
-      other: 'Are you sure you want to delete these clips?',
+      other: 'Êtes-vous sûr de vouloir supprimer ces clips ?',
+      one: 'Êtes-vous sûr de vouloir supprimer ce clip ?',
     );
     return '$_temp0';
   }
 
   @override
-  String get dialog__e2e__title => 'End to End Encryption';
+  String get dialog__e2e__title => 'Chiffrement de bout en bout';
 
   @override
   String get dialog__text__e2e_key_export =>
-      'Congratulations, you have successfully configured the end-to-end encryption.';
+      'Félicitations, vous avez configuré avec succès le chiffrement de bout en bout.';
 
   @override
   String get dialog__text__e2e_key_export__note =>
-      'Click the button below to export your encryption key.\nSave the key in a secure location to ensure you can set up other devices to access your encrypted information.';
+      'Cliquez sur le bouton ci-dessous pour exporter votre clé de chiffrement.\nEnregistrez la clé dans un endroit sûr pour vous assurer de pouvoir configurer d\'autres appareils pour accéder à vos informations chiffrées.';
 
   @override
   String get dialog__text__e2e_key_generate =>
-      'Generate an encryption key and store it securely. This key is required to set up other devices for accessing your encrypted data.';
+      'Générez une clé de chiffrement et stockez-la en toute sécurité. Cette clé est nécessaire pour configurer d\'autres appareils pour accéder à vos données chiffrées.';
 
   @override
-  String get dialog__button__e2e_generating_key => 'Generating';
+  String get dialog__button__e2e_generating_key => 'Génération';
 
   @override
-  String get dialog__button__e2e_generate_key => 'Generated';
+  String get dialog__button__e2e_generate_key => 'Généré';
 
   @override
-  String get dialog__text__invalid_e2e_key => 'The imported key is invalid!';
+  String get dialog__text__invalid_e2e_key => 'La clé importée est invalide !';
 
   @override
   String get dialog__text__e2e_key_import__note =>
-      'Import your encryption key below to access your encrypted data on this device.';
+      'Importez votre clé de chiffrement ci-dessous pour accéder à vos données chiffrées sur cet appareil.';
 
   @override
-  String get dialog__button__e2e_importing_key => 'Importing';
+  String get dialog__button__e2e_importing_key => 'Importation';
 
   @override
-  String get dialog__button__e2e_import_key => 'Import';
+  String get dialog__button__e2e_import_key => 'Importer';
 
   @override
-  String get dialog__text__inconsistent_time__title => 'Time Sync Warning';
+  String get dialog__text__inconsistent_time__title =>
+      'Avertissement de synchronisation temporelle';
 
   @override
   String get dialog__text__inconsistent_time__content =>
-      'Inconsistent Device Time Detected\n\nTo ensure accurate clipboard syncing, please check and correct your device\'s time settings.\n\nInconsistent time settings may cause synchronization issues.';
+      'Heure de l\'appareil incohérente détectée\n\nPour assurer une synchronisation précise du presse-papiers, veuillez vérifier et corriger les paramètres de l\'heure de votre appareil.\n\nDes paramètres de temps incohérents peuvent entraîner des problèmes de synchronisation.';
 
   @override
-  String get dialog__button__try_again => 'Check Again';
+  String get dialog__button__try_again => 'Vérifier à nouveau';
 
   @override
-  String get dialog__record_keys__title => 'Record Keyboard Shortcut';
+  String get dialog__record_keys__title => 'Enregistrer le raccourci clavier';
 
   @override
   String get dialog__record_keys__subtitle =>
-      'Type your shortcut using your keyboard and click ';
+      'Tapez votre raccourci en utilisant votre clavier et cliquez sur ';
 
   @override
-  String get dialog__ack__sub_updated => 'Subscription Updated';
+  String dialog__delete_collection__title({required Object collectionName}) {
+    return 'Delete $collectionName';
+  }
 
   @override
-  String get dialog__grant_entitlement__title => 'Granted Entitlement';
+  String get dialog__delete_collection__subtitle =>
+      'Are you sure to delete this collection?';
+
+  @override
+  String get dialog__ack__sub_updated => 'Abonnement mis à jour';
+
+  @override
+  String get dialog__grant_entitlement__title => 'Droit accordé';
 
   @override
   String get dialog__grant_entitlement__subtitle_p1 =>
-      'Granted Entitlement Codes are shared with specific individuals for custom entitlements. You can check if invitations are still available by ';
+      'Les codes de droit accordés sont partagés avec des personnes spécifiques pour des droits personnalisés. Vous pouvez vérifier si des invitations sont encore disponibles en ';
 
   @override
-  String get dialog__grant_entitlement__subtitle_p2 => 'Clicking Here.';
+  String get dialog__grant_entitlement__subtitle_p2 => 'cliquant ici.';
 
   @override
   String get dialog__grant_entitlement__enter_code =>
-      'Enter the code and press Submit';
+      'Saisissez le code et appuyez sur Soumettre';
 
   @override
-  String get dialog__grant_entitlement__apply_code => 'Apply';
+  String get dialog__grant_entitlement__apply_code => 'Appliquer';
 
   @override
-  String get view_button__switch_to_grid => 'Switch to Grid Layout';
+  String get view_button__switch_to_grid => 'Passer à la disposition en grille';
 
   @override
-  String get view_button__switch_to_list => 'Switch to List Layout';
+  String get view_button__switch_to_list => 'Passer à la disposition en liste';
 
   @override
-  String get view_button__change_view => 'Change View';
+  String get view_button__change_view => 'Changer de vue';
 
   @override
-  String get view_button__view_window => 'Windowed';
+  String get view_button__view_window => 'Fenêtré';
 
   @override
-  String get view_button__view_dock_right => 'Dock Right';
+  String get view_button__view_dock_right => 'Ancrer à droite';
 
   @override
-  String get view_button__view_dock_bottom => 'Dock Bottom';
+  String get view_button__view_dock_bottom => 'Ancrer en bas';
 
   @override
-  String get view_button__view_dock_left => 'Dock Left';
+  String get view_button__view_dock_left => 'Ancrer à gauche';
 
   @override
-  String get view_button__view_dock_top => 'Dock Top';
+  String get view_button__view_dock_top => 'Ancrer en haut';
 
   @override
-  String get view_button__pin => 'Pin to top';
+  String get view_button__pin => 'Épingler en haut';
 
   @override
-  String get view_button__unpin => 'Unpin';
+  String get view_button__unpin => 'Désépingler';
 
   @override
-  String get sub_dialog__text__included => 'Included';
+  String get sub_dialog__text__included => 'Inclus';
 
   @override
-  String get sub_dialog__f1__title => 'Unlimited Clipboard Items';
+  String get sub_dialog__f1__title => 'Éléments de presse-papiers illimités';
 
   @override
   String get sub_dialog__f1__subtitle =>
-      'Never run out of space with unlimited clipboard items, ensuring you always have access to your most recent copies.';
+      'Ne manquez jamais d\'espace avec des éléments de presse-papiers illimités, en vous assurant d\'avoir toujours accès à vos copies les plus récentes.';
 
   @override
-  String get sub_dialog__f2__title => 'Support all major platforms';
+  String get sub_dialog__f2__title =>
+      'Prise en charge de toutes les principales plateformes';
 
   @override
   String get sub_dialog__f2__subtitle =>
-      'Seamlessly sync across all major platforms—Android, iOS, Windows, macOS, and Linux —for uninterrupted productivity anywhere.';
+      'Synchronisez sans effort sur toutes les principales plateformes — Android, iOS, Windows, macOS et Linux — pour une productivité ininterrompue partout.';
 
   @override
-  String get sub_dialog__f3__title => 'Supports Apple Universal Clipboard';
+  String get sub_dialog__f3__title =>
+      'Prend en charge le Presse-papiers Universel d\'Apple';
 
   @override
   String get sub_dialog__f3__subtitle =>
-      'Effortlessly transfer clipboard content between your Apple devices with support for Apple\'s Universal Clipboard.';
+      'Transférez sans effort le contenu du presse-papiers entre vos appareils Apple avec la prise en charge du Presse-papiers Universel d\'Apple.';
 
   @override
-  String get sub_dialog__f4__title => 'On-Device Storage';
+  String get sub_dialog__f4__title => 'Stockage sur l\'appareil';
 
   @override
   String get sub_dialog__f4__subtitle =>
-      'Keep your data secure with on-device storage, ensuring your clipboard items are always within reach and under your control.';
+      'Gardez vos données en sécurité avec le stockage sur l\'appareil, vous assurant que vos éléments de presse-papiers sont toujours à portée de main et sous votre contrôle.';
 
   @override
-  String get sub_dialog__f5__title => 'Google Drive Integration';
+  String get sub_dialog__f5__title => 'Intégration avec Google Drive';
 
   @override
   String get sub_dialog__f5__subtitle =>
-      'Securely store files and media on Google Drive, integrating seamlessly with CopyCat Clipboard for enhanced data management.';
+      'Stockez en toute sécurité fichiers et médias sur Google Drive, en s\'intégrant parfaitement avec le Presse-papiers CopyCat pour une meilleure gestion des données.';
 
   @override
-  String get sub_dialog__f6__title => 'Instant Search';
+  String get sub_dialog__f6__title => 'Recherche instantanée';
 
   @override
   String get sub_dialog__f6__subtitle =>
-      'Find what you need instantly with powerful instant search capabilities, making retrieval of clipboard items fast and efficient.';
+      'Trouvez ce dont vous avez besoin instantanément avec de puissantes capacités de recherche instantanée, rendant la récupération des éléments de presse-papiers rapide et efficace.';
 
   @override
-  String get sub_dialog__f7__title => 'Syncing Up to the Last 24 Hours';
+  String get sub_dialog__f7__title =>
+      'Synchronisation jusqu\'aux dernières 24 heures';
 
   @override
   String get sub_dialog__f7__subtitle =>
-      'Access and sync your clipboard history across all your devices for the past 24 hours. This ensures you never lose important copied items, making your workflow seamless and efficient.';
+      'Accédez à votre historique de presse-papiers et synchronisez-le sur tous vos appareils pour les dernières 24 heures. Cela vous assure de ne jamais perdre d\'éléments copiés importants, rendant votre flux de travail fluide et efficace.';
 
   @override
-  String get sub_dialog__f8__title => 'Up to 3 Collections';
+  String get sub_dialog__f8__title => 'Jusqu\'à 3 collections';
 
   @override
   String get sub_dialog__f8__subtitle =>
-      'Organize your clipboard items into up to 3 collections, providing simple categorization for better workflow management.';
+      'Organisez vos éléments de presse-papiers en jusqu\'à 3 collections, fournissant une catégorisation simple pour une meilleure gestion du flux de travail.';
 
   @override
-  String get sub_dialog__f9__title => 'Auto-Sync Every 45 Seconds';
+  String get sub_dialog__f9__title =>
+      'Synchronisation automatique toutes les 45 secondes';
 
   @override
   String get sub_dialog__f9__subtitle =>
-      'Enjoy automatic syncing of clipboard items every 45 seconds, keeping your devices up-to-date without manual intervention.';
+      'Profitez de la synchronisation automatique des éléments de presse-papiers toutes les 45 secondes, gardant vos appareils à jour sans intervention manuelle.';
 
   @override
-  String get sub_dialog__f10__title => 'Support End-to-End Encryption';
+  String get sub_dialog__f10__title =>
+      'Prise en charge du chiffrement de bout en bout';
 
   @override
   String get sub_dialog__f10__subtitle =>
-      'E2EE will make everything encrypted for superior privacy.';
+      'Le chiffrement de bout en bout rend tout crypté pour une confidentialité supérieure.';
 
   @override
-  String get sub_dialog__text__pro_title => 'With PRO ✨';
+  String get sub_dialog__text__pro_title => 'Avec PRO ✨';
 
   @override
-  String get sub_dialog__text__pro_subtitle => 'Everything included in Free +';
+  String get sub_dialog__text__pro_subtitle => 'Tout inclus dans Gratuit +';
 
   @override
-  String get sub_dialog__f11__title => 'Up to 50 Collections';
+  String get sub_dialog__f11__title => 'Jusqu\'à 50 collections';
 
   @override
   String get sub_dialog__f11__subtitle =>
-      'Organize your clipboard items into up to 50 collections for ultimate management.';
+      'Organisez vos éléments de presse-papiers en jusqu\'à 50 collections pour une gestion ultime.';
 
   @override
-  String get sub_dialog__f12__title => 'Syncing Up to the Last 30 Days';
+  String get sub_dialog__f12__title =>
+      'Synchronisation jusqu\'aux derniers 30 jours';
 
   @override
   String get sub_dialog__f12__subtitle =>
-      'Clipboard history is synced across all your devices for clips created within the last 30 days. This means you can access any clip you copied in the past month, no matter which device you are using.';
+      'L\'historique des presse-papiers est synchronisé sur tous vos appareils pour les clips créés au cours des 30 derniers jours. Cela signifie que vous pouvez accéder à tout clip que vous avez copié au cours du dernier mois, quel que soit l\'appareil que vous utilisez.';
 
   @override
-  String get sub_dialog__f13__title => 'Real Time Synchronization';
+  String get sub_dialog__f13__title => 'Synchronisation en temps réel';
 
   @override
-  String get sub_dialog__f13__subtitle => 'Experience lightning-fast syncing.';
+  String get sub_dialog__f13__subtitle =>
+      'Bénéficiez d\'une synchronisation à la vitesse de l\'éclair.';
 
   @override
-  String get sub_dialog__f14__title => 'Faster and Priority Support';
+  String get sub_dialog__f14__title => 'Support rapide et prioritaire';
 
   @override
   String get sub_dialog__f14__subtitle =>
-      'Get prompt and prioritized support as a PRO user.';
+      'Obtenez un support rapide et prioritaire en tant qu\'utilisateur PRO.';
 
   @override
-  String get sub_dialog__f15__title => 'Early Access to New Features';
+  String get sub_dialog__f15__title =>
+      'Accès anticipé aux nouvelles fonctionnalités';
 
   @override
   String get sub_dialog__f15__subtitle =>
-      'Be the first to try out new features and updates.';
+      'Soyez le premier à essayer de nouvelles fonctionnalités et mises à jour.';
 
   @override
-  String get sub_dialog__f16__title => 'Custom Exclusion Rules';
+  String get sub_dialog__f16__title => 'Règles d\'exclusion personnalisées';
 
   @override
   String get sub_dialog__f16__subtitle =>
-      'Precise control over your clipboard. Allows you to define what to copy, from where to copy and when to copy.';
+      'Contrôle précis de votre presse-papiers. Vous permet de définir quoi copier, d\'où copier et quand copier.';
 
   @override
-  String get sub_dialog__f17__title => 'Drag & Drop';
+  String get sub_dialog__f17__title => 'Glisser-déposer';
 
   @override
   String get sub_dialog__f17__subtitle =>
-      'Seamlessly move items in any direction on your Desktop and Tablet devices.';
+      'Déplacez sans effort les éléments dans toutes les directions sur vos appareils de bureau et tablettes.';
 
   @override
-  String get sub_dialog__f18__title => 'Theming';
+  String get sub_dialog__f18__title => 'Thématisation';
 
   @override
   String get sub_dialog__f18__subtitle =>
-      'Customize the entire look and feel of the app to match your preferences.';
+      'Personnalisez l\'apparence et la convivialité de l\'application selon vos préférences.';
 
   @override
-  String get paywall_dialog__text__month => 'month';
+  String get paywall_dialog__text__month => 'mois';
 
   @override
-  String get paywall_dialog__text__year => 'year';
+  String get paywall_dialog__text__year => 'année';
 
   @override
-  String get paywall_dialog__text__subscription => 'Subscription';
+  String get paywall_dialog__text__subscription => 'Abonnement';
 
   @override
   String get paywall_dialog__text__supported_platform =>
-      'To access premium features on Copycat Clipboard, please subscribe through the Play Store or Apple App Store. Your subscription will be synced across all your devices, including Linux and Windows.';
+      'Pour accéder aux fonctionnalités premium sur le Presse-papiers Copycat, veuillez vous abonner via le Play Store ou l\'App Store d\'Apple. Votre abonnement sera synchronisé sur tous vos appareils, y compris Linux et Windows.';
 
   @override
-  String get paywall_dialog__text__unlock_pro => 'Unlock CopyCat PRO';
+  String get paywall_dialog__text__unlock_pro => 'Débloquer CopyCat PRO';
 
   @override
   String get paywall_dialog__text__unlock_pro_p1 =>
-      'Enjoy over 30 days of synced history, over 50 collections, end-to-end encryption, real-time syncing, access to the newest features, and much more.';
+      'Profitez de plus de 30 jours d\'historique synchronisé, plus de 50 collections, du chiffrement de bout en bout, de la synchronisation en temps réel, de l\'accès aux nouvelles fonctionnalités, et bien plus encore.';
 
   @override
-  String get paywall_dialog__text__try_again => 'Please try again';
+  String get paywall_dialog__text__try_again => 'Veuillez réessayer';
 
   @override
-  String get paywall_dialog__text__current_plan => 'Current Plan';
+  String get paywall_dialog__text__current_plan => 'Plan actuel';
 
   @override
-  String get paywall_dialog__text__expired_plan => 'Current Plan • Expired';
+  String get paywall_dialog__text__expired_plan => 'Plan actuel • Expiré';
 
   @override
   String paywall_dialog__text__trial_till({required DateTime till}) {
     final intl.DateFormat tillDateFormat = intl.DateFormat.yMMMd(localeName);
     final String tillString = tillDateFormat.format(till);
 
-    return 'Trial till $tillString';
+    return 'Essai jusqu\'à $tillString';
   }
 
   @override
-  String get paywall_dialog__text__upgrade => 'Upgrade';
+  String get paywall_dialog__text__upgrade => 'Mise à niveau';
 
   @override
   String fab__create_collection({required String remaining}) {
-    return 'Create Collection ( $remaining Remaining )';
+    return 'Créer une collection ( $remaining restant )';
   }
 
   @override
-  String get fab__sync => 'Sync';
+  String get fab__sync => 'Synchroniser';
 
   @override
-  String get fab__sync_unavailable => 'Sync Unavailable';
+  String get fab__sync_unavailable => 'Synchronisation indisponible';
 
   @override
-  String get fab__sync_up_to_date => 'Already up to date.';
+  String get fab__sync_up_to_date => 'Déjà à jour.';
 
   @override
   String fab__sync_failed({required String message}) {
-    return 'Sync failed : $message';
+    return 'Échec de la synchronisation : $message';
   }
 
   @override
-  String get layout__navbar__clipboard => 'Clipboard';
+  String get layout__navbar__clipboard => 'Presse-papiers';
 
   @override
   String get layout__navbar__collections => 'Collections';
 
   @override
-  String get layout__navbar__settings => 'Settings';
+  String get layout__navbar__settings => 'Paramètres';
 
   @override
-  String get search__tooltip__filter => 'Search filters';
+  String get search__tooltip__filter => 'Filtres de recherche';
 
   @override
   String manage_sub__ack__promo_sub({required String till}) {
-    return 'You are using a promo subscription till $till';
+    return 'Vous utilisez un abonnement promotionnel jusqu\'à $till';
   }
 
   @override
-  String get manage_sub__button__text => 'Manage Subscriptions';
+  String get manage_sub__button__text => 'Gérer les abonnements';
 
   @override
-  String get my_account__button__tooltip => 'My Account';
+  String get my_account__button__tooltip => 'Mon Compte';
 
   @override
   String get badges__tooltip__experimental =>
-      'This feature is experimental and might not work as expected.';
+      'Cette fonctionnalité est expérimentale et peut ne pas fonctionner comme prévu.';
 
   @override
   String get badges__tooltip__pro_only =>
-      'This feature is available for Pro users only.';
+      'Cette fonctionnalité est disponible uniquement pour les utilisateurs Pro.';
 
   @override
-  String get collection_selector__tile__no_collection => 'No Collection';
+  String get collection_selector__tile__no_collection => 'Aucune collection';
 
   @override
   String get collection_selector__button__remove_collection =>
-      'Remove Collection';
+      'Supprimer la collection';
 
   @override
-  String get dialog__logout__title => 'Logout';
+  String get dialog__logout__title => 'Déconnexion';
 
   @override
   String get dialog__logout__subtitle =>
-      '⚠️ WARNING ⚠️\n\nLogging out will delete unsynced changes in the local database. Are you sure you want to proceed?';
+      '⚠️ AVERTISSEMENT ⚠️\n\nLa déconnexion supprimera les modifications non synchronisées dans la base de données locale. Êtes-vous sûr de vouloir continuer?';
 
   @override
-  String get dialog__logging_out__ack => 'Logging you out! Please wait...';
+  String get dialog__logging_out__ack =>
+      'Déconnexion en cours! Veuillez patienter...';
 
   @override
-  String get reset_pass__text__label => 'Reset your password';
+  String get reset_pass__text__label => 'Réinitialiser votre mot de passe';
 
   @override
-  String get dnd__text__drop_here => 'Drop Here';
+  String get dnd__text__drop_here => 'Déposez ici';
 
   @override
   String dnd__ack__error_max_drop_count({required int count}) {
-    return 'Maximum $count drop items are allowed at once.';
+    return 'Un maximum de $count éléments déposés est autorisé en une seule fois.';
   }
 
   @override
-  String get search_filter__text__title => 'Filters';
+  String get search_filter__text__title => 'Filtres';
 
   @override
-  String get search_filter__button__apply => 'Apply';
+  String get search_filter__button__apply => 'Appliquer';
 
   @override
-  String get search_filter__text__from => 'From';
+  String get search_filter__text__from => 'De';
 
   @override
-  String get search_filter__text__select => 'Select';
+  String get search_filter__text__select => 'Sélectionner';
 
   @override
-  String get search_filter__text__to => 'To';
+  String get search_filter__text__to => 'À';
 
   @override
-  String get search_filter__text__now => 'Now';
+  String get search_filter__text__now => 'Maintenant';
 
   @override
-  String get search_filter__text__including => 'Including';
+  String get search_filter__text__including => 'Incluant';
 
   @override
-  String get search_filter__chip__text => 'Text';
+  String get search_filter__chip__text => 'Texte';
 
   @override
   String get search_filter__chip__url => 'URL';
 
   @override
-  String get search_filter__chip__media => 'Media';
+  String get search_filter__chip__media => 'Médias';
 
   @override
   String get search_filter__chip__docs => 'Docs';
 
   @override
-  String get search_filter__text__textCategories => 'Text Categories';
+  String get search_filter__text__textCategories => 'Catégories de texte';
 
   @override
-  String get search_filter__text__exclusive => '( Exclusive )';
+  String get search_filter__text__exclusive => '( Exclusif )';
 
   @override
-  String get search_filter__text_cat__email => 'Email';
+  String get search_filter__text_cat__email => 'E-mail';
 
   @override
-  String get search_filter__text_cat__phone => 'Phone';
+  String get search_filter__text_cat__phone => 'Téléphone';
 
   @override
-  String get search_filter__text_cat__color => 'Color';
+  String get search_filter__text_cat__color => 'Couleur';
 
   @override
-  String get search_filter__text__sort_by => 'Sort By';
+  String get search_filter__text__sort_by => 'Trier par';
 
   @override
-  String get search_filter__sort_by__last_mod => 'Last Modified';
+  String get search_filter__sort_by__last_mod => 'Dernière modification';
 
   @override
-  String get search_filter__sort_by__created => 'Created';
+  String get search_filter__sort_by__created => 'Créé';
 
   @override
-  String get search_filter__sort_by__copy_count => 'Copy Count';
+  String get search_filter__sort_by__copy_count => 'Nombre de copies';
 
   @override
-  String get search_filter__sort_by__last_copied => 'Last Copied';
+  String get search_filter__sort_by__last_copied => 'Dernier copié';
 
   @override
-  String get search_filter__text__sort_order => 'Sort Order';
+  String get search_filter__text__sort_order => 'Ordre de tri';
 
   @override
   String get search_filter__sort_ord__asc => 'Asc';
@@ -605,568 +629,688 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get login__local_signin__tooltip =>
-      'No syncing. All data stays on your device.';
+      'Pas de synchronisation. Toutes les données restent sur votre appareil.';
 
   @override
-  String get login__local_signin__btn__label => 'Use Locally';
+  String get login__local_signin__btn__label => 'Utiliser localement';
 
   @override
-  String get login__form__input__name => 'Enter your good name';
+  String get login__form__input__name => 'Entrez votre bon nom';
 
   @override
-  String get login__form__input__email => 'Enter your email';
+  String get login__form__input__email => 'Entrez votre e-mail';
 
   @override
   String get login__form__input__error_email =>
-      'Please enter a valid email address';
+      'Veuillez entrer une adresse e-mail valide';
 
   @override
-  String get login__form__input__password => 'Enter your password';
+  String get login__form__input__password => 'Entrez votre mot de passe';
 
   @override
   String get login__form__input__error_password_length =>
-      'Please enter a password that is at least 6 characters long';
+      'Veuillez entrer un mot de passe d\'au moins 6 caractères de long';
 
   @override
-  String get login__form__button__signin => 'Sign In';
+  String get login__form__button__signin => 'Se connecter';
 
   @override
-  String get login__form__button__signup => 'Sign Up';
+  String get login__form__button__signup => 'S\'inscrire';
 
   @override
-  String get login__form__button__forgot_password => 'Forgot your password?';
+  String get login__form__button__forgot_password => 'Mot de passe oublié?';
 
   @override
-  String get login__form__text__signup => 'Don\'t have an account? Sign up';
+  String get login__form__text__signup =>
+      'Vous n\'avez pas de compte? S\'inscrire';
 
   @override
-  String get login__form__text__old_user => 'Already have an account? Sign in';
+  String get login__form__text__old_user =>
+      'Vous avez déjà un compte? Se connecter';
 
   @override
-  String get login__form__text__reset_password => 'Send password reset email';
+  String get login__form__text__reset_password =>
+      'Envoyer un e-mail de réinitialisation de mot de passe';
 
   @override
   String get login__form__text__reset_ack =>
-      'Password reset email has been sent';
+      'Le courriel de réinitialisation de mot de passe a été envoyé';
 
   @override
-  String get login__form__button__back => 'Back to sign in';
+  String get login__form__button__back => 'Retour à la connexion';
 
   @override
-  String get login__form__button__update_password => 'Update Password';
+  String get login__form__button__update_password =>
+      'Mettre à jour le mot de passe';
 
   @override
-  String get login__form__text_tnc_p1 =>
-      'By continuing you agree to the following ';
+  String get login__form__text_tnc_p1 => 'En continuant, vous acceptez les ';
 
   @override
-  String get login__form__text_tnc_p2 => 'Privacy policies';
+  String get login__form__text_tnc_p2 => 'politiques de confidentialité';
 
   @override
-  String get login__form__text_tnc_p3 => ' and ';
+  String get login__form__text_tnc_p3 => ' suivantes et ';
 
   @override
-  String get login__form__text_tnc_p4 => 'Terms of Service.';
+  String get login__form__text_tnc_p4 => 'les conditions d\'utilisation.';
 
   @override
-  String get home__search__hint => 'Search in clipboard';
+  String get home__search__hint => 'Rechercher dans le presse-papiers';
 
   @override
-  String get home__search__reset => 'Reset Search';
+  String get home__search__reset => 'Réinitialiser la recherche';
 
   @override
-  String get preview__vert_view__tab1_title => 'Preview';
+  String get preview__vert_view__tab1_title => 'Aperçu';
 
   @override
-  String get preview__vert_view__tab2__title => 'Details';
+  String get preview__vert_view__tab2__title => 'Détails';
 
   @override
-  String get preview__card__missing_text => 'This is an Empty Clip';
+  String get preview__card__missing_text => 'C\'est un clip vide';
 
   @override
-  String get preview__card__video__play => 'Play Video';
+  String get preview__card__video__play => 'Lire la vidéo';
 
   @override
-  String get preview__card__file__open => 'Open File';
+  String get preview__card__file__open => 'Ouvrir le fichier';
 
   @override
-  String get preview__form__title => 'Edit Details';
+  String get preview__form__title => 'Modifier les détails';
 
   @override
-  String get preview__form__input__title => 'Title';
+  String get preview__form__input__title => 'Titre';
 
   @override
   String get preview__form__input__description => 'Description';
 
   @override
-  String get reset_password__appbar__title => 'Reset your password';
+  String get reset_password__appbar__title =>
+      'Réinitialiser votre mot de passe';
 
   @override
-  String get reset_password__success_ack => 'Password reset successfully';
+  String get reset_password__success_ack =>
+      'Mot de passe réinitialisé avec succès';
 
   @override
-  String get onboarding__button__to_login => 'Sign in';
+  String get onboarding__button__to_login => 'Se connecter';
 
   @override
   String get onboarding__snackbar__export_success =>
-      'Encryption key successfully exported.';
+      'Clé de chiffrement exportée avec succès.';
 
   @override
   String get onboarding__dialog__skip_export__title =>
-      '✋ Backup Your Encryption Key';
+      '✋ Sauvegardez votre clé de chiffrement';
 
   @override
   String get onboarding__dialog__skip_export__subtitle =>
-      'You haven’t exported your encryption key yet. Without a backup, you won’t be able to access your encrypted clips if the key is lost or you switch devices.\n\n👉 If you already have a secure backup of your key, you can safely continue. Otherwise, we strongly recommend exporting the key now to avoid data loss. Do you still want to continue?';
+      'Vous n\'avez pas encore exporté votre clé de chiffrement. Sans sauvegarde, vous ne pourrez pas accéder à vos clips chiffrés si la clé est perdue ou si vous changez d\'appareil.\n\n👉 Si vous avez déjà une sauvegarde sécurisée de votre clé, vous pouvez continuer en toute sécurité. Sinon, nous vous recommandons fortement d\'exporter la clé maintenant pour éviter toute perte de données. Voulez-vous toujours continuer ?';
 
   @override
   String get onboarding__dialog__export_info__title =>
-      '🤔 Why Export the Encryption Key?';
+      '🤔 Pourquoi exporter la clé de chiffrement ?';
 
   @override
   String get onboarding__dialog__export_info__subtitle =>
-      'Exporting your encryption key is essential for securely accessing your encrypted data on multiple devices. Without the key, your encrypted data will remain inaccessible after sync.\n\nKeep a backup of your encryption key in a secure location to prevent data loss. Remember, the key is unique to your account and cannot be recovered if lost.\n\nNote: Copycat cannot access your encrypted clips or your encryption keys. This is because we value your privacy above everything else.';
+      'Exporter votre clé de chiffrement est essentiel pour accéder en toute sécurité à vos données chiffrées sur plusieurs appareils. Sans la clé, vos données chiffrées resteront inaccessibles après la synchronisation.\n\nGardez une sauvegarde de votre clé de chiffrement dans un endroit sûr pour éviter la perte de données. Souvenez-vous, la clé est unique à votre compte et ne peut être récupérée si elle est perdue.\n\nRemarque : Copycat ne peut pas accéder à vos clips chiffrés ni à vos clés de chiffrement. Cela est dû au fait que nous valorisons votre confidentialité au-dessus de tout.';
 
   @override
-  String get onboarding__text__export_key_headline => 'Clipboard Encryption';
+  String get onboarding__text__export_key_headline =>
+      'Chiffrement du presse-papiers';
 
   @override
   String get onboarding__text__export_key_title =>
-      '💪 Great News! Encryption is active for your clipboard';
+      '💪 Bonne nouvelle ! Le chiffrement est actif pour votre presse-papiers';
 
   @override
-  String get onboarding__button__export_key => 'Export Key';
+  String get onboarding__button__export_key => 'Exporter la clé';
 
   @override
   String get onboarding__dialog__skip_gen_key__title =>
-      '✋ Your Clips Will Be Insecure';
+      '✋ Vos clips seront non sécurisés';
 
   @override
   String get onboarding__dialog__skip_gen_key__subtitle =>
-      'You haven’t generated an encryption key yet. Without it, your clips will remain unencrypted and insecure. You can generate the key later in Settings ❯ Security. Do you still want to continue?';
+      'Vous n\'avez pas encore généré de clé de chiffrement. Sans cela, vos clips resteront non chiffrés et non sécurisés. Vous pouvez générer la clé plus tard dans Paramètres ❯ Sécurité. Voulez-vous toujours continuer ?';
 
   @override
   String get onboarding__dialog__gen_key_info__title =>
-      '🤔 Why Do I Need Encryption?';
+      '🤔 Pourquoi ai-je besoin du chiffrement ?';
 
   @override
   String get onboarding__dialog__gen_key_info__subtitle =>
-      'Encryption protects your data by converting it into a secure format that can only be accessed with a key. Without encryption, your clips are stored in plain text, making them vulnerable to unauthorized access. Enabling encryption ensures that only you can access your sensitive data, providing an extra layer of security against potential breaches.';
+      'Le chiffrement protège vos données en les convertissant en un format sécurisé qui ne peut être accédé qu\'avec une clé. Sans chiffrement, vos clips sont stockés en texte brut, les rendant vulnérables à un accès non autorisé. Activer le chiffrement garantit que vous seul pouvez accéder à vos données sensibles, fournissant une couche supplémentaire de sécurité contre les violations potentielles.';
 
   @override
-  String get onboarding__text__gen_key_headline => 'Setup Clipboard Encryption';
+  String get onboarding__text__gen_key_headline =>
+      'Configurer le chiffrement du presse-papiers';
 
   @override
   String onboarding__text__key_generated_title({required String keyPreview}) {
-    return '🎉 Key $keyPreview*** successfully generated 🎉';
+    return '🎉 Clé $keyPreview*** générée avec succès 🎉';
   }
 
   @override
-  String get onboarding__button__regenerate_key => 'Re-Generate Key';
+  String get onboarding__button__regenerate_key => 'Régénérer la clé';
 
   @override
   String get onboarding__text__no_key =>
-      'Your account doesn\'t have any encryption key';
+      'Votre compte n\'a pas de clé de chiffrement';
 
   @override
-  String get onboarding__button__generate_key => 'Generate Key';
+  String get onboarding__button__generate_key => 'Générer la clé';
 
   @override
-  String get onboarding__button__do_it_later => 'Do it later';
+  String get onboarding__button__do_it_later => 'Le faire plus tard';
 
   @override
-  String get onboarding__button__why_important => 'Why It\'s Important?';
+  String get onboarding__button__why_important => 'Pourquoi c\'est important ?';
 
   @override
   String get onboarding__snackbar__invalid_key =>
-      'This is not a valid CopyCat encryption key';
+      'Ceci n\'est pas une clé de chiffrement CopyCat valide';
 
   @override
   String get onboarding__dialog__skip_import__title =>
-      '✋ Encrypted Clips Inaccessible';
+      '✋ Clips chiffrés inaccessibles';
 
   @override
   String get onboarding__dialog__skip_import__subtitle =>
-      'You haven’t imported the encryption key yet. This means all your encrypted clips will remain inaccessible locally after sync.\n\nTo access them, import the key from Settings ❯ Security.\nDo you still want to continue?';
+      'Vous n\'avez pas encore importé la clé de chiffrement. Cela signifie que tous vos clips chiffrés resteront inaccessibles localement après la synchronisation.\n\n Pour y accéder, importez la clé à partir de Paramètres ❯ Sécurité.\nVoulez-vous toujours continuer ?';
 
   @override
   String get onboarding__dialog__reset_key__title =>
-      '✋ Permanently Delete Encrypted Data';
+      '✋ Supprimer définitivement les données chiffrées';
 
   @override
   String get onboarding__dialog__reset_key__subtitle =>
-      'This action is irreversible. Are you sure you want to permanently delete all encrypted data from the server?';
+      'Cette action est irréversible. Êtes-vous sûr de vouloir supprimer définitivement toutes les données chiffrées du serveur ?';
 
   @override
   String get onboarding__snackbar__reset_key__success =>
-      'Encryption successfully removed.';
+      'Chiffrement supprimé avec succès.';
 
   @override
-  String get onboarding__dialog__import_info__title => '🤔 Where is my key?';
+  String get onboarding__dialog__import_info__title => '🤔 Où est ma clé ?';
 
   @override
   String get onboarding__dialog__import_info__subtitle =>
-      'Your encryption key is a secure file generated during the encryption setup process. If you’ve misplaced it, check your downloads folder or any backup location where you might have saved it. Without this key, your encrypted data cannot be accessed.\n\nIf you’ve set up the encryption key on another device, you can export it by going to Settings ❯ Security ❯ E2EE Vault on that device. Transfer the key securely to this device to regain access to your encrypted data.';
+      'Votre clé de chiffrement est un fichier sécurisé généré lors du processus de configuration du chiffrement. Si vous l\'avez égarée, vérifiez votre dossier de téléchargements ou tout emplacement de sauvegarde où vous auriez pu la sauvegarder. Sans cette clé, vos données chiffrées ne peuvent être accessibles.\n\nSi vous avez configuré la clé de chiffrement sur un autre appareil, vous pouvez l\'exporter en allant dans Paramètres ❯ Sécurité ❯ E2EE Vault sur cet appareil. Transférez la clé en toute sécurité vers cet appareil pour reprendre l\'accès à vos données chiffrées.';
 
   @override
   String get onboarding__text__import_key_headline =>
-      'Import Clipboard Encryption Key';
+      'Importer la clé de chiffrement du presse-papiers';
 
   @override
   String get onboarding__text__import_key_title =>
-      'Your account currently has active encryption.';
+      'Votre compte a actuellement un chiffrement actif.';
 
   @override
-  String get onboarding__button__import_key => 'Import Key';
+  String get onboarding__button__import_key => 'Importer la clé';
 
   @override
-  String get onboarding__button__reset_key => 'Reset Encryption';
+  String get onboarding__button__reset_key => 'Réinitialiser le chiffrement';
 
   @override
-  String get onboarding__button__where_key => 'Where is the key?';
+  String get onboarding__button__where_key => 'Où est la clé?';
 
   @override
-  String get drive__snackbar__success => 'Drive Setup is Now Complete.';
+  String get onboarding__text__go_home => 'Let\'s go home';
 
   @override
-  String get drive__text__setting_up => 'Setting up and syncing...';
+  String onboarding__restoration__failed({required Object message}) {
+    return 'Restoration failed: $message';
+  }
+
+  @override
+  String get onboarding__restoration_warning =>
+      '⚠️ Please keep this screen open during syncing to avoid data corruption or inconsistencies.';
+
+  @override
+  String get restore_clips__text__title => 'Restore My Clipboard';
+
+  @override
+  String get restore_clips__error__no_backup => 'No clipboard backup found';
+
+  @override
+  String restore_clips__text__total_count({required num totalCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      totalCount,
+      locale: localeName,
+      zero: 'clip',
+      one: 'clip',
+      other: 'clips',
+    );
+    return 'You have approximately $_temp0 to restore.';
+  }
+
+  @override
+  String get restore_clips__sync_disable =>
+      'Syncing is currently disabled. Please enable it to continue.';
+
+  @override
+  String get restore_clips__preparing =>
+      'Preparing to restore clips. Please wait...';
+
+  @override
+  String restore_clips__restored({required num syncCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      syncCount,
+      locale: localeName,
+      zero: 'clip',
+      one: 'clip',
+      other: 'clips',
+    );
+    return 'Your $_temp0 have been restored successfully.';
+  }
+
+  @override
+  String restore_clips__restoring(
+      {required Object synced, required Object totalCount}) {
+    return 'Restored: $synced of $totalCount clips.';
+  }
+
+  @override
+  String get restore_collections__text__title => 'Restore My Collections';
+
+  @override
+  String get restore_collections__error__no_backup =>
+      'No collection backup found';
+
+  @override
+  String restore_collections__text__total_count({required num totalCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      totalCount,
+      locale: localeName,
+      zero: 'collection',
+      one: 'collection',
+      other: 'collections',
+    );
+    return 'You have approximately $_temp0 to restore.';
+  }
+
+  @override
+  String get restore_collections__sync_disable =>
+      'Syncing is currently disabled. Please enable it to continue.';
+
+  @override
+  String get restore_collections__preparing =>
+      'Preparing to restore collections. Please wait...';
+
+  @override
+  String restore_collections__restored({required num syncCount}) {
+    String _temp0 = intl.Intl.pluralLogic(
+      syncCount,
+      locale: localeName,
+      zero: 'collection',
+      one: 'collection',
+      other: 'collections',
+    );
+    return 'Your $_temp0 have been restored successfully.';
+  }
+
+  @override
+  String restore_collections__restoring(
+      {required Object synced, required Object totalCount}) {
+    return 'Restored: $synced of $totalCount collections.';
+  }
+
+  @override
+  String get drive__snackbar__success =>
+      'La configuration du lecteur est maintenant terminée.';
+
+  @override
+  String get drive__text__setting_up => 'Configuration et synchronisation...';
 
   @override
   String get drive__text__setting_up__warning =>
-      'Please wait while we finish this up. Do not close the app.';
+      'Veuillez patienter pendant que nous terminons cela. Ne fermez pas l\'application.';
 
   @override
-  String get create_clip__appbar__title__new => 'New Clip';
+  String get create_clip__appbar__title__new => 'Nouveau Clip';
 
   @override
-  String get create_clip__appbar__title__edit => 'Edit Clip';
+  String get create_clip__appbar__title__edit => 'Modifier le Clip';
 
   @override
-  String get create_clip__button__save_new => 'Save as new';
+  String get create_clip__button__save_new => 'Enregistrer comme nouveau';
 
   @override
-  String get create_clip__input__hint => 'Write your clip content here';
+  String get create_clip__input__hint => 'Écrivez le contenu de votre clip ici';
 
   @override
   String get collections__text__tip =>
-      'To ensure your important clips are always available regardless of time, across all your devices, save them in a collection!';
+      'Pour vous assurer que vos clips importants sont toujours disponibles, quel que soit le moment, sur tous vos appareils, enregistrez-les dans une collection !';
 
   @override
   String get collections__appbar__title => 'Collections';
 
   @override
-  String get collections__appbar__title__create => 'Create Collection';
+  String get collections__appbar__title__create => 'Créer une collection';
 
   @override
-  String get collections__appbar__title__edit => 'Edit Collection';
+  String get collections__appbar__title__edit => 'Modifier la collection';
 
   @override
-  String get collections__input__name => 'Name';
+  String get collections__input__name => 'Nom';
 
   @override
   String get collections__input__description => 'Description';
 
   @override
-  String get select_collection__appbar__title => 'Select Collection';
+  String get select_collection__appbar__title => 'Sélectionner la collection';
 
   @override
-  String get account__dialog__delete_confirm__title => 'Account Delete Request';
+  String get account__dialog__delete_confirm__title =>
+      'Demande de suppression de compte';
 
   @override
   String get account__dialog__delete_confirm__description =>
-      'You will be redirected to the account delete request form, are you sure?';
+      'Vous serez redirigé vers le formulaire de demande de suppression de compte, êtes-vous sûr ?';
 
   @override
-  String get account__list_tile__display_name => 'Display Name';
+  String get account__list_tile__display_name => 'Nom d\'affichage';
 
   @override
-  String get account__list_tile__email => 'Email';
+  String get account__list_tile__email => 'E-mail';
 
   @override
-  String get account__list_tile__settings => 'Account Settings';
+  String get account__list_tile__settings => 'Paramètres du compte';
 
   @override
-  String get account__list_tile__danger_zone => 'Danger Zone';
+  String get account__list_tile__danger_zone => 'Zone dangereuse';
 
   @override
-  String get account__button__req_delete => 'Request Account Deletion';
+  String get account__button__req_delete => 'Demander la suppression du compte';
 
   @override
-  String get account__appbar__title => 'My Account';
+  String get account__appbar__title => 'Mon Compte';
 
   @override
-  String get settings__appbar__title => 'Settings';
+  String get settings__appbar__title => 'Paramètres';
 
   @override
-  String get settings__tab__1 => 'General';
+  String get settings__tab__1 => 'Général';
 
   @override
-  String get settings__tab__2 => 'Customization';
+  String get settings__tab__2 => 'Personnalisation';
 
   @override
-  String get settings__tab__3 => 'Syncing';
+  String get settings__tab__3 => 'Synchronisation';
 
   @override
-  String get settings__tab__4 => 'Encryption';
+  String get settings__tab__4 => 'Chiffrement';
 
   @override
-  String get settings__tab__5 => 'Experimental';
+  String get settings__tab__5 => 'Expérimental';
 
   @override
-  String get settings__text__encryption => 'Encryption';
+  String get settings__text__encryption => 'Chiffrement';
 
   @override
   String get settings__text__sync_not_available =>
-      'Sync-related configurations are not available while using the local clipboard.';
+      'Les configurations relatives à la synchronisation ne sont pas disponibles lors de l\'utilisation du presse-papiers local.';
 
   @override
-  String get settings__appbar__er__title => 'Exclusion Rules';
+  String get settings__appbar__er__title => 'Règles d\'exclusion';
 
   @override
-  String get settings__text__er__predefine => 'Predefined Exclusion Rules';
+  String get settings__text__er__predefine => 'Règles d\'exclusion prédéfinies';
 
   @override
-  String get settings__text__er__pass_manager => 'Password Managers';
+  String get settings__text__er__pass_manager =>
+      'Gestionnaires de mots de passe';
 
   @override
-  String get settings__text__er__cc => 'Credit Card Number';
+  String get settings__text__er__cc => 'Numéro de carte de crédit';
 
   @override
-  String get settings__text__er__phone => 'Phone number';
+  String get settings__text__er__phone => 'Numéro de téléphone';
 
   @override
-  String get settings__text__er__email => 'Email Address';
+  String get settings__text__er__email => 'Adresse e-mail';
 
   @override
-  String get settings__text__er__url => 'Sensitive Url';
+  String get settings__text__er__url => 'URL sensible';
 
   @override
   String get settings__text__decrypted__note =>
-      '🥳 Congratulations! All your clips have been successfully decrypted locally,\n so rebuilding the database is not required.';
+      '🥳 Félicitations ! Tous vos clips ont été décryptés avec succès localement,\n il n\'est donc pas nécessaire de reconstruire la base de données.';
 
   @override
-  String get settings__appbar__cer__title => 'Custom Exclusion Rules';
+  String get settings__appbar__cer__title =>
+      'Règles d\'exclusion personnalisées';
 
   @override
-  String get settings__switch__drag_n_drop__title => 'Drag and Drop';
+  String get settings__switch__drag_n_drop__title => 'Glisser et déposer';
 
   @override
   String get settings__switch__drag_n_drop__subtitle =>
-      'Allow items to be moved freely in both directions within the app.';
+      'Autoriser les éléments à être déplacés librement dans les deux sens au sein de l\'application.';
 
   @override
   String get settings__dropdown__no_copy_over_limit__title =>
-      'Don\'t Auto Copy Over';
+      'Ne pas copier automatiquement au-delà de';
 
   @override
   String settings__dropdown__no_copy_over_limit__subtitle(
       {required String fileSize}) {
-    return 'Files and Media over a certain size ($fileSize) will not be copied automatically.';
+    return 'Les fichiers et médias de plus d\'une certaine taille ($fileSize) ne seront pas copiés automatiquement.';
   }
 
   @override
-  String get settings__text__5MB => '5 MB';
+  String get settings__text__5MB => '5 Mo';
 
   @override
-  String get settings__text__10MB => '10 MB';
+  String get settings__text__10MB => '10 Mo';
 
   @override
-  String get settings__text__20MB => '20 MB';
+  String get settings__text__20MB => '20 Mo';
 
   @override
-  String get settings__text__50MB => '50 MB';
+  String get settings__text__50MB => '50 Mo';
 
   @override
-  String get settings__text__100MB => '100 MB';
+  String get settings__text__100MB => '100 Mo';
 
   @override
   String get settings__dropdown__no_upload_over_limit__title =>
-      'Don\'t Auto Upload Over';
+      'Ne pas téléverser automatiquement au-delà de';
 
   @override
   String settings__dropdown__no_upload_over_limit__subtitle(
       {required String fileSize}) {
-    return 'Files and Media over a certain size ($fileSize) will not be uploaded automatically.';
+    return 'Les fichiers et médias de plus d\'une certaine taille ($fileSize) ne seront pas téléversés automatiquement.';
   }
 
   @override
-  String get settings__dropdown__sync_mode__title => 'Sync Mode';
+  String get settings__dropdown__sync_mode__title => 'Mode de synchronisation';
 
   @override
   String get settings__dropdown__sync_mode__subtitle =>
-      'Select the syncing speed that works best for you.';
+      'Sélectionnez la vitesse de synchronisation qui vous convient le mieux.';
 
   @override
-  String get settings__sync_mode__realtime => 'Realtime';
+  String get settings__sync_mode__realtime => 'Temps réel';
 
   @override
-  String get settings__sync_mode__balanced => 'Balanced';
+  String get settings__sync_mode__balanced => 'Équilibré';
 
   @override
-  String get settings__dropdown__theme__title => 'Theme Mode';
+  String get settings__dropdown__theme__title => 'Mode thème';
 
   @override
-  String get settings__theme__system => 'System';
+  String get settings__theme__system => 'Système';
 
   @override
-  String get settings__theme__light => 'Light';
+  String get settings__theme__light => 'Clair';
 
   @override
-  String get settings__theme__dark => 'Dark';
+  String get settings__theme__dark => 'Sombre';
 
   @override
-  String get settings__dropdown__color_mode__title => 'Color Mode';
+  String get settings__dropdown__color_mode__title => 'Mode couleur';
 
   @override
   String get settings__dropdown__color_mode__subtitle =>
-      'Select the color mode to customize the appearance of the app. The default option is \'Tonal Spot\'.';
+      'Sélectionnez le mode de couleur pour personnaliser l\'apparence de l\'application. L\'option par défaut est \"Spot tonal\".';
 
   @override
-  String get settings__color_mode__tonalSpot => 'Tonal Spot';
+  String get settings__color_mode__tonalSpot => 'Spot tonal';
 
   @override
-  String get settings__color_mode__content => 'Content';
+  String get settings__color_mode__content => 'Contenu';
 
   @override
-  String get settings__color_mode__expressive => 'Expressive';
+  String get settings__color_mode__expressive => 'Expressif';
 
   @override
-  String get settings__color_mode__fidelity => 'Fidelity';
+  String get settings__color_mode__fidelity => 'Fidélité';
 
   @override
-  String get settings__color_mode__fruit_salad => 'Fruit Salad';
+  String get settings__color_mode__fruit_salad => 'Salade de fruits';
 
   @override
   String get settings__color_mode__monochrome => 'Monochrome';
 
   @override
-  String get settings__color_mode__neutral => 'Neutral';
+  String get settings__color_mode__neutral => 'Neutre';
 
   @override
-  String get settings__color_mode__rainbow => 'Rainbow';
+  String get settings__color_mode__rainbow => 'Arc-en-ciel';
 
   @override
   String get settings__color_mode__vibrant => 'Vibrant';
 
   @override
-  String get settings__tile__cer_title => 'Custom Rules';
+  String get settings__tile__cer_title => 'Règles personnalisées';
 
   @override
   String get settings__tile__cer_subtitle =>
-      'Exclude by app, app window/website title, website url or regex pattern';
+      'Exclure par application, par fenêtre/application titre, URL de site Web ou motif Regex';
 
   @override
-  String get settings__tile__er_title => 'Exclusion Rules';
+  String get settings__tile__er_title => 'Règles d\'exclusion';
 
   @override
   String get settings__tile__er_subtitle =>
-      'Prevent information from copying to clipboard. Click for Advance control.';
+      'Empêcher les informations de se copier dans le presse-papiers. Cliquez pour un contrôle avancé.';
 
   @override
-  String get settings__switch__enable_sync__title => 'Clipboard Syncing';
+  String get settings__switch__enable_sync__title =>
+      'Synchronisation du presse-papiers';
 
   @override
   String get settings__switch__enable_sync__subtitle =>
-      'Sync your clipboard across devices effortlessly.';
+      'Synchronisez votre presse-papiers entre les appareils sans effort.';
 
   @override
-  String get settings__switch__sync_file__title => 'File and Media Syncing';
+  String get settings__switch__sync_file__title =>
+      'Synchronisation des fichiers et médias';
 
   @override
   String get settings__switch__sync_file__subtitle =>
-      'Toggle to sync files and media clips across devices.';
+      'Basculer pour synchroniser les fichiers et les clips multimédias entre les appareils.';
 
   @override
-  String get settings__switch__paused__title => 'Pause Clipboard Listener';
+  String get settings__switch__paused__title =>
+      'Mettre en pause l\'écouteur du presse-papiers';
 
   @override
   String get settings__switch__paused__subtitle =>
-      'Temporarily pause clipboard tracking until a set time.';
+      'Suspendre temporairement le suivi du presse-papiers jusqu\'à une heure définie.';
 
   @override
   String settings__switch__paused_active__subtitle({required Object time}) {
-    return 'Paused until $time. Tap to resume or adjust the time.';
+    return 'En pause jusqu\'à $time. Appuyez pour reprendre ou ajuster le temps.';
   }
 
   @override
-  String get settings__switch__smart_paste__title => 'Smart Paste';
+  String get settings__switch__smart_paste__title => 'Collage intelligent';
 
   @override
   String get settings__switch__smart_paste__subtitle =>
-      'Paste content directly on the focused app.';
+      'Collez du contenu directement sur l\'application ciblée.';
 
   @override
-  String get settings__switch__startup__title => 'Launch at Startup';
+  String get settings__switch__startup__title => 'Lancer au démarrage';
 
   @override
   String get settings__switch__startup__subtitle =>
-      'Automatically start the CopyCat when your device powers on.';
+      'Lancez automatiquement CopyCat lorsque votre appareil s\'allume.';
 
   @override
-  String get settings__switch__hotkey__title => 'Toggle with Hotkey';
+  String get settings__switch__hotkey__title => 'Activer avec le raccourci';
 
   @override
   String get settings__switch__hotkey__subtitle =>
-      'Use a keyboard shortcut to quickly access your CopyCat Clipboard';
+      'Utilisez un raccourci clavier pour accéder rapidement à votre presse-papiers CopyCat';
 
   @override
-  String get settings__hotkey__unassigned => 'Not Assigned';
+  String get settings__hotkey__unassigned => 'Non assigné';
 
   @override
-  String get settings__hotkey__preview_start => 'Press ';
+  String get settings__hotkey__preview_start => 'Presser ';
 
   @override
-  String get settings__hotkey__preview_end => ' to show or hide the app.';
+  String get settings__hotkey__preview_end =>
+      ' pour montrer ou cacher l\'application.';
 
   @override
-  String get settings__tile__theme_color__title => 'Theme Color';
+  String get settings__tile__theme_color__title => 'Couleur du thème';
 
   @override
   String get settings__tile__theme_color__subtitle =>
-      'This color will influence the overall look and feel of the app.';
+      'Cette couleur influencera l\'apparence générale de l\'application.';
 
   @override
-  String get settings__tile__desk_client__title => 'Download Desktop Client';
+  String get settings__tile__desk_client__title =>
+      'Télécharger le client de bureau';
 
   @override
-  String get settings__tile__mobile_client__title => 'Download Phone Client';
+  String get settings__tile__mobile_client__title =>
+      'Télécharger le client mobile';
 
   @override
   String get settings__tile__client__subtitle =>
-      'Access your clipboard on all your devices.';
+      'Accédez à votre presse-papiers sur tous vos appareils.';
 
   @override
-  String get settings__tile__e2e_setup__title => 'End to End Encryption Setup';
+  String get settings__tile__e2e_setup__title =>
+      'Configuration du chiffrement de bout en bout';
 
   @override
   String get settings__tile__e2e_setup__subtitle =>
-      'Configure encryption for your clips.';
+      'Configurer le chiffrement pour vos clips.';
 
   @override
-  String get settings__switch__e2e__title => 'Enable Encryption';
+  String get settings__switch__e2e__title => 'Activer le chiffrement';
 
   @override
   String get settings__switch__e2e__subtitle =>
-      'Toggle to activate or deactivate end-to-end encryption for your clips.';
+      'Basculer pour activer ou désactiver le chiffrement de bout en bout pour vos clips.';
 
   @override
-  String get settings__dialog__conn_gdrive__title => 'Re-Connect Google Drive?';
+  String get settings__dialog__conn_gdrive__title =>
+      'Reconnecter Google Drive?';
 
   @override
   String get settings__dialog__conn_gdrive__subtitle =>
-      'Your google drive is already connected! Would you like to reconnect?\n\nTo avoid any data loss, please ensure you use the same account as before.';
+      'Votre Google Drive est déjà connecté ! Souhaitez-vous vous reconnecter ?\n\nPour éviter toute perte de données, assurez-vous d\'utiliser le même compte qu\'auparavant.';
 
   @override
-  String get settings__drive__connected => 'Connected';
+  String get settings__drive__connected => 'Connecté';
 
   @override
-  String get settings__drive__loading => 'Loading...';
+  String get settings__drive__loading => 'Chargement...';
 
   @override
-  String get settings__drive__authorizing => 'Authorizing...';
+  String get settings__drive__authorizing => 'Autorisation...';
 
   @override
-  String get settings__drive__disconnected => 'Disconnected';
+  String get settings__drive__disconnected => 'Déconnecté';
 
   @override
   String get settings__text__cloud__title => 'Cloud Drive';
@@ -1176,74 +1320,77 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settings__text__gdrive__error =>
-      'Google Drive is not connected. File and media syncing are currently disabled.';
+      'Google Drive n\'est pas connecté. La synchronisation des fichiers et médias est actuellement désactivée.';
 
   @override
   String get settings__text__gdrive__info =>
-      'Your files and media are securely synced across devices via Google Drive, ensuring your privacy is protected.';
+      'Vos fichiers et médias sont synchronisés en toute sécurité entre les appareils via Google Drive, assurant la protection de votre confidentialité.';
 
   @override
-  String get settings__tile__other_cloud__title => 'Setup Other Cloud Drive';
+  String get settings__tile__other_cloud__title =>
+      'Configurer un autre cloud drive';
 
   @override
   String get settings__tile__other_cloud__subtitle =>
-      'Setup other cloud drives like Dropbox, OneDrive, etc.';
+      'Configurez d\'autres lecteurs cloud comme Dropbox, OneDrive, etc.';
 
   @override
-  String get custom_er__nav__1 => 'App';
+  String get custom_er__nav__1 => 'Application';
 
   @override
-  String get custom_er__nav__2 => 'Window Title';
+  String get custom_er__nav__2 => 'Titre de la fenêtre';
 
   @override
   String get custom_er__nav__3 => 'Url';
 
   @override
-  String get custom_er__nav__4 => 'Text Pattern';
+  String get custom_er__nav__4 => 'Modèle de texte';
 
   @override
   String get custom_er__text__not_supported =>
-      'This exclusion is not supported yet';
+      'Cette exclusion n\'est pas encore supportée';
 
   @override
-  String get custom_er__tile__add_app => 'Add an app';
+  String get custom_er__tile__add_app => 'Ajouter une application';
 
   @override
-  String get custom_er__text__no_app => 'No custom app excluded yet';
+  String get custom_er__text__no_app =>
+      'Aucune application personnalisée exclue pour le moment';
 
   @override
-  String get custom_er__button__remove_app => 'Remove this app';
+  String get custom_er__button__remove_app => 'Retirer cette application';
 
   @override
   String get custom_er__tile__pattern =>
-      'Prevent copy when copied content matches these patterns';
+      'Éviter la copie lorsque le contenu copié correspond à ces modèles';
 
   @override
-  String get custom_er__text__no_pattern => 'No custom pattern(s) excluded';
+  String get custom_er__text__no_pattern => 'Aucun modèle personnalisé exclu';
 
   @override
-  String get custom_er__button__remove_pattern => 'Remove this pattern';
+  String get custom_er__button__remove_pattern => 'Retirer ce modèle';
 
   @override
   String get custom_er__tile__url =>
-      'Prevent copy from website matching these url segments.';
+      'Empêcher la copie depuis le site web correspondant à ces segments d\'URL.';
 
   @override
-  String get custom_er__input__url_hint => 'Enter a url or part of a url here.';
+  String get custom_er__input__url_hint =>
+      'Saisissez une URL ou une partie d\'une URL ici.';
 
   @override
-  String get custom_er__text__no_url => 'No custom url(s) excluded';
+  String get custom_er__text__no_url => 'Aucune URL personnalisée exclue';
 
   @override
-  String get custom_er__button__remove_url => 'Remove this url';
+  String get custom_er__button__remove_url => 'Retirer cette URL';
 
   @override
   String get custom_er__tile__title =>
-      'Prevent copy from app or website when window title matches.';
+      'Empêcher la copie d\'une application ou d\'un site web lorsque le titre de la fenêtre correspond.';
 
   @override
-  String get custom_er__text__no_title => 'No custom title(s) excluded';
+  String get custom_er__text__no_title => 'Aucun titre personnalisé exclu';
 
   @override
-  String get custom_er__button__remove_title => 'Remove this title';
+  String get custom_er__button__remove_title => 'Retirer ce titre';
 }
