@@ -127,6 +127,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get app__try_again => 'Essayer à nouveau';
 
   @override
+  String get app__realtime_connected => 'Connecté en temps réel';
+
+  @override
+  String get app__realtime_disconnected => 'Déconnecté en temps réel';
+
+  @override
+  String get app__realtime_connecting => 'Connexion en temps réel...';
+
+  @override
   String get app__ack__exported => 'Exporté';
 
   @override
@@ -735,6 +744,12 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get reset_password__success_ack =>
       'Mot de passe réinitialisé avec succès';
+
+  @override
+  String get onboarding__text__welcome => 'Bienvenue à';
+
+  @override
+  String get onboarding__text__lets_continue => 'Continuons';
 
   @override
   String get onboarding__button__to_login => 'Se connecter';
@@ -1387,4 +1402,63 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get about__tile__support => 'Support';
+
+  @override
+  String get abc_title => 'Presse-papiers en arrière-plan';
+
+  @override
+  String get abc__tile__subtitle => 'Écoutez le presse-papiers en arrière-plan';
+
+  @override
+  String get abc__tip__why_title =>
+      'Pourquoi ces autorisations sont-elles nécessaires ?';
+
+  @override
+  String get abc__tip__why_subtitle =>
+      'Ces autorisations garantissent que CopyCat fonctionne correctement en arrière-plan, permettant de détecter le contenu copié et de vous offrir une expérience fluide sans interruptions.';
+
+  @override
+  String get abc__tip__support_title => 'Support limité';
+
+  @override
+  String get abc__tip__support_subtitle =>
+      '1. Actuellement, seuls les clips texte sont pris en charge.\n2. Certains systèmes d\'exploitation, comme HyperOS 1, ne sont pas encore pris en charge.';
+
+  @override
+  String get abc__heading__req_perm => 'Autorisations requises';
+
+  @override
+  String get abc__tile__notification_title => 'Accès aux notifications';
+
+  @override
+  String get abc__tile__notification_subtitle =>
+      'Affiche une notification persistante pour vous informer que CopyCat fonctionne en arrière-plan, garantissant transparence et confidentialité.';
+
+  @override
+  String get abc__tile__battery_opt_title => 'Optimisation de la batterie';
+
+  @override
+  String get abc__tile__battery_opt_subtitle =>
+      'Empêche le système d\'arrêter CopyCat lorsqu\'il fonctionne en arrière-plan, garantissant une expérience fluide.';
+
+  @override
+  String get abc__tile__overlay_title => 'Autorisation de superposition';
+
+  @override
+  String get abc__tile__overlay_subtitle =>
+      'Permet à CopyCat de lire le presse-papiers en ouvrant brièvement une fenêtre transparente au-dessus de l\'écran et de la fermer immédiatement après.';
+
+  @override
+  String get abc__tile__acc_title => 'Service d\'accessibilité';
+
+  @override
+  String get abc__tile__acc_subtitle =>
+      'Démarre l\'écouteur en arrière-plan de CopyCat pour détecter lorsque vous copiez quelque chose et assure le redémarrage automatique du service après un redémarrage.';
+
+  @override
+  String get abc__ack__ready => 'Configuration prête à être configurée.';
+
+  @override
+  String get abc__ack__preparing =>
+      'Préparation de la configuration, veuillez patienter...';
 }

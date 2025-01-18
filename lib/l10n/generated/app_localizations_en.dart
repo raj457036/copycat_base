@@ -127,6 +127,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get app__try_again => 'Try Again';
 
   @override
+  String get app__realtime_connected => 'Realtime Connected';
+
+  @override
+  String get app__realtime_disconnected => 'Realtime Disconnected';
+
+  @override
+  String get app__realtime_connecting => 'Realtime Connecting...';
+
+  @override
   String get app__ack__exported => 'Exported';
 
   @override
@@ -720,6 +729,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reset_password__success_ack => 'Password reset successfully';
 
   @override
+  String get onboarding__text__welcome => 'Welcome to';
+
+  @override
+  String get onboarding__text__lets_continue => 'Let\'s Continue';
+
+  @override
   String get onboarding__button__to_login => 'Sign in';
 
   @override
@@ -867,7 +882,7 @@ class AppLocalizationsEn extends AppLocalizations {
       one: 'clip',
       other: 'clips',
     );
-    return 'You have approximately $_temp0 to restore.';
+    return 'You have approximately $totalCount $_temp0 to restore.';
   }
 
   @override
@@ -887,7 +902,7 @@ class AppLocalizationsEn extends AppLocalizations {
       one: 'clip',
       other: 'clips',
     );
-    return 'Your $_temp0 have been restored successfully.';
+    return 'Your $syncCount $_temp0 have been restored successfully.';
   }
 
   @override
@@ -912,7 +927,7 @@ class AppLocalizationsEn extends AppLocalizations {
       one: 'collection',
       other: 'collections',
     );
-    return 'You have approximately $_temp0 to restore.';
+    return 'You have approximately $totalCount $_temp0 to restore.';
   }
 
   @override
@@ -932,7 +947,7 @@ class AppLocalizationsEn extends AppLocalizations {
       one: 'collection',
       other: 'collections',
     );
-    return 'Your $_temp0 have been restored successfully.';
+    return 'Your $syncCount $_temp0 have been restored successfully.';
   }
 
   @override
@@ -1380,4 +1395,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get about__tile__support => 'Support';
+
+  @override
+  String get abc_title => 'Background Clipboard';
+
+  @override
+  String get abc__tile__subtitle => 'Listen to the clipboard in the background';
+
+  @override
+  String get abc__tip__why_title => 'Why are these permissions needed?';
+
+  @override
+  String get abc__tip__why_subtitle =>
+      'These permissions ensure CopyCat works correctly in the background, allowing it to detect copied content and provide you with a seamless experience without interruptions.';
+
+  @override
+  String get abc__tip__support_title => 'Limited Support';
+
+  @override
+  String get abc__tip__support_subtitle =>
+      '1. Currently, only text clips are supported.\n2. Some operating systems, like HyperOS 1, are not supported yet.';
+
+  @override
+  String get abc__heading__req_perm => 'Required Permissions';
+
+  @override
+  String get abc__tile__notification_title => 'Notification Access';
+
+  @override
+  String get abc__tile__notification_subtitle =>
+      'Displays a persistent notification to inform you that CopyCat is running in the background, ensuring transparency and privacy.';
+
+  @override
+  String get abc__tile__battery_opt_title => 'Battery Optimization';
+
+  @override
+  String get abc__tile__battery_opt_subtitle =>
+      'Prevents the system from shutting down CopyCat while running in the background, ensuring a seamless experience.';
+
+  @override
+  String get abc__tile__overlay_title => 'Overlay Permission';
+
+  @override
+  String get abc__tile__overlay_subtitle =>
+      'Allows CopyCat to read the clipboard by briefly opening a transparent window over the screen and closing it immediately after.';
+
+  @override
+  String get abc__tile__acc_title => 'Accessibility Service';
+
+  @override
+  String get abc__tile__acc_subtitle =>
+      'Start the CopyCat background listener to detect when you copy something and ensure the service restarts automatically after a reboot.';
+
+  @override
+  String get abc__ack__ready => 'Setup ready to be configured.';
+
+  @override
+  String get abc__ack__preparing => 'Preparing setup, please wait...';
 }

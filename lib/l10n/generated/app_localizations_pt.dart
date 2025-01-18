@@ -127,6 +127,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get app__try_again => 'Tente Novamente';
 
   @override
+  String get app__realtime_connected => 'Conectado em tempo real';
+
+  @override
+  String get app__realtime_disconnected => 'Desconectado em tempo real';
+
+  @override
+  String get app__realtime_connecting => 'Conectando em tempo real...';
+
+  @override
   String get app__ack__exported => 'Exportado';
 
   @override
@@ -728,6 +737,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get reset_password__success_ack => 'Senha redefinida com sucesso';
 
   @override
+  String get onboarding__text__welcome => 'Bem-vindo ao';
+
+  @override
+  String get onboarding__text__lets_continue => 'Vamos Continuar';
+
+  @override
   String get onboarding__button__to_login => 'Entrar';
 
   @override
@@ -878,7 +893,7 @@ class AppLocalizationsPt extends AppLocalizations {
       other: 'clips',
       one: 'clip',
     );
-    return 'Você tem aproximadamente $_temp0 para restaurar.';
+    return 'Você tem aproximadamente $totalCount $_temp0 para restaurar.';
   }
 
   @override
@@ -897,7 +912,7 @@ class AppLocalizationsPt extends AppLocalizations {
       other: 'clips',
       one: 'clip',
     );
-    return 'Seus $_temp0 foram restaurados com sucesso.';
+    return 'Seus $syncCount $_temp0 foram restaurados com sucesso.';
   }
 
   @override
@@ -921,7 +936,7 @@ class AppLocalizationsPt extends AppLocalizations {
       other: 'coleções',
       one: 'coleção',
     );
-    return 'Você tem aproximadamente $_temp0 para restaurar.';
+    return 'Você tem aproximadamente $totalCount $_temp0 para restaurar.';
   }
 
   @override
@@ -940,7 +955,7 @@ class AppLocalizationsPt extends AppLocalizations {
       other: 'coleções',
       one: 'coleção',
     );
-    return 'Suas $_temp0 foram restauradas com sucesso.';
+    return 'Suas $syncCount $_temp0 foram restauradas com sucesso.';
   }
 
   @override
@@ -1403,4 +1418,61 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get about__tile__support => 'Suporte';
+
+  @override
+  String get abc_title => 'Papel de parede de fundo';
+
+  @override
+  String get abc__tile__subtitle => 'Ouça o papel de parede em segundo plano';
+
+  @override
+  String get abc__tip__why_title => 'Por que essas permissões são necessárias?';
+
+  @override
+  String get abc__tip__why_subtitle =>
+      'Essas permissões garantem que o CopyCat funcione corretamente em segundo plano, permitindo detectar conteúdo copiado e fornecer uma experiência contínua sem interrupções.';
+
+  @override
+  String get abc__tip__support_title => 'Suporte limitado';
+
+  @override
+  String get abc__tip__support_subtitle =>
+      '1. Atualmente, apenas clipes de texto são suportados.\n2. Alguns sistemas operacionais, como o HyperOS 1, ainda não são compatíveis.';
+
+  @override
+  String get abc__heading__req_perm => 'Permissões necessárias';
+
+  @override
+  String get abc__tile__notification_title => 'Acesso à notificação';
+
+  @override
+  String get abc__tile__notification_subtitle =>
+      'Exibe uma notificação persistente para informar que o CopyCat está em execução em segundo plano, garantindo transparência e privacidade.';
+
+  @override
+  String get abc__tile__battery_opt_title => 'Otimização de bateria';
+
+  @override
+  String get abc__tile__battery_opt_subtitle =>
+      'Evita que o sistema desligue o CopyCat enquanto ele está em segundo plano, garantindo uma experiência contínua.';
+
+  @override
+  String get abc__tile__overlay_title => 'Permissão de sobreposição';
+
+  @override
+  String get abc__tile__overlay_subtitle =>
+      'Permite que o CopyCat leia a área de transferência abrindo brevemente uma janela transparente sobre a tela e a fechando imediatamente depois.';
+
+  @override
+  String get abc__tile__acc_title => 'Serviço de acessibilidade';
+
+  @override
+  String get abc__tile__acc_subtitle =>
+      'Inicia o ouvinte em segundo plano do CopyCat para detectar quando você copiar algo e garante que o serviço seja reiniciado automaticamente após uma reinicialização.';
+
+  @override
+  String get abc__ack__ready => 'Configuração pronta para ser configurada.';
+
+  @override
+  String get abc__ack__preparing => 'Preparando configuração, aguarde...';
 }

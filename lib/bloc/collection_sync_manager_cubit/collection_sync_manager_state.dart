@@ -4,7 +4,7 @@ part of 'collection_sync_manager_cubit.dart';
 class CollectionSyncManagerState with _$CollectionSyncManagerState {
   const factory CollectionSyncManagerState.disabled() = CollectionSyncDisabled;
   const factory CollectionSyncManagerState.unknown() = CollectionSyncUnknown;
-  const factory CollectionSyncManagerState.syncingUnknonw() =
+  const factory CollectionSyncManagerState.syncingUnknown() =
       CollectionSyncingUnknown;
   const factory CollectionSyncManagerState.syncing({
     required int synced,

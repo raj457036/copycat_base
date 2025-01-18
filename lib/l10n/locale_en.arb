@@ -47,6 +47,9 @@
   "app__create_collection": "Create Collection",
   "app__pro_tip": "Pro Tip",
   "app__try_again": "Try Again",
+  "app__realtime_connected": "Realtime Connected", 
+  "app__realtime_disconnected": "Realtime Disconnected", 
+  "app__realtime_connecting": "Realtime Connecting...", 
   "app__ack__exported": "Exported",
   "app__ack__copied": "Copied",
   "app__ack__pasted": "Pasted",
@@ -306,6 +309,9 @@
   "reset_password__appbar__title": "Reset your password",
   "reset_password__success_ack": "Password reset successfully",
   "@@ON_BOARDING": "On Boarding Screen",
+  "onboarding__text__welcome": "Welcome to",
+  "onboarding__text__lets_continue": "Let's Continue",
+
   "onboarding__button__to_login": "Sign in",
   "onboarding__snackbar__export_success": "Encryption key successfully exported.",
   "onboarding__dialog__skip_export__title": "✋ Backup Your Encryption Key",
@@ -358,7 +364,7 @@
   "@@RESTORE_CLIPS": "Restore Clips",
   "restore_clips__text__title": "Restore My Clipboard",
   "restore_clips__error__no_backup": "No clipboard backup found",
-  "restore_clips__text__total_count": "You have approximately {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.",
+  "restore_clips__text__total_count": "You have approximately {totalCount} {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.",
   "@restore_clips__text__total_count": {
     "placeholder": {
       "totalCount": {
@@ -368,7 +374,7 @@
   },
   "restore_clips__sync_disable": "Syncing is currently disabled. Please enable it to continue.",
   "restore_clips__preparing": "Preparing to restore clips. Please wait...",
-  "restore_clips__restored": "Your {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.",
+  "restore_clips__restored": "Your {syncCount} {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.",
   "@restore_clips__restored": {
     "placeholder": {
       "syncCount": {
@@ -391,7 +397,7 @@
   "@@RESTORE_COLLECTION": "Restore Collections",
   "restore_collections__text__title": "Restore My Collections",
   "restore_collections__error__no_backup": "No collection backup found",
-  "restore_collections__text__total_count": "You have approximately {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.",
+  "restore_collections__text__total_count": "You have approximately {totalCount} {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.",
   "@restore_collections__text__total_count": {
     "placeholder": {
       "totalCount": {
@@ -401,7 +407,7 @@
   },
   "restore_collections__sync_disable": "Syncing is currently disabled. Please enable it to continue.",
   "restore_collections__preparing": "Preparing to restore collections. Please wait...",
-  "restore_collections__restored": "Your {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.",
+  "restore_collections__restored": "Your {syncCount} {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.",
   "@restore_collections__restored": {
     "placeholder": {
       "syncCount": {
@@ -587,5 +593,32 @@
   "about__tile__read_tut": "Read • Tutorial",
   "about__tile__github": "Github • Open Source",
   "about__tile__website": "EntilityStudio • Website",
-  "about__tile__support": "Support"
+  "about__tile__support": "Support",
+
+  "@@ANDROID_BACKGROUND_CLIPBOARD": "Android Background Clipboard",
+  "abc_title": "Background Clipboard",
+  "abc__tile__subtitle": "Listen to the clipboard in the background",
+
+  "abc__tip__why_title": "Why are these permissions needed?",
+  "abc__tip__why_subtitle": "These permissions ensure CopyCat works correctly in the background, allowing it to detect copied content and provide you with a seamless experience without interruptions.",
+  
+  "abc__tip__support_title": "Limited Support",
+  "abc__tip__support_subtitle": "1. Currently, only text clips are supported.\n2. Some operating systems, like HyperOS 1, are not supported yet.",
+  
+  "abc__heading__req_perm": "Required Permissions",
+  
+  "abc__tile__notification_title": "Notification Access",
+  "abc__tile__notification_subtitle": "Displays a persistent notification to inform you that CopyCat is running in the background, ensuring transparency and privacy.",
+
+  "abc__tile__battery_opt_title": "Battery Optimization",
+  "abc__tile__battery_opt_subtitle": "Prevents the system from shutting down CopyCat while running in the background, ensuring a seamless experience.",
+
+  "abc__tile__overlay_title": "Overlay Permission",
+  "abc__tile__overlay_subtitle": "Allows CopyCat to read the clipboard by briefly opening a transparent window over the screen and closing it immediately after.",
+
+  "abc__tile__acc_title": "Accessibility Service",
+  "abc__tile__acc_subtitle": "Start the CopyCat background listener to detect when you copy something and ensure the service restarts automatically after a reboot.",
+
+  "abc__ack__ready": "Setup ready to be configured.",
+  "abc__ack__preparing": "Preparing setup, please wait..."
 }

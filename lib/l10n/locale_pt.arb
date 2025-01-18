@@ -47,6 +47,9 @@
     "app__create_collection": "Criar Coleção",
     "app__pro_tip": "Dica Pro",
     "app__try_again": "Tente Novamente",
+    "app__realtime_connected": "Conectado em tempo real",
+    "app__realtime_disconnected": "Desconectado em tempo real",
+    "app__realtime_connecting": "Conectando em tempo real...",
     "app__ack__exported": "Exportado",
     "app__ack__copied": "Copiado",
     "app__ack__pasted": "Colado",
@@ -305,6 +308,9 @@
     "reset_password__appbar__title": "Redefina sua senha",
     "reset_password__success_ack": "Senha redefinida com sucesso",
     "@@ON_BOARDING": "Tela de Introdução",
+    "onboarding__text__welcome": "Bem-vindo ao",
+    "onboarding__text__lets_continue": "Vamos Continuar",
+
     "onboarding__button__to_login": "Entrar",
     "onboarding__snackbar__export_success": "Chave de criptografia exportada com sucesso.",
     "onboarding__dialog__skip_export__title": "✋ Faça Backup da Sua Chave de Criptografia",
@@ -357,7 +363,7 @@
     "@@RESTORE_CLIPS": "Restaurar Clips",
     "restore_clips__text__title": "Restaurar Meu Clipboard",
     "restore_clips__error__no_backup": "Nenhum backup de clipboard encontrado",
-    "restore_clips__text__total_count": "Você tem aproximadamente {totalCount, plural, one{clip} other{clips}} para restaurar.",
+    "restore_clips__text__total_count": "Você tem aproximadamente {totalCount} {totalCount, plural, one{clip} other{clips}} para restaurar.",
     "@restore_clips__text__total_count": {
       "placeholder": {
         "totalCount": {
@@ -367,7 +373,7 @@
     },
     "restore_clips__sync_disable": "A sincronização está atualmente desativada. Por favor, habilite-a para continuar.",
     "restore_clips__preparing": "Preparando para restaurar clips. Por favor, aguarde...",
-    "restore_clips__restored": "Seus {syncCount, plural, one{clip} other{clips}} foram restaurados com sucesso.",
+    "restore_clips__restored": "Seus {syncCount} {syncCount, plural, one{clip} other{clips}} foram restaurados com sucesso.",
     "@restore_clips__restored": {
       "placeholder": {
         "syncCount": {
@@ -390,7 +396,7 @@
     "@@RESTORE_COLLECTION": "Restaurar Coleções",
     "restore_collections__text__title": "Restaurar Minhas Coleções",
     "restore_collections__error__no_backup": "Nenhum backup de coleção encontrado",
-    "restore_collections__text__total_count": "Você tem aproximadamente {totalCount, plural, one{coleção} other{coleções}} para restaurar.",
+    "restore_collections__text__total_count": "Você tem aproximadamente {totalCount} {totalCount, plural, one{coleção} other{coleções}} para restaurar.",
     "@restore_collections__text__total_count": {
       "placeholder": {
         "totalCount": {
@@ -400,7 +406,7 @@
     },
     "restore_collections__sync_disable": "A sincronização está atualmente desativada. Por favor, habilite-a para continuar.",
     "restore_collections__preparing": "Preparando para restaurar coleções. Por favor, aguarde...",
-    "restore_collections__restored": "Suas {syncCount, plural, one{coleção} other{coleções}} foram restauradas com sucesso.",
+    "restore_collections__restored": "Suas {syncCount} {syncCount, plural, one{coleção} other{coleções}} foram restauradas com sucesso.",
     "@restore_collections__restored": {
       "placeholder": {
         "syncCount": {
@@ -584,5 +590,32 @@
     "about__tile__read_tut": "Ler • Tutorial",
     "about__tile__github": "Github • Código aberto",
     "about__tile__website": "EntilityStudio • Site",
-    "about__tile__support": "Suporte"
+    "about__tile__support": "Suporte",
+
+    "@@ANDROID_BACKGROUND_CLIPBOARD": "Papel de parede de fundo Android",
+    "abc_title": "Papel de parede de fundo",
+    "abc__tile__subtitle": "Ouça o papel de parede em segundo plano",
+
+    "abc__tip__why_title": "Por que essas permissões são necessárias?",
+    "abc__tip__why_subtitle": "Essas permissões garantem que o CopyCat funcione corretamente em segundo plano, permitindo detectar conteúdo copiado e fornecer uma experiência contínua sem interrupções.",
+
+    "abc__tip__support_title": "Suporte limitado",
+    "abc__tip__support_subtitle": "1. Atualmente, apenas clipes de texto são suportados.\n2. Alguns sistemas operacionais, como o HyperOS 1, ainda não são compatíveis.",
+
+    "abc__heading__req_perm": "Permissões necessárias",
+
+    "abc__tile__notification_title": "Acesso à notificação",
+    "abc__tile__notification_subtitle": "Exibe uma notificação persistente para informar que o CopyCat está em execução em segundo plano, garantindo transparência e privacidade.",
+
+    "abc__tile__battery_opt_title": "Otimização de bateria",
+    "abc__tile__battery_opt_subtitle": "Evita que o sistema desligue o CopyCat enquanto ele está em segundo plano, garantindo uma experiência contínua.",
+
+    "abc__tile__overlay_title": "Permissão de sobreposição",
+    "abc__tile__overlay_subtitle": "Permite que o CopyCat leia a área de transferência abrindo brevemente uma janela transparente sobre a tela e a fechando imediatamente depois.",
+
+    "abc__tile__acc_title": "Serviço de acessibilidade",
+    "abc__tile__acc_subtitle": "Inicia o ouvinte em segundo plano do CopyCat para detectar quando você copiar algo e garante que o serviço seja reiniciado automaticamente após uma reinicialização.",
+
+    "abc__ack__ready": "Configuração pronta para ser configurada.",
+    "abc__ack__preparing": "Preparando configuração, aguarde..."
 }

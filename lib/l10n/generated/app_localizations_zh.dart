@@ -126,6 +126,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get app__try_again => '重试';
 
   @override
+  String get app__realtime_connected => '实时连接';
+
+  @override
+  String get app__realtime_disconnected => '实时断开连接';
+
+  @override
+  String get app__realtime_connecting => '实时连接中...';
+
+  @override
   String get app__ack__exported => '已导出';
 
   @override
@@ -694,6 +703,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reset_password__success_ack => '密码重置成功';
 
   @override
+  String get onboarding__text__welcome => '欢迎来到';
+
+  @override
+  String get onboarding__text__lets_continue => '让我们继续';
+
+  @override
   String get onboarding__button__to_login => '登录';
 
   @override
@@ -828,7 +843,7 @@ class AppLocalizationsZh extends AppLocalizations {
       one: '剪贴板',
       other: '剪贴板',
     );
-    return '您大约有 $_temp0 需要恢复。';
+    return '您大约有 $totalCount $_temp0 需要恢复。';
   }
 
   @override
@@ -846,7 +861,7 @@ class AppLocalizationsZh extends AppLocalizations {
       one: '剪贴板',
       other: '剪贴板',
     );
-    return '您的 $_temp0 已成功恢复。';
+    return '您的 $syncCount $_temp0 已成功恢复。';
   }
 
   @override
@@ -870,7 +885,7 @@ class AppLocalizationsZh extends AppLocalizations {
       one: '收藏夹',
       other: '收藏夹',
     );
-    return '您大约有 $_temp0 需要恢复。';
+    return '您大约有 $totalCount $_temp0 需要恢复。';
   }
 
   @override
@@ -888,7 +903,7 @@ class AppLocalizationsZh extends AppLocalizations {
       one: '收藏夹',
       other: '收藏夹',
     );
-    return '您的 $_temp0 已成功恢复。';
+    return '您的 $syncCount $_temp0 已成功恢复。';
   }
 
   @override
@@ -1312,4 +1327,60 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get about__tile__support => '支持';
+
+  @override
+  String get abc_title => '后台剪贴板';
+
+  @override
+  String get abc__tile__subtitle => '在后台监听剪贴板';
+
+  @override
+  String get abc__tip__why_title => '为什么需要这些权限？';
+
+  @override
+  String get abc__tip__why_subtitle =>
+      '这些权限确保CopyCat在后台正常运行，能够检测到复制的内容，为您提供无缝体验，避免中断。';
+
+  @override
+  String get abc__tip__support_title => '有限支持';
+
+  @override
+  String get abc__tip__support_subtitle =>
+      '1. 当前仅支持文本剪辑。\n2. 一些操作系统，如HyperOS 1，尚不支持。';
+
+  @override
+  String get abc__heading__req_perm => '所需权限';
+
+  @override
+  String get abc__tile__notification_title => '通知访问';
+
+  @override
+  String get abc__tile__notification_subtitle =>
+      '显示一个持久通知，告知您CopyCat正在后台运行，确保透明度和隐私。';
+
+  @override
+  String get abc__tile__battery_opt_title => '电池优化';
+
+  @override
+  String get abc__tile__battery_opt_subtitle => '防止系统在后台运行时关闭CopyCat，确保顺畅体验。';
+
+  @override
+  String get abc__tile__overlay_title => '叠加权限';
+
+  @override
+  String get abc__tile__overlay_subtitle =>
+      '允许CopyCat通过在屏幕上打开一个透明窗口并立即关闭，来读取剪贴板。';
+
+  @override
+  String get abc__tile__acc_title => '辅助功能服务';
+
+  @override
+  String get abc__tile__acc_subtitle =>
+      '启动CopyCat后台监听器，检测您复制的内容，并确保在重启后自动重新启动该服务。';
+
+  @override
+  String get abc__ack__ready => '设置准备好配置。';
+
+  @override
+  String get abc__ack__preparing => '正在准备设置，请稍候...';
 }

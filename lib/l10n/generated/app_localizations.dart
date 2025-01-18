@@ -339,6 +339,24 @@ abstract class AppLocalizations {
   /// **'Try Again'**
   String get app__try_again;
 
+  /// No description provided for @app__realtime_connected.
+  ///
+  /// In en, this message translates to:
+  /// **'Realtime Connected'**
+  String get app__realtime_connected;
+
+  /// No description provided for @app__realtime_disconnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Realtime Disconnected'**
+  String get app__realtime_disconnected;
+
+  /// No description provided for @app__realtime_connecting.
+  ///
+  /// In en, this message translates to:
+  /// **'Realtime Connecting...'**
+  String get app__realtime_connecting;
+
   /// No description provided for @app__ack__exported.
   ///
   /// In en, this message translates to:
@@ -1401,6 +1419,18 @@ abstract class AppLocalizations {
   /// **'Password reset successfully'**
   String get reset_password__success_ack;
 
+  /// No description provided for @onboarding__text__welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get onboarding__text__welcome;
+
+  /// No description provided for @onboarding__text__lets_continue.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Continue'**
+  String get onboarding__text__lets_continue;
+
   /// No description provided for @onboarding__button__to_login.
   ///
   /// In en, this message translates to:
@@ -1632,7 +1662,7 @@ abstract class AppLocalizations {
   /// No description provided for @restore_clips__text__total_count.
   ///
   /// In en, this message translates to:
-  /// **'You have approximately {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.'**
+  /// **'You have approximately {totalCount} {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.'**
   String restore_clips__text__total_count({required num totalCount});
 
   /// No description provided for @restore_clips__sync_disable.
@@ -1650,7 +1680,7 @@ abstract class AppLocalizations {
   /// No description provided for @restore_clips__restored.
   ///
   /// In en, this message translates to:
-  /// **'Your {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.'**
+  /// **'Your {syncCount} {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.'**
   String restore_clips__restored({required num syncCount});
 
   /// No description provided for @restore_clips__restoring.
@@ -1675,7 +1705,7 @@ abstract class AppLocalizations {
   /// No description provided for @restore_collections__text__total_count.
   ///
   /// In en, this message translates to:
-  /// **'You have approximately {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.'**
+  /// **'You have approximately {totalCount} {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.'**
   String restore_collections__text__total_count({required num totalCount});
 
   /// No description provided for @restore_collections__sync_disable.
@@ -1693,7 +1723,7 @@ abstract class AppLocalizations {
   /// No description provided for @restore_collections__restored.
   ///
   /// In en, this message translates to:
-  /// **'Your {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.'**
+  /// **'Your {syncCount} {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.'**
   String restore_collections__restored({required num syncCount});
 
   /// No description provided for @restore_collections__restoring.
@@ -2508,6 +2538,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Support'**
   String get about__tile__support;
+
+  /// No description provided for @abc_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Background Clipboard'**
+  String get abc_title;
+
+  /// No description provided for @abc__tile__subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to the clipboard in the background'**
+  String get abc__tile__subtitle;
+
+  /// No description provided for @abc__tip__why_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are these permissions needed?'**
+  String get abc__tip__why_title;
+
+  /// No description provided for @abc__tip__why_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'These permissions ensure CopyCat works correctly in the background, allowing it to detect copied content and provide you with a seamless experience without interruptions.'**
+  String get abc__tip__why_subtitle;
+
+  /// No description provided for @abc__tip__support_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Limited Support'**
+  String get abc__tip__support_title;
+
+  /// No description provided for @abc__tip__support_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Currently, only text clips are supported.\n2. Some operating systems, like HyperOS 1, are not supported yet.'**
+  String get abc__tip__support_subtitle;
+
+  /// No description provided for @abc__heading__req_perm.
+  ///
+  /// In en, this message translates to:
+  /// **'Required Permissions'**
+  String get abc__heading__req_perm;
+
+  /// No description provided for @abc__tile__notification_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Access'**
+  String get abc__tile__notification_title;
+
+  /// No description provided for @abc__tile__notification_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Displays a persistent notification to inform you that CopyCat is running in the background, ensuring transparency and privacy.'**
+  String get abc__tile__notification_subtitle;
+
+  /// No description provided for @abc__tile__battery_opt_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Optimization'**
+  String get abc__tile__battery_opt_title;
+
+  /// No description provided for @abc__tile__battery_opt_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevents the system from shutting down CopyCat while running in the background, ensuring a seamless experience.'**
+  String get abc__tile__battery_opt_subtitle;
+
+  /// No description provided for @abc__tile__overlay_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Overlay Permission'**
+  String get abc__tile__overlay_title;
+
+  /// No description provided for @abc__tile__overlay_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allows CopyCat to read the clipboard by briefly opening a transparent window over the screen and closing it immediately after.'**
+  String get abc__tile__overlay_subtitle;
+
+  /// No description provided for @abc__tile__acc_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility Service'**
+  String get abc__tile__acc_title;
+
+  /// No description provided for @abc__tile__acc_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the CopyCat background listener to detect when you copy something and ensure the service restarts automatically after a reboot.'**
+  String get abc__tile__acc_subtitle;
+
+  /// No description provided for @abc__ack__ready.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup ready to be configured.'**
+  String get abc__ack__ready;
+
+  /// No description provided for @abc__ack__preparing.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing setup, please wait...'**
+  String get abc__ack__preparing;
 }
 
 class _AppLocalizationsDelegate

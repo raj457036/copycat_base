@@ -181,7 +181,7 @@ class ClipSyncManagerCubit extends Cubit<ClipSyncManagerState> {
     }
 
     _busy = true;
-    emit(const ClipSyncManagerState.unknown());
+    emit(const ClipSyncManagerState.syncingUnknown());
     try {
       if (_syncHours == null) return false;
 

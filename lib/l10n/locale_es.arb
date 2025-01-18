@@ -47,6 +47,9 @@
   "app__create_collection": "Crear Colección",
   "app__pro_tip": "Consejo Profesional",
   "app__try_again": "Intentar de nuevo",
+  "app__realtime_connected": "Conectado en tiempo real",
+  "app__realtime_disconnected": "Desconectado en tiempo real",
+  "app__realtime_connecting": "Conectando en tiempo real...",
   "app__ack__exported": "Exportado",
   "app__ack__copied": "Copiado",
   "app__ack__pasted": "Pegado",
@@ -304,6 +307,9 @@
   "reset_password__appbar__title": "Restablece tu contraseña",
   "reset_password__success_ack": "Contraseña restablecida con éxito",
   "@@ON_BOARDING": "Pantalla de Bienvenida",
+  "onboarding__text__welcome": "Bienvenido a",
+  "onboarding__text__lets_continue": "Continuemos",
+  
   "onboarding__button__to_login": "Iniciar sesión",
   "onboarding__snackbar__export_success": "Clave de encriptación exportada con éxito.",
   "onboarding__dialog__skip_export__title": "✋ Guarda una Copia de Seguridad de tu Clave de Encriptación",
@@ -580,5 +586,32 @@
   "about__tile__read_tut": "Leer • Tutorial",
   "about__tile__github": "Github • Código abierto",
   "about__tile__website": "EntilityStudio • Sitio web",
-  "about__tile__support": "Soporte"
+  "about__tile__support": "Soporte",
+
+  "@@ANDROID_BACKGROUND_CLIPBOARD": "Portapapeles en segundo plano de Android",
+  "abc_title": "Portapapeles en segundo plano",
+  "abc__tile__subtitle": "Escucha el portapapeles en segundo plano",
+
+  "abc__tip__why_title": "¿Por qué se necesitan estos permisos?",
+  "abc__tip__why_subtitle": "Estos permisos aseguran que CopyCat funcione correctamente en segundo plano, permitiéndole detectar el contenido copiado y brindarle una experiencia fluida sin interrupciones.",
+
+  "abc__tip__support_title": "Soporte limitado",
+  "abc__tip__support_subtitle": "1. Actualmente, solo se admiten clips de texto.\n2. Algunos sistemas operativos, como HyperOS 1, aún no son compatibles.",
+
+  "abc__heading__req_perm": "Permisos requeridos",
+
+  "abc__tile__notification_title": "Acceso a notificaciones",
+  "abc__tile__notification_subtitle": "Muestra una notificación persistente para informarle que CopyCat está funcionando en segundo plano, garantizando transparencia y privacidad.",
+
+  "abc__tile__battery_opt_title": "Optimización de batería",
+  "abc__tile__battery_opt_subtitle": "Evita que el sistema apague CopyCat mientras funciona en segundo plano, asegurando una experiencia fluida.",
+
+  "abc__tile__overlay_title": "Permiso de superposición",
+  "abc__tile__overlay_subtitle": "Permite que CopyCat lea el portapapeles abriendo brevemente una ventana transparente sobre la pantalla y cerrándola inmediatamente después.",
+
+  "abc__tile__acc_title": "Servicio de accesibilidad",
+  "abc__tile__acc_subtitle": "Inicia el oyente en segundo plano de CopyCat para detectar cuando copias algo y asegura que el servicio se reinicie automáticamente después de un reinicio.",
+
+  "abc__ack__ready": "Configuración lista para ser configurada.",
+  "abc__ack__preparing": "Preparando configuración, por favor espere..."
 }

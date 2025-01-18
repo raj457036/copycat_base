@@ -127,6 +127,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get app__try_again => 'Erneut versuchen';
 
   @override
+  String get app__realtime_connected => 'Echtzeit verbunden';
+
+  @override
+  String get app__realtime_disconnected => 'Echtzeit getrennt';
+
+  @override
+  String get app__realtime_connecting => 'Echtzeit Verbindung...';
+
+  @override
   String get app__ack__exported => 'Exportiert';
 
   @override
@@ -729,6 +738,12 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get reset_password__success_ack =>
       'Passwort erfolgreich zurückgesetzt';
+
+  @override
+  String get onboarding__text__welcome => 'Willkommen bei';
+
+  @override
+  String get onboarding__text__lets_continue => 'Lass uns fortfahren';
 
   @override
   String get onboarding__button__to_login => 'Anmelden';
@@ -1386,4 +1401,62 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get about__tile__support => 'Unterstützung';
+
+  @override
+  String get abc_title => 'Hintergrund-Clipboard';
+
+  @override
+  String get abc__tile__subtitle => 'Hören Sie den Clipboard im Hintergrund';
+
+  @override
+  String get abc__tip__why_title =>
+      'Warum werden diese Berechtigungen benötigt?';
+
+  @override
+  String get abc__tip__why_subtitle =>
+      'Diese Berechtigungen stellen sicher, dass CopyCat im Hintergrund korrekt funktioniert, kopierte Inhalte erkennt und Ihnen eine nahtlose Erfahrung ohne Unterbrechungen bietet.';
+
+  @override
+  String get abc__tip__support_title => 'Begrenzte Unterstützung';
+
+  @override
+  String get abc__tip__support_subtitle =>
+      '1. Derzeit werden nur Textclips unterstützt.\n2. Einige Betriebssysteme, wie HyperOS 1, werden noch nicht unterstützt.';
+
+  @override
+  String get abc__heading__req_perm => 'Erforderliche Berechtigungen';
+
+  @override
+  String get abc__tile__notification_title => 'Benachrichtigungszugriff';
+
+  @override
+  String get abc__tile__notification_subtitle =>
+      'Zeigt eine persistente Benachrichtigung an, um Sie darüber zu informieren, dass CopyCat im Hintergrund läuft, wodurch Transparenz und Datenschutz gewährleistet werden.';
+
+  @override
+  String get abc__tile__battery_opt_title => 'Batterieoptimierung';
+
+  @override
+  String get abc__tile__battery_opt_subtitle =>
+      'Verhindert, dass das System CopyCat im Hintergrund schließt, und sorgt so für eine unterbrechungsfreie Erfahrung.';
+
+  @override
+  String get abc__tile__overlay_title => 'Overlay-Berechtigung';
+
+  @override
+  String get abc__tile__overlay_subtitle =>
+      'Ermöglicht es CopyCat, das Clipboard zu lesen, indem ein transparentes Fenster über dem Bildschirm geöffnet und sofort wieder geschlossen wird.';
+
+  @override
+  String get abc__tile__acc_title => 'Zugriffsservice';
+
+  @override
+  String get abc__tile__acc_subtitle =>
+      'Startet den Hintergrund-Listener von CopyCat, um zu erkennen, wann Sie etwas kopieren, und stellt sicher, dass der Service nach einem Neustart automatisch neu gestartet wird.';
+
+  @override
+  String get abc__ack__ready => 'Setup bereit zur Konfiguration.';
+
+  @override
+  String get abc__ack__preparing => 'Setup wird vorbereitet, bitte warten...';
 }

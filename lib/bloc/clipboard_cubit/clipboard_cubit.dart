@@ -90,6 +90,7 @@ class ClipboardCubit extends Cubit<ClipboardState> {
         replaced.add(item);
       }
     }
+    replaced.sort((a, b) => a.modified.compareTo(b.modified));
     emit(state.copyWith(items: replaced));
   }
 

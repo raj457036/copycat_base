@@ -127,6 +127,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get app__try_again => 'Intentar de nuevo';
 
   @override
+  String get app__realtime_connected => 'Conectado en tiempo real';
+
+  @override
+  String get app__realtime_disconnected => 'Desconectado en tiempo real';
+
+  @override
+  String get app__realtime_connecting => 'Conectando en tiempo real...';
+
+  @override
   String get app__ack__exported => 'Exportado';
 
   @override
@@ -731,6 +740,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reset_password__success_ack => 'Contraseña restablecida con éxito';
+
+  @override
+  String get onboarding__text__welcome => 'Bienvenido a';
+
+  @override
+  String get onboarding__text__lets_continue => 'Continuemos';
 
   @override
   String get onboarding__button__to_login => 'Iniciar sesión';
@@ -1387,4 +1402,62 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get about__tile__support => 'Soporte';
+
+  @override
+  String get abc_title => 'Portapapeles en segundo plano';
+
+  @override
+  String get abc__tile__subtitle => 'Escucha el portapapeles en segundo plano';
+
+  @override
+  String get abc__tip__why_title => '¿Por qué se necesitan estos permisos?';
+
+  @override
+  String get abc__tip__why_subtitle =>
+      'Estos permisos aseguran que CopyCat funcione correctamente en segundo plano, permitiéndole detectar el contenido copiado y brindarle una experiencia fluida sin interrupciones.';
+
+  @override
+  String get abc__tip__support_title => 'Soporte limitado';
+
+  @override
+  String get abc__tip__support_subtitle =>
+      '1. Actualmente, solo se admiten clips de texto.\n2. Algunos sistemas operativos, como HyperOS 1, aún no son compatibles.';
+
+  @override
+  String get abc__heading__req_perm => 'Permisos requeridos';
+
+  @override
+  String get abc__tile__notification_title => 'Acceso a notificaciones';
+
+  @override
+  String get abc__tile__notification_subtitle =>
+      'Muestra una notificación persistente para informarle que CopyCat está funcionando en segundo plano, garantizando transparencia y privacidad.';
+
+  @override
+  String get abc__tile__battery_opt_title => 'Optimización de batería';
+
+  @override
+  String get abc__tile__battery_opt_subtitle =>
+      'Evita que el sistema apague CopyCat mientras funciona en segundo plano, asegurando una experiencia fluida.';
+
+  @override
+  String get abc__tile__overlay_title => 'Permiso de superposición';
+
+  @override
+  String get abc__tile__overlay_subtitle =>
+      'Permite que CopyCat lea el portapapeles abriendo brevemente una ventana transparente sobre la pantalla y cerrándola inmediatamente después.';
+
+  @override
+  String get abc__tile__acc_title => 'Servicio de accesibilidad';
+
+  @override
+  String get abc__tile__acc_subtitle =>
+      'Inicia el oyente en segundo plano de CopyCat para detectar cuando copias algo y asegura que el servicio se reinicie automáticamente después de un reinicio.';
+
+  @override
+  String get abc__ack__ready => 'Configuración lista para ser configurada.';
+
+  @override
+  String get abc__ack__preparing =>
+      'Preparando configuración, por favor espere...';
 }

@@ -57,9 +57,16 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
   }
 
-  void reset() => emit(const CollectionSyncManagerState.unknown());
+  void reset() {
+    stopPolling();
+    emit(const CollectionSyncManagerState.unknown());
+  }
 
   void startPolling() {
+    if (state is CollectionSyncDisabled || state is CollectionSyncUnknown) {
+      stopPolling();
+      return;
+    }
     if (_pollingTimer != null) return;
     _pollingTimer = Timer.periodic(
       const Duration(seconds: $45S),
@@ -100,7 +107,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     }
 
     _busy = true;
-    emit(const CollectionSyncManagerState.unknown());
+    emit(const CollectionSyncManagerState.syncingUnknown());
     try {
       if (_syncHours == null) return false;
 
@@ -136,7 +143,7 @@ class CollectionSyncManagerCubit extends Cubit<CollectionSyncManagerState> {
     bool hasMore = true;
     int offset = 0;
 
-    emit(const CollectionSyncManagerState.syncingUnknonw());
+    emit(const CollectionSyncManagerState.syncingUnknown());
     while (hasMore) {
       final result = await syncRepo.getDeletedClipCollections(
         limit: 1000,

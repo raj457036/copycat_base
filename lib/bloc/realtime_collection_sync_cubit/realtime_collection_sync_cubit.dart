@@ -29,6 +29,8 @@ class RealtimeCollectionSyncCubit extends Cubit<RealtimeCollectionSyncState> {
     changeSubscription = listener.onChange.listen(onSync);
   }
 
+  bool get isSubscribed => _subscribed;
+
   void _clearSubs() {
     changeSubscription?.cancel();
     statusSubscription?.cancel();

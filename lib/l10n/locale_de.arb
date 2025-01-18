@@ -47,6 +47,9 @@
   "app__create_collection": "Sammlung erstellen",
   "app__pro_tip": "Pro Tipp",
   "app__try_again": "Erneut versuchen",
+  "app__realtime_connected": "Echtzeit verbunden",
+  "app__realtime_disconnected": "Echtzeit getrennt",
+  "app__realtime_connecting": "Echtzeit Verbindung...",
   "app__ack__exported": "Exportiert",
   "app__ack__copied": "Kopiert",
   "app__ack__pasted": "Eingefügt",
@@ -305,6 +308,9 @@
   "reset_password__appbar__title": "Setzen Sie Ihr Passwort zurück",
   "reset_password__success_ack": "Passwort erfolgreich zurückgesetzt",
   "@@ON_BOARDING": "Einführungsbildschirm",
+  "onboarding__text__welcome": "Willkommen bei",
+  "onboarding__text__lets_continue": "Lass uns fortfahren",
+
   "onboarding__button__to_login": "Anmelden",
   "onboarding__snackbar__export_success": "Verschlüsselungsschlüssel erfolgreich exportiert.",
   "onboarding__dialog__skip_export__title": "✋ Sichern Sie Ihren Verschlüsselungsschlüssel",
@@ -581,5 +587,32 @@
   "about__tile__read_tut": "Lesen • Tutorial",
   "about__tile__github": "Github • Open Source",
   "about__tile__website": "EntilityStudio • Website",
-  "about__tile__support": "Unterstützung"
+  "about__tile__support": "Unterstützung",
+
+  "@@ANDROID_BACKGROUND_CLIPBOARD": "Android Hintergrund-Clipboard",
+  "abc_title": "Hintergrund-Clipboard",
+  "abc__tile__subtitle": "Hören Sie den Clipboard im Hintergrund",
+
+  "abc__tip__why_title": "Warum werden diese Berechtigungen benötigt?",
+  "abc__tip__why_subtitle": "Diese Berechtigungen stellen sicher, dass CopyCat im Hintergrund korrekt funktioniert, kopierte Inhalte erkennt und Ihnen eine nahtlose Erfahrung ohne Unterbrechungen bietet.",
+
+  "abc__tip__support_title": "Begrenzte Unterstützung",
+  "abc__tip__support_subtitle": "1. Derzeit werden nur Textclips unterstützt.\n2. Einige Betriebssysteme, wie HyperOS 1, werden noch nicht unterstützt.",
+
+  "abc__heading__req_perm": "Erforderliche Berechtigungen",
+
+  "abc__tile__notification_title": "Benachrichtigungszugriff",
+  "abc__tile__notification_subtitle": "Zeigt eine persistente Benachrichtigung an, um Sie darüber zu informieren, dass CopyCat im Hintergrund läuft, wodurch Transparenz und Datenschutz gewährleistet werden.",
+
+  "abc__tile__battery_opt_title": "Batterieoptimierung",
+  "abc__tile__battery_opt_subtitle": "Verhindert, dass das System CopyCat im Hintergrund schließt, und sorgt so für eine unterbrechungsfreie Erfahrung.",
+
+  "abc__tile__overlay_title": "Overlay-Berechtigung",
+  "abc__tile__overlay_subtitle": "Ermöglicht es CopyCat, das Clipboard zu lesen, indem ein transparentes Fenster über dem Bildschirm geöffnet und sofort wieder geschlossen wird.",
+
+  "abc__tile__acc_title": "Zugriffsservice",
+  "abc__tile__acc_subtitle": "Startet den Hintergrund-Listener von CopyCat, um zu erkennen, wann Sie etwas kopieren, und stellt sicher, dass der Service nach einem Neustart automatisch neu gestartet wird.",
+
+  "abc__ack__ready": "Setup bereit zur Konfiguration.",
+  "abc__ack__preparing": "Setup wird vorbereitet, bitte warten..."
 }
