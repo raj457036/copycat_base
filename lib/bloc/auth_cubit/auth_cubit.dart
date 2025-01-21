@@ -28,25 +28,24 @@ class AuthCubit extends Cubit<AuthState> {
   ) : super(const AuthState.unknown());
 
   /// validate the code and return a suitable page path
-  Future<String?> validateAuthCode(String code) async {
+  Future<(String?, Failure?)> validateAuthCode(String code) async {
     final result = await repo.validateAuthCode(code);
 
-    result.fold(
-      (failure) {},
+    return result.fold(
+      (failure) => (null, failure),
       (right) {
         final (type, user) = right;
-        if (user == null) return null;
+        if (user == null) return (null, null);
         switch (type) {
           case "passwordRecovery":
             authenticated(user, repo.accessToken!);
-            return RouteConstants.resetPassword;
+            return (RouteConstants.resetPassword, null);
           case _:
             logger.w("Exchange not supported. $type");
         }
-        return null;
+        return (null, null);
       },
     );
-    return null;
   }
 
   bool get isLocalAuth => state is LocalAuthenticatedAuthState;
