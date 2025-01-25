@@ -1,3 +1,4 @@
+import 'package:copycat_base/constants/font_variations.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/db/app_config/appconfig.dart';
 import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
@@ -31,7 +32,7 @@ class FileClipCard extends StatelessWidget {
       shape: const StadiumBorder(),
       label: Text(
         label,
-        style: textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
+        style: textTheme.labelSmall?.copyWith(fontVariations: fontVarW700),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),

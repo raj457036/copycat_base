@@ -1,3 +1,4 @@
+import 'package:copycat_base/constants/font_variations.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/constants/widgets.dart';
 import 'package:copycat_base/db/app_config/appconfig.dart';
@@ -82,6 +83,7 @@ class MediaClipCard extends StatelessWidget {
   });
 
   Widget getIcon(BuildContext context) {
+    final textTheme = context.textTheme;
     if (item.fileMimeType != null) {
       if (item.fileMimeType!.startsWith(mediaMimeRegex)) {
         final label = "${item.fileMimeType!} • ${formatBytes(item.fileSize!)}";
@@ -90,7 +92,7 @@ class MediaClipCard extends StatelessWidget {
           materialTapTargetSize: MaterialTapTargetSize.padded,
           label: Text(
             label,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+            style: textTheme.labelSmall?.copyWith(fontVariations: fontVarW700),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),

@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:any_link_preview/any_link_preview.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:copycat_base/constants/font_variations.dart';
 import 'package:copycat_base/constants/widget_styles.dart';
 import 'package:copycat_base/utils/common_extension.dart';
 import 'package:copycat_base/widgets/image_not_found.dart';
@@ -119,8 +120,7 @@ class LinkPreview extends StatelessWidget {
                               maxLines: maxTitleLines,
                               style: const TextStyle(
                                 fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                // color: colors.primary,
+                                fontVariations: fontVarW600,
                               ),
                             ),
                           ),
