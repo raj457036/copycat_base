@@ -10,10 +10,10 @@ class ImageNotFound extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 40 || constraints.maxHeight < 35) {
+      if (constraints.maxWidth < 40 || constraints.maxHeight < 40) {
         return const SizedBox.shrink();
       }
-      if (constraints.maxWidth < 60 || constraints.maxHeight < 60) {
+      if (constraints.maxWidth < 60 || constraints.maxHeight < 65) {
         return FadeIn(
           child: Icon(
             Icons.image_not_supported_rounded,
@@ -22,6 +22,7 @@ class ImageNotFound extends StatelessWidget {
         );
       }
       return FadeIn(
+        duration: Durations.short3,
         child: Card.filled(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
