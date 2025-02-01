@@ -1383,4 +1383,109 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get abc__ack__preparing => '正在准备设置，请稍候...';
+
+  @override
+  String get abc__perm_alert_open_setting__button => '打开设置';
+
+  @override
+  String get abc__overlay_perm_alert__title => '悬浮窗权限';
+
+  @override
+  String get abc__overlay_perm_alert__subtitle =>
+      'CopyCat Clipboard 需要“在其他应用上层显示”权限以在后台读取剪贴板内容。';
+
+  @override
+  String get abc__overlay_perm_alert__p1_prefix => '此权限 ';
+
+  @override
+  String get abc__overlay_perm_alert__p1_bold => '仅用于剪贴板检测';
+
+  @override
+  String get abc__overlay_perm_alert__p1_suffix => ' 当您在后台复制内容时。';
+
+  @override
+  String get abc__overlay_perm_alert__p2_prefix => '启用后，CopyCat ';
+
+  @override
+  String get abc__overlay_perm_alert__p2_bold => '会创建一个0像素的透明窗口';
+
+  @override
+  String get abc__overlay_perm_alert__p2_suffix => ' 以短暂将应用带到前台并读取剪贴板数据。';
+
+  @override
+  String get abc__overlay_perm_alert__p3_prefix => '在此过程中，应用 ';
+
+  @override
+  String get abc__overlay_perm_alert__p3_bold => '不会显示任何内容';
+
+  @override
+  String get abc__overlay_perm_alert__p3_suffix => ' 在您的屏幕上。';
+
+  @override
+  String get abc__overlay_perm_alert__p4_prefix => '在某些设备上，系统可能会显示一条提示消息 ';
+
+  @override
+  String get abc__overlay_perm_alert__p4_bold => '“CopyCat 从您的剪贴板粘贴”';
+
+  @override
+  String get abc__overlay_perm_alert__p4_suffix => ' 当 CopyCat 读取您的剪贴板内容时。';
+
+  @override
+  String get abc__overlay_perm_alert__agree => '授予此权限即表示您同意上述用途。';
+
+  @override
+  String get abc__accessibility_perm_alert__title => '无障碍权限';
+
+  @override
+  String get abc__accessibility_perm_alert__subtitle =>
+      'CopyCat Clipboard 需要无障碍服务以在后台运行，实现实时剪贴板检测和同步。';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_prefix => '此服务 ';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_bold => '仅用于';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_suffix => ' 检测剪贴板内容并在启用时跨设备同步。';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_prefix => '您可以使用 ';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_bold => '排除特定应用';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_suffix => ' 通过排除规则功能。';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_prefix => '该应用 ';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_bold => '不会访问任何其他数据';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_suffix => ' 除了剪贴板内容。';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_prefix => '剪贴板数据 ';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_bold => '不会外部共享';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_suffix => ' 并且仅在您的设备上保持私密。';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_prefix => '剪贴板数据 ';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_bold => '端到端加密';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_suffix =>
+      '（如果启用）在传输和存储过程中，确保跨设备的隐私。';
+
+  @override
+  String get abc__accessibility_perm_alert__agree => '启用无障碍服务即表示您承认并同意上述条款。';
 }

@@ -1461,4 +1461,131 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get abc__ack__preparing =>
       'Préparation de la configuration, veuillez patienter...';
+
+  @override
+  String get abc__perm_alert_open_setting__button => 'Ouvrir les paramètres';
+
+  @override
+  String get abc__overlay_perm_alert__title => 'Permission de superposition';
+
+  @override
+  String get abc__overlay_perm_alert__subtitle =>
+      'CopyCat Clipboard a besoin de la permission \'Dessiner par-dessus d\'autres applications\' pour lire le contenu du presse-papiers en arrière-plan.';
+
+  @override
+  String get abc__overlay_perm_alert__p1_prefix => 'Cette permission est ';
+
+  @override
+  String get abc__overlay_perm_alert__p1_bold =>
+      'utilisée uniquement pour la détection du presse-papiers';
+
+  @override
+  String get abc__overlay_perm_alert__p1_suffix =>
+      ' lorsque vous copiez quelque chose en arrière-plan.';
+
+  @override
+  String get abc__overlay_perm_alert__p2_prefix =>
+      'Lorsqu\'elle est activée, CopyCat ';
+
+  @override
+  String get abc__overlay_perm_alert__p2_bold =>
+      'crée une fenêtre transparente de 0 pixel';
+
+  @override
+  String get abc__overlay_perm_alert__p2_suffix =>
+      ' pour amener brièvement l\'application au premier plan et lire les données du presse-papiers.';
+
+  @override
+  String get abc__overlay_perm_alert__p3_prefix => 'L\'application ';
+
+  @override
+  String get abc__overlay_perm_alert__p3_bold => 'n\'affiche rien';
+
+  @override
+  String get abc__overlay_perm_alert__p3_suffix =>
+      ' sur votre écran pendant ce processus.';
+
+  @override
+  String get abc__overlay_perm_alert__p4_prefix =>
+      'Sur certains appareils, le système peut afficher un message toast ';
+
+  @override
+  String get abc__overlay_perm_alert__p4_bold =>
+      '\'CopyCat a collé depuis votre presse-papiers\'';
+
+  @override
+  String get abc__overlay_perm_alert__p4_suffix =>
+      ' lorsque CopyCat lit le contenu de votre presse-papiers.';
+
+  @override
+  String get abc__overlay_perm_alert__agree =>
+      'En accordant cette permission, vous acceptez l\'utilisation décrite ci-dessus.';
+
+  @override
+  String get abc__accessibility_perm_alert__title =>
+      'Permission d\'accessibilité';
+
+  @override
+  String get abc__accessibility_perm_alert__subtitle =>
+      'CopyCat Clipboard nécessite le Service d\'Accessibilité pour fonctionner en arrière-plan et détecter et synchroniser le presse-papiers en temps réel.';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_prefix => 'Ce service est ';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_bold => 'utilisé uniquement';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_suffix =>
+      ' pour détecter le contenu du presse-papiers et le synchroniser entre les appareils lorsqu\'il est activé.';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_prefix => 'Vous pouvez ';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_bold =>
+      'exclure des applications spécifiques';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_suffix =>
+      ' en utilisant la fonctionnalité de Règles d\'Exclusion.';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_prefix => 'L\'application ';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_bold =>
+      'n\'accède à aucune autre donnée';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_suffix =>
+      ' au-delà du contenu du presse-papiers.';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_prefix =>
+      'Les données du presse-papiers ';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_bold =>
+      'ne sont pas partagées à l\'extérieur';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_suffix =>
+      ' et restent privées sur vos appareils.';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_prefix =>
+      'Les données du presse-papiers ';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_bold =>
+      'sont chiffrées de bout en bout';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_suffix =>
+      ' (si activé) en transit et au repos, garantissant la confidentialité entre les appareils.';
+
+  @override
+  String get abc__accessibility_perm_alert__agree =>
+      'En activant le Service d\'Accessibilité, vous reconnaissez et acceptez les termes ci-dessus.';
 }

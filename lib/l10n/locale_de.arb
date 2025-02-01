@@ -614,5 +614,42 @@
   "abc__tile__acc_subtitle": "Startet den Hintergrund-Listener von CopyCat, um zu erkennen, wann Sie etwas kopieren, und stellt sicher, dass der Service nach einem Neustart automatisch neu gestartet wird.",
 
   "abc__ack__ready": "Setup bereit zur Konfiguration.",
-  "abc__ack__preparing": "Setup wird vorbereitet, bitte warten..."
+  "abc__ack__preparing": "Setup wird vorbereitet, bitte warten...",
+
+  "abc__perm_alert_open_setting__button": "Einstellungen öffnen",
+
+  "abc__overlay_perm_alert__title": "Overlay-Berechtigung",
+  "abc__overlay_perm_alert__subtitle": "CopyCat Clipboard benötigt die 'Über andere Apps zeichnen' Berechtigung, um den Inhalt der Zwischenablage im Hintergrund zu lesen.",
+  "abc__overlay_perm_alert__p1_prefix": "Diese Berechtigung wird ",
+  "abc__overlay_perm_alert__p1_bold": "nur zur Zwischenablageerkennung verwendet",
+  "abc__overlay_perm_alert__p1_suffix": " wenn Sie etwas im Hintergrund kopieren.",
+  "abc__overlay_perm_alert__p2_prefix": "Wenn aktiviert, ",
+  "abc__overlay_perm_alert__p2_bold": "erstellt CopyCat ein transparentes Fenster mit 0 Pixel",
+  "abc__overlay_perm_alert__p2_suffix": " um die App kurz in den Vordergrund zu bringen, um die Zwischenablagedaten zu lesen.",
+  "abc__overlay_perm_alert__p3_prefix": "Die App ",
+  "abc__overlay_perm_alert__p3_bold": "zeigt nichts an",
+  "abc__overlay_perm_alert__p3_suffix": " auf Ihrem Bildschirm während dieses Prozesses.",
+  "abc__overlay_perm_alert__p4_prefix": "Auf einigen Geräten kann das System eine Toast-Nachricht anzeigen ",
+  "abc__overlay_perm_alert__p4_bold": "'CopyCat hat aus Ihrer Zwischenablage eingefügt'",
+  "abc__overlay_perm_alert__p4_suffix": " wenn CopyCat Ihren Zwischenablageinhalt liest.",
+  "abc__overlay_perm_alert__agree": "Durch die Erteilung dieser Berechtigung stimmen Sie der oben genannten Nutzung zu.",
+
+  "abc__accessibility_perm_alert__title": "Zugriffsberechtigungsservice",
+  "abc__accessibility_perm_alert__subtitle": "CopyCat Clipboard benötigt den Zugriffsservice, um im Hintergrund zu laufen und die Zwischenablage in Echtzeit zu erkennen und zu synchronisieren.",
+  "abc__accessibility_perm_alert__p1_prefix": "Dieser Service wird ",
+  "abc__accessibility_perm_alert__p1_bold": "nur verwendet",
+  "abc__accessibility_perm_alert__p1_suffix": " zur Erkennung des Zwischenablageinhalts und zur Synchronisierung über Geräte hinweg, wenn er aktiviert ist.",
+  "abc__accessibility_perm_alert__p2_prefix": "Sie können ",
+  "abc__accessibility_perm_alert__p2_bold": "bestimmte Apps ausschließen",
+  "abc__accessibility_perm_alert__p2_suffix": " mit der Funktion Ausschlussregeln.",
+  "abc__accessibility_perm_alert__p3_prefix": "Die App ",
+  "abc__accessibility_perm_alert__p3_bold": "greift nicht auf andere Daten zu",
+  "abc__accessibility_perm_alert__p3_suffix": " über den Zwischenablageinhalt hinaus.",
+  "abc__accessibility_perm_alert__p4_prefix": "Zwischenablagedaten ",
+  "abc__accessibility_perm_alert__p4_bold": "werden nicht extern geteilt",
+  "abc__accessibility_perm_alert__p4_suffix": " und bleiben privat auf Ihren Geräten.",
+  "abc__accessibility_perm_alert__p5_prefix": "Zwischenablagedaten ",
+  "abc__accessibility_perm_alert__p5_bold": "werden Ende-zu-Ende verschlüsselt",
+  "abc__accessibility_perm_alert__p5_suffix": " (wenn aktiviert) während der Übertragung und im Ruhezustand, um die Privatsphäre über Geräte hinweg zu gewährleisten.",
+  "abc__accessibility_perm_alert__agree": "Durch das Aktivieren des Zugriffsservices erkennen Sie die oben genannten Bedingungen an und stimmen ihnen zu."
 }

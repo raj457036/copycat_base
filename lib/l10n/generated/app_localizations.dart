@@ -2640,6 +2640,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Preparing setup, please wait...'**
   String get abc__ack__preparing;
+
+  /// No description provided for @abc__perm_alert_open_setting__button.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Setting'**
+  String get abc__perm_alert_open_setting__button;
+
+  /// No description provided for @abc__overlay_perm_alert__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Overlay Permission'**
+  String get abc__overlay_perm_alert__title;
+
+  /// No description provided for @abc__overlay_perm_alert__subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CopyCat Clipboard needs the \'Draw Over Other Apps\' permission to read clipboard content in the background.'**
+  String get abc__overlay_perm_alert__subtitle;
+
+  /// No description provided for @abc__overlay_perm_alert__p1_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'This permission is '**
+  String get abc__overlay_perm_alert__p1_prefix;
+
+  /// No description provided for @abc__overlay_perm_alert__p1_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'used only for clipboard detection'**
+  String get abc__overlay_perm_alert__p1_bold;
+
+  /// No description provided for @abc__overlay_perm_alert__p1_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' when you\'re copying something in the background.'**
+  String get abc__overlay_perm_alert__p1_suffix;
+
+  /// No description provided for @abc__overlay_perm_alert__p2_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'When enabled, CopyCat '**
+  String get abc__overlay_perm_alert__p2_prefix;
+
+  /// No description provided for @abc__overlay_perm_alert__p2_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'creates a 0-pixel transparent window'**
+  String get abc__overlay_perm_alert__p2_bold;
+
+  /// No description provided for @abc__overlay_perm_alert__p2_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' to briefly bring the app to the foreground to read clipboard data.'**
+  String get abc__overlay_perm_alert__p2_suffix;
+
+  /// No description provided for @abc__overlay_perm_alert__p3_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'The app '**
+  String get abc__overlay_perm_alert__p3_prefix;
+
+  /// No description provided for @abc__overlay_perm_alert__p3_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'does not show anything'**
+  String get abc__overlay_perm_alert__p3_bold;
+
+  /// No description provided for @abc__overlay_perm_alert__p3_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' on your screen during this process.'**
+  String get abc__overlay_perm_alert__p3_suffix;
+
+  /// No description provided for @abc__overlay_perm_alert__p4_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'On some devices, the system may show a toast message '**
+  String get abc__overlay_perm_alert__p4_prefix;
+
+  /// No description provided for @abc__overlay_perm_alert__p4_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'\'CopyCat pasted from your clipboard\''**
+  String get abc__overlay_perm_alert__p4_bold;
+
+  /// No description provided for @abc__overlay_perm_alert__p4_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' when CopyCat reads your clipboard content.'**
+  String get abc__overlay_perm_alert__p4_suffix;
+
+  /// No description provided for @abc__overlay_perm_alert__agree.
+  ///
+  /// In en, this message translates to:
+  /// **'By granting this permission, you agree to the above usage.'**
+  String get abc__overlay_perm_alert__agree;
+
+  /// No description provided for @abc__accessibility_perm_alert__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility Permission'**
+  String get abc__accessibility_perm_alert__title;
+
+  /// No description provided for @abc__accessibility_perm_alert__subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CopyCat Clipboard requires the Accessibility Service to run in the background for real-time clipboard detection and syncing.'**
+  String get abc__accessibility_perm_alert__subtitle;
+
+  /// No description provided for @abc__accessibility_perm_alert__p1_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'This service is '**
+  String get abc__accessibility_perm_alert__p1_prefix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p1_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'only used'**
+  String get abc__accessibility_perm_alert__p1_bold;
+
+  /// No description provided for @abc__accessibility_perm_alert__p1_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' for detecting clipboard content and syncing it across devices when enabled.'**
+  String get abc__accessibility_perm_alert__p1_suffix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p2_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'You can '**
+  String get abc__accessibility_perm_alert__p2_prefix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p2_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'exclude specific apps'**
+  String get abc__accessibility_perm_alert__p2_bold;
+
+  /// No description provided for @abc__accessibility_perm_alert__p2_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' using the Exclusion Rules feature.'**
+  String get abc__accessibility_perm_alert__p2_suffix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p3_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'The app '**
+  String get abc__accessibility_perm_alert__p3_prefix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p3_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'does not access any other data'**
+  String get abc__accessibility_perm_alert__p3_bold;
+
+  /// No description provided for @abc__accessibility_perm_alert__p3_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' beyond clipboard content.'**
+  String get abc__accessibility_perm_alert__p3_suffix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p4_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Clipboard data '**
+  String get abc__accessibility_perm_alert__p4_prefix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p4_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'is not shared externally'**
+  String get abc__accessibility_perm_alert__p4_bold;
+
+  /// No description provided for @abc__accessibility_perm_alert__p4_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' and remains private to your devices.'**
+  String get abc__accessibility_perm_alert__p4_suffix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p5_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Clipboard data '**
+  String get abc__accessibility_perm_alert__p5_prefix;
+
+  /// No description provided for @abc__accessibility_perm_alert__p5_bold.
+  ///
+  /// In en, this message translates to:
+  /// **'is end-to-end encrypted'**
+  String get abc__accessibility_perm_alert__p5_bold;
+
+  /// No description provided for @abc__accessibility_perm_alert__p5_suffix.
+  ///
+  /// In en, this message translates to:
+  /// **' (if enabled) in transit and at rest, ensuring privacy across devices.'**
+  String get abc__accessibility_perm_alert__p5_suffix;
+
+  /// No description provided for @abc__accessibility_perm_alert__agree.
+  ///
+  /// In en, this message translates to:
+  /// **'By enabling the Accessibility Service, you acknowledge and agree to the above terms.'**
+  String get abc__accessibility_perm_alert__agree;
 }
 
 class _AppLocalizationsDelegate

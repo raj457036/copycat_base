@@ -620,5 +620,42 @@
   "abc__tile__acc_subtitle": "Start the CopyCat background listener to detect when you copy something and ensure the service restarts automatically after a reboot.",
 
   "abc__ack__ready": "Setup ready to be configured.",
-  "abc__ack__preparing": "Preparing setup, please wait..."
+  "abc__ack__preparing": "Preparing setup, please wait...",
+
+  "abc__perm_alert_open_setting__button": "Open Setting",
+
+  "abc__overlay_perm_alert__title": "Overlay Permission",
+  "abc__overlay_perm_alert__subtitle": "CopyCat Clipboard needs the 'Draw Over Other Apps' permission to read clipboard content in the background.",
+  "abc__overlay_perm_alert__p1_prefix": "This permission is ",
+  "abc__overlay_perm_alert__p1_bold": "used only for clipboard detection",
+  "abc__overlay_perm_alert__p1_suffix": " when you're copying something in the background.",
+  "abc__overlay_perm_alert__p2_prefix": "When enabled, CopyCat ",
+  "abc__overlay_perm_alert__p2_bold": "creates a 0-pixel transparent window",
+  "abc__overlay_perm_alert__p2_suffix": " to briefly bring the app to the foreground to read clipboard data.",
+  "abc__overlay_perm_alert__p3_prefix": "The app ",
+  "abc__overlay_perm_alert__p3_bold": "does not show anything",
+  "abc__overlay_perm_alert__p3_suffix": " on your screen during this process.",
+  "abc__overlay_perm_alert__p4_prefix": "On some devices, the system may show a toast message ",
+  "abc__overlay_perm_alert__p4_bold": "'CopyCat pasted from your clipboard'",
+  "abc__overlay_perm_alert__p4_suffix": " when CopyCat reads your clipboard content.",
+  "abc__overlay_perm_alert__agree": "By granting this permission, you agree to the above usage.",
+
+  "abc__accessibility_perm_alert__title": "Accessibility Permission",
+  "abc__accessibility_perm_alert__subtitle": "CopyCat Clipboard requires the Accessibility Service to run in the background for real-time clipboard detection and syncing.",
+  "abc__accessibility_perm_alert__p1_prefix": "This service is ",
+  "abc__accessibility_perm_alert__p1_bold": "only used",
+  "abc__accessibility_perm_alert__p1_suffix": " for detecting clipboard content and syncing it across devices when enabled.",
+  "abc__accessibility_perm_alert__p2_prefix": "You can ",
+  "abc__accessibility_perm_alert__p2_bold": "exclude specific apps",
+  "abc__accessibility_perm_alert__p2_suffix": " using the Exclusion Rules feature.",
+  "abc__accessibility_perm_alert__p3_prefix": "The app ",
+  "abc__accessibility_perm_alert__p3_bold": "does not access any other data",
+  "abc__accessibility_perm_alert__p3_suffix": " beyond clipboard content.",
+  "abc__accessibility_perm_alert__p4_prefix": "Clipboard data ",
+  "abc__accessibility_perm_alert__p4_bold": "is not shared externally",
+  "abc__accessibility_perm_alert__p4_suffix": " and remains private to your devices.",
+  "abc__accessibility_perm_alert__p5_prefix": "Clipboard data ",
+  "abc__accessibility_perm_alert__p5_bold": "is end-to-end encrypted",
+  "abc__accessibility_perm_alert__p5_suffix": " (if enabled) in transit and at rest, ensuring privacy across devices.",
+  "abc__accessibility_perm_alert__agree": "By enabling the Accessibility Service, you acknowledge and agree to the above terms."
 }

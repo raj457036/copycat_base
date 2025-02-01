@@ -1452,4 +1452,126 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get abc__ack__preparing => 'Preparing setup, please wait...';
+
+  @override
+  String get abc__perm_alert_open_setting__button => 'Open Setting';
+
+  @override
+  String get abc__overlay_perm_alert__title => 'Overlay Permission';
+
+  @override
+  String get abc__overlay_perm_alert__subtitle =>
+      'CopyCat Clipboard needs the \'Draw Over Other Apps\' permission to read clipboard content in the background.';
+
+  @override
+  String get abc__overlay_perm_alert__p1_prefix => 'This permission is ';
+
+  @override
+  String get abc__overlay_perm_alert__p1_bold =>
+      'used only for clipboard detection';
+
+  @override
+  String get abc__overlay_perm_alert__p1_suffix =>
+      ' when you\'re copying something in the background.';
+
+  @override
+  String get abc__overlay_perm_alert__p2_prefix => 'When enabled, CopyCat ';
+
+  @override
+  String get abc__overlay_perm_alert__p2_bold =>
+      'creates a 0-pixel transparent window';
+
+  @override
+  String get abc__overlay_perm_alert__p2_suffix =>
+      ' to briefly bring the app to the foreground to read clipboard data.';
+
+  @override
+  String get abc__overlay_perm_alert__p3_prefix => 'The app ';
+
+  @override
+  String get abc__overlay_perm_alert__p3_bold => 'does not show anything';
+
+  @override
+  String get abc__overlay_perm_alert__p3_suffix =>
+      ' on your screen during this process.';
+
+  @override
+  String get abc__overlay_perm_alert__p4_prefix =>
+      'On some devices, the system may show a toast message ';
+
+  @override
+  String get abc__overlay_perm_alert__p4_bold =>
+      '\'CopyCat pasted from your clipboard\'';
+
+  @override
+  String get abc__overlay_perm_alert__p4_suffix =>
+      ' when CopyCat reads your clipboard content.';
+
+  @override
+  String get abc__overlay_perm_alert__agree =>
+      'By granting this permission, you agree to the above usage.';
+
+  @override
+  String get abc__accessibility_perm_alert__title => 'Accessibility Permission';
+
+  @override
+  String get abc__accessibility_perm_alert__subtitle =>
+      'CopyCat Clipboard requires the Accessibility Service to run in the background for real-time clipboard detection and syncing.';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_prefix => 'This service is ';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_bold => 'only used';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_suffix =>
+      ' for detecting clipboard content and syncing it across devices when enabled.';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_prefix => 'You can ';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_bold => 'exclude specific apps';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_suffix =>
+      ' using the Exclusion Rules feature.';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_prefix => 'The app ';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_bold =>
+      'does not access any other data';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_suffix =>
+      ' beyond clipboard content.';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_prefix => 'Clipboard data ';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_bold =>
+      'is not shared externally';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_suffix =>
+      ' and remains private to your devices.';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_prefix => 'Clipboard data ';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_bold =>
+      'is end-to-end encrypted';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_suffix =>
+      ' (if enabled) in transit and at rest, ensuring privacy across devices.';
+
+  @override
+  String get abc__accessibility_perm_alert__agree =>
+      'By enabling the Accessibility Service, you acknowledge and agree to the above terms.';
 }

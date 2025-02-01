@@ -1475,4 +1475,131 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get abc__ack__preparing => 'Preparando configuração, aguarde...';
+
+  @override
+  String get abc__perm_alert_open_setting__button => 'Abrir configurações';
+
+  @override
+  String get abc__overlay_perm_alert__title => 'Permissão de sobreposição';
+
+  @override
+  String get abc__overlay_perm_alert__subtitle =>
+      'O CopyCat Clipboard precisa da permissão \'Desenhar sobre outros aplicativos\' para ler o conteúdo da área de transferência em segundo plano.';
+
+  @override
+  String get abc__overlay_perm_alert__p1_prefix => 'Esta permissão é ';
+
+  @override
+  String get abc__overlay_perm_alert__p1_bold =>
+      'usada apenas para detecção da área de transferência';
+
+  @override
+  String get abc__overlay_perm_alert__p1_suffix =>
+      ' quando você copia algo em segundo plano.';
+
+  @override
+  String get abc__overlay_perm_alert__p2_prefix =>
+      'Quando habilitado, o CopyCat ';
+
+  @override
+  String get abc__overlay_perm_alert__p2_bold =>
+      'cria uma janela transparente de 0 pixels';
+
+  @override
+  String get abc__overlay_perm_alert__p2_suffix =>
+      ' para brevemente trazer o aplicativo para o primeiro plano e ler os dados da área de transferência.';
+
+  @override
+  String get abc__overlay_perm_alert__p3_prefix => 'O aplicativo ';
+
+  @override
+  String get abc__overlay_perm_alert__p3_bold => 'não mostra nada';
+
+  @override
+  String get abc__overlay_perm_alert__p3_suffix =>
+      ' na sua tela durante este processo.';
+
+  @override
+  String get abc__overlay_perm_alert__p4_prefix =>
+      'Em alguns dispositivos, o sistema pode mostrar uma mensagem rápida ';
+
+  @override
+  String get abc__overlay_perm_alert__p4_bold =>
+      '\'CopyCat colou da sua área de transferência\'';
+
+  @override
+  String get abc__overlay_perm_alert__p4_suffix =>
+      ' quando o CopyCat lê o conteúdo da sua área de transferência.';
+
+  @override
+  String get abc__overlay_perm_alert__agree =>
+      'Ao conceder esta permissão, você concorda com o uso descrito acima.';
+
+  @override
+  String get abc__accessibility_perm_alert__title =>
+      'Permissão de acessibilidade';
+
+  @override
+  String get abc__accessibility_perm_alert__subtitle =>
+      'O CopyCat Clipboard requer o Serviço de Acessibilidade para funcionar em segundo plano e detectar e sincronizar a área de transferência em tempo real.';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_prefix => 'Este serviço é ';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_bold => 'usado apenas';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_suffix =>
+      ' para detectar o conteúdo da área de transferência e sincronizá-lo entre dispositivos quando habilitado.';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_prefix => 'Você pode ';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_bold =>
+      'excluir aplicativos específicos';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_suffix =>
+      ' usando o recurso de Regras de Exclusão.';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_prefix => 'O aplicativo ';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_bold =>
+      'não acessa nenhum outro dado';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_suffix =>
+      ' além do conteúdo da área de transferência.';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_prefix =>
+      'Os dados da área de transferência ';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_bold =>
+      'não são compartilhados externamente';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_suffix =>
+      ' e permanecem privados nos seus dispositivos.';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_prefix =>
+      'Os dados da área de transferência ';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_bold =>
+      'são criptografados de ponta a ponta';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_suffix =>
+      ' (se habilitado) em trânsito e em repouso, garantindo a privacidade entre dispositivos.';
+
+  @override
+  String get abc__accessibility_perm_alert__agree =>
+      'Ao habilitar o Serviço de Acessibilidade, você reconhece e concorda com os termos acima.';
 }

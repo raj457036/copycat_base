@@ -613,5 +613,42 @@
   "abc__tile__acc_subtitle": "Démarre l'écouteur en arrière-plan de CopyCat pour détecter lorsque vous copiez quelque chose et assure le redémarrage automatique du service après un redémarrage.",
 
   "abc__ack__ready": "Configuration prête à être configurée.",
-  "abc__ack__preparing": "Préparation de la configuration, veuillez patienter..."
+  "abc__ack__preparing": "Préparation de la configuration, veuillez patienter...",
+  
+  "abc__perm_alert_open_setting__button": "Ouvrir les paramètres",
+
+  "abc__overlay_perm_alert__title": "Permission de superposition",
+  "abc__overlay_perm_alert__subtitle": "CopyCat Clipboard a besoin de la permission 'Dessiner par-dessus d'autres applications' pour lire le contenu du presse-papiers en arrière-plan.",
+  "abc__overlay_perm_alert__p1_prefix": "Cette permission est ",
+  "abc__overlay_perm_alert__p1_bold": "utilisée uniquement pour la détection du presse-papiers",
+  "abc__overlay_perm_alert__p1_suffix": " lorsque vous copiez quelque chose en arrière-plan.",
+  "abc__overlay_perm_alert__p2_prefix": "Lorsqu'elle est activée, CopyCat ",
+  "abc__overlay_perm_alert__p2_bold": "crée une fenêtre transparente de 0 pixel",
+  "abc__overlay_perm_alert__p2_suffix": " pour amener brièvement l'application au premier plan et lire les données du presse-papiers.",
+  "abc__overlay_perm_alert__p3_prefix": "L'application ",
+  "abc__overlay_perm_alert__p3_bold": "n'affiche rien",
+  "abc__overlay_perm_alert__p3_suffix": " sur votre écran pendant ce processus.",
+  "abc__overlay_perm_alert__p4_prefix": "Sur certains appareils, le système peut afficher un message toast ",
+  "abc__overlay_perm_alert__p4_bold": "'CopyCat a collé depuis votre presse-papiers'",
+  "abc__overlay_perm_alert__p4_suffix": " lorsque CopyCat lit le contenu de votre presse-papiers.",
+  "abc__overlay_perm_alert__agree": "En accordant cette permission, vous acceptez l'utilisation décrite ci-dessus.",
+
+  "abc__accessibility_perm_alert__title": "Permission d'accessibilité",
+  "abc__accessibility_perm_alert__subtitle": "CopyCat Clipboard nécessite le Service d'Accessibilité pour fonctionner en arrière-plan et détecter et synchroniser le presse-papiers en temps réel.",
+  "abc__accessibility_perm_alert__p1_prefix": "Ce service est ",
+  "abc__accessibility_perm_alert__p1_bold": "utilisé uniquement",
+  "abc__accessibility_perm_alert__p1_suffix": " pour détecter le contenu du presse-papiers et le synchroniser entre les appareils lorsqu'il est activé.",
+  "abc__accessibility_perm_alert__p2_prefix": "Vous pouvez ",
+  "abc__accessibility_perm_alert__p2_bold": "exclure des applications spécifiques",
+  "abc__accessibility_perm_alert__p2_suffix": " en utilisant la fonctionnalité de Règles d'Exclusion.",
+  "abc__accessibility_perm_alert__p3_prefix": "L'application ",
+  "abc__accessibility_perm_alert__p3_bold": "n'accède à aucune autre donnée",
+  "abc__accessibility_perm_alert__p3_suffix": " au-delà du contenu du presse-papiers.",
+  "abc__accessibility_perm_alert__p4_prefix": "Les données du presse-papiers ",
+  "abc__accessibility_perm_alert__p4_bold": "ne sont pas partagées à l'extérieur",
+  "abc__accessibility_perm_alert__p4_suffix": " et restent privées sur vos appareils.",
+  "abc__accessibility_perm_alert__p5_prefix": "Les données du presse-papiers ",
+  "abc__accessibility_perm_alert__p5_bold": "sont chiffrées de bout en bout",
+  "abc__accessibility_perm_alert__p5_suffix": " (si activé) en transit et au repos, garantissant la confidentialité entre les appareils.",
+  "abc__accessibility_perm_alert__agree": "En activant le Service d'Accessibilité, vous reconnaissez et acceptez les termes ci-dessus."
 }

@@ -1459,4 +1459,128 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get abc__ack__preparing => 'Setup wird vorbereitet, bitte warten...';
+
+  @override
+  String get abc__perm_alert_open_setting__button => 'Einstellungen öffnen';
+
+  @override
+  String get abc__overlay_perm_alert__title => 'Overlay-Berechtigung';
+
+  @override
+  String get abc__overlay_perm_alert__subtitle =>
+      'CopyCat Clipboard benötigt die \'Über andere Apps zeichnen\' Berechtigung, um den Inhalt der Zwischenablage im Hintergrund zu lesen.';
+
+  @override
+  String get abc__overlay_perm_alert__p1_prefix => 'Diese Berechtigung wird ';
+
+  @override
+  String get abc__overlay_perm_alert__p1_bold =>
+      'nur zur Zwischenablageerkennung verwendet';
+
+  @override
+  String get abc__overlay_perm_alert__p1_suffix =>
+      ' wenn Sie etwas im Hintergrund kopieren.';
+
+  @override
+  String get abc__overlay_perm_alert__p2_prefix => 'Wenn aktiviert, ';
+
+  @override
+  String get abc__overlay_perm_alert__p2_bold =>
+      'erstellt CopyCat ein transparentes Fenster mit 0 Pixel';
+
+  @override
+  String get abc__overlay_perm_alert__p2_suffix =>
+      ' um die App kurz in den Vordergrund zu bringen, um die Zwischenablagedaten zu lesen.';
+
+  @override
+  String get abc__overlay_perm_alert__p3_prefix => 'Die App ';
+
+  @override
+  String get abc__overlay_perm_alert__p3_bold => 'zeigt nichts an';
+
+  @override
+  String get abc__overlay_perm_alert__p3_suffix =>
+      ' auf Ihrem Bildschirm während dieses Prozesses.';
+
+  @override
+  String get abc__overlay_perm_alert__p4_prefix =>
+      'Auf einigen Geräten kann das System eine Toast-Nachricht anzeigen ';
+
+  @override
+  String get abc__overlay_perm_alert__p4_bold =>
+      '\'CopyCat hat aus Ihrer Zwischenablage eingefügt\'';
+
+  @override
+  String get abc__overlay_perm_alert__p4_suffix =>
+      ' wenn CopyCat Ihren Zwischenablageinhalt liest.';
+
+  @override
+  String get abc__overlay_perm_alert__agree =>
+      'Durch die Erteilung dieser Berechtigung stimmen Sie der oben genannten Nutzung zu.';
+
+  @override
+  String get abc__accessibility_perm_alert__title =>
+      'Zugriffsberechtigungsservice';
+
+  @override
+  String get abc__accessibility_perm_alert__subtitle =>
+      'CopyCat Clipboard benötigt den Zugriffsservice, um im Hintergrund zu laufen und die Zwischenablage in Echtzeit zu erkennen und zu synchronisieren.';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_prefix => 'Dieser Service wird ';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_bold => 'nur verwendet';
+
+  @override
+  String get abc__accessibility_perm_alert__p1_suffix =>
+      ' zur Erkennung des Zwischenablageinhalts und zur Synchronisierung über Geräte hinweg, wenn er aktiviert ist.';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_prefix => 'Sie können ';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_bold =>
+      'bestimmte Apps ausschließen';
+
+  @override
+  String get abc__accessibility_perm_alert__p2_suffix =>
+      ' mit der Funktion Ausschlussregeln.';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_prefix => 'Die App ';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_bold =>
+      'greift nicht auf andere Daten zu';
+
+  @override
+  String get abc__accessibility_perm_alert__p3_suffix =>
+      ' über den Zwischenablageinhalt hinaus.';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_prefix => 'Zwischenablagedaten ';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_bold =>
+      'werden nicht extern geteilt';
+
+  @override
+  String get abc__accessibility_perm_alert__p4_suffix =>
+      ' und bleiben privat auf Ihren Geräten.';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_prefix => 'Zwischenablagedaten ';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_bold =>
+      'werden Ende-zu-Ende verschlüsselt';
+
+  @override
+  String get abc__accessibility_perm_alert__p5_suffix =>
+      ' (wenn aktiviert) während der Übertragung und im Ruhezustand, um die Privatsphäre über Geräte hinweg zu gewährleisten.';
+
+  @override
+  String get abc__accessibility_perm_alert__agree =>
+      'Durch das Aktivieren des Zugriffsservices erkennen Sie die oben genannten Bedingungen an und stimmen ihnen zu.';
 }

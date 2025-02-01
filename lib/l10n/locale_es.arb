@@ -613,5 +613,42 @@
   "abc__tile__acc_subtitle": "Inicia el oyente en segundo plano de CopyCat para detectar cuando copias algo y asegura que el servicio se reinicie automáticamente después de un reinicio.",
 
   "abc__ack__ready": "Configuración lista para ser configurada.",
-  "abc__ack__preparing": "Preparando configuración, por favor espere..."
+  "abc__ack__preparing": "Preparando configuración, por favor espere...",
+
+  "abc__perm_alert_open_setting__button": "Abrir configuración",
+
+  "abc__overlay_perm_alert__title": "Permiso de superposición",
+  "abc__overlay_perm_alert__subtitle": "CopyCat Clipboard necesita el permiso 'Dibujar sobre otras aplicaciones' para leer el contenido del portapapeles en segundo plano.",
+  "abc__overlay_perm_alert__p1_prefix": "Este permiso se ",
+  "abc__overlay_perm_alert__p1_bold": "usa solo para la detección del portapapeles",
+  "abc__overlay_perm_alert__p1_suffix": " cuando copias algo en segundo plano.",
+  "abc__overlay_perm_alert__p2_prefix": "Cuando está habilitado, CopyCat ",
+  "abc__overlay_perm_alert__p2_bold": "crea una ventana transparente de 0 píxeles",
+  "abc__overlay_perm_alert__p2_suffix": " para llevar brevemente la aplicación al primer plano y leer los datos del portapapeles.",
+  "abc__overlay_perm_alert__p3_prefix": "La aplicación ",
+  "abc__overlay_perm_alert__p3_bold": "no muestra nada",
+  "abc__overlay_perm_alert__p3_suffix": " en tu pantalla durante este proceso.",
+  "abc__overlay_perm_alert__p4_prefix": "En algunos dispositivos, el sistema puede mostrar un mensaje emergente ",
+  "abc__overlay_perm_alert__p4_bold": "'CopyCat pegó desde tu portapapeles'",
+  "abc__overlay_perm_alert__p4_suffix": " cuando CopyCat lee el contenido de tu portapapeles.",
+  "abc__overlay_perm_alert__agree": "Al otorgar este permiso, aceptas el uso descrito anteriormente.",
+
+  "abc__accessibility_perm_alert__title": "Permiso de accesibilidad",
+  "abc__accessibility_perm_alert__subtitle": "CopyCat Clipboard requiere el Servicio de Accesibilidad para funcionar en segundo plano y detectar y sincronizar el portapapeles en tiempo real.",
+  "abc__accessibility_perm_alert__p1_prefix": "Este servicio se ",
+  "abc__accessibility_perm_alert__p1_bold": "usa únicamente",
+  "abc__accessibility_perm_alert__p1_suffix": " para detectar el contenido del portapapeles y sincronizarlo entre dispositivos cuando está habilitado.",
+  "abc__accessibility_perm_alert__p2_prefix": "Puedes ",
+  "abc__accessibility_perm_alert__p2_bold": "excluir aplicaciones específicas",
+  "abc__accessibility_perm_alert__p2_suffix": " usando la función de Reglas de Exclusión.",
+  "abc__accessibility_perm_alert__p3_prefix": "La aplicación ",
+  "abc__accessibility_perm_alert__p3_bold": "no accede a ningún otro dato",
+  "abc__accessibility_perm_alert__p3_suffix": " más allá del contenido del portapapeles.",
+  "abc__accessibility_perm_alert__p4_prefix": "Los datos del portapapeles ",
+  "abc__accessibility_perm_alert__p4_bold": "no se comparten externamente",
+  "abc__accessibility_perm_alert__p4_suffix": " y permanecen privados en tus dispositivos.",
+  "abc__accessibility_perm_alert__p5_prefix": "Los datos del portapapeles ",
+  "abc__accessibility_perm_alert__p5_bold": "están cifrados de extremo a extremo",
+  "abc__accessibility_perm_alert__p5_suffix": " (si está habilitado) en tránsito y en reposo, garantizando la privacidad entre dispositivos.",
+  "abc__accessibility_perm_alert__agree": "Al habilitar el Servicio de Accesibilidad, reconoces y aceptas los términos anteriores."
 }
