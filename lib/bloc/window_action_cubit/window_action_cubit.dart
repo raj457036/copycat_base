@@ -71,6 +71,7 @@ class WindowActionCubit extends Cubit<WindowActionState> {
   }
 
   Future<void> setDockedView(AppView view, [Size? size]) async {
+    if (!isDesktopPlatform) return;
     assert(view != AppView.windowed, "Only docked views allowed");
 
     final Alignment alignment = switch (view) {
