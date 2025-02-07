@@ -654,5 +654,10 @@
   "abc__accessibility_perm_alert__p5_prefix": "Os dados da área de transferência ",
   "abc__accessibility_perm_alert__p5_bold": "são criptografados de ponta a ponta",
   "abc__accessibility_perm_alert__p5_suffix": " (se habilitado) em trânsito e em repouso, garantindo a privacidade entre dispositivos.",
-  "abc__accessibility_perm_alert__agree": "Ao habilitar o Serviço de Acessibilidade, você reconhece e concorda com os termos acima."
+  "abc__accessibility_perm_alert__agree": "Ao habilitar o Serviço de Acessibilidade, você reconhece e concorda com os termos acima.",
+
+  "abc__other_setting__title": "Outras configurações",
+  "abc__enhanced_clip_detection__title": "Detecção aprimorada da área de transferência",
+  "abc__enhanced_clip_detection__subtitle": "Ative esta opção para uma detecção mais precisa da área de transferência. Note que ela pode não funcionar em todos os dispositivos."
+
 }

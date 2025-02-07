@@ -650,5 +650,10 @@
   "abc__accessibility_perm_alert__p5_prefix": "Les données du presse-papiers ",
   "abc__accessibility_perm_alert__p5_bold": "sont chiffrées de bout en bout",
   "abc__accessibility_perm_alert__p5_suffix": " (si activé) en transit et au repos, garantissant la confidentialité entre les appareils.",
-  "abc__accessibility_perm_alert__agree": "En activant le Service d'Accessibilité, vous reconnaissez et acceptez les termes ci-dessus."
+  "abc__accessibility_perm_alert__agree": "En activant le Service d'Accessibilité, vous reconnaissez et acceptez les termes ci-dessus.",
+
+  "abc__other_setting__title": "Autres paramètres",
+  "abc__enhanced_clip_detection__title": "Détection améliorée du presse-papiers",
+  "abc__enhanced_clip_detection__subtitle": "Activez cette option pour une détection plus précise du presse-papiers. Notez qu'elle pourrait ne pas fonctionner sur tous les appareils."
+
 }

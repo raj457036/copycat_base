@@ -1488,4 +1488,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get abc__accessibility_perm_alert__agree => '启用无障碍服务即表示您承认并同意上述条款。';
+
+  @override
+  String get abc__other_setting__title => '其他设置';
+
+  @override
+  String get abc__enhanced_clip_detection__title => '增强剪贴板检测';
+
+  @override
+  String get abc__enhanced_clip_detection__subtitle =>
+      '启用此选项以实现更准确的剪贴板检测。请注意，它可能无法在所有设备上正常工作。';
 }

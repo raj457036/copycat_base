@@ -2844,6 +2844,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'By enabling the Accessibility Service, you acknowledge and agree to the above terms.'**
   String get abc__accessibility_perm_alert__agree;
+
+  /// No description provided for @abc__other_setting__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Settings'**
+  String get abc__other_setting__title;
+
+  /// No description provided for @abc__enhanced_clip_detection__title.
+  ///
+  /// In en, this message translates to:
+  /// **'Enhanced Clipboard Detection'**
+  String get abc__enhanced_clip_detection__title;
+
+  /// No description provided for @abc__enhanced_clip_detection__subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable this option for more accurate clipboard detection. Note that it might not work on every device.'**
+  String get abc__enhanced_clip_detection__subtitle;
 }
 
 class _AppLocalizationsDelegate

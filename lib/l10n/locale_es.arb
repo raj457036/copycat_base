@@ -650,5 +650,10 @@
   "abc__accessibility_perm_alert__p5_prefix": "Los datos del portapapeles ",
   "abc__accessibility_perm_alert__p5_bold": "están cifrados de extremo a extremo",
   "abc__accessibility_perm_alert__p5_suffix": " (si está habilitado) en tránsito y en reposo, garantizando la privacidad entre dispositivos.",
-  "abc__accessibility_perm_alert__agree": "Al habilitar el Servicio de Accesibilidad, reconoces y aceptas los términos anteriores."
+  "abc__accessibility_perm_alert__agree": "Al habilitar el Servicio de Accesibilidad, reconoces y aceptas los términos anteriores.",
+
+  "abc__other_setting__title": "Otras configuraciones",
+  "abc__enhanced_clip_detection__title": "Detección mejorada del portapapeles",
+  "abc__enhanced_clip_detection__subtitle": "Habilite esta opción para una detección del portapapeles más precisa. Tenga en cuenta que podría no funcionar en todos los dispositivos."
+
 }

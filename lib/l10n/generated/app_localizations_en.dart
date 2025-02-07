@@ -1574,4 +1574,15 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get abc__accessibility_perm_alert__agree =>
       'By enabling the Accessibility Service, you acknowledge and agree to the above terms.';
+
+  @override
+  String get abc__other_setting__title => 'Other Settings';
+
+  @override
+  String get abc__enhanced_clip_detection__title =>
+      'Enhanced Clipboard Detection';
+
+  @override
+  String get abc__enhanced_clip_detection__subtitle =>
+      'Enable this option for more accurate clipboard detection. Note that it might not work on every device.';
 }

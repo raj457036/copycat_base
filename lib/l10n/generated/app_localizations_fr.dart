@@ -1588,4 +1588,15 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get abc__accessibility_perm_alert__agree =>
       'En activant le Service d\'Accessibilité, vous reconnaissez et acceptez les termes ci-dessus.';
+
+  @override
+  String get abc__other_setting__title => 'Autres paramètres';
+
+  @override
+  String get abc__enhanced_clip_detection__title =>
+      'Détection améliorée du presse-papiers';
+
+  @override
+  String get abc__enhanced_clip_detection__subtitle =>
+      'Activez cette option pour une détection plus précise du presse-papiers. Notez qu\'elle pourrait ne pas fonctionner sur tous les appareils.';
 }

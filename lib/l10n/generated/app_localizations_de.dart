@@ -1583,4 +1583,15 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get abc__accessibility_perm_alert__agree =>
       'Durch das Aktivieren des Zugriffsservices erkennen Sie die oben genannten Bedingungen an und stimmen ihnen zu.';
+
+  @override
+  String get abc__other_setting__title => 'Weitere Einstellungen';
+
+  @override
+  String get abc__enhanced_clip_detection__title =>
+      'Erweiterte Zwischenablage-Erkennung';
+
+  @override
+  String get abc__enhanced_clip_detection__subtitle =>
+      'Aktivieren Sie diese Option für eine genauere Zwischenablage-Erkennung. Beachten Sie, dass sie möglicherweise nicht auf jedem Gerät funktioniert.';
 }

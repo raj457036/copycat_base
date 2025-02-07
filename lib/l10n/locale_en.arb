@@ -657,5 +657,9 @@
   "abc__accessibility_perm_alert__p5_prefix": "Clipboard data ",
   "abc__accessibility_perm_alert__p5_bold": "is end-to-end encrypted",
   "abc__accessibility_perm_alert__p5_suffix": " (if enabled) in transit and at rest, ensuring privacy across devices.",
-  "abc__accessibility_perm_alert__agree": "By enabling the Accessibility Service, you acknowledge and agree to the above terms."
+  "abc__accessibility_perm_alert__agree": "By enabling the Accessibility Service, you acknowledge and agree to the above terms.",
+
+  "abc__other_setting__title": "Other Settings",
+  "abc__enhanced_clip_detection__title": "Enhanced Clipboard Detection",
+  "abc__enhanced_clip_detection__subtitle": "Enable this option for more accurate clipboard detection. Note that it might not work on every device."
 }

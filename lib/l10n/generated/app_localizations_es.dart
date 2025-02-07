@@ -1586,4 +1586,15 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get abc__accessibility_perm_alert__agree =>
       'Al habilitar el Servicio de Accesibilidad, reconoces y aceptas los términos anteriores.';
+
+  @override
+  String get abc__other_setting__title => 'Otras configuraciones';
+
+  @override
+  String get abc__enhanced_clip_detection__title =>
+      'Detección mejorada del portapapeles';
+
+  @override
+  String get abc__enhanced_clip_detection__subtitle =>
+      'Habilite esta opción para una detección del portapapeles más precisa. Tenga en cuenta que podría no funcionar en todos los dispositivos.';
 }

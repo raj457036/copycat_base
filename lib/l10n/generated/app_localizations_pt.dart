@@ -1602,4 +1602,15 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get abc__accessibility_perm_alert__agree =>
       'Ao habilitar o Serviço de Acessibilidade, você reconhece e concorda com os termos acima.';
+
+  @override
+  String get abc__other_setting__title => 'Outras configurações';
+
+  @override
+  String get abc__enhanced_clip_detection__title =>
+      'Detecção aprimorada da área de transferência';
+
+  @override
+  String get abc__enhanced_clip_detection__subtitle =>
+      'Ative esta opção para uma detecção mais precisa da área de transferência. Note que ela pode não funcionar em todos os dispositivos.';
 }

@@ -651,5 +651,10 @@
   "abc__accessibility_perm_alert__p5_prefix": "Zwischenablagedaten ",
   "abc__accessibility_perm_alert__p5_bold": "werden Ende-zu-Ende verschlüsselt",
   "abc__accessibility_perm_alert__p5_suffix": " (wenn aktiviert) während der Übertragung und im Ruhezustand, um die Privatsphäre über Geräte hinweg zu gewährleisten.",
-  "abc__accessibility_perm_alert__agree": "Durch das Aktivieren des Zugriffsservices erkennen Sie die oben genannten Bedingungen an und stimmen ihnen zu."
+  "abc__accessibility_perm_alert__agree": "Durch das Aktivieren des Zugriffsservices erkennen Sie die oben genannten Bedingungen an und stimmen ihnen zu.",
+
+  "abc__other_setting__title": "Weitere Einstellungen",
+  "abc__enhanced_clip_detection__title": "Erweiterte Zwischenablage-Erkennung",
+  "abc__enhanced_clip_detection__subtitle": "Aktivieren Sie diese Option für eine genauere Zwischenablage-Erkennung. Beachten Sie, dass sie möglicherweise nicht auf jedem Gerät funktioniert."
+
 }
