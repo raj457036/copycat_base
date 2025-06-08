@@ -94,7 +94,7 @@
   
     "dialog__delete_collection__title": "Excluir {collectionName}",
     "@dialog__delete_collection__title": {
-      "placeholder": {
+      "placeholders": {
         "collectionName": {
           "type": "String"
         }
@@ -354,8 +354,10 @@
     "onboarding__text__go_home": "Vamos para casa",
     "onboarding__restoration__failed": "Falha na restauração: {message}",
     "@onboarding__restoration__failed": {
-      "placeholder": {
-        "message": "String"
+      "placeholders": {
+        "message": {
+          "type": "String"
+        }
       }
     },
     "onboarding__restoration_warning": "⚠️ Por favor, mantenha esta tela aberta durante a sincronização para evitar corrupção ou inconsistências de dados.",
@@ -365,7 +367,7 @@
     "restore_clips__error__no_backup": "Nenhum backup de clipboard encontrado",
     "restore_clips__text__total_count": "Você tem aproximadamente {totalCount} {totalCount, plural, one{clip} other{clips}} para restaurar.",
     "@restore_clips__text__total_count": {
-      "placeholder": {
+      "placeholders": {
         "totalCount": {
           "type": "int"
         }
@@ -375,7 +377,7 @@
     "restore_clips__preparing": "Preparando para restaurar clips. Por favor, aguarde...",
     "restore_clips__restored": "Seus {syncCount} {syncCount, plural, one{clip} other{clips}} foram restaurados com sucesso.",
     "@restore_clips__restored": {
-      "placeholder": {
+      "placeholders": {
         "syncCount": {
           "type": "int"
         }
@@ -383,7 +385,7 @@
     },
     "restore_clips__restoring": "Restaurado: {synced} de {totalCount} clips.",
     "@restore_clips__restoring": {
-      "placeholder": {
+      "placeholders": {
         "synced": {
           "type": "int"
         },
@@ -398,7 +400,7 @@
     "restore_collections__error__no_backup": "Nenhum backup de coleção encontrado",
     "restore_collections__text__total_count": "Você tem aproximadamente {totalCount} {totalCount, plural, one{coleção} other{coleções}} para restaurar.",
     "@restore_collections__text__total_count": {
-      "placeholder": {
+      "placeholders": {
         "totalCount": {
           "type": "int"
         }
@@ -408,7 +410,7 @@
     "restore_collections__preparing": "Preparando para restaurar coleções. Por favor, aguarde...",
     "restore_collections__restored": "Suas {syncCount} {syncCount, plural, one{coleção} other{coleções}} foram restauradas com sucesso.",
     "@restore_collections__restored": {
-      "placeholder": {
+      "placeholders": {
         "syncCount": {
           "type": "int"
         }
@@ -416,7 +418,7 @@
     },
     "restore_collections__restoring": "Restaurado: {synced} de {totalCount} coleções.",
     "@restore_collections__restoring": {
-      "placeholder": {
+      "placeholders": {
         "synced": {
           "type": "int"
         },
@@ -527,10 +529,11 @@
     "settings__switch__paused__subtitle": "Pause temporariamente o monitoramento do clipboard até um horário definido.",
     "settings__switch__paused_active__subtitle": "Pausado até {time}. Toque para retomar ou ajustar o tempo.",
     "@settings__switch__paused_active__subtitle": {
-      "placeholder": {
+      "placeholders": {
         "time": {
           "type": "DateTime",
-          "format": "yMMMd"
+          "format": "h:mm a",
+          "isCustomDateFormat": true
         }
       }
     },

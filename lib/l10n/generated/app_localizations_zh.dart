@@ -1,5 +1,5 @@
+// ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -239,7 +239,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dialog__record_keys__subtitle => '使用键盘输入您的快捷键并点击 ';
 
   @override
-  String dialog__delete_collection__title({required Object collectionName}) {
+  String dialog__delete_collection__title({required String collectionName}) {
     return '删除 $collectionName';
   }
 
@@ -820,7 +820,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get onboarding__text__go_home => '回家吧';
 
   @override
-  String onboarding__restoration__failed({required Object message}) {
+  String onboarding__restoration__failed({required String message}) {
     return '恢复失败: $message';
   }
 
@@ -835,7 +835,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get restore_clips__error__no_backup => '未找到剪贴板备份';
 
   @override
-  String restore_clips__text__total_count({required num totalCount}) {
+  String restore_clips__text__total_count({required int totalCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       totalCount,
       locale: localeName,
@@ -853,7 +853,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get restore_clips__preparing => '正在准备恢复剪贴板，请稍候...';
 
   @override
-  String restore_clips__restored({required num syncCount}) {
+  String restore_clips__restored({required int syncCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       syncCount,
       locale: localeName,
@@ -866,7 +866,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String restore_clips__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return '已恢复: $synced / $totalCount 个剪贴板。';
   }
 
@@ -877,7 +877,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get restore_collections__error__no_backup => '未找到收藏夹备份';
 
   @override
-  String restore_collections__text__total_count({required num totalCount}) {
+  String restore_collections__text__total_count({required int totalCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       totalCount,
       locale: localeName,
@@ -895,7 +895,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get restore_collections__preparing => '正在准备恢复收藏夹，请稍候...';
 
   @override
-  String restore_collections__restored({required num syncCount}) {
+  String restore_collections__restored({required int syncCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       syncCount,
       locale: localeName,
@@ -908,7 +908,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String restore_collections__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return '已恢复: $synced / $totalCount 个收藏夹。';
   }
 
@@ -1159,8 +1159,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settings__switch__paused__subtitle => '暂时暂停剪贴板跟踪直到设置的时间。';
 
   @override
-  String settings__switch__paused_active__subtitle({required Object time}) {
-    return '暂停到 $time 。轻触以恢复或调整时间。';
+  String settings__switch__paused_active__subtitle({required DateTime time}) {
+    final intl.DateFormat timeDateFormat =
+        intl.DateFormat('h:mm a', localeName);
+    final String timeString = timeDateFormat.format(time);
+
+    return '暂停到 $timeString 。轻触以恢复或调整时间。';
   }
 
   @override

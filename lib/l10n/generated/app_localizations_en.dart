@@ -1,5 +1,5 @@
+// ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -245,7 +245,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Type your shortcut using your keyboard and click ';
 
   @override
-  String dialog__delete_collection__title({required Object collectionName}) {
+  String dialog__delete_collection__title({required String collectionName}) {
     return 'Delete $collectionName';
   }
 
@@ -859,7 +859,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding__text__go_home => 'Let\'s go home';
 
   @override
-  String onboarding__restoration__failed({required Object message}) {
+  String onboarding__restoration__failed({required String message}) {
     return 'Restoration failed: $message';
   }
 
@@ -874,7 +874,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restore_clips__error__no_backup => 'No clipboard backup found';
 
   @override
-  String restore_clips__text__total_count({required num totalCount}) {
+  String restore_clips__text__total_count({required int totalCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       totalCount,
       locale: localeName,
@@ -894,7 +894,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Preparing to restore clips. Please wait...';
 
   @override
-  String restore_clips__restored({required num syncCount}) {
+  String restore_clips__restored({required int syncCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       syncCount,
       locale: localeName,
@@ -907,7 +907,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String restore_clips__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return 'Restored: $synced of $totalCount clips.';
   }
 
@@ -919,7 +919,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'No collection backup found';
 
   @override
-  String restore_collections__text__total_count({required num totalCount}) {
+  String restore_collections__text__total_count({required int totalCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       totalCount,
       locale: localeName,
@@ -939,7 +939,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Preparing to restore collections. Please wait...';
 
   @override
-  String restore_collections__restored({required num syncCount}) {
+  String restore_collections__restored({required int syncCount}) {
     String _temp0 = intl.Intl.pluralLogic(
       syncCount,
       locale: localeName,
@@ -952,7 +952,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String restore_collections__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return 'Restored: $synced of $totalCount collections.';
   }
 
@@ -1215,8 +1215,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'Temporarily pause clipboard tracking until a set time.';
 
   @override
-  String settings__switch__paused_active__subtitle({required Object time}) {
-    return 'Paused until $time. Tap to resume or adjust the time.';
+  String settings__switch__paused_active__subtitle({required DateTime time}) {
+    final intl.DateFormat timeDateFormat =
+        intl.DateFormat('h:mm a', localeName);
+    final String timeString = timeDateFormat.format(time);
+
+    return 'Paused until $timeString. Tap to resume or adjust the time.';
   }
 
   @override

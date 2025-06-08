@@ -547,7 +547,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Delete {collectionName}'**
-  String dialog__delete_collection__title({required Object collectionName});
+  String dialog__delete_collection__title({required String collectionName});
 
   /// No description provided for @dialog__delete_collection__subtitle.
   ///
@@ -1639,7 +1639,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Restoration failed: {message}'**
-  String onboarding__restoration__failed({required Object message});
+  String onboarding__restoration__failed({required String message});
 
   /// No description provided for @onboarding__restoration_warning.
   ///
@@ -1663,7 +1663,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'You have approximately {totalCount} {totalCount, plural, other{clips} one{clip} zero{clip}} to restore.'**
-  String restore_clips__text__total_count({required num totalCount});
+  String restore_clips__text__total_count({required int totalCount});
 
   /// No description provided for @restore_clips__sync_disable.
   ///
@@ -1681,14 +1681,14 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Your {syncCount} {syncCount, plural, other{clips} one{clip} zero{clip}} have been restored successfully.'**
-  String restore_clips__restored({required num syncCount});
+  String restore_clips__restored({required int syncCount});
 
   /// No description provided for @restore_clips__restoring.
   ///
   /// In en, this message translates to:
   /// **'Restored: {synced} of {totalCount} clips.'**
   String restore_clips__restoring(
-      {required Object synced, required Object totalCount});
+      {required int synced, required int totalCount});
 
   /// No description provided for @restore_collections__text__title.
   ///
@@ -1706,7 +1706,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'You have approximately {totalCount} {totalCount, plural, other{collections} one{collection} zero{collection}} to restore.'**
-  String restore_collections__text__total_count({required num totalCount});
+  String restore_collections__text__total_count({required int totalCount});
 
   /// No description provided for @restore_collections__sync_disable.
   ///
@@ -1724,14 +1724,14 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Your {syncCount} {syncCount, plural, other{collections} one{collection} zero{collection}} have been restored successfully.'**
-  String restore_collections__restored({required num syncCount});
+  String restore_collections__restored({required int syncCount});
 
   /// No description provided for @restore_collections__restoring.
   ///
   /// In en, this message translates to:
   /// **'Restored: {synced} of {totalCount} collections.'**
   String restore_collections__restoring(
-      {required Object synced, required Object totalCount});
+      {required int synced, required int totalCount});
 
   /// No description provided for @drive__snackbar__success.
   ///
@@ -2213,7 +2213,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Paused until {time}. Tap to resume or adjust the time.'**
-  String settings__switch__paused_active__subtitle({required Object time});
+  String settings__switch__paused_active__subtitle({required DateTime time});
 
   /// No description provided for @settings__switch__smart_paste__title.
   ///

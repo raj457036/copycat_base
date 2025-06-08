@@ -91,7 +91,7 @@
   "dialog__record_keys__subtitle": "使用键盘输入您的快捷键并点击 ",
   "dialog__delete_collection__title": "删除 {collectionName}",
   "@dialog__delete_collection__title": {
-    "placeholder": {
+    "placeholders": {
       "collectionName": {
         "type": "String"
       }
@@ -336,8 +336,10 @@
   "onboarding__text__go_home": "回家吧",
   "onboarding__restoration__failed": "恢复失败: {message}",
   "@onboarding__restoration__failed": {
-    "placeholder": {
-      "message": "String"
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
     }
   },
   "onboarding__restoration_warning": "⚠️ 请在同步过程中保持此页面打开，以避免数据损坏或不一致。",
@@ -346,7 +348,7 @@
   "restore_clips__error__no_backup": "未找到剪贴板备份",
   "restore_clips__text__total_count": "您大约有 {totalCount} {totalCount, plural, other{剪贴板} one{剪贴板} zero{剪贴板}} 需要恢复。",
   "@restore_clips__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -356,7 +358,7 @@
   "restore_clips__preparing": "正在准备恢复剪贴板，请稍候...",
   "restore_clips__restored": "您的 {syncCount} {syncCount, plural, other{剪贴板} one{剪贴板} zero{剪贴板}} 已成功恢复。",
   "@restore_clips__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -364,7 +366,7 @@
   },
   "restore_clips__restoring": "已恢复: {synced} / {totalCount} 个剪贴板。",
   "@restore_clips__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -378,7 +380,7 @@
   "restore_collections__error__no_backup": "未找到收藏夹备份",
   "restore_collections__text__total_count": "您大约有 {totalCount} {totalCount, plural, other{收藏夹} one{收藏夹} zero{收藏夹}} 需要恢复。",
   "@restore_collections__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -388,7 +390,7 @@
   "restore_collections__preparing": "正在准备恢复收藏夹，请稍候...",
   "restore_collections__restored": "您的 {syncCount} {syncCount, plural, other{收藏夹} one{收藏夹} zero{收藏夹}} 已成功恢复。",
   "@restore_collections__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -396,7 +398,7 @@
   },
   "restore_collections__restoring": "已恢复: {synced} / {totalCount} 个收藏夹。",
   "@restore_collections__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -506,10 +508,11 @@
   "settings__switch__paused__subtitle": "暂时暂停剪贴板跟踪直到设置的时间。",
   "settings__switch__paused_active__subtitle": "暂停到 {time} 。轻触以恢复或调整时间。",
   "@settings__switch__paused_active__subtitle": {
-    "placeholder": {
+    "placeholders": {
       "time": {
         "type": "DateTime",
-        "format": "yMMMd"
+        "format": "h:mm a",
+        "isCustomDateFormat": true
       }
     }
   },

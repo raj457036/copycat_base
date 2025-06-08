@@ -36,6 +36,16 @@ class ClipboardCubit extends Cubit<ClipboardState> {
     });
   }
 
+  void refresh() {
+    if (state.loading) return;
+    emit(state.copyWith(loading: true, offset: 0));
+    fetch(
+      fromTop: true,
+      filterState: state.filterState,
+      query: currentQuery,
+    );
+  }
+
   void onBatchSyncEvent(List<ClipCrossSyncEvent> events) {
     if (events.isEmpty) return;
     // Deleted
@@ -102,10 +112,16 @@ class ClipboardCubit extends Cubit<ClipboardState> {
       return;
     }
 
+    if (type == CrossSyncEventType.update) {
+      put(item);
+      return;
+    }
+
     if (currentQuery != null && currentQuery!.isNotEmpty) return;
     final filter = state.filterState;
     if (filter.matchedByFilter(item)) {
-      put(item, isNew: type == CrossSyncEventType.create);
+      // put(item, isNew: type == CrossSyncEventType.create);
+      refresh();
     }
   }
 

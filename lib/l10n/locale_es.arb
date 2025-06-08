@@ -93,7 +93,7 @@
   "dialog__record_keys__subtitle": "Escribe tu atajo usando el teclado y haz clic en ",
   "dialog__delete_collection__title": "Eliminar {collectionName}",
   "@dialog__delete_collection__title": {
-    "placeholder": {
+    "placeholders": {
       "collectionName": {
         "type": "String"
       }
@@ -353,8 +353,10 @@
   "onboarding__text__go_home": "Vamos a casa",
   "onboarding__restoration__failed": "La restauración falló: {message}",
   "@onboarding__restoration__failed": {
-    "placeholder": {
-      "message": "String"
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
     }
   },
   "onboarding__restoration_warning": "⚠️ Mantén esta pantalla abierta durante la sincronización para evitar corrupción de datos o inconsistencias.",
@@ -363,7 +365,7 @@
   "restore_clips__error__no_backup": "No se encontró una copia de seguridad del portapapeles",
   "restore_clips__text__total_count": "Tienes aproximadamente {totalCount} clip(s) para restaurar.",
   "@restore_clips__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -373,7 +375,7 @@
   "restore_clips__preparing": "Preparando para restaurar los clips. Por favor espera...",
   "restore_clips__restored": "Tus {syncCount} clip(s) se han restaurado con éxito.",
   "@restore_clips__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -381,7 +383,7 @@
   },
   "restore_clips__restoring": "Restaurado: {synced} de {totalCount} clips.",
   "@restore_clips__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -395,7 +397,7 @@
   "restore_collections__error__no_backup": "No se encontró una copia de seguridad de colecciones",
   "restore_collections__text__total_count": "Tienes aproximadamente {totalCount} colección(es) para restaurar.",
   "@restore_collections__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -405,7 +407,7 @@
   "restore_collections__preparing": "Preparando para restaurar las colecciones. Por favor espera...",
   "restore_collections__restored": "Tus {syncCount} colección(es) se han restaurado con éxito.",
   "@restore_collections__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -413,7 +415,7 @@
   },
   "restore_collections__restoring": "Restaurado: {synced} de {totalCount} colecciones.",
   "@restore_collections__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -523,10 +525,11 @@
   "settings__switch__paused__subtitle": "Pausa temporalmente el seguimiento del portapapeles hasta una hora establecida.",
   "settings__switch__paused_active__subtitle": "Pausado hasta {time}. Toca para reanudar o ajustar la hora.",
   "@settings__switch__paused_active__subtitle": {
-    "placeholder": {
+    "placeholders": {
       "time": {
         "type": "DateTime",
-        "format": "yMMMd"
+        "format": "h:mm a",
+        "isCustomDateFormat": true
       }
     }
   },

@@ -94,7 +94,7 @@
   "dialog__record_keys__subtitle": "Geben Sie Ihre Tastenkombination über Ihre Tastatur ein und klicken Sie ",
   "dialog__delete_collection__title": "{collectionName} löschen",
   "@dialog__delete_collection__title": {
-    "placeholder": {
+    "placeholders": {
       "collectionName": {
         "type": "String"
       }
@@ -354,8 +354,10 @@
   "onboarding__text__go_home": "Gehen wir nach Hause",
   "onboarding__restoration__failed": "Wiederherstellung fehlgeschlagen: {message}",
   "@onboarding__restoration__failed": {
-    "placeholder": {
-      "message": "String"
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
     }
   },
   "onboarding__restoration_warning": "⚠️ Bitte lassen Sie diesen Bildschirm während der Synchronisierung geöffnet, um Datenbeschädigung oder Inkonsistenzen zu vermeiden.",
@@ -364,7 +366,7 @@
   "restore_clips__error__no_backup": "Kein Zwischenablage-Backup gefunden",
   "restore_clips__text__total_count": "Sie haben etwa {totalCount} Clip(s), die wiederhergestellt werden müssen.",
   "@restore_clips__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -374,7 +376,7 @@
   "restore_clips__preparing": "Vorbereitung der Wiederherstellung der Clips. Bitte warten...",
   "restore_clips__restored": "Ihre {syncCount} Clip(s) wurden erfolgreich wiederhergestellt.",
   "@restore_clips__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -382,7 +384,7 @@
   },
   "restore_clips__restoring": "Wiederhergestellt: {synced} von {totalCount} Clips.",
   "@restore_clips__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -396,7 +398,7 @@
   "restore_collections__error__no_backup": "Kein Sammlungs-Backup gefunden",
   "restore_collections__text__total_count": "Sie haben etwa {totalCount} Sammlung(en), die wiederhergestellt werden müssen.",
   "@restore_collections__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -406,7 +408,7 @@
   "restore_collections__preparing": "Vorbereitung der Wiederherstellung der Sammlungen. Bitte warten...",
   "restore_collections__restored": "Ihre {syncCount} Sammlung(en) wurden erfolgreich wiederhergestellt.",
   "@restore_collections__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -414,7 +416,7 @@
   },
   "restore_collections__restoring": "Wiederhergestellt: {synced} von {totalCount} Sammlungen.",
   "@restore_collections__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -524,10 +526,11 @@
   "settings__switch__paused__subtitle": "Halten Sie das Zwischenablagen-Tracking vorübergehend an, bis zu einer festgelegten Zeit.",
   "settings__switch__paused_active__subtitle": "Pausiert bis {time}. Tippen Sie, um fortzusetzen oder die Zeit anzupassen.",
   "@settings__switch__paused_active__subtitle": {
-    "placeholder": {
+    "placeholders": {
       "time": {
         "type": "DateTime",
-        "format": "yMMMd"
+        "format": "h:mm a",
+        "isCustomDateFormat": true
       }
     }
   },

@@ -93,7 +93,7 @@
   "dialog__record_keys__subtitle": "Tapez votre raccourci en utilisant votre clavier et cliquez sur ",
   "dialog__delete_collection__title": "Supprimer {collectionName}",
   "@dialog__delete_collection__title": {
-    "placeholder": {
+    "placeholders": {
       "collectionName": {
         "type": "String"
       }
@@ -353,8 +353,10 @@
   "onboarding__text__go_home": "Allons à la maison",
   "onboarding__restoration__failed": "Échec de la restauration : {message}",
   "@onboarding__restoration__failed": {
-    "placeholder": {
-      "message": "String"
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
     }
   },
   "onboarding__restoration_warning": "⚠️ Veuillez garder cet écran ouvert pendant la synchronisation pour éviter la corruption des données ou des incohérences.",
@@ -363,7 +365,7 @@
   "restore_clips__error__no_backup": "Aucune sauvegarde du presse-papiers trouvée",
   "restore_clips__text__total_count": "Vous avez environ {totalCount} clip(s) à restaurer.",
   "@restore_clips__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -373,7 +375,7 @@
   "restore_clips__preparing": "Préparation de la restauration des clips. Veuillez patienter...",
   "restore_clips__restored": "Vos {syncCount} clip(s) ont été restaurés avec succès.",
   "@restore_clips__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -381,7 +383,7 @@
   },
   "restore_clips__restoring": "Restauré : {synced} de {totalCount} clips.",
   "@restore_clips__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -395,7 +397,7 @@
   "restore_collections__error__no_backup": "Aucune sauvegarde de collections trouvée",
   "restore_collections__text__total_count": "Vous avez environ {totalCount} collection(s) à restaurer.",
   "@restore_collections__text__total_count": {
-    "placeholder": {
+    "placeholders": {
       "totalCount": {
         "type": "int"
       }
@@ -405,7 +407,7 @@
   "restore_collections__preparing": "Préparation de la restauration des collections. Veuillez patienter...",
   "restore_collections__restored": "Vos {syncCount} collection(s) ont été restaurées avec succès.",
   "@restore_collections__restored": {
-    "placeholder": {
+    "placeholders": {
       "syncCount": {
         "type": "int"
       }
@@ -413,7 +415,7 @@
   },
   "restore_collections__restoring": "Restauré : {synced} de {totalCount} collections.",
   "@restore_collections__restoring": {
-    "placeholder": {
+    "placeholders": {
       "synced": {
         "type": "int"
       },
@@ -523,10 +525,11 @@
   "settings__switch__paused__subtitle": "Suspendre temporairement le suivi du presse-papiers jusqu'à une heure définie.",
   "settings__switch__paused_active__subtitle": "En pause jusqu'à {time}. Appuyez pour reprendre ou ajuster le temps.",
   "@settings__switch__paused_active__subtitle": {
-    "placeholder": {
+    "placeholders": {
       "time": {
         "type": "DateTime",
-        "format": "yMMMd"
+        "format": "h:mm a",
+        "isCustomDateFormat": true
       }
     }
   },

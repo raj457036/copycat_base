@@ -1,5 +1,5 @@
+// ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -247,7 +247,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Geben Sie Ihre Tastenkombination über Ihre Tastatur ein und klicken Sie ';
 
   @override
-  String dialog__delete_collection__title({required Object collectionName}) {
+  String dialog__delete_collection__title({required String collectionName}) {
     return '$collectionName löschen';
   }
 
@@ -873,7 +873,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get onboarding__text__go_home => 'Gehen wir nach Hause';
 
   @override
-  String onboarding__restoration__failed({required Object message}) {
+  String onboarding__restoration__failed({required String message}) {
     return 'Wiederherstellung fehlgeschlagen: $message';
   }
 
@@ -890,7 +890,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kein Zwischenablage-Backup gefunden';
 
   @override
-  String restore_clips__text__total_count({required num totalCount}) {
+  String restore_clips__text__total_count({required int totalCount}) {
     return 'Sie haben etwa $totalCount Clip(s), die wiederhergestellt werden müssen.';
   }
 
@@ -903,13 +903,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'Vorbereitung der Wiederherstellung der Clips. Bitte warten...';
 
   @override
-  String restore_clips__restored({required num syncCount}) {
+  String restore_clips__restored({required int syncCount}) {
     return 'Ihre $syncCount Clip(s) wurden erfolgreich wiederhergestellt.';
   }
 
   @override
   String restore_clips__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return 'Wiederhergestellt: $synced von $totalCount Clips.';
   }
 
@@ -922,7 +922,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kein Sammlungs-Backup gefunden';
 
   @override
-  String restore_collections__text__total_count({required num totalCount}) {
+  String restore_collections__text__total_count({required int totalCount}) {
     return 'Sie haben etwa $totalCount Sammlung(en), die wiederhergestellt werden müssen.';
   }
 
@@ -935,13 +935,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'Vorbereitung der Wiederherstellung der Sammlungen. Bitte warten...';
 
   @override
-  String restore_collections__restored({required num syncCount}) {
+  String restore_collections__restored({required int syncCount}) {
     return 'Ihre $syncCount Sammlung(en) wurden erfolgreich wiederhergestellt.';
   }
 
   @override
   String restore_collections__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return 'Wiederhergestellt: $synced von $totalCount Sammlungen.';
   }
 
@@ -1209,8 +1209,12 @@ class AppLocalizationsDe extends AppLocalizations {
       'Halten Sie das Zwischenablagen-Tracking vorübergehend an, bis zu einer festgelegten Zeit.';
 
   @override
-  String settings__switch__paused_active__subtitle({required Object time}) {
-    return 'Pausiert bis $time. Tippen Sie, um fortzusetzen oder die Zeit anzupassen.';
+  String settings__switch__paused_active__subtitle({required DateTime time}) {
+    final intl.DateFormat timeDateFormat =
+        intl.DateFormat('h:mm a', localeName);
+    final String timeString = timeDateFormat.format(time);
+
+    return 'Pausiert bis $timeString. Tippen Sie, um fortzusetzen oder die Zeit anzupassen.';
   }
 
   @override

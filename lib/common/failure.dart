@@ -35,7 +35,7 @@ class Failure {
 
   @override
   String toString() {
-    return 'Failure(message: $message, code: $code)';
+    return "An error occurred: $message (code: $code)";
   }
 }
 

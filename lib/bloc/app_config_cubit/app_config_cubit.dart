@@ -215,7 +215,7 @@ class AppConfigCubit extends Cubit<AppConfigState> {
   }
 
   Future<void> setThemeColor(Color color) async {
-    final newConfig = state.config.copyWith(themeColor: color.value)
+    final newConfig = state.config.copyWith(themeColor: color.toARGB32())
       ..applyId(state.config);
     emit(state.copyWith(config: newConfig));
     await repo.update(newConfig);

@@ -1,5 +1,5 @@
+// ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -248,7 +248,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Tapez votre raccourci en utilisant votre clavier et cliquez sur ';
 
   @override
-  String dialog__delete_collection__title({required Object collectionName}) {
+  String dialog__delete_collection__title({required String collectionName}) {
     return 'Supprimer $collectionName';
   }
 
@@ -878,7 +878,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboarding__text__go_home => 'Allons à la maison';
 
   @override
-  String onboarding__restoration__failed({required Object message}) {
+  String onboarding__restoration__failed({required String message}) {
     return 'Échec de la restauration : $message';
   }
 
@@ -894,7 +894,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Aucune sauvegarde du presse-papiers trouvée';
 
   @override
-  String restore_clips__text__total_count({required num totalCount}) {
+  String restore_clips__text__total_count({required int totalCount}) {
     return 'Vous avez environ $totalCount clip(s) à restaurer.';
   }
 
@@ -907,13 +907,13 @@ class AppLocalizationsFr extends AppLocalizations {
       'Préparation de la restauration des clips. Veuillez patienter...';
 
   @override
-  String restore_clips__restored({required num syncCount}) {
+  String restore_clips__restored({required int syncCount}) {
     return 'Vos $syncCount clip(s) ont été restaurés avec succès.';
   }
 
   @override
   String restore_clips__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return 'Restauré : $synced de $totalCount clips.';
   }
 
@@ -925,7 +925,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Aucune sauvegarde de collections trouvée';
 
   @override
-  String restore_collections__text__total_count({required num totalCount}) {
+  String restore_collections__text__total_count({required int totalCount}) {
     return 'Vous avez environ $totalCount collection(s) à restaurer.';
   }
 
@@ -938,13 +938,13 @@ class AppLocalizationsFr extends AppLocalizations {
       'Préparation de la restauration des collections. Veuillez patienter...';
 
   @override
-  String restore_collections__restored({required num syncCount}) {
+  String restore_collections__restored({required int syncCount}) {
     return 'Vos $syncCount collection(s) ont été restaurées avec succès.';
   }
 
   @override
   String restore_collections__restoring(
-      {required Object synced, required Object totalCount}) {
+      {required int synced, required int totalCount}) {
     return 'Restauré : $synced de $totalCount collections.';
   }
 
@@ -1214,8 +1214,12 @@ class AppLocalizationsFr extends AppLocalizations {
       'Suspendre temporairement le suivi du presse-papiers jusqu\'à une heure définie.';
 
   @override
-  String settings__switch__paused_active__subtitle({required Object time}) {
-    return 'En pause jusqu\'à $time. Appuyez pour reprendre ou ajuster le temps.';
+  String settings__switch__paused_active__subtitle({required DateTime time}) {
+    final intl.DateFormat timeDateFormat =
+        intl.DateFormat('h:mm a', localeName);
+    final String timeString = timeDateFormat.format(time);
+
+    return 'En pause jusqu\'à $timeString. Appuyez pour reprendre ou ajuster le temps.';
   }
 
   @override
