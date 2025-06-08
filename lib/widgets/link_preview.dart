@@ -9,33 +9,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LinkPreviewImage extends StatelessWidget {
-  final NetworkImage provider;
+  final ImageProvider provider;
   const LinkPreviewImage({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
-    final isSvg = provider.url.contains(".svg");
+    if (provider is NetworkImage) {
+      final networkImage = provider as NetworkImage;
+      final isSvg = networkImage.url.contains(".svg");
 
-    if (provider.url.endsWith("giphy.gif?raw=true")) {
-      return const ImageNotFound();
-    }
+      if (networkImage.url.endsWith("giphy.gif?raw=true")) {
+        return const ImageNotFound();
+      }
 
-    if (isSvg) {
-      return SvgPicture.network(
-        provider.url,
+      if (isSvg) {
+        return SvgPicture.network(
+          networkImage.url,
+          fit: BoxFit.fitWidth,
+          headers: networkImage.headers,
+          placeholderBuilder: (context) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
+
+      return CachedNetworkImage(
+        imageUrl: networkImage.url,
+        httpHeaders: networkImage.headers,
         fit: BoxFit.fitWidth,
-        headers: provider.headers,
-        placeholderBuilder: (context) => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        errorWidget: (context, error, stackTrace) => const ImageNotFound(),
       );
     }
 
-    return CachedNetworkImage(
-      imageUrl: provider.url,
-      httpHeaders: provider.headers,
+    return Image(
+      image: provider,
       fit: BoxFit.fitWidth,
-      errorWidget: (context, error, stackTrace) => const ImageNotFound(),
+      errorBuilder: (context, error, stackTrace) => const ImageNotFound(),
     );
   }
 }
@@ -82,7 +91,6 @@ class LinkPreview extends StatelessWidget {
             return const SizedBox.shrink();
           }
           final colors = context.colors;
-          provider as NetworkImage?;
 
           Widget body = ClipRRect(
             borderRadius: radius8,
