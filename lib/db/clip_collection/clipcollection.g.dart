@@ -129,7 +129,7 @@ const ClipCollectionSchema = CollectionSchema(
   getId: _clipCollectionGetId,
   getLinks: _clipCollectionGetLinks,
   attach: _clipCollectionAttach,
-  version: '3.1.0+1',
+  version: '3.1.8',
 );
 
 int _clipCollectionEstimateSize(

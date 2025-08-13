@@ -139,7 +139,7 @@ const SubscriptionSchema = CollectionSchema(
   getId: _subscriptionGetId,
   getLinks: _subscriptionGetLinks,
   attach: _subscriptionAttach,
-  version: '3.1.0+1',
+  version: '3.1.8',
 );
 
 int _subscriptionEstimateSize(
