@@ -58,10 +58,8 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
     });
   }
 
-  ClipboardItem parseClip(String clip, String meta) {
-    // type::description::serverId::userid::encrypted
-    final parts = meta.split("::");
-    final ClipItemType clipType = switch (parts[0]) {
+  ClipboardItem parseClip(Map clip) {
+    final ClipItemType clipType = switch (clip["type"]) {
       "Text" => ClipItemType.text,
       "Url" => ClipItemType.url,
       "Email" => ClipItemType.text,
@@ -69,25 +67,28 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       "FileUrl" => ClipItemType.file, // TODO(raj): add support for files
       _ => ClipItemType.text,
     };
-    final TextCategory? textCategory = switch (parts[0]) {
+    final TextCategory? textCategory = switch (clip["type"]) {
       "Email" => TextCategory.email,
       "Phone" => TextCategory.phone,
       _ => null,
     };
-    final desc = parts[1];
-    final serverId = int.tryParse(parts[2]);
+    final desc = clip["label"] as String?;
+    final serverId = clip["serverId"] as int;
+    final timestamp = clip["timestamp"] != null
+        ? DateTime.fromMillisecondsSinceEpoch(clip["timestamp"])
+        : now();
     return ClipboardItem(
-      created: now(),
-      modified: now(),
+      created: timestamp,
+      modified: timestamp,
       type: clipType,
       os: PlatformOS.android,
       textCategory: textCategory,
-      text: clipType == ClipItemType.text ? clip : null,
-      url: clipType == ClipItemType.url ? clip : null,
+      text: clipType == ClipItemType.text ? clip["text"] : null,
+      url: clipType == ClipItemType.url ? clip["text"] : null,
       title: desc,
       description: desc,
-      serverId: serverId,
-      lastSynced: serverId != null ? now() : null,
+      serverId: serverId == -1 ? null : serverId,
+      lastSynced: now(),
       deviceId: deviceId,
     );
   }
@@ -100,22 +101,15 @@ class AndroidBgClipboardCubit extends Cubit<AndroidBgClipboardState> {
       final deleteKeys = <String>[];
       for (var i = 0; i < endMark + 1; i++) {
         final clipKey = "Clip-$i";
-        final clipMetaKey = "Clip-$i-meta";
-        final clip = await plugin.readShared<String>(clipKey);
-        final clipMeta = await plugin.readShared<String>(clipMetaKey);
+        final clip = await plugin.readShared<Map?>(clipKey);
 
-        if (clip != null &&
-            clipMeta != null &&
-            clip.isNotEmpty &&
-            clipMeta.isNotEmpty) {
-          final clipItem = parseClip(clip, clipMeta);
-          writeToLocal(clipItem);
+        if (clip != null && clip.isNotEmpty) {
+          final clipItem = parseClip(clip);
+          await writeToLocal(clipItem);
         }
-        deleteKeys
-          ..add(clipKey)
-          ..add(clipMetaKey);
+        deleteKeys.add(clipKey);
 
-        logger.w("Clip: $clip | Meta: $clipMeta");
+        logger.w("Clip: $clip");
       }
       await plugin.writeShared("endId", -1);
       await plugin.deleteShared(deleteKeys);
