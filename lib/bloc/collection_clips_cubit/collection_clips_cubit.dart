@@ -38,7 +38,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
     });
   }
 
-  Future<void> search([String? searchQuery]) async {
+  Future<void> search([String? searchQuery, int? limit]) async {
     currentQuery = searchQuery;
     switch (state) {
       case InitialCollectionClipsState() || CollectionClipsErrorState():
@@ -82,7 +82,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
             CollectionClipsState.searching(query: searchQuery ?? query),
           );
           final items = await repo.getList(
-            limit: 50,
+            limit: limit ?? 50,
             offset: newQuery ? 0 : offset,
             search: searchQuery ?? query,
             collectionId: collection.id,
@@ -117,6 +117,7 @@ class CollectionClipsCubit extends Cubit<CollectionClipsState> {
           offset: isDeleted ? result.offset - 1 : result.offset,
         ),
       );
+      search(currentQuery, items.length);
     });
   }
 

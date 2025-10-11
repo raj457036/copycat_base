@@ -141,8 +141,8 @@ class _$CollectionSyncDisabledImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'CollectionSyncManagerState.disabled'));
+    properties
+      ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.disabled'));
   }
 
   @override
@@ -284,7 +284,7 @@ class _$CollectionSyncUnknownImpl
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'CollectionSyncManagerState.unknown'));
+      ..add(DiagnosticsProperty('type', 'CollectionSyncManagerState.unknown'));
   }
 
   @override
@@ -426,8 +426,9 @@ class _$CollectionSyncingUnknownImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty(
-        'type', 'CollectionSyncManagerState.syncingUnknown'));
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CollectionSyncManagerState.syncingUnknown'));
   }
 
   @override

@@ -8,7 +8,7 @@ import 'package:copycat_base/db/exclusion_rules/exclusion_rules.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'appconfig.freezed.dart';
 part 'appconfig.g.dart';

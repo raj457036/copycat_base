@@ -72,7 +72,7 @@ import 'package:copycat_base/domain/sources/clipboard.dart' as _i191;
 import 'package:copycat_base/domain/sources/restoration_status.dart' as _i934;
 import 'package:copycat_base/domain/sources/sync_clipboard.dart' as _i903;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:isar/isar.dart' as _i338;
+import 'package:isar_community/isar.dart' as _i214;
 import 'package:tiny_storage/tiny_storage.dart' as _i829;
 
 class CopycatBasePackageModule extends _i526.MicroPackageModule {
@@ -88,7 +88,7 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
     );
     gh.singleton<_i354.ClipboardService>(() => _i354.ClipboardService());
     gh.singleton<_i236.EventBusCubit>(() => _i236.EventBusCubit());
-    await gh.lazySingletonAsync<_i338.Isar>(
+    await gh.lazySingletonAsync<_i214.Isar>(
       () => registerModule.db,
       preResolve: true,
       dispose: _i50.closeIsarDb,
@@ -97,14 +97,14 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
         () => registerModule.bgService);
     gh.lazySingleton<_i872.GoogleOAuth2Service>(
         () => _i872.GoogleOAuth2Service());
-    gh.lazySingleton<_i854.AppConfigRepository>(
-        () => _i228.AppConfigRepositoryImpl(gh<_i338.Isar>()));
     gh.lazySingleton<_i860.AnalyticsRepository>(
         () => const _i55.AnalyticsRepositoryImpl());
     gh.lazySingleton<_i934.RestorationStatusSource>(
-        () => _i1043.RestorationStatusSourceImpl(db: gh<_i338.Isar>()));
+        () => _i1043.RestorationStatusSourceImpl(db: gh<_i214.Isar>()));
     gh.lazySingleton<_i106.SyncRepository>(() => _i421.SyncRepositoryImpl(
         gh<_i903.SyncClipboardSource>(instanceName: 'remote')));
+    gh.lazySingleton<_i854.AppConfigRepository>(
+        () => _i228.AppConfigRepositoryImpl(gh<_i214.Isar>()));
     gh.lazySingleton<_i1054.DriveService>(
       () => _i872.GoogleDriveService(),
       instanceName: 'google_drive',
@@ -126,20 +126,6 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i829.TinyStorage>(),
           gh<_i860.AnalyticsRepository>(),
         ));
-    gh.lazySingleton<_i191.ClipboardSource>(
-      () => _i397.LocalClipboardSource(
-        gh<_i338.Isar>(),
-        gh<String>(instanceName: 'device_id'),
-      ),
-      instanceName: 'local',
-    );
-    gh.lazySingleton<_i569.ClipCollectionSource>(
-      () => _i799.LocalClipCollectionSource(
-        gh<_i338.Isar>(),
-        gh<String>(instanceName: 'device_id'),
-      ),
-      instanceName: 'local',
-    );
     gh.lazySingleton<_i957.RestorationStatusRepository>(() =>
         _i491.RestorationStatusRepositoryImpl(
             gh<_i934.RestorationStatusSource>()));
@@ -147,6 +133,20 @@ class CopycatBasePackageModule extends _i526.MicroPackageModule {
           gh<_i447.DriveCredentialRepository>(),
           gh<_i1054.DriveService>(instanceName: 'google_drive'),
         ));
+    gh.lazySingleton<_i569.ClipCollectionSource>(
+      () => _i799.LocalClipCollectionSource(
+        gh<_i214.Isar>(),
+        gh<String>(instanceName: 'device_id'),
+      ),
+      instanceName: 'local',
+    );
+    gh.lazySingleton<_i191.ClipboardSource>(
+      () => _i397.LocalClipboardSource(
+        gh<_i214.Isar>(),
+        gh<String>(instanceName: 'device_id'),
+      ),
+      instanceName: 'local',
+    );
     gh.lazySingleton<_i691.CloudPersistanceCubit>(
         () => _i691.CloudPersistanceCubit(
               gh<_i630.AuthCubit>(),

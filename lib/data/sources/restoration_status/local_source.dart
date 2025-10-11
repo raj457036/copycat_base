@@ -1,7 +1,7 @@
 import 'package:copycat_base/db/sync_status/syncstatus.dart';
 import 'package:copycat_base/domain/sources/restoration_status.dart';
 import 'package:injectable/injectable.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 const restorationStatusId = 1;
 

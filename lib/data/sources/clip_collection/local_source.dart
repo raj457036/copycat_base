@@ -6,7 +6,7 @@ import 'package:copycat_base/db/clipboard_item/clipboard_item.dart';
 import 'package:copycat_base/domain/sources/clip_collection.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:injectable/injectable.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 @Named("local")
 @LazySingleton(as: ClipCollectionSource)

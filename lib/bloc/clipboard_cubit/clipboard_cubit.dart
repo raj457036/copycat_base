@@ -58,6 +58,8 @@ class ClipboardCubit extends Cubit<ClipboardState> {
         .toList();
     deleteItem(deleted);
 
+    fetch(limit: deleted.length);
+
     if (currentQuery != null && currentQuery!.isNotEmpty) return;
     final filter = state.filterState;
 
@@ -150,6 +152,7 @@ class ClipboardCubit extends Cubit<ClipboardState> {
     bool fromTop = false,
     String? query,
     SearchFilterState? filterState,
+    int? limit,
   }) async {
     currentQuery = query;
     emit(
@@ -159,6 +162,7 @@ class ClipboardCubit extends Cubit<ClipboardState> {
         filterState: fromTop
             ? filterState ?? const SearchFilterState()
             : state.filterState,
+        limit: limit ?? 50,
       ),
     );
 

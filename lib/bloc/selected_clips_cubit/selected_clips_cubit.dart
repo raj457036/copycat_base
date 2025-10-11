@@ -10,12 +10,38 @@ part 'selected_clips_state.dart';
 class SelectedClipsCubit extends Cubit<SelectedClipsState> {
   SelectedClipsCubit() : super(const SelectedClipsState.noClipSelected());
 
-  void select(ClipboardItem clip) {
+  bool multiSelectMode = false;
+
+  bool get hasSelection =>
+      state is ClipSelected &&
+      (state as ClipSelected).selectedClipIds.isNotEmpty;
+
+  void selectAll(List<ClipboardItem> allClips) {
+    emit(SelectedClipsState.clipSelected(selectedClipIds: {...allClips}));
+  }
+
+  void select(ClipboardItem clip, {List<ClipboardItem>? selectableItems}) {
     switch (state) {
       case NoClipSelected():
         emit(SelectedClipsState.clipSelected(selectedClipIds: {clip}));
       case ClipSelected(:final selectedClipIds):
         {
+          if (multiSelectMode &&
+              selectableItems != null &&
+              selectableItems.isNotEmpty) {
+            final lastItem = selectedClipIds.last;
+            final lastIndex = selectableItems.indexOf(lastItem);
+            final currentIndex = selectableItems.indexOf(clip);
+            if (lastIndex != -1 && currentIndex != -1) {
+              final start = lastIndex < currentIndex ? lastIndex : currentIndex;
+              final end = lastIndex > currentIndex ? lastIndex : currentIndex;
+              final rangeSelected = selectableItems.sublist(start, end + 1);
+              final newSelectedClipIds = {...selectedClipIds, ...rangeSelected};
+              emit(SelectedClipsState.clipSelected(
+                  selectedClipIds: newSelectedClipIds));
+              return;
+            }
+          }
           final newSelectedClipIds = {...selectedClipIds, clip};
           emit(SelectedClipsState.clipSelected(
               selectedClipIds: newSelectedClipIds));

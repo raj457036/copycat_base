@@ -1,6 +1,6 @@
 import 'package:copycat_base/db/base.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'syncstatus.freezed.dart';
 part 'syncstatus.g.dart';

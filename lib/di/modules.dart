@@ -9,7 +9,7 @@ import "package:copycat_base/utils/utility.dart";
 import 'package:device_info_plus/device_info_plus.dart';
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
-import "package:isar/isar.dart";
+import "package:isar_community/isar.dart";
 import 'package:path/path.dart' as p;
 import "package:path_provider/path_provider.dart";
 import "package:tiny_storage/tiny_storage.dart";

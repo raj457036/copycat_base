@@ -8,7 +8,7 @@ import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/enums/sort.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:injectable/injectable.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 @Named("local")
 @LazySingleton(as: ClipboardSource)

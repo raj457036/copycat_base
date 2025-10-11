@@ -54,7 +54,7 @@ const SyncStatusSchema = CollectionSchema(
   getId: _syncStatusGetId,
   getLinks: _syncStatusGetLinks,
   attach: _syncStatusAttach,
-  version: '3.1.8',
+  version: '3.3.0-dev.1',
 );
 
 int _syncStatusEstimateSize(

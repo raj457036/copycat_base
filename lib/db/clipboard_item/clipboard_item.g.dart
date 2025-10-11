@@ -269,7 +269,7 @@ const ClipboardItemSchema = CollectionSchema(
   getId: _clipboardItemGetId,
   getLinks: _clipboardItemGetLinks,
   attach: _clipboardItemAttach,
-  version: '3.1.8',
+  version: '3.3.0-dev.1',
 );
 
 int _clipboardItemEstimateSize(

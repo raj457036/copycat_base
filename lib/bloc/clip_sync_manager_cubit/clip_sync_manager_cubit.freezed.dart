@@ -139,7 +139,7 @@ class _$ClipSyncDisabledImpl
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'ClipSyncManagerState.disabled'));
+      ..add(DiagnosticsProperty('type', 'ClipSyncManagerState.disabled'));
   }
 
   @override
@@ -278,7 +278,8 @@ class _$ClipSyncUnknownImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ClipSyncManagerState.unknown'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ClipSyncManagerState.unknown'));
   }
 
   @override
@@ -417,8 +418,8 @@ class _$ClipSyncingUnknownImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'ClipSyncManagerState.syncingUnknown'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ClipSyncManagerState.syncingUnknown'));
   }
 
   @override

@@ -3,7 +3,7 @@ import 'package:copycat_base/db/base.dart';
 import 'package:copycat_base/db/json_converters/datetime_converters.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'subscription.freezed.dart';
 part 'subscription.g.dart';

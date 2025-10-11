@@ -8,7 +8,7 @@ import 'package:copycat_base/enums/clip_type.dart';
 import 'package:copycat_base/enums/platform_os.dart';
 import 'package:copycat_base/utils/utility.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:path/path.dart' as p;
 import "package:universal_io/io.dart";
 
